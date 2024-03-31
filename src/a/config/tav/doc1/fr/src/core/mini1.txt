@@ -1,0 +1,34 @@
+@001 - Présentation
+Le noyau tav.mini1 a été codé de telle sorte qu'il soit le noyau le plus minimaliste possible tout en restant extensible, à l'image du framework sur lequel il se base. Il ne comporte qu'une seule classe : a.core.tav.mini1.Main qu'il faut lancer en passant en paramètre le nom d'une entité qu'il va instancier puis exécuter, et c'est à peu près tout.
+
+L'entité exécutée dispose pour seule resource d'une map appelée "pool", qui ne contient que le tableau String[] des arguments passés dans le main. Les méthodes service et err de la classe Outside sont quant à elles inutilisables...
+
+Elle peut très bien se contenter d'effectuer une tâche précise et se terminer sans demander son reste. Mais si elle souhaite démarrer une application plus conséquente basée sur un composant config, elle va devoir tout faire d'elle même :
+- aller chercher et exploiter d'autres entités
+- mettre dans la map "pool" les objets qui viendront remplacer les implémentations par défaut des 3 méthodes resource, service et err.
+
+Pour fonctionner efficacement, ce noyau doit donc être fourni avec un système complet d'entités prenant en charge toutes les fonctionnalités qui y font défaut. Au premier abord, cette contrainte peut paraître rédhibitoire mais c'est le prix à payer pour une plus grande flexibilité.
+
+@002 - Récupèrer la map pool
+Pour récupérer la map pool, il faut utiliser l'ID "pool" comme ceci :
+Map pool = (Map) Outside.resource(this, "pool");
+
+@003 - Surcharger resource, service, err
+Pour remplacer les implémentations par défaut de resource, service et err, il faut ajouter des objets dans la map pool comme ceci :
+
+pool.put("service", serviceBuilder) 
+ou serviceBuilder est un objet T qui s'utilise comme ceci :
+Service service = (Service) serviceBuilder.t(new Object[] { entity, id });
+
+pool.put("resource", resourceBuilder) 
+ou resourceBuilder est un objet T qui s'utilise comme ceci : 
+Object resource = resourceBuilder.t(new Object[] { entity, id });
+
+pool.put("err", errHandler) 
+ou errHandler est un objet P qui s'utilise comme ceci : 
+errHandler.p(new Object[] { entity, id, e });
+
+@004 - En conclusion
+Certain prétendent que le code parle souvent de lui-même et qu'il suffit d'aller y jeter un oeil pour comprendre comment il fonctionne. Ainsi, n'hésitez pas à regarder le code source de la classe a.core.tav.mini1.Main ! Il ne vous restera plus qu'à récupérer un système d'entités qui permet d'exploiter ce noyau (ou à l'implémenter vous-même).
+
+Un système disponible est : tav.init1 (entité tav.y.init1).

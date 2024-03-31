@@ -1,0 +1,16 @@
+Documentation pour le système gus.y.appview1
+
+gus.y.appview1.build.entries
+gus.y.appview1.entryview
+gus.y.appview1.entryview.panel
+gus.y.appview1.entryview.panel.class1
+gus.y.appview1.entryview.panel.default1
+gus.y.appview1.entryview.panel.gif
+gus.y.appview1.entryview.panel.image
+gus.y.appview1.entryview.panel.jar
+gus.y.appview1.entryview.panel.java
+gus.y.appview1.handle.entryinputstream
+gus.y.appview1.handle.entryinputstream.dir
+gus.y.appview1.handle.entryinputstream.jar
+gus.y.appview1.maingui
+gus.y.appview1.maingui.self

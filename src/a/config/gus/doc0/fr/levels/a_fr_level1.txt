@@ -1,0 +1,71 @@
+@001 - Introduction
+Les règles décrites ci-dessous doivent être suivies par les développeurs afin que leur code dérivé soit considéré comme du code source conforme au projet a. On considèrera ici le code produit par un développeur identifié par le pseudo <pseudo>.
+
+@002 - Le code source CORE
+Règles qui régissent le code source "CORE" (contenu dans le package racine a.core.<pseudo>)
+
+Le code source CORE du développeur <pseudo> se répartit en un ou plusieurs composants de programmation appelés des composants "noyau". Au sein du projet a, un composant noyau est nommé de manière unique en suivant la règle : <core-name> = <pseudo>.<core-part> ou <core-part> est un nom compatible avec les niveaux de package, choisi par le développeur.
+
+Le code source de ce noyau est alors regroupé dans le package racine a.core.<pseudo>.<core-part>
+
+En tant que développeur gus, j'ai pour l'instant développé un unique composant noyau nommé "gus.gyem", dont le code source est situé au sein du package racine a.core.gus.gyem
+
+En tant que développeur tav, j'ai développé un autre composant noyau nommé "tav.mini1", dont le code source est situé au sein du package racine a.core.tav.mini1
+
+Un noyau <core-name> :
+- peut contenir plusieurs packages java (qui commencent tous par a.core.<pseudo>.<core-part>)
+- doit contenir une unique classe Main (qui sera son point d'entrée en tant qu'application java)
+
+Restrictions sur les imports :
+Dans l'ensemble des fichiers java d'un noyau, les imports internes au projet a (débutant par a) ne peuvent être que :
+- des imports du framework
+- des imports internes au noyau lui-même
+
+@003 - Le code source ENTITY
+Règles qui régissent le code source "ENTITY" (contenu dans le package racine a.entity.<pseudo>)
+
+Le code source ENTITY du développeur <pseudo> se répartit en un ou plusieurs composants de programmation appelés des composants "entité". Au sein du projet a, un composant entité est nommé de manière unique en suivant la règle : <entity-name> = <pseudo>.<part1>.<part2>...<partN> ou <part1>.<part2>...<partN> correspond à une suite d'un ou plusieurs niveaux de package java choisis par le développeur.
+
+Le code source de cette entité est alors regroupé à la racine du package unique : 
+a.entity.<pseudo>.<part1>.<part2>...<partN>
+
+En tant que développeur gus, ma première entité a été l'entité gus.first, située dans le package a.entity.gus.first
+
+Une entité <entity-name> :
+- doit avoir son code source à la racine d'un unique package java : a.entity.<entity-name>
+- peut contenir un ou plusieurs fichiers java (mais le plus souvent un seul)
+
+L'un des fichiers java (appelé classe principale de l'entité) doit obligatoirement s'appeler EntityImpl.java, et implémenter l'interface a.framework.Entity.
+La méthode public String creationDate() de cette classe doit renvoyer une String au format de date yyyyMMdd, correspondant à la date de création de l'entité.
+Le constructeur de cette classe pourra être soit le constructeur par défaut, soit un constructeur public sans argument pouvant éventuellement lancer une exception de type "Exception"
+
+Restrictions sur les imports :
+Dans l'ensemble des fichiers java d'une entité, les imports internes au projet a (débutant par a) ne peuvent être que :
+- des imports du framework
+
+@004 - Le code source CONFIG
+Règles qui régissent le code source "CONFIG" (contenu dans le package racine a.config.<pseudo>)
+
+Le code source CONFIG du développeur <pseudo> se répartit en un ou plusieurs composants de configuration appelés des composants "config"
+Au sein du projet a, un composant config est identifié de manière unique par l'ID suivant : <config-id> = <pseudo>.<config-part>
+ou <config-part> est un nom compatible avec les niveaux de package, choisi par le développeur.
+
+Son code source est alors regroupé dans le package racine a.config.<pseudo>.<config-part>
+
+En tant que développeur gus, j'ai pour l'instant développé plusieurs composants config dont les principaux sont :
+- gus.doc0 (correspondant au package racine a.config.gus.doc0)
+- gus.doc1 (correspondant au package racine a.config.gus.doc1)
+- gus.appli1 (correspondant au package racine a.config.gus.appli1)
+- gus.common1 (correspondant au package racine a.config.gus.common1)
+
+Un composant config ne peut pas contenir de code directement exécutable au runtime de l'application.
+Il peut en revanche contenir des fichiers de resources (texte, multimédia, binaire, jar...) utiles pour les applications java, ainsi que de la documentation sur le code dérivé.
+
+La structure des composants config dépend des noyaux qui peuvent les exploiter et il est compliqué d'en énoncer des règles génériques.
+On peut tout de même en distinguer deux types:
+- les configs "applicatives" (présence d'un fichier cores)
+- les configs "partagées"
+
+Ainsi, les configs dites applicatives devront posséder à leur racine un fichier texte "cores" qui fournira, sur chaque ligne, la liste les noms de noyaux connus pour lesquels la config peut être considérée comme une config valide.
+
+Pour comprendre le fonctionnement de chaque config, vous devrez vous référer à leurs documentations dédiées (qui sera très souvent liée aux documentations des noyaux)

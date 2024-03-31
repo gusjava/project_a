@@ -1,0 +1,5 @@
+@001 - Présentation
+test2_cust_fatal est la deuxième config que j'ai crée pour tester ce qu'il se passe dans le noyau gus.gyem lorsqu'une exception est générée au démarrage. Elle ajoute une unique propriété customize qui permet au noyau de personnaliser son module m001.e.launch en le remplaçant par l'entité gus.first
+cust.m001.e.launch=+gus.x.exception.broouhaacrk
+ 
+ Ainsi, lorsque le noyau démarre avec cette config, c'est l'entité gus.x.exception.broouhaacrk qui est exécutée (et qui génère une exception).

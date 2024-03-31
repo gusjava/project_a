@@ -1,0 +1,11 @@
+Documentation pour le système gus.y.srcroot1
+
+gus.y.srcroot1.find
+gus.y.srcroot1.find.config
+gus.y.srcroot1.find.config.dev
+gus.y.srcroot1.find.core
+gus.y.srcroot1.find.core.dev
+gus.y.srcroot1.find.entity
+gus.y.srcroot1.find.entity.dev
+gus.y.srcroot1.find.framework
+gus.y.srcroot1.manager

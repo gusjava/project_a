@@ -1,0 +1,9 @@
+@description
+Description de l'entité gus.x.entity.srcfile.listing.root1.dev.z
+
+@infos
+state=GENERATED
+sign=
+tags=
+Documentation pour l'entité gus.x.entity.srcfile.listing.root1.dev.z
+

@@ -1,0 +1,4 @@
+Système regroupant des entités pour gérer les images
+
+gus.y.images1.bufferedimage.create T(Dimension,Image)
+permet de créer une nouvelle image transparente

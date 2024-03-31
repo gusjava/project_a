@@ -1,0 +1,12 @@
+@description
+Génère le fichier EntityImpl.java correpondant à l'entité spécifiée en paramètre
+O3 : 
+File rootDir : répertoire racine des sources du projet a
+String entityName : nom de l'entité
+String features : caractéristiques de l'entité
+@infos
+state=COMPLETE
+sign=+P<O3>
+tags=ENTITY,SRC,GENERATION
+difficulty=1
+

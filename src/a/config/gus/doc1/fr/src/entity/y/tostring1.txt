@@ -1,0 +1,4 @@
+Documentation pour le système gus.y.tostring1
+
+gus.y.tostring1.desc.short1
+gus.y.tostring1.set

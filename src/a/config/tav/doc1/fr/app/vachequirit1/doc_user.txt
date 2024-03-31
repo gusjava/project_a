@@ -1,0 +1,4 @@
+@001 - welcome
+Bienvenu dans l'application tav.vachequirit1 !
+
+Il n'y a pas grand chose à dire de ce petit programme rigolo. C'est juste un exemple pour montrer que n'importe quel développeur peut aisément créer des applications avec le framework a.

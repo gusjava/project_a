@@ -1,0 +1,9 @@
+@description
+Description de l'entité gus.x.swing.textcomp.cust.action.escap.clear
+
+@infos
+state=GENERATED
+sign=
+tags=
+Documentation pour l'entité gus.x.swing.textcomp.cust.action.escap.clear
+

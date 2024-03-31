@@ -1,0 +1,8 @@
+Documentation pour le système gus.y.entitysys1
+
+gus.y.entitysys1.analyze.entity
+gus.y.entitysys1.analyze.entity.extract
+gus.y.entitysys1.compile.entity
+gus.y.entitysys1.compile.entity.buildcmd
+gus.y.entitysys1.dataloader
+gus.y.entitysys1.engine

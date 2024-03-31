@@ -1,0 +1,6 @@
+@description
+Renvoie les urls des fichiers JAR (URL[]) contenus dans un répertoire (File).
+@infos
+state=COMPLETE
+sign=+T<File,URL[]>
+tags=JAR,DIRLISTING

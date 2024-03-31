@@ -1,0 +1,5 @@
+Documentation pour le système gus.y.config1
+
+gus.y.config1.inputstream.jar
+gus.y.config1.load.properties
+gus.y.config1.load.text

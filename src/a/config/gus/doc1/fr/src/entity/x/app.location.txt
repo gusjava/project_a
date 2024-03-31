@@ -1,0 +1,7 @@
+@description
+Renvoie le fichier JAR (File) de l'application courante.
+@infos
+state=COMPLETE
+sign=+G<File>
+tags=APP
+difficulty=0

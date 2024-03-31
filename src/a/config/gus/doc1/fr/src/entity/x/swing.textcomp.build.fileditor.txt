@@ -1,0 +1,7 @@
+@description
+Description de l'entité gus.x.swing.textcomp.build.fileditor
+
+@infos
+state=GENERATED
+sign=
+tags=

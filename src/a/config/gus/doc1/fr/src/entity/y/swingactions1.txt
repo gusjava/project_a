@@ -1,0 +1,21 @@
+@description
+Description du système gus.y.swingactions1
+
+gus.y.swingactions1.ctrl_d.removeline
+gus.y.swingactions1.ctrl_d.removeline.perform
+gus.y.swingactions1.ctrl_d.removeline.perform.caret
+gus.y.swingactions1.ctrl_d.removeline.perform.selection.mono
+gus.y.swingactions1.ctrl_d.removeline.perform.selection.multi
+gus.y.swingactions1.ctrl_e.doubleline
+gus.y.swingactions1.ctrl_e.doubleline.perform
+gus.y.swingactions1.ctrl_e.doubleline.perform.caret
+gus.y.swingactions1.ctrl_e.doubleline.perform.selection.mono
+gus.y.swingactions1.ctrl_e.doubleline.perform.selection.multi
+gus.y.swingactions1.ctrl_f.search
+gus.y.swingactions1.ctrl_f.search.perform
+gus.y.swingactions1.painter.builder
+gus.y.swingactions1.painter.manager
+@infos
+state=GENERATED
+entry=
+tags=

@@ -1,0 +1,34 @@
+package a.entity.gus.y.paths1.rootdir.defaultroot;
+
+import java.io.File;
+
+import a.framework.*;
+
+public class EntityImpl implements Entity, G {
+	public String creationDate() {return "20231128";}
+
+	private Service getUserHome;
+	private String appName;
+
+	private File dir;
+
+	public EntityImpl() throws Exception {
+		getUserHome = Outside.service(this, "gus.x.file.get.os.userhome");
+		appName = (String) Outside.resource(this, "configid");
+	}
+
+	public Object g() throws Exception {
+		if (dir == null)
+			init();
+		return dir;
+	}
+
+	private void init() throws Exception {
+		File d1 = (File) getUserHome.g();
+		File d2 = new File(d1, ".framework_a");
+		File d3 = new File(d2, "applis");
+
+		dir = new File(d3, appName);
+		dir.mkdirs();
+	}
+}

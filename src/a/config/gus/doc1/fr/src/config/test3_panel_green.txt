@@ -1,0 +1,3 @@
+@001 - Présentation
+test3_panel_green est mon premier test de configuration graphique du noyau gus.gyem. Il ajoute 4 propriétés graphiques pour définir le titre, la taille et l'icône de la fenêtre, ainsi que son entité  principale. Ici, il s'agit d'un simple panneau vert :
+gus.x.swing.panel.bg.green

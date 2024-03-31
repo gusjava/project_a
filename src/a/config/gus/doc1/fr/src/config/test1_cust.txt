@@ -1,0 +1,5 @@
+@001 - Présentation
+test1_cust est la toute première config que j'ai crée pour tester le noyau gus.gyem. Elle ajoute une unique propriété customize qui permet au noyau de personnaliser son module m001.e.launch en le remplaçant par l'entité gus.first
+cust.m001.e.launch=+gus.first
+ 
+ Ainsi, lorsque le noyau démarre avec cette config, c'est l'entité gus.first qui est exécutée.

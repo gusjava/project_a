@@ -1,0 +1,11 @@
+Documentation pour l'application gus.appli1
+
+gus.z.appli1.bottombar
+gus.z.appli1.bottombar.devlabel
+gus.z.appli1.gui1.monitor
+gus.z.appli1.gui2.tools
+gus.z.appli1.gui3.content
+gus.z.appli1.gui4.sandbox
+gus.z.appli1.gui5.entitiessrc
+gus.z.appli1.gui6.docs
+gus.z.appli1.maingui

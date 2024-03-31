@@ -1,0 +1,9 @@
+@description
+Description de l'entité gus.x.string.split.n.list
+
+@infos
+state=GENERATED
+sign=
+tags=
+Documentation pour l'entité gus.x.string.split.n.list
+

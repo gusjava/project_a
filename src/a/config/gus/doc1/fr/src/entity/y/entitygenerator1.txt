@@ -1,0 +1,5 @@
+Documentation pour le système gus.y.entitygenerator1
+
+gus.y.entitygenerator1.multi
+gus.y.entitygenerator1.multi.gui
+gus.y.entitygenerator1.perform

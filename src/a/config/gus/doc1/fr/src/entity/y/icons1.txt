@@ -1,0 +1,11 @@
+Ce système permet d'accéder à des objets Icon qui sont stockés dans la config de l'application
+
+Point d'entrée :
+gus.y.icons1.provider T/R(String,Icon)
+iconId -> Icon
+
+Un mécanisme de composition d'icones permet de superposer 2 icones :
+iconBuildRule -> Icon
+avec iconBuildRule = <mainIconId>_<suffix>
+
+alors, l'icone d'ID PART_<suffix> est superposée sur l'icone d'ID <mainIconId>

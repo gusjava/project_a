@@ -1,0 +1,6 @@
+Documentation pour le système gus.y.files1
+
+gus.y.files1.ext.sample
+gus.y.files1.icon
+gus.y.files1.icon.ext
+gus.y.files1.icon.name

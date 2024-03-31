@@ -1,0 +1,46 @@
+@001 - Introduction
+Le projet a est un projet de développement java multi applications et multi développeurs basé sur un framework minimaliste appelé le framework a. Son code source est regroupé dans le package racine a, subdivisé en 4 sous-répertoires :
+framework, core, entity, config
+
+@002 - Le framework a
+Le code source du framework a est contenu à la racine du sous-répertoire framework (package a.framework).
+Il se compose de 16 fichiers java repartis en :
+- 14 interfaces : B, E, F, G, H, I, P, R, S, T, V, Entity, Manager, Service
+- 2 implémentations de classe : Outside, S1
+
+Son rôle est d'assurer l'interopérabilité des développements dérivés qui forment le projet a.
+Il est considéré comme stable, et il n'est donc pas prévu de le faire évoluer.
+
+@003 - Le code source dérivé
+Le code source contenu dans les 3 autres sous-répertoires (core, entity, config) constitue le code source dérivé, qui dépend du framework a. Ces 3 mots-clés sont en fait les désignations des 3 types de composants autour desquels s'articule tout le projet a. Nous allons les présenter briévement ci-dessous.
+
+Un composant "core" (noyau) est un composant unique au sein de l'application (mais pas au sein du projet a) qui tient le rôle de coordinateur général des entités en les mettant en relation et en leur affectant des fonctions précises. Il execute pour cela les instructions fournies par le composant config (lui aussi unique au sein de l'application). C'est notamment dans ce composant que se trouve la fameuse méthode public static void main qui permet de démarrer l'application
+
+Un composant "entity" (entité) est un composant généralement assez petit, conçu pour accomplir une tâche, et qui peut être considéré comme une brique fonctionnelle. Il en existe une grande quantité et chaque application en utilise généralement plusieurs centaines.
+
+Un composant "config" (configuration) est un composant regroupant toute la configuration nécessaire au bon fonctionnement d'une application. Il fournit au noyau un ensemble de règles qui définissent l'application. 
+
+@004 - Les pseudo développeur
+Ce code source dérivé est produit par les développeurs (ou groupes de développeurs) qui participent au projet a. Chaque développeur est identifié de manière unique par un "pseudo développeur". Il s'agit d'un identifiant de 3 à 8 caractères compatible avec les noms de package java.
+
+A titre d'exemple, l'identifiant que j'ai choisi est "gus".
+"tav" est quant à lui un pseudo de test qui m'a permis de valider les fonctionnalités multi développeurs de mon application. 
+
+@005 - Code source produit par un pseudo
+Chaque développeur (ou groupe) identifié par le pseudo <pseudo> pourra uniquement produire et maintenir du code source dérivé à l'intérieur des packages commençant par :
+- a.core.<pseudo>.<...>
+- a.entity.<pseudo>.<...>
+- a.config.<pseudo>.<...>
+
+En tant que développeur gus, j'ai produit du code source dérivé dans les packages commençant par :
+- a.core.gus.<...>
+- a.entity.gus.<...>
+- a.config.gus.<...>
+
+@006 - Règles de niveau 1
+Il est de la responsabilité de chaque développeur de produire du code source dérivé respectant les règles de niveau 1 (regroupées dans le fichier a_fr_level1.txt), afin d'en assurer la compatibilité avec les autres codes source dérivés.
+
+@007 - Autre préconisations
+Les règles décrites dans d'autres documentations (onglet "Rules") ne sont que des préconisations fournies par les différents développeurs afin d'expliquer le fonctionnement de leurs codes et faciliter leur interopérabilité. Un développeur <pseudo> pourra ainsi fournir de la documentation concernant son code source dérivé, en la plaçant à l'intérieur du package racine a.config.<pseudo>.
+
+En tant que développeur gus, j'ai placé ma propre documentation dans le package a.config.gus.doc1. Mes règles sont notamment détaillées dans le fichier rules.txt du package a.config.gus.doc1.fr.rules

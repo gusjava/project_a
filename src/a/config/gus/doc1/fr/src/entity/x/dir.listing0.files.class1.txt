@@ -1,0 +1,6 @@
+@description
+Renvoie les fichiers .class contenus à la racine d'un répertoire (File).
+@infos
+state=COMPLETE
+sign=+T<File,File[]>
+tags=DIRLISTING

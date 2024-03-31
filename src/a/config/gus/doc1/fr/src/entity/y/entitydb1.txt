@@ -1,0 +1,10 @@
+Documentation pour le système gus.y.entitydb1
+
+gus.y.entitydb1.cx.initdb
+gus.y.entitydb1.cx.initdb.entity
+gus.y.entitydb1.cx.initdb.entity_compile_err
+gus.y.entitydb1.cx.initdb.entity_link
+gus.y.entitydb1.cx.initdb.entity_resource
+gus.y.entitydb1.cx.initdb.entity_service
+gus.y.entitydb1.cx.initdb.fk
+gus.y.entitydb1.cx.main

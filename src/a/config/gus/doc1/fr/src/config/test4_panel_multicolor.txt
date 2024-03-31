@@ -1,0 +1,4 @@
+@001 - Présentation
+L'objectif avec ce 4ème test de config pour gus.gyem est de montrer un exemple de mapping d'appels de service. L'entité principale (gus.y.demo1.panel.grid22) est prévue pour afficher, en damier de 2 x 2, 4 instances de la même entité (gus.x.swing.panel.bg.green). Sans mapping, le résultat serait donc un damier entièrement vert ayant le même rendu qu'un unique panneau vert.
+
+Le fichier mapping de la config permet de modifier ce résultat en remplaçant les 3 derniers panneaux par des panneaux bleu, orange et rouge.

@@ -1,0 +1,9 @@
+@description
+Description de l'entité gus.x.features.p.string.inputgui1
+
+@infos
+state=GENERATED
+sign=
+tags=
+Documentation pour l'entité gus.x.features.p.string.inputgui1
+

@@ -1,0 +1,9 @@
+@description
+Description de l'entité gus.x.throwable.build.description
+
+@infos
+state=GENERATED
+sign=
+tags=
+Documentation pour l'entité gus.x.throwable.build.description
+

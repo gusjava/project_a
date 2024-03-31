@@ -1,0 +1,6 @@
+@description
+Renvoie le Rectangle correspondant à l'écran actif.
+@infos
+state=COMPLETE
+sign=+G<Rectangle>
+tags=SCREEN

@@ -1,0 +1,6 @@
+Documentation pour le système gus.y.jre1
+
+gus.y.jre1.dir.bin
+gus.y.jre1.dir.bin.javaexe
+gus.y.jre1.prop.classpath.view1
+gus.y.jre1.system.envprop.gui1

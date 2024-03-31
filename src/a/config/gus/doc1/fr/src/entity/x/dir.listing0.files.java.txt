@@ -1,0 +1,6 @@
+@description
+Renvoie les fichiers .java contenus à la racine d'un répertoire (File).
+@infos
+state=COMPLETE
+sign=+T<File,File[]>
+tags=DIRLISTING

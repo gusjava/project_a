@@ -1,0 +1,10 @@
+Système regroupant des entités proposant différentes composants graphiques fonctionnels Swing
+
+gus.y.swing1.tabbedpane.holder1 *I,V
+contient un JTabbedPane sur lequel on peut facilement ajouter des onglets avec des icones
+v(displayId,JComponent)
+
+avec displayId : un ID d'affichage respectant la règle suivante :
+displayId = <title>
+ou
+displayId = <iconId>#<title>

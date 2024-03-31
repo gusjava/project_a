@@ -1,0 +1,27 @@
+@introduction
+Cette librairie regroupe des entités T permettant de convertir des objets Java d'un type vers un autre type.
+
+Les entités dont le nom du type gus.y.convert1.<part> sont des entités de conversion d'un type <type> vers un type <type2>
+<part> sera généralement sous la forme : <type1>to<type2>
+
+@liste des conversions
+gus.y.convert1.iconstoicon
+Icon[] -> Icon
+
+gus.y.convert1.iconstoimage
+Icon[] -> Image
+
+gus.y.convert1.stringtoborder
+String -> Border
+
+gus.y.convert1.stringtocolor
+String -> Color
+
+gus.y.convert1.stringtodimension
+String -> Dimension
+
+gus.y.convert1.stringtofont
+String -> Font
+
+@tech
+type=library

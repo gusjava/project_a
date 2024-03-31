@@ -1,0 +1,7 @@
+@description
+Description de l'entité gus.x.entity.doc1.fr.find.file
+
+@infos
+state=GENERATED
+sign=
+tags=

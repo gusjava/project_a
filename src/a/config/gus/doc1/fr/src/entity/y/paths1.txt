@@ -1,0 +1,10 @@
+Documentation pour le système gus.y.paths1
+
+gus.y.paths1.dir.icondir
+gus.y.paths1.dir.pooldir
+gus.y.paths1.guslink
+gus.y.paths1.provider.engine
+gus.y.paths1.provider.main
+gus.y.paths1.rootdir
+gus.y.paths1.rootdir.defaultroot
+gus.y.paths1.rootdir.open

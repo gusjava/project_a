@@ -1,0 +1,27 @@
+package a.entity.gus.y.appview1.entryview.panel.default1;
+
+import java.io.InputStream;
+
+import a.framework.*;
+
+public class EntityImpl implements Entity, P, I {
+	public String creationDate() {return "20231128";}
+
+	private Service view;
+	private Service isToString;
+
+	public EntityImpl() throws Exception {
+		view = Outside.service(this, "*gus.y.dataview1.string");
+		isToString = Outside.service(this, "gus.x.io.build.string");
+	}
+
+	public Object i() throws Exception {
+		return view.i();
+	}
+
+	public void p(Object obj) throws Exception {
+		InputStream is = (InputStream) obj;
+		String src = (String) isToString.t(is);
+		view.p(src);
+	}
+}

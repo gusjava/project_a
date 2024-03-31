@@ -1,0 +1,211 @@
+@1 - Introduction
+Les règles décrites ci-dessous sont liées à mon code source dérivé en tant que développeur gus, c'est à dire, mes composants noyau, entité et config.
+
+Elles ne constituent pas des règles strictes mais plutôt des préconisations qui vous pouvez choisir de suivre ou non pour vos propres développements.
+
+Chaque règle énoncée est identifiée par un numéro qui pourra être utilisé comme référence dans les autres documentations de la manière suivante : gus#1
+
+@2 - Classification xyz des entités
+Mes entités gus (à l'exception notable de ma première entité : gus.first) sont toutes classées en 3 catégories, x, y et z, détaillées respectivement par les règles gus#3, gus#4 et gus#5. Ces règles (et les suivantes) sont énoncées dans le cas général d'un développeur <pseudo>.
+
+@3 - Les entités x
+Les entités x du développeur <pseudo> :
+
+Il s'agit de toutes les entités dont le nom commence par <pseudo>.x.<...>
+Ces entités sont considérées comme autonomes, ce qui signifie qu'elles ne doivent pas faire appel à des services ou des ressources au moyen de la classe Outside. Elles peuvent en revanche faire appel à la méthode err de Outside.
+
+@4 - Les entités y
+Les entités y du développeur <pseudo> :
+
+Il s'agit de toutes les entités dont le nom commence par <pseudo>.y.<...>
+Ces entités sont regroupées en systèmes réutilisables, chacun identifié par un nom unique : <pseudo>.<sys-part> où <sys-part> correspond à la partie juste après y.
+
+Les entités d'un système <pseudo>.<sys-part> ont donc un nom qui commence par <pseudo>.y.<sys-part>. Celles-ci peuvent faire appel à des services ou des ressources et ainsi créer des relations de dépendance avec d'autres entités notamment des entités autonomes (x) ou des entités de systèmes (y) de n'importe quel système. En revanche, elles ne doivent pas créer de dépendances avec des entités (z).
+
+@5 - Les entités z
+Les entités z du développeur <pseudo> :
+
+Il s'agit de toutes les entités dont le nom commence par <pseudo>.z.<...>
+Ces entités sont regroupées en applications correspondants chacune à une config applicative distincte.
+
+Pour une config applicative donnée, identifiée par <config-id> = <pseudo>.<config-part> (dont le code source est alors regroupé dans le package racine a.config.<pseudo>.<config-part>), les entités z dédiées devront avoir un nom qui commence par <pseudo>.z.<config-part>
+
+Par exemple, l'application gus.appli1 est liée à la config du même nom gus.appli1 et aux entités applicatives dont le nom commence par gus.z.appli1.
+
+Ces entités peuvent faire appel à des services ou des ressources et ainsi créer des relations de dépendance avec d'autres entités, notamment des entités autonomes (x) ou des entités de systèmes (y). En revanche, elles ne peuvent créer des dépendances qu'avec les entités (z) de la même application.
+
+@6 - doc1
+La documentation du développeur <pseudo> :
+
+Cette documentation est regroupée à l'intérieur du composant config <pseudo>.doc1, de la manière suivante :
+
+Pour une langue donnée, identifiée par une locale <loc> (fr pour le français), on aura :
+- La documentation des applications dans : a.config.<pseudo>.doc1.<loc>.app
+- La documentation des règles dans : a.config.<pseudo>.doc1.<loc>.rules
+- La documentation des configs dans : a.config.<pseudo>.doc1.<loc>.src.config
+- La documentation des noyaux dans : a.config.<pseudo>.doc1.<loc>.src.core
+- La documentation des entités dans : a.config.<pseudo>.doc1.<loc>.src.entity
+
+Les fichiers de documentation situés dans ces packages sont des fichiers texte respectant le format suivant :
+- Une succession de sections délimitées par des lignes de titre qui commencent toutes par un unique arobas
+- Des blocs de texte multilignes entre les titres qui correspondent au corps des sections
+
+@7 - doc1/app
+Documentation des applications du développeur <pseudo> :
+
+Pour une application identifiée par config <config-id> = <pseudo>.<config-part>, la documentation correspondante est stockée dans le package racine dédié : a.config.<pseudo>.doc1.<loc>.app.<config-part>
+Par exemple, la documentation française de l'application gus.appli1 est stockée dans a.config.gus.doc1.fr.app.appli1
+
+Elle se répartit en 3 fichiers texte : 
+- doc_tech.txt : fichier contenant la documentation technique de l'application
+- doc_user.txt : fichier contenant le manuel utilisateur de l'application
+- changes.txt : fichier retraçant les changements au fil des différentes versions (améliorations, corrections de bugs...)
+
+@8 - doc1/rules
+Documentation des règles du développeur <pseudo> :
+
+Elle se compose d'un unique fichier rules.txt contenu dans le package a.config.<pseudo>.doc1.<loc>.rules
+Le fichier que vous êtes actuellement en train de lire en est un exemple, situé dans le package a.config.gus.doc1.fr.rules
+
+@9 - doc1/config
+Documentation des configs du développeur <pseudo> :
+
+Chaque composant config d'ID : <config-id> = <pseudo>.<config-part> est documenté dans un fichier <config-part>.txt situé dans le package a.config.<pseudo>.doc1.<loc>.src.config
+Par exemple, la documentation française de ma config gus.doc0 est contenue dans le fichier doc0.txt du package a.config.gus.doc1.fr.src.config
+
+@10 - doc1/core
+Documentation des noyaux du développeur <pseudo> :
+
+Chaque composant noyau : <core-name> = <pseudo>.<core-part> est documenté dans un fichier <core-part>.txt situé dans le package a.config.<pseudo>.doc1.<loc>.src.core
+Par exemple, la documentation française de mon noyau gus.gyem est contenue dans le fichier gyem.txt du package a.config.gus.doc1.fr.src.core
+
+@11 - doc1/entity
+Documentation des entités du développeur <pseudo> :
+
+Les entités x sont documentées dans des fichiers dédiés à chaque entité, situés dans le package a.config.<pseudo>.doc1.<loc>.src.entity.x, et nommés <entity-parts>.txt (ou <entity-parts> correspond ici aux parties du nommage de l'entité après <pseudo>.x)
+Par exemple, la documentation française de mon entité gus.x.app.location est contenue dans le fichier app.location.txt du package a.config.gus.doc1.fr.src.entity.x
+
+Les entités y sont documentées dans des fichiers dédiés à chaque système, situés dans le package a.config.<pseudo>.doc1.<loc>.src.entity.y, et nommés <system-part>.txt (ou <system-part> correspond ici à la partie des nommages d'entités juste après <pseudo>.y)
+Par exemple, la documentation française de mon système gus.swing1 est contenue dans le fichier swing1.txt du package a.config.gus.doc1.fr.src.entity.y
+
+Les entités z sont documentées dans des fichiers dédiés à chaque application, situés dans le package a.config.<pseudo>.doc1.<loc>.src.entity.z, et nommés <app-part>.txt (ou <app-part> correspond ici à la partie des nommages d'entités juste après <pseudo>.z)
+Par exemple, la documentation française des entités de mon application gus.appli1 est contenue dans le fichier appli1.txt du package a.config.gus.doc1.fr.src.entity.z
+
+@12 - librairies d'entités
+Une librairie d'entités est un type particulier de système y pour lequel les entités ne s'articulent pas autour d'une au plusieurs fonctionnalités mais partagent une même thématique tout en restant largement indépendantes les unes des autres.
+
+Un exemple de librairie est le système gus.convert1 qui regroupe des entités T permettant de convertir des objets java.
+
+@13 - Identification des règles
+Les règles édictées par chaque développeur sont identifiées par un identifiant unique composé comme suit :
+<rule-id> = <pseudo>#<rule-num> ou <rule-num> est le numéro de la règle dans la numérotation interne au développeur.
+
+Comme indiqué en règle gus#8, Les énoncés des règles sont regroupés dans le fichier rules.txt du package a.config.<pseudo>.doc1.<loc>.rules, qui est structuré en sections avec des lignes de titre débutant par un arobas. Ces sections sont rangées dans l'ordre des numéros avec des titres comme suit :
+<section-title> = <rule-num> - <rule-title>
+ou <rule-title> est le titre de la règle.
+
+@14 - keys dans la feature v
+Lorsqu'on a une implémentation de V qui accepte des clés spécifiques, il faut éviter d'utiliser la clé "keys" qui est une clé technique qui doit, elle, renvoyer le tableau String[] des autres clés acceptées.
+
+@15 - Outside.err
+Lorsque le code d'une méthode private doit gérer des exceptions au moyen d'un unique bloc try-catch, le catch doit renvoyer l'exception vers le noyau en appelant la méthode statique Outside.err. L'id passé en paramètre doit alors être le nom de la méthode private (avec ses types de paramètre éventuels).
+
+Voici un exemple :
+
+private void perform(String data) {
+	try { ... }
+	catch(Exception e) {Outside.err(this,"perform(String)", e);}
+}
+
+@16 - S1 send event
+Lorsqu'une entité qui hérite de S1 doit envoyer un évènement, il faut écrire une méthode private sans paramètre, dédiée à l'envoi de cet évènement, ou l'id passé dans send correspond au nom de la méthode.
+
+Voici quelques exemples :
+
+private void modified() {
+	send(this,"modified()");
+}
+private void added() {
+	send(this,"added()");
+}
+private void removed() {
+	send(this,"removed()");
+}
+
+@17 - règle d'icône
+Une règle d'icône permet de générer une icône 16x16 (class Icon)
+
+Le mécanisme qui génère une icône à partir d'une règle doit disposer d'un ensemble d'icônes identifiées par des IDs. Il doit aussi être capable de retrouver l'icône associée par l'OS à une extension de fichier.
+
+Mécanisme de niveau 1 : <icon-rule1> = <icon-id> | FILE_<file-ext>
+Si la règle correspond à un ID connu d'icône, celle-ci est renvoyée.
+Si la règle est de type FILE_<file-ext>, alors l'icône OS associée à l'extension <file-ext> est renvoyée.
+
+Mécanisme de niveau 2 : <icon-rule2> = <icon-rule1>_<suffix-part>
+où <suffix-part> est une String sans underscore tel que PART_<suffix-part> correspond à un ID d'icône (qui est associée au suffixe).
+Si la dernière partie de la règle est un suffixe <suffix-part>, alors l'icone renvoyée est la superposition de l'icône principale (règle <icon-rule1>) et de l'icône du suffixe.
+
+Voici un exemple :
+Si BASE et PART_add sont des ID d'icones, alors la règles BASE_add renverra comme icône la superposition des icônes de BASE et PART_add.
+
+@18 - règle de display graphique
+Une règle de display graphique permet d'associer une icône et un libellé comme ceci :
+<display-rule> = <icon-rule>#<label>
+
+@19 - Les icônes d'une config
+Une config <config-id> peut proposer des icônes, stockées au format GIF à la racine de son sous-répertoire icon (correspondant au package a.config.<config-id>.icon). 
+Chaque fichier GIF ainsi chargé par le noyau correspondra à un ID unique <icon-id> égal au nom du fichier sans l'extension, et correspondra donc au chemin local suivant :
+/a/config/<pseudo>/<config-part>/icon/<icon-id>.gif
+
+@20 - Les appels de ressource
+Toute entité peut potentiellement appeler une ou plusieurs ressources depuis sa classe principale de la manière suivante :
+Object r = Outside.resource(this, "<call>");
+ou <call> est une String plus ou moins complexe pouvant correspondre à un ID ou une règle, et sensé décrire la ressource dont l'entité a besoin.
+
+Le composant noyau qui gère l'application doit alors être en mesure d'interpréter <call> pour construire ou fournir la ressource adéquate. Il devra être capable de s'adapter à n'importe quelle entité en disposant d'un mécanisme suffisamment flexible et paramétrable pour répondre correctement à ces différents appels.
+
+Les règles dont le titre débute par "call :" sont des règles de spécification d'appels qui peuvent être prise en compte aussi bien par des entités que par des noyaux.
+Si une telle règle est partagée par une entité et un noyau (cf. documentations respectives), alors l'appel correspondant n'aura pas besoin de paramètrage pour fonctionner. Dans le cas contraire, le noyau devra impérativement disposer d'un mapping établissant la correspondance entre l'appel et la règle de génération de la ressource attendue, comme par exemple :
+<entity-name>@<call> = <resource-rule>
+
+Pour une application donnée, la config applicative associée aura la responsabilité de fournir ce mapping, afin d'assurer à toutes les entités utilisées que leurs appels seront correctement gérés par le noyau.
+
+@21 - Les appels de service
+Toute entité peut potentiellement appeler un ou plusieurs services depuis sa classe principale de la manière suivante :
+Service s = Outside.service(this, "<call>");
+ou <call> est une String plus ou moins complexe pouvant correspondre à un ID ou une règle, et sensé décrire le service dont l'entité a besoin.
+
+En fait, il s'agit du même mécanisme que pour les appels de ressource, à ceci près que l'objet généré est supposé implémenter une ou plusieurs interfaces standards du framework a, et qu'il est préalablement transformé en Service au moyen d'une classe enveloppe qui implémente l'interface Service. Voici un exemple de ce que cela peut donner :
+
+public class ServiceImpl implements Service {
+	private Object resource;
+	
+	public ServiceImpl(Object resource) {
+		this.resource = resource;
+	}
+	public void e() throws Exception {
+		((E) resource).e();
+	}
+	...
+}
+
+En pratique : 
+- les appels de service correspondront à des règles qui renvoient des instances d'entités ou d'objets propres au noyau. 
+- les appels de ressource correspondront à des règles renvoyant tous les autres types d'objet Java (List, Map, Icon, String, File...)
+
+@22 - call : mécanisme général
+Le mécanisme de gestion des appels de resources (et de services) peut rencontrer 3 cas de figure :
+
+1: la règle correspond à l'ID d'un objet déjà existant, connu du noyau. Dans ce cas, cet objet est renvoyé à l'entité.
+Exemple : Service entityToName = Outside.service(this, "m042.t.entity.findname");
+
+2: la règle correspond à un nom d'entité (à quelques variantes près qu'on verra plus tard). Dans ce cas, une instance de l'entité est renvoyée à l'entité.
+Exemple : Service s = Outside.service(this, "*gus.x.swing.panel.bg.blue");
+
+3: la règle est de type <provider-name>#<resource-info>. Dans ce cas, le noyau est sensé disposer d'un fournisseur de ressource identifié par <provider-name>. Il va alors demander à ce fournisseur de fournir la resource, en lui passant notamment en paramètre <resource-info>
+Exemple : Icon icon = (Icon) Outside.resource(this, "icon#monIconId");
+
+Ces explications donnent un cadre général à la manière dont le noyau doit gérer les appels (qui sera précisé par la suite). Ce cadre pourra bien-sûr varier d'un noyau à l'autre (cf. documentations de chaque noyau).
+
+
+

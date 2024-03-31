@@ -1,0 +1,7 @@
+Documentation pour le système gus.y.timer2
+
+gus.y.timer2.send.ms10
+gus.y.timer2.send.ms100
+gus.y.timer2.send.ms500
+gus.y.timer2.send.s1
+gus.y.timer2.unique

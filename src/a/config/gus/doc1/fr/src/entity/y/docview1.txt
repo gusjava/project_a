@@ -1,0 +1,7 @@
+Documentation pour le système gus.y.docview1
+
+gus.y.docview1.buildlist
+gus.y.docview1.gui1
+gus.y.docview1.gui2
+gus.y.docview1.maingui
+gus.y.docview1.maingui2

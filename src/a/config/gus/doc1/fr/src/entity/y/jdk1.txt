@@ -1,0 +1,6 @@
+Documentation pour le système gus.y.jdk1
+
+gus.y.jdk1.dir.jdkdirs
+gus.y.jdk1.dir.jdkdirs.latest
+gus.y.jdk1.dir.jdkdirs.latest.javac
+gus.y.jdk1.dir.root

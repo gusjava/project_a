@@ -1,0 +1,9 @@
+@description
+Description de l'entité gus.x.jre.prop.javahome.as.file
+
+@infos
+state=GENERATED
+sign=
+tags=
+Documentation pour l'entité gus.x.jre.prop.javahome.as.file
+

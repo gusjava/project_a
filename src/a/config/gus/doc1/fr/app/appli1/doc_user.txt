@@ -1,0 +1,39 @@
+@001 - Bienvenu
+Bienvenu dans l'application gus.appli1 !
+
+Dans cette section, je vais vous présenter succintement l'application gus.appli1 et vous donner les clés pour obtenir toutes les informations dont vous aurez besoin par la suite.
+
+gus.appli1, il s'agit de la toute première application Java que j'ai développé à partir du framework a, dans le cadre du projet a, dont le but est de fournir un IDE (environnement de développement intégré) permettant de produire efficacement d'autres applications basées sur ce même framework.
+
+Le projet et le framework a, qu'est-ce que c'est ? Un début de réponse à cette question se trouve dans l'onglet "Project a" que je vous invite à consulter. Il s'agit là de la documentation "officielle" du projet a, qui présente brièvement le framework et rassemble les quelques règles à connaître si vous souhaitez l'utiliser.
+
+Cette doc aura le mérite de vous faire comprendre que le projet a se divise en deux parties : 
+- son socle (framework a + level0 + level1)
+- son code dérivé produit par les développeurs (dont moi, en tant que développeurs gus et tav)
+
+Si vous souhaitez créer des applications, il vous faudra ainsi vous intéresser à tous ce qui vient après le socle, ce fameux code dérivé qui constitue l'écosystème du projet a et représente 99,99% de son code source... Sa documentation se répartit dans les 5 onglets restant : Applis, Rules, Entities, Cores et Configs, que nous allons détailler ci-dessous.
+
+A ce stade, je supposerai que vous avez lu la doc de l'onglet "Projet a" et que vous savez par conséquent ce que sont les entités (entity), noyaux (core) et configurations (config). Ajoutez à ces trois types de code dérivé les concepts d'application (appli), de règle (rule) et de développeur (dev), et vous disposerez de toutes les notions importantes pour aborder sereinement le projet a.
+
+Onglet "Applis" : regroupe les documentations de chaque application (dont la documentation complète de gus.appli1).
+
+Onglet "Rules" : regroupe les règles de programmation proposées par les différents développeurs.
+
+Onglet "Entities" : regroupe les documentations de tous les composants de programmation appelées "entité".
+
+Onglet "Cores" : regroupe les documentations de tous les composants de programmation appelées "noyau".
+
+Onglet "Configs" : regroupe les documentations de tous les composants de programmation appelées "config".
+
+Après avoir pris connaissance de ce petit texte introductif (et de la doc officielle du projet a), je vous invite à lire les sections suivantes de la documentation de gus.appli1, en vous rendant dans l'onglet "Applis" et en sélectionnant dans la liste "gus.appli1".
+
+@002 - Les sections
+>Les différentes sections de gus.appli1 sont :
+- Documentation
+- Workspace
+- Sandbox
+- Tools
+- Settings
+- Monitoring
+- JAR content
+

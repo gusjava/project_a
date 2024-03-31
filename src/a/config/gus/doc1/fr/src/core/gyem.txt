@@ -1,0 +1,125 @@
+@Présentation
+gus.gyem est LE noyau que j'utilise pour toutes mes applications.
+
+@Un système modulaire
+Un système modulaire ...
+
+@m001.e.launch
+Ce module est exécuté dans la méthode main de la classe GyemMain. Il démarre l'application de la manière suivante :
+
+- exécution d'une séquence d'instructions basé sur le mot-clé before
+- création et affichage de la fenêtre principale
+- exécution d'une séquence d'instructions basé sur le mot-clé after
+
+Il dépend des 2 modules :
+
+- m031.p.execute.sequence : qui execute une séquence d'instructions
+- m021.e.mainframe : qui crée et affiche la fenêtre principale
+
+@m002.e.customize
+Ce module est exécuté dans la méthode main de la classe GyemMain, juste avant m001.e.launch. Son rôle est de personnaliser l'application en modifiant la map principale
+
+@m003.g.prop
+
+@m004.g.config.prop
+
+@m005.g.config.prop.path
+
+@m006.g.config.root
+
+@m007.g.config.id
+
+@m008.g.param
+
+@m009.config.param
+
+@m010.t.read.prop
+
+@m011.t.read.inputstream
+
+@m012.t.module.build
+
+@m013.g.service.build.empty
+
+@m014.t.entity.provide
+
+@m015.t.entity.unique
+
+@m016.t.entity.generate
+
+@m017.t.entity.findclass
+
+@m018.t.entity.loadclass
+
+@m019.t.entity.nametopath
+
+@m020.g.args.param
+
+@m021.e.mainframe
+
+@m022.g.mainframe.build
+
+@m023.e.mainframe.exit
+
+@m024.p.mainframe.handle
+
+@m025.i.mainframe.content
+
+@m026.i.buildgui.entity
+
+@m027.i.buildgui.defaultpanel
+
+@m028.t.buildgui.errorpanel
+
+@m029.f.prop.bool.df
+
+@m030.f.prop.bool.dt
+
+@m031.p.execute.sequence
+
+@m032.f.execute.rule
+
+@m033.t.read.icon
+
+@m034.t.config.icon
+
+@m035.t.config.icon.path
+
+@m036.t.manager.service
+
+@m037.t.manager.resource
+
+@m038.p.manager.err
+
+@m039.g.err.list
+
+@m040.t.service.wrap
+
+@m041.t.service.call.description
+
+@m042.t.entity.findname
+
+@m043.t.resource.findrule
+
+@m044.t.resource.findrule1
+
+@m045.t.resource.provide
+
+@m046.t.resource.build
+
+@m047.t.resource.find.rb
+
+@m048.g.mapping
+
+@m049.g.config.mapping
+
+@m050.g.config.mapping.path
+
+@m051.t.rb.entity
+
+@m052.t.rb.g
+
+@m053.p.logger
+
+
+... à suivre 

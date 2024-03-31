@@ -1,0 +1,57 @@
+package a.entity.gus.z.appli1.gui1_6.cores;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.Icon;
+
+import a.framework.*;
+
+public class EntityImpl implements Entity, I {
+	public String creationDate() {return "20231231";}
+	
+	private Service docView;
+	private Service appEntries;
+	private Map pathsByDev;
+	private Icon icon;
+	
+	public EntityImpl() throws Exception {
+		docView = Outside.service(this, "*gus.y.docview1.gui3a");
+		appEntries = Outside.service(this, "gus.y.appentries1.self");
+		icon = (Icon) Outside.resource(this, "icon#ELEMENT_core");
+		
+		pathsByDev = buildPathsByDev();
+		
+		docView.v("icon", icon);
+		docView.p(pathsByDev);
+	}
+	
+	public Object i() throws Exception {
+		return docView.i();
+	}
+	
+	private Map buildPathsByDev() throws Exception {
+		Map map = new HashMap();
+		Map mapConfigByDev = (Map) appEntries.r("mapConfigByDev");
+
+		Iterator it = mapConfigByDev.keySet().iterator();
+		while (it.hasNext()) {
+			String dev = (String) it.next();
+			List paths = (List) mapConfigByDev.get(dev);
+
+			String root = "a/config/" + dev + "/doc1/fr/src/core/";
+			List paths1 = new ArrayList();
+			for (int i = 0; i < paths.size(); i++) {
+				String path = (String) paths.get(i);
+				if (path.startsWith(root))
+					paths1.add(path);
+			}
+			if (!paths1.isEmpty())
+				map.put(dev, paths1);
+		}
+		return map;
+	}
+}

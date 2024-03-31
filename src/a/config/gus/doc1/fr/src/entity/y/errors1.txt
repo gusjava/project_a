@@ -1,0 +1,5 @@
+Documentation pour le système gus.y.errors1
+
+gus.y.errors1.gui1
+gus.y.errors1.watcher
+gus.y.errors1.watcher.icon

@@ -1,0 +1,5 @@
+Documentation pour le système gus.y.appentries1
+
+gus.y.appentries1.build
+gus.y.appentries1.build.lists
+gus.y.appentries1.self

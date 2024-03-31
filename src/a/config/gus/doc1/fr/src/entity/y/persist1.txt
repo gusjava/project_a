@@ -1,0 +1,12 @@
+Documentation pour le système gus.y.persist1
+
+gus.y.persist1.build
+gus.y.persist1.features.gp
+gus.y.persist1.main
+gus.y.persist1.manager
+gus.y.persist1.set.string
+gus.y.persist1.swing.combobox.index
+gus.y.persist1.swing.filechooser.directory
+gus.y.persist1.swing.tabbedpane.tab
+gus.y.persist1.swing.table.selectedrow
+gus.y.persist1.swing.textcomp

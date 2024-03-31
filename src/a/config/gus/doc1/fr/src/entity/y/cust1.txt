@@ -1,0 +1,8 @@
+Documentation pour le système gus.y.cust1
+
+gus.y.cust1.exit
+gus.y.cust1.load.icon
+gus.y.cust1.rb.icon
+gus.y.cust1.rb.param
+gus.y.cust1.rb.path
+gus.y.cust1.rb.pool

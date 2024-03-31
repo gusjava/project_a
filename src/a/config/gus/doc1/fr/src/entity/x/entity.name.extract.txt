@@ -1,0 +1,7 @@
+@description
+Description de l'entité gus.x.entity.name.extract
+
+@infos
+state=GENERATED
+sign=
+tags=

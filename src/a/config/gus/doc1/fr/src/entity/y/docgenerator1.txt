@@ -1,0 +1,4 @@
+Documentation pour le système gus.y.docgenerator1
+
+gus.y.docgenerator1.gui
+gus.y.docgenerator1.perform

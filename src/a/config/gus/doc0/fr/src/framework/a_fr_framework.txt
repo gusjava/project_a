@@ -1,0 +1,94 @@
+@001 - Introduction
+Comme mentionné dans le fichier initial de documentation a_fr_level0.txt, le framework a est un framework minimaliste dont le rôle est d'assurer l'interopérabilité des développements dérivés qui forment le projet a. Par ailleurs, il est considéré comme stable, et il n'est donc pas prévu de le faire évoluer.
+
+Que dire de plus ? Il s'agit de la pierre angulaire sur laquelle repose tout l'édifice et pourtant, il est bien difficile d'en faire ressortir l'importance, tant le code qu'il contient ne paie pas de mine. Ce n'est pas en vous montrant ces quelques interfaces que je pourrai espérer vous convaincre de son utilité mais en vous montrant tout le code dérivé dont il permet le fonctionnement.
+
+Mais comme il s'agit ici d'une présentation "officielle" du framework a, je vais vous présenter son code source le plus simplement et directement possible.
+
+@002 - Interfaces standardisées
+Les interfaces standardisées sont au nombre de 11 :
+B, E, F, G, H, I, P, R, S, T, V
+
+Il s'agit d'interfaces java unitaires (contenant une unique méthode) à l'exception notable de l'interface S qui contient 3 méthodes.
+
+On les appelle par ailleurs des interfaces standardisées parce que leurs noms de méthodes sont des noms minimalistes qui ne font référence à aucune sémantique en particulier et sont donc prévues pour être utilisées dans un grand nombre de situations afin de produire du code le plus générique possible.
+
+B : public boolean b() throws Exception;
+E : public void e() throws Exception;
+F : public boolean f(Object obj) throws Exception;
+G : public Object g() throws Exception;
+H : public double h(double value) throws Exception;
+I : public Object i() throws Exception;
+P : public void p(Object obj) throws Exception;
+R : public Object r(String key) throws Exception;
+T : public Object t(Object obj) throws Exception;
+V : public void v(String key, Object obj) throws Exception;
+
+Quant à l'interface S, ses 3 méthodes sont : 
+
+public void addActionListener(ActionListener listener) throws Exception;
+public void removeActionListener(ActionListener listener) throws Exception;
+public List listeners() throws Exception;
+
+@003 - Entity
+L'interface Entity doit être utilisée pour transformer une classe java en composant de programmation "entité".
+
+Mais il ne suffit pas d'implémenter Entity pour créer une entité. Il faut aussi que cette classe se nomme EntityImpl et que son package commence par a.entity. Référez-vous aux règles officielles de l'entité détaillées en partie 3 du niveau 1 pour plus de précisions (a_fr_level1#003).
+
+Voici un petit exemple de code source d'entité :
+
+package a.entity.gus.first;
+
+import a.framework.E;
+import a.framework.Entity;
+
+public class EntityImpl implements Entity, E {
+	public String creationDate() {
+		return "20231110";
+	}
+
+	public void e() throws Exception {
+		System.out.println("This is my first entity");
+	}
+}
+
+@004 - Manager
+L'interface Manager permet aux composants noyau de "communiquer" avec les entités en proposant 3 méthodes :
+
+public Service service(Entity entity, String id) throws Exception; 
+public Object resource(Entity entity, String id) throws Exception;
+public void err(Entity entity, String id, Exception e); 
+
+Un composant noyau devra donc fournir une implémentation de cette interface mais aussi passer une instance de celle-ci dans la méthode setManager de la classe Outside, comme ceci :
+Outside.setManager(new MyCoreManager());
+
+Référez-vous à la documentation technique de chaque composant noyau pour comprendre de quelle manière ceux-ci exploitent cette fonctionnalité.
+
+@005 - Service
+L'interface Service se contente d'étendre chaque interface standardisée :
+public interface Service extends B, E, F, G, H, I, P, R, S, T, V {}
+
+Des implémentations "tampon" de cette interface sont transmises par le noyau aux différentes entités (via le mécanisme de communication Outside/Manager) afin que celles-ci puissent appeler les méthodes standards sur un objet "service" sans rien connaître de l'implémentation qui se cache derrière cette enveloppe (qui sera le plus souvent une autre entité).
+
+C'est par ce biais que les entités peuvent s'appeler les unes les autres.
+
+@006 - Outside
+La class Outside permet de rendre accessible aux entités les méthodes de l'interface Manager. Il s'agit de l'unique moyen pour une entité d'accéder au noyau mais aussi aux autres entités.
+
+Les méthodes statiques proposées par Outside sont les suivantes :
+
+public static Service service(Entity entity, String id) throws Exception
+public static Object resource(Entity entity, String id) throws Exception
+public static void err(Entity entity, String id, Exception e)
+
+@007 - S1
+La class S1 est l'implémentation par défaut de l'interface S. Les entités qui en héritent peuvent ainsi envoyer des "évènements" qui seront écoutés par d'autres entités grâce à l'interface ActionListener (reprenant le "delegation event model" utilisé notamment dans l'API Swing de Java).
+
+Elle propose la méthode suivante pour envoyer un évènement :
+public void send(Object source, String id)
+
+L'évènement correspondant est un ActionEvent instancié la manière suivante :
+ActionEvent evt = new ActionEvent(source, EVENTID, id);
+où EVENTID = 1000 (il fallait bien mettre une valeur)
+
+On notera pour finir la possibilité d'activer ou désactiver l'envoi des évènements grâce à la méthode setActivated.

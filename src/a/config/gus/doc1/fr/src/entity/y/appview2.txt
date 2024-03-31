@@ -1,0 +1,14 @@
+Documentation pour le système gus.y.appview2
+
+gus.y.appview2.build.lists
+gus.y.appview2.find.srclocation
+gus.y.appview2.gui1.framework
+gus.y.appview2.gui2.core
+gus.y.appview2.gui2.core.detail
+gus.y.appview2.gui3.entity
+gus.y.appview2.gui3.entity.detail
+gus.y.appview2.gui3.entity.detail.many
+gus.y.appview2.gui4.config
+gus.y.appview2.gui4.config.detail
+gus.y.appview2.maingui
+gus.y.appview2.maingui.self

@@ -1,0 +1,3 @@
+Documentation pour le système gus.y.logger1
+
+gus.y.logger1.printinfos1

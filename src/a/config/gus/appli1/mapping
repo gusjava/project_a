@@ -1,0 +1,17 @@
+props=g#m003.g.prop
+configid=g#m007.g.config.id
+params=g#m008.g.param
+uniqueentitymap=g#m015.t.entity.unique
+newentity=m016.t.entity.generate
+entityclassmap=g#m017.t.entity.findclass
+mainframe=g#m022.g.mainframe.build
+exit=m023.e.mainframe.exit
+configicon=m034.t.config.icon
+errlist=g#m039.g.err.list
+entityname=m042.t.entity.findname
+logger=m053.p.logger
+defaultdir=pool#
+pending=gus.x.debug.dialog.pending
+m006_configroot=m006.g.config.root
+m011_read_inputstream=m011.t.read.inputstream
+m019_nametopath=m019.t.entity.nametopath

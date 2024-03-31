@@ -1,0 +1,6 @@
+@description
+Récupère les fichiers (File[]) correspondants aux URLs d'un URLClassLoader
+@infos
+state=COMPLETE
+sign=+T<URLClassLoader,File[]>
+tags=CLASSLOADER

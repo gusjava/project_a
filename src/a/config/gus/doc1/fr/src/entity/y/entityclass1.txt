@@ -1,0 +1,9 @@
+Documentation pour le système gus.y.entityclass1
+
+gus.y.entityclass1.cl.classpath
+gus.y.entityclass1.cl.classpath.jarlist
+gus.y.entityclass1.cl.classpath.jarlist.config
+gus.y.entityclass1.cl.classpath.jarlist.extract
+gus.y.entityclass1.cl.classpath.view1
+gus.y.entityclass1.cl.find
+gus.y.entityclass1.loader

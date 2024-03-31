@@ -1,0 +1,7 @@
+@description
+Description de l'entité gus.x.font.availablefontnames.list
+
+@infos
+state=GENERATED
+sign=
+tags=

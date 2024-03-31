@@ -1,0 +1,29 @@
+package a.core.gus.gyem.m032.f.execute.rule;
+
+import a.core.gus.gyem.GyemSystem;
+import a.framework.E;
+import a.framework.F;
+
+public class Module extends GyemSystem implements F {
+	
+	public boolean f(Object obj) throws Exception {
+		String rule = (String) obj;
+		
+		if(rule.equals("null")) return true;
+		if(rule.startsWith("!")) return true;
+		if(rule.startsWith("#")) return false;
+		if(rule.startsWith("e:")) return execute(rule.substring(2));
+		return provide(rule);
+	}
+	
+	private boolean execute(String rule) throws Exception {
+		E exe = (E) moduleT(M014_T_ENTITY_PROVIDE).t(rule);
+		exe.e();
+		return true;
+	}
+	
+	private boolean provide(String rule) throws Exception {
+		moduleT(M014_T_ENTITY_PROVIDE).t(rule);
+		return true;
+	}
+}

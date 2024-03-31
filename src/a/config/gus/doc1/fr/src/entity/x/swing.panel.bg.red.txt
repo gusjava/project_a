@@ -1,0 +1,7 @@
+@description
+Description de l'entité gus.x.swing.panel.bg.red
+
+@infos
+state=GENERATED
+sign=
+tags=

@@ -1,0 +1,8 @@
+@description
+Récupère le texte contenu dans le presse-papier (ou null si c'est un autre type de donnée).
+Envoie du texte dans le presse-papier.
+@infos
+state=COMPLETE
+sign=+GP<String>
+tags=CLIPBOARD
+

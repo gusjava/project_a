@@ -1,0 +1,6 @@
+@description
+Permet d'afficher une popup "Pending functionality" lorsqu'une fonctionnalité n'est pas encore disponible dans l'application, en indiquant éventuellement le nom de la fonctionnalité.
+@infos
+state=COMPLETE
+sign=+P<String> ou E
+tags=DEBUG

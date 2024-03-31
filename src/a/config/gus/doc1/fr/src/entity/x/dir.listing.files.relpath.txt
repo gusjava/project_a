@@ -1,0 +1,6 @@
+@description
+Renvoie la liste des chemins relatifs de tous les fichiers contenus dans un répertoire (File).
+@infos
+state=COMPLETE
+sign=+T<File,List<String>>
+tags=DIRLISTING

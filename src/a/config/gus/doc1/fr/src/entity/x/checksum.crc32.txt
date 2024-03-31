@@ -1,0 +1,7 @@
+@description
+Produit le CRC32 (String) à partir d'un byte[] (ou équivalent).
+byte[], String, InputStream, File, URL
+@infos
+state=COMPLETE
+sign=+T<byte[],String>
+tags=BYTE

@@ -1,0 +1,9 @@
+Documentation pour le système gus.y.entityeditor1
+
+gus.y.entityeditor1.builddata
+gus.y.entityeditor1.gui1.src
+gus.y.entityeditor1.gui1.src.java
+gus.y.entityeditor1.gui1.src.java.custcomp
+gus.y.entityeditor1.gui1.src.many
+gus.y.entityeditor1.gui1.src.single
+gus.y.entityeditor1.maingui

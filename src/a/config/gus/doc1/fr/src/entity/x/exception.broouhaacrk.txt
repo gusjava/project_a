@@ -1,0 +1,7 @@
+@description
+Description de l'entité gus.x.exception.broouhaacrk
+
+@infos
+state=GENERATED
+sign=
+tags=
