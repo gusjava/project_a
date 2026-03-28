@@ -35,10 +35,6 @@ public class EntityImpl implements Entity, T {
 		PreparedStatement st = cx.prepareStatement(sql);
 		st.setObject(1, entityName);
 		ResultSet rs = st.executeQuery();
-		if (!rs.next()) {
-			st.close();
-			return null;
-		}
 
 		List data = new ArrayList();
 		while (rs.next()) {

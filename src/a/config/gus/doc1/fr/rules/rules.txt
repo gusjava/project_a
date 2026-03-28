@@ -133,7 +133,7 @@ private void removed() {
 }
 
 @17 - règle d'icône
-Une règle d'icône permet de générer une icône 16x16 (class Icon)
+Une règle d'icône permet de générer une icône 16x16 (classe Icon)
 
 Le mécanisme qui génère une icône à partir d'une règle doit disposer d'un ensemble d'icônes identifiées par des IDs. Il doit aussi être capable de retrouver l'icône associée par l'OS à une extension de fichier.
 

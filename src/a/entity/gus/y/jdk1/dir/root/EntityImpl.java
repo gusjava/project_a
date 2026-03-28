@@ -27,7 +27,7 @@ public class EntityImpl implements Entity, G {
 		while (dir != null && !isJavaRoot(dir))
 			dir = dir.getParentFile();
 		if (dir == null)
-			throw new Exception("Java root directory does not exist: " + dir);
+			throw new Exception("Java root directory not found from homeDir: " + homeDir);
 	}
 
 	private boolean isJavaRoot(File dir) {

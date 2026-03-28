@@ -13,6 +13,7 @@ public class EntityImpl implements Entity, P, G {
 	public static final boolean ALWAYS_RESET = true;
 
 	private Service initEntity;
+	private Service initEntitySrc;
 	private Service initEntityService;
 	private Service initEntityResource;
 	private Service initEntityLink;
@@ -24,6 +25,7 @@ public class EntityImpl implements Entity, P, G {
 
 	public EntityImpl() throws Exception {
 		initEntity = Outside.service(this, "gus.y.entitydb1.cx.initdb.entity");
+		initEntitySrc = Outside.service(this, "gus.y.entitydb1.cx.initdb.entity_src_save");
 		initEntityService = Outside.service(this, "gus.y.entitydb1.cx.initdb.entity_service");
 		initEntityResource = Outside.service(this, "gus.y.entitydb1.cx.initdb.entity_resource");
 		initEntityLink = Outside.service(this, "gus.y.entitydb1.cx.initdb.entity_link");
@@ -42,6 +44,7 @@ public class EntityImpl implements Entity, P, G {
 
 	public void p(Object obj) throws Exception {
 		initEntity.p(obj);
+		initEntitySrc.p(obj);
 		initEntityService.p(obj);
 		initEntityResource.p(obj);
 		initEntityLink.p(obj);

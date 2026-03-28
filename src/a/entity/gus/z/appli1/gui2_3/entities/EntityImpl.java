@@ -28,12 +28,12 @@ public class EntityImpl implements Entity, I {
 		tabHolder = Outside.service(this,"*gus.y.swing1.tabbedpane.holder1");
 		
 		gui1 = Outside.service(this,"*gus.z.appli1.gui2_3_1.all");
-//		gui2 = Outside.service(this,"*gus.z.appli1.gui2_3_2.x");
+		gui2 = Outside.service(this,"*gus.z.appli1.gui2_3_2.x");
 //		gui3 = Outside.service(this,"*gus.z.appli1.gui2_3_3.y");
 //		gui4 = Outside.service(this,"*gus.z.appli1.gui2_3_4.z");
 		
 		tabHolder.v("all", gui1);
-//		tabHolder.v("x", gui2);
+		tabHolder.v("x", gui2);
 //		tabHolder.v("y", gui3);
 //		tabHolder.v("z", gui4);
 		

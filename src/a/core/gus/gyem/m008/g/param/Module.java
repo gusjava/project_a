@@ -18,10 +18,10 @@ public class Module extends GyemSystem implements G {
 	private void init() throws Exception {
 		param = new HashMap();
 		
-		Map configParam = (Map) moduleG(M009_G_CONFIG_PARAM).g();
-		if(configParam!=null) param.putAll(configParam);
+		Map paramInternal = (Map) moduleG(M009_G_PARAM_INTERNAL).g();
+		if(paramInternal!=null) param.putAll(paramInternal);
 		
-		Map argsParam = (Map) moduleG(M020_G_ARGS_PARAM).g();
-		if(argsParam!=null) param.putAll(argsParam);
+		Map paramArgs = (Map) moduleG(M010_G_PARAM_ARGS).g();
+		if(paramArgs!=null) param.putAll(paramArgs);
 	}
 }

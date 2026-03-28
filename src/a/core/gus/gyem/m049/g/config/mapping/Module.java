@@ -8,6 +8,6 @@ public class Module extends GyemSystem implements G {
 	public Object g() throws Exception {
 		String path = (String) moduleG(M050_G_CONFIG_MAPPING_PATH).g();
 		if(path==null) return null;
-		return moduleT(M010_T_READ_PROP).t(path);
+		return moduleT(M011_T_READ_PROP).t(path);
 	}
 }

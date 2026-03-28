@@ -14,7 +14,7 @@ public class Module extends GyemSystem implements I {
 		String rule = (String) prop.get(PROP_APP_MAINGUI);
 		log(this, "Building maingui entity with rule: "+rule);
 		
-		Object entity = moduleT(M014_T_ENTITY_PROVIDE).t(rule);
+		Object entity = moduleT(M015_T_ENTITY_PROVIDE).t(rule);
 		return ((I) entity).i();
 	}
 }

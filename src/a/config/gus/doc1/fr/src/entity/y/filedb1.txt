@@ -1,0 +1,17 @@
+@description
+Description du système gus.y.filedb1
+
+gus.y.filedb1.cx.initdb
+gus.y.filedb1.cx.initdb.file
+gus.y.filedb1.cx.initdb.fileaction
+gus.y.filedb1.cx.initdb.filelocation
+gus.y.filedb1.cx.initdb.filename
+gus.y.filedb1.cx.initdb.fk
+gus.y.filedb1.cx.initdb.hdd
+gus.y.filedb1.cx.initdb.hddstate
+gus.y.filedb1.cx.initdb.root
+gus.y.filedb1.cx.initdb.scan
+@infos
+state=GENERATED
+entry=
+tags=

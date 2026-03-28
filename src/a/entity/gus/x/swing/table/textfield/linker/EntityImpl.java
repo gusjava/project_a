@@ -10,7 +10,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.Rectangle;
 
-
 public class EntityImpl implements Entity, P {
 	public String creationDate() {return "20240112";}
 	

@@ -85,8 +85,16 @@ public class GyemSystem extends GyemConst {
 		fatal(e, 2, GyemManager.class);
 	}
 	
+	protected static void fatalEDT(Exception e) {
+		fatal(e, 3, GyemMain.class);
+	}
+	
 	protected static void log(Object src, String message) throws Exception {
 		moduleP(M053_P_LOGGER).p(new Object[] {src, message});
+	}
+	
+	protected static boolean isMainguiDisabled() throws Exception {
+		return moduleF(M029_F_PROP_BOOL_DF).f(PROP_APP_MAINGUI_DISABLED);
 	}
 	
 	

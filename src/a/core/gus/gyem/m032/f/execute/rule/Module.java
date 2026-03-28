@@ -17,13 +17,13 @@ public class Module extends GyemSystem implements F {
 	}
 	
 	private boolean execute(String rule) throws Exception {
-		E exe = (E) moduleT(M014_T_ENTITY_PROVIDE).t(rule);
+		E exe = (E) moduleT(M015_T_ENTITY_PROVIDE).t(rule);
 		exe.e();
 		return true;
 	}
 	
 	private boolean provide(String rule) throws Exception {
-		moduleT(M014_T_ENTITY_PROVIDE).t(rule);
+		moduleT(M015_T_ENTITY_PROVIDE).t(rule);
 		return true;
 	}
 }

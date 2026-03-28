@@ -20,6 +20,7 @@ public class EntityImpl implements Entity, T {
 
 	private Service findPackageDir;
 	private Service findJavaFiles;
+	private Service findMainJavaFile;
 	private Service findDocFile;
 	private Service findDownLinks;
 	private Service findUpLinks;
@@ -32,6 +33,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception {
 		findPackageDir = Outside.service(this, "gus.x.entity.src.find.packagedir");
 		findJavaFiles = Outside.service(this, "gus.x.dir.listing0.files.java");
+		findMainJavaFile = Outside.service(this, "gus.x.entity.src.find.entityfile");
 		findDocFile = Outside.service(this, "gus.x.entity.doc1.fr.find.file");
 		findDownLinks = Outside.service(this, "gus.y.entitydb1.entity_link.find2");
 		findUpLinks = Outside.service(this, "gus.y.entitydb1.entity_link.find1");
@@ -56,6 +58,7 @@ public class EntityImpl implements Entity, T {
 
 		private File packageDir;
 		private File[] javaFiles;
+		private File mainJavaFile;
 		private File docFile;
 		private Set downLinks;
 		private Set upLinks;
@@ -77,6 +80,14 @@ public class EntityImpl implements Entity, T {
 		}
 
 		public void v(String key, Object obj) throws Exception {
+			if (key.equals("srcSaved")) {
+				((V) engine).v("srcSaved", entityName);
+				return;
+			}
+			if (key.equals("srcCleared")) {
+				((V) engine).v("srcCleared", entityName);
+				return;
+			}
 			if (key.equals("srcModified")) {
 				handleSrcModified(obj);
 				return;
@@ -115,6 +126,7 @@ public class EntityImpl implements Entity, T {
 			if (key.equals("rootDir")) return rootDir();
 			if (key.equals("packageDir")) return packageDir();
 			if (key.equals("javaFiles")) return javaFiles();
+			if (key.equals("mainJavaFile")) return mainJavaFile();
 			if (key.equals("docFile")) return docFile();
 			if (key.equals("downLinks")) return downLinks();
 			if (key.equals("upLinks")) return upLinks();
@@ -127,7 +139,7 @@ public class EntityImpl implements Entity, T {
 			
 			if (key.equals("keys")) return new String[] { 
 			"engine", "entityName", "cx", "rootDir", 
-			"packageDir", "javaFiles", "docFile", 
+			"packageDir", "javaFiles", "mainJavaFile", "docFile", 
 			"downLinks", "upLinks", 
 			"services", "resources", 
 			"compileErrList", 
@@ -156,6 +168,12 @@ public class EntityImpl implements Entity, T {
 			if (javaFiles == null)
 				javaFiles = (File[]) findJavaFiles.t(packageDir());
 			return javaFiles;
+		}
+		
+		private File mainJavaFile() throws Exception {
+			if (mainJavaFile == null)
+				mainJavaFile = (File) findMainJavaFile.t(packageDir());
+			return mainJavaFile;
 		}
 
 		private File docFile() throws Exception {
@@ -208,6 +226,7 @@ public class EntityImpl implements Entity, T {
 
 		private void clearData() {
 			javaFiles = null;
+			mainJavaFile = null;
 			downLinks = null;
 			upLinks = null;
 			services = null;

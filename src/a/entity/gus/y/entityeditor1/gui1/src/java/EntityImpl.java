@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.io.PrintStream;
 import java.util.Objects;
 
 import javax.swing.Action;
@@ -16,18 +15,10 @@ import javax.swing.JTextArea;
 import javax.swing.JToolBar;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
+import java.sql.Connection;
 import javax.swing.event.DocumentListener;
 
-import a.framework.E;
-import a.framework.Entity;
-import a.framework.F;
-import a.framework.I;
-import a.framework.Outside;
-import a.framework.P;
-import a.framework.R;
-import a.framework.S;
-import a.framework.Service;
-import a.framework.V;
+import a.framework.*;
 
 public class EntityImpl implements Entity, P, I, R, DocumentListener {
 	public String creationDate() {return "20240113";}
@@ -36,20 +27,26 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 	public static final String DISPLAY_RELOAD = "ACTION_reload#Reload [Ctrl L]";
 
 	private Service read;
+	private Service write;
 	private Service actionBuilder;
 	private Service buildArea;
 	private Service buildScroll;
 	private Service buildHighSup;
 	private Service buildHighScroll;
 	private Service buildHighCount;
+	private Service buildCaretPos;
 	private Service barFactory;
 	private Service custArea;
 	private Service handleErr;
+	private Service persistSrc;
+	private Service restoreSrc;
+	private Service clearSrc;
 	
 	private JPanel panel;
 	private JTextArea area;
 	private JScrollPane scroll;
 	private JComponent countComp;
+	private JComponent caretPosComp;
 	private JToolBar bar2;
 
 	private Action actionSave;
@@ -63,16 +60,21 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 	private boolean canModify = true;
 
 	public EntityImpl() throws Exception {
-		read = Outside.service(this,"gus.x.file.string.read");
+		read = Outside.service(this,"gus.x.file.string.read.n");
+		write = Outside.service(this,"gus.x.file.string.write.n");
 		actionBuilder = Outside.service(this,"gus.y.swing1.action.builder1");
 		buildArea = Outside.service(this,"gus.y.swing1.textarea1.factory");
 		buildScroll = Outside.service(this,"gus.y.swing1.textarea.buildscrollpane.linenb");
 		buildHighSup = Outside.service(this,"gus.y.swinghigh1.support");
 		buildHighScroll = Outside.service(this,"gus.y.swinghigh1.scrollpaint");
 		buildHighCount = Outside.service(this,"gus.y.swinghigh1.countbar");
+		buildCaretPos = Outside.service(this,"gus.x.swing.textcomp.build.caretpositionlabel");
 		barFactory = Outside.service(this,"gus.x.swing.toolbar.factory1");
 		custArea = Outside.service(this,"gus.y.entityeditor1.gui1.src.java.custcomp");
 		handleErr = Outside.service(this,"gus.y.entityeditor1.gui1.src.java.handle.err");
+		persistSrc = Outside.service(this,"gus.y.entitydb1.entity_src_save.persist");
+		restoreSrc = Outside.service(this,"gus.y.entitydb1.entity_src_save.find");
+		clearSrc = Outside.service(this,"gus.y.entitydb1.entity_src_save.delete");
 		
 		actionSave = (Action) actionBuilder.t(new Object[] {DISPLAY_SAVE, (E) this::save_});
 		actionReload = (Action) actionBuilder.t(new Object[] {DISPLAY_RELOAD, (E) this::reload_});
@@ -84,6 +86,7 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 		S highSup = (S) buildHighSup.t(area);
 		
 		countComp = (JComponent) buildHighCount.t(area);
+		caretPosComp = (JComponent) buildCaretPos.t(area);
 		
 		Object highScroll = buildHighScroll.t(scroll);
 		highSup.addActionListener((ActionListener) countComp);
@@ -114,6 +117,8 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 	}
 	
 	public void p(Object obj) throws Exception {
+		if(data!=null) persistOrClearSrc();
+		
 		if(obj==null) {
 			reset();
 			return;
@@ -136,14 +141,13 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 		text0 = readFile();
 
 		area.getDocument().removeDocumentListener(this);
-		area.setText(text0);
+		area.setText(restoreOrLoadSrc());
 		area.getDocument().addDocumentListener(this);
-
+		
 		displayCompilingErrors();
 
 		area.setEditable(canModify);
-		actionSave.setEnabled(false);
-		actionReload.setEnabled(false);
+		refreshActions();
 		area.setCaretPosition(0);
 	}
 	
@@ -179,7 +183,7 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 	}
 
 	private String readFile() throws Exception {
-		return ((String) read.t(javaFile)).replace(System.lineSeparator(), "\n");
+		return (String) read.t(javaFile);
 	}
 
 	public void insertUpdate(DocumentEvent e) {
@@ -195,14 +199,9 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 
 	private void changed() {
 		try {
-			if (!canModify)
-				throw new Exception("canModify=false");
-			if (text0 == null)
-				throw new Exception("text0==null");
-
-			boolean synchWithFile = area.getText().equals(text0);
-			actionSave.setEnabled(!synchWithFile);
-			actionReload.setEnabled(!synchWithFile);
+			if (!canModify) throw new Exception("canModify=false");
+			if (text0 == null) throw new Exception("text0==null");
+			refreshActions();
 		} catch (Exception e) {
 			Outside.err(this, "changed()", e);
 		}
@@ -211,6 +210,8 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 	private JComponent bottomPanel() throws Exception {
 		bar2 = (JToolBar) barFactory.i();
 		bar2.add(countComp);
+		bar2.addSeparator();
+		bar2.add(caretPosComp);
 		bar2.addSeparator();
 		return bar2;
 	}
@@ -234,14 +235,10 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 			throw new Exception("text0==null");
 
 		text0 = area.getText();
-
-		PrintStream p = new PrintStream(javaFile);
-		p.print(text0.replace("\n", System.lineSeparator()));
-		p.close();
-
-		actionSave.setEnabled(false);
-		actionReload.setEnabled(false);
-
+		write.p(new Object[]{javaFile, text0});
+		
+		persistOrClearSrc();
+		refreshActions();
 		((V) data).v("srcModified", javaFile);
 		
 		displayCompilingErrors();
@@ -274,9 +271,8 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 		area.getDocument().addDocumentListener(this);
 		setCaretPosition(caretPosition);
 
-		actionSave.setEnabled(false);
-		actionReload.setEnabled(false);
-		
+		persistOrClearSrc();
+		refreshActions();
 		displayCompilingErrors();
 		SwingUtilities.invokeLater(() -> area.requestFocusInWindow());
 	}
@@ -310,5 +306,56 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 	
 	private void displayCompilingErrors() throws Exception {
 		handleErr.p(new Object[] {data, fileName, area});
+	}
+	
+	/*
+	 * SYNCHRONIZED WITH FILE
+	 */
+	
+	private boolean synchWithFile() {
+		return area.getText().equals(text0);
+	}
+	
+	/*
+	 * SAVED SRC
+	 */
+	
+	private void persistOrClearSrc() throws Exception {
+		if(synchWithFile()) clearSrc();
+		else persistSrc();
+	}
+	
+	private String restoreOrLoadSrc() throws Exception {
+		String src = restoreSrc();
+		if(src==null) return text0;
+		clearSrc();
+		return src;
+	}
+	
+	private void persistSrc() throws Exception {
+		Connection cx = (Connection) ((R) data).r("cx");
+		persistSrc.p(new Object[] {cx, entityName, fileName, area.getText()});
+		((V) data).v("srcSaved", null);
+	}
+	
+	private void clearSrc() throws Exception {
+		Connection cx = (Connection) ((R) data).r("cx");
+		boolean done = clearSrc.f(new Object[] {cx, entityName, fileName});
+		if(done) ((V) data).v("srcCleared", null);
+	}
+	
+	private String restoreSrc() throws Exception {
+		Connection cx = (Connection) ((R) data).r("cx");
+		return (String) restoreSrc.t(new Object[] {cx, entityName, fileName});
+	}
+	
+	/*
+	 * REFRESH ACTIONS
+	 */
+	
+	private void refreshActions() {
+		boolean synchWithFile = synchWithFile();
+		actionSave.setEnabled(!synchWithFile);
+		actionReload.setEnabled(!synchWithFile);	
 	}
 }

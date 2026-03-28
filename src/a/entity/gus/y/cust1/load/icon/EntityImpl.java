@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, T {
 	private String[] commonConfigIds;
 
 	public EntityImpl() throws Exception {
-		getConfigRoot = Outside.service(this, "m006_configroot");
+		getConfigRoot = Outside.service(this, "configroot");
 		
 		String commonConfigVal = (String) Outside.resource(this, "prop#configid.common");
 		commonConfigIds = commonConfigVal!=null ? commonConfigVal.split(";") : new String[0];

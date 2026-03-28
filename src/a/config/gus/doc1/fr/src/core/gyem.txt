@@ -12,48 +12,78 @@ Ce module est exécuté dans la méthode main de la classe GyemMain. Il démarre l'a
 - exécution d'une séquence d'instructions basé sur le mot-clé after
 
 Il dépend des 2 modules :
-
 - m031.p.execute.sequence : qui execute une séquence d'instructions
 - m021.e.mainframe : qui crée et affiche la fenêtre principale
 
 @m002.e.customize
 Ce module est exécuté dans la méthode main de la classe GyemMain, juste avant m001.e.launch. Son rôle est de personnaliser l'application en modifiant la map principale
+Des groupements de propriétés sont extraits à partir des offset cust0, cust1, cust2 et utilisées pour modifier la map principale par vagues successives.
+
+Il dépend des 2 modules :
+- m003.g.prop : qui renvoie la map des propriétés de l'application
+- m013.t.module.build : qui construit un module à partir d'une règle de génération
 
 @m003.g.prop
+Ce module renvoie la map des propriétés de l'application. Cette map est générée à partir des propriétés de la config, qu'il est possible d'altérer en ajoutant des paramètres de la forme :
+p.<prop-key> = <prop-value>
+
+Il dépend des 2 modules :
+- m004.g.config.prop : qui renvoie la map des propriétés de la config
+- m008.g.param : qui renvoie la map des paramètres
 
 @m004.g.config.prop
+Ce module renvoie la map des propriétés de la config. Il se base sur le module m005.g.config.prop.path qui lui fournit le classpath du fichier prop qui stocke les propriétés.
+
+Il dépend des 2 modules :
+- m005.g.config.prop.path : qui renvoie le classpath du fichier prop de la config
+- m011.t.read.prop : qui construit une map de string à partir d'un classpath de fichier prop
 
 @m005.g.config.prop.path
+Ce module renvoie le classpath du fichier prop de la config. Le fichier se nomme "prop" et se trouve à la racine de la config
+
+Il dépend du module :
+- m006.g.config.root : qui renvoie le classpath de la racine de la config
 
 @m006.g.config.root
+Ce module renvoie le classpath de la racine de la config, qui correspond à /a/config/<configID>
+ou <configID> correspond à l'ID de la config
+
+Il dépend du module :
+- 007.g.config.id : qui renvoie l'ID de la config applicative
 
 @m007.g.config.id
+Ce module renvoie l'ID de la config applicative.
+Celle-ci correspond au paramètre "config".
+
+Il dépend du module :
+- m008.g.param : qui renvoie la map des paramètres de l'application
 
 @m008.g.param
+Ce module renvoie la map des paramètres de l'application
 
-@m009.config.param
+@m009.g.param.internal
 
-@m010.t.read.prop
+@m010.g.param.args
 
-@m011.t.read.inputstream
+@m011.t.read.prop
 
-@m012.t.module.build
+@m012.t.read.inputstream
 
-@m013.g.service.build.empty
+@m013.t.module.build
 
-@m014.t.entity.provide
+@m014.g.service.build.empty
 
-@m015.t.entity.unique
+@m015.t.entity.provide
 
-@m016.t.entity.generate
+@m016.t.entity.unique
 
-@m017.t.entity.findclass
+@m017.t.entity.generate
 
-@m018.t.entity.loadclass
+@m018.t.entity.findclass
 
-@m019.t.entity.nametopath
+@m019.t.entity.loadclass
 
-@m020.g.args.param
+@m020.t.entity.nametopath
 
 @m021.e.mainframe
 

@@ -13,10 +13,12 @@ import a.framework.T;
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20240114";}
 	
-	private Service filterList;
+	private Service filterListName;
+	private Service filterListFullText;
 
 	public EntityImpl() throws Exception {
-		filterList = Outside.service(this, "gus.z.appli1.gui2_3_1.all.list.filter");
+		filterListName = Outside.service(this, "gus.z.appli1.gui2_3_1.all.list.filter.name");
+		filterListFullText = Outside.service(this,"gus.z.appli1.gui2_3_1.all.list.filter.fulltext");
 	}
 
 	public Object t(Object obj) throws Exception {
@@ -35,7 +37,12 @@ public class EntityImpl implements Entity, T {
 		Set lockSet = lockSet(engine);
 		Set errorSet = errorSet(engine);
 
-		return filterList.t(new Object[] { dataFull, search, devId, lockSet, errorSet });
+		if(search.startsWith("'"))
+			return filterListFullText.t(new Object[] { 
+				engine, dataFull, search.substring(1), devId, lockSet, errorSet });
+				
+		return filterListName.t(new Object[] { 
+			dataFull, search, devId, lockSet, errorSet });
 	}
 
 	private Map compileErrMap(R engine) throws Exception {

@@ -1,0 +1,11 @@
+@description
+Description du système gus.y.autocomplete1
+
+gus.y.autocomplete1.action.f1
+gus.y.autocomplete1.caret.word.replace
+gus.y.autocomplete1.handle
+gus.y.autocomplete1.perform
+@infos
+state=GENERATED
+entry=
+tags=

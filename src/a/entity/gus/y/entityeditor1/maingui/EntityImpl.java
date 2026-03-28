@@ -19,6 +19,7 @@ public class EntityImpl implements Entity, P, I {
 	private Service gui2;
 	private Service gui3;
 	private Service gui4;
+	private Service gui5;
 
 	private JPanel panel;
 	private JTabbedPane tab;
@@ -35,6 +36,7 @@ public class EntityImpl implements Entity, P, I {
 		gui2 = Outside.service(this, "*gus.y.entityeditor1.gui2.doc");
 		gui3 = Outside.service(this, "*gus.y.entityeditor1.gui3.infos");
 		gui4 = Outside.service(this, "*gus.y.entityeditor1.gui4.err");
+		gui5 = Outside.service(this, "*gus.y.entityeditor1.gui5.db");
 
 		entityIcon = (Icon) Outside.resource(this, "icon#ELEMENT_entity");
 
@@ -45,6 +47,7 @@ public class EntityImpl implements Entity, P, I {
 		tabHolder.v("UTIL_doc#Doc", gui2);
 		tabHolder.v("UTIL_infos#Infos", gui3);
 		tabHolder.v("UTIL_error#Errors", gui4);
+		tabHolder.v("UTIL_debug#Debug", gui5);
 
 		tab = (JTabbedPane) tabHolder.i();
 
@@ -69,10 +72,7 @@ public class EntityImpl implements Entity, P, I {
 		data = buildData.t(obj);
 		labelTitle.setText(entityName);
 		labelTitle.setIcon(entityIcon);
-		gui1.p(data);
-		gui2.p(data);
-		gui3.p(data);
-		gui4.p(data);
+		handleData(data);
 	}
 
 	private void reset() throws Exception {
@@ -81,10 +81,15 @@ public class EntityImpl implements Entity, P, I {
 
 		labelTitle.setText(" ");
 		labelTitle.setIcon(null);
-		gui1.p(null);
-		gui2.p(null);
-		gui3.p(null);
-		gui4.p(null);
+		handleData(null);
+	}
+	
+	private void handleData(Object data) throws Exception {
+		gui1.p(data);
+		gui2.p(data);
+		gui3.p(data);
+		gui4.p(data);
+		gui5.p(data);
 	}
 
 	public Object i() throws Exception {

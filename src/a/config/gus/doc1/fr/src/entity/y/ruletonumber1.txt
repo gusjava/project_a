@@ -1,0 +1,10 @@
+@description
+Description du système gus.y.ruletonumber1
+
+gus.y.ruletonumber1.find1
+gus.y.ruletonumber1.find2
+gus.y.ruletonumber1.find3
+@infos
+state=GENERATED
+entry=
+tags=

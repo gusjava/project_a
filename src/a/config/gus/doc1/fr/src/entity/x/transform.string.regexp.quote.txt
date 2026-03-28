@@ -1,0 +1,7 @@
+@description
+Description de l'entité gus.x.transform.string.regexp.quote
+
+@infos
+state=GENERATED
+sign=
+tags=

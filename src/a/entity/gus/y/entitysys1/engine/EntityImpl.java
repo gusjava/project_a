@@ -25,6 +25,7 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F {
 	private Service findCompileErrMap;
 	private Service findXyzErrMap;
 	private Service findMissingLinkMap;
+	private Service findSrcSaveMap;
 	
 	private Service dataLoader;
 	private Service getCx;
@@ -39,11 +40,13 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F {
 	private Map compileErrMap = new HashMap();
 	private Map xyzErrMap = new HashMap();
 	private Map missingLinkMap = new HashMap();
+	private Map srcSaveMap = new HashMap();
 
 	public EntityImpl() throws Exception {
 		findCompileErrMap = Outside.service(this, "gus.y.entitydb1.entity_compile_err.findall");
 		findXyzErrMap = Outside.service(this, "gus.y.entitydb1.entity_xyz_err.findall");
 		findMissingLinkMap = Outside.service(this, "gus.y.entitydb1.entity_missing_link.findall");
+		findSrcSaveMap = Outside.service(this, "gus.y.entitydb1.entity_src_save.findall");
 		
 		dataLoader = Outside.service(this, "gus.y.entitysys1.dataloader");
 		getCx = Outside.service(this, "gus.y.entitydb1.cx.main");
@@ -73,10 +76,11 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F {
 		if (key.equals("xyzErrMap")) return xyzErrMap;
 		if (key.equals("compileErrMap")) return compileErrMap;
 		if (key.equals("missingLinkMap")) return missingLinkMap;
+		if (key.equals("srcSaveMap")) return srcSaveMap;
 
 		if (key.equals("keys")) return new String[] { 
 			"rootDir", "binDir", "libDir", "cx", "devId",  "nameList", "lastTime",
-			"xyzErrMap", "compileErrMap",  "missingLinkMap" };
+			"xyzErrMap", "compileErrMap",  "missingLinkMap", "srcSaveMap" };
 
 		throw new Exception("Unknown key: " + key);
 	}
@@ -120,6 +124,7 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F {
 		compileErrMap = (Map) findCompileErrMap.t(getCx());
 		xyzErrMap = (Map) findXyzErrMap.t(getCx());
 		missingLinkMap = (Map) findMissingLinkMap.t(getCx());
+		srcSaveMap = (Map) findSrcSaveMap.t(getCx());
 		
 		persist.v(PERSIST_KEY, "" + System.currentTimeMillis());
 

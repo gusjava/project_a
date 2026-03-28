@@ -12,7 +12,7 @@ public class Module extends GyemSystem implements T {
 		Entity entity = (Entity) call[0];
 		String id =  (String) call[1];
 		
-		String entityName = (String) moduleT(M041_T_ENTITY_FINDNAME).t(entity);
+		String entityName = (String) moduleT(M042_T_ENTITY_FINDNAME).t(entity);
 		return entityName+"@"+id;
 	}
 }

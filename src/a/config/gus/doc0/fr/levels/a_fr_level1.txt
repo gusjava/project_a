@@ -59,7 +59,7 @@ En tant que développeur gus, j'ai pour l'instant développé plusieurs composants 
 - gus.common1 (correspondant au package racine a.config.gus.common1)
 
 Un composant config ne peut pas contenir de code directement exécutable au runtime de l'application.
-Il peut en revanche contenir des fichiers de resources (texte, multimédia, binaire, jar...) utiles pour les applications java, ainsi que de la documentation sur le code dérivé.
+Il peut en revanche contenir des fichiers de resources (texte, multimédia, binaire, jar...) ou de paramétrage (texte, properties...) utiles pour les applications java, ainsi que de la documentation sur le code dérivé.
 
 La structure des composants config dépend des noyaux qui peuvent les exploiter et il est compliqué d'en énoncer des règles génériques.
 On peut tout de même en distinguer deux types:

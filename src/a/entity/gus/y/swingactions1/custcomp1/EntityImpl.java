@@ -10,6 +10,8 @@ public class EntityImpl implements Entity, P {
 	private Service ctrlE;
 	private Service ctrlF;
 	private Service ctrlT;
+	private Service ctrlW;
+	private Service ctrlX;
 	private Service ctrlSpace;
 
 	private Service ctrlDown;
@@ -21,6 +23,9 @@ public class EntityImpl implements Entity, P {
 	private Service altUp;
 	private Service altRight;
 	private Service altLeft;
+	private Service altC;
+	
+	private Service ctrlShiftW;
 
 	public EntityImpl() throws Exception {
 		ctrlC = Outside.service(this,"gus.y.swingactions1.ctrl_c.copy");
@@ -28,6 +33,8 @@ public class EntityImpl implements Entity, P {
 		ctrlE = Outside.service(this,"gus.y.swingactions1.ctrl_e.doubleline");
 		ctrlF = Outside.service(this,"gus.y.swingactions1.ctrl_f.search");
 		ctrlT = Outside.service(this,"gus.y.swingactions1.ctrl_t.truncate");
+		ctrlW = Outside.service(this,"gus.y.quickreplace1.t1.action.ctrl_w");
+		ctrlX = Outside.service(this,"gus.y.swingactions1.ctrl_x.cut");
 		ctrlSpace = Outside.service(this,"gus.y.swingactions1.ctrl_space.enlargeselection");
 		
 		ctrlDown = Outside.service(this,"gus.y.swingactions1.ctrl_down.select.after");
@@ -39,6 +46,9 @@ public class EntityImpl implements Entity, P {
 		altUp = Outside.service(this,"gus.y.swingactions1.alt_up.gotoup");
 		altRight = Outside.service(this,"gus.y.swingactions1.alt_right.gotoright");
 		altLeft = Outside.service(this,"gus.y.swingactions1.alt_left.gotoleft");
+		altC = Outside.service(this,"gus.y.swingactions1.alt_c.viewselect");
+		
+		ctrlShiftW = Outside.service(this,"gus.y.quickreplace1.t2.action.ctrl_shift_w");
 	}
 	
 	public void p(Object obj) throws Exception {
@@ -47,6 +57,8 @@ public class EntityImpl implements Entity, P {
 		ctrlE.p(obj);
 		ctrlF.p(obj);
 		ctrlT.p(obj);
+		ctrlW.p(obj);
+		ctrlX.p(obj);
 		ctrlSpace.p(obj);
 
 		ctrlDown.p(obj);
@@ -58,5 +70,8 @@ public class EntityImpl implements Entity, P {
 		altUp.p(obj);
 		altRight.p(obj);
 		altLeft.p(obj);
+		altC.p(obj);
+		
+		ctrlShiftW.p(obj);
 	}
 }

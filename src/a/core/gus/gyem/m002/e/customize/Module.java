@@ -27,7 +27,7 @@ public class Module extends GyemSystem implements E {
 				String value = (String) prop.get(key);
 				
 				try {
-					Object module = moduleT(M012_T_MODULE_BUILD).t(value);
+					Object module = moduleT(M013_T_MODULE_BUILD).t(value);
 					cust.put(name, module);
 				}
 				catch(Exception e) {

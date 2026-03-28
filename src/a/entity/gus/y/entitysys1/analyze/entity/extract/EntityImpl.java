@@ -29,15 +29,18 @@ public class EntityImpl implements Entity, T {
 	}
 
 	public Object t(Object obj) throws Exception {
+		String src = (String) obj;
 		String[] lines = (String[]) toArray.t(obj);
 
 		Map data = new HashMap();
+		
 		put(data, KEY_PACKAGE, extractPackage(lines));
 		put(data, KEY_FEATURES, extractFeatures(lines));
 		put(data, KEY_CREATION_DATE, extractCreationDate(lines));
-		put(data, KEY_RESOURCES, extractResources(lines));
-		put(data, KEY_SERVICES, extractServices(lines));
-		put(data, KEY_LINKS, extractLinks(lines));
+		
+		put(data, KEY_RESOURCES, extractResources(src));
+		put(data, KEY_SERVICES, extractServices(src));
+		put(data, KEY_LINKS, extractLinks(src));
 
 		return data;
 	}
@@ -119,57 +122,44 @@ public class EntityImpl implements Entity, T {
 
 	// RESOURCES
 
-	public static final Pattern P_RESOURCES = Pattern.compile("\"([^\"]+)\"");
+	public static final String R_RESOURCES = "Outside\\.resource\\( *this *, *\"([^\"]+)\" *\\)";
+	public static final Pattern P_RESOURCES = Pattern.compile(R_RESOURCES, Pattern.DOTALL);
 
-	private Set extractResources(String[] lines) throws Exception {
+	private Set extractResources(String src) throws Exception {
 		Set set = new HashSet();
-		int pos = 0;
-		for (String line : lines) {
-			if (line.contains("Outside.resource(")) {
-				Matcher m = P_RESOURCES.matcher(line);
-				if (m.find()) set.add(groupInfo(m,1,pos));
-			}
-			pos += line.length()+1;
-		}
+		Matcher m = P_RESOURCES.matcher(src);
+		while(m.find()) set.add(groupInfo(m,1));
 		return set;
 	}
 
 	// SERVICES
 
-	public static final Pattern P_SERVICES = Pattern.compile("\"([^\"]+)\"");
+	public static final String R_SERVICES = "Outside\\.service\\( *this *, *\"([^\"]+)\" *\\)";
+	public static final Pattern P_SERVICES = Pattern.compile(R_SERVICES, Pattern.DOTALL);
 
-	private Set extractServices(String[] lines) throws Exception {
+	private Set extractServices(String src) throws Exception {
 		Set set = new HashSet();
-		int pos = 0;
-		for (String line : lines) {
-			if (line.contains("Outside.service(")) {
-				Matcher m = P_SERVICES.matcher(line);
-				if (m.find()) set.add(groupInfo(m,1,pos));
-			}
-			pos += line.length()+1;
-		}
+		Matcher m = P_SERVICES.matcher(src);
+		while(m.find()) set.add(groupInfo(m,1));
 		return set;
 	}
 
 	// LINKS
 	
-	public static final Pattern P_LINKS = Pattern.compile("[a-z][a-z0-9]{2,9}(\\.[a-z][a-z0-9_]*)+");
+	public static final String R_LINKS = "[a-z][a-z0-9]{2,9}(\\.[a-z][a-z0-9_]*)+";
+	public static final Pattern P_LINKS = Pattern.compile(R_LINKS, Pattern.DOTALL);
 
-	private Set extractLinks(String[] lines) throws Exception {
+	private Set extractLinks(String src) throws Exception {
 		Set set = new HashSet();
-		int pos = 0;
-		for (String line : lines) {
-			Matcher m = P_LINKS.matcher(line);
-			while (m.find()) set.add(groupInfo(m,0,pos));
-			pos += line.length()+1;
-		}
+		Matcher m = P_LINKS.matcher(src);
+		while(m.find()) set.add(groupInfo(m,0));
 		return set;
 	}
 	
 	// GROUP INFO
 	
-	private String groupInfo(Matcher m, int index, int offset) {
-		int pos = offset + m.start(index);
+	private String groupInfo(Matcher m, int index) {
+		int pos = m.start(index);
 		String value = m.group(index);
 		return pos+":"+value;
 	}

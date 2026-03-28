@@ -1,7 +1,6 @@
 package a.entity.gus.first;
 
 import a.framework.E;
-import a.framework.F;
 import a.framework.Entity;
 
 public class EntityImpl implements Entity, E {

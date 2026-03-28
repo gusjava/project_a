@@ -104,7 +104,7 @@ public class EntityImpl implements Entity, P {
 		Iterator it = errLinks.iterator();
 		while (it.hasNext()) {
 			String errInfo = (String) it.next();
-			String[] n = errInfo.split(":");
+			String[] n = errInfo.split(":",2);
 			Integer pos = Integer.parseInt(n[0]);
 			String errLink = n[1];
 			insert.p(new Object[] {cx, entityName, errLink, pos});

@@ -35,7 +35,7 @@ public class EntityImpl implements Entity, P {
 		Set done = new HashSet();
 		while (it.hasNext()) {
 			String linkInfo = (String) it.next();
-			String link = linkInfo.split(":")[1];
+			String link = linkInfo.split(":",2)[1];
 			if(done.contains(link)) continue;
 			
 			insert.p(new Object[] {cx, entityName, link});

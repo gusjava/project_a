@@ -1,0 +1,7 @@
+@description
+Description de l'entité gus.x.file.string.read.n
+
+@infos
+state=GENERATED
+sign=
+tags=

@@ -13,11 +13,9 @@ public class Module extends GyemSystem implements G {
 	private JFrame frame;
 
 	public Object g() throws Exception {
-		if(moduleF(M029_F_PROP_BOOL_DF).f(PROP_APP_MAINGUI_DISABLED)) return null;
 		if(frame==null) init();
 		return frame;
 	}
-	
 	
 	private void init() throws Exception {
 		frame = new JFrame();

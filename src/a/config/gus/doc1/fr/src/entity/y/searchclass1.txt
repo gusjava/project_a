@@ -1,0 +1,9 @@
+@description
+Description du système gus.y.searchclass1
+
+gus.y.searchclass1.find
+gus.y.searchclass1.find.preferred
+@infos
+state=GENERATED
+entry=
+tags=

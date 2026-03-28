@@ -1,0 +1,8 @@
+@description
+Description du système gus.y.dbviewer1
+
+gus.y.dbviewer1.gui1
+@infos
+state=GENERATED
+entry=
+tags=

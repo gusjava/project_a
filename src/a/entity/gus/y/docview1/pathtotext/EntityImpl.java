@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 	private Service inputStreamToText;
 
 	public EntityImpl() throws Exception {
-		pathToInputStream = Outside.service(this, "m011_read_inputstream");
+		pathToInputStream = Outside.service(this, "readinputstream");
 		inputStreamToText = Outside.service(this, "gus.x.io.build.string");
 	}
 	

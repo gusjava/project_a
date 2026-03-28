@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, G {
 	private Service provider;
 
 	public EntityImpl() throws Exception {
-		provider = Outside.service(this, "gus.b.paths1.provider.main");
+		provider = Outside.service(this, "gus.y.paths1.provider.main");
 	}
 
 	public Object g() throws Exception {

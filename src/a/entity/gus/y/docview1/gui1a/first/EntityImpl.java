@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, P, I {
 	private Service gui1;
 
 	public EntityImpl() throws Exception {
-		pathToInputStream = Outside.service(this, "m011_read_inputstream");
+		pathToInputStream = Outside.service(this, "readinputstream");
 		inputStreamToText = Outside.service(this, "gus.x.io.build.string");
 		gui1 = Outside.service(this, "*gus.y.docview1.gui1.first");
 	}

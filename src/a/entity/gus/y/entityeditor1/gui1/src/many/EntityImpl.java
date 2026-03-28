@@ -51,7 +51,7 @@ public class EntityImpl implements Entity, P, I, ListSelectionListener, ActionLi
 	public static final Color COLOR_SELECT = new Color(244, 244, 244);
 	public static final Color COLOR_UNSELECT = Color.WHITE;
 
-	public static final String ERR_COL_FILENAME = "filename";
+	public static final String COL_FILE_NAME = "file_name";
 
 	private Service actionBuilder;
 	private Service toolbarFactory;
@@ -351,16 +351,16 @@ public class EntityImpl implements Entity, P, I, ListSelectionListener, ActionLi
 		}
 	}
 	
-	private int getErrorNumber(String fileName0 ) {
+	private int getErrorNumber(String fileName0) {
 		try {
 			File javaFile = (File) map.get(fileName0);
 			String fileName = javaFile.getName();
 			
-			List errors = (List) ((R) data).r("errors");
+			List errors = (List) ((R) data).r("compileErrList");
 			int nb = 0;
 			for (int i = 0; i < errors.size(); i++) {
 				Map err = (Map) errors.get(i);
-				String errFileName = (String) err.get(ERR_COL_FILENAME);
+				String errFileName = (String) err.get(COL_FILE_NAME);
 				if (errFileName.equals(fileName)) nb++;
 			}
 			return nb;

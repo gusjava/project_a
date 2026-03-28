@@ -1,0 +1,7 @@
+@description
+Description de l'entité gus.x.swing.list.selection.buildsupport
+
+@infos
+state=GENERATED
+sign=
+tags=

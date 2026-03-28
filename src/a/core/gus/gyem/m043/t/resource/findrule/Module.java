@@ -14,13 +14,13 @@ public class Module extends GyemSystem implements T {
 		Entity entity = (Entity) call[0];
 		String id =  (String) call[1];
 
-		String entityName = (String) moduleT(M041_T_ENTITY_FINDNAME).t(entity);
+		String entityName = (String) moduleT(M042_T_ENTITY_FINDNAME).t(entity);
 
 		if(id==null) throw new Exception("Invalid call from entity ["+entityName+"]: null id");
 		if(id.equals("")) throw new Exception("Invalid call from entity ["+entityName+"]: empty id");
 		
 		Map mapping = (Map) moduleG(M048_G_MAPPING).g();
-		String rule = (String) moduleT(M043_T_RESOURCE_FINDRULE1).t(new Object[]{mapping, entityName, id});
+		String rule = (String) moduleT(M044_T_RESOURCE_FINDRULE1).t(new Object[]{mapping, entityName, id});
 		
 		if(mapping.containsKey(rule)) rule = (String) mapping.get(rule);
 		

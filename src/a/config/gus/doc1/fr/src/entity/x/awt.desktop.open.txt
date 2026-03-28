@@ -1,0 +1,7 @@
+@description
+Description de l'entité gus.x.awt.desktop.open
+
+@infos
+state=GENERATED
+sign=
+tags=

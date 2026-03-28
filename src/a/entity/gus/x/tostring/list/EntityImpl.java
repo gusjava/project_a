@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, T {
 		for (int i = 0; i < list.size(); i++) {
 			String el = (String) list.get(i);
 			if (el.contains("\n"))
-				throw new Exception("Invalid element syntax: " + el);
+				throw new Exception("Invalid element: " + el);
 			b.append(el + "\n");
 		}
 		if (b.length() > 0)

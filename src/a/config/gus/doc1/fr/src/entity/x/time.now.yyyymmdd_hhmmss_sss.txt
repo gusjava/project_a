@@ -1,0 +1,7 @@
+@description
+Description de l'entité gus.x.time.now.yyyymmdd_hhmmss_sss
+
+@infos
+state=GENERATED
+sign=
+tags=

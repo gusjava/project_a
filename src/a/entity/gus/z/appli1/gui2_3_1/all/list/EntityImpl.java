@@ -39,13 +39,15 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	
 	public static final Color FG_VALID = Color.BLACK;
 	public static final Color FG_COMPILE_ERR = Color.RED;
-	public static final Color FG_XYZ_ERR = new Color(204,0,255);
+	public static final Color FG_XYZ_ERR = new Color(204,0,255); //violet
 	public static final Color FG_MISSING_LINK = Color.ORANGE;
+	public static final Color FG_SRC_SAVE = Color.BLUE;
 
 	// z
 	private Service engine;
 	private Service buildDataFull;
 	private Service buildDataFiltered;
+	
 	// y
 	private Service buildAction;
 	private Service fieldHolder;
@@ -55,6 +57,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Service entityDuplicate;
 	private Service persistField;
 	private Service persistSet;
+	
 	// x
 	private Service tableTooltip;
 	private Service linkerListField;
@@ -64,6 +67,16 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Service clipboard;
 	private Service listToString;
 	private Service stringToList;
+	
+	// resources
+	private Icon iconEntity;
+	private Icon iconEntityLock;
+	private Icon iconLocked;
+	private Icon iconCompileErr;
+	private Icon iconXyzErr;
+	private Icon iconMissingLink;
+	private Icon iconSrcSave;
+	
 	
 	private JPanel panel;
 	private JScrollPane scroll;
@@ -77,14 +90,8 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private JLabel labelNumberCompileErr;
 	private JLabel labelNumberXyzErr;
 	private JLabel labelNumberMissingLink;
+	private JLabel labelNumberSrcSave;
 
-	private Icon iconEntity;
-	private Icon iconEntityLock;
-	
-	private Icon iconLocked;
-	private Icon iconCompileErr;
-	private Icon iconXyzErr;
-	private Icon iconMissingLink;
 
 	private Action actionCreate;
 	private Action actionDelete;
@@ -96,10 +103,12 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private S1 selectionSup;
 
 	public EntityImpl() throws Exception {
+		//z
 		engine = Outside.service(this, "gus.z.appli1.gui2_3_1.all.engine");
 		buildDataFull = Outside.service(this, "gus.z.appli1.gui2_3_1.all.list.datafull");
 		buildDataFiltered = Outside.service(this, "gus.z.appli1.gui2_3_1.all.list.datafiltered");
-
+		
+		// y
 		buildAction = Outside.service(this, "gus.y.swing1.action.builder1");
 		fieldHolder = Outside.service(this, "*gus.y.swing1.textfield.editor1");
 		entityDelete = Outside.service(this,"gus.y.entitysys1.perform.entity.delete.ask");
@@ -109,6 +118,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		persistField = Outside.service(this, "gus.y.persist1.swing.textcomp");
 		persistSet = Outside.service(this, "gus.y.persist1.set.string");
 		
+		// x
 		tableTooltip = Outside.service(this, "gus.x.swing.table.cust.tooltip1");
 		linkerListField = Outside.service(this, "gus.x.swing.table.textfield.linker");
 		toolbarFactory = Outside.service(this, "gus.x.swing.toolbar.factory1");
@@ -118,12 +128,14 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		listToString = Outside.service(this,"gus.x.list.join.n.string");
 		stringToList = Outside.service(this,"gus.x.string.split.n.list");
 		
+		// resources
 		iconEntity = (Icon) Outside.resource(this, "icon#ELEMENT_entity");
 		iconEntityLock = (Icon) Outside.resource(this, "icon#ELEMENT_entity_lock");
 		iconLocked = (Icon) Outside.resource(this, "icon#UTIL_lockR");
 		iconCompileErr = (Icon) Outside.resource(this, "icon#UTIL_compileErr");
 		iconXyzErr = (Icon) Outside.resource(this, "icon#UTIL_xyzErr");
 		iconMissingLink = (Icon) Outside.resource(this, "icon#UTIL_missingLink");
+		iconSrcSave = (Icon) Outside.resource(this, "icon#UTIL_saveSrc");
 
 		actionCreate = (Action) buildAction.t(new Object[] { DISPLAY_CREATE, (E) this::f1_entityCreate });
 		actionDelete = (Action) buildAction.t(new Object[] { DISPLAY_DELETE, (E) this::del_entityDelete });
@@ -136,10 +148,17 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		labelNumberCompileErr = new JLabel(" ");
 		labelNumberXyzErr = new JLabel(" ");
 		labelNumberMissingLink = new JLabel(" ");
+		labelNumberSrcSave = new JLabel(" ");
 		
 		labelNumberCompileErr.setForeground(FG_COMPILE_ERR);
 		labelNumberXyzErr.setForeground(FG_XYZ_ERR);
 		labelNumberMissingLink.setForeground(FG_MISSING_LINK);
+		labelNumberSrcSave.setForeground(FG_SRC_SAVE);
+		
+		labelNumberCompileErr.setToolTipText("Compile errors");
+		labelNumberXyzErr.setToolTipText("XYZ errors");
+		labelNumberMissingLink.setToolTipText("Missing links");
+		labelNumberSrcSave.setToolTipText("Pending saves");
 
 		bar = (JToolBar) toolbarFactory.i();
 
@@ -199,8 +218,9 @@ public class EntityImpl extends S1 implements Entity, G, I {
 
 		JPanel bottomPanel1 = wc(labelNumberCompileErr, labelNumberXyzErr);
 		JPanel bottomPanel2 = wc(labelNumberMissingLink, bottomPanel1);
-		JPanel bottomPanel3 = wc(labelNumberLocked, bottomPanel2);
-		JPanel bottomPanel = wce(labelNumber, bottomPanel3, bar);
+		JPanel bottomPanel3 = wc(labelNumberSrcSave, bottomPanel2);
+		JPanel bottomPanel4 = wc(labelNumberLocked, bottomPanel3);
+		JPanel bottomPanel = wce(labelNumber, bottomPanel4, bar);
 
 		panel = new JPanel(new BorderLayout());
 		panel.add(field, BorderLayout.NORTH);
@@ -250,6 +270,10 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		return (Map) engine.r("missingLinkMap");
 	}
 
+	private Map srcSaveMap() throws Exception {
+		return (Map) engine.r("srcSaveMap");
+	}
+
 	private Set lockSet() throws Exception {
 		return (Set) engine.r("lockSet");
 	}
@@ -293,6 +317,10 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		try {
 			if (s.equals("locked()")) refresh();
 			else if (s.equals("unlocked()")) refresh();
+			
+			else if (s.equals("srcSaved()")) refresh();
+			else if (s.equals("srcCleared()")) refresh();
+			
 			else if (s.equals("selected()")) select();
 
 			else if (s.equals("loaded()")) rebuild();
@@ -486,6 +514,13 @@ public class EntityImpl extends S1 implements Entity, G, I {
 			setIcon(column == 0 ? getEntityIcon(s) : null);
 			String entityName = (String) table.getValueAt(row, 0);
 			
+			List srcSaveList = getSrcSaveList(entityName);
+			if(srcSaveList!=null) {
+				setForeground(FG_SRC_SAVE);
+				setText(column == 0 ? s + " (" + srcSaveList.size() + ")" : " "+s);
+				return this;
+			}
+			
 			List compileErrList = getCompileErrList(entityName);
 			if(compileErrList!=null) {
 				setForeground(FG_COMPILE_ERR);
@@ -560,8 +595,9 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		refreshActions();
 		refreshLabelNumberLocked();
 		refreshLabelNumberCompileErr();
-		refreshLabelNumberMissingLink();
 		refreshLabelNumberXyzErr();
+		refreshLabelNumberMissingLink();
+		refreshLabelNumberSrcSave();
 	}
 
 	/*
@@ -609,6 +645,17 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		}
 		return null;
 	}
+	
+	private List getSrcSaveList(String entityName) {
+		try {
+			Map m = srcSaveMap();
+			if (m == null || !m.containsKey(entityName)) return null;
+			return (List) m.get(entityName);
+		} catch (Exception e) {
+			Outside.err(this, "getSrcSaveList(String)", e);
+		}
+		return null;
+	}
 
 	private Color getEntityBackground(boolean isSelected) {
 		return isSelected ? BG_SELECTED : BG_UNSELECTED;
@@ -631,10 +678,6 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		panel.add(c, BorderLayout.CENTER);
 		panel.add(e, BorderLayout.EAST);
 		return panel;
-	}
-	
-	private Object get(Map m, String key) {
-		return m.containsKey(key)?m.get(key):null;
 	}
 
 	private String getNameAt(int row) {
@@ -752,6 +795,17 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		} else {
 			labelNumberMissingLink.setIcon(iconMissingLink);
 			labelNumberMissingLink.setText(m.size()+" ");
+		}
+	}
+
+	private void refreshLabelNumberSrcSave() throws Exception {
+		Map m = srcSaveMap();
+		if (m == null || m.isEmpty()) {
+			labelNumberSrcSave.setIcon(null);
+			labelNumberSrcSave.setText(" ");
+		} else {
+			labelNumberSrcSave.setIcon(iconSrcSave);
+			labelNumberSrcSave.setText(m.size()+" ");
 		}
 	}
 

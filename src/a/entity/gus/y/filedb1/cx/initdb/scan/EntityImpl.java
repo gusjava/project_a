@@ -13,6 +13,7 @@ public class EntityImpl implements Entity, P {
 
 	public static final String COL_ROOT_ID = "root_id";
 	public static final String COL_TIME = "time";
+	public static final String COL_MODULES = "modules";
 	public static final String COL_DURATION = "duration";
 	public static final String COL_RESULT = "result";
 	public static final String COL_EXCEPTION = "exception";
@@ -21,6 +22,7 @@ public class EntityImpl implements Entity, P {
 
 	public static final String DEF_ROOT_ID = "BIGINT(20) NOT NULL";
 	public static final String DEF_TIME = "DATETIME NOT NULL";
+	public static final String DEF_MODULES = "VARCHAR(10) NULL";
 	public static final String DEF_DURATION = "BIGINT(20) NULL";
 	public static final String DEF_RESULT = "VARCHAR(10) NULL";
 	public static final String DEF_EXCEPTION = "VARCHAR(2000) NULL";
@@ -35,6 +37,7 @@ public class EntityImpl implements Entity, P {
 		String sql = "CREATE TABLE "+TABLENAME+" ("
 				+COL_ROOT_ID+" "+DEF_ROOT_ID+", "
 				+COL_TIME+" "+DEF_TIME+", "
+				+COL_MODULES+" "+DEF_MODULES+", "
 				+COL_DURATION+" "+DEF_DURATION+", "
 				+COL_RESULT+" "+DEF_RESULT+", "
 				+COL_EXCEPTION+" "+DEF_EXCEPTION+", "

@@ -15,8 +15,8 @@ public class EntityImpl implements Entity, T {
 	private String[] commonConfigIds;
 
 	public EntityImpl() throws Exception {
-		getConfigRoot = Outside.service(this, "m006_configroot");
-		pathToInputStream = Outside.service(this, "m011_read_inputstream");
+		getConfigRoot = Outside.service(this, "configroot");
+		pathToInputStream = Outside.service(this, "readinputstream");
 		
 		String commonConfigVal = (String) Outside.resource(this, "prop#configid.common");
 		commonConfigIds = commonConfigVal!=null ? commonConfigVal.split(";") : new String[0];

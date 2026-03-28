@@ -30,7 +30,6 @@ public class Module extends GyemSystem implements I {
 		StringBuffer b = new StringBuffer();
 		
 		Map prop = (Map) moduleG(M003_G_PROP).g();
-		Map prop0 = (Map) moduleG(M004_G_CONFIG_PROP).g();
 		String config = (String) moduleG(M007_G_CONFIG_ID).g();
 		
 		b.append("core name = "+CORE_NAME+"\n");

@@ -1,0 +1,9 @@
+@description
+Description du système gus.y.tmpfile1
+
+gus.y.tmpfile1.inputstreamtofile
+gus.y.tmpfile1.newfile
+@infos
+state=GENERATED
+entry=
+tags=

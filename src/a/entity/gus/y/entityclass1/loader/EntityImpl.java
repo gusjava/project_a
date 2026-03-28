@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, T {
 	private Service findCl;
 
 	public EntityImpl() throws Exception {
-		nameToPath = Outside.service(this, "m019_nametopath");
+		nameToPath = Outside.service(this, "nametopath");
 		findCl = Outside.service(this, "gus.y.entityclass1.cl.find");
 	}
 

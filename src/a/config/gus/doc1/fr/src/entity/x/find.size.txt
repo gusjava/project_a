@@ -1,0 +1,7 @@
+@description
+Description de l'entité gus.x.find.size
+
+@infos
+state=GENERATED
+sign=
+tags=

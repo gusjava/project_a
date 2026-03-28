@@ -1,0 +1,21 @@
+@description
+Description du système gus.y.quickreplace1
+
+gus.y.quickreplace1.buildexp
+gus.y.quickreplace1.highlight.clear
+gus.y.quickreplace1.holder.build
+gus.y.quickreplace1.holder.find
+gus.y.quickreplace1.holder.find.label
+gus.y.quickreplace1.perform
+gus.y.quickreplace1.t1
+gus.y.quickreplace1.t1.action.ctrl_w
+gus.y.quickreplace1.t1.byposition
+gus.y.quickreplace1.t1.byregex
+gus.y.quickreplace1.t2
+gus.y.quickreplace1.t2.action.ctrl_shift_w
+gus.y.quickreplace1.t2.byposition
+gus.y.quickreplace1.t2.byregex
+@infos
+state=GENERATED
+entry=
+tags=

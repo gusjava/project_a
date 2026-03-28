@@ -73,7 +73,7 @@ Des implémentations "tampon" de cette interface sont transmises par le noyau aux
 C'est par ce biais que les entités peuvent s'appeler les unes les autres.
 
 @006 - Outside
-La class Outside permet de rendre accessible aux entités les méthodes de l'interface Manager. Il s'agit de l'unique moyen pour une entité d'accéder au noyau mais aussi aux autres entités.
+La classe Outside permet de rendre accessible aux entités les méthodes de l'interface Manager. Il s'agit de l'unique moyen pour une entité d'accéder au noyau mais aussi aux autres entités.
 
 Les méthodes statiques proposées par Outside sont les suivantes :
 
@@ -82,7 +82,7 @@ public static Object resource(Entity entity, String id) throws Exception
 public static void err(Entity entity, String id, Exception e)
 
 @007 - S1
-La class S1 est l'implémentation par défaut de l'interface S. Les entités qui en héritent peuvent ainsi envoyer des "évènements" qui seront écoutés par d'autres entités grâce à l'interface ActionListener (reprenant le "delegation event model" utilisé notamment dans l'API Swing de Java).
+La classe S1 est l'implémentation par défaut de l'interface S. Les entités qui en héritent peuvent ainsi envoyer des "évènements" qui seront écoutés par d'autres entités grâce à l'interface ActionListener (reprenant le "delegation event model" utilisé notamment dans l'API Swing de Java).
 
 Elle propose la méthode suivante pour envoyer un évènement :
 public void send(Object source, String id)

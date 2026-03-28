@@ -1,0 +1,11 @@
+@description
+Description du système gus.y.clipboard1
+
+gus.y.clipboard1.file
+gus.y.clipboard1.files
+gus.y.clipboard1.string.or.file
+gus.y.clipboard1.string.or.filepaths
+@infos
+state=GENERATED
+entry=
+tags=

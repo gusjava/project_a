@@ -15,8 +15,8 @@ public class EntityImpl implements Entity, T {
 	private Service pathToInputStream;
 
 	public EntityImpl() throws Exception {
-		getConfigRoot = Outside.service(this, "m006_configroot");
-		pathToInputStream = Outside.service(this, "m011_read_inputstream");
+		getConfigRoot = Outside.service(this, "configroot");
+		pathToInputStream = Outside.service(this, "readinputstream");
 	}
 
 	public Object t(Object obj) throws Exception {

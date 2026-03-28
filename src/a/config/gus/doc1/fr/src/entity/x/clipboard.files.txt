@@ -1,0 +1,7 @@
+@description
+Description de l'entité gus.x.clipboard.files
+
+@infos
+state=GENERATED
+sign=
+tags=

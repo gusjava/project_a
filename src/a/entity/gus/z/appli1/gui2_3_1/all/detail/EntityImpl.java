@@ -30,17 +30,4 @@ public class EntityImpl implements Entity, P, I {
 		entityName = (String) obj;
 		editor.p(new Object[] {engine, entityName});
 	}
-	
-//	public void actionPerformed(ActionEvent e) {
-//		refresh();
-//	}
-//	
-//	private void refresh() {
-//		try {
-//			editor.e();
-//		}
-//		catch(Exception e) {
-//			Outside.err(this, "refresh()", e);
-//		}
-//	}
 }

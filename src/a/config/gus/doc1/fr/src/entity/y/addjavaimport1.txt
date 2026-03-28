@@ -1,0 +1,17 @@
+@description
+Description du système gus.y.addjavaimport1
+
+gus.y.addjavaimport1.action.f2
+gus.y.addjavaimport1.caret.word.find
+gus.y.addjavaimport1.caret.word.range
+gus.y.addjavaimport1.caret.word.replace
+gus.y.addjavaimport1.extract.imports1
+gus.y.addjavaimport1.handle
+gus.y.addjavaimport1.lastimport.lineindex
+gus.y.addjavaimport1.perform
+gus.y.addjavaimport1.searchclass
+gus.y.addjavaimport1.searchclass.preferred
+@infos
+state=GENERATED
+entry=
+tags=

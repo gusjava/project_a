@@ -38,12 +38,12 @@ public class EntityImpl implements Entity, T {
 		return filterList.t(new Object[] { dataFull, search, devId, lockSet, errorSet });
 	}
 
-	private Map errorMap(R engine) throws Exception {
-		return (Map) engine.r("errorMap");
+	private Map compileErrMap(R engine) throws Exception {
+		return (Map) engine.r("compileErrMap");
 	}
 
 	private Set errorSet(R engine) throws Exception {
-		Map m = errorMap(engine);
+		Map m = compileErrMap(engine);
 		return m != null ? m.keySet() : null;
 	}
 

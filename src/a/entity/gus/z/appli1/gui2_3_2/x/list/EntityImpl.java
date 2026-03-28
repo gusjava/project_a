@@ -42,13 +42,18 @@ public class EntityImpl extends S1 implements Entity, G, I {
 
 	public static final Color BG_SELECTED = new Color(244, 244, 244);
 	public static final Color BG_UNSELECTED = Color.WHITE;
-	public static final Color FG_COMPILED = Color.BLACK;
-	public static final Color FG_UNCOMPILED = Color.RED;
+	
+	public static final Color FG_VALID = Color.BLACK;
+	public static final Color FG_COMPILE_ERR = Color.RED;
+	public static final Color FG_XYZ_ERR = new Color(204,0,255); //violet
+	public static final Color FG_MISSING_LINK = Color.ORANGE;
+	public static final Color FG_SRC_SAVE = Color.BLUE;
 
 	// z
 	private Service engine;
 	private Service buildDataFull;
 	private Service buildDataFiltered;
+	
 	// y
 	private Service buildAction;
 	private Service fieldHolder;
@@ -56,6 +61,9 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Service entityCreate;
 	private Service entityRename;
 	private Service entityDuplicate;
+	private Service persistField;
+	private Service persistSet;
+	
 	// x
 	private Service tableTooltip;
 	private Service linkerListField;
@@ -66,20 +74,30 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Service listToString;
 	private Service stringToList;
 
+	// resources
+	private Icon iconEntity;
+	private Icon iconEntityLock;
+	private Icon iconLocked;
+	private Icon iconCompileErr;
+	private Icon iconXyzErr;
+	private Icon iconMissingLink;
+	private Icon iconSrcSave;
+
+
 	private JPanel panel;
 	private JScrollPane scroll;
 	private JTable table;
 	private TableModel0 model;
 	private JComponent field;
+	private JToolBar bar;
+	
 	private JLabel labelNumber;
 	private JLabel labelNumberLocked;
-	private JLabel labelNumberError;
-	private JToolBar bar;
+	private JLabel labelNumberCompileErr;
+	private JLabel labelNumberXyzErr;
+	private JLabel labelNumberMissingLink;
+	private JLabel labelNumberSrcSave;
 
-	private Icon iconEntity;
-	private Icon iconEntityLock;
-	private Icon iconLock;
-	private Icon iconErr;
 
 	private Action actionCreate;
 	private Action actionDelete;
@@ -91,17 +109,22 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private S1 selectionSup;
 
 	public EntityImpl() throws Exception {
+		//z
 		engine = Outside.service(this, "gus.z.appli1.gui2_3_2.x.engine");
 		buildDataFull = Outside.service(this, "gus.z.appli1.gui2_3_2.x.list.datafull");
 		buildDataFiltered = Outside.service(this, "gus.z.appli1.gui2_3_2.x.list.datafiltered");
 
+		// y
 		buildAction = Outside.service(this, "gus.y.swing1.action.builder1");
 		fieldHolder = Outside.service(this, "*gus.y.swing1.textfield.editor1");
 		entityDelete = Outside.service(this,"gus.y.entitysys1.perform.entity.delete.ask");
 		entityCreate = Outside.service(this,"gus.y.entitysys1.perform.entity.create.ask");
 		entityRename = Outside.service(this,"gus.y.entitysys1.perform.entity.rename.ask");
 		entityDuplicate = Outside.service(this,"gus.y.entitysys1.perform.entity.duplicate.ask");
-
+		persistField = Outside.service(this, "gus.y.persist1.swing.textcomp");
+		persistSet = Outside.service(this, "gus.y.persist1.set.string");
+		
+		// x
 		tableTooltip = Outside.service(this, "gus.x.swing.table.cust.tooltip1");
 		linkerListField = Outside.service(this, "gus.x.swing.table.textfield.linker");
 		toolbarFactory = Outside.service(this, "gus.x.swing.toolbar.factory1");
@@ -111,10 +134,14 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		listToString = Outside.service(this,"gus.x.list.join.n.string");
 		stringToList = Outside.service(this,"gus.x.string.split.n.list");
 		
+		// resources
 		iconEntity = (Icon) Outside.resource(this, "icon#ELEMENT_entity");
 		iconEntityLock = (Icon) Outside.resource(this, "icon#ELEMENT_entity_lock");
-		iconLock = (Icon) Outside.resource(this, "icon#UTIL_lockR");
-		iconErr = (Icon) Outside.resource(this, "icon#UTIL_errorR");
+		iconLocked = (Icon) Outside.resource(this, "icon#UTIL_lockR");
+		iconCompileErr = (Icon) Outside.resource(this, "icon#UTIL_compileErr");
+		iconXyzErr = (Icon) Outside.resource(this, "icon#UTIL_xyzErr");
+		iconMissingLink = (Icon) Outside.resource(this, "icon#UTIL_missingLink");
+		iconSrcSave = (Icon) Outside.resource(this, "icon#UTIL_saveSrc");
 
 		actionCreate = (Action) buildAction.t(new Object[] { DISPLAY_CREATE, (E) this::f1_entityCreate });
 		actionDelete = (Action) buildAction.t(new Object[] { DISPLAY_DELETE, (E) this::del_entityDelete });
@@ -123,33 +150,41 @@ public class EntityImpl extends S1 implements Entity, G, I {
 
 		labelNumber = new JLabel(" ");
 		labelNumberLocked = new JLabel(" ");
-		labelNumberError = new JLabel(" ");
+		
+		labelNumberCompileErr = new JLabel(" ");
+		labelNumberXyzErr = new JLabel(" ");
+		labelNumberMissingLink = new JLabel(" ");
+		labelNumberSrcSave = new JLabel(" ");
+		
+		labelNumberCompileErr.setForeground(FG_COMPILE_ERR);
+		labelNumberXyzErr.setForeground(FG_XYZ_ERR);
+		labelNumberMissingLink.setForeground(FG_MISSING_LINK);
+		labelNumberSrcSave.setForeground(FG_SRC_SAVE);
+		
+		labelNumberCompileErr.setToolTipText("Compile errors");
+		labelNumberXyzErr.setToolTipText("XYZ errors");
+		labelNumberMissingLink.setToolTipText("Missing links");
+		labelNumberSrcSave.setToolTipText("Pending saves");
 
 		bar = (JToolBar) toolbarFactory.i();
 
 		bar.add(actionCreate);
+		bar.add(actionDuplicate);
 		bar.add(actionDelete);
 		bar.add(actionRename);
-		bar.add(actionDuplicate);
 
 		field = (JComponent) fieldHolder.i();
 		field.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				int code = e.getKeyCode();
 				if (e.isControlDown()) {
-					if (code == KeyEvent.VK_Q)
-						ctrl_q_lockAll();
-					else if (code == KeyEvent.VK_W)
-						ctrl_w_unlockAll();
+					if (code == KeyEvent.VK_Q) ctrl_q_lockAll();
+					else if (code == KeyEvent.VK_W) ctrl_w_unlockAll();
 				} else {
-					if (code == KeyEvent.VK_F1)
-						f1_entityCreate();
-					else if (code == KeyEvent.VK_F2)
-						f2_entityRename();
-					else if (code == KeyEvent.VK_F3)
-						f3_entityDuplicate();
-					else if (code == KeyEvent.VK_F5)
-						f5_forceReload();
+					if (code == KeyEvent.VK_F1) f1_entityCreate();
+					else if (code == KeyEvent.VK_F2) f2_entityRename();
+					else if (code == KeyEvent.VK_F3) f3_entityDuplicate();
+					else if (code == KeyEvent.VK_F5) f5_forceReload();
 				}
 			}
 		});
@@ -166,25 +201,16 @@ public class EntityImpl extends S1 implements Entity, G, I {
 			public void keyPressed(KeyEvent e) {
 				int code = e.getKeyCode();
 				if (e.isControlDown()) {
-					if (code == KeyEvent.VK_Q)
-						ctrl_q_lockSelected();
-					else if (code == KeyEvent.VK_W)
-						ctrl_w_unlockSelected();
-					else if (code == KeyEvent.VK_C)
-						ctrl_c_copySelection();
-					else if (code == KeyEvent.VK_V)
-						ctrl_v_pasteSelection();
+					if (code == KeyEvent.VK_Q) ctrl_q_lockSelected();
+					else if (code == KeyEvent.VK_W) ctrl_w_unlockSelected();
+					else if (code == KeyEvent.VK_C) ctrl_c_copySelection();
+					else if (code == KeyEvent.VK_V) ctrl_v_pasteSelection();
 				} else {
-					if (code == KeyEvent.VK_DELETE)
-						del_entityDelete();
-					else if (code == KeyEvent.VK_F1)
-						f1_entityCreate();
-					else if (code == KeyEvent.VK_F2)
-						f2_entityRename();
-					else if (code == KeyEvent.VK_F3)
-						f3_entityDuplicate();
-					else if (code == KeyEvent.VK_F5)
-						f5_forceReload();
+					if (code == KeyEvent.VK_DELETE) del_entityDelete();
+					else if (code == KeyEvent.VK_F1) f1_entityCreate();
+					else if (code == KeyEvent.VK_F2) f2_entityRename();
+					else if (code == KeyEvent.VK_F3) f3_entityDuplicate();
+					else if (code == KeyEvent.VK_F5) f5_forceReload();
 				}
 			}
 		});
@@ -196,7 +222,11 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		scroll.getViewport().setBackground(Color.WHITE);
 		scroll.getViewport().setOpaque(true);
 
-		JPanel bottomPanel = wce(labelNumber, wc(labelNumberLocked, labelNumberError), bar);
+		JPanel bottomPanel1 = wc(labelNumberCompileErr, labelNumberXyzErr);
+		JPanel bottomPanel2 = wc(labelNumberMissingLink, bottomPanel1);
+		JPanel bottomPanel3 = wc(labelNumberSrcSave, bottomPanel2);
+		JPanel bottomPanel4 = wc(labelNumberLocked, bottomPanel3);
+		JPanel bottomPanel = wce(labelNumber, bottomPanel4, bar);
 
 		panel = new JPanel(new BorderLayout());
 		panel.add(field, BorderLayout.NORTH);
@@ -213,6 +243,8 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		fieldHolder.addActionListener(e -> handleInputEdition());
 		engine.addActionListener(e -> handleEngineEvent(e.getActionCommand()));
 
+		persistField.v(getClass().getName() + "_field", field);
+		persistSet.v(getClass().getName() + "_lockSet", lockSet());
 		rebuild();
 	}
 	
@@ -232,8 +264,20 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	 * ENGINE DATA ACCESS
 	 */
 
-	private Map errorMap() throws Exception {
-		return (Map) engine.r("errorMap");
+	private Map compileErrMap() throws Exception {
+		return (Map) engine.r("compileErrMap");
+	}
+
+	private Map xyzErrMap() throws Exception {
+		return (Map) engine.r("xyzErrMap");
+	}
+
+	private Map missingLinkMap() throws Exception {
+		return (Map) engine.r("missingLinkMap");
+	}
+
+	private Map srcSaveMap() throws Exception {
+		return (Map) engine.r("srcSaveMap");
 	}
 
 	private Set lockSet() throws Exception {
@@ -277,25 +321,20 @@ public class EntityImpl extends S1 implements Entity, G, I {
 
 	private void handleEngineEvent(String s) {
 		try {
-			if (s.equals("locked()"))
-				refresh();
-			else if (s.equals("unlocked()"))
-				refresh();
-			else if (s.equals("selected()"))
-				select();
+			if (s.equals("locked()")) refresh();
+			else if (s.equals("unlocked()")) refresh();
+			
+			else if (s.equals("srcSaved()")) refresh();
+			else if (s.equals("srcCleared()")) refresh();
+			
+			else if (s.equals("selected()")) select();
 
-			else if (s.equals("loaded()"))
-				rebuild();
-			else if (s.equals("entityAdded()"))
-				handleEntityAdded();
-			else if (s.equals("entityRenamed()"))
-				handleEntityRenamed();
-			else if (s.equals("entityDuplicated()"))
-				handleEntityDuplicated();
-			else if (s.equals("entityDeleted()"))
-				handleEntityDeleted();
-			else if (s.equals("entityModified()"))
-				rebuild();
+			else if (s.equals("loaded()")) rebuild();
+			else if (s.equals("entityAdded()")) handleEntityAdded();
+			else if (s.equals("entityRenamed()")) handleEntityRenamed();
+			else if (s.equals("entityDuplicated()")) handleEntityDuplicated();
+			else if (s.equals("entityDeleted()")) handleEntityDeleted();
+			else if (s.equals("entityModified()")) rebuild();
 		} catch (Exception e) {
 			Outside.err(this, "handleEngineEvent(String)", e);
 		}
@@ -445,12 +484,9 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		}
 
 		public String getColumnName(int y) {
-			if (y == 0)
-				return "Entity name";
-			if (y == 1)
-				return "Features";
-			if (y == 2)
-				return "N";
+			if (y == 0) return "Entity name";
+			if (y == 1) return "Features";
+			if (y == 2) return "N";
 			return "";
 		}
 
@@ -459,10 +495,8 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		}
 
 		public Object getValueAt(int x, int y) {
-			if (dataFiltered == null)
-				return null;
-			if (dataFiltered.size() <= x)
-				return null;
+			if (dataFiltered == null) return null;
+			if (dataFiltered.size() <= x) return null;
 			String[] infos = (String[]) dataFiltered.get(x);
 			return infos[y];
 		}
@@ -482,19 +516,40 @@ public class EntityImpl extends S1 implements Entity, G, I {
 				int row, int column) {
 			String s = (String) value;
 
-			String entityName = (String) table.getValueAt(row, 0);
-			int errNumber = getErrorNumber(entityName);
-
-			if (column == 0) {
-				setIcon(getEntityIcon(s));
-				setText(errNumber > 0 ? s + " (" + errNumber + ")" : s);
-			} else {
-				setIcon(null);
-				setText(" " + s);
-			}
-
 			setBackground(getEntityBackground(isSelected));
-			setForeground(getEntityForeground(entityName));
+			setIcon(column == 0 ? getEntityIcon(s) : null);
+			String entityName = (String) table.getValueAt(row, 0);
+			
+			List srcSaveList = getSrcSaveList(entityName);
+			if(srcSaveList!=null) {
+				setForeground(FG_SRC_SAVE);
+				setText(column == 0 ? s + " (" + srcSaveList.size() + ")" : " "+s);
+				return this;
+			}
+			
+			List compileErrList = getCompileErrList(entityName);
+			if(compileErrList!=null) {
+				setForeground(FG_COMPILE_ERR);
+				setText(column == 0 ? s + " (" + compileErrList.size() + ")" : " "+s);
+				return this;
+			}
+			
+			List missingLinkList = getMissingLinkList(entityName);
+			if(missingLinkList!=null) {
+				setForeground(FG_MISSING_LINK);
+				setText(column == 0 ? s + " (" + missingLinkList.size() + ")" : " "+s);
+				return this;
+			}
+			
+			List xyzErrList = getXyzErrList(entityName);
+			if(xyzErrList!=null) {
+				setForeground(FG_XYZ_ERR);
+				setText(column == 0 ? s + " (" + xyzErrList.size() + ")" : " "+s);
+				return this;
+			}
+			
+			setForeground(FG_VALID);
+			setText(column == 0 ? s : " "+s);
 			return this;
 		}
 	}
@@ -513,13 +568,11 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	}
 
 	private void rebuild() throws Exception {
-//		System.out.println("x:rebuild");
 		dataFull = (List) buildDataFull.t(engine);
 		refresh();
 	}
 	
 	private void rebuild(String newSelection) throws Exception {
-//		System.out.println("x:rebuild and select "+newSelection);
 		dataFull = (List) buildDataFull.t(engine);
 		refresh(newSelection);
 	}
@@ -543,12 +596,14 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		setSelection(newSelection);
 		selectionSup.setActivated(true);
 
-		if(selectionChange)
-			selectionChanged();
+		if(selectionChange) selectionChanged();
 
-		refreshLabelNumberLocked();
 		refreshActions();
-		refreshLabelNumberError();
+		refreshLabelNumberLocked();
+		refreshLabelNumberCompileErr();
+		refreshLabelNumberXyzErr();
+		refreshLabelNumberMissingLink();
+		refreshLabelNumberSrcSave();
 	}
 
 	/*
@@ -564,28 +619,48 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	 * ERROR
 	 */
 
-	private int getErrorNumber(String entityName) {
+	private List getCompileErrList(String entityName) {
 		try {
-			Map errorMap = errorMap();
-			if (errorMap == null || !errorMap.containsKey(entityName))
-				return 0;
-			return ((List) errorMap.get(entityName)).size();
+			Map m = compileErrMap();
+			if (m == null || !m.containsKey(entityName)) return null;
+			return (List) m.get(entityName);
 		} catch (Exception e) {
-			Outside.err(this, "getErrorNumber(String)", e);
+			Outside.err(this, "getCompileErrList(String)", e);
 		}
-		return 0;
+		return null;
 	}
-
-	private Color getEntityForeground(String entityName) {
+	
+	private List getXyzErrList(String entityName) {
 		try {
-			Map errorMap = errorMap();
-			if (errorMap == null || !errorMap.containsKey(entityName))
-				return FG_COMPILED;
-			return FG_UNCOMPILED;
+			Map m = xyzErrMap();
+			if (m == null || !m.containsKey(entityName)) return null;
+			return (List) m.get(entityName);
 		} catch (Exception e) {
-			Outside.err(this, "getEntityForeground(String)", e);
+			Outside.err(this, "getXyzErrList(String)", e);
 		}
-		return FG_COMPILED;
+		return null;
+	}
+	
+	private List getMissingLinkList(String entityName) {
+		try {
+			Map m = missingLinkMap();
+			if (m == null || !m.containsKey(entityName)) return null;
+			return (List) m.get(entityName);
+		} catch (Exception e) {
+			Outside.err(this, "getMissingLinkList(String)", e);
+		}
+		return null;
+	}
+	
+	private List getSrcSaveList(String entityName) {
+		try {
+			Map m = srcSaveMap();
+			if (m == null || !m.containsKey(entityName)) return null;
+			return (List) m.get(entityName);
+		} catch (Exception e) {
+			Outside.err(this, "getSrcSaveList(String)", e);
+		}
+		return null;
 	}
 
 	private Color getEntityBackground(boolean isSelected) {
@@ -691,19 +766,52 @@ public class EntityImpl extends S1 implements Entity, G, I {
 			labelNumberLocked.setIcon(null);
 			labelNumberLocked.setText(" ");
 		} else {
-			labelNumberLocked.setIcon(iconLock);
-			labelNumberLocked.setText("" + lockSet.size());
+			labelNumberLocked.setIcon(iconLocked);
+			labelNumberLocked.setText(lockSet.size()+" ");
 		}
 	}
 
-	private void refreshLabelNumberError() throws Exception {
-		Map errorMap = errorMap();
-		if (errorMap == null || errorMap.isEmpty()) {
-			labelNumberError.setIcon(null);
-			labelNumberError.setText(" ");
+	private void refreshLabelNumberCompileErr() throws Exception {
+		Map m = compileErrMap();
+		if (m == null || m.isEmpty()) {
+			labelNumberCompileErr.setIcon(null);
+			labelNumberCompileErr.setText(" ");
 		} else {
-			labelNumberError.setIcon(iconErr);
-			labelNumberError.setText("" + errorMap.size());
+			labelNumberCompileErr.setIcon(iconCompileErr);
+			labelNumberCompileErr.setText(m.size()+" ");
+		}
+	}
+
+	private void refreshLabelNumberXyzErr() throws Exception {
+		Map m = xyzErrMap();
+		if (m == null || m.isEmpty()) {
+			labelNumberXyzErr.setIcon(null);
+			labelNumberXyzErr.setText(" ");
+		} else {
+			labelNumberXyzErr.setIcon(iconXyzErr);
+			labelNumberXyzErr.setText(m.size()+" ");
+		}
+	}
+
+	private void refreshLabelNumberMissingLink() throws Exception {
+		Map m = missingLinkMap();
+		if (m == null || m.isEmpty()) {
+			labelNumberMissingLink.setIcon(null);
+			labelNumberMissingLink.setText(" ");
+		} else {
+			labelNumberMissingLink.setIcon(iconMissingLink);
+			labelNumberMissingLink.setText(m.size()+" ");
+		}
+	}
+
+	private void refreshLabelNumberSrcSave() throws Exception {
+		Map m = srcSaveMap();
+		if (m == null || m.isEmpty()) {
+			labelNumberSrcSave.setIcon(null);
+			labelNumberSrcSave.setText(" ");
+		} else {
+			labelNumberSrcSave.setIcon(iconSrcSave);
+			labelNumberSrcSave.setText(m.size()+" ");
 		}
 	}
 

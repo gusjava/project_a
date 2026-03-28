@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, T {
 		while (it.hasNext()) {
 			String el = (String) it.next();
 			if (el.contains("\n"))
-				throw new Exception("Invalid element syntax: " + el);
+				throw new Exception("Invalid element: " + el);
 			b.append(el + "\n");
 		}
 		if (b.length() > 0)

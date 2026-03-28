@@ -91,16 +91,11 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 	}
 
 	public Object r(String key) throws Exception {
-		if (key.equals("lockSet"))
-			return locker.g();
-		if (key.equals("selectedName"))
-			return selectedName;
-		if (key.equals("xNameList"))
-			return xNameList;
-		if (key.equals("nameList"))
-			return nameList;
-		if (key.equals("info"))
-			return info;
+		if (key.equals("lockSet")) return locker.g();
+		if (key.equals("selectedName")) return selectedName;
+		if (key.equals("xNameList")) return xNameList;
+		if (key.equals("nameList")) return nameList;
+		if (key.equals("info")) return info;
 		return engine.r(key);
 	}
 
@@ -135,6 +130,14 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 		}
 		if (key.equals("entityModified")) {
 			handleEntityModified(obj);
+			return;
+		}
+		if (key.equals("srcSaved")) {
+			handleSrcSaved(obj);
+			return;
+		}
+		if (key.equals("srcCleared")) {
+			handleSrcCleared(obj);
 			return;
 		}
 		engine.v(key, obj);
@@ -191,6 +194,18 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 		entityModified();
 	}
 	
+	private void handleSrcSaved(Object info) throws Exception {
+		this.info = info;
+		performLoad();
+		srcSaved();
+	}
+	
+	private void handleSrcCleared(Object info) throws Exception {
+		this.info = info;
+		performLoad();
+		srcCleared();
+	}
+	
 	private void performLoad() throws Exception {
 		engine.e();
 	}
@@ -233,5 +248,13 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 
 	private void entityModified() {
 		send(this, "entityModified()");
+	}
+	
+	private void srcSaved() {
+		send(this, "srcSaved()");
+	}
+	
+	private void srcCleared() {
+		send(this, "srcCleared()");
 	}
 }

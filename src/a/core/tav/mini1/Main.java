@@ -34,7 +34,7 @@ public class Main implements Manager {
 
 	public Object resource(Entity entity, String id) throws Exception {
 		if (pool.containsKey(KEY_RESOURCE))
-			return ((T) pool.get(KEY_RESOURCE)).t(new Object[] { entity, id });
+			return ((T) pool.get(KEY_RESOURCE)).t(new Object[] { entity, id});
 		if (id.equals(POOL))
 			return pool;
 		throw new Exception("Resource builder not initialized yet");
@@ -42,14 +42,14 @@ public class Main implements Manager {
 
 	public Service service(Entity entity, String id) throws Exception {
 		if (pool.containsKey(KEY_SERVICE))
-			return (Service) ((T) pool.get(KEY_SERVICE)).t(new Object[] { entity, id });
+			return (Service) ((T) pool.get(KEY_SERVICE)).t(new Object[] { entity, id});
 		throw new Exception("Service builder not initialized yet");
 	}
 
 	public void err(Entity entity, String id, Exception e) {
 		try {
 			if (pool.containsKey(KEY_ERR))
-				((P) pool.get(KEY_ERR)).p(new Object[] { entity, id, e });
+				((P) pool.get(KEY_ERR)).p(new Object[] { entity, id, e});
 			else
 				throw new Exception("Err handler not initialized yet");
 		} catch (Exception e1) {

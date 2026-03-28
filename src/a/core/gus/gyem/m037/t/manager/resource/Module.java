@@ -7,7 +7,7 @@ public class Module extends GyemSystem implements T {
 	
 	public Object t(Object obj) throws Exception {
 		Object[] call = (Object[]) obj;
-		String rule = (String) moduleT(M042_T_RESOURCE_FINDRULE).t(call);
+		String rule = (String) moduleT(M043_T_RESOURCE_FINDRULE).t(call);
 		return moduleT(M045_T_RESOURCE_PROVIDE).t(new Object[] {call, rule});
 	}
 }

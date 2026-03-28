@@ -33,7 +33,7 @@ public class EntityImpl implements Entity, P {
 		Iterator it = missingLinks.iterator();
 		while (it.hasNext()) {
 			String missingInfo = (String) it.next();
-			String[] n = missingInfo.split(":");
+			String[] n = missingInfo.split(":",2);
 			Integer pos = Integer.parseInt(n[0]);
 			String missingLink = n[1];
 			insert.p(new Object[] {cx, entityName, missingLink, pos});

@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20240116";}
 	
 	public static final String COL_FEATURES = "features";
-	public static final String COL_CALLNB = "callnb";
+	public static final String COL_CALLNB = "call_nb";
 	
 	public Object t(Object obj) throws Exception {
 		Object engine = obj;

@@ -15,6 +15,7 @@ public class EntityImpl implements Entity, P {
 	private Service deleteMissing;
 	private Service deleteCompileErr;
 	private Service deleteXyzErr;
+	private Service deleteSrcSave;
 
 	private Service deleteEntityIn;
 	private Service deleteServicesIn;
@@ -24,6 +25,7 @@ public class EntityImpl implements Entity, P {
 	private Service deleteMissingIn;
 	private Service deleteCompileErrIn;
 	private Service deleteXyzErrIn;
+	private Service deleteSrcSaveIn;
 
 	public EntityImpl() throws Exception {
 		deleteEntity = Outside.service(this, "gus.y.entitydb1.entity.delete");
@@ -34,6 +36,7 @@ public class EntityImpl implements Entity, P {
 		deleteMissing = Outside.service(this, "gus.y.entitydb1.entity_missing_link.delete1");
 		deleteCompileErr = Outside.service(this, "gus.y.entitydb1.entity_compile_err.delete");
 		deleteXyzErr = Outside.service(this, "gus.y.entitydb1.entity_xyz_err.delete");
+		deleteSrcSave = Outside.service(this, "gus.y.entitydb1.entity_src_save.delete");
 
 		deleteEntityIn = Outside.service(this, "gus.y.entitydb1.entity.delete.in");
 		deleteServicesIn = Outside.service(this, "gus.y.entitydb1.entity_service.delete.in");
@@ -43,6 +46,7 @@ public class EntityImpl implements Entity, P {
 		deleteMissingIn = Outside.service(this, "gus.y.entitydb1.entity_missing_link.delete1.in");
 		deleteCompileErrIn = Outside.service(this, "gus.y.entitydb1.entity_compile_err.delete.in");
 		deleteXyzErrIn = Outside.service(this, "gus.y.entitydb1.entity_xyz_err.delete.in");
+		deleteSrcSaveIn = Outside.service(this, "gus.y.entitydb1.entity_src_save.delete.in");
 	}
 
 	public void p(Object obj) throws Exception {
@@ -68,6 +72,7 @@ public class EntityImpl implements Entity, P {
 		deleteMissing.p(new Object[] { cx, name });
 		deleteServices.p(new Object[] { cx, name });
 		deleteResources.p(new Object[] { cx, name });
+		deleteSrcSave.p(new Object[] { cx, name });
 		deleteEntity.p(new Object[] { cx, name });
 	}
 
@@ -79,6 +84,7 @@ public class EntityImpl implements Entity, P {
 		deleteMissingIn.p(new Object[] { cx, names });
 		deleteServicesIn.p(new Object[] { cx, names });
 		deleteResourcesIn.p(new Object[] { cx, names });
+		deleteSrcSaveIn.p(new Object[] { cx, names });
 		deleteEntityIn.p(new Object[] { cx, names });
 	}
 }

@@ -35,7 +35,7 @@ public class EntityImpl implements Entity, P {
 		Set done = new HashSet();
 		while (it.hasNext()) {
 			String callInfo = (String) it.next();
-			String call = callInfo.split(":")[1];
+			String call = callInfo.split(":",2)[1];
 			if(done.contains(call)) continue;
 			
 			insert.p(new Object[] {cx, entityName, call});

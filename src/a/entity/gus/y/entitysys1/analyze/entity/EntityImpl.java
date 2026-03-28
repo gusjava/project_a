@@ -32,7 +32,7 @@ public class EntityImpl implements Entity, T {
 	private Service matchesName;
 
 	public EntityImpl() throws Exception {
-		readFile = Outside.service(this, "gus.x.file.string.read");
+		readFile = Outside.service(this, "gus.x.file.string.read.n");
 		nameToFile = Outside.service(this, "gus.x.entity.src.find.entityfile");
 		extract = Outside.service(this, "gus.y.entitysys1.analyze.entity.extract");
 		matchesName = Outside.service(this, "gus.x.entity.name.extract");
@@ -42,10 +42,10 @@ public class EntityImpl implements Entity, T {
 		Object[] o = (Object[]) obj;
 		if (o.length != 3)
 			throw new Exception("Wrong data number: " + o.length);
-
+			
 		String entityName = (String) o[0];
 		File rootDir = (File) o[1];
-		Set setRoot = (Set) o[2];
+		Set setRoot = (Set) o[2];                                                                                                                                                                     
 
 		File javaFile = (File) nameToFile.t(new Object[] { rootDir, entityName });
 		return extractDataFrom(javaFile, entityName, setRoot);
@@ -53,8 +53,7 @@ public class EntityImpl implements Entity, T {
 
 	private Map extractDataFrom(File javaFile, String entityName, Set setRoot) throws Exception {
 		try {
-			String javaSrc = (String) readFile.t(javaFile);
-			
+			String javaSrc = readFile(javaFile);
 			Map extractedData = (Map) extract.t(javaSrc);
 
 			if (!extractedData.containsKey(KEY_PACKAGE)) throw new Exception("Package not found");
@@ -146,7 +145,7 @@ public class EntityImpl implements Entity, T {
 			int pos0 = Integer.parseInt(n[0]);
 			String s0 = n[1];
 			
-			if(matchesName.f(s0) && !setRoot.contains(s0)) {
+			if(isValidMissingLink(s0, setRoot, entityName)) {
 				missingLinks.add(s);
 			}
 			else if(s0.contains("#")) {
@@ -154,7 +153,9 @@ public class EntityImpl implements Entity, T {
 				String p1 = m[0];
 				String p2 = m[1];
 				
-				if(isValidMissingLink(p2, setRoot, entityName)) {
+				if(isValidProvider(p1) && 
+				isValidMissingLink(p2, setRoot, entityName)) {
+					
 					int pos1 = pos0+p1.length()+1;
 					missingLinks.add(pos1+":"+p2);
 				}
@@ -164,6 +165,23 @@ public class EntityImpl implements Entity, T {
 	}
 	
 	private boolean isValidMissingLink(String link, Set setRoot, String entityName) throws Exception {
+		if(link.equals("launch.class")) return false;
+		if(link.equals("launch.args")) return false;
+		if(link.equals("launch.date")) return false;
+		if(link.equals("core.name")) return false;
+		if(link.equals("core.build")) return false;
+		if(link.equals("core.id")) return false;
+		
 		return matchesName.f(link) && !setRoot.contains(link) && !link.equals(entityName);
+	}
+	
+	private boolean isValidProvider(String providerId) throws Exception {
+		if(providerId.equals("path")) return false;
+		if(providerId.equals("prop")) return false;
+		return true;
+	}
+
+	private String readFile(File file) throws Exception {
+		return (String) readFile.t(file);
 	}
 }

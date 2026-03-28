@@ -1,0 +1,7 @@
+@description
+Description de l'entité gus.x.dir.listing0.dirs
+
+@infos
+state=GENERATED
+sign=
+tags=

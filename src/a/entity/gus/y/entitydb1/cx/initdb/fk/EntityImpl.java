@@ -13,6 +13,11 @@ public class EntityImpl implements Entity, P {
 		Connection cx = (Connection) obj;
 
 		{
+			String sql = "ALTER TABLE entity_src_save ADD FOREIGN KEY (entity_name) REFERENCES entity(entity_name)";
+			execute(cx, sql);
+		}
+		
+		{
 			String sql = "ALTER TABLE entity_service ADD FOREIGN KEY (entity_name) REFERENCES entity(entity_name)";
 			execute(cx, sql);
 		}
