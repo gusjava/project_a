@@ -23,6 +23,7 @@ public class Module extends GyemSystem implements T {
 		}
 		catch(Exception e) {
 			String message = "Resource could not be provided with rule: "+rule;
+			e.printStackTrace();
 			throw new Exception(message, e);
 		}
 	}

@@ -1,0 +1,44 @@
+package a.entity.gus06.sys.expression1.apply.op._mat_long_id;
+
+import a.framework.*;
+
+public class EntityImpl implements Entity, T {
+
+	public String creationDate() {return "20180114";}
+	
+	
+	private Service toDim;
+	
+	public EntityImpl() throws Exception
+	{
+		toDim = Outside.service(this,"gus06.math.matrixdim.build.square");
+	}
+
+	public Object t(Object obj) throws Exception
+	{
+		Object[] o = (Object[]) obj;
+		if(o.length!=2) throw new Exception("Wrong data number: "+o.length);
+		obj = o[0];
+		
+		if(obj==null) return null;
+		
+		int[] dim = toDim(obj);
+		return buildMatrix(dim[0]);
+	}
+	
+	
+	private int[] toDim(Object obj) throws Exception
+	{return (int[]) toDim.t(obj);}
+	
+	
+	private long[][] buildMatrix(int n) throws Exception
+	{
+		long[][] matrix = new long[n][n];
+		
+		for(int i=0;i<n;i++)
+		for(int j=0;j<n;j++)
+		matrix[i][j] = i==j ? 1 : 0;
+		
+		return matrix;
+	}
+}

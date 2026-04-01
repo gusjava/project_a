@@ -1,0 +1,27 @@
+package a.entity.gus06.data.editor.renderedimage.editor3.action.color.discretize2;
+
+import a.framework.*;
+
+public class EntityImpl implements Entity, T {
+
+	public String creationDate() {return "20191119";}
+	
+	public static final String DISPLAY = "IMG_color_discretize2#Discretize level 2";
+
+	private Service perform;
+	private Service buildAction;
+	private Service wrap;
+
+	public EntityImpl() throws Exception
+	{
+		perform = Outside.service(this,"gus06.awt.bufferedimage.transform.color.discretize2");
+		buildAction = Outside.service(this,"gus06.swing.action.builder1");
+		wrap = Outside.service(this,"gus06.feature.wrap.gtp.e");
+	}
+	
+	public Object t(Object obj) throws Exception
+	{
+		E ex = (E) wrap.t(new Object[]{obj,perform,obj});
+		return buildAction.t(new Object[]{DISPLAY,ex});
+	}
+}

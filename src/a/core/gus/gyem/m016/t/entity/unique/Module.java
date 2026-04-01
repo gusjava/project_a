@@ -14,10 +14,12 @@ public class Module extends GyemSystem implements T, G, E {
 	
 	public Object t(Object obj) throws Exception {
 		String entityName = (String) obj;
+		if(map.containsKey(entityName)) return map.get(entityName);
 		
-		if(!map.containsKey(entityName))
-			map.put(entityName, moduleT(M017_T_ENTITY_GENERATE).t(entityName));
-		return map.get(entityName);
+		Object entity = moduleT(M017_T_ENTITY_GENERATE).t(entityName);
+		
+		map.put(entityName, entity);
+		return entity;
 	}
 	
 	public Object g() throws Exception {

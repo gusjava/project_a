@@ -1,13 +1,7 @@
 package a.entity.gus.y.icons1.loader;
 
 import javax.swing.Icon;
-
-import a.framework.Entity;
-import a.framework.F;
-import a.framework.Outside;
-import a.framework.R;
-import a.framework.Service;
-import a.framework.T;
+import a.framework.*;
 
 public class EntityImpl implements Entity, T, F, R {
 	public String creationDate() {return "20231128";}

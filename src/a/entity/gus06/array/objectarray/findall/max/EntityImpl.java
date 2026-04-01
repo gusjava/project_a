@@ -1,0 +1,48 @@
+package a.entity.gus06.array.objectarray.findall.max;
+
+import a.framework.*;
+import java.util.List;
+import java.util.ArrayList;
+
+public class EntityImpl implements Entity, T {
+
+	public String creationDate() {return "20180115";}
+	
+	
+	
+	
+	public Object t(Object obj) throws Exception
+	{
+		Object[] o = (Object[]) obj;
+		if(o.length!=2) throw new Exception("Wrong data number: "+o.length);
+		
+		Object[] input = (Object[]) o[0];
+		T t = (T) o[1];
+		
+		List output = new ArrayList();
+		if(input.length==0) return output;
+		
+		Object element0 = input[0];
+		output.add(element0);
+		Comparable maxValue = (Comparable) t.t(element0);
+		
+		for(int i=1;i<input.length;i++)
+		{
+			Object element = input[i];
+			Comparable value = (Comparable) t.t(element);
+			int r = value.compareTo(maxValue);
+			
+			if(r>0)
+			{
+				maxValue = value;
+				output.clear();
+				output.add(element);
+			}
+			else if(r==0)
+			{
+				output.add(element);
+			}
+		}
+		return output;
+	}
+}

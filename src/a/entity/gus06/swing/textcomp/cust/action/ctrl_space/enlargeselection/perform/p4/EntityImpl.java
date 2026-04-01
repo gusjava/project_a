@@ -1,0 +1,42 @@
+package a.entity.gus06.swing.textcomp.cust.action.ctrl_space.enlargeselection.perform.p4;
+
+import a.framework.*;
+import javax.swing.text.JTextComponent;
+
+public class EntityImpl implements Entity, P {
+
+	public String creationDate() {return "20201222";}
+
+
+	private Service performMore;
+	private Service buildDelim;
+	private String delim;
+	
+	public EntityImpl() throws Exception
+	{
+		performMore = Outside.service(this,"gus06.swing.textcomp.cust.action.ctrl_space.enlargeselection.perform.q1");
+		buildDelim = Outside.service(this,"gus06.string.split.words4.delim");
+		delim = (String) buildDelim.g();
+	}
+	
+	
+	public void p(Object obj) throws Exception
+	{
+		JTextComponent comp = (JTextComponent) obj;
+		
+		String text = comp.getText();
+		int length = text.length();
+		int start = comp.getSelectionStart()-1;
+		int end = comp.getSelectionEnd();
+		
+		boolean moved = false;
+		while(start>=0 && !isWordDelim(text.charAt(start))) {start--;moved=true;}
+		while(end<length && !isWordDelim(text.charAt(end))) {end++;moved=true;}
+		
+		if(!moved) performMore.p(comp);
+		else comp.select(start+1,end);
+	}
+	
+	private boolean isWordDelim(char c)
+	{return delim.indexOf(c)>=0;}
+}

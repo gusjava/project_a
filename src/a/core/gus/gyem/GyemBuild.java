@@ -2,5 +2,5 @@ package a.core.gus.gyem;
 
 public class GyemBuild {
 
-	public static final String CORE_BUILD = "20250427";
+	public static final String CORE_BUILD = "20260329";
 }

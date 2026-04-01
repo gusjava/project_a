@@ -1,0 +1,71 @@
+package a.entity.gus06.sys.expression1.apply.op._selection_replace_dfull;
+
+import a.framework.*;
+import javax.swing.text.JTextComponent;
+
+public class EntityImpl implements Entity, T {
+
+	public String creationDate() {return "20220616";}
+
+	
+	
+	public Object t(Object obj) throws Exception
+	{
+		Object[] o = (Object[]) obj;
+		if(o.length!=2) throw new Exception("Wrong data number: "+o.length);
+		obj = o[0];
+		
+		if(obj==null) return null;
+		
+		if(obj instanceof JTextComponent) return new T1((JTextComponent) obj);
+		
+		throw new Exception("Invalid data type: "+obj.getClass().getName());
+	}
+	
+	
+	
+	private class T1 implements T
+	{
+		private JTextComponent comp;
+		
+		public T1(JTextComponent comp)
+		{this.comp = comp;}
+		
+		public Object t(Object obj) throws Exception
+		{return new E1(comp,obj);}
+	}
+	
+	
+	private class E1 implements E
+	{
+		private JTextComponent comp;
+		private Object data;
+		
+		public E1(JTextComponent comp, Object data)
+		{
+			this.comp = comp;
+			this.data = data;
+		}
+		
+		public void e() throws Exception
+		{
+			String s = ""+data;
+			if(hasSelection()) replaceSelection(s);
+			else comp.setText(s);
+		}
+		
+		private boolean hasSelection()
+		{
+			String s = comp.getSelectedText();
+			return s!=null && !s.equals("");
+		}
+		
+		private void replaceSelection(String s)
+		{
+			int start = comp.getSelectionStart();
+			int end = start+s.length();
+			comp.replaceSelection(s);
+			comp.select(start,end);
+		}
+	}
+}

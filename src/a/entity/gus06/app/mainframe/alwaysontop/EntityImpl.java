@@ -1,0 +1,18 @@
+package a.entity.gus06.app.mainframe.alwaysontop;
+
+import a.framework.*;
+import javax.swing.JFrame;
+
+public class EntityImpl implements Entity {
+
+	public String creationDate() {return "20160505";}
+
+
+	
+	public EntityImpl() throws Exception
+	{
+		JFrame frame = (JFrame) Outside.resource(this,"mainframe");
+		frame.setAlwaysOnTop(true);
+	}
+	
+}

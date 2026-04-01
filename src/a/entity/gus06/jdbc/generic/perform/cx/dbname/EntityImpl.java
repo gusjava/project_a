@@ -1,0 +1,39 @@
+package a.entity.gus06.jdbc.generic.perform.cx.dbname;
+
+import a.framework.*;
+import java.sql.Connection;
+
+public class EntityImpl implements Entity, T {
+
+	public String creationDate() {return "20260107";}
+	
+	private Service handleMysql;
+	private Service handlePostgresql;
+	private Service handleH2;
+	
+	public EntityImpl() throws Exception
+	{
+		handleMysql = Outside.service(this,"gus06.jdbc.mysql.perform.cx.dbname");
+		handlePostgresql = Outside.service(this,"gus06.jdbc.postgresql.perform.cx.dbname");
+		handleH2 = Outside.service(this,"gus06.jdbc.h2.perform.cx.dbname");
+	}
+	
+	public Object t(Object obj) throws Exception
+	{
+		if(obj==null) return null;
+		Connection cx = (Connection) obj;
+		T t = findService(cx);
+		return t.t(cx);
+	}
+	
+	private Service findService(Connection cx) throws Exception
+	{
+		String url = cx.getMetaData().getURL();
+		if(url.startsWith("jdbc:mysql:"))	return handleMysql;
+		if(url.startsWith("jdbc:mariadb:"))	return handleMysql;
+		if(url.startsWith("jdbc:postgresql:"))	return handlePostgresql;
+		if(url.startsWith("jdbc:h2:"))		return handleH2;
+		
+		throw new Exception("Unsupported url: "+url);
+	}
+}

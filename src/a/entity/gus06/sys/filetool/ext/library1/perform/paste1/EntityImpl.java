@@ -1,0 +1,40 @@
+package a.entity.gus06.sys.filetool.ext.library1.perform.paste1;
+
+import a.framework.*;
+import java.util.Map;
+import java.io.File;
+import java.util.List;
+import java.awt.Image;
+
+public class EntityImpl implements Entity, F {
+
+	public String creationDate() {return "20200311";}
+	
+	private Service clipboard;
+	private Service pasteFiles;
+	private Service pasteItems;
+	private Service pasteImage;
+
+	public EntityImpl() throws Exception
+	{
+		clipboard = Outside.service(this,"gus06.clipboard.access");
+		pasteFiles = Outside.service(this,"gus06.sys.filetool.ext.library1.perform.paste1.files");
+		pasteItems = Outside.service(this,"gus06.sys.filetool.ext.library1.perform.paste1.items");
+		pasteImage = Outside.service(this,"gus06.sys.filetool.ext.library1.perform.paste3.image");
+	}
+	
+	
+	public boolean f(Object obj) throws Exception
+	{
+		Map map = (Map) obj;
+		
+		Object data = clipboard.g();
+		if(data==null) return false;
+		
+		if(data instanceof List) return pasteFiles.f(new Object[]{map,data});
+		if(data instanceof String) return pasteItems.f(new Object[]{map,data});
+		if(data instanceof Image) return pasteImage.f(new Object[]{map,data});
+		
+		return false;
+	}
+}

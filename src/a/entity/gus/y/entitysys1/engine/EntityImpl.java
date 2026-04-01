@@ -205,7 +205,8 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F {
 	 */
 
 	private boolean isMyEntity(String entityName) throws Exception {
-		return entityName != null && entityName.startsWith(getDevId() + ".");
+		return true;
+//		return entityName != null && entityName.startsWith(getDevId() + ".");
 	}
 
 	/*

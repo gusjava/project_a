@@ -6,8 +6,10 @@ public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20231203";}
 	
 	public Object t(Object obj) throws Exception {
-		Object[] data = (Object[]) obj;
-		String info = (String) data[1];
+		Object[] o = (Object[]) obj;
+		if(o.length!=2) throw new Exception("Wrong data number: "+o.length);
+		
+		String info = (String) o[1];
 		Class c = Class.forName(info);
 		return c.getDeclaredConstructor().newInstance();
 	}

@@ -12,9 +12,11 @@ public class EntityImpl implements Entity, T {
 	}
 
 	public Object t(Object obj) throws Exception {
-		Object[] data = (Object[]) obj;
-		String entityName = (String) data[1];
-		return new Factory(entityName);
+		Object[] o = (Object[]) obj;
+		if(o.length!=2) throw new Exception("Wrong data number: "+o.length);
+		
+		String info = (String) o[1];
+		return new Factory(info);
 	}
 
 	private class Factory implements G {

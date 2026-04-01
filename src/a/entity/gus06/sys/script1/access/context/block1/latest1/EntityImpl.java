@@ -1,0 +1,37 @@
+package a.entity.gus06.sys.script1.access.context.block1.latest1;
+
+import a.framework.*;
+import java.util.Map;
+
+public class EntityImpl implements Entity, T {
+
+	public String creationDate() {return "20160328";}
+	
+
+	private Service getCurrent;
+
+	public EntityImpl() throws Exception
+	{
+		getCurrent = Outside.service(this,"gus06.sys.script1.access.context.execution.current");
+	}
+	
+	
+	public Object t(Object obj) throws Exception
+	{
+		Map context = (Map) obj;
+		Map currentTag = (Map) getCurrent.t(context);
+		
+		Map stack = (Map) get1(currentTag,"stack");
+		Map stack1 = (Map) get1(stack,"parent");
+		Map block1 = (Map) get1(stack1,"block1");
+		
+		return block1;
+	}
+	
+	
+	private Object get1(Map map, String key) throws Exception
+	{
+		if(!map.containsKey(key)) throw new Exception("Key not found: "+key);
+		return map.get(key);
+	}
+}

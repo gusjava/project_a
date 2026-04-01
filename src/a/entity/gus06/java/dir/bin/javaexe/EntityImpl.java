@@ -1,0 +1,37 @@
+package a.entity.gus06.java.dir.bin.javaexe;
+
+import java.io.File;
+
+import a.framework.*;
+
+public class EntityImpl implements Entity, G {
+
+	public String creationDate() {return "20140803";}
+
+	
+	private Service bin;
+	private File javaExe;
+	
+	
+	public EntityImpl() throws Exception
+	{
+		bin = Outside.service(this,"gus06.java.dir.bin");
+	}
+	
+	
+	public Object g() throws Exception
+	{
+		if(javaExe==null) init();
+		return javaExe;
+	}
+	
+	
+	private void init() throws Exception
+	{
+		File binDir = (File) bin.g();
+		javaExe = new File(binDir,"java.exe");
+		
+		if(!javaExe.isFile())
+			throw new Exception("Java exe file does not exist: "+javaExe);
+	}
+}

@@ -73,6 +73,10 @@ public class GyemSystem extends GyemConst {
 		return (T) module(c);
 	}
 	
+	protected static R moduleR(Class c) {
+		return (R) module(c);
+	}
+	
 	protected static I moduleI(Class c) {
 		return (I) module(c);
 	}

@@ -1,0 +1,33 @@
+package a.entity.gus06.crypto.pbe.string.decrypt.base64;
+
+import a.framework.*;
+
+public class EntityImpl implements Entity, T {
+
+	public String creationDate() {return "20200416";}
+
+	
+	private Service decrypt;
+	private Service wrapper;
+	
+	public EntityImpl() throws Exception
+	{
+		decrypt = Outside.service(this,"gus06.crypto.pbe.bytearray.decrypt");
+		wrapper = Outside.service(this,"gus06.crypto.tool.decrypt.string.base64");
+	}
+	
+	public Object t(Object obj) throws Exception
+	{
+		T t = (T) decrypt.t(obj);
+		return new Holder(t);
+	}
+	
+	private class Holder implements T
+	{
+		private T t;
+		public Holder(T t) {this.t = t;}
+		
+		public Object t(Object obj) throws Exception
+		{return wrapper.t(new Object[]{t,obj});}
+	}
+}

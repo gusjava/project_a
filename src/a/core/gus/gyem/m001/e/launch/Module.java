@@ -16,22 +16,34 @@ public class Module extends GyemSystem implements E, Runnable {
 
 		if(isMainguiDisabled()) {
 			log(this, "Maingui disabled");
+			
+			log(this, "Executing sequence: "+PROP_BEFORE);
 			moduleP(M031_P_EXECUTE_SEQUENCE).p(PROP_BEFORE);
+			
+			log(this, "Executing sequence: "+PROP_AFTER);
 			moduleP(M031_P_EXECUTE_SEQUENCE).p(PROP_AFTER);
 		}
 		else SwingUtilities.invokeLater(this);
 	}
-
-	@Override
+	
 	public void run() {
 		try {
 			if (!SwingUtilities.isEventDispatchThread())
 				throw new Exception("Current thread is supposed to be EDT...");
 			
 			log(this, "Launching maingui inside EDT");
+			
+			log(this, "Executing sequence: "+PROP_BEFORE);
 			moduleP(M031_P_EXECUTE_SEQUENCE).p(PROP_BEFORE);
+			
+			log(this, "Initializing main frame");
 			moduleE(M021_E_MAINFRAME).e();
+			
+			log(this, "Executing sequence: "+PROP_AFTER);
 			moduleP(M031_P_EXECUTE_SEQUENCE).p(PROP_AFTER);
+
+			log(this, "Gui started notification");
+			moduleE(M054_E_STARTED).e();
 		}
 		catch (Exception e) {
 			fatalEDT(e);

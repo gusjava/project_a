@@ -1,0 +1,34 @@
+package a.entity.gus06.file.filter.mime.istype.audio.ogg;
+
+import java.io.File;
+import java.io.FileFilter;
+import a.framework.*;
+
+public class EntityImpl implements Entity, F, G, FileFilter {
+
+	public String creationDate() {return "20201002";}
+	
+	public static final String TYPE = "audio/ogg";
+
+	private Service checkMime;
+
+	public EntityImpl() throws Exception
+	{checkMime = Outside.service(this,"gus06.file.mime.tika.check.istype");}
+
+	
+	public boolean f(Object obj) throws Exception
+	{return checkMime.f(new Object[]{obj,TYPE});}
+	
+	
+	public Object g() throws Exception
+	{return this;}
+	
+	
+	
+	public boolean accept(File f)
+	{
+		try{return f(f);}
+		catch(Exception e) {Outside.err(this,"accept(File)",e);}
+		return false;
+	}
+}

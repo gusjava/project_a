@@ -1,0 +1,38 @@
+package a.entity.gus06.sys.expression1.apply.op._replace1;
+
+import a.framework.*;
+import java.util.List;
+import java.io.File;
+
+public class EntityImpl implements Entity, T {
+
+	public String creationDate() {return "20160305";}
+
+
+	private Service perform;
+	private Service builder;
+	
+	public EntityImpl() throws Exception
+	{
+		perform = Outside.service(this,"gus06.data.string.replace1");
+		builder = Outside.service(this,"gus06.data.string.tool.replacebuilder");
+	}
+
+
+	public Object t(Object obj) throws Exception
+	{
+		Object[] o = (Object[]) obj;
+		if(o.length!=2) throw new Exception("Wrong data number: "+o.length);
+		obj = o[0];
+		
+		if(obj==null) return null;
+		
+		if(obj instanceof String) return builder.t(new Object[]{perform,obj});
+		if(obj instanceof String[]) return builder.t(new Object[]{perform,obj});
+		if(obj instanceof Object[]) return builder.t(new Object[]{perform,obj});
+		if(obj instanceof List) return builder.t(new Object[]{perform,obj});
+		if(obj instanceof File) return builder.t(new Object[]{perform,obj});
+		
+		throw new Exception("Invalid data type: "+obj.getClass().getName());
+	}
+}

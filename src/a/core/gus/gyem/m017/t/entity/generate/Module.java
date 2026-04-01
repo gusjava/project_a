@@ -1,8 +1,7 @@
 package a.core.gus.gyem.m017.t.entity.generate;
 
 import a.core.gus.gyem.GyemSystem;
-import a.framework.Entity;
-import a.framework.T;
+import a.framework.*;
 
 public class Module extends GyemSystem implements T {
 	
@@ -11,6 +10,7 @@ public class Module extends GyemSystem implements T {
 		Class c = (Class) moduleT(M018_T_ENTITY_FINDCLASS).t(entityName);
 		
 		Entity entity = null;
+		
 		try {
 			entity = (Entity) c.getDeclaredConstructor().newInstance();
 			
