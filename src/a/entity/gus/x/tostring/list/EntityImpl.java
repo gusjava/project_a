@@ -1,9 +1,7 @@
 package a.entity.gus.x.tostring.list;
 
 import java.util.List;
-
-import a.framework.Entity;
-import a.framework.T;
+import a.framework.*;
 
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20231128";}
