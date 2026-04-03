@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, I {
 
 	public EntityImpl() throws Exception
 	{
-    		centralPane = Outside.service(this,"gus06.appli.gusexplorer.gui.centralpane");
+    	centralPane = Outside.service(this,"gus06.appli.gusexplorer.gui.centralpane");
 		bottomGui = Outside.service(this,"gus06.appli.gusexplorer.gui.bottombar");
 
 		panel = new JPanel(new BorderLayout());

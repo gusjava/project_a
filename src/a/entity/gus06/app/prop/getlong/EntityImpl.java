@@ -11,7 +11,7 @@ public class EntityImpl implements Entity, T, R {
 	private Map prop;
 	
 	public EntityImpl() throws Exception
-	{prop = (Map) Outside.resource(this,"prop");}
+	{prop = (Map) Outside.resource(this,"props");}
 	
 	
 	public Object r(String key) throws Exception

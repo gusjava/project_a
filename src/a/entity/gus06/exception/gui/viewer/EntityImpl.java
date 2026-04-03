@@ -174,7 +174,7 @@ public class EntityImpl implements Entity, I, P, ActionListener, ListSelectionLi
 		public Object getValueAt(int x, int y)
 		{
 			Object[] info = (Object[]) errors.get(x);
-			Exception e = (Exception)info[2];
+			Exception e = (Exception)info[3];
             
 			if(y==0) return timeStamp((Date)info[3]);  // time stamp
 			if(y==1) return sourceName(info[0]);  // source

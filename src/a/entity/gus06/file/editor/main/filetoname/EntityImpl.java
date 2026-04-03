@@ -10,73 +10,73 @@ public class EntityImpl implements Entity, T {
 
 
 	
-	public static final String BAT = "gus.file.editor.ext.bat";
+	public static final String BAT = "gus06.file.editor.ext.bat";
 	
-	public static final String CBR = "gus.file.editor.ext.cbr";
-	public static final String CBZ = "gus.file.editor.ext.cbz";
-	public static final String CLASS = "gus.file.editor.ext.class1";
-	public static final String CSS = "gus.file.editor.ext.css";
-	public static final String CSV = "gus.file.editor.ext.csv";
+	public static final String CBR = "gus06.file.editor.ext.cbr";
+	public static final String CBZ = "gus06.file.editor.ext.cbz";
+	public static final String CLASS = "gus06.file.editor.ext.class1";
+	public static final String CSS = "gus06.file.editor.ext.css";
+	public static final String CSV = "gus06.file.editor.ext.csv";
 	
-	public static final String DB = "gus.file.editor.ext.db";
-	public static final String DLL = "gus.file.editor.ext.dll";
+	public static final String DB = "gus06.file.editor.ext.db";
+	public static final String DLL = "gus06.file.editor.ext.dll";
 	
-	public static final String EML = "gus.file.editor.ext.eml";
-	public static final String EPUB = "gus.file.editor.ext.epub";
-	public static final String EXE = "gus.file.editor.ext.exe";
+	public static final String EML = "gus06.file.editor.ext.eml";
+	public static final String EPUB = "gus06.file.editor.ext.epub";
+	public static final String EXE = "gus06.file.editor.ext.exe";
 	
-	public static final String GROOVY = "gus.file.editor.ext.groovy";
-	public static final String GUS = "gus.file.editor.ext.gus";
+	public static final String GROOVY = "gus06.file.editor.ext.groovy";
+	public static final String GUS = "gus06.file.editor.ext.gus";
 	
-	public static final String JAR = "gus.file.editor.ext.jar";
-	public static final String JAVA = "gus.file.editor.ext.java";
-	public static final String JRXML = "gus.file.editor.ext.jrxml";
-	public static final String JS = "gus.file.editor.ext.js";
-	public static final String JSON = "gus.file.editor.ext.json";
+	public static final String JAR = "gus06.file.editor.ext.jar";
+	public static final String JAVA = "gus06.file.editor.ext.java";
+	public static final String JRXML = "gus06.file.editor.ext.jrxml";
+	public static final String JS = "gus06.file.editor.ext.js";
+	public static final String JSON = "gus06.file.editor.ext.json";
 	
-	public static final String LINK_GUS = "gus.file.editor.ext.link_gus";
-	public static final String LNK = "gus.file.editor.ext.lnk";
+	public static final String LINK_GUS = "gus06.file.editor.ext.link_gus";
+	public static final String LNK = "gus06.file.editor.ext.lnk";
 	
-	public static final String MOBI = "gus.file.editor.ext.mobi";
-	public static final String MP3 = "gus.file.editor.ext.mp3";
+	public static final String MOBI = "gus06.file.editor.ext.mobi";
+	public static final String MP3 = "gus06.file.editor.ext.mp3";
 	
-	public static final String ODS = "gus.file.editor.ext.ods";
-	public static final String OTF = "gus.file.editor.ext.otf";
+	public static final String ODS = "gus06.file.editor.ext.ods";
+	public static final String OTF = "gus06.file.editor.ext.otf";
 	
-	public static final String PDF = "gus.file.editor.ext.pdf";
-	public static final String PHP = "gus.file.editor.ext.php";
-	public static final String PROPERTIES = "gus.file.editor.ext.properties";
-	public static final String PROPERTIES_VAULT = "gus.file.editor.ext.properties_vault";
-	public static final String PYTHON = "gus.file.editor.ext.python";
+	public static final String PDF = "gus06.file.editor.ext.pdf";
+	public static final String PHP = "gus06.file.editor.ext.php";
+	public static final String PROPERTIES = "gus06.file.editor.ext.properties";
+	public static final String PROPERTIES_VAULT = "gus06.file.editor.ext.properties_vault";
+	public static final String PYTHON = "gus06.file.editor.ext.python";
 	
-	public static final String RAR = "gus.file.editor.ext.rar";
+	public static final String RAR = "gus06.file.editor.ext.rar";
 	
-	public static final String SQLITE = "gus.file.editor.ext.sqlite";
-	public static final String SRT = "gus.file.editor.ext.srt";
-	public static final String SVG = "gus.file.editor.ext.svg";
+	public static final String SQLITE = "gus06.file.editor.ext.sqlite";
+	public static final String SRT = "gus06.file.editor.ext.srt";
+	public static final String SVG = "gus06.file.editor.ext.svg";
 	
-	public static final String TOOL = "gus.file.editor.ext.tool";
-	public static final String TREE = "gus.file.editor.ext.tree";
-	public static final String TTF = "gus.file.editor.ext.ttf";
-	public static final String TXT = "gus.file.editor.ext.txt";
+	public static final String TOOL = "gus06.file.editor.ext.tool";
+	public static final String TREE = "gus06.file.editor.ext.tree";
+	public static final String TTF = "gus06.file.editor.ext.ttf";
+	public static final String TXT = "gus06.file.editor.ext.txt";
 	
-	public static final String VUE = "gus.file.editor.ext.vue";
+	public static final String VUE = "gus06.file.editor.ext.vue";
 	
-	public static final String WAV = "gus.file.editor.ext.wav";
+	public static final String WAV = "gus06.file.editor.ext.wav";
 	
-	public static final String XHTML = "gus.file.editor.ext.xhtml";
-	public static final String XML = "gus.file.editor.ext.xml";
+	public static final String XHTML = "gus06.file.editor.ext.xhtml";
+	public static final String XML = "gus06.file.editor.ext.xml";
 	
-	public static final String ZIP = "gus.file.editor.ext.zip";
-	public static final String ZIP_GUS = "gus.file.editor.ext.zip_gus";
+	public static final String ZIP = "gus06.file.editor.ext.zip";
+	public static final String ZIP_GUS = "gus06.file.editor.ext.zip_gus";
 	
 	
 	
-	public static final String DIR = "gus.dir.explorer.simple";
-	public static final String IMAGE = "gus.file.editor.ext.image";
-	public static final String VIDEO = "gus.file.editor.ext.video";
-	public static final String DEFAULT0 = "gus.file.editor.default0";
-	public static final String NOTFOUND = "gus.file.editor.notfound";
+	public static final String DIR = "gus06.dir.explorer.simple";
+	public static final String IMAGE = "gus06.file.editor.ext.image";
+	public static final String VIDEO = "gus06.file.editor.ext.video";
+	public static final String DEFAULT0 = "gus06.file.editor.default0";
+	public static final String NOTFOUND = "gus06.file.editor.notfound";
 
 
 

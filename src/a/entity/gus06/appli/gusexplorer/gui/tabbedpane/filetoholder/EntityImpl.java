@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		editorFactory = Outside.service(this,"factory#gus.file.editor.main");
+		editorFactory = Outside.service(this,"factory#gus06.file.editor.main");
 	}
 	
 	public Object t(Object obj) throws Exception

@@ -5,7 +5,6 @@ import javax.swing.JComponent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import java.util.Map;
 import java.awt.Component;
