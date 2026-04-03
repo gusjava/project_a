@@ -1,0 +1,6 @@
+Pour découper les strings, il existe des opérateurs directs ou indirects qui
+fournissent un tableau String[] à partir d'une string.
+
+La plupart d'entre eux commencent par _split :
+
+{>'_split'._operator_names_st._join_n}

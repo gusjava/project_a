@@ -1,0 +1,29 @@
+Si la première ligne de votre script est un unique arobas
+suivi par du texte, il s'agit alors d'un script à balise unique.
+
+Dans ce mode, votre script se compose d'une unique balise 
+structurelle avec un contenu purement textuel, 
+qui se définit alors comme ceci :
+
+- valeur de la balise : première ligne (sans l'arobas)
+- contenu texte de la balise : les lignes suivantes du script
+
+
+Quel est l'intérêt du script à balise unique ?
+Il n'y a pas besoin de méta caractères 
+pour en spécifier la structure ...
+
+Par conséquent, les caractères \{ \} et \\ perdent leur rôle habituel
+et retrouvent leur sens littéral, ce qui fait qu'il n'est plus 
+nécéssaire de les échapper !! 
+
+Le script à balise unique peut être écrit avec n'importe quelle
+balise structurelle dans la mesure ou on trouve un intérêt à lui
+affecter un contenu purement textuel. Il peut s'agir du repeat ou
+du if, mais LA balise de prédilection sera naturellement "code".
+
+Faire débuter vos scripts par "@code" finira par devenir un réflexe
+dés que vous voudrez écrire un script gus en tant que "programme"
+et non en temps que "template".
+
+Nous allons voir un exemple.

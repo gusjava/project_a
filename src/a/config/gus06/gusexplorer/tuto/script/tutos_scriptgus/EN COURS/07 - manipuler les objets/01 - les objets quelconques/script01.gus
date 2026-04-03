@@ -1,0 +1,24 @@
+Cette 7ème partie est consacrée à la manipulation des objets
+
+Comme je l'écrivais dans le 11ème script de la partie d'introduction,
+nous somme actuellement rendu à un tournant dans l'apprentissage
+du moteur de script.
+
+Nous avons vu tous les mécanismes de base qui caractérisent 
+le fonctionnement du moteur, et pour aller plus loin, nous allons devoir
+découvrir un certain nombre d'opérateurs.
+
+Pour rappel, il y en a actuellement {>1._operator_names._size} ...
+
+De fait, l'objectif n'est pas de les lister tous, mais plutôt de
+se concentrer sur les plus utiles, et surtout de vous donner les clés
+pour en découvrir par vous même au fur et à mesure de vos besoins.
+
+
+L'objectif de ce chapitre va être double :
+
+1- construire une sorte de boite à outils, regroupant les opérateurs
+incontournables qu'il est conseillé de bien maitriser.
+
+2- fournir des techniques pour prospecter les différents opérateurs
+disponibles dans le moteur de scripts, et les expérimenter par vous même.

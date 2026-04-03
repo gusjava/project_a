@@ -1,0 +1,29 @@
+Les opérateurs logiques
+
+Ils s'appliquent sur des booléens ou sur des filtres (F) :
+
+
+- L'opérateur de négation	!
+{>!false} {>!true}
+
+- L'opérateur ET		&&
+{>3==2+1 && 10>7}
+
+- L'opérateur OU inclusif	||
+{>3==2+5 || 4<=7}
+
+- L'opérateur OU exclusif	^
+{>true ^ false}
+
+
+Exemples avec des filtres (F) :
+
+{$f1='a>2'._to_f}
+{$f2='a<=5'._to_f}
+{$not_f1=!f1}
+{$f1_f2=f1 && f2}
+
+{>not_f1#3}
+{>f1_f2#2}
+{>f1_f2#3}
+{>f1_f2#6}

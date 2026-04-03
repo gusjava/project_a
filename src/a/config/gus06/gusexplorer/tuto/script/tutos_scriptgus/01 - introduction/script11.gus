@@ -1,0 +1,30 @@
+En 1ère partie, nous avons introduit les bases du moteur de scripts
+En 2ème partie, nous allons traiter des mécanismes d'évaluation
+En 3ème partie, nous allons traiter des mécanismes d'affectation
+
+Et pour la suite ?
+
+En 4ème partie, nous introduirons les différentes balises
+En 5ème partie, nous verrons comment fonctionne le contexte
+En 6ème partie, nous verrons comment personnaliser le moteur
+
+A ce stade, nous aurons parcouru l'ensemble des mécanismes de base
+qui caractérisent le fonctionnement du moteur de scripts !
+
+Il restera alors la tâche de détailler les différentes techniques
+que le moteur met à votre disposition pour manipuler 
+les données et interagir avec l'environnement.
+
+En 7ème partie, nous verrons comment manipuler les objets
+En 8ème partie, nous verrons comment manipuler les strings
+En 9ème partie, nous verrons comment manipuler les nombres
+En 10ème partie, nous verrons comment manipuler les dates
+En 11ème partie, nous verrons comment manipuler les structures
+En 12ème partie, nous verrons comment manipuler les fichiers
+En 13ème partie, nous verrons comment manipuler les fonctions
+En 14ème partie, nous verrons comment manipuler les images
+En 15ème partie, nous verrons comment interagir avec mysql
+En 16ème partie, nous verrons comment interagir avec l'OS
+En 17ème partie, nous verrons comment interagir avec l'appli
+
+Et enfin, nous verrons des utilisations avancées en 18ème partie

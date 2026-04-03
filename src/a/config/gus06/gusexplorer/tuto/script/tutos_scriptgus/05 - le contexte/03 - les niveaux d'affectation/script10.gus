@@ -1,0 +1,22 @@
+Jusqu'à présent, nous ne connaissons qu'une seule manière 
+d'affecter une variable :
+{$a=3}
+
+Il s'agit en fait d'une affectation "régionale", c'est à dire
+réalisée au niveau du script courant.
+
+Si on affiche le contenu de la pool courante, 
+on remarquera que la variable a ne s'y trouve pas :
+
+{>pool._desc}
+
+Mais si on affiche le contenu de la pool liée à la balise root,
+on retrouvera notre variable a :
+
+{>stack.root.pool._desc}
+
+Si on cherche à accéder à la variable a depuis une balise quelconque
+du script, le moteur remontera jusqu'à la racine root, 
+pour retrouver sa valeur :
+
+{>a}

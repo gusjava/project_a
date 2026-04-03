@@ -1,0 +1,38 @@
+Avec ]= et [=, il est possible d'insérer des éléments 
+au début ou à la fin de listes déjà existantes :
+
+{$list=[1,2,3]}
+list={>list}
+
+Utilisez ]= pour insérer un élément au début de la liste:
+{$list]='Bonjour'}
+list={>list}
+
+Utilisez [= pour insérer un élément à la fin de la liste:
+{$list[='Au revoir'}
+list={>list}
+
+
+Et voici une autre manière :
+
+{$list=[1,2,3]}
+list={>list}
+
+{$list.before='Bonjour'}
+list={>list}
+
+{$list.after='Au revoir'}
+list={>list}
+
+
+On notera au passage que cette opération n'est pas une affectation
+à proprement parler, car aucun objet n'est recrée. Elle suppose
+que la variable existe déjà en tant que liste, et se contente
+de modifier son contenu.
+
+En agissant sur une variable inexistante, on obtiendra une nouvelle
+map contenant les clés "before" et "after" ...
+
+{$a]='Bonjour'}
+{$a[='Au revoir'}
+{>a}

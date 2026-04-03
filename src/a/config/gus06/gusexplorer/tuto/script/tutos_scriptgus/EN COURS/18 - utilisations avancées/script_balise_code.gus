@@ -1,0 +1,11 @@
+La balise code permet est une balise structurelle qui permet 
+de regrouper plusieurs instructions dans son contenu. Cette 
+approche est plus concise que l'approche normale ou chaque 
+instruction doit être mise dans une balise séparée !
+
+{code}
+
+$a=10
+$b=12
+$c=a*b
+>'c='+c

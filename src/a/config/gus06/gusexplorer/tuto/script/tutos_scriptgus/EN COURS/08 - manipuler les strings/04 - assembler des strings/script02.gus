@@ -1,0 +1,17 @@
+Opérateurs directs :
+
+_join_0 :		Coller les éléments sans glue
+_join_comma :		Coller les éléments en prenant la virgule comme glue
+_join_semicolon :	Coller les éléments en prenant le point virgule comme glue
+_join_point :		Coller les éléments en prenant le point comme glue
+_join_slash :		Coller les éléments en prenant le slash comme glue
+_join_antislash :	Coller les éléments en prenant l'antislash comme glue
+_join_filepath :	Coller les éléments en prenant séparateur de filepath comme glue
+_join_n :		Coller les éléments en prenant le \\n comme glue
+_join_t :		Coller les éléments en prenant le \\t comme glue
+_join_s :		Coller les éléments en prenant l'espace comme glue
+
+
+Opérateurs indirects :
+
+_join.'<GLUE>' :	Coller les éléments en prenant <GLUE> comme glue

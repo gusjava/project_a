@@ -1,0 +1,38 @@
+Les opérateurs directs pour tester les String sont ceux
+qui prennent en entrée une String en produisent un Boolean.
+
+{$s='coucou'}
+
+is string ? {>s._is_string}
+is empty ? {>s._empty}
+is blank ? {>s._blank}
+
+Pour information, il existe d'autres opérateurs direct
+commençant par "_is_string_" :
+
+{>'_is_string_'._operator_names_st._join_n}
+
+Ainsi que certains opérateur commençant par :
+
+_co_...		: s contient une sous-string d'un certain type
+_nco_...	: s ne contient pas de sous-string d'un certain type 
+_st_...		: s commence par une sous-string d'un certain type
+_en_...		: s termine par une sous-string d'un certain type
+
+dans chacun de ces cas, on pourra trouver les types suivants:
+
+..._blank	: caractères blancs
+..._diacritics	: caractères diacritiques
+..._digit	: chiffres
+..._letter	: lettres a-z et A-Z
+..._lower	: lettres minuscules a-z
+..._punct	: caractères de ponctuation
+..._upper	: lettres majuscules A-Z
+
+Exemple :
+
+La string "bonjour!" termine-t-elle par de la ponctuation ?
+{>'bonjour!'._en_punct}
+
+La string "Entrée" contient-elle des caractères diacritiques ?
+{>'Entrée'._co_diacritics}

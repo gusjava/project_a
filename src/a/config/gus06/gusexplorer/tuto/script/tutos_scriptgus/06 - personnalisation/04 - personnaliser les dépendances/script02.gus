@@ -1,0 +1,38 @@
+Pour rendre ces dépendances paramètrables, on aura recours 
+à l'objet de traitement file_mapper (stocké dans le contexte), 
+qui permet d'instaurer un mapping entre fichiers 
+au sein d'un répertoire racine.
+
+Voici l'objet file_mapper :
+{>context.file_mapper._features}
+
+Dans un premier temps, nous devons paramétrer cet objet
+en lui indiquant un répertoire racine à partir duquel 
+les scripts vont être recherchés, ainsi qu'une map 
+de correspondance appelée mapping (vide pour le moment)
+
+Mapping vide :
+{$mapping=\{:\}}
+
+Répertoire racine :
+{$root=script.dir}
+
+{*context.file_mapper._v_map#(
+	root:root
+	map:mapping
+)}
+
+Ensuite, nous pouvons récupérer les sous-scripts 
+en prenant le script courant comme point de départ, 
+grâce à l'opérateur _mapper :
+
+{$file_a = script.file._mapper.'script01/a.gus'}
+{$file_b = script.file._mapper.'script01/b.gus'}
+
+{>file_a._name}
+{>file_b._name}
+
+Ici, on a l'impression que les résultats stockés 
+dans les objets file_a et file_b sont liés aux chemins 
+'script01/a.gus' et 'script01/b.gus' mais cette dépendance
+dépend en fait de l'état du file_mapper !

@@ -1,0 +1,27 @@
+L'opérateur ternaire (ou évaluation conditionnelle)
+
+Il s'agit de l'opérateur classique :
+condition ? valeur1 : valeur2
+
+Voici un exemple :
+
+6 est-il un multiple de 3 ?
+{>6%3==0?'Oui!':'Non!'}
+
+
+Cet opérateur fonctionne aussi avec des objets de traitement :
+Filtre ? Transform : Transform
+le résultat étant lui-même une transformation
+
+Voici un exemple :
+
+{$filter='a._size>3'._to_f}
+{$t1='upper'._to_t}
+{$t2='lower'._to_t}
+
+{$tt=filter?t1:t2}
+
+{>tt.Ab}
+{>tt.AbA}
+{>tt.AbAb}
+{>tt.AbAbA}

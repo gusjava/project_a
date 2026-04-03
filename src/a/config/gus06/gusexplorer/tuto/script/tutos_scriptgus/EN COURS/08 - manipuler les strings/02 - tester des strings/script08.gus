@@ -1,0 +1,29 @@
+Les variantes _i, _n, _s
+
+Pour la plupart des opérateurs qui effectuent des correspondances
+entre strings, il existe des variantes obtenues en ajoutant
+à la fin : _i, _n, _s
+
+_i : la correspondance est effectuée sur des strings normalisées
+sans distinction de case.
+
+_n : la correspondance est effectuée sur des strings normalisées
+sans distinction de case et sans caractère diacritique.
+
+_s : la correspondance est effectuée sur des strings normalisées
+dont chaque terme et symbole est séparé par un unique espace.
+
+On trouve aussi quelque fois :
+_si qui combine _i et _s
+_sn qui combine _n et _s
+
+
+Exemple avec _eq_s :
+
+{$s="private int getValue() \{
+	return value;
+\}"}
+
+{$s1="private int getValue()\{return value;\}"}
+
+{>s._eq_s.(s1)}

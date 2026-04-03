@@ -1,0 +1,13 @@
+Voici déjà un petit aperçu de ce qu'on peut faire
+avec certaines de ces balises :
+
+{$a=5}
+{if a<8}Le nombre {>a} est inférieur à 8{end}
+
+{for [2,6]}{>i}
+{end}
+
+{$list=['Coucou','Salut','Au revoir','Bonjour','Bye']}
+<ul>{each list}
+	<li>{>v}</li>{end}
+</ul>

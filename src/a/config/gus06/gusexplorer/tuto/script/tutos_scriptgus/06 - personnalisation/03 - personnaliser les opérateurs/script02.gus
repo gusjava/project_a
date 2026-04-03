@@ -1,0 +1,12 @@
+Cette map contient des objets T qui acceptent en entrée
+un tableau contenant 2 objets : 
+- l'opérand (objet sur lequel l'opérateur doit agir)
+- la map elle-même
+
+Et bien sûr, en sortie, on obtient le résultat de l'opération !
+
+Un opérateur n'est donc pas d'une simple transformation
+operand → résultat
+
+Nous allons voir comment il est possible d'ajouter
+de nouveaux éléments dans la map des opérateurs.

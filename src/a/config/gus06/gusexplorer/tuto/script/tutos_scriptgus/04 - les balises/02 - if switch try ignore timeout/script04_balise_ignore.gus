@@ -1,0 +1,21 @@
+La balise ignore permet d'ignorer une partie du script.
+Il s'agit de la variante structuelle de la balise comment.
+
+{ignore}
+On ignore tout le texte qui se trouve entre la balise
+\{ignore\} et sa balise \{end\} associée.
+{end}
+
+Cette balise peut aussi s'écrire !!
+
+{!!}
+On ignore tout le contenu qui se trouve entre la balise
+\{!!\} et sa balise \{end\}, y compris les balises structurelles encastrées.
+{if true}coucou{end}
+{end}
+
+Si on souhaite transformer une balise structurelle existante 
+en balise ignore, il suffit de faire commencer cette balise par !!
+
+{!!if true}vous me voyez ?{end}
+FIN

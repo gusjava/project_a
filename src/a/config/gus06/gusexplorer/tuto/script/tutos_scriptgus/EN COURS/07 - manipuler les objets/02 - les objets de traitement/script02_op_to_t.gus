@@ -1,0 +1,6 @@
+L'opérateur _to_t permet de convertir un objet en transformation
+Les types pris en compte par cet opérateur sont : 
+- Map, String, Integer, R, F, H, G, P, T
+
+T est renvoyé tel quel
+F, H sont encapsulé dans une enveloppe

@@ -1,0 +1,7 @@
+@code
+
+$root=1._app_rootdir
+$refdir=root._dchild1.scripts_ref
+
+each refdir._fchildren
+ *v._ref_init#v._name0

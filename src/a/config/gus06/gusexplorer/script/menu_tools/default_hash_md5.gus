@@ -1,0 +1,20 @@
+@code
+
+$file=1._clipboard_file
+if file!=null
+ if file._isfile
+  $md5=file._md5hexa
+  
+  $r="File: "+file+"\nMD5="+md5
+  *md5._e_clipboard
+  *r._jdialog_msg_info
+ stop
+
+$string=1._clipboard_string
+if string!=null
+ $md5=string._md5hexa
+ 
+ $r="String: "+string._truncate_pretty.20+"\nMD5="+md5
+ *md5._e_clipboard
+ *r._jdialog_msg_info
+ stop

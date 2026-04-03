@@ -1,0 +1,17 @@
+Dans notre deuxième script, nous utilisons la balise
+extends pour inclure le script précédent 
+tout en le personnalisant :
+-------------------------
+{extends 'script01.gus'}
+	{block 'head'}Head defined at level 2{end}
+	{block 'body'}Body defined at level 2{end}
+{end}
+-------------------------
+
+Tout comme la balise include, la balise extends
+permet d'inclure un sous-script dans notre script courant
+mais il s'agit cette fois d'une balise structurelle,
+dont le contenu accepte uniquement des balises block.
+
+De cette manière, il est possible de surcharger les balises
+block du script appelé (ou parlera de script hérité).

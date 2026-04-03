@@ -1,0 +1,22 @@
+{output disable}
+
+Ce n'est pas directement lié à la balise output, mais il est interessant
+de noter qu'il est tout à fait possible de définir des filtres
+spécifiques pour les balises print et les zones de texte :
+
+Filtre spécifique pour les balises print:
+{$context.trans_print=@'gus.string.transform.str.upper'}
+
+Filtre spécifique pour les zones de texte:
+{$context.trans_text=@'gus.string.transform.str.spacing'}
+
+{output enable}
+
+Impression de 'coucou': {>'coucou'}
+Impression de 3+3: {>3+3}
+
+{$context.trans_print=null}
+{$context.trans_text=null}
+
+Impression de 'coucou': {>'coucou'}
+Impression de 3+3: {>3+3}

@@ -1,0 +1,45 @@
+Parmis les 38 balises reconnues par le moteur de script, on trouve :
+
+- 15 balises de commande
+1	alias
+2	comment
+3	execute
+4	output
+5	print
+6	println
+7	set
+8	set0
+9	set1
+10	call
+11	debug
+12	include
+13	include1
+14	return
+15	stop
+
+- 18 balises structurelles
+1	block
+2	block0
+3	code
+4	each
+5	extends
+6	extends1
+7	for
+8	if
+9	ignore
+10	redirect
+11	repeat
+12	switch
+13	try
+14	until
+15	while
+16	clock
+17	timeout
+18	run
+
+- 5 balises d'articulation
+1	case
+2	else
+3	elseif
+4	end
+5	parent

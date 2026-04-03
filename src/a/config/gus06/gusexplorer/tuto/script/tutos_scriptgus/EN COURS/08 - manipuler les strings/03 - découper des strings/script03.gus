@@ -1,0 +1,12 @@
+Il existe une variante un peu plus subtile qui permet d'ignorer 
+les éléments qui sont vides.
+
+Elle est obtenue en remplaçant _split par _split1
+
+Exemple :
+
+{$s='Enchanté    de faire   ta  connaissance'}
+{>s._split1_s._desc}
+
+On notera que cet opérateur est équivalent à :
+{>s._split_ss._desc}

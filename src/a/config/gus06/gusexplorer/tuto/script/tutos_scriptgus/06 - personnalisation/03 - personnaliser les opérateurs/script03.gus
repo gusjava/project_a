@@ -1,0 +1,21 @@
+Voici une petite transformation qui met du texte entre crochets :
+{$t1='[*]'._star_replace}
+
+Nous pouvons vérifier que cette transformation fonctionne :
+{>t1.coucou}
+
+Pour transformer cette transformation en objet opérateur,
+il existe un opérateur dédié : _tooperator
+{$t2=t1._tooperator}
+
+Il ne reste plus qu'à ajouter t2 dans la map des opérateurs
+avec le nom souhaité (par exemple "_sq_brackets")
+
+{$context.operators._sq_brackets = t2}
+
+Et voilà ! Nous disposons d'un nouvel opérateur !
+{>'salut'._sq_brackets}
+
+Bon, en fait cet opérateur existait déjà (opérateur q5), 
+mais c'était histoire de faire un exemple ...
+{>'salut'._q5}

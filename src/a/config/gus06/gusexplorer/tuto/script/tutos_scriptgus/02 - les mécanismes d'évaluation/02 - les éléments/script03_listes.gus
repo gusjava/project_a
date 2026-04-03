@@ -1,0 +1,13 @@
+Dans les expressions, les listes s'écrivent entre crochets,
+et peuvent mélanger des données de nature différente :
+
+{$list=['Coucou',5,true]}
+{>list}
+
+Une liste vide s'écrit comme ceci:
+{$list=[]}
+{>list}
+
+On pourra naturellement placer des listes dans les listes :
+{$list2=['salut',['Coucou',5,true],23]}
+{>list2}

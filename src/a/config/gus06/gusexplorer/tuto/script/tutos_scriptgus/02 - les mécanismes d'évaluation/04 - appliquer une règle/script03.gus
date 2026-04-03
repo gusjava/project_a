@@ -1,0 +1,27 @@
+L'opérateur de connexion (.) permet aussi d'appliquer des règles
+spéciales qui sont connues par le moteur de script.
+
+Pour ces règles spéciales, on parlera aussi d'opérateurs (unaires)
+dans la mesure ou il s'agit en fait de transformations qui
+n'acceptent pas d'arguments, contrairement aux fonctions. 
+
+
+Voici un petit exemple sur un objet Map :
+
+{$map=a:'coucou' b:'au revoir' c:'salut'}{>map}
+
+la taille de la map={>map._size}
+la keyset de la map={>map._keyset}
+
+Par convention, toutes ces règles spéciales débutent par un underscore _
+ceci pour éviter les confusions avec les autres règles.
+
+Et voici le nombre total de ces règles spéciales :
+{>1._operator_names._size}
+
+Pour finir, sachez qu'il existe un raccourci très pratique
+dans les éditeurs de script qui permet de retrouver rapidement
+un nom d'opérateur : la touche F2
+
+Tapez une partie du nom puis appuyez sur F2 pour voir la liste
+des opérateurs qui correspondent à ce que vous avez tapé !

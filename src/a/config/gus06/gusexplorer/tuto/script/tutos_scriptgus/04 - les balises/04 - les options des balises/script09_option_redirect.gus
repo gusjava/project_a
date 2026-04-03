@@ -1,0 +1,12 @@
+L'option redirect :
+-------------
+balises : toutes
+type : String/File/PrintStream/P ...
+action : permet de rediriger la sortie standard.
+
+{>'coucou' redirect 'a'}
+a={>a}
+
+{repeat 4 redirect 'a'}
+{>i}{end}
+a={>a}

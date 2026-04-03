@@ -1,0 +1,39 @@
+La balise each est très utile pour itérer sur les valeurs
+d'une structure : map, list, set, array, string
+
+Dans la boucle, l'élément courant est stocké 
+dans la variable locale v.
+
+
+Exemple avec un tableau de double:
+{each [double:1.5,1.6,1.7]}
+{>v}{end}
+
+Exemple avec une liste:
+{each [1.5,1.6,1.7]}
+{>v}{end}
+
+Exemple avec une string:
+{each 'Bonjour'}
+{>v}{end}
+
+Quand il s'agit d'une map, la clé courante et sa valeur associée
+sont stockées respectivement dans les variables k et v.
+
+{$map=cle1:'valeur1' cle2:'valeur2' cle3:'valeur3'}
+{each map}
+{>k+'='+v}{end}
+
+
+La balise each peut aussi être utilisée sur des objets de type
+Iterator ou G.
+
+Dans le cas d'un itérateur, la boucle s'arrête lorsque
+it.hasNext() renvoie false.
+
+Dans le cas d'un fournisseur (G), la boucle s'arrête lorsque
+g.g() renvoie null.
+
+
+Enfin, on notera que la balise each accepte le null.
+Et dans ce cas, bien évidemment, aucune itération n'est effectuée.

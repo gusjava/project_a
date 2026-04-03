@@ -1,0 +1,23 @@
+@code
+
+!TODO op _jdialog_input_asint (qui renvoie null si pas le bon format)
+!TODO op _jdialog_input_aslong (qui renvoie null si pas le bon format)
+!TODO op _jdialog_input_asdouble (qui renvoie null si pas le bon format)
+!TODO op _script_stop
+!TODO op _waitfor_popup_notif
+
+$duration="Nombre de minutes avant l'arrêt de Windows: "._jdialog_input_asint
+if duration==null
+ stop
+
+$cancel=1._stop+1._e_beep
+*duration._waitfor_min
+
+$m.title='UTIL_shutdown#Arrêt de windows'
+$m.title_size=18
+$m.message='Arrêt imminent de windows. Cliquez ici pour annuler'
+$m.execute=cancel
+*m._popup_notif
+
+*6._waitfor_s
+*1._win_shutdown

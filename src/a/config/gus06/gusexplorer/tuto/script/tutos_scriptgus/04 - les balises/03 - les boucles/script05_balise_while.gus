@@ -1,0 +1,17 @@
+La balise while permet de répéter un contenu 
+tant qu'une condition est vraie.
+
+{$a=0}
+{while a<10}
+{$a++}{>a}{end}
+
+la balise else peut être ajoutée pour prendre en compte 
+la situation par défaut
+(aucune itération n'est effectuée)
+
+i et i_ sont disponibles ...
+
+Par ailleurs, une sécurité empêche la boucle de
+dépasser 100 000 itérations. Au delà, une exception
+est générée indiquant qu'une boucle infinie a été
+détectée.

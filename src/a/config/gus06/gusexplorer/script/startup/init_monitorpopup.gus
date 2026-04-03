@@ -1,0 +1,30 @@
+@code
+
+$comp1='jvmMem0b'._build._i
+$comp2='appMem0b'._build._i
+$comp3=(£'" "+1._app_pid+"-"+1._threads_count+"-"+1._app_errors._size+"  "+1._duration_s_app._formatduration1_s_fr')._jlabel
+
+*comp3._cust#(foreground:1._c_white background:1._c_black fontsize:9 opaque:true)
+
+$frame=1._app_mainframe
+$show=frame._show+frame._framestate_n+frame._tofront
+$chrono='countdownTriggerS'._build._p#3._e_beeps
+
+$captureAction=(@'gus.appli.gusexplorer.action.tools.screen.capture.toclipboard')._g
+$capture2Action=(@'gus.appli.gusexplorer.action.tools.screen.capture2.showontop')._g
+$exitAction=(@'gus.app.action.exit.en')._g
+$restartAction=(@'gus.app.action.restart.en')._g
+$showAction=(display:'SWING_JFrame#show' execute:show)._action
+$chronoAction=(display:'chrono#chrono' execute:chrono)._action
+
+$bar=[captureAction,capture2Action,'|',exitAction,restartAction,showAction,chronoAction]._jtoolbar
+
+$comp4=(comp1+comp2)._inv
+$comp5=(center:comp4 south:comp3)._jpanel
+$comp=(center:comp5 south:bar)._jpanel
+
+*comp._on_mousedoubleclicked#show
+*comp._ontop_with#(bounds:[1410,715,125,90] removeonkey:'del' draggable:true)
+
+$dndP=(@'gus.appli.gusexplorer.data.manager')._v.add
+*(comp:comp4 p:show|dndP)._dnd

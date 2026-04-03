@@ -1,0 +1,19 @@
+Lorsque votre map d'options ne comporte qu'une seule option,
+il est possible d'utiliser un raccourci d'écriture
+en écrivant directement le nom de votre option suivi
+de sa valeur à la place de "with mes-options".
+
+
+Par exemple :
+
+{>'bonjour' with if:true}
+est équivalent à :
+{>'bonjour' if true}
+
+{repeat 5 with var:'a'}{>a}{end}
+est équivalent à :
+{repeat 5 var 'a'}{>a}{end}
+
+{>'a' with repeat:5}
+est équivalent à :
+{>'a' repeat 5}

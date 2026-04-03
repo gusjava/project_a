@@ -1,0 +1,37 @@
+La balise for ressemble à la balise repeat mais permet toutefois
+de contrôler plus finement le compteur de boucles.
+
+Voici un exemple permettant de faire décroitre le compteur
+de 2 en 2 à partir de 20 jusqu'à 10.
+
+{for [20,10,-2]}{>i} {end}
+
+Comme précédemment, la balise else peut être ajoutée
+pour prendre en compte la situation par défaut
+(aucune itération n'est effectuée)
+
+{for [20,10,0]}{>i} {else}
+Aucune itération n'est effectuée{end}
+
+Comme précédemment, la balise dispose d'une variable i_
+pour fournir des indications sur le déroulement de l'itération
+
+{for [2,6,2]}{>i_}
+{end}
+
+Le tableau de définition des itérations
+peut être écrit de manière simplifiée, comme ceci :
+
+[10,20] : le pas de l'itération est 1 par défaut
+[10] : la valeur initiale est 0 par défaut
+
+{for [10,20]}{>i} {end}
+{for [10]}{>i} {end}
+{for 10}{>i} {end}
+
+Le tableau de définition des itérations
+peut aussi être écrit sous la forme d'une string :
+
+{for '10..20:2'}{>i} {end}
+{for '10..20'}{>i} {end}
+{for '10'}{>i} {end}

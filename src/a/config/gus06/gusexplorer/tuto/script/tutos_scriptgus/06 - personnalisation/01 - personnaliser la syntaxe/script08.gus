@@ -1,0 +1,14 @@
+@@[]
+Vous avez la possibilité de spécifier une règle avec
+seulement 2 caractères. Dans ce cas, le méta caractère 
+d'échappement est inchangé !
+
+[>'bonjour']
+
+[$set={'a','b'}]
+[$map={'a':'A','b':'B'}]
+[$list=\[1,2,3\]]
+
+set=[>set]
+map=[>map]
+list[>list]

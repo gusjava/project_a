@@ -1,0 +1,11 @@
+Les champs "prevtag", "nexttag", "tagpos", "textend" et "textstart"
+sont des champs liés à l'analyse syntaxique du texte du script.
+Ils permettent de retrouver l'ordre de découpage des balises
+et la position de chaque balise dans le texte.
+
+Enfin, il reste le champ "executor", correspondant à
+un objet P, et utilisé pour exécuter la balise proprement dit
+(il suffit de passer la map context dans l'objet!)
+
+et le champ "stack", une map regroupant les données
+d'exécution de la balise.

@@ -1,0 +1,27 @@
+
+Opérateurs directs :
+
+{>20._gen_num}
+{>20._gen_lower}
+{>20._gen_upper}
+{>20._gen_alpha}
+{>20._gen_alphanum}
+
+{>20._gen_num1}
+{>20._gen_lower1}
+{>20._gen_upper1}
+{>20._gen_alpha1}
+{>20._gen_alphanum1}
+
+
+
+{>20._gen.'ABCD'}
+
+{>1._abc1}
+{>1._abc2}
+{>1._123}
+
+{>1._randomabc}
+{>1._randomabc1}
+{>1._randomabc2}
+

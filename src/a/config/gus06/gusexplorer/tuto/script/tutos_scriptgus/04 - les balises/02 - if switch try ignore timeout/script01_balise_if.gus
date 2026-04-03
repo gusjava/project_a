@@ -1,0 +1,27 @@
+La balise if est la balise classique de condition.
+Elle évalue une expression dont le résultat booléen détermine
+si son contenu doit être exécuté ou non.
+
+Une balise else peut être utilisée pour délimiter une partie
+à exécuter en cas de résultat faux (situation par défaut).
+
+{$a=5}
+
+{if a._odd}
+	La valeur {>a} est impaire.
+{else}
+	La valeur {>a} est paire.
+{end}
+
+Une ou plusieurs balises elseif peuvent être utilisées 
+en remplacement de else (ou avant celle-ci)
+
+{$a=0}
+
+{if a>0}
+	La valeur {>a} est positive.
+{elseif a==0}
+	La valeur {>a} est nulle.
+{else}
+	La valeur {>a} est négative.
+{end}

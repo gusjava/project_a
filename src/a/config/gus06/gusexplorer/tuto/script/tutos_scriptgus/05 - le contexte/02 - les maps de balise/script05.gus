@@ -1,0 +1,23 @@
+Les champs "content" et "parent" permettent de naviguer
+dans l'aborescence des balises du script.
+
+Si le champ "parent" est manquant, alors il s'agit
+nécessairement de la balise root du script initial
+c'est à dire de la balise "start".
+
+Si le champ "content" est manquant, alors il s'agit
+d'une balise non structurelle (commande ou articulation)
+
+Le champ "index", lié au champ "parent" permet
+quant à lui de connaitre la position de la balise
+parmi les différents enfants de la balise parent.
+
+
+On remarquera que les balises "include" ne possèdent pas
+de champ "content" mais un champ "included" issu de la
+phase d'exécution, qui permet de retrouver la balise root
+du sous-script qui a été inclus.
+
+Ce champ est aussi présent dans les balises "extends", qui
+ont par ailleurs un champ "content" utilisé par le mécanisme
+de l'héritage.

@@ -1,0 +1,22 @@
+Un opérateur dont le résultat est indépendant de la valeur
+sur laquelle on l'applique est appelé un opérateur constant.
+
+Voici un exemple :
+{>1._math_pi}
+
+Pourquoi l'appliquer sur le nombre 1 ?
+Parce qu'il faut bien l'appliquer sur quelque chose
+et que c'est rapide à écrire.
+
+Mais vous pouvez l'appliquer sur ce qui vous chante :
+{>0._math_pi}
+{>null._math_pi}
+{>''._math_pi}
+{>'coucou'._math_pi}
+
+
+Ces opérateurs correspondent le plus souvent à des constantes
+ou à des fonctions sans paramètre renvoyant un résultat pré-défini.
+
+En Java, cela équivaut à un champ statique
+ou à une méthode statique sans arguments.

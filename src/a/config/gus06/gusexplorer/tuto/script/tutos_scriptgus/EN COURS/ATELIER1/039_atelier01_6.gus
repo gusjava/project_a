@@ -1,0 +1,37 @@
+{$list=[
+	(prenom:'Jean' nom:'Dupont' sexe:'m' age:41),
+	(prenom:'Yves' nom:'Durant' sexe:'m' age:37),
+	(prenom:'Emeline' nom:'Lemeux' sexe:'f' age:9),
+	(prenom:'Yvan' nom:'Lemeux' sexe:'m' age:15),
+	(prenom:'Muriel' nom:'Lavoisier' sexe:'f' age:27)
+]}
+
+Intéressons-nous ensuite au filtrage des données.
+L'opérateur _findall va nous permettre de retrouver dans notre liste
+les données correspondants à certains critères !
+
+Nous souhaitons désormais obtenir la liste des personnes dont le nom est "Lemeux"
+
+Il nous faut dans un premier temps définir un filtre 
+à partir d'une règle de filtrage grâce à l'opérateur _to_f
+
+{$f='a.nom=="Lemeux"'._to_f}
+
+suite à quoi, nous écrivons :
+
+{>list._findall#f}
+
+ou directement :
+
+{>list._findall.'a.nom=="Lemeux"'}
+
+Autres exemples de filtre:
+
+{>list._findall.'a.age>30'}
+{>list._findall.'a.sexe=="f"'}
+{>list._findall.'a.prenom._st.Y'}
+
+
+Notons : l'opérateur _st permet de vérifier
+si une string commence par une autre string
+Exemple : {>'coucou'._st.A}

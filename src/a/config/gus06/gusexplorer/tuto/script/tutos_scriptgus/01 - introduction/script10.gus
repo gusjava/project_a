@@ -1,0 +1,18 @@
+La plupart des zones d'infos rencontrées dans les balises 
+correspondent à une évaluation (c'est le cas pour la balise 
+print ou execute). La zone d'info d'une balise set correspond 
+en revanche à une affectation.
+
+Une évaluation
+peut être considérée comme une "expression" qui est calculée
+par le moteur de script. Le résultat de ce calcul est ensuite 
+exploité par la balise pour obtenir une action particulière.
+
+Nous traiterons des mécanismes d'évaluation en 2ème partie
+
+Une affectation
+s'écrit le plus souvent comme ceci: <ma-variable> = <evaluation>
+Mais on trouve aussi d'autres règles comme par exemple :
+a++ (qui est un raccourci pour a = a+1)
+
+Nous traiterons des mécanismes d'affection en 3ème partie

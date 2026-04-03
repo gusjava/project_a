@@ -1,0 +1,47 @@
+@code
+!Ce script permet de transferer le JAR de l'application en cours d'execution
+!vers une autre version sur un poste distant
+
+$file=1._appjar
+>>file
+
+$m.key="ip"
+$m.message="Please, enter the server's IP"
+$m.title="IP required"
+$ip=m._data_required
+
+if ip==null
+ >>'null ip: transfert aborted'
+ stop
+
+>>'ip='+ip
+try
+ $socket=(ip+':4000')._newsocket
+ >>'socket started'
+
+ else
+ >>'error occurred: '+e
+ $m.reset="true"
+ $m.message="Please, enter a new IP"
+ $ip=m._data_required
+ 
+ if ip==null
+  >>'null ip: transfert aborted'
+  stop
+
+ 
+ >>'new ip='+ip
+ $socket=(ip+':4000')._newsocket
+ >>'socket started'
+ 
+ 
+try
+ >>'transfering file...'
+ $t=1._date0
+ *file._transferto#socket
+ 
+ >>'duration: '+t._duration_s_tonow+'s'
+ >>'done'
+ 
+ else
+ >>'error occurred: '+e

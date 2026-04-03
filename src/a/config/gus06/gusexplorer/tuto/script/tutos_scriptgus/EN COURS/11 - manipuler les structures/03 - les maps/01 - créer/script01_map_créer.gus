@@ -1,0 +1,5 @@
+Pour créer un objet map, on utilisera la notation:
+{$map=\{:\}} {>map}
+
+Mais on peut aussi utiliser l'opérateur constant "_newmap"
+{$map=1._newmap} {>map}

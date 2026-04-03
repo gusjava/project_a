@@ -1,0 +1,31 @@
+Les opérateurs arithmétiques
+
+Voici ceux qui s'appliquent sur des nombres (entier ou réel)
+ou des fonctions (H) :
+
+- L'opérateur d'addition		+
+5+2={>5+2}
+
+- L'opérateur de soustraction		-
+5-2={>5-2}
+
+- L'opérateur de multiplication		*
+5*2={>5*2}
+
+- L'opérateur de division réelle	/
+5/2={>5/2}
+
+- L'opérateur de puissance		^
+5^2={>5^2}
+
+En fait, les opérateurs + - * et ^ s'appliquent sur de nombreux
+types de données, comme nous allons le voir par la suite.
+
+Voici ceux qui s'appliquent uniquement 
+sur des nombres entiers :
+
+- L'opérateur modulo			%
+5%2={>5%2}
+
+- L'opérateur de division euclidienne	//
+5//2={>5//2}

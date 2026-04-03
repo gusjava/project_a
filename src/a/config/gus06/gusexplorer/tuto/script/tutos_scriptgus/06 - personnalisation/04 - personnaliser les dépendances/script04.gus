@@ -1,0 +1,31 @@
+{$mapping=\{'/script01/b.gus':'/script01/a.gus'\}}
+{$root=script.dir}
+
+{*context.file_mapper._v_map#(
+	root:root
+	map:mapping
+)}
+
+L'intérêt du file_mapper réside dans l'utilisation de l'opérateur
+_mapper avec la balise include (ou extends)
+
+{include script.file._mapper.'/script01/a.gus'}
+{include script.file._mapper.'/script01/b.gus'}
+
+Les 2 balises include ci-dessus ont pour effet d'inclure 2 fois
+le même script '/script01/a.gus'. Cet effet ne dépend pas vraiment
+du contenu des balises mais du mapping qui sert à paramétrer
+l'objet file_mapper.
+
+Et voici une manière plus courte d'arriver au même résultat :
+
+{include1 '/script01/a.gus'}
+{include1 '/script01/b.gus'}
+
+Avec la balise include1, on parlera d'une inclusion flexible
+et avec la balise include, d'une inclusion en dur.
+
+Il faut aussi noter que le recours à une inclusion flexible,
+tout comme à l'opérateur _mapper nécessite d'avoir préalablement
+paramétré l'objet file_mapper, faute de quoi une erreur se
+produira.

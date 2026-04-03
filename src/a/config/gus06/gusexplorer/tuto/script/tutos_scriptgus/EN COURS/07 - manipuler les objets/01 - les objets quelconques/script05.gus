@@ -1,0 +1,35 @@
+Voyons à présent différents opérateurs qui vous permettront de
+retrouver des informations techniques sur le moteur de script
+et sur l'application :
+
+
+_ENTITIES
+1 . _entities -> List
+renvoie la liste de tous les noms d'entités disponibles
+{>1._entities._size}
+
+_TAG_NAMES
+1 . _tag_names -> String[]
+renvoie la liste des balises disponibles
+{>1._tag_names._size}
+
+_TAG_OPTIONS
+1 . _tag_options -> String[]
+renvoie la liste des options de balises disponibles
+{>1._tag_options._size}
+
+_OPERATOR_NAMES
+1 . _operator_names -> Set
+renvoie la liste de tous les noms d'opérateurs disponibles
+{>1._operator_names._size}
+
+_OPERATOR_NAMES_ST
+[String] . _operator_names_st -> Set
+renvoie la liste de tous les noms d'opérateurs commençant par la string ciblée
+{>'_operator'._operator_names_st._join_n}
+
+_APP_LISTING
+1 . _app_listing -> List
+renvoie toutes les entrées du JAR applicatif, 
+ce qui permet de visualiser son contenu
+{>1._app_listing._size}

@@ -1,0 +1,29 @@
+Par défaut, la syntaxe du script gus est une syntaxe de template
+basée sur les 3 méta-caractères : \{ \} et \\
+
+Mais il est possible de personnaliser celle-ci en faisant débuter
+notre script par une règle de personnalisation. Concrétement, 
+il s'agit d'une première ligne qui débute par 1 ou 2 arobas.
+
+Il y a ainsi 2 manières de personnaliser la syntaxe :
+
+@ : permet de définir un mode particulier qui est appelé
+"le script à balise unique"
+
+@@ : permet de fixer des nouveaux méta-caractères pour le script.
+
+
+Bien, vous allez me dire que l'arobas est donc lui aussi une sorte
+de méta caractère puisqu'il a un rôle spécial au sein du script.
+Doit-il être lui aussi échappé pour être utilisé dans son sens litteral ?
+
+Non, l'arobas n'est pas considéré comme un méta-caractère et n'a pas besoin
+d'être échappé. C'est uniquement lorsqu'il apparait au début de la première
+ligne qu'il est interprété comme un indicateur de règle de personnalisation.
+Si jamais vous souhaitez débuter votre texte de script par un arobas sans
+pour autant éprouver le besoin de définir une règle, vous pouvez recourir
+à l'astuce suivante :
+
+Une première ligne composée d'un unique arobas est une règle sans effet.
+Vous pouvez donc écrire cette première ligne (qui sera ignorée) puis ensuite 
+écrire votre texte qui débute par un arobas. Voyez l'exemple suivant...

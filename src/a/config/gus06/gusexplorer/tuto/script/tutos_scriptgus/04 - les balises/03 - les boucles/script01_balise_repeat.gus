@@ -1,0 +1,24 @@
+La balise repeat est la manière la plus simple pour réaliser une boucle.
+
+Elle permet de répéter N fois une partie du script
+N étant un nombre entier positif ou nul obtenu comme résultat 
+de l'évaluation de son expression.
+
+{repeat 4}
+coucou{end}
+
+Une balise else peut être ajoutée pour prendre en charge la situation 
+par défaut (N=0).
+
+{repeat 0}
+coucou{else}
+Il ne s'est rien passé{end}
+
+Par ailleurs, la balise repeat met à disposition 2 variables locales:
+- i : un entier correspondant au compteur de boucle
+- i_ : une map contenant des indications sur son déroulement
+
+{repeat 4}----
+i={>i}
+i_={>i_}
+{end}

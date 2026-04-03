@@ -1,0 +1,27 @@
+{$s='Voici un A, puis encore un A, et un AA!'}
+
+_rem : permet de supprimer toutes les occurrences d'une string
+{>s._rem.A}
+
+_rem_first : permet de supprimer la première occurrence d'une string
+{>s._rem_first.A}
+
+_rem_last : permet de supprimer la dernière occurrence d'une string
+{>s._rem_last.A}
+
+_rem_start : permet de supprimer la première occurrence d'une string
+uniquement si notre chaîne commence par celle-ci
+{>s._rem_start.A}
+{>s._rem_start.V}
+
+_rem_end : permet de supprimer la dernière occurrence d'une string
+uniquement si notre chaîne termine par celle-ci
+{>s._rem_end.AA}
+{>s._rem_end.'AA!'}
+
+Variantes indépendantes de la case ..._i
+{>s._rem_i.a}
+{>s._rem_first_i.a}
+{>s._rem_last_i.a}
+{>s._rem_start_i.v}
+{>s._rem_end_i.'aa!'}

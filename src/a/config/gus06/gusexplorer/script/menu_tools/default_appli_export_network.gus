@@ -1,0 +1,70 @@
+@code
+!Ce script permet de transferer le JAR de l'application en cours d'execution
+!vers une autre version sur un poste distant
+
+$url=1._clipboard_string
+if url==null
+
+ $dir=1._clipboard_file
+ if !dir._isdir
+  *'Dir not found inside clipboard'._jdialog_msg_warning
+  stop
+  
+ $infoFile=dir.'infos.properties'
+ 
+ $m.key="ip"
+ $m.store=infoFile
+ $m.message="Please, enter the server's IP"
+ $m.title="IP required"
+ $ip=m._data_required
+ 
+ if ip==null
+  >>'null ip: transfert aborted'
+  stop
+ 
+ $port=4000
+ $url=ip+":"+port
+
+$appFile=1._appjar
+>>"sending file: "+appFile
+>>"to socket server: "+url
+ 
+$md5=appFile._md5hexa
+$size=appFile._size._s
+ 
+>>'file md5: '+md5
+>>'file size: '+size
+
+
+try
+ $socket=url._newsocket
+ $p=socket._printstream
+ 
+ *p._e_println#md5
+ *p._e_println#size
+ 
+ >>"transfering..."
+ $t=1._now
+ $r=1000._progress
+ *r._v.colorRunning#[0,204,0]._tocolor
+ *r._v.colorOver#[0,102,51]._tocolor
+ 
+ $m.title_size=20
+ $m.title='FILE_jar_export#Sending application'
+ $m.message='JAR file is currently sent...'
+ $m.progress=r
+ $m.progress_height=20
+ $m.progress_background=1._c_white
+ *m._popup_notif
+ 
+ *(input:appFile output:socket progress:r)._transfer
+ $dt=t._duration_s_tonow
+ 
+ $m="FILE_jar_connectedRed#Appli sent ("+dt+"s)"
+ *m._popup_notif
+ >>'transfer done ('+dt+'s)'
+ 
+ else
+ >>e._cause_last
+ $errMsg="UTIL_error#"+e._message
+ *errMsg._popup_notif

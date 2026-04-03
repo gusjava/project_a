@@ -1,0 +1,9 @@
+La balise "println" permet d'envoyer du texte vers la sortie standard,
+comme print, mais en ajoutant à \\n à la fin du texte.
+
+{println "petit test"}
+
+De manière similaire à print, elle peut s'écrire de manière concise 
+grâce aux notations pp ou >>.
+
+{pp 'coucou'}{>>'coucou'}

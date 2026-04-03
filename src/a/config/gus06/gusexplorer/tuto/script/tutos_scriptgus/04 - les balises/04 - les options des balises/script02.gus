@@ -1,0 +1,15 @@
+Voici la liste exhaustive de toutes les options 
+potentiellement reconnues par les balises :
+
+{>1._tag_options._join_n}
+
+Nous allons ensuite détailler l'utilité de chacune de 
+ces {>1._tag_options._size} options ainsi que les balises 
+pour lesquelles elles s'appliquent.
+
+Mais il faut bien noter que vous pouvez mettre n'importe
+quelles clés dans votre map d'options sans risquer
+de faire planter le script, les options non reconnues
+étant systématiquement ignorées.
+
+{>'coucou' with monOption:1}

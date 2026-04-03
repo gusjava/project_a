@@ -1,0 +1,10 @@
+Depuis le script b :
+
+script.file:
+{>script.file}
+
+script.parent.file:
+{>script.parent.file}
+
+script.parent.parent.file:
+{>script.parent.parent.file}

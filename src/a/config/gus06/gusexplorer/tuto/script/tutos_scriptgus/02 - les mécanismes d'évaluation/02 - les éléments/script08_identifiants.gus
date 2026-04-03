@@ -1,0 +1,31 @@
+Dans les expressions, les identifiants sont des élements 
+faisant référence à des noms de variable ou des noms d'opérateur. 
+
+Ils sont écrits uniquement avec des caractères alphanumériques 
+(lettres minuscules, majuscules, chiffres)
+et le caractère underscore _.
+
+Dans les opérations d'affectation, le choix des identifiants
+pour enregistrer de nouvelles variables est soumis à quelques
+restrictions :
+
+- les nombres sont interdits, 
+- les 3 mot-clés suivants sont interdits : null, true, false
+- quelques termes réservés sont également interdits, dont
+voici la liste : {>reserved}
+
+
+Si on essaie par exemple de stocker la valeur 1 
+dans une variable appelée "null"
+voilà ce qu'il se passe :
+
+{try}
+	{$null=1}
+{else}
+	{>e._cause}
+{end}
+
+
+Les développeurs Web noterons au passage que le javascript autorise
+le caractère dollar dans les noms de variable,
+contrairement aux scripts gus.

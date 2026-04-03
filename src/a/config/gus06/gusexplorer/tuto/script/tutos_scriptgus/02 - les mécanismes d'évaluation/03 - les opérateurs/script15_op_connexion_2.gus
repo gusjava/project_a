@@ -1,0 +1,33 @@
+Voici quelques exemples d'application de règle :
+
+
+- Appliquer une règle sur une transformation (T) :
+
+{$spacing=@'gus.string.transform.str.spacing'}
+{>spacing.bonjour}
+
+- Appliquer une règle sur une map :
+
+{$map=key1:3 key2:4 key3:-2}
+{>map.key1}
+
+- Appliquer une règle sur une liste :
+
+{$list=['a','b','c','d','e']}
+{>list.2}
+
+- Appliquer une règle sur une string :
+
+{$str='coucou'}
+{>str.first}
+{>str.last}
+
+- Appliquer une règle sur un nombre entier :
+
+{$a=4}
+{>a.4}
+{>a.5}
+
+Nous allons détailler dans le prochain chapitre
+les mécanismes d'application des règles qui caractérisent
+l'opérateur de connexion (.)

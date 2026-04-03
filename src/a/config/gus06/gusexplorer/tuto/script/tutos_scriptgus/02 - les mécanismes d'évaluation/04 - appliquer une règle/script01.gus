@@ -1,0 +1,36 @@
+La règle spécifiée est toujours interprétée comme une chaîne de caractères,
+et peut être écrite comme un identifiant si elle ne contient que des
+caractères alphanumériques (a-zA-Z0-9) avec l'underscore.
+
+{$map=key:3}
+{>map.key}
+
+Dans les autres cas, elle doit être écrite comme une string :
+
+{$map=\{'ma clé':3\}}
+{>map.'ma clé'}
+
+Il est aussi possible de mettre comme règle un groupement entre [] ou entre ().
+Le cas échéant, le contenu du groupement est évalué et le résultat de l'évaluation
+est interprété comme une chaîne de caractères.
+
+On peut utiliser cette approche pour prendre un nombre négatif comme règle :
+
+{$list=['a','b','c','d','e']}
+{>list.'-1'}
+{>list.(-1)}
+{>list.[-1]}
+
+ou encore pour prendre la valeur d'une variable comme règle :
+
+{$map=a:3}
+{$key='a'}
+{>map.(key)}
+{>map.[key]}
+
+On retiendra que l'écriture entre crochets ou entre parenthèses,
+permet de prendre comme règle le résultat de l'évaluation
+de la sous-expression, interprété comme une String.
+
+{>list.(1+1)}
+{>list.[1+1+1]}

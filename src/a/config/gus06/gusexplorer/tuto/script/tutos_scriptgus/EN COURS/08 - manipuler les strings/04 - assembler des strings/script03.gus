@@ -1,0 +1,17 @@
+Il existe une variante un peu plus subtile qui permet d'ignorer 
+les éléments qui sont vides.
+
+Elle est obtenue en remplaçant _join par _join1
+
+Exemple :
+
+{$list=[
+	'22 rue Jean Jaures',
+	'porte gauche',
+	'',
+	'75003',
+	'PARIS',
+	''
+]}
+
+{>list._join1_n}

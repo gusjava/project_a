@@ -1,0 +1,21 @@
+@code
+
+$m.font='Courier bold 15'._tofont
+$m.text=1._mouse._join_s
+$m.margin=5
+
+$label=m._jlabel
+
+$m.display='UTIL_clock#Clock'
+$m.content=label
+$m.size=[50,70]
+$m.resizable=false
+$m.visible=true
+$m.alwaysontop=true
+$m.draggable=true
+
+$diag=m._jdialog1
+
+while diag._is_visible
+ *50._waitfor_ms
+ *label._settext#'HH:mm:ss'._nowformat

@@ -1,0 +1,17 @@
+Avec la commande "add", on peut ajouter des filtres
+qui modifient le texte imprimé :
+
+
+{output add @'gus.string.transform.str.upper'}
+On a ajouté un filtre sur la sortie qui va tout mettre
+en majuscules.
+{>'y compris quand c\\'est dans une balise print'}
+
+{output add @'gus.string.transform.str.spacing'}
+On ajoute un deuxième filtre
+qui élargit le texte avec
+des espaces.
+
+{output clear}
+On a supprimé tous les filtres,
+le texte est redevenu normal.

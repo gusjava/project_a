@@ -1,0 +1,23 @@
+Variantes "vides"
+
+Tous les opérateurs précédents disposent de variantes "vides", pour lesquels
+les valeurs associées aux clés sont fixées à la chaîne de caractères vide.
+
+Les noms sont générés en ajoutant 0 juste après put ou putall :
+
+_e_put		_e_put0
+_e_putall	_e_putall0
+_e_put_ct	_e_put0_ct
+_e_putall_ct	_e_putall0_ct
+_e_put_ig	_e_put0_ig
+_e_putall_ig	_e_putall0_ig
+
+Quelques exemples :
+{$map=1._newmap} {>map}
+
+{*map._e_put0.key1} {>map}
+{*map._e_putall0#['key2','key3','key4']} {>map}
+
+
+Pour finir, il est intéressant de noter que tous ces opérateurs fonctionnent
+aussi bien sur des maps que sur des fichiers properties !

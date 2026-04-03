@@ -1,0 +1,34 @@
+Une règle d'affectation s'écrit comme ceci :
+<localisation-de-la-variable> = <evaluation>
+
+La localisation de la variable peut être son nom ou un "chemin" 
+qui identifie la variable dans une structure.
+
+Exemple avec une liste:
+
+{$list=[1,2,3,4,5,6]}{>list}
+
+{$list.2=0}{>list}
+{$list.(-1)=2}{>list}
+{$list.m1=8}{>list}
+{$list.m2=8}{>list}
+{$list.last=-1}{>list}
+{$list.first=-1}{>list}
+{$list.before=10}{>list}
+{$list.after=10}{>list}
+
+Exemple avec une map:
+
+{$map=a:1 b:2 c:3}{>map}
+
+{$map.a='W'}{>map}
+{$map.b='W'}{>map}
+{$map.c='W'}{>map}
+
+Lorsque les structures intermédiaires du chemin de localisation
+n'existent pas encore, elles sont initialisées sous forme de map :
+
+{$m1.m2.var='coucou'}
+{>m1._type}
+{>m1.m2._type}
+{>m1.m2.var}

@@ -1,0 +1,2 @@
+Je suis le script {>script.file}
+Mon identifiant est : {>script.file._file_to_id}

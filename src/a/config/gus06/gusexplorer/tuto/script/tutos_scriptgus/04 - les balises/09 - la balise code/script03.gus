@@ -1,0 +1,36 @@
+La balise code peut être utilisée de 2 manières différentes:
+- en mode INDENT
+- en mode END
+
+L'option "mode" permet de spécifier quel est le mode
+en passant l'une des valeurs : indent ou end
+Si on ne précise rien, c'est INDENT qui s'applique par défaut.
+
+
+Exemple en mode INDENT :
+
+{code mode 'indent'}
+$a=3
+if a<0
+ >>'Cette ligne ne doit pas s\\'afficher'
+ >>'Cette ligne non plus ne doit pas s\\'afficher'
+>>'On est sorti du IF...'
+{end}
+
+
+Même exemple en mode END :
+
+{code mode 'end'}
+$a=3
+if a<0
+>>'Cette ligne ne doit pas s\\'afficher'
+>>'Cette ligne non plus ne doit pas s\\'afficher'
+end
+>>'On est sorti du IF...'
+{end}
+
+
+Dans le mode END, ce sont les instructions "end" qui structurent
+le code
+
+Dans le mode INDENT, c'est l'indentation du code qui le structure

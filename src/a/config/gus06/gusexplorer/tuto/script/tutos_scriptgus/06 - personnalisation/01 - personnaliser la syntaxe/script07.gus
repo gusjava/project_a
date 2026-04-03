@@ -1,0 +1,14 @@
+@@`<>
+
+En faisant débuter notre script par la ligne @```<`>
+nous avons changé les 3 méta-caractères qui structurent notre script !
+
+En effet, le méta caractère d'échappement habituel 
+à été remplacé par `` et les caractères de délimitation
+des balises ont été remplacés par `< et `>
+
+Voyez plutôt :
+
+<s list=['\\',1,2,3,'\\']>
+<each list>
+<p v><end>

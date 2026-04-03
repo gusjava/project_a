@@ -1,0 +1,17 @@
+L'option repeat :
+-------------
+balises : toutes
+type : Integer
+action : permet de répéter une balise
+plusieurs fois.
+
+{>'bonjour' repeat 3}
+
+{$a=0}
+{if a==0 repeat 2}
+{$a++}{>a}{end}
+
+On remarquera que l'évaluation de l'information
+principale n'est faite qu'une seule fois,
+et que le même résultat est donc utilisé 
+plusieurs fois en cas de répétition.

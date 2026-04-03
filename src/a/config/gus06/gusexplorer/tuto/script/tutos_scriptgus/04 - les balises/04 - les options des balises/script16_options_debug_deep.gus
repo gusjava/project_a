@@ -1,0 +1,20 @@
+L'option debug :
+-------------
+balises : toutes
+type : String
+action : permet de "débugger" une balise
+en imprimant dans la sortie standard des informations
+liées à la balise.
+
+Nous étudierons cette option avec la balise debug.
+
+
+L'option deep :
+-------------
+balises : parent
+type : Integer
+action : permet de spécifier le degré de parenté
+de la balise ancètre à laquelle la balise parent
+fait référence
+
+Nous étudierons cette option avec la balise extend.

@@ -1,0 +1,12 @@
+@@|
+Et avec un unique caractère ?
+
+|>'bonjour'|
+
+|$set={'a','b'}|
+|$map={'a':'A','b':'B'}|
+|$list=[1,2,3]|
+
+set=|>set|
+map=|>map|
+list|>list|

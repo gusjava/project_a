@@ -1,0 +1,12 @@
+Parmi les opérateurs constants, on trouvera notamment :
+
+- des fonctions prédéfinies (opérateurs _h_...)
+- des couleurs prédéfinies (opérateurs _c_...)
+- des constantes mathématiques (_math_pi et _math_e)
+- des ressources liées à l'application (_app...)
+- des ressources linguistiques
+- des fonctions système ...
+
+Et voici la liste de tous les opérateurs constants  :
+
+{>1._operator_names_const._join_n}

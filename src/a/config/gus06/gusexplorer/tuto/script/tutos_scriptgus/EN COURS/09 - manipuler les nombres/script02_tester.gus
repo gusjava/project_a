@@ -1,0 +1,7 @@
+Tester les nombres :
+
+{>4._neg}
+{>4._pos}
+_odd
+_even
+_prime

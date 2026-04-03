@@ -1,0 +1,29 @@
+"Matrice" est un terme commode pour parler de tableau à 2 dimensions.
+La plupart du temps, elles sont utilisées dans un sens mathématique
+(matrices de nombres) mais dans le cas général, il peut s'agir
+de n'importe quel type d'objet!
+
+
+Voici comment définir une matrice de doubles :
+{$matriceDouble=[double2:[1.2,2.3],[-1.2,-2.3]]}
+{>matriceDouble}
+
+Voici comment définir une matrice de ints :
+{$matriceInt=[int2:[1,2],[-1,-2]]}
+{>matriceInt}
+
+Voici comment définir une matrice de booleans :
+{$matriceBoolean=[boolean2:[true,false],[false,true]]}
+{>matriceBoolean}
+
+Voici comment définir une matrice de Strings :
+{$matriceString=[String2:['A','B'],['C','D'],['E','F']]}
+{>matriceString}
+
+Voici comment définir une matrice d'objets :
+{$matriceObj=[Object2:['A',true],[1,'D'],[1.2,'F']]}
+{>matriceObj}
+
+Pour finir, on notera que :
+Le type Object2 peut être écrit o2
+Le type String2 peut être écrit s2

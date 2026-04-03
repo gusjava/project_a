@@ -1,0 +1,6 @@
+{extends 'level1.gus'}
+
+{block 'head'}{parent}
+Head defined at level 2{end}
+
+{block 'body'}Body 2{end}

@@ -1,0 +1,19 @@
+La balise block0 est une variante de block,
+qui n'est pas exécutée au moment ou elle est définie.
+
+{block0 'dire'}
+Je dis ceci: "{>phrase}"
+{end}
+
+{call 'dire' args phrase:'Bonjour'}
+{call 'dire' args phrase:'Au revoir'}
+{call 'dire' args phrase:'A bientôt!'}
+
+Si on redéfinit la balise bloc avec le même
+nom, elle remplace la précédente définition:
+
+{block0 'dire'}
+Je suis le bloc {>block.name}
+{end}
+
+{call 'dire'}

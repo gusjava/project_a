@@ -1,0 +1,29 @@
+Dans les expressions, les chaînes de caractères peuvent
+être mises indistinctement entre '..' ou entre ".." :
+
+{>'Coucou'}
+{>"Coucou"}
+
+Si votre chaîne contient des caractères " ou ', 
+vous devrez les échapper avec un antislash, selon le cas :
+
+{>"Il dit : \\"Bonjour!\\""}
+{>'J\\'arrive'}
+
+Faites bien attention ! En pratique cela se traduit
+par l'écriture de 2 antislashs puisque ce caractère doit être 
+lui-même échappé pour respecter la syntaxe du script!
+
+Bien entendu, si votre chaîne contient des ", 
+vous préfèrerez l'écriture entre '..', et inversement.
+
+{>'Il dit : "Bonjour!"'}
+{>"J'arrive"}
+
+Pour finir, écrire un antislash dans un chaîne de caractères
+nécessite de l'échapper 2 fois de suite. Pour écrire 1 antislash
+vous devrez donc en écrire 4 en pratique :
+{>"\\\\"}
+
+Cela peut sembler contraignant mais nous verrons par la suite
+qu'il existe des astuces pour simplifier tout cela.

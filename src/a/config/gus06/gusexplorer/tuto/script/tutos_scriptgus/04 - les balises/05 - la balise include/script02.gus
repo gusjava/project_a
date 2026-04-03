@@ -1,0 +1,12 @@
+L'option args est très souvent utilisée pour personnaliser
+l'exécution du sous-script avec des paramètres :
+
+
+{include 'script02/template.gus' args 
+	firstname:'Julien' lastname:'Bigout' age:14
+}
+
+
+{include 'script02/template.gus' args 
+	firstname:'Arnaud' lastname:'Corin' age:17
+}

@@ -1,0 +1,18 @@
+L'option args :
+-------------
+balises : structurelles
+type : Map
+action : permet d'ajouter des variables locales
+pour l'exécution du contenu de la balise
+
+{repeat 3 args r:2}
+{>'r='+r}{end}
+
+La map args ne s'applique qu'au contenu d'une balise.
+Elle n'a donc pas de sens pour les balises de commande
+print et execute.
+
+Ici, la variable a utilisée dans l'expression principale
+ne peut pas avoir de lien avec l'option args :
+
+{>'bonjour: '+a args a:'toto'}

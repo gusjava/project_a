@@ -1,0 +1,8 @@
+Il faut noter que si le script doit se terminer par une ou plusieurs
+balises \{end\}, celles-ci peuvent être omises. Le moteur de script
+se chargera de les reconstituer.
+
+Ici, les balises end associées à for et if sont omises.
+
+{for '0..10'}
+{if i._even}{>i}

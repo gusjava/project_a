@@ -1,0 +1,20 @@
+L'opérateur de soustraction (-)
+
+Il s'applique sur :
+
+- les nombres
+- les listes
+- les sets
+- les tableaux de nombres
+- les fonctions H
+
+Voici quelques exemples :
+
+{>3-5-1}
+{>['a','b','c','a','b','c','a','b']-['a','b']-['a','b']}
+{>\{1,2,3,4,5\}-\{2,5,8,9\}}
+{>[int:1,1,1,1]-[int:2,2,2,2]}
+
+Concernant les fonctions :
+
+H1-H2 donne une fonction H qui renvoie H1(x)-H2(x)

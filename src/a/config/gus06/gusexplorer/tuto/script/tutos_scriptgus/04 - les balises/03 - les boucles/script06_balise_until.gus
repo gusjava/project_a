@@ -1,0 +1,15 @@
+La balise until permet de répéter un contenu 
+jusqu'à ce qu'une condition soit vraie.
+
+Exemple avec un jeu de chance :
+
+Jusqu'à ce que l'expression 6._chance renvoie true
+(1 chance sur 6 à chaque fois), afficher "perdu!"
+
+{until 6._chance}
+perdu!{end}
+
+Fin de partie!
+
+Et comme pour la balise while, si au bout de 100 000 itération,
+vous n'avez pas gagné, une exception est générée.

@@ -1,0 +1,30 @@
+L'option skip :
+-------------
+balises : while, until, repeat, for, each, clock
+type : String
+action : permet de fixer une expression qui
+sera évaluée au début de chaque itération. 
+A chaque fois que le résultat sera vrai, 
+l'itération sera sautée.
+
+{repeat 10 skip 'i%2==0'}
+{>i}{end}
+
+{for [10,20] skip 'i==15'}
+{>i}{end}
+
+
+L'option keep :
+-------------
+balises : while, until, repeat, for, each, clock
+type : String
+action : permet de fixer une expression qui
+sera évaluée au début de chaque itération. 
+A chaque fois que le résultat sera faux, 
+l'itération sera sautée.
+
+{repeat 10 keep 'i%2==0'}
+{>i}{end}
+
+{for [10,20] keep 'i<15'}
+{>i}{end}

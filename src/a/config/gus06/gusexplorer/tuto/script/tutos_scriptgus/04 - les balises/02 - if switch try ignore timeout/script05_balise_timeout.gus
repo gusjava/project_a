@@ -1,0 +1,22 @@
+La balise timeout permet d'appliquer un time out sur une partie du script.
+
+{timeout 500}
+	{*800._waitfor_ms}
+	{>'time out not reached'}
+{end}
+
+Une balise else peut être ajoutée pour prendre en charge 
+la situation en échec (time out atteint).
+
+Les 2 exemples suivants montrent ce qu'il se passe lorsque
+le time out est atteint et lorsqu'il n'est pas atteint.
+
+{timeout 500}
+	{*800._waitfor_ms}
+	{>'time out not reached'}
+{else}{>'time out reached'}{end}
+
+{timeout 500}
+	{*300._waitfor_ms}
+	{>'time out not reached'}
+{else}{>'time out reached'}{end}

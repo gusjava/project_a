@@ -1,0 +1,27 @@
+Il existe 3 manières d'affecter une variable.
+
+La manière globale :
+{set0 a=3}
+{s0 a=3}
+{&a=3}
+
+La balise a est stockée dans la pool de la balise root du script global
+
+La manière régionale :
+{set b=3}
+{s b=3}
+{$b=3}
+
+La balise b est stockée dans la pool de la balise root du script courant
+
+La manière locale :
+{set1 c=3}
+{s1 c=3}
+{£c=3}
+
+La balise c est stockée dans la pool parent de la balise d'affectation
+
+Dans ce cas précis, les variables a, b et c sont stockée dans la même pool
+mais ce n'est pas toujours le cas !
+
+{>pool.parent._desc}

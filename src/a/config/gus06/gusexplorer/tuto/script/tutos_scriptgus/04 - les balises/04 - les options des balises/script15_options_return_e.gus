@@ -1,0 +1,18 @@
+L'option return :
+-------------
+balises : include, include1
+type : String
+action : permet de spécifier un nom de variable
+qui doit récupérer le résultat renvoyé par le sous-script
+appelé par la balise include
+
+Nous étudierons cette option avec la balise include.
+
+
+L'option e :
+-------------
+balises : toutes
+type : String
+action : permet de spécifier un nom de variable
+qui doit récupérer l'exécution de la balise courante
+sous forme d'un objet E

@@ -1,0 +1,14 @@
+{code}
+!Ceci est un petit exemple de script d'instructions.
+!Nous en détaillerons certains aspects juste après.
+
+$x0=0
+$x1=1
+
+for 15
+ $x2=x0+x1
+ $x0=x1
+ $x1=x2
+ >>x2
+
+>>"C'était la suite de Fibonacci !"

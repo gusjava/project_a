@@ -1,0 +1,34 @@
+Pour finir, nous allons nous attarder 
+sur quelques points délicats ...
+
+Prenons la map suivante:
+{$map=a:'coucou' b:'au revoir' c:'salut' _size:15}
+{>map}
+
+Et essayons d'obtenir la valeur associée à la clé '_size'.
+map._size={>map._size}
+map.'_size'={>map.'_size'}
+map.('_size')={>map.('_size')}
+
+Aucune de ces approches ne permet de récupérer la valeur
+associée à la clé '_size' tout simplement parce que '_size'
+est identifié comme un nom d'opérateur.
+
+Voilà pourquoi il est déconseillé de prendre comme clé de map
+des noms d'opérateur. Sachant que par convention, ceux-ci débutent
+par un underscore _ , on évitera de faire de même pour nos clés.
+
+Ceci étant dit, il y a quand même moyen de s'en sortir.
+map.'~_size'={>map.'~_size'}
+
+Et pour la map suivante ?
+{$map=\{'a':'coucou','b':'au revoir','c':'salut','~_size':15\}}
+{>map}
+
+map.'~~_size'={>map.'~~_size'}
+
+Voici 2 manières infaillibles pour récupérer
+la valeur associée à une clé key {$key='~_size'}
+
+{>map.('~'+key)}
+{>map#key}

@@ -1,0 +1,11 @@
+@code
+
+$s=1._clipboard_string
+if s==null
+ stop
+
+$c=s._bcrypt
+$r=s+'\n'+c
+
+*r._e_clipboard
+*r._jdialog_msg_info

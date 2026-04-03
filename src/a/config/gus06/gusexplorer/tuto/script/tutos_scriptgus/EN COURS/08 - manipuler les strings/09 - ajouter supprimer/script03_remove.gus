@@ -1,0 +1,17 @@
+{$s='Bonjour'}
+
+_rem_c0 : permet de supprimer le premier caractère
+{>s._rem_c0} (équivalent à : {>s._sub.'1..'})
+
+_rem_c1 : permet de supprimer le dernier caractère
+{>s._rem_c1} (équivalent à : {>s._sub.'..-2'})
+
+_rem_c01 : permet de supprimer le premier et le dernier caractère
+{>s._rem_c01} (équivalent à : {>s._sub.'1..-2'})
+
+
+_rem_cc : permet de supprimer tous les caractère inclus dans la string
+{>s._rem_cc.ou}
+
+_rem_ncc : permet de supprimer tous les caractère absents de la string
+{>s._rem_ncc.jnB}

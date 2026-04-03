@@ -1,0 +1,24 @@
+En mode INDENT, vous aurez remarqué que la séquence utilisée
+par défaut pour l'indentation est l'espace.
+
+Si vous souhaitez modifier ce comportement, il vous suffit
+d'ajouter l'option indent en précisant la nouvelle séquence !
+
+
+Exemple avec un double espace :
+
+{code indent '  '}
+repeat 3
+  >>'Bonjour
+repeat 3
+  >>'Au revoir
+{end}
+
+Même exemple avec une tabulation :
+
+{code indent '\\t'}
+repeat 3
+	>>'Bonjour
+repeat 3
+	>>'Au revoir
+{end}

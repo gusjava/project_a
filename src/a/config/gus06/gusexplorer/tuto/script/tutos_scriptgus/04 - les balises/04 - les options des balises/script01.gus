@@ -1,0 +1,35 @@
+Notre spectre de balises s'est déjà pas mal élargi :
+
+- print, set, execute, comment
+- if, switch, try, ignore, timeout
+- repeat, for, each, while, until, clock
+- else, elseif, case, end
+
+Avant de poursuivre avec les balises include, block, 
+extend, et autres... il est temps d'aborder un mécanisme 
+important qui améliore l'utilisation des balises :
+le passage d'options
+
+
+Jusqu'à présent, les balises qui comportent une zone info
+(à l'exception des balises d'affectation)
+se résument toutes au schéma suivant :
+
+\{mot-clé expression-à-évaluer\}
+
+En fait, il existe un autre schéma
+qui est accepté par la plupart des balises :
+
+\{mot-clé expression-à-évaluer with mes-options\}
+
+ou "mes-options" est une expression
+dont l'évaluation doit renvoyer un objet Map,
+
+
+Les seules balises qui ne sont pas concernées
+par ce mécanisme sont les suivantes :
+
+- les balises d'articulation : end, case, else, elseif 
+- les balises de commentaires : comment et ignore
+- les balises d'affectation : set, set0, set1
+- les balises de paramétrage : alias, output

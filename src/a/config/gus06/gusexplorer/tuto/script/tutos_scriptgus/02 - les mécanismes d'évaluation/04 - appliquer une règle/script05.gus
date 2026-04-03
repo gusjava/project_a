@@ -1,0 +1,38 @@
+En deuxième exemple, nous allons effectuer un remplacement
+au sein d'une chaîne de caractères.
+
+{$str='tu as vu le chat ?'}{>str}
+L'objectif ici est de remplacer "chat" par "chien" dans str.
+
+On applique l'opérateur _replace1 sur str :
+{$t1=str._replace1}{>t1._features}
+
+Le résultat t1 est une transformation sur laquelle
+on applique notre string à remplacer "chat" :
+{$t2=t1.chat}{>t2._features}
+
+Le résultat t2 est une autre transformation sur laquelle
+on applique notre string de remplacement "chien" :
+{$r=t2.chien}{>r}
+
+Et on obtient finalement le résultat attendu.
+
+De manière plus concise, on aurait pu écrire :
+{>str._replace1.chat.chien}
+
+
+Vous avez saisi le principe : quand on a besoin de reproduire
+le fonctionnement d'une fonction acceptant plusieurs paramètres,
+on utilise un opérateur
+
+qui renvoie un objet T, 
+qui renvoie un objet T,
+qui renvoie un objet T, et ainsi de suite ...
+
+autant de fois que nécessaire
+pour prendre en compte tous les paramètres.
+
+
+Le dernier objet de traitement de cette chaîne peut
+éventuellement être un filtre F, si le résultat final attendu
+est un booléen.

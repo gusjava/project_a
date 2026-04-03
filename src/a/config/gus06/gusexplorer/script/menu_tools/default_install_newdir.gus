@@ -1,0 +1,15 @@
+@code
+
+$dir=1._choosedir_open
+if dir==null
+ stop
+
+$jar=dir.'app.jar'
+$launch=dir.'launch.bat'
+$root=dir.root._dir1
+$cmd='java -jar app.jar root=root'
+
+*1._appjar._e_copy#jar
+*launch._write_txt#cmd
+
+*dir._e_open

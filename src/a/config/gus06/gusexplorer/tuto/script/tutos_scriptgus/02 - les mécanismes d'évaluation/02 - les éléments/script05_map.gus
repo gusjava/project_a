@@ -1,0 +1,28 @@
+Dans les expressions, les maps s'écrivent entre accolades, 
+en précisant des couples de clé/valeur, comme ceci :
+
+{$map=\{'clé1':'valeur1','clé2':'valeur2','clé3':'valeur3'\}}
+{>map}
+
+Une map vide s'écrit comme ceci:
+{$map=\{:\}}
+{>map}
+
+Moyennant certaines restrictions sur les clés 
+(string comportant uniquement les caractères [a-zA-Z0-9_]), 
+une map peut aussi s'écrire sous la forme d'une énumération :
+
+{$map=cle1:'valeur1' cle2:'valeur2' cle3:'valeur3'}
+{>map}
+
+
+
+Les développeurs Web auront remarqué que cette notation diffère
+légèrement de celle utilisée par JavaScript/JSON, qui est comme ceci:
+\{cle1:'valeur1',cle2:'valeur2',cle3:'valeur3'\}
+
+Dans un script gus, une telle expression sera interprétée différemment:
+{$cle1='valeur de ma clé 1'}
+{$cle2='valeur de ma clé 2'}
+{$cle3='valeur de ma clé 3'}
+{>\{cle1:'valeur1',cle2:'valeur2',cle3:'valeur3'\}}

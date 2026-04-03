@@ -1,0 +1,23 @@
+Vous avez sans doute remarqué que le sous-répertoire
+script01 comporte un 3eme fichier lequel inclus 
+de manière flexible les scripts a et b : le script c
+
+{$mapping=\{:\}}
+
+{*context.file_mapper._v_map#(
+	root:script.dir
+	map:mapping
+)}
+{include1 '/script01/c.gus'}
+
+Résultat sans aucun mapping :
+Le script initial inclut c.gus, lequel inclut a.gus et b.gus
+
+{$mapping>=\{
+	'/script01/b.gus':'/script01/a.gus',
+	'/script01/a.gus':'/script01/b.gus'
+\}}
+{include1 '/script01/c.gus'}
+
+Résultat avec le mapping b → a et a → b :
+L'ordre d'inclusion des scripts a et b est inversé !

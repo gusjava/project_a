@@ -1,0 +1,15 @@
+Le rôle des balises est d'insérer des instructions dans le texte
+de votre script. Elles s'écrivent de la manière suivante :
+\{mot-clé\} ou bien \{mot-clé info\}
+
+Le mot-clé correspond au nom de la balise. Il ne contiendra 
+jamais de caractères blancs contrairement à la partie "info" 
+qui pourra même éventuellement s'écrire sur plusieurs lignes.
+
+{print 'Je
+suis
+là'}
+
+L'info correspond au paramètre qui personnalise l'exécution
+de la balise. On notera que quasiment toutes les balises 
+contiennent une partie "info" à l'exception notoire de else et end.

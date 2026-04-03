@@ -1,0 +1,28 @@
+La balise block permet de définir des zones particulières
+pouvant ensuite être réutilisées dans la suite du script,
+grâce à la balise call.
+
+Illustrons ceci avec un petit exemple !
+
+
+{block 'title'}Titre de ma page{end}
+
+<h1>{call 'title'}</h1>
+
+On peut ajouter des arguments à nos blocs
+- au moment de les définir
+- au moment de les appeler
+
+{block 'page' args pageName:'Accueil'}
+Ma page {>pageName}
+{end}
+
+On appelle le bloc 'page' avec
+les arguments par défaut :
+
+{call 'page'}
+
+On appelle le bloc 'page' avec
+des arguments spécifiques :
+
+{call 'page' args pageName:'Contact'}

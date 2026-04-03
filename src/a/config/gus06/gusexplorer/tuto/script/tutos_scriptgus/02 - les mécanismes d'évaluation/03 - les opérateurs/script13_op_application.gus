@@ -1,0 +1,37 @@
+L'opérateur d'application (#)
+
+Il s'agit d'un opérateur spécial permettant d'appliquer
+une valeur sur un objet de traitement.
+
+
+- Sur une transformation (T) :
+{$trans='upper'._to_t}
+{>trans#"bonjour"}
+
+- Sur un filtre (F) :
+{$filtre='a>3 && a<8'._to_f}
+{>filtre#7}
+
+- Sur une fonction (H) :
+{$fonction='a*a+4'._to_h}
+{>fonction#2.2}
+
+- Sur un réceptacle (P) :
+l'opérateur d'application produit un objet E
+qui peut être exécuté (cf, le script 11 avec
+l'objet clipboard).
+
+
+Accessoirement, il permet aussi de
+
+- Récupérer une valeur dans une map :
+{$map=c:1 d:2 e:9}
+{>map#'d'}
+
+- Récupérer une valeur dans une liste :
+{$list=['a','b','c']}
+{>list#(-1)}
+
+- Tester une valeur dans une set :
+{$set=\{1,2,9\}}
+{>set#2} (équivalent à {>set::2})

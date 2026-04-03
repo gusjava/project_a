@@ -1,0 +1,7 @@
+@repeat 10
+Ecrire un script à balise unique avec repeat permet de répéter
+simplement un texte plusieurs fois!
+La encore, il n'y a plus de contraintes d'échappement
+quand on écrit {, } ou \
+_________________________
+

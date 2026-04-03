@@ -1,0 +1,2 @@
+{$dd=script.dir._searchfiles_byext.txt}
+{*dd._tofilearray._e_delete}

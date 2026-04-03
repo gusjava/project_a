@@ -1,0 +1,30 @@
+
+_CLASS
+[Object] . _class -> Class
+permet de récupérer la classe d'un objet
+{>4._class}
+
+_TYPE
+[Object] . _type -> String
+permet de récupérer le type d'un objet
+{>[int:1,2,3]._type}
+
+_DESC
+[Object] . _desc -> String
+permet de récupérer une description technique d'un objet
+{>[int:1,2,3]._desc}
+
+_DISPLAY
+[Object] . _display -> String
+permet de récupérer un affichage de l'objet (en tronquant les parties trop longues)
+{>[int:1,2,3]._display}
+
+_DISPLAYALL
+[Object] . _displayall -> String
+permet de récupérer un affichage de l'objet (sans tronquer aucune partie)
+{>[int:1,2,3]._displayall}
+
+_JOIN_N
+[Map/List/Set/Array] -> String
+Dispose chaque élément sur une ligne distincte
+{>['coucou','salut','au revoir']._join_n}

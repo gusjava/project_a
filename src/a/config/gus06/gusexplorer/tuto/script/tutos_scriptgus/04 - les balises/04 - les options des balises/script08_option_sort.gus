@@ -1,0 +1,26 @@
+L'option sort :
+-------------
+balises : each
+type : Boolean ou String
+action : permet de trier ou non les élements
+issues d'une liste, d'une map ou d'une set.
+
+{$list=[2,4,1,3,5]}
+
+{each list sort false}
+{>v}{end}
+{each list sort true}
+{>v}{end}
+
+Dans le cas d'une map uniquement, l'option n'est pas un booléen
+mais une string qui peut prendre les valeurs suivantes:
+
+- keys : indique que le tri est fait selon les clés de la map
+- values : indique que le tri est fait selon les valeurs de la map
+
+{$map=b:'A' a:'B'}
+
+{each map sort 'keys'}
+{>k+'='+v}{end}
+{each map sort 'values'}
+{>k+'='+v}{end}

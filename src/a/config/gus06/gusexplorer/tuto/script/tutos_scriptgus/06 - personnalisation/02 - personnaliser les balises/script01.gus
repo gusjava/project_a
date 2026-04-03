@@ -1,0 +1,18 @@
+Rappelez vous notre exemple dans le chapitre consacré
+aux opérateurs, avec _waitfor_ms :
+
+{*2000._waitfor_ms}
+
+Vous trouvez peut être que cette formulation n'est pas 
+assez parlante ?
+
+Avec la balise alias, vous avez la possibilité de la
+personnaliser, en ajoutant un alias, comme ceci :
+
+{alias wait=e <?>._waitfor_ms}
+
+Désormais pour attendre pendant 2000 ms,
+il vous suffit d'écrire :
+
+{wait 2000}
+FIN

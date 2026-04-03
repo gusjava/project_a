@@ -1,0 +1,13 @@
+Les balises include et extends introduisent des dépendances 
+entre les scripts, exactement de la même manière qu'il existe 
+des dépendances entre les entités, dans la programmation gus06. 
+
+La référence au script appelé est ainsi passée à la balise 
+sous la forme d'un objet File ou d'une chaîne de caractères 
+indiquant le chemin relatif au fichier.
+
+{include 'script01/a.gus'}
+{include 'script01/b.gus'}
+
+Ici, notre script principal est dépendant des sous-scripts 
+a.gus et b.gus situés dans le sous-répertoire script01.

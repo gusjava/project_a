@@ -1,0 +1,20 @@
+La balise include permet d'inclure un script dans un autre.
+
+L'expression évaluée dans la balise peut être un objet File :
+
+{$file='script01/coucou.gus'._tofile}
+{>file}
+{include file}
+
+ou bien une chaîne de caractères :
+
+{include 'script01/coucou.gus'}
+
+Cette chaîne de caractères sera automatiquement
+transformée en objet File si elle correspond à un
+chemin d'accès relatif vers un fichier existant.
+
+Sinon elle sera interprétée directement comme le contenu
+du script à inclure.
+
+{include '\{>"coucou"\}'} 

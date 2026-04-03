@@ -1,0 +1,26 @@
+Regardez les 2 exemples suivants:
+
+{$map=\{1:'le nombre 1'\}}{>map.1}
+{$map=\{'1':'la string 1'\}}{>map.1}
+
+Le moteur de script interpréte la règle 1 comme une string, 
+mais est néanmoins capable de la faire correspondre avec 
+la clé de notre map, qu'il s'agisse d'une string ou d'un entier.
+
+Mais si on regroupe les 2 clés dans une même map...
+{$map=\{1:'le nombre 1','1':'la string 1'\}}
+
+map.1={>map.1}
+map.'1'={>map.'1'}
+map.('1')={>map.('1')}
+
+On se rend compte que le moteur de script interpréte la règle
+en priorité comme une string "nombre", quand c'est possible.
+
+Voici la seule manière de récupérer précisément une clé :
+{>map#'1'}
+{>map#1}
+
+Dans les cas problèmatiques (qui restent rares), 
+on s'en remet à l'opérateur d'application (#) 
+qui est capable de traiter n'importe quel cas.

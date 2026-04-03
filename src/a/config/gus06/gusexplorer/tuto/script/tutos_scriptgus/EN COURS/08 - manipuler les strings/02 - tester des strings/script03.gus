@@ -1,0 +1,20 @@
+Les opérateurs indirects pour tester les String sont ceux
+qui prennent en entrée une String en produisent un objet F.
+
+On aura le schéma classique : String → F(String)
+
+Parmi ces opérateurs, on trouve :
+
+_eq	: s est égal à s1
+_co	: s contient s1
+_st	: s commence par s1
+_en	: s se termine par s1
+_diff	: s est différent de s1
+_nco	: s ne contient pas s1
+
+Quelques exemples :
+
+{>'Salut'._st.Sa}
+{>'Salut'._co.LU}
+{>'Salut'._en.lut}
+{>'Salut'._diff.salut}

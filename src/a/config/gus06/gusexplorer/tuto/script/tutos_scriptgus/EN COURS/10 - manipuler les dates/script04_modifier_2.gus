@@ -1,0 +1,14 @@
+
+{$date=1._date0}
+
+Date suivante (1 jour après) :
+{>date._next}
+
+Date précédente (1 jour avant) :
+{>date._previous}
+
+changer l'année
+changer le mois
+changer le jour
+
+tronquer jusqu'à milli, s,m,h,d,M

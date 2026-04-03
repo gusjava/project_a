@@ -1,0 +1,25 @@
+Il reste une famille d'opérateurs à étudier, les msplit
+Ces opérateurs génèrent des maps à partir de chaînes de caractères
+en les découpant à l'aide de 2 délimiteurs :
+
+{$s='key1=2;key2=4;key5=6'}
+{$map=s._msplit.'='.';'}
+{>map._display}
+
+Comme pour les opérateurs split, il existe
+un certain nombre d'opérateurs directs avec des délimiteurs prédéfinis :
+
+{>'_msplit_'._operator_names_st._join_n}
+
+Leurs noms se terminent tous par une combinaison de 2 lettres
+pour indiquer les délimiteurs. Voici leurs significations :
+
+d	:
+q	=
+c	,
+k	;
+u	_
+n	\\n
+t	\\t
+s	<espace>
+b	<suite d'espaces ou tabulations>

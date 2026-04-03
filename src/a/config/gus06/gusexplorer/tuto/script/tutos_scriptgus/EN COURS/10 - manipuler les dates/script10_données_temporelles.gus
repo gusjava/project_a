@@ -1,0 +1,15 @@
+
+Tableau des jours de la semaine :
+
+{>1._days_fr}
+{>1._days_en}
+{>1._days_ja}
+
+Tableau des mois de l'année :
+
+{>1._months_fr}
+{>1._months_en}
+{>1._months_ja}
+
+
+vérifier si une année est bissextile :

@@ -1,0 +1,86 @@
+@code
+$port=4000
+$versionDir=1._app_rootdir.versions._dir1
+$batFile=versionDir.'updater.bat'
+$args=1._app_argsline
+
+clock 1000
+ try
+  >>'starting server at '+1._ip+':'+port
+  $server=port._socket_server
+  
+  until server._is_closed
+   >>'waiting for socket...'
+   $socket=server._socket_accept
+   >>'socket accepted: '+socket._address
+ 
+   $br=socket._tobufferedreader_utf8
+   $md5=br._next
+   $size=br._next._tolong
+   
+   >>'file md5: '+md5
+   >>'file size: '+size
+   
+   $versionName=1._now_yyyymmdd_hhmmss+'_app.jar'
+   $versionFile=versionDir.(versionName)
+   >>'version file: '+versionFile
+   
+   >>"transfering..."
+   $t=1._now
+   $r=1000._progress
+   *r._v.colorRunning#[0,204,0]._tocolor
+   *r._v.colorOver#[0,102,51]._tocolor
+   
+   $m.title_size=20
+   $m.title='FILE_jar_import#Updating application'
+   $m.message='Receiving file ...'
+   $m.progress=r
+   $m.progress_height=20
+   $m.progress_background=1._c_white
+   *m._popup_notif
+   
+   *(input:socket output:versionFile progress:r size:size)._transfer
+   $dt=t._duration_s_tonow
+ 
+   $m="FILE_jar_connectedOrange#File received ("+dt+"s)"
+   *m._popup_notif
+   
+   >>'transfer done ('+dt+'s)'
+   *socket._e_close
+
+   if versionFile._md5hexa._diff#md5
+    $errMsg="UTIL_error#Invalid MD5 on version file: "+versionFile
+    *errMsg._popup_notif
+    stop
+   
+   !INSTALLATION DU JAR
+ 
+   $m="ACTION_restart#Installing and restarting application"
+   *m._popup_notif
+   
+   $outputDir=1._appjar._parent
+   $outputFile=outputDir.'app_00.jar'
+   
+   >>'copying jar to '+outputFile
+   *versionFile._e_copy#outputFile
+   
+   $s='@echo off\n'
+   $s='timeout 2\n'
+   $s+='cd '+outputDir._q1+'\n'
+   $s+='del /f app.jar\n'
+   $s+='ren app_00.jar app.jar\n'
+   if args._nempty
+    $s+=1._jre_bin.'java.exe'._q1+' -jar app.jar '+args
+    else
+    $s+=1._jre_bin.'java.exe'._q1+' -jar app.jar'
+   >>'batch: ['+s+']'
+   
+   *batFile._write_txt#s
+   >>'updater batch written: '+batFile
+   
+   >>'restarting'
+   *batFile._e_open
+   *1._app_exit
+   
+ else
+ >>'error occured: '+e

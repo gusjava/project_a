@@ -1,0 +1,22 @@
+L'opérateur de composition peut aussi être utilisé
+pour chaîner plusieurs fois un même objet avec lui-même
+(seulement pour T, H, E ou Map)
+
+Pour cela, il suffit de chaîner l'objet avec un entier positif.
+
+Exemple avec une transformation :
+{$spacing=@'gus.string.transform.str.spacing'}
+
+{>(spacing|1)#"bonjour"}
+{>(spacing|2)#"bonjour"}
+{>(spacing|3)#"bonjour"}
+
+Exemple avec une fonction :
+{$h='double'._to_h}
+
+{>(h|1)#3}
+{>(h|2)#3}
+{>(h|3)#3}
+
+Concernant E, on a par exemple :
+E|3 équivalent à E|E|E équivalent à E+E+E équivalent à E*3

@@ -1,0 +1,24 @@
+L'option "op" permet de personnaliser temporairement
+la map des opérateurs pour n'importe quelle balise.
+
+Je vais créer une map pour redéfinir les opérateurs
+_upper et _lower :
+
+{$op=
+	_upper:@'gus.string.transform.str.spacing'
+	_lower:'_upper'}
+
+
+{>'upper'._upper}
+{>'lower'._lower}
+
+{block 'A' op op}
+{>'upper'._upper}
+{>'lower'._lower}
+{end}
+
+{>'upper'._upper}
+{>'lower'._lower}
+
+On remarque que les opérateurs _upper et _lower sont
+altérés uniquement à l'intérieur du bloc A.

@@ -1,0 +1,22 @@
+Variantes "strictes"
+
+Les opérateurs _e_put_ct et _e_putall_ct sont des variantes "strictes"
+qui génèrent une exception si une clé existe déjà dans la map.
+
+{$map=a:'A' b:'B' c:'C'}{>map}
+
+{try}{*map._e_put_ct.d.D}
+{else}{>e._cause}{end}
+{>map}
+
+{try}{*map._e_put_ct.d.D2}
+{else}{>e._cause}{end}
+{>map}
+
+{try}{*map._e_putall_ct#(e:'E' f:'F')}
+{else}{>e._cause}{end}
+{>map}
+
+{try}{*map._e_putall_ct#(e:'E2' f:'F2')}
+{else}{>e._cause}{end}
+{>map}

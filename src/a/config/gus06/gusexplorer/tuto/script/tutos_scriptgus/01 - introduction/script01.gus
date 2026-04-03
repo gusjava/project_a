@@ -1,0 +1,28 @@
+Bienvenu dans le tutoriel sur le moteur de script gus !
+-------------------------------------------------------
+Ce tutoriel se présente sous la forme d'une suite de scripts gus.
+En les parcourant méthodiquement, vous allez découvrir et vous familiariser
+avec chacun des aspects du moteur. Et très rapidement, vous serez capable
+d'écrire et de faire tourner vos propres scripts !
+
+Cette arborescence de fichiers a été créée grâce à l'action
+"Tuto : extract files" depuis le menu "Tools".
+
+Au fur et à mesure que vous avancerez dans ce tutoriel, vous pourrez donc
+modifier à loisir les scripts afin d'expérimenter par vous même ce que vous
+apprendrez, sans craindre de "perdre" le tuto. Celui-ci vous sera accessible
+dans sa version originale à tout moment, en recommençant l'extraction
+depuis le menu "Tools".
+
+Bien, débutons les explications ...
+
+Le texte que vous êtes en train de lire est un simple texte explicatif
+qui pourrait très bien être stocké dans un fichier txt, mais il peut aussi
+être considéré comme un script gus! En effet, si on saisit simplement 
+du texte dans notre script, celui-ci se retrouve tel quel dans la sortie.
+
+On appelle cela une zone de texte standard.
+
+Pour exécuter le script et voir s'afficher le résultat,
+on peut cliquer sur le bouton Execute ci-dessous
+ou appuyer sur la touche F12.

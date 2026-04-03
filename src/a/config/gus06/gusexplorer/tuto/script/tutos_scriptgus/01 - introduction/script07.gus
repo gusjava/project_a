@@ -1,0 +1,17 @@
+A propos de la balise "comment" :
+
+La notation ! est une manière particulièrement commode 
+de "commenter / décommenter" une balise existante 
+pour la "désactiver / réactiver".
+
+Par exemple, si provisoirement je ne souhaite plus exécuter 
+la balise \{>"bonjour"\}, je rajoute un !
+{!>"bonjour"}
+
+Il faut noter que la notation !! ayant une autre signification
+que nous allons découvrir par la suite (balise ignore), 
+il n'est pas envisageable d'écrire ceci :
+\{!!commentaire qui commence par un point d'exclamation\}
+
+Mais à la place, vous pourrez écrire ceci :
+\{c !commentaire qui commence par un point d'exclamation\}

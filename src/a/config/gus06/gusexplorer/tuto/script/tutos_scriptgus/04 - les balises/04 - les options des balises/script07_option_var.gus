@@ -1,0 +1,25 @@
+L'option var :
+-------------
+balises : while, until, repeat, for, each
+type : String
+action : permet de specifier le nom de la variable
+locale utilisée pour stocker les éléments de
+l'itération courante.
+
+L'intérêt évident de l'option var est de pouvoir spécifier
+des noms de variable différents dans les boucles imbriquées
+pour éviter les confusions.
+
+{repeat 5 var 'k'}
+{>k}
+{>k_}{end}
+
+{$list=[1,2,3,4]}
+{each list var 'c:k'}
+{>c}
+{>k_}{end}
+
+{$map=a:1 b:2 c:3}
+{each map var 'x->y:k'}
+{>x+'='+y}
+{>k_}{end}

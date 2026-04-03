@@ -1,0 +1,17 @@
+Si on saisit simplement du texte,
+celui-ci se retrouve tel quel dans la sortie.
+
+Mais, il y a quelques exceptions ...
+
+Les 3 caractères suivants sont des méta caractères qui ont 
+un rôle particulier dans la structure du script :
+
+\{ \} \\
+
+Ces caractères doivent impérativement être précédé par un antislash
+(appelé caractère d'échappement) pour être affichés en tant 
+que texte standard.
+
+Si on oublie un caractère d'échappement dans une zone de texte standard,
+une erreur de syntaxe risque fortement de se produire à l'exécution
+du script...

@@ -1,0 +1,21 @@
+@code
+$name='init_autoupdate.gus'
+
+$e1=@'gus.appli.gusexplorer.scripts.startup.manager'
+$dir=e1.dir
+
+$file=dir#name
+
+!EXTRACTION DU SCRIPT GUS
+ 
+$jar=1._appjar
+$e2=@'gus.file.jar.string.finder1'
+$map=e2#[o:jar,'gus06/resource/gus/gyem/script/startup/']
+$content=map#name
+*file._write_txt#content
+
+!REDEMARRAGE
+
+$ok='Pour prendre en compte les modifications, vous devez redémarrer'._jdialog_confirm
+if ok
+ *1._app_restart

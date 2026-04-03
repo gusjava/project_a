@@ -1,0 +1,23 @@
+Avec ce système, les scripts peuvent 
+être identifiés indistinctement :
+
+- soit par leur chemin relatif à partir du répertoire root
+- soit par leur identifiant de sous-répertoire
+
+{$mapping=\{
+	'script07.a':'script07.b',
+	'script07.b':'script07.c',
+	'script07.c':'script07.a'
+\}}
+
+{*context.file_mapper._v_map#(
+	map:mapping
+	root:script.dir
+	main:'script.gus'
+)}
+
+Résultat avec le mapping de permutation  a → b → c → a :
+
+{include1 'script07.a'}
+{include1 'script07.b'}
+{include1 'script07.c'}

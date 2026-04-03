@@ -1,0 +1,22 @@
+Le résultat d'une évaluation est exploitée 
+par la balise contenant l'expression
+pour obtenir une action particulière.
+
+A titre d'exemple, 
+
+La balise execute s'attend à recevoir un objet de traitement E,
+et se contente d'exécuter cet objet.
+
+La balise if s'attend à recevoir un objet Boolean,
+et va exécuter son contenu si cet objet est égal à true.
+
+La balise repeat s'attend à recevoir un objet Integer N>=0
+et va exécuter son contenu N fois.
+
+La balise print s'accommode quant à elle de n'importe quel résultat,
+et se contente d'imprimer ce résultat vers la sortie standard.
+
+
+Il faut noter que si le résultat de l'évaluation est inexploitable
+(le plus souvent, parce que son type n'est pas celui attendu par 
+la balise) alors une erreur se produit à l'éxecution du script ...

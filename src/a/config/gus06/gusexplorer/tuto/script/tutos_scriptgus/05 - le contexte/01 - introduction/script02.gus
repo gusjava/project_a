@@ -1,0 +1,25 @@
+La map execution comporte 3 objets :
+- start, history, current
+
+{>context.execution._desc}
+
+start :
+
+start est une map qui correspond à la balise root
+du script initial, c'est à dire la toute première
+balise créée et exécutée, dont le contenu regroupe
+l'arborescence des balises.
+
+history : 
+
+history est une liste qui accueille toutes les balises
+déjà exécutées jusqu'à présent
+
+current :
+
+current est une autre map qui correspond à la balise
+actuellement en cours d'éxecution. Si on imprime son
+contenu, on pourra vérifier qu'il s'agit d'une balise
+d'impression ...
+
+{>context.execution.current._desc}

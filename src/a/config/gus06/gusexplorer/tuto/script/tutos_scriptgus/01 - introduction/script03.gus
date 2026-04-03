@@ -1,0 +1,15 @@
+Quels sont les rôles de ces 3 méta caractères ?
+
+Les caractères \{ et \} servent à délimiter des zones de balise
+pour exécuter des instructions et structurer le script.
+
+Voici un premier exemple de balise :
+{print 1+1}
+
+Le caractère \\ (caractère d'échappement) permet d'utiliser
+les méta caractères dans leur sens littérals. Il doit être placé 
+avant chaque méta caractère échappé (y compris lui-même),
+aussi bien à l'intérieur qu'à l'extérieur des balises.
+
+Pour imprimer une acollade, il faut donc l'échapper, comme ceci :
+{print '\{'}

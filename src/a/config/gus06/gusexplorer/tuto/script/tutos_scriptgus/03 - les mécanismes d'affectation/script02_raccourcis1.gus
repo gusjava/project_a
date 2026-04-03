@@ -1,0 +1,40 @@
+Nous allons à présent détailler
+tous les raccourcis d'écriture possibles
+
+Partons d'une variable contenant le nombre -2 :
+{$b=-2}{>'b='+b}
+
+L'écriture b+ permet de prendre la valeur absolue du nombre :
+{$b+}b+ → {>'b='+b}
+{$b+}b+ → {>'b='+b}
+
+L'écriture b- permet d'inverser le signe du nombre :
+{$b-}b- → {>'b='+b}
+{$b-}b- → {>'b='+b}
+
+L'écriture b++ permet d'ajouter 1 au nombre :
+b++{$b++} → {>'b='+b}
+
+L'écriture b-- permet de retirer 1 au nombre :
+b--{$b--} → {>'b='+b}
+
+L'écriture b* permet de prendre le carré du nombre :
+{$b*}b* → {>'b='+b}
+
+L'écriture b/ permet d'inverser le nombre :
+{$b/}b/ → {>'b='+b}
+{$b/}b/ → {>'b='+b}
+
+L'écriture b** permet de doubler le nombre :
+{$b**}b** → {>'b='+b}
+
+L'écriture b// permet de diviser par 2 le nombre :
+{$b//}b// → {>'b='+b}
+
+
+Prenons ensuite une variable booléenne :
+{$t=true}{>'t='+t}
+
+L'écriture t! permet d'inverser le booléen :
+t!{$t!} → {>'t='+t}
+t!{$t!} → {>'t='+t}

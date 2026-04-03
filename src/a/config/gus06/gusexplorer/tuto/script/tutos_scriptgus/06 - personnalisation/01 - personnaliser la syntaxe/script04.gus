@@ -1,0 +1,16 @@
+@code
+!Ceci est une ligne de commentaire
+
+>>'}}{{'
+!La contrainte d'échappement des { et } a disparu !
+
+>>"J'inclus de script02"
+include 'script02.gus'
+>>'\n'
+
+$x=5
+while x>0
+ >>'x='+x
+ $x--
+
+>>'Fin du script'

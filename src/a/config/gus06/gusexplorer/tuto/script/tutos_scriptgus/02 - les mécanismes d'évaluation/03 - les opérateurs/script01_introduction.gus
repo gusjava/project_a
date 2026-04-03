@@ -1,0 +1,36 @@
+Voici les 27 opérateurs disponibles :
+
+OPERATEURS UNAIRES
+!	négation
+-	opposition/soustraction
+&	interprétation
+£	interpréteur
+@	instanciation unique
+§	instanciation multiple
+
+OPERATEURS BINAIRES
+::	inclusion
+!:	exclusion
+/	division réelle
+//	division euclidienne
+%	modulo
+==	égalité
+!=	difference
+<=	inférieur ou égal
+<	inférieur strictement
+>=	supérieur ou égal
+>	supérieur strictement
+^	puissance/ou exclusif/intersection
+!^	extrasection
+
+OPERATEURS TERNAIRES
+?:	évaluation conditionnelle
+
+OPERATEURS N-AIRES
++	addition
+*	multiplication
+&&	et
+||	ou inclusif
+|	composition
+#	application
+.	connexion

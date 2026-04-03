@@ -1,0 +1,13 @@
+Dans les balises block de notre balise extends,
+il est possible d'utiliser la balise "parent" pour
+rappeler le contenu du bloc qui a été défini au
+niveau précédent, dans l'héritage de templates
+
+---------------------------
+{extends 'script01.gus'}
+
+{block 'head'}{parent}
+Head defined at level 2{end}
+
+{block 'body'}{parent}
+Body defined at level 2{end}

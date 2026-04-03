@@ -1,0 +1,23 @@
+Pour finir, voici quelques opérateurs utiles :
+
+- Pour vérifier si une string est un nom d'opérateur :
+{>'_upper'._is_operatorname}
+{>'_uppa'._is_operatorname}
+
+- Pour récupérer un objet operator à partir de son nom :
+{$op='_upper'._operator}
+
+C'est un peu compliqué d'utiliser directement cet objet operator :
+{>op#[o:'coucou',context.operators]}
+
+
+- Mais nous pouvons obtenir la transformation correspondante :
+{$t=op._operator0} (ou bien {$t='_upper'._operator0})
+
+Il est nettement plus simple d'utiliser t que op !
+{>t.coucou}
+
+Notons qu'il est aussi possible de récupérer le code Java 
+qui implémente un opérateur pré-défini, à partir de son nom :
+
+{>'_q5'._operator_src}

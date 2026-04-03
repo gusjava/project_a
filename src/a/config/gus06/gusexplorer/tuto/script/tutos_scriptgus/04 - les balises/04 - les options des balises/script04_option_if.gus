@@ -1,0 +1,9 @@
+L'option if :
+-------------
+balises : toutes
+type : Boolean
+action : permet de prendre en compte
+ou non la balise
+
+{>'bonjour' if true}
+{>'au revoir' if false}

@@ -1,0 +1,10 @@
+@code
+
+$files=1._clipboard_files
+each files
+ *v._exists._e_throw_onfalse.'File not found'
+ *v._isfile_ext_gif._e_throw_onfalse.'File is not a GIF file'
+
+$dir=(@'gus.icon.loader.outside')._g
+each files
+ *v._e_copyfile_inside#dir

@@ -1,0 +1,35 @@
+{$list=[
+	(prenom:'Jean' nom:'Dupont' sexe:'m' age:41),
+	(prenom:'Yves' nom:'Durant' sexe:'m' age:37),
+	(prenom:'Emeline' nom:'Lemeux' sexe:'f' age:9),
+	(prenom:'Yvan' nom:'Lemeux' sexe:'m' age:15),
+	(prenom:'Muriel' nom:'Lavoisier' sexe:'f' age:27)
+]}
+
+
+Problème suivant : trouver la moyenne d'âge
+
+En appliquant l'opérateur _avg à la liste des âges :
+{>list._collect.f_age._avg}
+
+En appliquant l'opérateur _avg_of directement à l'objet list:
+{>list._avg_of.f_age}
+
+
+Problème suivant : trouver la moyenne d'âge des personnes majeures
+
+{>list._findall.'a.age>=18'._avg_of.f_age}
+
+
+Problème suivant : récupérer la map des comptages de personne
+regroupés par sexe.
+
+On utilise l'opérateur _countby :
+{>list._countby.f_sexe}
+
+
+Problème suivant : récupérer la map des ensembles de personne
+regroupés par sexe.
+
+On utilise l'opérateur _groupby :
+{>list._groupby.f_sexe._display}

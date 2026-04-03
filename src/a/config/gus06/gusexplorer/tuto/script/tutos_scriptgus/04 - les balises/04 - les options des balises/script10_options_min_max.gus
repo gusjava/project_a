@@ -1,0 +1,27 @@
+L'option min :
+-------------
+balises : while, until, repeat, clock
+type : Integer
+action : permet de fixer un nombre minimal d'itérations
+pour les balises de boucle autres que each.
+
+{$a=-2}
+{while a<0 min 4}{$a++}{end}
+{>a}
+
+{repeat a min 3}A{end}
+
+
+L'option max :
+-------------
+balises : while, until, repeat, for, each, clock
+type : Integer
+action : permet de fixer un nombre maximal d'itérations
+pour toutes les balises de boucle.
+
+{$l=['A','B','C','D']}
+{each l max 3}{>v}{end}
+
+Dans le cas des balises while et until,
+cette limite maximale passée en option
+se substitue à la limite par défaut de 100 000.

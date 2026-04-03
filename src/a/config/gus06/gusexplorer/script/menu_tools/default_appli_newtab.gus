@@ -1,0 +1,22 @@
+@code
+
+$m={:}
+$m.icon='GUI_dnd'._app_icon
+$m.removable=true
+$m.border=35
+$label=m._jlabel
+
+$dndP=(@'gus.appli.gusexplorer.data.manager')._v.add
+$frame=1._app_mainframe
+$show=frame._show+frame._framestate_n+frame._tofront
+*(comp:label p:show|dndP)._dnd
+
+$m={:}
+$m.content=label
+$m.size=[30,150]
+$m.resizable=false
+$m.visible=true
+$m.alwaysontop=true
+$m.draggable=true
+
+$diag=m._jdialog1

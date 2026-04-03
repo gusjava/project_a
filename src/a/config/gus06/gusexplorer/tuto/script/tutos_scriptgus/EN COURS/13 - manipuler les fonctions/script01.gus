@@ -1,0 +1,23 @@
+
+
+
+
+Fonctions polynomiales
+
+{$h1=[0.8,-1,-2.5]._polynomial}
+{*h1._show_function}
+
+{$r=[0.8,-1,-2.5]._solve_polynomial}
+{>r}
+
+{each r}
+{>'solution '+i+':'+v+' -> '+h1.(v)}{end}
+
+{$r=[1,-2*2^0.5,2]._solve_polynomial}
+{>r}
+
+
+
+
+{$h2='0.8-a-2.5*a^2'._to_h}
+{!*h2._show_function}

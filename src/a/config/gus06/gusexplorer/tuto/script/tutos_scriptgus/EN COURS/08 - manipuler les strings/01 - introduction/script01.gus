@@ -1,0 +1,17 @@
+Parmi les {>1._operator_names._size} opérateurs disponibles
+un très large choix est dédié à la manipulation des strings
+
+On y trouve des opérateurs pour :
+
+- tester des strings
+- formatter des strings
+- générer des strings
+- transformer des strings
+- découper des strings
+- extraire des sous-strings ...
+
+
+Voici déjà un premier opérateur permettant de connaitre
+la longueur d'une chaîne de caractères :
+
+{>'Paris'._size}

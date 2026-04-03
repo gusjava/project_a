@@ -1,0 +1,11 @@
+La balise output est utilisée pour controler l'impression de texte
+vers la sortie standard. Il est notamment possible de désactiver ou
+réactiver l'impression :
+
+{output disable}
+La sortie est désactivée.
+Ce texte n'est pas imprimé.
+
+{output enable}
+La sortie est réactivée.
+Le texte est imprimé de nouveau.

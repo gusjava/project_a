@@ -1,0 +1,25 @@
+ATELIER 01
+----------
+Voici une liste de données regroupant des informations sur diverses personnes
+
+{$list=[
+	(prenom:'Jean' nom:'Dupont' sexe:'m' age:41),
+	(prenom:'Yves' nom:'Durant' sexe:'m' age:37),
+	(prenom:'Emeline' nom:'Lemeux' sexe:'f' age:9),
+	(prenom:'Yvan' nom:'Lemeux' sexe:'m' age:15),
+	(prenom:'Muriel' nom:'Lavoisier' sexe:'f' age:27)
+]}
+
+Voyons tout d'abord différentes manières d'afficher cette liste :
+
+Affichage brute:
+{>list}
+
+Affichage avec l'opérateur de description d'objet:
+{>list._desc}
+
+Affichage en lignes:
+{>list._join_n}
+
+Affichage détaillé (style JSON):
+{>list._display}

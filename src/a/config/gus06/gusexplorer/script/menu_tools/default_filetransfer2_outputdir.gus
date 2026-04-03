@@ -1,0 +1,66 @@
+@code
+
+$dir=1._clipboard_file
+if !dir._isdir
+ *'Dir not found inside clipboard'._jdialog_msg_warning
+ stop
+
+$infoFile=dir.'infos.properties'
+$rootDir=dir.received
+
+if !rootDir._exists
+ *rootDir._e_createdir
+
+$m.key="port"
+$m.store=infoFile
+$m.initValue="4000"
+$m.message="Please, enter the server's port"
+$m.title="Port required"
+$port=m._data_required._toint
+
+$server=port._socket_server
+>>'starting server on port '+port
+>>'ip: '+1._ip 
+
+try
+ $socket=server._socket_accept
+ >>'socket accepted'
+ 
+ $br=socket._tobufferedreader_utf8
+ $name=br._next
+ $md5=br._next
+ $size=br._next._tolong
+ 
+ >>'file name: '+name
+ >>'file md5: '+md5
+ >>'file size: '+size
+ 
+ $rootDir1=rootDir.(1._now)._dir1
+ >>'output dir: '+rootDir1
+ 
+ $dataFile=rootDir1.(name)
+ 
+ *"FILE_import#Receiving file..."._popup_notif
+ >>"transfering..."
+ 
+ $t=1._now
+ $r=1000._progress_popup
+ *(input:socket output:dataFile progress:r size:size)._transfer
+ *r._hide
+ $dt=t._duration_s_tonow
+ 
+ $m="FILE_connectedOrange#File received ("+dt+"s)"
+ *m._popup_notif
+ >>'transfer done ('+dt+'s)'
+ *socket._e_close
+ 
+ else
+ >>e._cause_last
+ $errMsg="UTIL_error#"+e._message
+ *errMsg._popup_notif
+ 
+*server._e_close
+
+if dataFile._md5hexa._diff#md5
+ $errMsg="UTIL_error#Invalid MD5 on data file"
+ *errMsg._popup_notif

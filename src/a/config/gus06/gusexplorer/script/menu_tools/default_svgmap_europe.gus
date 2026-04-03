@@ -1,0 +1,10 @@
+@code
+$mapIcons=1._app_icons
+$iconT='"FLAG_"+a'.t|mapIcons
+
+$gui='guiMapEurope'._build
+*gui._v.areaColor#[204,204,255]._tocolor
+*gui._v.tooltipBgColor#1._c_white
+*gui._v.tooltipIconT#iconT
+
+*gui._show2.800.600."FLAG_europe#Carte d'Europe"

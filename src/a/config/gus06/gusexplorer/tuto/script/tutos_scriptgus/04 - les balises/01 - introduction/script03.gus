@@ -1,0 +1,30 @@
+Une balise structurelle est toujours associée à une balise end,
+placée après cette dernière, et délimitant son contenu.
+
+L'ensemble des balises structurelles et de leurs balises end
+forment ainsi la structure hiérarchique du script ou les contenus 
+s'emboitent les uns dans les autres.
+
+{if 5==2+3}
+	blabla...
+	{if 2<6}
+		bloublou...
+	{end}
+{end}
+
+
+La balise end est la balise d'articulation la plus utilisée,
+mais il en existe 4 autres, que nous allons détailler :
+
+Les balises else et elseif sont utilisés pour délimiter 
+des "sous contenus" à l'intérieur des balises structurelles 
+acceptant une situation par défaut : 
+if, each, for, repeat, switch, until, while, try et timeout
+(switch étant particulier puisqu'il ne prend en compte que le else)
+
+la balise case ne se retrouve qu'à l'intérieur de la balise 
+switch pour y délimiter un cas d'utilisation.
+
+quant à la balise parent, elle est utilisée à l'intérieur 
+des balises block et block0 pour faire référence à leurs 
+balises ancètre dans le cadre d'un héritage de scripts.

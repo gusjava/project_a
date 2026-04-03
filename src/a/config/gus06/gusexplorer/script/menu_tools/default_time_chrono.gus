@@ -1,0 +1,13 @@
+@code
+
+$duration='Nombre de minutes à attendre: '._jdialog_input._toint
+!TODO op _jdialog_input_asint (qui renvoie null si pas le bon format)
+
+*duration._waitfor_min
+
+*1._e_beep
+
+$m.title='time#Ma notif'
+$m.title_size=18
+$m.message='waited for '+duration + 'min'
+*m._popup_notif

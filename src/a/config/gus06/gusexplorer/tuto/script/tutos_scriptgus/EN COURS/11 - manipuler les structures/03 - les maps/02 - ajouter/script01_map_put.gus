@@ -1,0 +1,18 @@
+Comment ajouter des clés dans une map existante ?
+{$map=1._newmap}{>map}
+
+- Vous pouvez utiliser les affectations :
+
+{$map.key1 = 'value1'}
+{$map += key2:'value2' key3:'value3'}
+{>map}
+
+- Vous pouvez utiliser l'opérateur _e_put :
+
+{*map._e_put.key2.value2}
+{>map}
+
+- Vous pouvez utiliser l'opérateur _e_putall :
+
+{*map._e_putall#(key2:2 key3:3 key4:4)}
+{>map}

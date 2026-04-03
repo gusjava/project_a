@@ -1,0 +1,29 @@
+Pour obtenir une date précise,
+on utilise l'opérateur _todate :
+
+{>[int:2012]._todate}
+{>[int:2012,10]._todate}
+{>[int:2012,10,03]._todate}
+{>[int:2012,10,03,10]._todate}
+{>[int:2012,10,03,10,15]._todate}
+{>[int:2012,10,03,10,15,20]._todate}
+{>[int:2012,10,03,10,15,20,50]._todate}
+
+{>'2012'._todate}
+{>'201210'._todate}
+{>'20121003'._todate}
+{>'20121003_10'._todate}
+{>'20121003_1015'._todate}
+{>'20121003_101520'._todate}
+{>'20121003_10152050'._todate}
+
+Il faut noter que plusieurs autres
+formats sont également reconnus :
+
+{>'10/2012'._todate}
+{>'03/10/2012'._todate}
+{>'03/10/2012 10'._todate}
+{>'03/10/2012 10:15'._todate}
+{>'03/10/2012 10:15:20'._todate}
+{>'3/10/2012 8:8:20'._todate}
+{>'2012-2-3 8:8:20'._todate}

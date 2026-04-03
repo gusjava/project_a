@@ -1,0 +1,15 @@
+Dans les expressions, les sets s'écrivent entre accolades
+et peuvent aussi mélanger des données de nature différente :
+
+{$set=\{'a','b',0,'a'\}}
+{>set}
+
+L'élément 'a' est ajouté 2 fois mais on ne le retrouve qu'une seule fois
+puisque les éléments ne peuvent pas être dupliqués dans les sets.
+
+Par ailleurs, contrairement aux listes,
+les sets sont des structures non ordonnées.
+
+Une set vide s'écrit comme ceci:
+{$set=\{\}}
+{>set}

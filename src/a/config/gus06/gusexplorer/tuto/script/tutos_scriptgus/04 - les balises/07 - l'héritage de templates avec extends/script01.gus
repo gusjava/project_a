@@ -1,0 +1,18 @@
+Pour illustrer l'héritage de templates, rendu possible
+par la balise extends, nous débutons avec une premier
+script qui contient la structure basique d'une page HTML.
+
+Ce script contient un bloc 'head' et un bloc 'body'.
+
+<!DOCTYPE html>
+<html>
+
+<head>
+{block 'head'}Head defined at level 1{end}
+</head>
+
+<body>
+{block 'body'}Body defined at level 1{end}
+</body>
+
+</html>

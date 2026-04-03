@@ -1,0 +1,18 @@
+Le script initialement exécuté est appelé
+"script initial" ou encore "script global"
+par opposition aux sous-scripts qui sont appelés
+par les balises include et qui partagent
+le même contexte d'exécution.
+
+La variable "script" des sous-scripts comporte
+un champ supplémentaire (parent) qui permet 
+d'accéder aux scripts parent :
+
+
+Nous allons ici inclure le script a, qui inclut 
+lui-même le script b, puis appeler les parents successifs
+de la variable "script" depuis le script b :
+-------------------------
+{include 'script05/a.gus'}
+-------------------------
+Là, nous sommes revenus au script initial !

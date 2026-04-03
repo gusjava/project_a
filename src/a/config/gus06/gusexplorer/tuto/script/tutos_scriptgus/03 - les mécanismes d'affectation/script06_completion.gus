@@ -1,0 +1,20 @@
+L'opération de complétion (<=) permet de compléter le contenu d'une map.
+cela revient à faire : map.putAll(newContent)
+
+{$map=a:1 b:2}
+map={>map}
+
+{$map<=b:5 c:3 d:4}
+map={>map}
+
+On remarque que cela revient à écrire un +=
+à un détail près ...
+
+{$map=a:1 b:2}
+map={>map}
+
+{$map+=b:5 c:3 d:4}
+map={>map}
+
+... avec le += une nouvelle map a été créée et affectée dans
+la variable map.

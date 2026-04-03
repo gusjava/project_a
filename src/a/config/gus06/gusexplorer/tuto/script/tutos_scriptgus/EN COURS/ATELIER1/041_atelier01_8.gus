@@ -1,0 +1,37 @@
+{$list=[
+	(prenom:'Jean' nom:'Dupont' sexe:'m' age:41),
+	(prenom:'Yves' nom:'Durant' sexe:'m' age:37),
+	(prenom:'Emeline' nom:'Lemeux' sexe:'f' age:9),
+	(prenom:'Yvan' nom:'Lemeux' sexe:'m' age:15),
+	(prenom:'Muriel' nom:'Lavoisier' sexe:'f' age:27)
+]}
+
+
+Nous souhaitons à présent trouver la personne la plus jeune.
+
+Première manière:
+
+On stocke l'âge minimal dans une variable 'age'
+{$age=list._min_of.f_age}
+
+Puis on applique à la liste la règle de filtrage a.age==age
+{>list._findall.'a.age==age'}
+
+On remarque que le résultat renvoyé par l'opérateur _findall
+est une liste, même si le filtrage ne renvoie qu'un seule résultat
+(il pourrait y avoir plusieurs personnes avec l'âge minimal)
+
+Voici comment extraire l'élément de la liste :
+{>list._findall.'a.age==age'.0}
+
+Et voici le prénom de la personne la plus jeune :
+{>list._findall.'a.age==age'.0.prenom}
+
+
+On remarquera au passage que les opérateurs qui interprétent
+des règles spécifiant des objets de traitement (on pensera notamment
+aux opérateurs _to_t, _to_f, _collect, _findall, etc...)
+prennent en compte les variables définies à l'extérieur des règles
+
+Dans le cas présent, la règle "a.age==age" a connaissance de la variable
+age qui provient du contexte du script en cours d'éxecution.

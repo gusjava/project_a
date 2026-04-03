@@ -1,0 +1,10 @@
+Nous allons à présent voir la règle de personnalisation
+débutant par un double arobas.
+
+Pour être valide, cette règle doit se poursuivre par 1, 2 ou 3
+caractères. Nous allons illustrer chacun de ces cas
+dans les scripts suivants.
+
+On notera qu'une première ligne avec uniquement deux arobas
+correspond à une règle vide sans impacte, 
+exactement comme la ligne avec 1 arobas.

@@ -1,0 +1,27 @@
+
+{$set1=\{'a','b','c',1,2\}}
+{$set2=\{'A','B','C',1,2\}}
+
+UNION
+{>set1+set2}
+{>set1._addall#set2}
+{>set2._addall#set1}
+
+INTER
+{>set1^set2}
+{>set1._findall#set2}
+{>set2._findall#set1}
+
+EXTRA
+{>set1!^set2}
+{!>set1._extra#set2} A FAIRE !!!!
+
+SET1 - SET2
+{>set1._excludeall#set2}
+
+SET2 - SET1
+{>set2._excludeall#set1}
+
+dissocié ? (intersection vide)
+{>set1._distinct#set2}
+{>set1._distinct#\{'X','Y','Z'\}}

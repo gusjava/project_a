@@ -1,0 +1,31 @@
+L'option op :
+-------------
+balises : toutes
+type : Map
+action : permet de spécifier un mapping sur
+les opérateurs, pour le contenu de la balise.
+
+{if true op _lower:'_upper'}
+	{>'Bonjour'._lower}
+{end}
+
+Dans le contenu de la balise if,
+nous pouvons constater que l'opérateur _upper
+a été remplacé par l'opérateur _lower.
+
+Nous reparlerons de ce mécanisme
+dans la section consacrée à la personnalisation
+des scripts.
+
+
+L'option alter :
+-------------
+balises : toutes
+type : Map
+action : permet de spécifier un mapping sur
+les objets du contexte, pour le contenu de la balise.
+
+Il s'agit d'un mécanisme plus puissant encore
+que celui de l'option op. De même, nous l'aborderons
+dans la section consacrée à la personnalisation
+des scripts.

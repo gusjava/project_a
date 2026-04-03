@@ -1,0 +1,15 @@
+Il existe un opérateur spécialement prévu pour enregistrer
+de nouveaux opérateurs : _operator_rec
+
+Création d'une transformation  blabla → BLABLA:blabla
+{$t='a._upper+":"+a'._to_t}
+{>t.bloblo}
+
+Enregistrement de cette transformation
+comme nouvel opérateur avec le nom myop
+{*t._operator_rec.myop}
+
+On teste notre nouvel opérateur :
+{>"test"._myop}
+{>"begin"._myop}
+{>"end"._myop}

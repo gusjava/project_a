@@ -1,0 +1,19 @@
+
+_IS_NULL
+[Object] . _is_null -> Boolean
+permet de vérifier si l'objet est null
+{>[int:1,2,3]._is_null}
+
+_IS_OBJ
+[Object] . _is_obj -> Boolean
+permet de vérifier si l'objet est non null
+{>[int:1,2,3]._is_obj}
+
+
+IL existe de nombreux autres opérateurs commençant  par _is_...
+permettant de tester les différents types d'objets ou leurs valeurs.
+
+Pour les retrouver, vous pouvez commencer à taper _is_ puis appuyer sur F2.
+
+Vous pouvez aussi utiliser la commande suivante :
+{>'_is_'._operator_names_st._join_n}

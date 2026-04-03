@@ -1,0 +1,7 @@
+{$s='tu vas bien ?'}
+
+_add : permet d'ajouter un string à la fin
+{>s._add.' Oui.'}
+
+_add0 : permet d'ajouter un string au début
+{>s._add0.'Salut, '}

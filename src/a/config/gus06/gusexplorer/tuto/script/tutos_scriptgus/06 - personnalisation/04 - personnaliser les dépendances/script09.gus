@@ -1,0 +1,34 @@
+{$mapping=\{
+	'script07.a':'script07.b',
+	'script07.b':'script07.c',
+	'script07.c':'script07.a'
+\}}
+
+{*context.file_mapper._v_map#(
+	map:mapping
+	root:script.dir
+	main:'script.gus'
+)}
+
+Revenons sur l'opérateur _mapper qui permet de retrouver 
+le script mappé à partir d'un id et d'un script de départ.
+
+Ici, nous obtenons le fichier script.gus situé dans script07/b :
+{>script.file._mapper.'script07.a'}
+
+Il existe aussi des scripts de conversion id ↔ File qui permettent
+de retrouver l'id correspondant à un fichier, et inversement :
+
+Quel est le fichier correspondant à script07.b ? (on retrouve le fichier précédent)
+{>'script07.b'._id_to_file}
+
+Et si on souhaite obtenir l'id à partir du fichier ?
+{>'script07.b'._id_to_file._file_to_id}
+
+
+Notons pour finir que, de même que nous avons le couple de balises
+include / include1
+nous avons aussi :
+extends / extends1
+
+quoique extends1 est sans doute moins utilisé que include1 ...

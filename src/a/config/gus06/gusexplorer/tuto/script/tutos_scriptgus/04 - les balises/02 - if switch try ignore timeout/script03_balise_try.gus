@@ -1,0 +1,13 @@
+La balise try permet d'exécuter un contenu en attrapant les éventuelles
+exceptions qu'il peut générer.
+
+{try}{execute null}
+{end}
+
+Une balise else peut être ajoutée pour prendre en charge la situation 
+en échec. Dans ce cas, l'exception générée est stockée dans 
+une variable locale nommée e.
+
+{try}{execute null}
+{else}{>e}
+{end}

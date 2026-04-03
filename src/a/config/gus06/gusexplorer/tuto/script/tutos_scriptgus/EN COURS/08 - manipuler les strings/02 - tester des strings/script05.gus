@@ -1,0 +1,17 @@
+Les tests avec des expressions régulières
+
+Ces tests prennent en paramètre une expression régulière.
+
+
+_m_regex	: s correspond à l'expression régulière s1
+_co_regex	: s contient l'expression régulière s1
+_nco_regex	: s ne contient pas l'expression régulière s1
+_st_regex	: s commence par l'expression régulière s1
+_en_regex	: s se termine par l'expression régulière s1
+
+
+Quelques exemples :
+
+{>'05A'._m_regex.'[0-9]+[Aa]+'}
+{>'05A'._st_regex.'[0-9]+'}
+{>'05aa'._en_regex.'[Aa]+'}

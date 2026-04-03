@@ -1,0 +1,18 @@
+L'opération de substitution (>=) permet de changer le contenu d'une structure
+sans recréer d'objet. Comme pour l'insertion, il ne s'agit pas d'une
+affectation à proprement parler.
+
+Pour une variable de type Map, cela revient en fait à faire
+un map.clear() suivi d'un map.putAll(newContent)
+
+
+{$map=a:1 b:2}
+map={>map}
+
+{$map>=A:1 B:2}
+map={>map}
+
+L'avantage par rapport à une affectation classique est que :
+la référence à l'objet précédemment en mémoire est conservée.
+Cela peut s'avérer très utile si on souhaite modifier une structure
+déjà utilisée dans d'autres objets Java.

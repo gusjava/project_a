@@ -1,0 +1,17 @@
+
+_appentities
+_apperrors
+_appicon
+_appicons
+_appjar
+_appmain
+_appmapping
+
+Le code source d'un opérateur :
+{>'_inv'._operator_src._size}
+
+Le code source d'une entité :
+{>'gus.data.perform.inv'._entity_srccode._size}
+
+
+_exit

@@ -1,0 +1,15 @@
+La balise redirect permet de rediriger temporairement 
+la sortie standard vers une autre sortie qui peut être 
+un objet File, PrintStream, P, StringBuffer
+ou encore un nom de variable.
+
+Exemple de redirection vers une variable :
+
+{redirect 'output'}il est {>1._time}{end}
+output={>output}
+
+Exemple de redirection vers un fichier :
+
+{redirect 'output.txt'._tofile}
+Ce texte est redirigé vers le fichier output.txt
+{end}

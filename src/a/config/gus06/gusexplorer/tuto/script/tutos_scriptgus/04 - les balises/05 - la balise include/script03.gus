@@ -1,0 +1,10 @@
+L'option return permet de récupérer dans une variable
+le résultat d'une évaluation faite dans le sous-script 
+et renvoyée grâce à la balise return :
+
+Exemple :
+calcul de la somme des n premiers nombres entiers
+avec n=10{$n=10}
+
+{include 'script03/nsum.gus' return 'r1'}
+{>r1}

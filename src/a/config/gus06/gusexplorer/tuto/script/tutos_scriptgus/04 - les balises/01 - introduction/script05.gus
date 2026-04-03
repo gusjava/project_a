@@ -1,0 +1,15 @@
+Dernier petit détail : chaque script débute implicitement par 
+une balise root qui est la balise racine de toutes les autres balises.
+
+Cette balise ne fait pas officiellement parti de la listes des balises
+structurelles disponibles pour la simple raison qu'on ne doit jamais
+l'écrire.
+
+En théorie, tout script devrait être terminé par une balise \{end\} relié
+à la balise root, mais en pratique on ne prend pas cette peine.
+
+Si vous l'écrivez tout de même, vous vous rendrez compte
+que tout ce qui vient après n'est pas pris en compte.
+
+{end}
+ceci n'est plus pris en compte

@@ -1,0 +1,5 @@
+Opérations arithmétiques sur les fonctions :
+
+{$f='a+1'._to_h}
+{$f2=f^f}
+{>f2#1}

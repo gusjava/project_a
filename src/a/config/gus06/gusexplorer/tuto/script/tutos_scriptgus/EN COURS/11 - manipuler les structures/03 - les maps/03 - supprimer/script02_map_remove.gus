@@ -1,0 +1,19 @@
+Les opérateurs _e_removeall et _e_keepall fonctionnent aussi
+avec un objet filtre (F) ou une string caractérisant un filtre :
+
+Voici comment supprimer toutes les clés qui sont en majuscule :
+
+{$map=a:1 b:2 C:3 D:4 E:5 f:6}
+{$filter='a._is_string_upper'._to_f}
+{*map._e_removeall#filter}
+{>map}
+
+Et voici des écritures équivalentes :
+
+{$map=a:1 b:2 C:3 D:4 E:5 f:6}
+{*map._e_removeall.'a._is_string_upper'}
+{>map}
+
+{$map=a:1 b:2 C:3 D:4 E:5 f:6}
+{*map._e_removeall.is_string_upper}
+{>map}

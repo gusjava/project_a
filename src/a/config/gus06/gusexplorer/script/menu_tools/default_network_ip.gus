@@ -1,0 +1,6 @@
+@code
+
+$ip=1._ip
+$r="IP: "+ip
+*ip._e_clipboard
+*r._jdialog_msg_info

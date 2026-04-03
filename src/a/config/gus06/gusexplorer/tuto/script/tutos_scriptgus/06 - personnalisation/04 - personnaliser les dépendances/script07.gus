@@ -1,0 +1,27 @@
+Lorsqu'on initialise le paramètre "main" de notre objet
+file_mapper, il devient possible d'appeler les scripts
+par un identifiant.
+
+{*context.file_mapper._v_map#(
+	map:\{:\}
+	root:script.dir
+	main:'script.gus'
+)}
+
+Le paramètre "main" étant "script.gus", tous les scripts
+dont le nom de fichier est "script.gus" peuvent désormais
+être identifiés par un identifiant de script.
+
+Cet identifiant nettement plus concis correspond 
+au chemin relatif du répertoire du fichier, dans lequel 
+chaque séparateur a été remplacé par un point.
+
+Le script /script07/a/script.gus est identifié par : script07.a
+Le script /script07/b/script.gus est identifié par : script07.b
+Le script /script07/c/script.gus est identifié par : script07.c
+
+Nous allons inclure ces 3 scripts en utilisant leurs identifiants :
+
+{include1 'script07.a'}
+{include1 'script07.b'}
+{include1 'script07.c'}

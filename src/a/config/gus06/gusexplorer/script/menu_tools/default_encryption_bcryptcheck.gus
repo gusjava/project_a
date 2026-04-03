@@ -1,0 +1,19 @@
+@code
+
+$s=1._clipboard_string
+if s==null
+ stop
+
+$cc=s._tolines._findall_nempty
+
+$c1=cc.0
+$c2=cc.1
+
+try
+ $b=c1._bcrypt_check#c2
+ $r=c1+'\n'+c2+'\n'+(b?'OK':'INCORRECT')
+ *r._e_clipboard
+ *r._jdialog_msg_info
+ 
+ else
+ *e._cause_last._jdialog_msg_error

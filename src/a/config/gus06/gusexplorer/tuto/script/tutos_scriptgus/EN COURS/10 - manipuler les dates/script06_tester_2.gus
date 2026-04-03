@@ -1,0 +1,30 @@
+D'autres tests :
+{$date=1._date0}{>date}
+
+weekend ? {>date._is_weekend}
+un jour férier français ? ...
+
+date future ? {>date._is_future}
+date passée ? {>date._is_past}
+
+aujourd'hui ? {>date._is_today}
+demain ? {>date._is_tomorrow}
+hier ? {>date._is_yesterday}
+
+ce mois-ci ? {>date._is_thismonth}
+le mois prochain ? {!>date._is_nextmonth}
+le mois dernier ? {!>date._is_lastmonth}
+
+cette année-ci ? {>date._is_thisyear}
+l'année prochaine ? {!>date._is_nextyear}
+l'année dernière ? {!>date._is_lastyear}
+
+
+le 1er jour du mois ? ...
+le dernier jour du mois ? ...
+
+le 1er jour de l'année ? ...
+le dernier jour de l'année ? ...
+
+
+_int3_validdate

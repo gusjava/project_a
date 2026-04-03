@@ -1,0 +1,3 @@
+{$s=0}
+{for n}{$s+=i}{end}
+{return s}

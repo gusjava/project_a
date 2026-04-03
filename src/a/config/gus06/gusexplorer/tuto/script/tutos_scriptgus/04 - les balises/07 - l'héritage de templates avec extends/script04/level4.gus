@@ -1,0 +1,7 @@
+{extends 'level3.gus'}
+
+{block 'body'}
+parent with deep=0 : {parent with deep:0}
+parent with deep=1 : {parent with deep:1}
+parent with deep=2 : {parent with deep:2}
+{end}

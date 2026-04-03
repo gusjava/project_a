@@ -1,0 +1,20 @@
+Dernières précisions sur la balise each :
+
+Comme toujours la balise else peut être ajoutée
+pour prendre en compte la situation par défaut
+(aucune itération n'est effectuée)
+
+{$map=\{:\}}
+{each map}
+{>k+'='+v}{else}
+Il n'y a pas d'éléments à afficher{end}
+
+
+Comme toujours, les variables locales
+i et i_ sont disponibles, en plus de v et k (pour les maps)
+
+{each [double:1.5,1.6,1.7,3.5,-4]}-----
+	valeur: {>v}
+	compteur: {>i}
+	infos: {>i_}
+{end}

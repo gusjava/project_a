@@ -1,0 +1,22 @@
+Les tests "one of them" et "all of them"
+
+Ces tests prennent en paramètre une string 
+éventuellement composée de plusieurs termes
+
+
+_eq_oneofthem	: s est égal à l'un des termes de s1
+_co_oneofthem	: s contient l'un des termes de s1
+_nco_oneofthem	: s contient aucun des termes de s1
+_st_oneofthem	: s commence par l'un des termes de s1
+_en_oneofthem	: s se termine par l'un des termes de s1
+
+_co_allofthem	: s contient tous les termes de s1
+
+
+Quelques exemples :
+
+{$s='Tu vas bien'}
+
+{>s._st_oneofthem.'Je Tu Il Elle'}
+{>s._co_allofthem.'bien Tu'}
+{>s._en_oneofthem.'mal bien'}

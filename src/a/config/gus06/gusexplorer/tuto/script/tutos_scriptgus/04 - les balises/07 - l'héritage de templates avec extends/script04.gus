@@ -1,0 +1,25 @@
+La balise parent peut être paramétrée avec l'option deep
+pour indiquer le degré de parenté de la balise block ancètre
+à laquelle cette dernière fait référence.
+
+Afin d'illustrer ce mécanisme, nous allons inclure :
+- level4.gus, qui hérite de
+- level3.gus, qui hérite de
+- level2.gus, qui hérite de
+- level1.gus
+
+Voici le résultat :
+-------------------
+{include 'script04/level4.gus'}
+-------------------
+
+Au niveau du script level4.gus, 
+
+\{parent with deep:0\} fait référence au bloc 'body'
+défini dans level3.gus et est donc équivalent à \{parent\}
+
+\{parent with deep:1\} fait référence au bloc 'body'
+défini dans level2.gus (grand parent)
+
+\{parent with deep:2\} fait référence au bloc 'body'
+défini dans level1.gus (arrière grand parent)

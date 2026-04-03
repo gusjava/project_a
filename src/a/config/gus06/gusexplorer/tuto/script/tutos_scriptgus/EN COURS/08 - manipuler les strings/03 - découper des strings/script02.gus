@@ -1,0 +1,32 @@
+Opérateurs directs :
+
+_split_comma :		Découper en prenant la virgule comme délimiteur
+_split_semicolon :	Découper en prenant le point virgule comme délimiteur
+_split_point :		Découper en prenant le point comme délimiteur
+_split_slash :		Découper en prenant le slash comme délimiteur
+_split_antislash :	Découper en prenant l'antislash comme délimiteur
+_split_filepath :	Découper en prenant le séparateur de filepath comme délimiteur
+_split_n :		Découper en prenant le \\n comme délimiteur
+_split_t :		Découper en prenant le \\t comme délimiteur
+_split_s :		Découper en prenant l'espace comme délimiteur
+_split_ss :		Découper en prenant une suite d'espaces et de \\t comme délimiteur
+
+_tolines :		Découper selon les lignes du texte
+_towords :		Découper selon les mots du texte
+_tochars :		Découper selon les caractères du texte
+
+
+Opérateurs indirects :
+
+_split.'<DELIM>' :	Découper en prenant <DELIM> comme délimiteur
+_splitreg.'<REGEX>' :	Découper en prenant <REGEX> comme expression régulière de délimitation
+_splitlen.<LENGTH> :	Découper en prenant <LENGTH> comme longueur fixe de découpage
+
+Si vous prévoyez de découper votre string en 2,
+vous pouvez utiliser :
+
+_split2_f.'<DELIM>' :	Découper en 2 en allant chercher la première occurrence de <DELIM>
+_split2_l.'<DELIM>' :	Découper en 2 en allant chercher la dernière occurrence de <DELIM>
+
+_splitreg2_f.'<REGEX>' :Découper en 2 en allant chercher la première occurrence de <REGEX>
+_splitreg2_l.'<REGEX>' :Découper en 2 en allant chercher la dernière occurrence de <REGEX>

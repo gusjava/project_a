@@ -1,0 +1,14 @@
+@code
+!Ce script permet de transferer le JAR de l'application en cours d'execution
+!vers une clé USB (répertoire /gusexplorer/appli/<now>/)
+
+$roots=1._rootdirs
+$usbRoot=roots._findone.'a._hdd_name._co.USB'
+if usbRoot==null
+ *'USB key not found'._jdialog_msg_warning
+ stop
+
+$dir=usbRoot.gusexplorer.appli.(1._now)._dir1
+$jarFile=1._appjar
+*jarFile._e_copyfile_inside#dir
+*dir._e_open

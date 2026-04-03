@@ -1,0 +1,12 @@
+Avant de passer à la seconde partie, 
+j'attire votre attention sur un détail pratique :
+
+L'éditeur dedié aux fichiers de script (.gus) sauvegarde automatiquement 
+le résultat à chaque exécution dans un fichier <scriptname>_output.txt 
+situé juste à coté du script.
+
+J'ai inclus un petit script à la racine du répertoire de tuto (clear.gus) 
+pour vous permettre de supprimer les fichiers .txt, si jamais vous souhaitiez
+faire le ménage.
+
+N'hésitez pas à vous en servir !!  ^^

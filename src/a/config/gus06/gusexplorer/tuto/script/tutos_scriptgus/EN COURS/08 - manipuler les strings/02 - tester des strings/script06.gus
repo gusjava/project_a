@@ -1,0 +1,40 @@
+Les tests de correspondance _m_...
+
+Ces tests proposent différents motifs à tester sur
+une string. Je vais vous les présenter sous forme d'exemples :
+
+_m_dots :
+
+{>'[grrr]'._m_dots.'[...]'}
+{>'[grrr]'._m_dots.'[..!]'}
+{>'<grrr>'._m_dots.'[!.!]'}
+{>'<grrr]'._m_dots.'[!..]'}
+
+_m_stars :
+
+{>'travail.doc'._m_stars.'*.doc'}
+{>'travail.doc'._m_stars.'tra*'}
+{>'travail.doc'._m_stars.'*.*'}
+
+_m_mask :
+
+{>'125.DDD'._m_mask.'***.***'}
+{>'(25)-(A)'._m_mask.'(**)-(*)'}
+
+_m_mask2 :
+
+{>'125.DDD'._m_mask2.'ddd.AAA'}
+{>'(25)-(A)'._m_mask2.'(dd)-(x)'}
+
+Pour ce deuxième type de filtre par masque,
+nous avons les conventions suivantes :
+
+- x : n'importe quel caractère
+- d : un chiffre
+- D : tout sauf un chiffre
+- w : une lettre
+- W : tout sauf une lettre
+- a : une lettre minuscule
+- A : une lettre majuscule
+- h : un caractère alphanumérique
+- H : tout sauf un caractère alphanumérique

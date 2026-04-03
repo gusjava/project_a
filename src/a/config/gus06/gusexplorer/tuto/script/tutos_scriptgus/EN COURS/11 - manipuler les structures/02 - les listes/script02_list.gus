@@ -1,0 +1,5 @@
+Pour créer un objet list, on utilisera la notation:
+{$list=[]} {>list}
+
+Mais on peut aussi utiliser l'opérateur constant "_newlist"
+{$list=1._newlist} {>list}

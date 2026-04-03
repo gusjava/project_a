@@ -1,0 +1,28 @@
+Il existe d'autres opérateurs directs
+que je vous donne pour information :
+
+
+
+Pour vérifier si on a un palyndrome :
+{>'radar'._palyndrome}
+
+Pour vérifier si on a un nom d'entité :
+{>'gus.sys.expression1.apply.opmap'._is_entityname}
+
+Pour vérifier si on a un nom d'opérateur :
+{>'_empty'._is_operatorname}
+
+Pour vérifier si on a un nom de balise :
+{>'print'._is_tagname}
+
+Pour vérifier si on a un nom de propriété System :
+{>'user.dir'._is_sysprop}
+
+Pour vérifier si on a un nom de variable d'environnement :
+{>'OS'._is_sysenv}
+
+Pour vérifier si la string n'est non vide :
+{>'aaaa'._nempty}
+
+Pour vérifier si la string n'est non blanche :
+{>'aaaa'._nblank}

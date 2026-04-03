@@ -1,0 +1,17 @@
+
+On applique un filtre sur chaque élement de la structure
+
+Tester la structure :
+_check_all/none/one/many
+_check_onlyone/notall/notmany
+
+Modifier la structure :
+_e_keepall
+_e_removeall
+
+Récupérer les éléments :
+_findall
+_excludeall
+
+Compter les éléments :
+_countall

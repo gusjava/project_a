@@ -1,0 +1,7 @@
+@code
+
+$clipboard=1._clipboard
+if clipboard._is_list && clipboard._one
+ $clipboard=clipboard.0
+
+*clipboard._show1_data1.'UTIL_clipboard#Clipboard'

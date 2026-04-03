@@ -1,0 +1,41 @@
+{$list=[
+	(prenom:'Jean' nom:'Dupont' sexe:'m' age:41),
+	(prenom:'Yves' nom:'Durant' sexe:'m' age:37),
+	(prenom:'Emeline' nom:'Lemeux' sexe:'f' age:9),
+	(prenom:'Yvan' nom:'Lemeux' sexe:'m' age:15),
+	(prenom:'Muriel' nom:'Lavoisier' sexe:'f' age:27)
+]}
+
+Supposons à présent que je vous demande d'afficher un prénom sur chaque ligne
+
+Voici la solution qui vous viendrait à l'esprit :
+{each list}
+{>v.prenom}{end}
+
+
+Voyons ensuite une autre approche avec l'opérateur _collect.
+
+Cette approche nécessite a priori de définir une transformation (T)
+qui renvoie l'affichage souhaité pour chaque élément de la liste.
+
+Cette transformation peut être obtenue grâce à l'opérateur _to_t
+qui convertir une règle de transformation en objet.
+
+{$t='a.prenom'._to_t}
+
+'a' étant le nom de la variable en entrée de la transformation, 
+(dans notre cas, c'est une map contenant les informations d'une personne)
+la sortie est alors définie par la règle 'a.prenom'
+
+Nous pouvons vérifier que ça fonctionne en lui appliquant 
+le premier élément de la liste (Jean Dupont)
+{>t#list.0}
+
+Ensuite on applique l'opérateur _collect comme ceci:
+{$list_prenoms=list._collect#t}
+
+Le résultat final est une liste avec chaque prénom !
+{>list_prenoms}
+
+qu'on peut afficher comme ceci :
+{>list_prenoms._join_n}

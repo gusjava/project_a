@@ -1,0 +1,36 @@
+Une balise de commande est une balise autonome produisant une action
+spécifique. Nous connaissons déjà print, set, execute et comment
+mais il en existe 11 autres que nous allons découvrir petit à petit
+par la suite. En voici déjà un aperçu :
+
+
+La balise "println" permet d'envoyer du texte vers la sortie standard,
+en ajoutant à \\n à la fin du texte.
+
+La balise "alias" permet de définir de nouvelles balises. 
+
+La balise "output" permet de paramétrer la sortie standard du script.
+
+La balise "set0" est une variante de set qui permet d'affecter
+une variable avec un scope global.
+
+La balise "set1" est une variante de set qui permet d'affecter
+une variable avec un scope local.
+
+La balise "call" permet d'exécuter le contenu d'un bloc défini
+par une balise block (ou block0).
+
+La balise "debug" permet d'afficher des informations pour aider
+à débugger le script.
+
+La balise "include" permet d'inclure un sous-script dans le
+script courant.
+
+La balise "include1" est une variante de include qui fait appel
+au système de mapping entre scripts.
+
+La balise "return" permet de terminer le script courant
+en renvoyant une valeur vers le script parent.
+
+La balise "stop" permet quant à elle d'interrompre l'exécution
+du script global.

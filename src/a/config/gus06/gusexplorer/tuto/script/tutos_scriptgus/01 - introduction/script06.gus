@@ -1,0 +1,19 @@
+Les balises print, set, execute et comment 
+peuvent être écrites de manière plus concise :
+
+Première manière :
+
+{s a=5}
+{p "la valeur de a est "+a}
+{e @'gus.beep'}
+{c commentaire}
+
+Deuxième manière :
+
+{$a=5}
+{>"la valeur de a est "+a}
+{*@'gus.beep'}
+{!commentaire}
+
+C'est bien évidemment cette deuxième manière
+qui sera utilisée en pratique.

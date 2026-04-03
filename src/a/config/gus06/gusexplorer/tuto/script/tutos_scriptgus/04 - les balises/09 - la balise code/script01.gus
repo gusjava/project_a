@@ -1,0 +1,21 @@
+La balise code est une balise structurelle qui permet à l'utilisateur
+de spécifier une séquence d'instructions sans les placer à l'intérieur 
+de balises.
+
+Le contenu de la balise code devra contenir une instruction distincte
+par ligne, avec éventuellement des lignes blanches qui seront ignorées.
+
+Voici un petit exemple :
+
+{code}
+$a=6
+
+>>'a='+a
+>>'2*a='+2*a
+{end}
+
+
+En fait, la balise code permet de "s'affranchir" de la structure
+de template qui est intrinsèque aux scripts gus. Il suffit pour cela
+de faire débuter notre script par la balise code puis d'écrire nos
+lignes de codes. Et naturellement la balise end de fin n'est pas nécéssaire.

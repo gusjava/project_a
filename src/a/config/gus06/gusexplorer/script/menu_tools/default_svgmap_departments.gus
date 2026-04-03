@@ -1,0 +1,5 @@
+@code
+
+$gui='guiMapDepartment'._build
+*gui._v.tooltipBgColor#[102,255,51,200]._tocolor
+*gui._show2.800.800."FLAG_fr#Départements de France"

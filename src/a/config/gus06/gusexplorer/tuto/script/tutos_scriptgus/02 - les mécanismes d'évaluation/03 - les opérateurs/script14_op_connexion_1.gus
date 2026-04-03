@@ -1,0 +1,18 @@
+L'opérateur de connexion (.)
+
+Cet opérateur permet d'appliquer une "règle" sur une valeur
+pour produire une nouvelle valeur.
+
+Schématiquement, cela donne :
+<valeur>.<règle>
+
+Il est aussi possible de chaîner les règles comme ceci : 
+<valeur>.<règle1>.<règle2>.<règle3> ...
+
+A première vue, cet opérateur ressemble beaucoup à
+l'opérateur d'application (#). Nous verrons qu'il 
+s'en distingue néanmoins par plusieurs aspects.
+
+L'opérateur de connexion permet en effet d'appliquer une règle
+(qui est une chaîne de caractères) alors que l'opérateur d'application
+permet d'appliquer n'importe quel objet.

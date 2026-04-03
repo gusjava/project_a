@@ -1,0 +1,14 @@
+Les éléments start, current, ainsi que tous les éléments
+de la liste history, sont des maps de balise présentant
+toutes les mêmes types d'informations.
+
+Par ailleurs, l'élément start correspond au premier
+élément de la liste history, ce qu'on peut vérifier
+en comparant les ids ci-dessous :
+
+{>context.execution.start.id}
+{>context.execution.history.0.id}
+
+Et de même, l'élément current correspond au dernier
+élément, mais c'est plus difficile à montrer parce que
+cet état change tout le temps.

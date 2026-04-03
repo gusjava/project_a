@@ -1,0 +1,31 @@
+Il est fortement conseillé de mettre des parenthèses
+dans vos expressions pour spécifier l'ordre dans lequel
+les différents opérateurs doivent être pris en compte.
+
+Faute de quoi, ce sont les règles de priorité par défaut
+qui s'appliquent !
+
+Voici cet ordre :
+
+A . B . C
+A # B # C
+A ^ B
+A !^ B
+A % B
+A / B
+A // B
+A * B * C
+A + B - C
+A < B
+A > B
+A <= B
+A >= B
+A != B
+A == B
+A | B | C
+A && B && C
+A || B || C
+A : B : C
+A ? B : C
+A !: B
+A :: B

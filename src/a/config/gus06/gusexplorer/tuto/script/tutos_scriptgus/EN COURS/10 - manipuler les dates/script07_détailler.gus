@@ -1,0 +1,28 @@
+A partir d'un objet Date,
+on peut récupérer diverses informations
+
+On prend la date actuelle :
+{$date=1._date0}{>date}
+
+Informations numériques :
+
+{>date._year}
+{>date._month} (1=janvier)
+{>date._dayofweek} (0=lundi)
+{>date._dayofmonth} (1=1er du mois)
+{>date._dayofyear} (1=1er janvier)
+{>date._weekofyear}
+{>date._hour}
+{>date._minute}
+{>date._second}
+{>date._millisecond}
+
+Informations textuelles :
+
+{>date._month_fr}
+{>date._month_en}
+{>date._month_ja}
+
+{>date._dayofweek_fr}
+{>date._dayofweek_en}
+{>date._dayofweek_ja}

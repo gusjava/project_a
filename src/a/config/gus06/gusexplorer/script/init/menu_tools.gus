@@ -1,0 +1,19 @@
+@code
+!Script pour initialiser/mettre à jour la section "default" du menu "Scripts"
+
+$m='Des scripts "default" du menu "Scripts" peuvent être écrasés. Voulez-vous continuer ?'
+$continue=m._jdialog_confirm
+if !continue
+ stop
+
+$e1=@'gus.appli.gusexplorer.scripts.tools.manager'
+$e2=@'gus.file.jar.string.finder1'
+
+$dir=e1.dir
+$jar=1._appjar
+$map=e2#[o:jar,'gus06/resource/gus/gyem/script/menu_tools/']
+
+each map
+ $file=dir.(k)
+ $content=v
+ *file._write_txt#content

@@ -1,0 +1,18 @@
+Variantes "ignorantes"
+
+Les opérateurs _e_put_ig et _e_putall_ig sont des variantes "ignorantes"
+qui ignorent chaque clé qui existe déjà dans la map.
+
+{$map=a:'A' b:'B' c:'C'}{>map}
+
+{*map._e_put_ig.d.D}
+{>map}
+
+{*map._e_put_ig.d.D2}
+{>map}
+
+{*map._e_putall_ig#(e:'E' f:'F')}
+{>map}
+
+{*map._e_putall_ig#(e:'E2' f:'F2' g:'G')}
+{>map}

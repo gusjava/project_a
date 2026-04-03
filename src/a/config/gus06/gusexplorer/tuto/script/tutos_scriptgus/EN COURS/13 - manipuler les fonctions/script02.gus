@@ -1,0 +1,38 @@
+Fonctions classiques :
+
+Pour chacun de ces opérateurs numériques
+vous pouvez le faire précéder de _h_... pour obtenir
+l'opérateur fonction équivalent
+
+_abs		_h_abs
+_opp		_h_opp
+_inv		_h_inv
+_signum
+_triple		_h_triple
+_double		_h_double
+_half		_h_half
+_square		_h_square
+_cube		_h_cube
+_sqrt		_h_sqrt
+_cbrt		_h_cbrt
+
+_cos		_h_cos
+_sin		_h_sin
+_tan		_h_tan
+
+_acos
+_asin
+_atan
+
+_cosh
+_sinh
+_tanh
+
+_log
+_log10
+
+_h_sigmoid
+
+_h_id
+_h_zero
+_h_one

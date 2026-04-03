@@ -1,0 +1,5 @@
+Les balises print, set, execute et comment, font partie 
+d'un ensemble de {>1._tag_names._size} balises reconnues 
+par le moteur de script dont voici la liste exhaustive :
+
+{>1._tag_names._join_n}

@@ -1,0 +1,31 @@
+{$list=[
+	(prenom:'Jean' nom:'Dupont' sexe:'m' age:41),
+	(prenom:'Yves' nom:'Durant' sexe:'m' age:37),
+	(prenom:'Emeline' nom:'Lemeux' sexe:'f' age:9),
+	(prenom:'Yvan' nom:'Lemeux' sexe:'m' age:15),
+	(prenom:'Muriel' nom:'Lavoisier' sexe:'f' age:27)
+]}
+
+
+Deuxième manière pour trouver la personne la plus jeune :
+
+L'opérateur _findall_min permet de trouver l'ensemble des
+résultats qui minimise une valeur numérique renvoyée en sortie
+d'une transformation.
+
+{>list._findall_min.f_age}
+
+Voici donc la manière la plus concise d'obtenir 
+le prénom de la personne la plus jeune :
+
+{>list._findall_min.f_age.0.prenom}
+
+
+Problème suivant : trouver la ou les personnes dont l'âge
+est le plus proche de 39 ans
+
+{>list._findall_min.'a.age._distance.39'}
+
+Notons : l'opérateur _distance permet de trouver la distance
+entre 2 objets de même type (nombres, dates, couleurs, vecteurs...)
+Exemple : {>15._distance.20}

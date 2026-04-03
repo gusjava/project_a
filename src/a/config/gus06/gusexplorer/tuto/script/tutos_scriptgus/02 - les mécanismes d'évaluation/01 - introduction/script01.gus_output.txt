@@ -1,0 +1,28 @@
+Le moteur de script est capable d'évaluer des expressions
+faisant intervenir divers types de données comme des nombres, 
+booléens, chaînes de caractères, tableaux, structures, 
+ou encore des objets de traitement...
+
+Il peut s'agir d'expressions arithmétiques :
+13.5
+
+Il peut s'agir d'expressions logiques :
+false
+
+Il peut s'agir d'expressions plus élaborées :
+8
+[2.0,10.0,16.0,6.0,-10.0]
+
+Toute expression se compose d'élements combinés entre eux
+par des opérateurs, et faisant souvent intervenir des
+sous-expressions délimitées par des parenthèses.
+
+L'évaluation complète d'une expression est effectuée par
+le moteur de script en évaluant séparément chacun de ses
+élements et sous-expressions, puis en combinant les résultats
+obtenus au moyen d'opérations pour arriver au résultat final.
+
+Ces évaluations sont susceptibles de produire n'importe quel
+type d'objet Java (ainsi que le null): Integer, Double, Boolean, 
+String, Date, Color, File, URL, List, Set, Map, Object[] ...
+ainsi que des objets particuliers appelés objets de traitement.

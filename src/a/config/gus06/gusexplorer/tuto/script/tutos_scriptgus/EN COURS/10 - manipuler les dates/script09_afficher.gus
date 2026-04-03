@@ -1,0 +1,24 @@
+Pour l'affichage :
+
+
+_yyyy
+_yyyymm
+_yyyymmdd
+_yyyymmdd_hhmm
+_yyyymmdd_hhmmss
+
+La date actuelle (aujourd'hui) :
+{>1._today}
+{>1._today_fr}
+{>1._today_en}
+{!>1._today_ja}
+
+La date/heure actuelle :
+{>1._now}
+{>1._now_fr}
+{>1._now_en}
+{!>1._now_ja}
+
+L'heure actuelle :
+{>1._time}
+{>1._time2}

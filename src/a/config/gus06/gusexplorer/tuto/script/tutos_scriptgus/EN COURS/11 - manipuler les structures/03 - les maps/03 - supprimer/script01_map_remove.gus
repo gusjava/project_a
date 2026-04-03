@@ -1,0 +1,27 @@
+Comment supprimer des clés dans une map existante ?
+{$map=a:1 b:2 c:3 d:4 e:5 f:6}
+{>map}
+
+- Vous pouvez utiliser l'opérateur _e_remove
+pour supprimer une clé particulier dans la map :
+
+{*map._e_remove.a}
+{>map}
+
+- Vous pouvez utiliser l'opérateur _e_removeall
+pour supprimer un ensemble de clés dans la map :
+
+{*map._e_removeall#['b','c']}
+{>map}
+
+- Vous pouvez utiliser l'opérateur _e_keepall
+pour conserver un ensemble de clés dans la map :
+
+{*map._e_keepall#['d','f']}
+{>map}
+
+- Vous pouvez utiliser l'opérateur _e_empty
+pour vider complétement la map :
+
+{*map._e_empty}
+{>map}

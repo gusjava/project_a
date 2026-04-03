@@ -1,0 +1,8 @@
+
+
+
+_FEATURES
+[Object] . _features -> String
+permet de récupérer une description des caractèristiques de l'objet
+{>context.tag_builder._features}
+

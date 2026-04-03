@@ -1,0 +1,28 @@
+Les opérateurs d'instanciation (@) et (§)
+
+Les opérateurs d'instanciation permettent
+d'instancier des objets de traitement à partir 
+des entités disponibles dans l'application.
+
+Si vous n'avez jamais entendu parler des entités,
+sachez juste qu'il s'agit de composants de programmation
+écrits en Java, et qu'ils constituent la base de la
+programmation gus06.
+
+{$clipboard=@'gus.clipboard.access.string'}
+
+Nous venons de récupérer un objet de traitement à partir
+de l'entité gus.clipboard.access.string
+dont les caractéristiques sont: {>clipboard._features}
+
+En exploitant la caractéristique P,
+on est en mesure de mettre du texte dans le presse papier !
+
+{*clipboard#'Vous pouvez vérifier,
+je suis dans le presse-papier ! ^^'}
+
+L'opérateur @ (instanciation unique)
+renvoie une instance unique pour une entité donnée.
+
+L'opérateur § (instanciation multiple)
+renvoie une nouvelle instance à chaque appel.

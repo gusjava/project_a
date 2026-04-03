@@ -1,0 +1,40 @@
+{$s='<A>[B](C)\{D\}"E"\\'F\\''}
+
+les opérateurs _rem1_... permettent de supprimer l'ensemble des parties
+du texte qui sont :
+
+entourées par <..>	_rem1_angle_a
+{>s._rem1_angle_a}
+
+entourées par [..]	_rem1_square_a
+{>s._rem1_square_a}
+
+entourées par (..)	_rem1_parenthesis_a
+{>s._rem1_parenthesis_a}
+
+entourées par \{..\}	_rem1_curly_a
+{>s._rem1_curly_a}
+
+entourées par ".."	_rem1_quote2_a
+{>s._rem1_quote2_a}
+
+entourées par '..'	_rem1_quote_a
+{>s._rem1_quote_a}
+
+
+
+_rem1_number_a
+_rem1_hexa_a
+_rem1_lower_a
+_rem1_upper_a
+_rem1_word_a
+_rem1_punct_a
+_rem1_white_a
+_rem1_year_a
+_rem1_email_a
+
+A REVOIR
+
+_rem_borders ??
+_rem_s
+_rem_si

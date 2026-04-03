@@ -1,0 +1,30 @@
+L'option before :
+-------------
+balises : toutes
+type : Execute ou String
+
+action : permet de fixer un objet E qui sera exécuté
+juste avant l'exécution de la balise (si elle n'est pas
+empêchée par l'option if).
+
+S'il s'agit d'une String, l'expression sera évaluée 
+dynamiquement pour obtenir l'objet E.
+
+
+{>'coucou' before 'BEFORE'._e_println}
+
+
+L'option after :
+-------------
+balises : toutes
+type : Execute ou String
+
+action : permet de fixer un objet E qui sera exécuté
+juste après l'exécution de la balise (si elle n'est pas
+empêchée par l'option if).
+
+S'il s'agit d'une String, l'expression sera évaluée 
+dynamiquement pour obtenir l'objet E.
+
+
+{>'coucou' after '_AFTER'._e_print}

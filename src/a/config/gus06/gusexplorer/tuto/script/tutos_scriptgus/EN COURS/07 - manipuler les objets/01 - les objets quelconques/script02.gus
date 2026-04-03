@@ -1,0 +1,26 @@
+Commençons à construire notre boite à outils :
+
+_SIZE
+[Map/List/Set/Array/String/File...] . _size -> Integer
+permet de connaitre la taille de l'objet
+{>'coucou'._size}
+
+_EMPTY
+[Map/List/Set/Array/String/File...] . _empty -> Boolean
+permet de vérifier si la taille d'un objet est zéro
+{>\{:\}._empty}
+
+_NEMPTY
+[Map/List/Set/Array/String/File...] . _nempty -> Boolean
+permet de vérifier si la taille d'un objet est strictement positif
+{>\{:\}._nempty}
+
+_NEW
+[String/Class] . _new -> Object
+permet d'instancier à objet à partir de sa classe
+{>'java.util.ArrayList'._new}
+
+_CLONE
+[Object] . _clone -> Object
+permet de créer un clone d'un objet
+{>[1,2,3]._clone}

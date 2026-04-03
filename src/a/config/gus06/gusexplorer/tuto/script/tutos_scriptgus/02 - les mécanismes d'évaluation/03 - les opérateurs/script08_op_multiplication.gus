@@ -1,0 +1,39 @@
+L'opérateur de multiplication (*)
+
+Il permet d'effectuer :
+
+le produit de plusieurs nombres
+{>5*2*3}
+
+le produit de plusieurs fonctions
+{$h='a+1'._to_h * 'a-1'._to_h}
+{>h#3}
+
+le produit de 2 vecteurs
+{>[int:0,1,0,1]*[int:2,2,2,2]}
+
+
+Il permet aussi d'effectuer 
+la multiplication par un scalaire sur :
+
+- les strings
+- les listes
+- les tableaux de nombres
+- les objets E,H,P
+
+Voici quelques exemples :
+
+{>'quoi '*3}
+{>['a','b']*4}
+{>[int:1,2,3,4]*10}
+
+Et concernant les objets E,H,P :
+
+E1*N donne un exécutable E
+qui exécute successivement N fois E1
+
+H1*N donne une fonction H
+qui renvoie H1(x)*N
+
+P1*N donne un receptable P
+qui passe la valeur successivement N fois dans P1

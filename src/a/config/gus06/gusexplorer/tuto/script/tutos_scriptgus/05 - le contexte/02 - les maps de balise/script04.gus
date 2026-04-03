@@ -1,0 +1,15 @@
+La balise start est la racine de l'aborescence de notre
+script. A partir de cette balise, il est possible
+de retrouver n'importe quelle balise !
+
+Voici une balise quelconque :
+{print 'coucou'}
+
+Essayons de la retrouver :
+{>context.execution.start.content.1._desc}
+
+Nous notons que la zone de texte qui précède la balise print
+est aussi considérée comme une balise.
+
+Voici cette première balise :
+{>context.execution.start.content.0._desc}

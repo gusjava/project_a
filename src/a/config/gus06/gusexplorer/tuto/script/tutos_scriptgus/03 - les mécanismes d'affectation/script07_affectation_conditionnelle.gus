@@ -1,0 +1,14 @@
+Avec ?=, il est possible d'affecter une variable seulement si 
+elle n'existe pas encore (ou que sa valeur est nulle).
+
+
+{$list?=[1,2,3]}
+list={>list}
+
+{$list?=[4,5,6]}
+list={>list}
+
+{$list=null}
+
+{$list?=[4,5,6]}
+list={>list}

@@ -1,0 +1,43 @@
+{$list=[
+	(prenom:'Jean' nom:'Dupont' sexe:'m' age:41),
+	(prenom:'Yves' nom:'Durant' sexe:'m' age:37),
+	(prenom:'Emeline' nom:'Lemeux' sexe:'f' age:9),
+	(prenom:'Yvan' nom:'Lemeux' sexe:'m' age:15),
+	(prenom:'Muriel' nom:'Lavoisier' sexe:'f' age:27)
+]}
+
+Si nous souhaitons mettre cette liste de prénoms en majuscules...
+
+Sachant que l'opération qui met du texte en majuscules est _upper
+on obtient :
+{>list._collect.'a.prenom._upper'}
+
+
+Regardons ensemble d'autres manières d'arriver au même résultat ...
+
+{$t1='a.prenom'._to_t}
+{$t2='a._upper'._to_t}
+
+Si on compose t1 avec t2 :
+{$t12=t1|t2}
+
+{>list._collect#t12}
+
+De même que la règle a.prenom peut s'écrire f_prenom
+(le cas général étant f_<nom_de_mon_champ_alphanum>)
+
+la règle a._upper peut s'écrire upper
+(le cas général étant <nom_de_mon_operateur_sans_1er_caractere>)
+
+{$t1='f_prenom'._to_t}
+{$t2='upper'._to_t}
+{>list._collect#(t1|t2)}
+
+ou encore :
+{>list._collect.'f_prenom|upper'}
+
+dernière solution :
+{>list._collect.f_prenom._upper}
+
+en effet, l'opérateur _upper s'appliquer aussi bien à une string 
+qu'à une liste, une set ou une map !!

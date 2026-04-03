@@ -1,0 +1,28 @@
+Le test de proximité
+
+{$s1='Françoise'}
+{$s2='Francois'}
+
+Les strings s1 et s2 sont-elles proches ?
+{>s1._m_near.(s2)}
+
+Ce test est réalisé à partir de la distance de Levenshtein
+entre les 2 chaînes de caractères (calculé par l'algorithme
+de Wagner-Fischer)
+
+length étant la longueur de la chaîne la plus courte,
+le test sera vérifié lorsque : (length-distance)/distance >= 0.75
+
+
+Essayons sur quelques exemples :
+
+PROCHE :
+{>'cou cou'._m_near.'coucou'}
+{>'caucou'._m_near.'coucou'}
+{>'cuocoume'._m_near.'coucoume'}
+
+ELOIGNE :
+{>'cau cou'._m_near.'coucou'}
+{>'cuocou'._m_near.'coucou'}
+{>'cuocoume'._m_near.'oucoume'}
+{>'cuocoume'._m_near.'docoume'}

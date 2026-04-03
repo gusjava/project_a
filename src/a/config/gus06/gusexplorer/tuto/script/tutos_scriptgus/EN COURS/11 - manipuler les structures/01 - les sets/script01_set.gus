@@ -1,0 +1,5 @@
+Pour créer un objet set, on utilisera la notation:
+{$set=\{\}} {>set}
+
+Mais on peut aussi utiliser l'opérateur constant "_newset"
+{$set=1._newset} {>set}

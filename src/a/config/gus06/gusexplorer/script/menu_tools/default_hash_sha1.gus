@@ -1,0 +1,20 @@
+@code
+
+$file=1._clipboard_file
+if file!=null
+ if file._isfile
+  $sha1=file._sha1._hexa
+  
+  $r="File: "+file+"\nSHA1="+sha1
+  *sha1._e_clipboard
+  *r._jdialog_msg_info
+ stop
+
+$string=1._clipboard_string
+if string!=null
+ $sha1=string._sha1._hexa
+ 
+ $r="String: "+string._truncate_pretty.20+"\nSHA1="+sha1
+ *sha1._e_clipboard
+ *r._jdialog_msg_info
+ stop

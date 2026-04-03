@@ -1,0 +1,16 @@
+Nous allons d'abord regarder les différents
+moyens de créer des objets Date :
+
+
+Obtenir la date à l'instant présent :
+{>1._date0}
+(équivalent à : new Date())
+
+Obtenir la date d'aujourd'hui :
+{!>1._date_today}
+
+Obtenir la date de demain :
+{!>1._date_tomorrow}
+
+Obtenir la date d'hier :
+{!>1._date_yesterday}

@@ -1,0 +1,8 @@
+L'option redirect applicable sur n'importe quelle balise
+permet d'obtenir le même resultat, en passant en valeur un objet
+de type File, PrintStream, P, StringBuffer, ou String
+
+Cette option est souvent utilisée sur la balise include :
+{include 'script01.gus' redirect 'output'}
+
+{>output}

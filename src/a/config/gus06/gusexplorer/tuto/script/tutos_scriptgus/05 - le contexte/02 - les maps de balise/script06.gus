@@ -1,0 +1,20 @@
+Les champs "id", "type", "name", "value" et "params"
+fournissent des renseignements sur l'identité de la balise :
+
+- id : nombre généré aléatoirement qui identifie la balise
+de manière unique
+
+- type : il en existe 3 : root, element, text. Le type
+"root" correspond à la racine du script (ou du sous-script),
+le type "text" correspond aux zones texte, et le type
+"element" correspond aux éléments entre acollades.
+
+- value : il s'agit du code source de la balise,
+c'est à dire le texte placé entre acollades. S'il comporte
+un espace il pourra se décomposer en : value = name + params
+
+- name : il s'agit du nom de la balise élement
+(print, execute, if, else, ...), il y en a 38 différents.
+
+- params : il s'agit de la partie "info" de la balise
+qui est interprétée par le moteur au moment de l'exécution.

@@ -1,0 +1,20 @@
+Début du sous-script
+level={>stack.level}
+
+{block 'A'}
+	Début du bloc A
+	level={>stack.level}
+	
+	{&a=3}a est défini au niveau global avec \{&a=3\}
+	{$b=3}b est défini au niveau régional avec \{$b=3\}
+	{£c=3}c est défini au niveau local avec \{£c=3\}
+	
+	a={>a} b={>b} c={>c}
+	Fin du bloc A
+{end}
+
+level={>stack.level}
+a={>a} b={>b} c={>c}
+On a perdu la variable définie localement dans le bloc A!
+
+Fin du sous-script

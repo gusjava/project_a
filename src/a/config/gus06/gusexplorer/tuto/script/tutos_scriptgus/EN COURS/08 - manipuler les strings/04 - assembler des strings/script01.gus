@@ -1,0 +1,6 @@
+Pour coller les strings, il existe des opérateurs directs ou indirects qui
+fournissent une string à partir d'une structure de strings.
+
+Tous ces opérateurs commencent par _join :
+
+{>'_join'._operator_names_co._join_n}

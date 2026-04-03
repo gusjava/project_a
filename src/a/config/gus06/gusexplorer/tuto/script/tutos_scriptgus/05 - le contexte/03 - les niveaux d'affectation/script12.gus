@@ -1,0 +1,12 @@
+Voici un exemple plus parlant qui montre l'impact des 3 types d'affectations
+en ayant recours à l'inclusion d'un sous-script !
+
+level={>stack.level}
+------------------
+{include 'script12/script.gus'}
+------------------
+level={>stack.level}
+a={>a} b={>b} c={>c}
+On a perdu la variable définie régionalement dans le sous-script
+
+A ce niveau il ne reste plus que la variable définie globalement : a={>a}

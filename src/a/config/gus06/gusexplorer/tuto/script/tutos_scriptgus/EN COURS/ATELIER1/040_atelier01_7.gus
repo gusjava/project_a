@@ -1,0 +1,41 @@
+{$list=[
+	(prenom:'Jean' nom:'Dupont' sexe:'m' age:41),
+	(prenom:'Yves' nom:'Durant' sexe:'m' age:37),
+	(prenom:'Emeline' nom:'Lemeux' sexe:'f' age:9),
+	(prenom:'Yvan' nom:'Lemeux' sexe:'m' age:15),
+	(prenom:'Muriel' nom:'Lavoisier' sexe:'f' age:27)
+]}
+
+
+Pour afficher la liste des prénoms des personnes mineures,
+on n'hésitera pas à enchainer les opérateurs _findall et _collect :
+
+{>list._findall.'a.age<18'._collect.f_prenom._join_n}
+
+
+Problème suivant : afficher le nombre de personne
+qui ont plus de 35 ans
+
+{>list._findall.'a.age>30'._size}
+
+ou plus simplement :
+{>list._countall.'a.age>30'}
+
+
+Problème suivant : collecter les âges de chaque personne
+facile !
+{>list._collect.f_age}
+
+
+Problème suivant : trouver l'âge minimal
+
+En appliquant l'opérateur _min à la liste des âges :
+{>list._collect.f_age._min}
+
+En appliquant l'opérateur _min_of directement à l'objet list:
+{>list._min_of.f_age}
+
+
+Notons : l'opérateur _min permet aussi de renvoyer le minimum
+entre 2 nombres, comme ceci :
+{>10._min.5}

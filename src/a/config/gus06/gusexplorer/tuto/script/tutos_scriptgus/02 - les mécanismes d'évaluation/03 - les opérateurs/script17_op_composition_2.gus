@@ -1,0 +1,36 @@
+L'opérateur de composition peut aussi être utilisé pour
+combiner des objets de nature différente, ce qui donne lieu
+à un certain nombre de possibilités.
+
+Pour chaque type de traitement, nous allons regarder en détail
+ce que la composition permet d'obtenir.
+
+
+A partir d'un objet T :
+
+T renvoie une sortie, il peut donc être chaîné avec
+les types d'objets suivants, qui acceptent une entrée :
+
+T | T → T
+T | F → F
+T | P → P
+
+Les objets de type H, R et Map sont préalablement convertis
+en objets T, on obtient donc ceci :
+
+T | H → T
+T | R → T
+T | Map → T
+
+
+A partir d'un objet G :
+
+De même, G renvoie une sortie, il peut donc être
+chaîné avec les mêmes types d'objets que T :
+
+G | T → G
+G | F → G
+G | P → E
+G | H → G
+G | R → G
+G | Map → G

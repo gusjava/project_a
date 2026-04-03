@@ -1,0 +1,13 @@
+L'opération de complétion conditionnelle (?<=) permet de compléter 
+le contenu d'une map en ignorant les clés déjà présentes.
+
+cela revient à faire putAll "lazy" (ou "putNew")
+
+{$map=a:1 b:2}
+map={>map}
+
+{$map?<=a:9 b:5 c:3 d:4}
+map={>map}
+
+On remarquera que seulement les nouvelles clés (c et d) 
+sont ajoutées dans la map.

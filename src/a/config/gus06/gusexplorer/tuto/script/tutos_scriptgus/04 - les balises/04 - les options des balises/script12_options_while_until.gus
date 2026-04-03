@@ -1,0 +1,22 @@
+L'option while :
+-------------
+balises : until, repeat, for, each, clock
+type : String
+action : permet de fixer une expression qui
+sera évaluée au début de chaque itération.
+La boucle est interrompue si le résultat est faux.
+
+{repeat 10 while '6._chance'}
+{>i}{end}
+
+
+L'option until :
+-------------
+balises : while, repeat, for, each, clock
+type : String
+action : permet de fixer une expression qui
+sera évaluée au début de chaque itération.
+La boucle est interrompue si le résultat est vrai.
+
+{repeat 10 until 'i==6'}
+{>i}{end}

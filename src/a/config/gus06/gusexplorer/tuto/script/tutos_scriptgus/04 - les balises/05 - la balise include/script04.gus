@@ -1,0 +1,27 @@
+Il est possible de connaître le script courant
+grâce à la variable prédéfinie de type Map : "script"
+
+{>script}
+{>script._type}
+{>script._keyset}
+
+Cette map contient notamment un champ "file" qui est
+un objet File correspondant au fichier source du script
+
+{>script.file}
+
+Cette map contient aussi un champ "dir" qui stocke 
+le répertoire parent du fichier source du script
+
+{>script.dir}
+
+Enfin, cette map contient un champ "root" qui est
+un objet Map correspondant à la "stack" racine du script
+
+{>script.root}
+
+Nous aborderons les stacks dans le chapitre dédié
+au contexte d'exécution du script. Pour le moment,
+on retiendra juste qu'il s'agit d'une map de stockage
+contenant toutes les informations liées à l'exécution
+d'une balise particulière.

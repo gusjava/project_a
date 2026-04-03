@@ -1,0 +1,14 @@
+A priori, une balise call avec un nom de bloc inconnu
+est ignoré.
+
+{call 'A'}
+
+Mais on peut définir un bloc avec le nom
+'undefined' pour prendre en compte ces cas!
+
+{block0 'undefined'}
+Appel à un bloc inconnu : {>block.name}
+{end}
+
+{call 'A'}
+{call 'B'}

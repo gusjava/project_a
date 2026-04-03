@@ -1,0 +1,36 @@
+Les opérateurs de comparaison
+
+Voici ceux qui s'appliquent sur 
+n'importe quels types d'objets :
+
+- L'opérateur d'égalité		==
+{>2+2-1==1+2}
+{>'coucou'=='coucou'}
+{>[1,2]==[1,2]}
+
+- L'opérateur d'inégalité	!=
+{>2+3!=4}
+{>'4'!=4}
+{>4.0!=4}
+
+Voici ceux qui s'appliquent uniquement sur 
+des nombres, des strings ou des dates :
+
+- Les opérateurs d'infériorité stricte		<
+{>10<7}
+{>'A'<'B'}
+
+- Les opérateurs d'infériorité			<= (ou =<)
+{>4<=-2}
+{>'ab'=<'ab'}
+
+- Les opérateurs de supériorité stricte		>
+{>3>3}
+{>'a'>'A'}
+
+- Les opérateurs de supériorité			>= (ou =>)
+{>5=>0}
+{>'a'>='Z'}
+
+Plusieurs exemples avec des objets Date seront abordés
+dans le chapitre dédiée aux dates.

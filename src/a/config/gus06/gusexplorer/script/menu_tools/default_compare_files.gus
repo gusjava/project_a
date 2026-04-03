@@ -1,0 +1,11 @@
+@code
+
+$files=1._clipboard_files
+if files==null
+ *'no file found'._jdialog_msg_warning
+ stop
+
+if files._is_samefile
+ *('same files: '+files._size)._jdialog_msg_info
+ else
+ *('different files: '+files._size)._jdialog_msg_info

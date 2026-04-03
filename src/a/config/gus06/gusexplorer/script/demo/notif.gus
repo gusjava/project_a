@@ -1,0 +1,11 @@
+@code
+
+$m.title='ACTION_scan#Ma notif'
+$m.title_size=18
+$m.title_foreground=1._c_gray
+$m.message='Exemple de notification'
+
+!Si vous cliquez sur le titre, ça va faire un beep
+$m.execute=1._e_beep
+
+*m._popup_notif

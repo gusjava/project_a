@@ -1,0 +1,21 @@
+Pour les développeurs Java, il peut être utile de jeter un oeil
+au code source qui se cache derrière le moteur de script.
+
+
+Voici quelques opérateurs qui leur permettront d'étancher leur curiosité :
+
+
+_OPERATOR_SRC
+[String] . _operator_src -> String
+renvoie le code source de l'entité qui implémente l'opérateur ciblé
+{>'_upper'._operator_src}
+
+_ENTITY_SRC
+[String] . _entity_src -> String
+renvoie le code source de l'entité ciblée
+{>'gus.data.perform.upper'._entity_src}
+
+_CLASS_SRC
+[String] . _class_src -> String
+renvoie le code source de la classe applicative ciblée
+{>'gus06.framework.Entity'._class_src}

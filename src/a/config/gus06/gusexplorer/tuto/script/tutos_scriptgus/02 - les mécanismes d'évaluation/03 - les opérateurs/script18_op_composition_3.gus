@@ -1,0 +1,29 @@
+
+A partir de E ou P, il est possible de chaîner un objet
+qui n'accepte pas d'entrée :
+
+E | G → G
+E | E → E (équivalent à E+E)
+
+P | G → T
+P | E → P
+
+
+Enfin, à partir de F, la composition avec d'autres objets
+prend un sens légèrement différent :
+
+Ainsi, F | E fournit un objet P qui se comporte comme ceci :
+si F(obj) est vrai, on applique E, sinon rien
+
+Dans le même genre d'idée, on a :
+F | P → P (si F(obj) est vrai, on passe obj à P, sinon rien)
+F | T → T (si F(obj) est vrai, on renvoie T(obj), sinon obj)
+
+
+Et finalement, on pourra avoir les compositions, dont je vous
+laisse deviner la signification :
+
+F | [E:E1,E2] → P
+F | [P:P1,P2] → P
+F | [G:G1,G2] → T
+F | [T:T1,T2] → T (équivalent à F ? T1 : T2)

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+{block 'head'}Head defined at level 1{end}
+</head>
+
+<body>
+{block 'body'}Body 1{end}
+</body>
+
+</html>

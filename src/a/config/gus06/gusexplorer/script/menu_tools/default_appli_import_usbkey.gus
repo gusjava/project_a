@@ -1,0 +1,48 @@
+@code
+
+$roots=1._rootdirs
+$usbRoot=roots._findone.'a._hdd_name._co.USB'
+if usbRoot==null
+ *'USB key not found'._jdialog_msg_warning
+ stop
+
+$dir1=usbRoot.gusexplorer.appli
+if dir1==null
+ *'gusexplorer dir not found inside USB key'._jdialog_msg_warning
+ stop
+
+$dir2=dir1._dchildren.last
+$inputFile=dir2.'app.jar'
+if inputFile._nexists
+ *'app file not found inside USB key'._jdialog_msg_warning
+ stop
+
+$versionDir=1._app_rootdir.versions._dir1
+$name=1._now_yyyymmdd_hhmmss+'_app.jar'
+$versionFile=versionDir.(name)
+
+*inputFile._e_copy#versionFile
+   
+   
+!INSTALLATION DU JAR
+
+$outputDir=1._appjar._parent
+$outputFile=outputDir.'app_00.jar'
+
+>>'copying jar to '+outputFile
+*versionFile._e_copy#outputFile
+
+$s='@echo off\ntimeout 2\n'
+$s+='cd '+outputFile._q1+'\n'
+$s+='del /f app.jar\n'
+$s+='ren app_00.jar app.jar\n'
+$s+=1._jdk_bin.'java.exe'._q1+' -jar app.jar'
+>>'batch: ['+s+']'
+
+$batFile=versionDir.'updater.bat'
+*batFile._write_txt#s
+>>'updater batch written: '+batFile
+
+>>'restarting'
+*batFile._e_open
+*1._app_exit

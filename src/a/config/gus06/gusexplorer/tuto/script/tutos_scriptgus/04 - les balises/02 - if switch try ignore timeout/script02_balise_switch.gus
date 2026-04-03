@@ -1,0 +1,32 @@
+La balise switch évalue une expression puis exécute spécifiquement
+certaines parties de son contenu, selon le résultat obtenu.
+
+Ce sont les balises case qui ont la charge de spécifier les parties
+à exécuter en fonction des différentes valeurs possibles. Une balise
+else peut aussi être ajoutée pour prendre en charge la situation 
+par défaut.
+
+{$a=1}
+
+{switch a}
+
+{case 1}a vaut 1
+{case 2}a vaut 2
+{case 3}a vaut 3
+{else}a vaut {>a}
+	
+{end}
+
+Les balises case acceptent aussi des objets de traitement
+de type Filtre (F).
+
+{$inf10='a<10'._to_f}
+
+{switch a}
+
+{case inf10}a<10
+{case 1}a vaut 1
+{case 2}a vaut 2
+{case 3}a vaut 3
+
+{end}

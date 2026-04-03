@@ -1,0 +1,28 @@
+Une expression est susceptible de faire intervenir
+les types d'élément suivants :
+
+- la valeur nulle : null
+{>null}
+
+- Les 2 valeurs booléennes : true, false
+{>true} {>false}
+
+- Des nombres entiers : 0, 1, 2, 3, -1, -2 ...
+{>1}
+
+- Des nombres réels : 1.6, -5.026 ...
+{>1.6}
+
+- Des chaînes de caractères : "Bonjour" ...
+{>"Bonjour"}
+
+- Des identifiants faisant référence à des variables 
+connues par le script
+{>script}
+
+- Des identifiants faisant référence à des opérateurs 
+connus par le script
+{>1._c_black}
+
+- Des listes, des sets, des maps ou encore des tableaux
+{>[1,2,3,4]}

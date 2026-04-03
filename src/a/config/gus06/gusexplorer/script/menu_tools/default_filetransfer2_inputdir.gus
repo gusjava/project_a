@@ -1,0 +1,80 @@
+@code
+!Ce script permet de transferer un fichier sur un poste distant
+
+$dir=1._clipboard_file
+if !dir._isdir
+ *'Dir not found inside clipboard'._jdialog_msg_warning
+ stop
+
+$infoFile=dir.'infos.properties'
+$sendDir=dir.send._dir1
+$sentDir=dir.sent._dir1
+
+$dataFile=sendDir._child_l1
+if dataFile==null
+ *('No file found inside '+sendDir)._jdialog_msg_warning
+ stop
+
+$m.key="ip"
+$m.store=infoFile
+$m.initValue="localhost"
+$m.message="Please, enter the server's IP"
+$m.title="IP required"
+$ip=m._data_required
+
+if ip==null
+ >>'null ip: transfert aborted'
+ stop
+
+$m.key="port"
+$m.store=infoFile
+$m.initValue="4001"
+$m.message="Please, enter the server's port"
+$m.title="Port required"
+$port=m._data_required._toint
+
+if port==null
+ >>'null port: transfert aborted'
+ stop
+
+$url=ip+":"+port
+>>"sending file: "+dataFile
+>>"to socket server: "+url
+ 
+$name=dataFile._name
+$md5=dataFile._md5hexa
+$size=dataFile._size._s
+
+>>'file name: '+name
+>>'file md5: '+md5
+>>'file size: '+size
+
+ 
+try
+ $socket=url._newsocket
+ $p=socket._printstream
+ 
+ *p._e_println#name
+ *p._e_println#md5
+ *p._e_println#size
+ 
+ *"FILE_export#Sending file..."._popup_notif
+ >>"transfering..."
+ 
+ $t=1._now
+ $r=1000._progress_popup
+ *(input:dataFile output:socket progress:r)._transfer
+ *r._hide
+ $dt=t._duration_s_tonow
+ 
+ $m="FILE_connectedRed#File sent ("+dt+"s)"
+ *m._popup_notif
+ >>'transfer done ('+dt+'s)'
+ 
+ $storeDir=sentDir.(1._now)._dir1
+ *dataFile._e_movefile_inside#storeDir
+ 
+ else
+ >>e._cause_last
+ $errMsg="UTIL_error#"+e._message
+ *errMsg._popup_notif

@@ -1,0 +1,21 @@
+@code
+$name='init_ref.gus'
+
+$e1=@'gus.appli.gusexplorer.scripts.startup.manager'
+$dir=e1.dir
+
+$file=dir#name
+if file._exists
+ stop
+
+!EXTRACTION DU SCRIPT GUS
+ 
+$jar=1._appjar
+$e2=@'gus.file.jar.string.finder1'
+$map=e2#[o:jar,'gus06/resource/gus/gyem/script/startup/']
+$content=map#name
+*file._write_txt#content
+
+!CREATION DU REPERTOIRE SCRIPTS_REF
+
+*1._app_rootdir.scripts_ref._e_createdir

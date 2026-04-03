@@ -1,0 +1,20 @@
+Le contexte est une map contenant toutes les données 
+liées à l'exécution de votre script. Elle est accessible 
+simplement par le mot-clé "context"
+
+{>context._desc}
+
+Elle contient notamment les objets de traitement
+qui permettent d'analyser le script pour construire
+l'arborescence des balises (tag_builder), 
+puis d'exécuter ces balises (tag_executor).
+
+Elle contient également la map "execution" qui regroupe
+le résultat de l'analyse et de l'exécution !
+
+Et enfin, plusieurs autres données utiles à l'exécution
+des balises, que nous aborderons petit à petit.
+
+Dans l'immédiat, nous allons nous intéresser à la map
+"execution", ce qui va nous permettre de comprendre 
+un peu mieux comment fonctionne le moteur de script.

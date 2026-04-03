@@ -1,0 +1,29 @@
+A partir d'un objet Date, on peut 
+réaliser diverses tests :
+
+{$date=1._date0}{>date}
+
+Tester les jours de la semaine :
+
+lundi ? {>date._is_monday}
+mardi ? {>date._is_tuesday}
+mercredi ? {>date._is_wednesday}
+jeudi ? {>date._is_thursday}
+vendredi ? {>date._is_friday}
+samedi ? {>date._is_saturday}
+dimanche ? {>date._is_sunday}
+
+Tester les mois de l'année :
+
+janvier ? {>date._is_january}
+février ? {>date._is_february}
+mars ? {>date._is_march}
+avril ? {>date._is_april}
+mai ? {>date._is_may}
+juin ? {>date._is_june}
+juillet ? {>date._is_july}
+août ? {>date._is_august}
+septembre ? {>date._is_september}
+octobre ? {>date._is_october}
+novembre ? {>date._is_november}
+décembre ? {>date._is_december}

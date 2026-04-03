@@ -1,0 +1,32 @@
+Au fur et à mesure que les balises sont exécutées, le moteur
+leur ajoute une "stack". La présence de ce champ permet donc
+de savoir si une balise a été exécutée ou non.
+
+Une stack est une map contenant :
+
+- context : le contexte d'exécution du script
+- owner : la balise qui possède ce stack
+- parent : la stack du parent du owner
+- root : la stack de la balise root du script courant
+- script : la map du script courant
+- level : le niveau de profondeur par rapport au root
+- pool : la map de stockage des variables locales
+- block1 et block2 : des maps dédiées 
+aux mécanismes sur les blocs
+
+De même, une pool est une map contenant
+(en plus des variables locales) :
+
+- context : le contexte d'exécution du script
+- stack : la stack qui possède cette pool
+- parent : la pool du parent de la stack
+- script : la map de script de la stack
+- pool : la pool elle-même
+- reserved : la liste des 6 mots-clé réservés :
+context, stack, parent, script, reserved et pool
+
+
+Il est intéressant de constater qu'à travers
+le champ "parent", il y a une arborescence entre les
+stacks d'une part, et entre les pools d'autre part, 
+qui reproduit fidèlement l'arborescence des balises owner !

@@ -1,0 +1,12 @@
+La balise clock permet de répéter un contenu indéfiniment
+en indiquant un lapse d'attente entre chaque boucle (en millisecondes).
+
+Cela revient en fait à écrire un \{while true\}...\{end\}
+en insérant dans le contenu une balise qui fait une pause.
+
+L'intérêt est de pouvoir mettre en place simplement
+une sorte de "Timer" qui va répéter une action à interval
+régulier et qui ne s'arrêtera qu'avec la fin de l'application.
+
+{clock 3000}
+Ce script ne s'arrête jamais, et écrit cette même phrase toutes les 3 secondes.

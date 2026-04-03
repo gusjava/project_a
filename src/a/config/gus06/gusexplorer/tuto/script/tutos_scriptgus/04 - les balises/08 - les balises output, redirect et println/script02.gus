@@ -1,0 +1,18 @@
+Il est possible de spécifier un mode de sortie
+grâce aux commandes suivantes :
+
+- onlytext
+- onlyprint
+- all
+
+{output onlytext}
+1- en mode onlytext, la zone de texte s'affiche
+{>"2- en mode onlytext, la balise print ne s'affiche pas"}
+
+{output onlyprint}
+3- en mode onlyprint, la zone de texte ne s'affiche pas
+{>"4- en mode onlyprint, la balise print s'affiche"}
+
+{output all}
+5- en mode all, la zone de texte s'affiche
+{>"6- en mode all, la balise print s'affiche"}

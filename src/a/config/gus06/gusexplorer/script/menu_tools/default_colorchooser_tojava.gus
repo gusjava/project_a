@@ -1,0 +1,7 @@
+@code
+
+$color=1._jdialog_color
+$r=color._rgb
+$str='new Color('+r.0+','+r.1+','+r.2+')'
+
+*str._e_clipboard

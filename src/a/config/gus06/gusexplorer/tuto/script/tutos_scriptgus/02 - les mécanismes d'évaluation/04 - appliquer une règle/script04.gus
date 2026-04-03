@@ -1,0 +1,27 @@
+Les fonctions (avec ou sans argument) n'existent pas, mais
+elles sont remplacées en pratique par des opérateurs
+qui produisent des objets de traitement.
+
+Si vous voulez par exemple effectuer une pause d'une durée
+de 1200 millisecondes, vous vous attendez sans doute
+à disposer d'une fonction "wait(durée)".
+
+A la place, vous disposez d'un opérateur "_waitfor_ms"
+qui s'applique sur un nombre entier et produit un exécutable
+
+{$r=1200._waitfor_ms}
+Caractéristiques du résultat : {>r._features}
+
+Pour exécuter cet objet, il suffit d'écrire :
+{*r}
+
+Mais si vous souhaitez juste faire une pause de 1200ms
+vous pouvez tout aussi bien écrire :
+
+{*1200._waitfor_ms}
+
+Et voilà !
+
+
+Un opérateur produisant un objet de traitement est qualifié
+d'opérateur indirect, les autres étant des opérateurs directs.

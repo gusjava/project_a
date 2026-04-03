@@ -1,0 +1,15 @@
+L'opération de substitution conditionnelle (?>=) permet de changer
+le contenu d'une structure seulement si celui-ci est vide.
+
+{$map=\{:\}}
+
+{$map?>=a:1 b:4}
+map={>map}
+
+{$map?>=a:2 b:5}
+map={>map}
+
+{*map._e_empty}
+
+{$map?>=a:2 b:5}
+map={>map}

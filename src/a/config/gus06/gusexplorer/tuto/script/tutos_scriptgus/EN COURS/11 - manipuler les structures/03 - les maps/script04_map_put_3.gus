@@ -1,0 +1,22 @@
+Compter les nombres d'occurrences :
+
+Ajouter dans une map est une technique habituelle
+pour compter le nombre d'ocurrences de plusieurs éléments. 
+Les opérateurs _e_put_count et _e_putall_count permettent 
+de réaliser simplement cette opération.
+
+{$map=1._newmap}
+
+{*map._e_put_count.A}
+{*map._e_put_count.A}
+{*map._e_put_count.B}
+{*map._e_put_count.B}
+{*map._e_put_count.B}
+{*map._e_put_count.C}
+{>map}
+
+{*map._e_putall_count#['A','B','C','C','A']}
+{>map}
+
+{*map._e_putall_count#(A:10 B:10 C:10 D:10)}
+{>map}

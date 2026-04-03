@@ -1,0 +1,7 @@
+@code
+
+!Création d'un répertoire data par défaut
+
+$dir=1._app_rootdir.data._dir1
+$e=@'gus.appli.gusexplorer.data.manager'
+*e._v.add#dir

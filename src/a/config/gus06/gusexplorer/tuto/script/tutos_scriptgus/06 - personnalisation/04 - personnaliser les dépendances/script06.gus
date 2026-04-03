@@ -1,0 +1,38 @@
+Nous allons à présent complexifier un peu notre mapping en ajoutant
+une règle qui prend en compte à la fois le script appelé et le script appelant.
+
+Nous avions la règle :
+'/script01/b.gus':'/script01/a.gus',
+qui permet de la substitution b → a
+
+Cette substitution s'applique à chaque fois que le script b est appelé,
+sans tenir compte du script appelant.
+
+Nous introduisons à présent la règle :
+'/script01/c.gus@/script01/b.gus':'/script01/a.gus'
+qui permet la substitution c@b → a
+
+Désormais, le script b est remplacé par le script a uniquement lorsqu'il
+est appelé depuis le script c !
+
+
+Regardons ce que cela donne :
+
+{$mapping=\{
+	'/script01/c.gus@/script01/b.gus':'/script01/a.gus'
+\}}
+
+{*context.file_mapper._v_map#(
+	root:script.dir
+	map:mapping
+)}
+
+On inclus le script a :
+{include1 '/script01/a.gus'}
+On inclus le script b :
+{include1 '/script01/b.gus'}
+On inclus le script c :
+{include1 '/script01/c.gus'}
+
+Les scripts a et b sont inclus normalement depuis le script initial 
+mais depuis c, le script a est inclus 2 fois.

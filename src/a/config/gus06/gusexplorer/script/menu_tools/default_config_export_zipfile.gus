@@ -1,0 +1,38 @@
+@code
+!Ce script permet d'exporter la config applicatif
+!vers un fichier zip choisi par l'utilisateur
+
+$zipFile=['zip', 'Zip file']._choosefile_save
+if zipFile==null
+ *'no zip file selected'._jdialog_msg_warning
+ stop
+
+$e1=@'gus.appli.gusexplorer.scripts.startup.manager'
+$dir_startup=e1.dir
+
+$e2=@'gus.appli.gusexplorer.scheduling.manager'
+$dir_scheduling=e2.dir
+
+$e3=@'gus.appli.gusexplorer.scripts.tools.manager'
+$dir_tools=e3.dir
+
+$e4=@'gus.swing.textcomp.cust.action.ctrl_shift_h.tool.perform.chooser.manager'
+$dir_h=e4.dir
+
+$e5=@'gus.jdbc.gui.cx1.db.list.control.script.manager'
+$dir_h2=e5.dir
+
+$e6=@'gus.appli.gusexplorer.gui.editor.findinfos'
+$dir_editor_config=e6._g
+
+$dir_scripts_ref=1._app_rootdir.scripts_ref
+
+$map={:}
+*map._e_put.dir_startup#dir_startup
+*map._e_put.dir_scheduling#dir_scheduling
+*map._e_put.dir_tools#dir_tools
+*map._e_put.dir_h#dir_h
+*map._e_put.dir_h2#dir_h2
+*map._e_put.dir_editor_config#dir_editor_config
+
+*map._e_zip#zipFile

@@ -1,0 +1,40 @@
+Autres raccourcis d'écriture :
+{$a=5}{>'a='+a}
+
+a=a+exp peut s'écrire a+=exp
+a+=5{$a+=5} → {>'a='+a}
+
+a=a-exp peut s'écrire a-=exp
+a-=5{$a-=5} → {>'a='+a}
+
+a=a*exp peut s'écrire a*=exp
+a*=-4{$a*=-4} → {>'a='+a}
+
+a=a^exp peut s'écrire a^=exp
+a^=3{$a^=3} → {>'a='+a}
+
+a=a/exp peut s'écrire a/=exp
+a/=8{$a/=8} → {>'a='+a}
+
+
+Prenons ensuite une variable booléenne :
+{$t=true}{>'t='+t}
+
+t=t^exp peut s'écrire t^=exp
+t^=true{$t^=true} → {>'t='+t}
+t^=true{$t^=true} → {>'t='+t}
+
+t=t&&exp peut s'écrire t&&=exp
+t&&=false{$t&&=false} → {>'t='+t}
+t&&=true{$t&&=true} → {>'t='+t}
+
+t=t||exp peut s'écrire t||=exp
+t||=true{$t||=true} → {>'t='+t}
+t||=false{$t||=false} → {>'t='+t}
+
+
+Pour finir, prenons une map :
+{$m=a:'b' c:'d'}{>'m='+m}
+
+m=m|exp peut s'écrire m|=exp
+m|=b:5{$m|=b:5} → {>'m='+m}

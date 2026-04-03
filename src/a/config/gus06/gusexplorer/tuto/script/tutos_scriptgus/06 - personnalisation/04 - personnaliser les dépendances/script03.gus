@@ -1,0 +1,26 @@
+Reprenons le paramétrage de notre objet file_mapper
+en y introduisant cette fois un mapping non vide.
+
+{$mapping=\{'/script01/a.gus':'/script01/b.gus'\}}
+{$root=script.dir}
+
+{*context.file_mapper._v_map#(
+	root:root
+	map:mapping
+)}
+
+Ensuite, nous récupérons nos sous-scripts exactement
+comme dans l'exemple précédent :
+
+{$file_a = script.file._mapper.'/script01/a.gus'}
+{$file_b = script.file._mapper.'/script01/b.gus'}
+
+{>file_a._name}
+{>file_b._name}
+
+Et de manière surprenante, file_a correspond
+en fait au même fichier que file_b : "b.gus"
+
+Mais le mapping indiquant que le chemin relatif
+'/script01/a.gus' doit correspondre à '/script01/b.gus'
+cela n'est finalement pas si surprenant que ça.

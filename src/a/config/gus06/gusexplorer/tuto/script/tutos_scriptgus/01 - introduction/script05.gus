@@ -1,0 +1,18 @@
+Les 4 balises les plus usuelles sont:
+print, set, execute, comment
+
+
+- "print" permet d'envoyer du texte vers la sortie standard.
+{print 'bonjour'}
+
+- "set" permet d'affecter une valeur à une variable 
+qui pourra être réutilisée dans la suite du script.
+{set a=3}
+
+- "execute" permet d'exécuter une commande.
+Là, vous devriez entendre un beep !
+{execute @'gus.beep'}
+
+- "comment" permet d'ajouter un commentaire, 
+qui sera juste ignoré par le moteur de script.
+{comment Ceci est un commentaire}

@@ -1,0 +1,29 @@
+Quand le moteur de script cherche à évaluer un identifiant
+de variable, il regarde d'abord dans la pool liée à la balise
+en cours d'éxecution.
+
+S'il ne la trouve pas, il regarde alors dans la pool de 
+la balise parent (la pool parent), et ainsi de suite 
+jusqu'à arriver à la balise root du script initial, 
+qui ne contient pas de parent.
+
+Dans le cas ou l'identifiant n'est trouvé nulpart,
+le moteur renvoie la valeur null.
+
+Si l'identifiant de variable correspond à l'un des mots-clé
+alors, le moteur renvoie systématiquement la valeur stockée
+dans la pool de la balise courante.
+
+
+Voici la pool courante :
+
+{>pool._desc}
+
+Voici la stack courante :
+
+{>stack._desc}
+
+Voici la balise courante :
+(aussi accessible par la map execution)
+
+{>stack.owner._desc}

@@ -1,0 +1,22 @@
+Enchaîner les règles permet de retrouver une valeur 'enfouie'
+dans une structure à plusieurs niveaux.
+
+
+Premier exemple :
+
+{$a=['F','G','H','I','J',['C',['A','B'],'D','E']]}
+Notre variable a est une liste qui contient une liste,
+qui contient elle-même une liste
+
+Voilà comment retrouver la string 'A' qui est enfouie
+dans notre variable :
+{>a.[-1].1.0}
+
+
+Deuxième exemple :
+
+{$b=c:'C' d:'D' e:'E' m:(a:'A' b:'B')}
+Notre variable b est une map qui contient une map
+
+Voilà comment retrouver la string 'B' :
+{>b.m.b}

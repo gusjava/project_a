@@ -1,0 +1,38 @@
+Les opérateurs d'intersection (^) et d'extrasection (!^)
+
+
+- L'intersection de 2 sets
+{>\{'a','b','c','f'\} ^ \{'a','b','k'\}}
+
+- L'intersection de 2 maps
+{>(a:1 b:2 c:3) ^ (a:1 b:3 c:4 d:5)}
+
+L'intersection se définie comme l'ensemble des éléments
+qui appartiennent à la fois aux 2 structures.
+
+
+- L'extrasection de 2 sets
+{>\{'a','b','c','f'\} !^ \{'a','b','k'\}}
+
+- L'extrasection de 2 maps
+{>(a:1 b:2 c:3 D:5) !^ (a:1 b:3 c:4 d:5)}
+
+L'extrasection se définie comme l'ensemble des éléments
+qui n'appartiennent qu'à une seule des 2 structures.
+(en algèbre, il s'agit de la différence symétrique)
+
+
+Concernant les structures ordonnées (String, listes, tableaux)
+l'opérateur (^) permet de trouver la plus longue sous-séquence
+commune à 2 structures :
+
+{>"bon jour bon" ^ "bonjour"}
+{>['e','a','b','c','f'] ^ ['e','a','a','b','c','k']}
+
+
+Enfin, il faut rappeler que l'opérateur (^) est aussi
+l'opérateur logique "ou exclusif" et l'opérateur arithmétique
+"puissance" :
+
+{>true^false}
+{>2^2}

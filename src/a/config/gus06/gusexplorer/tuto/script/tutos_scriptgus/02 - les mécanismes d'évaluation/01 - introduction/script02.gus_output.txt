@@ -1,0 +1,41 @@
+On appelle "objet de traitement" tout objet Java qui implémente
+une ou plusieurs des 10 interfaces E,T,F,H,G,P,V,R,I,S
+qui sont définies par le framework gus06.
+
+Il faut les appréhender comme des boites noires
+qui permettent d'éffectuer des traitements sur des données
+ou d'exécuter des instructions.
+
+Les dénominations correspondantes aux interfaces sont les suivantes :
+
+- E : Exécutable
+- T : Transformation
+- F : Filtre
+- H : Fonction
+- G : Fournisseur
+- P : Réceptacle
+- V : Enregistreur
+- R : Restituteur
+- I : Interface Graphique
+- S : Support
+
+Vous vous rendrez vite compte que ces objets sont incontournables
+en particulier :
+
+- les exécutables (E)
+- les transformations (T)
+- les filtres (F)
+
+Voici un petit exemple de filtre :
+
+
+(nombre pair supérieur à 10)(16) = true
+(nombre pair supérieur à 10)(15) = false
+(nombre pair supérieur à 10)(8) = false
+
+Voici un petit exemple de fonction :
+
+
+(2x+1)(5.6) = 12.2
+(2x+1)(-2) = -3.0
+(2x+1)(0) = 1.0
