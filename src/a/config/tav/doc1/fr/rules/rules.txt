@@ -1,3 +1,2 @@
 @1 - Introduction
-Dans ce fichier, je vais écrire mes propres règles en tant que développeur tav.
-
+Dans ce fichier, je vais Ã©crire mes propres rÃ¨gles en tant que dÃ©veloppeur tav.
