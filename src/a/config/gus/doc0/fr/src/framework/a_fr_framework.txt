@@ -1,17 +1,17 @@
 @001 - Introduction
-Comme mentionné dans le fichier initial de documentation a_fr_level0.txt, le framework a est un framework minimaliste dont le rôle est d'assurer l'interopérabilité des développements dérivés qui forment le projet a. Par ailleurs, il est considéré comme stable, et il n'est donc pas prévu de le faire évoluer.
+Comme mentionnÃ© dans le fichier initial de documentation a_fr_level0.txt, le framework a est un framework minimaliste dont le rÃ´le est d'assurer l'interopÃ©rabilitÃ© des dÃ©veloppements dÃ©rivÃ©s qui forment le projet a. Par ailleurs, il est considÃ©rÃ© comme stable, et il n'est donc pas prÃ©vu de le faire Ã©voluer.
 
-Que dire de plus ? Il s'agit de la pierre angulaire sur laquelle repose tout l'édifice et pourtant, il est bien difficile d'en faire ressortir l'importance, tant le code qu'il contient ne paie pas de mine. Ce n'est pas en vous montrant ces quelques interfaces que je pourrai espérer vous convaincre de son utilité mais en vous montrant tout le code dérivé dont il permet le fonctionnement.
+Que dire de plus ? Il s'agit de la pierre angulaire sur laquelle repose tout l'Ã©difice et pourtant, il est bien difficile d'en faire ressortir l'importance, tant le code qu'il contient ne paie pas de mine. Ce n'est pas en vous montrant ces quelques interfaces que je pourrai espÃ©rer vous convaincre de son utilitÃ© mais en vous montrant tout le code dÃ©rivÃ© dont il permet le fonctionnement.
 
-Mais comme il s'agit ici d'une présentation "officielle" du framework a, je vais vous présenter son code source le plus simplement et directement possible.
+Mais comme il s'agit ici d'une prÃ©sentation "officielle" du framework a, je vais vous prÃ©senter son code source le plus simplement et directement possible.
 
-@002 - Interfaces standardisées
-Les interfaces standardisées sont au nombre de 11 :
+@002 - Interfaces standardisÃ©es
+Les interfaces standardisÃ©es sont au nombre de 11 :
 B, E, F, G, H, I, P, R, S, T, V
 
-Il s'agit d'interfaces java unitaires (contenant une unique méthode) à l'exception notable de l'interface S qui contient 3 méthodes.
+Il s'agit d'interfaces java unitaires (contenant une unique mÃ©thode) Ã  l'exception notable de l'interface S qui contient 3 mÃ©thodes.
 
-On les appelle par ailleurs des interfaces standardisées parce que leurs noms de méthodes sont des noms minimalistes qui ne font référence à aucune sémantique en particulier et sont donc prévues pour être utilisées dans un grand nombre de situations afin de produire du code le plus générique possible.
+On les appelle par ailleurs des interfaces standardisÃ©es parce que leurs noms de mÃ©thodes sont des noms minimalistes qui ne font rÃ©fÃ©rence Ã  aucune sÃ©mantique en particulier et sont donc prÃ©vues pour Ãªtre utilisÃ©es dans un grand nombre de situations afin de produire du code le plus gÃ©nÃ©rique possible.
 
 B : public boolean b() throws Exception;
 E : public void e() throws Exception;
@@ -24,18 +24,18 @@ R : public Object r(String key) throws Exception;
 T : public Object t(Object obj) throws Exception;
 V : public void v(String key, Object obj) throws Exception;
 
-Quant à l'interface S, ses 3 méthodes sont : 
+Quant Ã  l'interface S, ses 3 mÃ©thodes sont : 
 
 public void addActionListener(ActionListener listener) throws Exception;
 public void removeActionListener(ActionListener listener) throws Exception;
 public List listeners() throws Exception;
 
 @003 - Entity
-L'interface Entity doit être utilisée pour transformer une classe java en composant de programmation "entité".
+L'interface Entity doit Ãªtre utilisÃ©e pour transformer une classe java en composant de programmation "entitÃ©".
 
-Mais il ne suffit pas d'implémenter Entity pour créer une entité. Il faut aussi que cette classe se nomme EntityImpl et que son package commence par a.entity. Référez-vous aux règles officielles de l'entité détaillées en partie 3 du niveau 1 pour plus de précisions (a_fr_level1#003).
+Mais il ne suffit pas d'implÃ©menter Entity pour crÃ©er une entitÃ©. Il faut aussi que cette classe se nomme EntityImpl et que son package commence par a.entity. RÃ©fÃ©rez-vous aux rÃ¨gles officielles de l'entitÃ© dÃ©taillÃ©es en partie 3 du niveau 1 pour plus de prÃ©cisions (a_fr_level1#003).
 
-Voici un petit exemple de code source d'entité :
+Voici un petit exemple de code source d'entitÃ© :
 
 package a.entity.gus.first;
 
@@ -53,42 +53,42 @@ public class EntityImpl implements Entity, E {
 }
 
 @004 - Manager
-L'interface Manager permet aux composants noyau de "communiquer" avec les entités en proposant 3 méthodes :
+L'interface Manager permet aux composants noyau de "communiquer" avec les entitÃ©s en proposant 3 mÃ©thodes :
 
 public Service service(Entity entity, String id) throws Exception; 
 public Object resource(Entity entity, String id) throws Exception;
 public void err(Entity entity, String id, Exception e); 
 
-Un composant noyau devra donc fournir une implémentation de cette interface mais aussi passer une instance de celle-ci dans la méthode setManager de la classe Outside, comme ceci :
+Un composant noyau devra donc fournir une implÃ©mentation de cette interface mais aussi passer une instance de celle-ci dans la mÃ©thode setManager de la classe Outside, comme ceci :
 Outside.setManager(new MyCoreManager());
 
-Référez-vous à la documentation technique de chaque composant noyau pour comprendre de quelle manière ceux-ci exploitent cette fonctionnalité.
+RÃ©fÃ©rez-vous Ã  la documentation technique de chaque composant noyau pour comprendre de quelle maniÃ¨re ceux-ci exploitent cette fonctionnalitÃ©.
 
 @005 - Service
-L'interface Service se contente d'étendre chaque interface standardisée :
+L'interface Service se contente d'Ã©tendre chaque interface standardisÃ©e :
 public interface Service extends B, E, F, G, H, I, P, R, S, T, V {}
 
-Des implémentations "tampon" de cette interface sont transmises par le noyau aux différentes entités (via le mécanisme de communication Outside/Manager) afin que celles-ci puissent appeler les méthodes standards sur un objet "service" sans rien connaître de l'implémentation qui se cache derrière cette enveloppe (qui sera le plus souvent une autre entité).
+Des implÃ©mentations "tampon" de cette interface sont transmises par le noyau aux diffÃ©rentes entitÃ©s (via le mÃ©canisme de communication Outside/Manager) afin que celles-ci puissent appeler les mÃ©thodes standards sur un objet "service" sans rien connaÃ®tre de l'implÃ©mentation qui se cache derriÃ¨re cette enveloppe (qui sera le plus souvent une autre entitÃ©).
 
-C'est par ce biais que les entités peuvent s'appeler les unes les autres.
+C'est par ce biais que les entitÃ©s peuvent s'appeler les unes les autres.
 
 @006 - Outside
-La classe Outside permet de rendre accessible aux entités les méthodes de l'interface Manager. Il s'agit de l'unique moyen pour une entité d'accéder au noyau mais aussi aux autres entités.
+La classe Outside permet de rendre accessible aux entitÃ©s les mÃ©thodes de l'interface Manager. Il s'agit de l'unique moyen pour une entitÃ© d'accÃ©der au noyau mais aussi aux autres entitÃ©s.
 
-Les méthodes statiques proposées par Outside sont les suivantes :
+Les mÃ©thodes statiques proposÃ©es par Outside sont les suivantes :
 
 public static Service service(Entity entity, String id) throws Exception
 public static Object resource(Entity entity, String id) throws Exception
 public static void err(Entity entity, String id, Exception e)
 
 @007 - S1
-La classe S1 est l'implémentation par défaut de l'interface S. Les entités qui en héritent peuvent ainsi envoyer des "évènements" qui seront écoutés par d'autres entités grâce à l'interface ActionListener (reprenant le "delegation event model" utilisé notamment dans l'API Swing de Java).
+La classe S1 est l'implÃ©mentation par dÃ©faut de l'interface S. Les entitÃ©s qui en hÃ©ritent peuvent ainsi envoyer des "Ã©vÃ¨nements" qui seront Ã©coutÃ©s par d'autres entitÃ©s grÃ¢ce Ã  l'interface ActionListener (reprenant le "delegation event model" utilisÃ© notamment dans l'API Swing de Java).
 
-Elle propose la méthode suivante pour envoyer un évènement :
+Elle propose la mÃ©thode suivante pour envoyer un Ã©vÃ¨nement :
 public void send(Object source, String id)
 
-L'évènement correspondant est un ActionEvent instancié la manière suivante :
+L'Ã©vÃ¨nement correspondant est un ActionEvent instanciÃ© la maniÃ¨re suivante :
 ActionEvent evt = new ActionEvent(source, EVENTID, id);
-où EVENTID = 1000 (il fallait bien mettre une valeur)
+oÃ¹ EVENTID = 1000 (il fallait bien mettre une valeur)
 
-On notera pour finir la possibilité d'activer ou désactiver l'envoi des évènements grâce à la méthode setActivated.
+On notera pour finir la possibilitÃ© d'activer ou dÃ©sactiver l'envoi des Ã©vÃ¨nements grÃ¢ce Ã  la mÃ©thode setActivated.

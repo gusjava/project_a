@@ -1,2 +1,2 @@
-@001 - Présentation
-Il s'agit de la config associée à l'application gus.appli1
+@001 - PrÃ©sentation
+Il s'agit de la config associÃ©e Ã  l'application gus.appli1
