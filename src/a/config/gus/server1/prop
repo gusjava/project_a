@@ -1,0 +1,9 @@
+app.maingui=gus.z.server1.maingui
+app.title=server1
+app.icon=app
+app.size=1000 700
+
+app.name=gus.server1
+app.version=1.0.0*
+app.author=gus
+app.startdate=2026.04.05

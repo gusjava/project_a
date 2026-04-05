@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		perform = Outside.service(this,"gus.y.autocomplete1.handle");
+		perform = Outside.service(this,"gus.y.autocomplete1.perform");
 		stringToKeyStroke = Outside.service(this,"gus.y.convert1.stringtokeystroke");
 	}
 	

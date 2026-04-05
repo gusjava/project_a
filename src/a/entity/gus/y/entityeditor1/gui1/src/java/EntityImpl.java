@@ -111,6 +111,7 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 				if(e.isControlDown()){
 					if(code==KeyEvent.VK_S) save();
 					else if(code==KeyEvent.VK_L) reload();
+					else if(code==KeyEvent.VK_Q) select();
 				}
 			}
 		});
@@ -168,13 +169,11 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 		area.getDocument().addDocumentListener(this);
 	}
 
-	public Object r(String key) throws Exception {
-		if (key.equals("actionSave"))
-			return actionSave;
-		if (key.equals("actionReload"))
-			return actionReload;
-		if (key.equals("keys"))
-			return new String[] { "actionSave", "actionReload" };
+	public Object r(String key) throws Exception
+	{
+		if (key.equals("actionSave")) return actionSave;
+		if (key.equals("actionReload")) return actionReload;
+		if (key.equals("keys")) return new String[] { "actionSave", "actionReload" };
 		throw new Exception("Unknown key: " + key);
 	}
 
@@ -182,20 +181,16 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 		return panel;
 	}
 
-	private String readFile() throws Exception {
-		return (String) read.t(javaFile);
-	}
+	private String readFile() throws Exception
+	{return (String) read.t(javaFile);}
 
-	public void insertUpdate(DocumentEvent e) {
-		changed();
-	}
+	public void insertUpdate(DocumentEvent e)
+	{changed();}
 
-	public void removeUpdate(DocumentEvent e) {
-		changed();
-	}
+	public void removeUpdate(DocumentEvent e)
+	{changed();}
 
-	public void changedUpdate(DocumentEvent e) {
-	}
+	public void changedUpdate(DocumentEvent e) {}
 
 	private void changed() {
 		try {
@@ -220,12 +215,11 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 	 * SAVE
 	 */
 
-	private void save() {
-		try {
-			save_();
-		} catch (Exception e) {
-			Outside.err(this, "save()", e);
-		}
+	private void save()
+	{
+		try {save_();}
+		catch (Exception e)
+		{Outside.err(this, "save()", e);}
 	}
 
 	private void save_() throws Exception {
@@ -276,6 +270,22 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 		displayCompilingErrors();
 		SwingUtilities.invokeLater(() -> area.requestFocusInWindow());
 	}
+	
+	/*
+	 * SELECT
+	 */
+	
+	private void select()
+	{
+		try
+		{
+			String selection = area.getSelectedText();
+			if(selection==null || selection.equals("")) return;
+			((V) data).v("select", selection);
+		}
+		catch(Exception e)
+		{Outside.err(this,"select()",e);}
+	}
 
 	/*
 	 * CARET POSITION
@@ -304,47 +314,50 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 	 * DISPLAY COMPILING ERRORS
 	 */
 	
-	private void displayCompilingErrors() throws Exception {
-		handleErr.p(new Object[] {data, fileName, area});
-	}
+	private void displayCompilingErrors() throws Exception
+	{handleErr.p(new Object[] {data, fileName, area});}
 	
 	/*
 	 * SYNCHRONIZED WITH FILE
 	 */
 	
-	private boolean synchWithFile() {
-		return area.getText().equals(text0);
-	}
+	private boolean synchWithFile()
+	{return area.getText().equals(text0);}
 	
 	/*
 	 * SAVED SRC
 	 */
 	
-	private void persistOrClearSrc() throws Exception {
+	private void persistOrClearSrc() throws Exception
+	{
 		if(synchWithFile()) clearSrc();
 		else persistSrc();
 	}
 	
-	private String restoreOrLoadSrc() throws Exception {
+	private String restoreOrLoadSrc() throws Exception
+	{
 		String src = restoreSrc();
 		if(src==null) return text0;
 		clearSrc();
 		return src;
 	}
 	
-	private void persistSrc() throws Exception {
+	private void persistSrc() throws Exception
+	{
 		Connection cx = (Connection) ((R) data).r("cx");
 		persistSrc.p(new Object[] {cx, entityName, fileName, area.getText()});
 		((V) data).v("srcSaved", null);
 	}
 	
-	private void clearSrc() throws Exception {
+	private void clearSrc() throws Exception
+	{
 		Connection cx = (Connection) ((R) data).r("cx");
 		boolean done = clearSrc.f(new Object[] {cx, entityName, fileName});
 		if(done) ((V) data).v("srcCleared", null);
 	}
 	
-	private String restoreSrc() throws Exception {
+	private String restoreSrc() throws Exception
+	{
 		Connection cx = (Connection) ((R) data).r("cx");
 		return (String) restoreSrc.t(new Object[] {cx, entityName, fileName});
 	}

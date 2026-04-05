@@ -28,6 +28,9 @@ cust0.rb.path=gus.y.cust1.rb.path
 cust0.rb.pool=gus.y.cust1.rb.pool
 cust0.rb.factory=gus.y.cust1.rb.factory
 
+cust0.inside=gus.y.inside1
+cust0.rb.property=gus.y.cust1.rb.prop
+
 cust1.m034.t.config.icon=gus.y.cust1.load.icon
 cust1.m018.t.entity.loadclass=gus.y.entityclass1.loader
 
