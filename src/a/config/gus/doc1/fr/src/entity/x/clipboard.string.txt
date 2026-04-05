@@ -1,8 +1,11 @@
 @description
-Récupère le texte contenu dans le presse-papier (ou null si c'est un autre type de donnée).
-Envoie du texte dans le presse-papier.
-@infos
-state=COMPLETE
-sign=+GP<String>
-tags=CLIPBOARD
+RÃ©cupÃ¨re le texte contenu dans le presse-papier (ou null si le contenu n'est pas du texte). Envoie du texte dans le presse-papier.
 
+@infos
+state=GENERATED
+sign=+G<String>P<String>
+tags=CLIPBOARD
+difficulty=0
+creation_date=20240113
+generator=claude-sonnet-4-6
+generated_time=20260404_195405

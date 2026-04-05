@@ -1,9 +1,11 @@
 @description
-Description de l'entit� gus.x.entity.name.isy
+Détermine si un nom d'entité appartient à la catégorie y (vérifie que le second segment du nom est "y").
 
 @infos
 state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.entity.name.isy
-
+sign=+F<String>
+tags=ENTITY
+difficulty=0
+creation_date=20240113
+generator=claude-sonnet-4-6
+generated_time=20260404_195845
