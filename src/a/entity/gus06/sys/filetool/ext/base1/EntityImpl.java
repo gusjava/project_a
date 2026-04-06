@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, T {
 	{
 		findRoot = Outside.service(this,"gus06.sys.filetool.findroot");
 		builder = Outside.service(this,"gus06.sys.base1.builder");
-		guiFactory = Outside.service(this,"factory#gus.sys.base1.gui.maingui1");
+		guiFactory = Outside.service(this,"factory#gus06.sys.base1.gui.maingui1");
 	}
 	
 	

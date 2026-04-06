@@ -31,25 +31,25 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		deleteEntity = Outside.service(this, "gus.y.entitydb1.entity.delete");
-		deleteImports = Outside.service(this, "gus.y.entitydb1.entity_import.delete");
-		deleteServices = Outside.service(this, "gus.y.entitydb1.entity_service.delete");
-		deleteResources = Outside.service(this, "gus.y.entitydb1.entity_resource.delete");
-		deleteLinks1 = Outside.service(this, "gus.y.entitydb1.entity_link.delete1");
-		deleteLinks2 = Outside.service(this, "gus.y.entitydb1.entity_link.delete2");
-		deleteMissing = Outside.service(this, "gus.y.entitydb1.entity_missing_link.delete1");
-		deleteCompileErr = Outside.service(this, "gus.y.entitydb1.entity_compile_err.delete");
-		deleteSrc = Outside.service(this, "gus.y.entitydb1.entity_src.delete");
+		deleteEntity = Outside.service(this, "gus06.y.entitydb1.entity.delete");
+		deleteImports = Outside.service(this, "gus06.y.entitydb1.entity_import.delete");
+		deleteServices = Outside.service(this, "gus06.y.entitydb1.entity_service.delete");
+		deleteResources = Outside.service(this, "gus06.y.entitydb1.entity_resource.delete");
+		deleteLinks1 = Outside.service(this, "gus06.y.entitydb1.entity_link.delete1");
+		deleteLinks2 = Outside.service(this, "gus06.y.entitydb1.entity_link.delete2");
+		deleteMissing = Outside.service(this, "gus06.y.entitydb1.entity_missing_link.delete1");
+		deleteCompileErr = Outside.service(this, "gus06.y.entitydb1.entity_compile_err.delete");
+		deleteSrc = Outside.service(this, "gus06.y.entitydb1.entity_src.delete");
 
-		deleteEntityIn = Outside.service(this, "gus.y.entitydb1.entity.delete.in");
-		deleteImportsIn = Outside.service(this, "gus.y.entitydb1.entity_import.delete.in");
-		deleteServicesIn = Outside.service(this, "gus.y.entitydb1.entity_service.delete.in");
-		deleteResourcesIn = Outside.service(this, "gus.y.entitydb1.entity_resource.delete.in");
-		deleteLinks1In = Outside.service(this, "gus.y.entitydb1.entity_link.delete1.in");
-		deleteLinks2In = Outside.service(this, "gus.y.entitydb1.entity_link.delete2.in");
-		deleteMissingIn = Outside.service(this, "gus.y.entitydb1.entity_missing_link.delete1.in");
-		deleteCompileErrIn = Outside.service(this, "gus.y.entitydb1.entity_compile_err.delete.in");
-		deleteSrcIn = Outside.service(this, "gus.y.entitydb1.entity_src.delete.in");
+		deleteEntityIn = Outside.service(this, "gus06.y.entitydb1.entity.delete.in");
+		deleteImportsIn = Outside.service(this, "gus06.y.entitydb1.entity_import.delete.in");
+		deleteServicesIn = Outside.service(this, "gus06.y.entitydb1.entity_service.delete.in");
+		deleteResourcesIn = Outside.service(this, "gus06.y.entitydb1.entity_resource.delete.in");
+		deleteLinks1In = Outside.service(this, "gus06.y.entitydb1.entity_link.delete1.in");
+		deleteLinks2In = Outside.service(this, "gus06.y.entitydb1.entity_link.delete2.in");
+		deleteMissingIn = Outside.service(this, "gus06.y.entitydb1.entity_missing_link.delete1.in");
+		deleteCompileErrIn = Outside.service(this, "gus06.y.entitydb1.entity_compile_err.delete.in");
+		deleteSrcIn = Outside.service(this, "gus06.y.entitydb1.entity_src.delete.in");
 	}
 	
 	

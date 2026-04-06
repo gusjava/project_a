@@ -64,7 +64,7 @@ public class EntityImpl implements Entity, I, P, Runnable {
 	
 	public EntityImpl() throws Exception
 	{
-		screenBuilder = Outside.service(this,"factory#gus.swing.panel.screen.image");
+		screenBuilder = Outside.service(this,"factory#gus06.swing.panel.screen.image");
 		keepFiles = Outside.service(this,"gus06.sys.filemanagement1.tool.treemap.children.filetype");
 		findPreview1 = Outside.service(this,"gus06.sys.filemanagement1.tool.preview1.find.image");
 		onClicked2 = Outside.service(this,"gus06.sys.filemanagement1.gui.detailpanel.dir.summary.preview.onclicked2");

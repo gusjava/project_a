@@ -20,12 +20,12 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		newDataViewer = Outside.service(this,"factory#gus.data.viewer.object");
-		newStringViewer = Outside.service(this,"factory#gus.data.viewer.string.textarea.editor1");
-		newFileViewer = Outside.service(this,"factory#gus.file.editor.main");
-		newFileArrayViewer = Outside.service(this,"factory#gus.data.viewer.filearray");
-		newImageViewer = Outside.service(this,"factory#gus.swing.panel.screen.image");
-		newFunctionViewer = Outside.service(this,"factory#gus.sys.function1.screen");
+		newDataViewer = Outside.service(this,"factory#gus06.data.viewer.object");
+		newStringViewer = Outside.service(this,"factory#gus06.data.viewer.string.textarea.editor1");
+		newFileViewer = Outside.service(this,"factory#gus06.file.editor.main");
+		newFileArrayViewer = Outside.service(this,"factory#gus06.data.viewer.filearray");
+		newImageViewer = Outside.service(this,"factory#gus06.swing.panel.screen.image");
+		newFunctionViewer = Outside.service(this,"factory#gus06.sys.function1.screen");
 		convertToFileArray = Outside.service(this,"gus06.convert.listtofilearray.strict");
 	}
 	

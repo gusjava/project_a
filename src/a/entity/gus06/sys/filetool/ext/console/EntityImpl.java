@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		findRoot = Outside.service(this,"gus06.sys.filetool.findroot");
-		newConsole = Outside.service(this,"factory#gus.sys.console.gui1");
+		newConsole = Outside.service(this,"factory#gus06.sys.console.gui1");
 	}
 	
 	

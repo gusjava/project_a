@@ -27,10 +27,10 @@ public class EntityImpl implements Entity, T {
 	{
 		buildMapFromKey = Outside.service(this,"gus06.sys.listtabviewer1.data.buildmap.fromkey");
 		buildMapFromMapper = Outside.service(this,"gus06.sys.listtabviewer1.data.buildmap.frommapper");
-		factoryComp = Outside.service(this,"factory#gus.sys.listchooser1.gui.main");
+		factoryComp = Outside.service(this,"factory#gus06.sys.listchooser1.gui.main");
 		buildAnnexeItem = Outside.service(this,"gus06.sys.listtabviewer1.build.annexe.item");
 		tryAndFlatten = Outside.service(this,"gus06.map.perform.tryandflattenvalues");
-		factory = Outside.service(this,"factory#gus.data.viewer.object");
+		factory = Outside.service(this,"factory#gus06.data.viewer.object");
 	}
 
 	

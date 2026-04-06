@@ -28,8 +28,8 @@ public class EntityImpl implements Entity, P, F {
 
 	public EntityImpl() throws Exception
 	{
-		perform = Outside.service(this, "gus.y.entitysys1.perform.entity.deleteall");
-		findDownLinks = Outside.service(this, "gus.y.entitydb1.entity_link.find2");
+		perform = Outside.service(this, "gus06.y.entitysys1.perform.entity.deleteall");
+		findDownLinks = Outside.service(this, "gus06.y.entitydb1.entity_link.find2");
 	}
 
 	public void p(Object obj) throws Exception

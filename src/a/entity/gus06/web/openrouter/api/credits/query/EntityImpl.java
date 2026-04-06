@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		call = Outside.service(this, "gus.web.openrouter.api.credits.call");
+		call = Outside.service(this, "gus06.web.openrouter.api.credits.call");
 	}
 
 	public Object t(Object obj) throws Exception

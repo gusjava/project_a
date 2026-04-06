@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		filterListName = Outside.service(this, "gus.sys.entityeditor1.gui.gui1.list.filter.name");
+		filterListName = Outside.service(this, "gus06.sys.entityeditor1.gui.gui1.list.filter.name");
 		filterListFullText = Outside.service(this,"gus06.sys.entityeditor1.gui.gui1.list.filter.fulltext");
 	}
 	

@@ -41,15 +41,15 @@ public class EntityImpl implements Entity, P, F {
 
 	public EntityImpl() throws Exception
 	{
-		findEntityPackageDir = Outside.service(this, "gus.x.entity.src.find.packagedir");
-		findFrameworkPackageDir = Outside.service(this, "gus.x.framework.src.find.packagedir");
-		listingJava = Outside.service(this, "gus.x.dir.listing0.files.java");
-		listingClass = Outside.service(this, "gus.x.dir.listing0.files.class1");
-		findJavac = Outside.service(this, "gus.x.jdkdir.find.javac");
+		findEntityPackageDir = Outside.service(this, "gus06.x.entity.src.find.packagedir");
+		findFrameworkPackageDir = Outside.service(this, "gus06.x.framework.src.find.packagedir");
+		listingJava = Outside.service(this, "gus06.x.dir.listing0.files.java");
+		listingClass = Outside.service(this, "gus06.x.dir.listing0.files.class1");
+		findJavac = Outside.service(this, "gus06.x.jdkdir.find.javac");
 		
-		buildCmd = Outside.service(this, "gus.y.entitysys1.compile.entity.buildcmd");
-		insertRow = Outside.service(this, "gus.y.entitydb1.entity_compile_err.insert");
-		deleteRows = Outside.service(this, "gus.y.entitydb1.entity_compile_err.delete");
+		buildCmd = Outside.service(this, "gus06.y.entitysys1.compile.entity.buildcmd");
+		insertRow = Outside.service(this, "gus06.y.entitydb1.entity_compile_err.insert");
+		deleteRows = Outside.service(this, "gus06.y.entitydb1.entity_compile_err.delete");
 
 		defaultDir = (File) Outside.resource(this, "defaultdir");
 	}

@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		buildPartial = Outside.service(this, "gus.y.kanjivg1.build.partial2");
+		buildPartial = Outside.service(this, "gus06.y.kanjivg1.build.partial2");
 	}
 	
 	public void p(Object obj) throws Exception

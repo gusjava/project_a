@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, R, T {
 
 	public EntityImpl() throws Exception
 	{
-		iconLoader = Outside.service(this, "gus.icon.loader");
+		iconLoader = Outside.service(this, "gus06.icon.loader");
 		iconsToIcon = Outside.service(this, "gus.y.convert1.iconstoicon");
 	}
 

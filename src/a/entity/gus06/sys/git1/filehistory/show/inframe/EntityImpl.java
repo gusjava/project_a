@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		historyGuiBuilder = Outside.service(this,"factory#gus.sys.git1.filehistory.gui.maingui");
+		historyGuiBuilder = Outside.service(this,"factory#gus06.sys.git1.filehistory.gui.maingui");
 		show = Outside.service(this,"gus06.swing.frame.show2");
 	}
 

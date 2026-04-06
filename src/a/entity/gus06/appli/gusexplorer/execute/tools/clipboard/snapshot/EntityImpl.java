@@ -21,10 +21,10 @@ public class EntityImpl implements Entity, E {
 
 	public EntityImpl() throws Exception
 	{
-		newViewerString = Outside.service(this,"factory#gus.data.editor.string.textarea.editor1");
-		newViewerImage = Outside.service(this,"factory#gus.data.viewer.image");
-		newViewerFile = Outside.service(this,"factory#gus.data.viewer.file");
-		newViewerList = Outside.service(this,"factory#gus.data.viewer.filearray");
+		newViewerString = Outside.service(this,"factory#gus06.data.editor.string.textarea.editor1");
+		newViewerImage = Outside.service(this,"factory#gus06.data.viewer.image");
+		newViewerFile = Outside.service(this,"factory#gus06.data.viewer.file");
+		newViewerList = Outside.service(this,"factory#gus06.data.viewer.filearray");
 		
 		clipboard = Outside.service(this,"gus06.clipboard.access");
 		showInFrame = Outside.service(this,"gus06.swing.comp.inframe.alwaysontop");

@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		factory = Outside.service(this,"factory#gus.sys.filemanagement1.gui.md5set.panel");
+		factory = Outside.service(this,"factory#gus06.sys.filemanagement1.gui.md5set.panel");
 		perform = Outside.service(this,"gus06.swing.frame.show2");
 	}
 	

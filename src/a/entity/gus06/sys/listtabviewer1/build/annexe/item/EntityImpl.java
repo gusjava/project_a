@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		factory = Outside.service(this,"factory#gus.data.viewer.object");
+		factory = Outside.service(this,"factory#gus06.data.viewer.object");
 	}
 	
 	

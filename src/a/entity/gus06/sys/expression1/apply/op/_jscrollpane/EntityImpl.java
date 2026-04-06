@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		screenBuilder = Outside.service(this,"factory#gus.swing.scrollpane.screen.image");
+		screenBuilder = Outside.service(this,"factory#gus06.swing.scrollpane.screen.image");
 	}
 
 	

@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		newGui = Outside.service(this,"factory#gus.sys.dirsearch1.gui.maingui1");
+		newGui = Outside.service(this,"factory#gus06.sys.dirsearch1.gui.maingui1");
 		show = Outside.service(this,"gus06.swing.frame.show");
 		repaint = Outside.service(this,"gus06.swing.frame.cust2.display");
 	}

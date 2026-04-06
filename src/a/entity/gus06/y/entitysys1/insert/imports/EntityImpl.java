@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		insert = Outside.service(this, "gus.y.entitydb1.entity_import.insert");
+		insert = Outside.service(this,"gus06.y.entitydb1.entity_import.insert");
 	}
 
 	public void p(Object obj) throws Exception

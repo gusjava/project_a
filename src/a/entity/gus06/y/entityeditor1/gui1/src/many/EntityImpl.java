@@ -77,15 +77,15 @@ public class EntityImpl implements Entity, P, I, ListSelectionListener, ActionLi
 
 	public EntityImpl() throws Exception
 	{
-		actionBuilder = Outside.service(this, "gus.y.swing1.action.builder1");
-		toolbarFactory = Outside.service(this, "gus.x.swing.toolbar.factory1");
-		getName0 = Outside.service(this, "gus.file.getname0");
-		javaEditor = Outside.service(this, "*gus.y.entityeditor1.gui1.src.java");
+		actionBuilder = Outside.service(this, "gus06.y.swing1.action.builder1");
+		toolbarFactory = Outside.service(this, "gus06.x.swing.toolbar.factory1");
+		getName0 = Outside.service(this, "gus06.file.getname0");
+		javaEditor = Outside.service(this, "*gus06.y.entityeditor1.gui1.src.java");
 
-		performAdd = Outside.service(this, "gus.y.entityeditor1.perform.file.add.ask");
-		performDelete = Outside.service(this, "gus.y.entityeditor1.perform.file.delete.ask");
-		performRename = Outside.service(this, "gus.y.entityeditor1.perform.file.rename.ask");
-		performDuplicate = Outside.service(this, "gus.y.entityeditor1.perform.file.duplicate.ask");
+		performAdd = Outside.service(this, "gus06.y.entityeditor1.perform.file.add.ask");
+		performDelete = Outside.service(this, "gus06.y.entityeditor1.perform.file.delete.ask");
+		performRename = Outside.service(this, "gus06.y.entityeditor1.perform.file.rename.ask");
+		performDuplicate = Outside.service(this, "gus06.y.entityeditor1.perform.file.duplicate.ask");
 
 		javaIcon = (Icon) Outside.resource(this, "icon#FILE_java");
 		

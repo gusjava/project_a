@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T, P {
 	public EntityImpl() throws Exception
 	{
 		show = Outside.service(this,"gus06.swing.frame.show2");
-		newViewer = Outside.service(this,"factory#gus.file.editor.main");
+		newViewer = Outside.service(this,"factory#gus06.file.editor.main");
 	}
 	
 	

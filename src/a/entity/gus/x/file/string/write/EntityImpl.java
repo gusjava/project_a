@@ -9,15 +9,13 @@ public class EntityImpl implements Entity, P {
 
 	public void p(Object obj) throws Exception {
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
 		File file = (File) o[0];
 		String text = (String) o[1];
 
 		File parent = file.getParentFile();
-		if (!parent.exists())
-			parent.mkdirs();
+		if (!parent.exists()) parent.mkdirs();
 
 		PrintStream p = new PrintStream(file);
 		p.print(text);

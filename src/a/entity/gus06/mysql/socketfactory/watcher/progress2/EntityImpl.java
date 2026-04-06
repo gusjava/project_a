@@ -18,8 +18,8 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		buildProgress = Outside.service(this,"factory#gus.swing.progressbar.progress1a");
-		buildScreen = Outside.service(this,"factory#gus.swing.panel.screen.image");
+		buildProgress = Outside.service(this,"factory#gus06.swing.progressbar.progress1a");
+		buildScreen = Outside.service(this,"factory#gus06.swing.panel.screen.image");
 	}
 	
 	

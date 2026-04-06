@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		factory = Outside.service(this,"factory#gus.sys.dirsearch1.fileextractor.holder1");
+		factory = Outside.service(this,"factory#gus06.sys.dirsearch1.fileextractor.holder1");
 		textExtractorBuilder = Outside.service(this,"gus06.sys.dirsearch1.textextractor.build");
 		colorArray = Outside.service(this,"gus06.sys.dirsearch1.tool.terms.colorarray");
 		toList = Outside.service(this,"gus06.find.list");

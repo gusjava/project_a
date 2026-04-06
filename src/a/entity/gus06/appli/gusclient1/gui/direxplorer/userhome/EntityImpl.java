@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, I {
 	public EntityImpl() throws Exception
 	{
 		explorer = Outside.service(this,"*gus06.dir.explorer.simple");
-		dir = (File) Outside.resource(this,"call.g#gus.java.dir.user");
+		dir = (File) Outside.resource(this,"call.g#gus06.java.dir.user");
 
 		if(!dir.exists()) dir.mkdirs();
 		explorer.p(dir);

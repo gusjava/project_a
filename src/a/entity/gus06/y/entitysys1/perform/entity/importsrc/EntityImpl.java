@@ -18,8 +18,8 @@ public class EntityImpl implements Entity, F, P {
 	public EntityImpl() throws Exception
 	{
 		updateCreationDate = Outside.service(this,"gus06.x.entity.src.creationdate.updatenow");
-		validate = Outside.service(this, "gus.x.entity.name.validate");
-		extractName = Outside.service(this, "gus.java.srccode.extract.entity.name");
+		validate = Outside.service(this, "gus06.x.entity.name.validate");
+		extractName = Outside.service(this, "gus06.java.srccode.extract.entity.name");
 		generate = Outside.service(this,"gus06.java.srcdir.generate.fromsrc");
 	}
 

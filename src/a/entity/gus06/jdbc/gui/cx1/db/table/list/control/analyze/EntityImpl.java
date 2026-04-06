@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, F, P {
 	public EntityImpl() throws Exception
 	{
 		show = Outside.service(this,"gus06.swing.frame.show2");
-		newGui = Outside.service(this,"factory#gus.jdbc.gui.analyze2");
+		newGui = Outside.service(this,"factory#gus06.jdbc.gui.analyze2");
 	}
 	
 	

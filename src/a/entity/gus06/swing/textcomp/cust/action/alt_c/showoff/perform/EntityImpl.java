@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		newViewerString = Outside.service(this,"factory#gus.data.editor.string.textarea.editor1");
+		newViewerString = Outside.service(this,"factory#gus06.data.editor.string.textarea.editor1");
 		showInFrame = Outside.service(this,"gus06.swing.comp.inframe.alwaysontop");
 		now = Outside.service(this,"gus06.time.now.hhmmss1");
 	}

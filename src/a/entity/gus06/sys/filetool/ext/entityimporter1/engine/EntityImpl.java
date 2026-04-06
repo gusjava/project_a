@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		engine2 = Outside.service(this,"gus06.sys.filetool.ext.entityimporter1.engine2");
-		listingDirs = Outside.service(this, "gus.dir.listing0.dirs");
+		listingDirs = Outside.service(this, "gus06.dir.listing0.dirs");
 	}
 	
 	

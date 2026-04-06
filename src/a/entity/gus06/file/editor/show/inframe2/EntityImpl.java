@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		show = Outside.service(this,"gus06.swing.frame.show");
-		newFileArrayViewer = Outside.service(this,"factory#gus.data.viewer.filearray");
+		newFileArrayViewer = Outside.service(this,"factory#gus06.data.viewer.filearray");
 		performFile = Outside.service(this,"gus06.file.editor.show.inframe");
 		toArray = Outside.service(this,"gus06.find.filearray");
 	}

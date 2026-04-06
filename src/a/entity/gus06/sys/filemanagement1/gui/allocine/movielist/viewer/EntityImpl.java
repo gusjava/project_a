@@ -55,7 +55,7 @@ public class EntityImpl implements Entity, ActionListener, I, P, Runnable {
 		findProp = Outside.service(this,"gus06.sys.filemanagement1.tool.allocine.prop.find.map");
 		findPoster = Outside.service(this,"gus06.sys.filemanagement1.tool.allocine.poster.find.image.lazy");
 		findMd5Set = Outside.service(this,"gus06.sys.filemanagement1.tool.allocine.gen.code_md5.find.data");
-		newViewer = Outside.service(this,"factory#gus.sys.filemanagement1.gui.allocine.movie.viewer");
+		newViewer = Outside.service(this,"factory#gus06.sys.filemanagement1.gui.allocine.movie.viewer");
 		filterString = Outside.service(this,"gus06.filter.string.build.allofthem_n");
 		
 		propMap = new HashMap();

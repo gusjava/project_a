@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		builder = Outside.service(this,"factory#gus.appli.gusappmonitor.applitab.holder");
+		builder = Outside.service(this,"factory#gus06.appli.gusappmonitor.applitab.holder");
 	}
 	
 	public Object t(Object obj) throws Exception

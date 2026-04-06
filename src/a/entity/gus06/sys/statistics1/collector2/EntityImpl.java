@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, G, E, P {
 
 	public EntityImpl() throws Exception
 	{
-		builder = Outside.service(this,"factory#gus.sys.statistics1.collector1");
+		builder = Outside.service(this,"factory#gus06.sys.statistics1.collector1");
 		
 		collectors = new HashMap();
 	}

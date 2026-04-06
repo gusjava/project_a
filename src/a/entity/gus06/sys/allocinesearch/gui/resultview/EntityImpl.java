@@ -38,7 +38,7 @@ public class EntityImpl extends S1 implements Entity, I, P, G {
 
 	public EntityImpl() throws Exception
 	{
-		newViewer = Outside.service(this,"factory#gus.sys.allocinesearch.movie.viewer");
+		newViewer = Outside.service(this,"factory#gus06.sys.allocinesearch.movie.viewer");
 		
 		labelNumber = new JLabel(" ");
 		panelCenter = new JPanel(new GridLayout(0,1));

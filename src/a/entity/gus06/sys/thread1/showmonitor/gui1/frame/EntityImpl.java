@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		guiFactory = Outside.service(this,"factory#gus.sys.thread1.showmonitor.gui1");
+		guiFactory = Outside.service(this,"factory#gus06.sys.thread1.showmonitor.gui1");
 	}
 	
 	

@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		show = Outside.service(this,"gus06.file.editor.show.inframe.witheditor");
-		newEditor = Outside.service(this,"factory#gus.file.editor.ext.properties");
+		newEditor = Outside.service(this,"factory#gus06.file.editor.ext.properties");
 	}
 	
 	public void p(Object obj) throws Exception

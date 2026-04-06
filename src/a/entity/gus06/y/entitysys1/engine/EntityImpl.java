@@ -39,17 +39,17 @@ public class EntityImpl implements Entity, T {
 	{
 		dataLoaderEntity = Outside.service(this,"gus06.y.entitysys1.dataloader.entity");
 		dataLoaderJar = Outside.service(this,"gus06.y.entitysys1.dataloader.jar");
-		buildLocker = Outside.service(this, "gus.y.entitysys1.buildlocker");
+		buildLocker = Outside.service(this,"gus06.y.entitysys1.buildlocker");
 		accessFile = Outside.service(this,"gus06.file.access.string");
 		
 		buildCx = Outside.service(this,"gus06.y.entitydb1.buildcx");
-		findCompileErrMap = Outside.service(this, "gus.y.entitydb1.entity_compile_err.findall");
-		findMissingLinkMap = Outside.service(this, "gus.y.entitydb1.entity_missing_link.findall");
-		findSrcMap = Outside.service(this, "gus.y.entitydb1.entity_src.findall");
+		findCompileErrMap = Outside.service(this,"gus06.y.entitydb1.entity_compile_err.findall");
+		findMissingLinkMap = Outside.service(this,"gus06.y.entitydb1.entity_missing_link.findall");
+		findSrcMap = Outside.service(this,"gus06.y.entitydb1.entity_src.findall");
 		
 		nameToDir = Outside.service(this,"gus06.x.entity.src.find.packagedir");
 		nameToFile = Outside.service(this,"gus06.x.entity.src.find.entityfile");
-		readFile = Outside.service(this, "gus.x.file.string.read.n");
+		readFile = Outside.service(this,"gus06.x.file.string.read.n");
 	}
 	
 	

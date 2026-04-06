@@ -21,8 +21,8 @@ public class EntityImpl implements Entity, T, R, V {
 	public EntityImpl() throws Exception
 	{
 		uniqueEntity = Outside.service(this,"entityunique");
-		map1 = (Map) Outside.resource(this,"call.g#gus.sys.store.process.find.list1");
-		map2 = (Map) Outside.resource(this,"call.g#gus.sys.store.process.find.list2");
+		map1 = (Map) Outside.resource(this,"g#gus06.sys.store.process.find.list1");
+		map2 = (Map) Outside.resource(this,"g#gus06.sys.store.process.find.list2");
 		
 		cache = new HashMap();
 	}

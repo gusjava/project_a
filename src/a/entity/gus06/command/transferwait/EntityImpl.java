@@ -40,7 +40,7 @@ public class EntityImpl implements Entity, P, E, Runnable {
 		
 		out = (PrintStream) Outside.resource(this,"sysout");
 		port = (String) Outside.resource(this,"property#server.transfert.port");
-		storeDir = (File) Outside.resource(this,"call.g#gus.path.root.received");
+		storeDir = (File) Outside.resource(this,"g#gus.path.root.received");
 		
 		if(port==null) throw new Exception("Server port is undefined");
 	}

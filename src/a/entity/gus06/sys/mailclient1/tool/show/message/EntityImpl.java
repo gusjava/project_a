@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		show = Outside.service(this,"gus06.swing.frame.show");
-		newViewer = Outside.service(this,"factory#gus.sys.mailclient1.tool.show.message.viewer");
+		newViewer = Outside.service(this,"factory#gus06.sys.mailclient1.tool.show.message.viewer");
 	}
 	
 	

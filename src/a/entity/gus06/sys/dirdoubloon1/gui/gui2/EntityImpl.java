@@ -32,7 +32,7 @@ public class EntityImpl implements Entity, I, P {
 
 	public EntityImpl() throws Exception
 	{
-		newViewer = Outside.service(this,"factory#gus.sys.dirdoubloon1.gui.md5viewer1");
+		newViewer = Outside.service(this,"factory#gus06.sys.dirdoubloon1.gui.md5viewer1");
 		actionBuilder = Outside.service(this,"gus06.swing.action.builder0");
 		
 		panelCenter = new JPanel(new GridLayout(0,1));

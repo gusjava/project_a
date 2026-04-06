@@ -105,14 +105,14 @@ public class EntityImpl extends S1 implements Entity, I, V, G {
 	
 	public EntityImpl() throws Exception
 	{
-		buildDataFull = Outside.service(this, "gus.sys.entityeditor1.gui.gui1.list.datafull");
-		buildDataFiltered = Outside.service(this, "gus.sys.entityeditor1.gui.gui1.list.datafiltered");
+		buildDataFull = Outside.service(this, "gus06.sys.entityeditor1.gui.gui1.list.datafull");
+		buildDataFiltered = Outside.service(this, "gus06.sys.entityeditor1.gui.gui1.list.datafiltered");
 		fieldHolder = Outside.service(this, "*gus.data.editor.string.textfield.editor1");
 		tableTooltip = Outside.service(this, "gus.x.swing.table.cust.tooltip1");
 		linkerListField = Outside.service(this, "gus.x.swing.table.textfield.linker");
 		toolbarFactory = Outside.service(this, "gus.x.swing.toolbar.factory1");
 		clearCopyPasteCut = Outside.service(this, "gus.x.swing.comp.action.clear.copypastecut");
-		buildSelectionSup = Outside.service(this, "gus.x.swing.table.selection.buildsupport.multi");
+		buildSelectionSup = Outside.service(this, "gus06.x.swing.table.selection.buildsupport.multi");
 		buildAction = Outside.service(this, "gus.y.swing1.action.builder1");
 		clipboard = Outside.service(this,"gus06.x.clipboard.string");
 		listToString = Outside.service(this,"gus06.x.list.string.join.n");

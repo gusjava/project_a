@@ -51,7 +51,7 @@ public class EntityImpl implements Entity, ActionListener, I, P, Runnable {
 	public EntityImpl() throws Exception
 	{
 		fieldGui = Outside.service(this,"*gus06.data.editor.string.textfield.editor1");
-		newViewer = Outside.service(this,"factory#gus.sys.filemanagement1.gui.pdfs.pdf.viewer");
+		newViewer = Outside.service(this,"factory#gus06.sys.filemanagement1.gui.pdfs.pdf.viewer");
 		filterString = Outside.service(this,"gus06.filter.string.build.allofthem_n");
 		
 		propMap = new HashMap();

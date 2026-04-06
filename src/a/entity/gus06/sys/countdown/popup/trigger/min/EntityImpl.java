@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		buildLabel = Outside.service(this,"factory#gus.sys.countdown.gui.label");
+		buildLabel = Outside.service(this,"factory#gus06.sys.countdown.gui.label");
 		support = Outside.service(this,"gus06.support.watch.e");
 		showOnTop = Outside.service(this,"gus06.swing.dialog.build.dialogontop.tabbed");
 		input = Outside.service(this,"gus06.input.text.dialog");

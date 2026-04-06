@@ -25,19 +25,19 @@ public class EntityImpl implements Entity, P, G {
 
 	public EntityImpl() throws Exception
 	{
-		initEntity = Outside.service(this, "gus.y.entitydb1.cx.initdb.entity");
-		initEntitySrc = Outside.service(this, "gus.y.entitydb1.cx.initdb.entity_src");
-		initEntityService = Outside.service(this, "gus.y.entitydb1.cx.initdb.entity_service");
-		initEntityResource = Outside.service(this, "gus.y.entitydb1.cx.initdb.entity_resource");
-		initEntityImport = Outside.service(this, "gus.y.entitydb1.cx.initdb.entity_import");
-		initEntityLink = Outside.service(this, "gus.y.entitydb1.cx.initdb.entity_link");
-		initEntityMissingLink = Outside.service(this, "gus.y.entitydb1.cx.initdb.entity_missing_link");
-		initEntityCompileErr = Outside.service(this, "gus.y.entitydb1.cx.initdb.entity_compile_err");
-		initJar = Outside.service(this, "gus.y.entitydb1.cx.initdb.jar");
-		initJarClass = Outside.service(this, "gus.y.entitydb1.cx.initdb.jar_class");
-		initJarImport = Outside.service(this, "gus.y.entitydb1.cx.initdb.jar_import");
-		initJarJar = Outside.service(this, "gus.y.entitydb1.cx.initdb.jar_jar");
-		initFK = Outside.service(this, "gus.y.entitydb1.cx.initdb.fk");
+		initEntity = Outside.service(this, "gus06.y.entitydb1.cx.initdb.entity");
+		initEntitySrc = Outside.service(this, "gus06.y.entitydb1.cx.initdb.entity_src");
+		initEntityService = Outside.service(this, "gus06.y.entitydb1.cx.initdb.entity_service");
+		initEntityResource = Outside.service(this, "gus06.y.entitydb1.cx.initdb.entity_resource");
+		initEntityImport = Outside.service(this, "gus06.y.entitydb1.cx.initdb.entity_import");
+		initEntityLink = Outside.service(this, "gus06.y.entitydb1.cx.initdb.entity_link");
+		initEntityMissingLink = Outside.service(this, "gus06.y.entitydb1.cx.initdb.entity_missing_link");
+		initEntityCompileErr = Outside.service(this, "gus06.y.entitydb1.cx.initdb.entity_compile_err");
+		initJar = Outside.service(this, "gus06.y.entitydb1.cx.initdb.jar");
+		initJarClass = Outside.service(this, "gus06.y.entitydb1.cx.initdb.jar_class");
+		initJarImport = Outside.service(this, "gus06.y.entitydb1.cx.initdb.jar_import");
+		initJarJar = Outside.service(this, "gus06.y.entitydb1.cx.initdb.jar_jar");
+		initFK = Outside.service(this, "gus06.y.entitydb1.cx.initdb.fk");
 	}
 	
 	public Object g() throws Exception

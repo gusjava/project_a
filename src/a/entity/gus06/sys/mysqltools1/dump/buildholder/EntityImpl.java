@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		buildDump = Outside.service(this,"factory#gus.sys.mysqltools1.dump");
+		buildDump = Outside.service(this,"factory#gus06.sys.mysqltools1.dump");
 		names0 = Outside.service(this,"gus06.dir.listing0.names0.aslist");
 		now = Outside.service(this,"gus06.time.now");
 	}
