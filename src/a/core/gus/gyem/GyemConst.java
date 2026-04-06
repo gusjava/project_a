@@ -98,4 +98,7 @@ public class GyemConst {
 	public static final Class M055_R_SLIST =					a.core.gus.gyem.m055.r.build.slist.Module.class;
 	public static final Class M056_T_RB_SYS =					a.core.gus.gyem.m056.t.rb.sys.Module.class;
 	public static final Class M057_T_RB_STRING =				a.core.gus.gyem.m057.t.rb.string.Module.class;
+	public static final Class M058_T_RB_CLASS1 =				a.core.gus.gyem.m058.t.rb.class1.Module.class;
+	public static final Class M059_T_RB_NEW1 =					a.core.gus.gyem.m059.t.rb.new1.Module.class;
+	public static final Class M060_T_RB_PROP =					a.core.gus.gyem.m060.t.rb.prop.Module.class;
 }

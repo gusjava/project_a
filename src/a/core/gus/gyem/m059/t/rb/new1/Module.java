@@ -1,4 +1,4 @@
-package a.core.gus.gyem.m057.t.rb.string;
+package a.core.gus.gyem.m059.t.rb.new1;
 
 import a.core.gus.gyem.GyemSystem;
 import a.framework.T;
@@ -9,6 +9,7 @@ public class Module extends GyemSystem implements T {
 		Object[] data = (Object[]) obj;
 		String key = (String) data[1];
 		
-		return key;
+		Class c = Class.forName(key);
+		return c.getDeclaredConstructor().newInstance();
 	}
 }
