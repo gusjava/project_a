@@ -13,7 +13,7 @@ color.foreground.about=153,102,255
 
 configid.common=gus.common1
 
-before.0=!e:gus.y.debug1.print.main
+before.0=e:gus.y.debug1.print.main
 before.1=e:gus.y.logger1.printinfos1
 before.2=e:gus.y.lookandfeel1.init
 before.3=e:gus.y.menu1.en.init
@@ -31,8 +31,8 @@ cust0.rb.factory=gus.y.cust1.rb.factory
 cust0.inside=gus.y.inside1
 cust0.rb.property=gus.y.cust1.rb.prop
 
+cust1.m019.t.entity.loadclass=gus.y.entityclass1.loader
 cust1.m034.t.config.icon=gus.y.cust1.load.icon
-cust1.m018.t.entity.loadclass=gus.y.entityclass1.loader
 
 cust2.rb.icon=gus.y.cust1.rb.icon
 

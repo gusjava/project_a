@@ -8,6 +8,7 @@ public class Module extends GyemSystem implements F {
 	
 	public boolean f(Object obj) throws Exception {
 		String rule = (String) obj;
+		log(this, "executing rule: "+rule);
 		
 		if(rule.equals("null")) return true;
 		if(rule.startsWith("!")) return true;

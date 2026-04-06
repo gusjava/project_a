@@ -28,6 +28,7 @@ public class Module extends GyemSystem implements E {
 				
 				try {
 					Object module = moduleT(M013_T_MODULE_BUILD).t(value);
+					log(this, key+"\t"+value);
 					cust.put(name, module);
 				}
 				catch(Exception e) {

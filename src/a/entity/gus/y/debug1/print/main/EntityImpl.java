@@ -13,19 +13,22 @@ public class EntityImpl implements Entity, E {
 	public String creationDate() {return "20231203";}
 
 	private Map main;
+	private boolean debug;
 	
 	public EntityImpl() throws Exception {
 		main = (Map) Outside.resource(this, "main");
+		debug = (Boolean) Outside.resource(this, "propbool#debug:false");
 	}
 	
 	public void e() throws Exception {
+		if(!debug) return;
+		
 		List keys = new ArrayList<>(main.keySet());
 		Collections.sort(keys);
 		for(int i=0;i<keys.size();i++) {
 			String key = (String) keys.get(i);
 			Object value = main.get(key);
-			System.out.println("main key: "+key);
-			System.out.println("main value: "+value.getClass().getName());
+			System.out.println("DEBUG:"+key+"\t"+value.getClass().getName());
 		}
 	}
 }
