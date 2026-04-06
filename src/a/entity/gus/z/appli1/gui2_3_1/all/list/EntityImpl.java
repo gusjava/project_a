@@ -33,6 +33,8 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	public static final String DISPLAY_DELETE = "ELEMENT_entity_delete#Delete entity [DEL]";
 	public static final String DISPLAY_RENAME = "ELEMENT_entity_rename#Rename entity [F2]";
 	public static final String DISPLAY_DUPLICATE = "ELEMENT_entity_duplicate#Duplicate entity [F3]";
+	public static final String DISPLAY_PASTE = "ENTITY_paste#Paste entity [Ctrl-V]";
+	public static final String DISPLAY_COPY = "ENTITY_copy#Copy entity [Ctrl-C]";
 
 	public static final Color BG_SELECTED = new Color(244, 244, 244);
 	public static final Color BG_UNSELECTED = Color.WHITE;
@@ -66,8 +68,10 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Service buildSelectionSup;
 	private Service clipboard;
 	private Service listToString;
+	private Service listToStringHr;
 	private Service stringToList;
-	
+	private Service performPaste;
+	 
 	// resources
 	private Icon iconEntity;
 	private Icon iconEntityLock;
@@ -97,6 +101,8 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Action actionDelete;
 	private Action actionRename;
 	private Action actionDuplicate;
+	private Action actionPaste;
+	private Action actionCopy;
 
 	private List dataFull = new ArrayList();
 	private List dataFiltered = new ArrayList();
@@ -124,9 +130,11 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		toolbarFactory = Outside.service(this, "gus.x.swing.toolbar.factory1");
 		clearCopyPasteCut = Outside.service(this, "gus.x.swing.comp.action.clear.copypastecut");
 		buildSelectionSup = Outside.service(this, "gus.x.swing.table.selection.buildsupport");
-		clipboard = Outside.service(this,"gus.x.clipboard.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string"); 
 		listToString = Outside.service(this,"gus.x.list.join.n.string");
+		listToStringHr = Outside.service(this,"gus06.x.list.string.join.hr");
 		stringToList = Outside.service(this,"gus.x.string.split.n.list");
+		performPaste = Outside.service(this,"gus06.y.entitysys1.perform.paste");
 		
 		// resources
 		iconEntity = (Icon) Outside.resource(this, "icon#ELEMENT_entity");
@@ -141,7 +149,9 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		actionDelete = (Action) buildAction.t(new Object[] { DISPLAY_DELETE, (E) this::del_entityDelete });
 		actionRename = (Action) buildAction.t(new Object[] { DISPLAY_RENAME, (E) this::f2_entityRename });
 		actionDuplicate = (Action) buildAction.t(new Object[] { DISPLAY_DUPLICATE, (E) this::f3_entityDuplicate });
-
+		actionPaste = (Action) buildAction.t(new Object[] { DISPLAY_PASTE, (E) this::ctrl_shift_v_pasteSrc });
+		actionCopy = (Action) buildAction.t(new Object[] { DISPLAY_COPY, (E) this::ctrl_shift_c_copySrc });
+		
 		labelNumber = new JLabel(" ");
 		labelNumberLocked = new JLabel(" ");
 		
@@ -162,6 +172,9 @@ public class EntityImpl extends S1 implements Entity, G, I {
 
 		bar = (JToolBar) toolbarFactory.i();
 
+		bar.add(actionPaste);
+		bar.add(actionCopy);
+		bar.addSeparator();
 		bar.add(actionCreate);
 		bar.add(actionDuplicate);
 		bar.add(actionDelete);
@@ -194,12 +207,20 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		table.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				int code = e.getKeyCode();
-				if (e.isControlDown()) {
+				if (e.isControlDown() && e.isShiftDown())
+				{
+					if (code == KeyEvent.VK_C) ctrl_shift_c_copySrc();
+					if (code == KeyEvent.VK_V) ctrl_shift_v_pasteSrc();
+				}
+				else if (e.isControlDown())
+				{
 					if (code == KeyEvent.VK_Q) ctrl_q_lockSelected();
 					else if (code == KeyEvent.VK_W) ctrl_w_unlockSelected();
 					else if (code == KeyEvent.VK_C) ctrl_c_copySelection();
 					else if (code == KeyEvent.VK_V) ctrl_v_pasteSelection();
-				} else {
+				}
+				else
+				{
 					if (code == KeyEvent.VK_DELETE) del_entityDelete();
 					else if (code == KeyEvent.VK_F1) f1_entityCreate();
 					else if (code == KeyEvent.VK_F2) f2_entityRename();
@@ -415,6 +436,28 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		} catch (Exception e) {
 			Outside.err(this, "ctrl_v_pasteSelection()", e);
 		}
+	}
+	
+	private void ctrl_shift_c_copySrc()
+	{
+		try
+		{
+			List list = getSelectionSrc();
+			String s = (String) listToStringHr.t(list);
+			clipboard.p(s);
+		}
+		catch (Exception e)
+		{Outside.err(this, "ctrl_shift_c_copySrc()", e);}
+	}
+	
+	private void ctrl_shift_v_pasteSrc()
+	{
+		try
+		{
+			performPaste.p(new Object[] { engine, table });
+		}
+		catch (Exception e)
+		{Outside.err(this, "ctrl_shift_v_pasteSrc()", e);}
 	}
 
 	private void del_entityDelete() {
@@ -714,9 +757,26 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	}
 	
 	/*
+	 * SELECTION SRC
+	 */
+
+	private List getSelectionSrc() throws Exception {
+		int[] rows = table.getSelectedRows();
+		List list = new ArrayList();
+		for (int row : rows) list.add(getSrcAt(row));
+		return list;
+	}
+
+	private String getSrcAt(int row) throws Exception {
+		String name = getNameAt(row);
+		if(name==null) return null;
+		return (String) engine.r("src_"+name);
+	}
+
+	/*
 	 * SELECTION NAMES
 	 */
-	
+
 	private List getSelectionNames() {
 		int[] rows = table.getSelectedRows();
 		List list = new ArrayList();
