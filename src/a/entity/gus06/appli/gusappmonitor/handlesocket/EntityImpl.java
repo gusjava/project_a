@@ -23,14 +23,14 @@ public class EntityImpl implements Entity, P {
 	public static final String EVENT_LOST = "lost";
 	public static final String EVENT_CLOSED = "closed";
 	
-
-
+	private Service buildThread;
 	private Service buildHolder;
 	private Service manager;
 	
 	public EntityImpl() throws Exception
 	{
-		buildHolder = Outside.service(this,"gus06.socket.build.holder");
+		buildThread = Outside.service(this,"gus.x.thread.wrapper1");
+		buildHolder = Outside.service(this,"gus.x.socket.build.holder");
 		manager = Outside.service(this,"gus06.appli.gusappmonitor.manager");
 	}
 	
@@ -55,7 +55,7 @@ public class EntityImpl implements Entity, P {
 			sup.addActionListener(this);
 			initialized = false;
 			
-			t = new Thread((Runnable) sup,"THREAD_"+getClass().getName());
+			t = (Thread) buildThread.t((Runnable) sup);
 			t.start();
 		}
 		

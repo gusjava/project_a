@@ -32,7 +32,7 @@ public class EntityImpl implements Entity, ActionListener, I, P {
 	
 	public EntityImpl() throws Exception
 	{
-		buildHolder = Outside.service(this,"gus06.socket.build.holder");
+		buildHolder = Outside.service(this,"gus.x.socket.build.holder");
 		supportHolder = Outside.service(this,"*gus06.support.holder");
 		
 		field = new JTextField();

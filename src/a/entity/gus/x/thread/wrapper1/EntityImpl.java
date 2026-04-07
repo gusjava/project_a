@@ -2,15 +2,9 @@ package a.entity.gus.x.thread.wrapper1;
 
 import a.framework.*;
 import java.lang.Thread.UncaughtExceptionHandler;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class EntityImpl implements Entity, T, P {
-
 	public String creationDate() {return "20191220";}
-
-	public EntityImpl() throws Exception
-	{
-	}
 
 	public Object t(Object obj) throws Exception
 	{
