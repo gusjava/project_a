@@ -15,11 +15,11 @@ public class EntityImpl extends S1 implements Entity, P, G, Runnable {
 	private static final int PORT = 4000;
 
 	private ServerSocket serverSocket;
-	private StringBuilder log = new StringBuilder();
+	private String message;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		serverSocket = new ServerSocket(PORT);
-		log("Server started on port " + PORT);
 
 		Thread t = new Thread(this, "THREAD_" + getClass().getName());
 		t.setDaemon(true);
@@ -30,7 +30,6 @@ public class EntityImpl extends S1 implements Entity, P, G, Runnable {
 		try {
 			while (true) {
 				Socket socket = serverSocket.accept();
-				log("Connection accepted: " + socket.getRemoteSocketAddress());
 				handleSocket(socket);
 			}
 		}
@@ -40,19 +39,21 @@ public class EntityImpl extends S1 implements Entity, P, G, Runnable {
 	}
 
 	public void p(Object obj) throws Exception {
-		log((String) obj);
+		
 	}
 
-	public Object g() throws Exception {
-		return log.toString();
-	}
+	public Object g() throws Exception
+	{return message;}
 
 	private void handleSocket(Socket socket) {
-		// TODO : déléguer à une entité handle.socket
 	}
 
-	private void log(String message) {
-		log.append(message).append("\n");
-		send(this, "received()");
+	private void handleMessage(String message)
+	{
+		this.message = message;
+		received();
 	}
+	
+	private void received()
+	{send(this, "received()");}
 }
