@@ -2,91 +2,128 @@ package a.entity.gus06.thread.manager;
 
 import a.framework.*;
 import java.lang.Thread.UncaughtExceptionHandler;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class EntityImpl implements Entity, T, P {
 
 	public String creationDate() {return "20191220";}
 
-
 	public EntityImpl() throws Exception
 	{
 	}
-	
-	
+
 	public Object t(Object obj) throws Exception
 	{
+		if(obj == null) throw new Exception("Runnable is null");
+		if(!(obj instanceof Runnable)) throw new Exception("Object is not a Runnable");
+
 		Runnable runnable = (Runnable) obj;
-		Thread1 thread = new Thread1(runnable);
-		return thread;
+		return new Thread1(runnable);
 	}
-	
-	
+
 	public void p(Object obj) throws Exception
 	{
-		Runnable runnable = (Runnable) obj;
-		Thread1 thread = new Thread1(runnable);
+		Thread1 thread = (Thread1) t(obj);
 		thread.start();
 	}
-	
-	
-	
+
 	public class Thread1 extends Thread implements UncaughtExceptionHandler, R
 	{
-		private Runnable runnable;
-		private long startTime;
-		private long endTime;
-		private Thread parent;
-		private StackTraceElement[] parentSte;
-		private StackTraceElement parentSte1;
-		private Exception uncaught;
-		
+		private final Runnable runnable;
+		private final long creationTime;
+
+		private volatile long startTime;
+		private volatile long endTime;
+
+		private final Thread parent;
+		private final StackTraceElement[] parentSte;
+		private final StackTraceElement parentSte1;
+		private volatile Exception uncaught;
+		private volatile String state = "PENDING";		
+
 		public Thread1(Runnable runnable)
 		{
-			super("RUNNABLE_"+runnable.getClass().getName());
+			super("RUNNABLE_" + runnable.getClass().getName());
+
 			this.runnable = runnable;
+			this.creationTime = System.currentTimeMillis();
+
 			setUncaughtExceptionHandler(this);
-			
-			parent = Thread.currentThread();
-			parentSte = parent.getStackTrace();
-			parentSte1 = findParentSte1();
+
+			this.parent = Thread.currentThread();
+			this.parentSte = parent.getStackTrace();
+			this.parentSte1 = findParentSte1();
 		}
-		
+
 		public void run()
 		{
-			startTime = System.currentTimeMillis();
-			runnable.run();
-			endTime = System.currentTimeMillis();
+			synchronized(this)
+			{
+				if(!state.equals("PENDING")) return;
+				
+				startTime = System.currentTimeMillis();
+				state = "RUNNING";
+			}
+
+			try
+			{
+				if(isInterrupted())
+				{
+					state = "INTERRUPTED";
+					return;
+				}
+				runnable.run();
+				endTime = System.currentTimeMillis();
+				state = "COMPLETE";
+			}
+			catch(Throwable w)
+			{
+				handleUncaught(w);
+				endTime = System.currentTimeMillis();
+				state = "FAILED";
+			}
 		}
-		
+
+		private void handleUncaught(Throwable w)
+		{
+			uncaught = new Exception("Uncaught exception in thread: " + getName(), w);
+		}
+
 		public void uncaughtException(Thread th, Throwable w)
 		{
-			String message = "Uncaught exception happend in thread: "+th.getName();
-			uncaught = new Exception(message,w);
+			handleUncaught(w);
 		}
-		
+
 		public Object r(String key) throws Exception
 		{
+			if(key.equals("state")) return state;
 			if(key.equals("runnable")) return runnable;
+			if(key.equals("creationTime")) return creationTime;
 			if(key.equals("startTime")) return startTime;
 			if(key.equals("endTime")) return endTime;
+
 			if(key.equals("parent")) return parent;
 			if(key.equals("parentSte")) return parentSte;
 			if(key.equals("parentSte1")) return parentSte1;
+
 			if(key.equals("uncaught")) return uncaught;
-			
-			if(key.equals("keys")) 
-			return new String[]{"runnable","startTime","endTime",
-			"parent","parentSte","parentSte1","uncaught"};
-			
-			throw new Exception("Unknown key: "+key);
+
+			if(key.equals("keys"))
+				return new String[]{
+					"state", "runnable","creationTime","startTime","endTime",
+					"parent","parentSte","parentSte1","uncaught"
+				};
+
+			throw new Exception("Unknown key: " + key);
 		}
-		
+
 		private StackTraceElement findParentSte1()
 		{
 			for(StackTraceElement ste : parentSte)
 			{
 				String name = ste.getClassName();
-				if(name.startsWith("gus06.entity.") && !name.startsWith("gus06.entity.gus.thread.manager."))
+				if(name.startsWith("a.entity.") &&
+				   !name.startsWith("a.entity.gus06.thread.manager."))
 				return ste;
 			}
 			return null;
