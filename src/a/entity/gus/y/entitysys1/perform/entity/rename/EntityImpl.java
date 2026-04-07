@@ -44,11 +44,11 @@ public class EntityImpl implements Entity, P, F {
 		File rootDir = (File) ((R) engine).r("rootDir");
 		String devId = (String) ((R) engine).r("devId");
 
-		if (devId != null && !name0.startsWith(devId + "."))
-			return false;
-
-		if (devId != null && !name1.startsWith(devId + "."))
-			name1 = devId + "." + name1;
+//		if (devId != null && !name0.startsWith(devId + "."))
+//			return false;
+//
+//		if (devId != null && !name1.startsWith(devId + "."))
+//			name1 = devId + "." + name1;
 
 		if (!validate.f(name1))
 			return false;
