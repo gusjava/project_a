@@ -30,7 +30,7 @@ public class EntityImpl implements Entity, P, Runnable {
 
 	public EntityImpl() throws Exception
 	{
-		buildServer = Outside.service(this,"gus06.socket.server.build");
+		buildServer = Outside.service(this,"gus.x.socket.server.build");
 		out = (PrintStream) Outside.resource(this,"sysout");
 		
 		serverSocket = (ServerSocket) buildServer.t(PORT);

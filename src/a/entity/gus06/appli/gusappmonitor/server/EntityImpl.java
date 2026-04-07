@@ -10,7 +10,7 @@ public class EntityImpl extends S1 implements Entity, Runnable {
 	
 	public static final int PORT = 4567;
 
-
+	private Service buildThread;
 	private Service buildServer;
 	private Service consoleGui;
 	private Service handleSocket;
@@ -18,16 +18,16 @@ public class EntityImpl extends S1 implements Entity, Runnable {
 	private ServerSocket serverSocket;
 	private Thread t;
 
-
 	public EntityImpl() throws Exception
 	{
-		buildServer = Outside.service(this,"gus06.socket.server.build");
+		buildThread = Outside.service(this,"gus.x.thread.wrapper1");
+		buildServer = Outside.service(this,"gus.x.socket.server.build");
 		consoleGui = Outside.service(this,"gus06.appli.gusappmonitor.gui.console");
 		handleSocket = Outside.service(this,"gus06.appli.gusappmonitor.handlesocket");
 		
 		serverSocket = (ServerSocket) buildServer.t(PORT);
 		
-		t = new Thread(this,"THREAD_"+getClass().getName());
+		t = (Thread) buildThread.t(this);
 		t.start();
 	}
 	

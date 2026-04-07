@@ -11,7 +11,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		build = Outside.service(this,"gus06.socket.server.build");
+		build = Outside.service(this,"gus.x.socket.server.build");
 	}
 
 	

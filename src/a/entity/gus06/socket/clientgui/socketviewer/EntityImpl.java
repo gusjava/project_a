@@ -17,6 +17,7 @@ public class EntityImpl implements Entity, ActionListener, I, P {
 	public String creationDate() {return "20180312";}
 
 
+	private Service buildThread;
 	private Service buildHolder;
 	private Service supportHolder;
 	
@@ -32,6 +33,7 @@ public class EntityImpl implements Entity, ActionListener, I, P {
 	
 	public EntityImpl() throws Exception
 	{
+		buildThread = Outside.service(this,"gus.x.thread.wrapper1");
 		buildHolder = Outside.service(this,"gus.x.socket.build.holder");
 		supportHolder = Outside.service(this,"*gus06.support.holder");
 		
@@ -67,7 +69,7 @@ public class EntityImpl implements Entity, ActionListener, I, P {
 		
 		if(holder!=null)
 		{
-			t = new Thread((Runnable) holder,"THREAD_"+getClass().getName());
+			t = (Thread) buildThread.t(holder);
 			t.start();
 		}
 	}
