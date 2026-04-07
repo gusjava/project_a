@@ -43,7 +43,7 @@ public class EntityImpl extends S1 implements Entity, ActionListener, V, R {
 	public EntityImpl() throws Exception
 	{
 		factory = Outside.service(this,"factory#gus06.sys.runtask1.holder");
-		buildThread = Outside.service(this,"gus.x.thread.wrapper1");
+		buildThread = Outside.service(this,"gus.x.thread.wrap1");
 		
 		queue = new ArrayList();
 		threads = new HashMap();

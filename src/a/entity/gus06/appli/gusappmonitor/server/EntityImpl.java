@@ -20,7 +20,7 @@ public class EntityImpl extends S1 implements Entity, Runnable {
 
 	public EntityImpl() throws Exception
 	{
-		buildThread = Outside.service(this,"gus.x.thread.wrapper1");
+		buildThread = Outside.service(this,"gus.x.thread.wrap1");
 		buildServer = Outside.service(this,"gus.x.socket.server.build");
 		consoleGui = Outside.service(this,"gus06.appli.gusappmonitor.gui.console");
 		handleSocket = Outside.service(this,"gus06.appli.gusappmonitor.handlesocket");

@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, P {
 	{
 		findThread = Outside.service(this,"gus06.find.thread");
 		findExecute = Outside.service(this,"gus06.find.execute");
-		buildThread = Outside.service(this,"gus.x.thread.wrapper1");
+		buildThread = Outside.service(this,"gus.x.thread.wrap1");
 	}
 	
 	

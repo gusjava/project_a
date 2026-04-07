@@ -1,4 +1,4 @@
-package a.entity.gus.y.serversocket1.wrap;
+package a.entity.gus.x.socket.server.wrap1;
 
 import a.framework.*;
 import java.net.ServerSocket;
@@ -18,7 +18,6 @@ public class EntityImpl implements Entity, T {
 	private class Holder extends S1 implements Runnable, G, R, P
 	{
 		private ServerSocket server;
-		private Thread t;//TODO externaliser la gestion du thread
 		private Exception exception;
 		private Socket lastSocket;
 		private int numberAccepted;

@@ -1,4 +1,4 @@
-package a.entity.gus.x.thread.wrapper1;
+package a.entity.gus.x.thread.wrap1;
 
 import a.framework.*;
 import java.lang.Thread.UncaughtExceptionHandler;

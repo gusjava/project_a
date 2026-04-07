@@ -1,4 +1,4 @@
-package a.entity.gus.x.socket.build.holder2;
+package a.entity.gus.x.socket.wrap2;
 
 import a.framework.*;
 import java.net.Socket;
@@ -19,9 +19,9 @@ public class EntityImpl implements Entity, T {
 	public static String CMD_EXIT = "exit";
 	
 	public Object t(Object obj) throws Exception
-	{return new Session((Socket) obj);}
+	{return new Holder((Socket) obj);}
 	
-	private class Session extends S1 implements P, R, Runnable
+	private class Holder extends S1 implements P, R, Runnable
 	{
 		private Socket socket;
 		private BufferedReader in;
@@ -36,7 +36,7 @@ public class EntityImpl implements Entity, T {
 		private String lastOutput;
 		
 		
-		public Session(Socket socket) throws Exception
+		public Holder(Socket socket) throws Exception
 		{
 			this.socket = socket;
 			name = socket.getInetAddress().getHostAddress();

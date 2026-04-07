@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, T, G {
 	public EntityImpl() throws Exception
 	{
 		build = Outside.service(this,"gus.x.socket.server.build");
-		wrap = Outside.service(this,"gus.y.serversocket1.wrap");
+		wrap = Outside.service(this,"gus.x.socket.server.wrap1");
 		cache = new HashMap();
 	}
 	

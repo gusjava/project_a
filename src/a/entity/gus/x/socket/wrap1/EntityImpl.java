@@ -1,4 +1,4 @@
-package a.entity.gus.x.socket.build.holder1;
+package a.entity.gus.x.socket.wrap1;
 
 import java.net.Socket;
 import java.nio.charset.Charset;

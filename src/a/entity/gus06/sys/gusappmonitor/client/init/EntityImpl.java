@@ -27,7 +27,7 @@ public class EntityImpl implements Entity, ActionListener {
 	public EntityImpl() throws Exception
 	{
 		builder = Outside.service(this,"gus06.socket.builder1");
-		buildHolder = Outside.service(this,"gus.x.socket.build.holder1");
+		buildHolder = Outside.service(this,"gus.x.socket.wrap1");
 		handleMessage = Outside.service(this,"gus06.sys.gusappmonitor.client.handlemessage");
 		started = Outside.service(this,"gus06.sys.gusappmonitor.client.started");
 		propBoolDF = Outside.service(this,"propbool_df");

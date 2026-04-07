@@ -63,7 +63,7 @@ public class EntityImpl implements Entity, I, P, Runnable {
 		findUk = Outside.service(this,"gus06.jdbc.mysql.perform.uk.full.db");
 		count = Outside.service(this,"gus06.jdbc.mysql.perform.select.count");
 		countFkOrphans = Outside.service(this,"gus06.jdbc.mysql.perform.select.count.fk0.orphans");
-		threadManager = Outside.service(this,"gus.x.thread.wrapper1");
+		threadManager = Outside.service(this,"gus.x.thread.wrap1");
 		tab = Outside.service(this,"*gus06.swing.tabbedpane.holder1");
 		buildDataTable = Outside.service(this,"gus06.jdbc.gui.analyze1.builddata.table");
 		buildDataColumn = Outside.service(this,"gus06.jdbc.gui.analyze1.builddata.column");
