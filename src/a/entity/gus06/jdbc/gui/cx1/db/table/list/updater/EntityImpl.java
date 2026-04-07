@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		threadManager = Outside.service(this,"gus06.thread.manager");
+		threadManager = Outside.service(this,"gus.x.thread.wrapper1");
 		findTable = Outside.service(this,"gus06.jdbc.generic.perform.find.tableset.db");
 		map = new HashMap();
 	}

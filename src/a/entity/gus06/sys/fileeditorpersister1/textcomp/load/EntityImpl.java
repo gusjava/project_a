@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, V {
 	public EntityImpl() throws Exception
 	{
 		engine = Outside.service(this,"gus06.sys.fileeditorpersister1.textcomp");
-		buildThread = Outside.service(this,"gus06.thread.manager");
+		buildThread = Outside.service(this,"gus.x.thread.wrapper1");
 	}
 	
 	

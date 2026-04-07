@@ -23,7 +23,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		buildThread = Outside.service(this,"gus06.thread.manager");
+		buildThread = Outside.service(this,"gus.x.thread.wrapper1");
 	}
 	
 	public Object t(Object obj) throws Exception

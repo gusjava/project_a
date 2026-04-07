@@ -53,7 +53,7 @@ public class EntityImpl implements Entity, P, F, V {
 	{
 		buildServer = Outside.service(this,"gus06.socket.server.build1");
 		buildSession = Outside.service(this,"gus06.sys.socket1.build.session");
-		buildThread = Outside.service(this,"gus06.thread.manager");
+		buildThread = Outside.service(this,"gus.x.thread.wrapper1");
 		handleExecute = Outside.service(this,"*gus06.sys.socket1.handle.execute");
 		buildCcPrintStream = Outside.service(this,"gus06.sys.socket1.build.ccprintstream");
 		

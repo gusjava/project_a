@@ -49,7 +49,7 @@ public class EntityImpl extends S1 implements Entity, V, R, P, E {
 		checkCurrent = Outside.service(this,"gus06.sys.scheduling1.checkcurrent");
 		randomId = Outside.service(this,"gus06.data.generate.string.random.number10");
 		findTimer = Outside.service(this,"gus06.time.timer.unique");
-		buildThread = Outside.service(this,"gus06.thread.manager");
+		buildThread = Outside.service(this,"gus.x.thread.wrapper1");
 		
 		list = new ArrayList();
 		running = new HashMap();

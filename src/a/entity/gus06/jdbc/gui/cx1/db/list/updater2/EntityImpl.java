@@ -29,7 +29,7 @@ public class EntityImpl implements Entity, P, E, Runnable {
 
 	public EntityImpl() throws Exception
 	{
-		threadManager = Outside.service(this,"gus06.thread.manager");
+		threadManager = Outside.service(this,"gus.x.thread.wrapper1");
 		findDbCounts = Outside.service(this,"gus06.jdbc.mysql.perform.counttable.bydb");
 		findDbSet = Outside.service(this,"gus06.jdbc.generic.perform.find.dbset");
 		findCx = Outside.service(this,"gus06.jdbc.connection.find");

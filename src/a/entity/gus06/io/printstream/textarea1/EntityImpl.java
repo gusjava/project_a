@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, T {
 	private Service thM;
 	
 	public EntityImpl() throws Exception
-	{thM = Outside.service(this,"gus06.thread.manager");}
+	{thM = Outside.service(this,"gus.x.thread.wrapper1");}
 	
 	
 	public Object t(Object obj) throws Exception
