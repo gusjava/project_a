@@ -1,4 +1,4 @@
-package a.entity.gus06.sys.socket1.build.ccprintstream;
+package a.entity.gus.y.serversocket1.ccprintstream;
 
 import a.framework.*;
 import java.io.PrintStream;

@@ -8,12 +8,6 @@ import java.util.Map;
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20221110";}
 
-	private Service buildThread;
-	
-	public EntityImpl() throws Exception
-	{
-		buildThread = Outside.service(this,"gus.x.thread.wrapper1");
-	}
 	
 	public Object t(Object obj) throws Exception
 	{
@@ -33,8 +27,6 @@ public class EntityImpl implements Entity, T {
 		{
 			this.server = server;
 			numberAccepted = 0;
-			t = (Thread) buildThread.t(this);
-			t.start();
 		}
 		
 		public Object g() throws Exception

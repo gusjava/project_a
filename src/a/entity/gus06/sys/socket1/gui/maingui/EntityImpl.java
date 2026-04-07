@@ -48,7 +48,7 @@ public class EntityImpl implements Entity, ActionListener, I, P {
 		executeOnCtrlV = Outside.service(this,"gus06.swing.comp.cust3.execute.ctrl_v");
 		compHolder = Outside.service(this,"*gus06.swing.textpane.holder.printstreamcomp");
 		fromClipboard = Outside.service(this,"gus06.sys.clipboard1.g.listfiles");
-		engine = Outside.service(this,"*gus06.sys.socket1.engine");
+		engine = Outside.service(this,"*gus.y.serversocket1.engine");
 		dnd = Outside.service(this,"gus06.awt.dnd");
 		
 		console = (JTextComponent) compHolder.i();

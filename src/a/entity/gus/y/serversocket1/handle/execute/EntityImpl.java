@@ -1,4 +1,4 @@
-package a.entity.gus06.sys.socket1.handle.execute;
+package a.entity.gus.y.serversocket1.handle.execute;
 
 import a.framework.*;
 import java.io.PrintStream;

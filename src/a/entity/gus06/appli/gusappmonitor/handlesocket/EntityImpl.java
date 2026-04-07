@@ -30,7 +30,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		buildThread = Outside.service(this,"gus.x.thread.wrapper1");
-		buildHolder = Outside.service(this,"gus.x.socket.build.holder");
+		buildHolder = Outside.service(this,"gus.x.socket.build.holder1");
 		manager = Outside.service(this,"gus06.appli.gusappmonitor.manager");
 	}
 	
