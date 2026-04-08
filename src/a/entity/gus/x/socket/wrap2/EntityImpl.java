@@ -26,7 +26,6 @@ public class EntityImpl implements Entity, T {
 		private Socket socket;
 		private BufferedReader in;
 		private PrintStream out;
-		private Thread t;
 		
 		private Date startDate;
 		private Date endDate;
@@ -34,7 +33,6 @@ public class EntityImpl implements Entity, T {
 		
 		private String lastInput;
 		private String lastOutput;
-		
 		
 		public Holder(Socket socket) throws Exception
 		{
@@ -50,8 +48,6 @@ public class EntityImpl implements Entity, T {
 			OutputStream os = socket.getOutputStream();
 			out = new PrintStream(os, true, CHARSET);
 		}
-		
-		
 		
 		public void p(Object obj) throws Exception
 		{
@@ -79,12 +75,8 @@ public class EntityImpl implements Entity, T {
 			throw new Exception("Unknown key: "+key);
 		}
 		
-		
-		
 		private void send(String m) throws Exception
 		{
-			if(t==null) throw new Exception("Session is over");
-			
 			lastOutput = m;
 			out.println(m);
 			messageSent();
@@ -96,21 +88,14 @@ public class EntityImpl implements Entity, T {
 			messageReceived();
 		}
 		
-		
 		private void exit() throws Exception
 		{
-			if(t==null) return;
-			
-			
 			in.close();
 			out.close();
 			
-			t = null;
 			in = null;
 			out = null;
 		}
-		
-		
 		
 		public void run()
 		{
@@ -132,8 +117,6 @@ public class EntityImpl implements Entity, T {
 			endDate = new Date();
 			connectionClosed();
 		}
-
-		
         
 		private void connectionStarted()
 		{send(this,"connectionStarted()");}
