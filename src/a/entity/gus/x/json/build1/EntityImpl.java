@@ -110,9 +110,20 @@ public class EntityImpl implements Entity, T {
 			int x = s.codePointAt(i);
 			if(x<=8 || x==11 || (x>=14&&x<=31) || x>=127)
 			{
-				String hexa = Integer.toHexString(x);
-				while(hexa.length()<4)hexa="0"+hexa;
-				b.append("\\u"+hexa);
+				if(x>0xFFFF)
+				{
+					int cp = x-0x10000;
+					String high = Integer.toHexString(0xD800+(cp>>10));
+					String low  = Integer.toHexString(0xDC00+(cp&0x3FF));
+					b.append("\\u"+high+"\\u"+low);
+					i++;
+				}
+				else
+				{
+					String hexa = Integer.toHexString(x);
+					while(hexa.length()<4)hexa="0"+hexa;
+					b.append("\\u"+hexa);
+				}
 			}
 			else
 			{
@@ -141,8 +152,12 @@ public class EntityImpl implements Entity, T {
 		return v.booleanValue()?"true":"false";
 	}
 	
-	private String computeNumber(Number n)
+	private String computeNumber(Number n) throws Exception
 	{
+		if(n instanceof Double && !Double.isFinite((Double)n))
+			throw new Exception("Invalid JSON number: "+n);
+		if(n instanceof Float && !Float.isFinite((Float)n))
+			throw new Exception("Invalid JSON number: "+n);
 		return n.toString();
 	}
 }
