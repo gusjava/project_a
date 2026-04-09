@@ -9,6 +9,7 @@ entityclassmap=g#m018.t.entity.findclass
 nametopath=m020.t.entity.nametopath
 mainframe=g#m022.g.mainframe.build
 exit=m023.e.mainframe.exit
+exitgui=gus.y.cust1.rb.guiexit
 configicon=m034.t.config.icon
 errlist=g#m039.g.err.list
 entityname=m042.t.entity.findname

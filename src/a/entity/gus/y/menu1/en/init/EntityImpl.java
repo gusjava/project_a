@@ -14,20 +14,24 @@ public class EntityImpl implements Entity, E {
 
 	private Service getMenuBar;
 	private Service getActionAbout;
+	private Service getActionRestart;
 	private Service getActionExit;
 
 	public EntityImpl() throws Exception {
 		getMenuBar = Outside.service(this, "gus.y.appli1.gui.menubar");
 		getActionAbout = Outside.service(this, "gus.y.appli1.en.action.about");
+		getActionRestart = Outside.service(this, "gus.y.appli1.en.action.restart");
 		getActionExit = Outside.service(this, "gus.y.appli1.en.action.exit");
 	}
 
 	public void e() throws Exception {
 		Action actionAbout = (Action) getActionAbout.g();
+		Action actionRestart = (Action) getActionRestart.g();
 		Action actionExit = (Action) getActionExit.g();
 		
 		JMenu menu1 = new JMenu("Menu");
 		menu1.add(actionAbout);
+		menu1.add(actionRestart);
 		menu1.add(actionExit);
 
 		JMenuBar bar = (JMenuBar) getMenuBar.g();
