@@ -9,13 +9,10 @@ public class EntityImpl implements Entity, E, G {
 
 	public static final String DISPLAY = "ACTION_restart#Restart application";
 
-
-
 	private Service execute;
 	private Service buildAction;
 	
 	private Action action;
-	
 	
 	public EntityImpl() throws Exception
 	{
@@ -24,8 +21,6 @@ public class EntityImpl implements Entity, E, G {
 		
 		action = (Action) buildAction.t(new Object[]{DISPLAY,this});
 	}
-	
-	
 		
 	public Object g() throws Exception
 	{return action;}
