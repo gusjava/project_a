@@ -33,8 +33,8 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	public static final String DISPLAY_DELETE = "ELEMENT_entity_delete#Delete entity [DEL]";
 	public static final String DISPLAY_RENAME = "ELEMENT_entity_rename#Rename entity [F2]";
 	public static final String DISPLAY_DUPLICATE = "ELEMENT_entity_duplicate#Duplicate entity [F3]";
-	public static final String DISPLAY_PASTE = "ENTITY_paste#Paste entity [Ctrl-V]";
-	public static final String DISPLAY_COPY = "ENTITY_copy#Copy entity [Ctrl-C]";
+	public static final String DISPLAY_PASTE = "ELEMENT_entity_paste#Paste entity [Ctrl-V]";
+	public static final String DISPLAY_COPY = "ELEMENT_entity_copy#Copy entity [Ctrl-C]";
 
 	public static final Color BG_SELECTED = new Color(244, 244, 244);
 	public static final Color BG_UNSELECTED = Color.WHITE;

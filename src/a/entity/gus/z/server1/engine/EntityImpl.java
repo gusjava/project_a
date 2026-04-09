@@ -11,11 +11,15 @@ public class EntityImpl implements Entity, T {
 	
 	public static final String CMD = "cmd";
 	public static final String ARGS = "args";
+	public static final String WELCOME = "Hello! Nice to meet you! I am gus.server1, a Java application based on A project.";
 
 
 	private Service parser;
 	private Service buildJson;
 	private Service uniqueentity;
+	private Service execute1s;
+	private Service restart;
+	private Service exit;
 	
 	private File rootDir;
 
@@ -24,6 +28,10 @@ public class EntityImpl implements Entity, T {
 		parser = Outside.service(this,"gus.z.server1.parser");
 		buildJson = Outside.service(this,"gus.x.json.build1");
 		uniqueentity = Outside.service(this,"uniqueentity");
+		execute1s = Outside.service(this,"gus.x.execute.th.delay1s");
+		restart = Outside.service(this,"gus06.app.restart0");
+		exit = Outside.service(this,"gus06.app.execute.exit");
+		
 		rootDir = (File) Outside.resource(this,"rootdir");
 	}
 	
@@ -41,6 +49,10 @@ public class EntityImpl implements Entity, T {
 	
 	private Object generate(String cmd, List args) throws Exception
 	{
+		if(cmd.equals("hello")) return WELCOME;
+		if(cmd.equals("exit")) return exit();
+		if(cmd.equals("restart")) return restart();
+		
 		if(cmd.startsWith("@")) return generateFromEntity(cmd.substring(1), args);
 		if(cmd.startsWith("#")) return generateFromScript(cmd.substring(1), args);
 		
@@ -58,5 +70,17 @@ public class EntityImpl implements Entity, T {
 	private Object generateFromScript(String scriptName, List args) throws Exception
 	{
 		return new HashMap();
+	}
+	
+	private String exit() throws Exception
+	{
+		execute1s.p(exit);
+		return "Bye.";
+	}
+	
+	private String restart() throws Exception
+	{
+		execute1s.p(restart);
+		return "Restarting...";
 	}
 }

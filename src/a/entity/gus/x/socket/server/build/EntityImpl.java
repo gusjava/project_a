@@ -1,6 +1,7 @@
 package a.entity.gus.x.socket.server.build;
 
 import a.framework.*;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.util.Map;
 import java.util.HashMap;
@@ -23,11 +24,35 @@ public class EntityImpl extends S1 implements Entity, T, G {
 		String key = ""+port;
 		
 		resetKey(key);
-		
-		cache.put(key, new ServerSocket(port));
+
+		ServerSocket ss = bind(port);
+		cache.put(key, ss);
 		return serverAt(key);
 	}
 	
+	private static final int BIND_RETRIES  = 10;
+	private static final int BIND_DELAY_MS = 500;
+
+	private ServerSocket bind(int port) throws Exception
+	{
+		for(int i=0; i<BIND_RETRIES; i++)
+		{
+			try
+			{
+				ServerSocket ss = new ServerSocket();
+				ss.setReuseAddress(true);
+				ss.bind(new InetSocketAddress(port));
+				return ss;
+			}
+			catch(java.net.BindException e)
+			{
+				if(i+1==BIND_RETRIES) throw e;
+				Thread.sleep(BIND_DELAY_MS);
+			}
+		}
+		throw new Exception("bind failed after "+BIND_RETRIES+" attempts");
+	}
+
 	private int toInt(Object obj)
 	{return Integer.parseInt(""+obj);}
 	
