@@ -38,3 +38,4 @@ path.icondir=<path.rootdir>/icons
 path.jardir=<path.rootdir>/jars
 path.persistencedir=<path.rootdir>/persistence
 path.databasedir=<path.rootdir>/databases
+path.scriptdir=<path.rootdir>/script

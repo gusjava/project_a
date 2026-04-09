@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, G {
 	public static final String KEY_PID = "runtime_pid";
 	public static final String KEY_JAVA = "java_version";
 	
-	public static final String KEY_MANAGERID = "manager_id";
+	public static final String KEY_COREID = "core_id";
 	public static final String KEY_BUILDID = "build_id";
 	public static final String KEY_BUILDTIME = "build_time";
 	public static final String KEY_JARTIME = "jar_time";
@@ -39,7 +39,7 @@ public class EntityImpl implements Entity, G {
 	private Service getJarTime;
 	
 	private Map prop;
-	private String managerId;
+	private String coreId;
 	
 	private Map map;
 
@@ -55,7 +55,7 @@ public class EntityImpl implements Entity, G {
 		getJarTime = Outside.service(this,"gus06.app.outside.lastmodified.timestamp");
 		
 		prop = (Map) Outside.resource(this,"props");
-		managerId = (String) Outside.resource(this,"core.id");
+		coreId = (String) Outside.resource(this,"core.id");
 	}
 	
 	
@@ -90,7 +90,7 @@ public class EntityImpl implements Entity, G {
 		map.put(KEY_BUILDTIME,buildTime);
 		map.put(KEY_JARPATH,jarPath);
 		map.put(KEY_JARMD5,jarMd5);
-		map.put(KEY_MANAGERID,managerId);
+		map.put(KEY_COREID,coreId);
 		map.put(KEY_ARGSLINE,argsLine);
 		map.put(KEY_STARTTIME,startTime);
 		map.put(KEY_JARTIME,jarTime);

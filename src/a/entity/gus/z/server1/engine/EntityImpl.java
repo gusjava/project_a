@@ -12,6 +12,15 @@ public class EntityImpl implements Entity, T {
 	public static final String CMD = "cmd";
 	public static final String ARGS = "args";
 	public static final String WELCOME = "Hello! Nice to meet you! I am gus.server1, a Java application based on A project.";
+	public static final String HELP =
+		"Commands:\n" +
+		"  hello                      Welcome message\n" +
+		"  infos                      JVM and server info\n" +
+		"  restart                    Restart the server\n" +
+		"  exit                       Stop the server\n" +
+		"  help                       Show this help\n" +
+		"  @entityName [args...]      Invoke entity.t(arg) — entity must implement T\n" +
+		"  #scriptName [args...]      Not implemented";
 
 
 	private Service parser;
@@ -20,6 +29,7 @@ public class EntityImpl implements Entity, T {
 	private Service execute1s;
 	private Service restart;
 	private Service exit;
+	private Service infoMap;
 	
 	private File rootDir;
 
@@ -31,6 +41,7 @@ public class EntityImpl implements Entity, T {
 		execute1s = Outside.service(this,"gus.x.execute.th.delay1s");
 		restart = Outside.service(this,"gus06.app.restart0");
 		exit = Outside.service(this,"gus06.app.execute.exit");
+		infoMap = Outside.service(this,"gus06.app.infomap");
 		
 		rootDir = (File) Outside.resource(this,"rootdir");
 	}
@@ -50,8 +61,10 @@ public class EntityImpl implements Entity, T {
 	private Object generate(String cmd, List args) throws Exception
 	{
 		if(cmd.equals("hello")) return WELCOME;
+		if(cmd.equals("help")) return HELP;
 		if(cmd.equals("exit")) return exit();
 		if(cmd.equals("restart")) return restart();
+		if(cmd.equals("infos")) return infos();
 		
 		if(cmd.startsWith("@")) return generateFromEntity(cmd.substring(1), args);
 		if(cmd.startsWith("#")) return generateFromScript(cmd.substring(1), args);
@@ -82,5 +95,10 @@ public class EntityImpl implements Entity, T {
 	{
 		execute1s.p(restart);
 		return "Restarting...";
+	}
+	
+	private Object infos() throws Exception
+	{
+		return infoMap.g();
 	}
 }
