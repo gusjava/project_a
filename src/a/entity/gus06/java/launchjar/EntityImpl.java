@@ -1,7 +1,6 @@
 package a.entity.gus06.java.launchjar;
 
 import java.io.File;
-import java.io.PrintStream;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -22,16 +21,14 @@ public class EntityImpl implements Entity, P, T {
 	private Service pJar;
 	private Service pArgs;
 	private Service pOptions;
-	private PrintStream out;
 
-	
+
 	public EntityImpl() throws Exception
 	{
 		findExe = Outside.service(this,"gus06.java.dir.bin.javaexe");
 		pJar = Outside.service(this,"gus06.java.launchjar.p.jar");
 		pArgs = Outside.service(this,"gus06.java.launchjar.p.args");
 		pOptions = Outside.service(this,"gus06.java.launchjar.p.options");
-		out = (PrintStream) Outside.resource(this,"sysout");
 	}
 	
 	
@@ -80,7 +77,7 @@ public class EntityImpl implements Entity, P, T {
 			Object options = get(map,KEY_OPTIONS);
 			Object jar = get1(map,KEY_JAR);
 			Object args = get(map,KEY_ARGS);
-			
+
 			pOptions.p(new Object[]{list,options});
 			pJar.p(new Object[]{list,jar});
 			pArgs.p(new Object[]{list,args});
