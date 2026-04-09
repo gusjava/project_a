@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		jsonGenerator = Outside.service(this,"gus06.file.convert.json.generator");
+		jsonGenerator = Outside.service(this,"gus.x.json.build1");
 	}
 
 	

@@ -38,9 +38,9 @@ public class EntityImpl implements Entity, G, ActionListener {
 		exit.addActionListener(this);
 	}
 
-	public Object g() throws Exception {
-		if (cx == null || cx.isClosed())
-			init();
+	public Object g() throws Exception
+	{
+		if (cx == null || cx.isClosed()) init();
 		return cx;
 	}
 
@@ -53,11 +53,9 @@ public class EntityImpl implements Entity, G, ActionListener {
 		closeCx();
 	}
 
-	private void closeCx() {
-		try {
-			if (cx != null)
-				cx.close();
-		} catch (Exception e) {
-		}
+	private void closeCx()
+	{
+		try{if(cx != null) cx.close();}
+		catch(Exception e) {}
 	}
 }

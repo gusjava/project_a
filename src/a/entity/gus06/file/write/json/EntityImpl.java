@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		writeString = Outside.service(this,"gus06.file.write.string");
-		generateJson = Outside.service(this,"gus06.file.convert.json.generator");
+		generateJson = Outside.service(this,"gus.x.json.build1");
 	}
 	
 	public void p(Object obj) throws Exception

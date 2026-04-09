@@ -29,7 +29,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		buildClient = Outside.service(this,"gus06.sys.apachehttp.build.client");
-		generateJson = Outside.service(this,"gus06.file.convert.json.generator");
+		generateJson = Outside.service(this,"gus.x.json.build1");
 	}
 	
 	

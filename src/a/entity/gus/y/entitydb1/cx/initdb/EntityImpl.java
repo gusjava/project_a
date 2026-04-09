@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, P, G {
 	public String creationDate() {return "20231206";}
 
 	public static final String STRUCT_LAST_UPDATE = "2024-01-28 00:45:00"; // yyyy-MM-dd HH:mm:ss
-	public static final boolean ALWAYS_RESET = true;
+	public static final boolean ALWAYS_RESET = false;
 
 	private Service initEntity;
 	private Service initEntitySrc;

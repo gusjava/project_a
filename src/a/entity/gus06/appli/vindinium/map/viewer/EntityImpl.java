@@ -50,7 +50,7 @@ public class EntityImpl implements Entity, P, I {
 	{
 		readFile = Outside.service(this,"gus06.file.read.string");
 		parseJson = Outside.service(this,"gus06.file.convert.json.parser");
-		generateJson = Outside.service(this,"gus06.file.convert.json.generator");
+		generateJson = Outside.service(this,"gus.x.json.build1");
 		updateData = Outside.service(this,"gus06.appli.vindinium.map.viewer.updatedata");
 		
 		decodeBoard = Outside.service(this,"gus06.appli.vindinium.engine.board.decode");

@@ -25,8 +25,7 @@ public class EntityImpl implements Entity, P {
 
 	public void p(Object obj) throws Exception {
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
 		Connection cx = (Connection) o[0];
 		Object init = o[1];
@@ -96,13 +95,12 @@ public class EntityImpl implements Entity, P {
 	 * DATE
 	 */
 
-	private String formatDate(Date value) {
-		return new SimpleDateFormat(FORMAT_DATE).format(value);
-	}
+	private String formatDate(Date value)
+	{return new SimpleDateFormat(FORMAT_DATE).format(value);}
 
-	private Date parseDate(String s) throws ParseException {
-		if (s == null)
-			return null;
+	private Date parseDate(String s) throws ParseException
+	{
+		if (s == null) return null;
 		return new SimpleDateFormat(FORMAT_DATE).parse(s);
 	}
 	
@@ -110,7 +108,6 @@ public class EntityImpl implements Entity, P {
 	 * LOGGER
 	 */
 	
-	private void log(String msg) throws Exception {
-		logger.p(new Object[] {this, msg});
-	}
+	private void log(String msg) throws Exception
+	{logger.p(new Object[] {this, msg});}
 }

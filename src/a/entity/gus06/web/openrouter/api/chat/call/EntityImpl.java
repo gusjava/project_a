@@ -31,7 +31,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		toJson = Outside.service(this,"gus06.file.convert.json.generator");
+		toJson = Outside.service(this,"gus.x.json.build1");
 		jsonParser = Outside.service(this,"gus06.file.convert.json.parser");
 	}
 	

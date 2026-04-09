@@ -25,7 +25,7 @@ public class EntityImpl implements Entity, P {
 		
 		Map struct = (Map) extractStructure.t(text);
 		if(struct.containsKey("constructor")) return;
-		
+
 		int pos = indexFor(struct,"creationDate");
 		
 		String[] lines = text.split("\n");

@@ -12,8 +12,7 @@ public class EntityImpl implements Entity, T {
 	
 	public Object t(Object obj) throws Exception {
 		Object[] o = (Object[]) obj;
-		if (o.length != 3)
-			throw new Exception("Wrong data number: " + o.length);
+		if(o.length != 3) throw new Exception("Wrong data number: " + o.length);
 
 		File file = (File) o[0];
 		String user = (String) o[1];

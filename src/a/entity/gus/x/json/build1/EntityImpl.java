@@ -1,21 +1,17 @@
-package a.entity.gus06.file.convert.json.generator;
+package a.entity.gus.x.json.build1;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import a.framework.*;
 import java.util.Set;
+import a.framework.*;
 
 public class EntityImpl implements Entity, T {
 
 	public String creationDate() {return "20170923";}
 
-	
-
 	public Object t(Object obj) throws Exception
 	{return computeValue(obj);}
-	
-	
 	
 	private String computeValue(Object value) throws Exception
 	{
@@ -30,7 +26,6 @@ public class EntityImpl implements Entity, T {
 		
 		throw new Exception("Invalid data type: "+value.getClass().getName());
 	}
-	
 	
 	// JSON object
 	private String computeMap(Map map) throws Exception
@@ -52,7 +47,6 @@ public class EntityImpl implements Entity, T {
 		return b.toString();
 	}
 	
-	
 	// JSON array
 	private String computeList(List list) throws Exception
 	{
@@ -71,7 +65,6 @@ public class EntityImpl implements Entity, T {
 		return b.toString();
 	}
 	
-	
 	// JSON array
 	private String computeSet(Set set) throws Exception
 	{
@@ -88,7 +81,6 @@ public class EntityImpl implements Entity, T {
 		b.append(']');
 		return b.toString();
 	}
-	
 	
 	// JSON array
 	private String computeArray(Object[] array) throws Exception
@@ -107,7 +99,6 @@ public class EntityImpl implements Entity, T {
 		b.append(']');
 		return b.toString();
 	}
-	
 	
 	private String computeString(String s)
 	{

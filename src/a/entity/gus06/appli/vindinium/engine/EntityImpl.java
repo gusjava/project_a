@@ -36,7 +36,7 @@ public class EntityImpl implements Entity, T, V {
 	{
 		getInitial = Outside.service(this,"gus06.appli.vindinium.engine.getinitial");
 		enemyProvider = Outside.service(this,"gus06.appli.vindinium.engine.enemyprovider");
-		generateJson = Outside.service(this,"gus06.file.convert.json.generator");
+		generateJson = Outside.service(this,"gus.x.json.build1");
 		enemyPlay = Outside.service(this,"gus06.appli.vindinium.engine.enemyplay");
 		handleTurn = Outside.service(this,"gus06.appli.vindinium.engine.handleturn");
 		
