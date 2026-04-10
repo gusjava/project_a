@@ -1,160 +1,78 @@
 package a.entity.gus.z.server1.engine;
 
-import java.io.File;
-import java.util.Map;
 import java.util.List;
-import java.util.HashMap;
+import java.util.Map;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20260407";}
 
-	public static final String CMD = "cmd";
-	public static final String ARGS = "args";
-	public static final String WELCOME = "Hello! Nice to meet you! I am gus.server1, a Java application based on A project.";
-
 	private Service parser;
 	private Service buildJson;
-	private Service uniqueentity;
-	private Service execute1s;
-	private Service restart;
-	private Service exit;
-	private Service infoMap;
-	private Service threadsMap;
-	private Service memoryMap;
-	private Service buildDesc;
-
-	private File rootDir;
-	private Map main;
-	private String config;
-	private String coreId;
+	private Service cmdHello;
+	private Service cmdHelp;
+	private Service cmdExit;
+	private Service cmdRestart;
+	private Service cmdInfos;
+	private Service cmdThreads;
+	private Service cmdMemory;
+	private Service cmdErrors;
+	private Service cmdMain;
+	private Service cmdResource;
+	private Service cmdConfig;
+	private Service cmdCoreid;
+	private Service cmdK;
+	private Service cmdEntity;
+	private Service cmdScript;
 
 	public EntityImpl() throws Exception
 	{
-		parser = Outside.service(this,"gus.z.server1.parser");
-		buildJson = Outside.service(this,"gus.x.json.build1");
-		uniqueentity = Outside.service(this,"uniqueentity");
-		execute1s = Outside.service(this,"gus.x.execute.th.delay1s");
-		restart = Outside.service(this,"gus06.app.restart0");
-		exit = Outside.service(this,"gus06.app.execute.exit");
-		infoMap = Outside.service(this,"gus06.app.infomap");
-		threadsMap = Outside.service(this,"gus.x.threads.build.map");
-		memoryMap = Outside.service(this,"gus.x.jvm.memory.map");
-		buildDesc = Outside.service(this,"gus06.tostring.desc");
-
-		rootDir = (File) Outside.resource(this,"rootdir");
-		main = (Map) Outside.resource(this,"main");
-		config = (String) Outside.resource(this,"configid");
-		coreId = (String) Outside.resource(this,"core.id");
+		parser = Outside.service(this, "gus.z.server1.parser");
+		buildJson = Outside.service(this, "gus.x.json.build1");
+		cmdHello = Outside.service(this, "gus.z.server1.engine.cmd.hello");
+		cmdHelp = Outside.service(this, "gus.z.server1.engine.cmd.help");
+		cmdExit = Outside.service(this, "gus.z.server1.engine.cmd.exit");
+		cmdRestart = Outside.service(this, "gus.z.server1.engine.cmd.restart");
+		cmdInfos = Outside.service(this, "gus.z.server1.engine.cmd.infos");
+		cmdThreads = Outside.service(this, "gus.z.server1.engine.cmd.threads");
+		cmdMemory = Outside.service(this, "gus.z.server1.engine.cmd.memory");
+		cmdErrors = Outside.service(this, "gus.z.server1.engine.cmd.errors");
+		cmdMain = Outside.service(this, "gus.z.server1.engine.cmd.main");
+		cmdResource = Outside.service(this, "gus.z.server1.engine.cmd.resource");
+		cmdConfig = Outside.service(this, "gus.z.server1.engine.cmd.config");
+		cmdCoreid = Outside.service(this, "gus.z.server1.engine.cmd.coreid");
+		cmdK = Outside.service(this, "gus.z.server1.engine.cmd.k");
+		cmdEntity = Outside.service(this, "gus.z.server1.engine.cmd.entity");
+		cmdScript = Outside.service(this, "gus.z.server1.engine.cmd.script");
 	}
 
 	public Object t(Object obj) throws Exception
 	{
 		String input = (String) obj;
 		Map infos = (Map) parser.t(input);
-
-		String cmd = (String) infos.get(CMD);
-		List args = (List) infos.get(ARGS);
-
+		String cmd = (String) infos.get("cmd");
+		List args = (List) infos.get("args");
 		Object response = generate(cmd, args);
 		return buildJson.t(response);
 	}
 
 	private Object generate(String cmd, List args) throws Exception
 	{
-		if(cmd.equals("hello")) return WELCOME;
-		if(cmd.equals("help")) return help();
-		if(cmd.equals("exit")) return exit();
-		if(cmd.equals("restart")) return restart();
-		if(cmd.equals("infos")) return infos();
-		if(cmd.equals("threads")) return threads();
-		if(cmd.equals("memory")) return memory();
-		if(cmd.equals("errors")) return errors();
-		if(cmd.equals("main")) return main(args);
-		if(cmd.equals("resource")) return resource(args);
-		if(cmd.equals("config")) return config;
-		if(cmd.equals("coreId")) return coreId;
-
-		if(cmd.startsWith("@")) return generateFromEntity(cmd.substring(1), args);
-		if(cmd.startsWith("#")) return generateFromScript(cmd.substring(1), args);
-
+		if(cmd.equals("hello")) return cmdHello.t(args);
+		if(cmd.equals("help")) return cmdHelp.t(args);
+		if(cmd.equals("exit")) return cmdExit.t(args);
+		if(cmd.equals("restart")) return cmdRestart.t(args);
+		if(cmd.equals("infos")) return cmdInfos.t(args);
+		if(cmd.equals("threads")) return cmdThreads.t(args);
+		if(cmd.equals("memory")) return cmdMemory.t(args);
+		if(cmd.equals("errors")) return cmdErrors.t(args);
+		if(cmd.equals("main")) return cmdMain.t(args);
+		if(cmd.equals("resource")) return cmdResource.t(args);
+		if(cmd.equals("config")) return cmdConfig.t(args);
+		if(cmd.equals("coreId")) return cmdCoreid.t(args);
+		if(cmd.equals("k")) return cmdK.t(args);
+		if(cmd.startsWith("@")) return cmdEntity.t(new Object[]{cmd.substring(1), args});
+		if(cmd.startsWith("#")) return cmdScript.t(new Object[]{cmd.substring(1), args});
 		return null;
-	}
-
-	private Object help()
-	{
-		Map map = new HashMap();
-		map.put("hello",                 "Welcome message");
-		map.put("help",                  "Show this help");
-		map.put("infos",                 "JVM and server info");
-		map.put("threads",               "Snapshot of all JVM threads (id → info map)");
-		map.put("memory",                "JVM memory usage (heap and non-heap)");
-		map.put("errors",                "List of accumulated errors");
-		map.put("restart",               "Restart the server");
-		map.put("exit",                  "Stop the server");
-		map.put("main [key]",            "Describe main map or a specific entry");
-		map.put("resource <rule>",       "Call Outside.resource with the given rule");
-		map.put("config",                "Current config ID");
-		map.put("coreId",                "Current core ID");
-		map.put("@entityName [args...]", "Invoke entity.t(arg) — entity must implement T");
-		map.put("#scriptName [args...]", "Not implemented");
-		return map;
-	}
-
-	private Object generateFromEntity(String entityName, List args) throws Exception
-	{
-		T entity = (T) uniqueentity.t(entityName);
-		if(args.size()==1) return entity.t(args.get(0));
-		return entity.t(args);
-	}
-
-	private Object generateFromScript(String scriptName, List args) throws Exception
-	{
-		return new HashMap();
-	}
-
-	private String exit() throws Exception
-	{
-		execute1s.p(exit);
-		return "Bye.";
-	}
-
-	private String restart() throws Exception
-	{
-		execute1s.p(restart);
-		return "Restarting...";
-	}
-
-	private Object infos() throws Exception
-	{
-		return infoMap.g();
-	}
-
-	private Object threads() throws Exception
-	{
-		return threadsMap.g();
-	}
-
-	private Object memory() throws Exception
-	{
-		return memoryMap.g();
-	}
-
-	private Object errors() throws Exception
-	{
-		return Outside.resource(this,"errlist");
-	}
-
-	private Object resource(List args) throws Exception
-	{
-		String rule = String.join(" ", args);
-		return buildDesc.t(Outside.resource(this, rule));
-	}
-
-	private Object main(List args) throws Exception
-	{
-		if(args.isEmpty()) return buildDesc.t(main);
-		String key = (String) args.get(0);
-		return buildDesc.t(main.get(key));
 	}
 }

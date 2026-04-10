@@ -32,7 +32,7 @@ public class EntityImpl extends S1 implements Entity, E, V {
 		buildSession = Outside.service(this,"gus.x.socket.wrap2");
 		buildServer = Outside.service(this,"gus.x.socket.server.build");
 		wrapServer = Outside.service(this,"gus.x.socket.server.wrap1");
-		engine = Outside.service(this,"gus.z.server1.engine");
+		engine = Outside.service(this,"gus.z.server1.watchdog");
 
 		serverListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e)
