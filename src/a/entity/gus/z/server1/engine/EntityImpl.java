@@ -20,6 +20,8 @@ public class EntityImpl implements Entity, T {
 	private Service restart;
 	private Service exit;
 	private Service infoMap;
+	private Service threadsMap;
+	private Service memoryMap;
 	private Service buildDesc;
 
 	private File rootDir;
@@ -36,6 +38,8 @@ public class EntityImpl implements Entity, T {
 		restart = Outside.service(this,"gus06.app.restart0");
 		exit = Outside.service(this,"gus06.app.execute.exit");
 		infoMap = Outside.service(this,"gus06.app.infomap");
+		threadsMap = Outside.service(this,"gus.x.threads.build.map");
+		memoryMap = Outside.service(this,"gus.x.jvm.memory.map");
 		buildDesc = Outside.service(this,"gus06.tostring.desc");
 
 		rootDir = (File) Outside.resource(this,"rootdir");
@@ -63,6 +67,9 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("exit")) return exit();
 		if(cmd.equals("restart")) return restart();
 		if(cmd.equals("infos")) return infos();
+		if(cmd.equals("threads")) return threads();
+		if(cmd.equals("memory")) return memory();
+		if(cmd.equals("errors")) return errors();
 		if(cmd.equals("main")) return main(args);
 		if(cmd.equals("resource")) return resource(args);
 		if(cmd.equals("config")) return config;
@@ -80,6 +87,9 @@ public class EntityImpl implements Entity, T {
 		map.put("hello",                 "Welcome message");
 		map.put("help",                  "Show this help");
 		map.put("infos",                 "JVM and server info");
+		map.put("threads",               "Snapshot of all JVM threads (id → info map)");
+		map.put("memory",                "JVM memory usage (heap and non-heap)");
+		map.put("errors",                "List of accumulated errors");
 		map.put("restart",               "Restart the server");
 		map.put("exit",                  "Stop the server");
 		map.put("main [key]",            "Describe main map or a specific entry");
@@ -118,6 +128,21 @@ public class EntityImpl implements Entity, T {
 	private Object infos() throws Exception
 	{
 		return infoMap.g();
+	}
+
+	private Object threads() throws Exception
+	{
+		return threadsMap.g();
+	}
+
+	private Object memory() throws Exception
+	{
+		return memoryMap.g();
+	}
+
+	private Object errors() throws Exception
+	{
+		return Outside.resource(this,"errlist");
 	}
 
 	private Object resource(List args) throws Exception
