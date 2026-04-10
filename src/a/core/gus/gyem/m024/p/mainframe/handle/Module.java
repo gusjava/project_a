@@ -24,6 +24,7 @@ public class Module extends GyemSystem implements P {
 		String title = prop(prop, PROP_APP_TITLE, DEFAULTPROP_APP_TITLE);
 		String size = prop(prop, PROP_APP_SIZE, DEFAULTPROP_APP_SIZE);
 		String iconId = prop(prop, PROP_APP_ICON, null);
+		String minimized = prop(prop, PROP_APP_MINIMIZED, "false");
 		
 		frame.setTitle(title);
 		frame.setSize(dim(size));
@@ -33,6 +34,11 @@ public class Module extends GyemSystem implements P {
 		log(this, "Displaying main frame...");
 		frame.setVisible(true);
 		log(this, "Main frame displayed");
+		
+		if(minimized.equals("true")) {
+			log(this, "Minimizing main frame");
+			frame.setState(JFrame.ICONIFIED);
+		}
 	}
 	
 	

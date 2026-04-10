@@ -32,6 +32,7 @@ public class GyemConst {
 	public static final String PROP_APP_SIZE		= "app.size";
 	public static final String PROP_APP_ICON		= "app.icon";
 	public static final String PROP_APP_MAINGUI		= "app.maingui";
+	public static final String PROP_APP_MINIMIZED 	= "app.minimized";
 	public static final String PROP_APP_MAINGUI_DISABLED = "app.maingui.disabled";
 	public static final String PROP_BEFORE			= "before";
 	public static final String PROP_AFTER			= "after";
