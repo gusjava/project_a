@@ -19,6 +19,8 @@ public class EntityImpl implements Entity, T {
 		"  restart                    Restart the server\n" +
 		"  exit                       Stop the server\n" +
 		"  help                       Show this help\n" +
+		"  main [key]                 Describe main map or a specific entry\n" +
+		"  resource <rule>            Call Outside.resource with the given rule\n" +
 		"  @entityName [args...]      Invoke entity.t(arg) — entity must implement T\n" +
 		"  #scriptName [args...]      Not implemented";
 
@@ -30,8 +32,10 @@ public class EntityImpl implements Entity, T {
 	private Service restart;
 	private Service exit;
 	private Service infoMap;
+	private Service buildDesc;
 	
 	private File rootDir;
+	private Map main;
 
 	public EntityImpl() throws Exception
 	{
@@ -42,8 +46,10 @@ public class EntityImpl implements Entity, T {
 		restart = Outside.service(this,"gus06.app.restart0");
 		exit = Outside.service(this,"gus06.app.execute.exit");
 		infoMap = Outside.service(this,"gus06.app.infomap");
+		buildDesc = Outside.service(this,"gus06.tostring.desc");
 		
 		rootDir = (File) Outside.resource(this,"rootdir");
+		main = (Map) Outside.resource(this,"main");
 	}
 	
 	public Object t(Object obj) throws Exception
@@ -65,7 +71,9 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("exit")) return exit();
 		if(cmd.equals("restart")) return restart();
 		if(cmd.equals("infos")) return infos();
-		
+		if(cmd.equals("main")) return main(args);
+		if(cmd.equals("resource")) return resource(args);
+
 		if(cmd.startsWith("@")) return generateFromEntity(cmd.substring(1), args);
 		if(cmd.startsWith("#")) return generateFromScript(cmd.substring(1), args);
 		
@@ -100,5 +108,18 @@ public class EntityImpl implements Entity, T {
 	private Object infos() throws Exception
 	{
 		return infoMap.g();
+	}
+	
+	private Object resource(List args) throws Exception
+	{
+		String rule = String.join(" ", args);
+		return buildDesc.t(Outside.resource(this, rule));
+	}
+
+	private Object main(List args) throws Exception
+	{
+		if(args.isEmpty()) return buildDesc.t(main);
+		String key = (String) args.get(0);
+		return buildDesc.t(main.get(key));
 	}
 }
