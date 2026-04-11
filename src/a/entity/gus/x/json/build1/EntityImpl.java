@@ -1,5 +1,6 @@
 package a.entity.gus.x.json.build1;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,8 @@ public class EntityImpl implements Entity, T {
 		if(value instanceof String)	return computeString((String) value);
 		if(value instanceof Boolean)	return computeBoolean((Boolean) value);
 		if(value instanceof Number)	return computeNumber((Number) value);
-		
+		if(value instanceof Date)	return computeString(value.toString());
+
 		throw new Exception("Invalid data type: "+value.getClass().getName());
 	}
 	
