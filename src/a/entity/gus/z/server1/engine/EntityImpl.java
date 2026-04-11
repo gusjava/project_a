@@ -22,6 +22,7 @@ public class EntityImpl implements Entity, T {
 	private Service cmdConfig;
 	private Service cmdCoreid;
 	private Service cmdK;
+	private Service cmdKSql;
 	private Service cmdEntity;
 	private Service cmdScript;
 
@@ -42,6 +43,7 @@ public class EntityImpl implements Entity, T {
 		cmdConfig = Outside.service(this, "gus.z.server1.engine.cmd.config");
 		cmdCoreid = Outside.service(this, "gus.z.server1.engine.cmd.coreid");
 		cmdK = Outside.service(this, "gus.z.server1.engine.cmd.k");
+		cmdKSql = Outside.service(this, "gus.z.server1.engine.cmd.k_sql");
 		cmdEntity = Outside.service(this, "gus.z.server1.engine.cmd.entity");
 		cmdScript = Outside.service(this, "gus.z.server1.engine.cmd.script");
 	}
@@ -71,6 +73,7 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("config")) return cmdConfig.t(args);
 		if(cmd.equals("coreId")) return cmdCoreid.t(args);
 		if(cmd.equals("k")) return cmdK.t(args);
+		if(cmd.equals("k-sql")) return cmdKSql.t(args);
 		if(cmd.startsWith("@")) return cmdEntity.t(new Object[]{cmd.substring(1), args});
 		if(cmd.startsWith("#")) return cmdScript.t(new Object[]{cmd.substring(1), args});
 		return null;

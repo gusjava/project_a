@@ -9,7 +9,7 @@ import a.framework.Service;
 public class EntityImpl implements Entity, P, G {
 	public String creationDate() {return "20260410";}
 
-	public static final String STRUCT_LAST_UPDATE = "2026-04-10 00:00:00";
+	public static final String STRUCT_LAST_UPDATE = "2026-04-11 00:00:00";
 	public static final boolean ALWAYS_RESET = false;
 
 	private Service initKnowledge;
@@ -21,6 +21,7 @@ public class EntityImpl implements Entity, P, G {
 	private Service initTodoKnowledge;
 	private Service initTodoTag;
 	private Service initNote;
+	private Service initNoteTag;
 	private Service initDocX;
 	private Service initDocY;
 	private Service initDocZ;
@@ -39,6 +40,7 @@ public class EntityImpl implements Entity, P, G {
 		initTodoKnowledge = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.todo_knowledge");
 		initTodoTag = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.todo_tag");
 		initNote = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.note");
+		initNoteTag = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.note_tag");
 		initDocX = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_x");
 		initDocY = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_y");
 		initDocZ = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_z");
@@ -63,6 +65,7 @@ public class EntityImpl implements Entity, P, G {
 		initTodoKnowledge.p(obj);
 		initTodoTag.p(obj);
 		initNote.p(obj);
+		initNoteTag.p(obj);
 		initDocX.p(obj);
 		initDocY.p(obj);
 		initDocZ.p(obj);

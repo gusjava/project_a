@@ -23,6 +23,7 @@ public class EntityImpl implements Entity, P {
 		{ execute(cx, "ALTER TABLE doc_x_tag ADD FOREIGN KEY (id) REFERENCES doc_x(id)"); }
 		{ execute(cx, "ALTER TABLE doc_y_tag ADD FOREIGN KEY (id) REFERENCES doc_y(id)"); }
 		{ execute(cx, "ALTER TABLE doc_z_tag ADD FOREIGN KEY (id) REFERENCES doc_z(id)"); }
+		{ execute(cx, "ALTER TABLE note_tag ADD FOREIGN KEY (id_note) REFERENCES note(id)"); }
 	}
 
 	private void execute(Connection cx, String sql) throws SQLException {

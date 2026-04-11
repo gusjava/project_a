@@ -22,7 +22,8 @@ public class EntityImpl implements Entity, T {
 		map.put("resource <rule>",       "Call Outside.resource with the given rule");
 		map.put("config",                "Current config ID");
 		map.put("coreId",                "Current core ID");
-		map.put("k <sql>",               "Execute a SQL query on knowledgedb1 (select/insert/update/delete)");
+		map.put("k ...",                  "Knowledge DB commands — use 'k help' for details");
+		map.put("k_sql <sql>",           "Execute a raw SQL query on knowledgedb1 (select/insert/update/delete)");
 		map.put("@entityName [args...]", "Invoke entity.t(arg) — entity must implement T");
 		map.put("#scriptName [args...]", "Not implemented");
 		return map;
