@@ -7,6 +7,7 @@ app.name=gus.appli1
 app.version=1.0.0*
 app.author=gus
 app.startdate=2024.01.01
+app.minimized=true
 
 color.background.about=246,246,255
 color.foreground.about=153,102,255
@@ -41,3 +42,4 @@ path.icondir=<path.rootdir>/icons
 path.jardir=<path.rootdir>/jars
 path.persistencedir=<path.rootdir>/persistence
 path.databasedir=<path.rootdir>/databases
+path.scriptdir=<path.rootdir>/script
