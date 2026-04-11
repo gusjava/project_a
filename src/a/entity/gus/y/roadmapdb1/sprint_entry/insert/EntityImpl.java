@@ -1,0 +1,43 @@
+package a.entity.gus.y.roadmapdb1.sprint_entry.insert;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Map;
+import a.framework.*;
+
+public class EntityImpl implements Entity, T {
+	public String creationDate() {return "20260411";}
+
+	public static final String TABLE_NAME = "sprint_entry";
+	public static final String COL_ID_SPRINT = "id_sprint";
+	public static final String COL_DATE = "date";
+	public static final String COL_ID_TASK = "id_task";
+	public static final String COL_DESCRIPTION = "description";
+
+	public Object t(Object obj) throws Exception {
+		Object[] o = (Object[]) obj;
+		if (o.length != 2)
+			throw new Exception("Wrong data number: " + o.length);
+
+		Connection cx = (Connection) o[0];
+		Map data = (Map) o[1];
+
+		String sql = "INSERT INTO " + TABLE_NAME + " ("
+				+ COL_ID_SPRINT + ", " + COL_DATE + ", " + COL_ID_TASK + ", " + COL_DESCRIPTION
+				+ ") VALUES (?,?,?,?)";
+
+		PreparedStatement st = cx.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+		st.setObject(1, data.get(COL_ID_SPRINT));
+		st.setObject(2, data.get(COL_DATE));
+		st.setObject(3, data.get(COL_ID_TASK));
+		st.setObject(4, data.get(COL_DESCRIPTION));
+		st.executeUpdate();
+
+		ResultSet rs = st.getGeneratedKeys();
+		Long id = null;
+		if (rs.next()) id = rs.getLong(1);
+		st.close();
+		return id;
+	}
+}
