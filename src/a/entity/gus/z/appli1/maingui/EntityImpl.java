@@ -24,11 +24,13 @@ public class EntityImpl implements Entity, I {
 	private Service gui5;
 	private Service gui6;
 	private Service gui7;
+	private Service gui8;
 	
 	private JPanel panel;
 	
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		tabPersist = Outside.service(this,"gus.y.persist1.swing.tabbedpane.tab");
 		tabHolder = Outside.service(this,"*gus.y.swing1.tabbedpane.holder1");
 		bottomBar = Outside.service(this,"*gus.z.appli1.bottombar");
@@ -40,6 +42,7 @@ public class EntityImpl implements Entity, I {
 		gui5 = Outside.service(this,"*gus.z.appli1.gui5.settings");
 		gui6 = Outside.service(this,"*gus.z.appli1.gui6.monitor");
 		gui7 = Outside.service(this,"*gus.z.appli1.gui7.jarcontent");
+		gui8 = Outside.service(this,"*gus.z.appli1.gui8.artificialintelligence");
 		
 		tabHolder.v("UTIL_doc#Documentation", gui1);
 		tabHolder.v("FILE_java#Workspace", gui2);
@@ -48,6 +51,7 @@ public class EntityImpl implements Entity, I {
 		tabHolder.v("GUI_settings#Settings", gui5);
 		tabHolder.v("GUI_monitor#Monitoring", gui6);
 		tabHolder.v("FILE_jar_search#JAR content", gui7);
+		tabHolder.v("GUI_ai#Articial Intelligence", gui8);
 		
 		panel = new JPanel(new BorderLayout());
 		panel.add((JComponent) tabHolder.i(), BorderLayout.CENTER);
@@ -56,7 +60,6 @@ public class EntityImpl implements Entity, I {
 		tabPersist.v(getClass().getName()+"_tab",tabHolder.i());
 	}
 	
-	public Object i() throws Exception {
-		return panel;
-	}
+	public Object i() throws Exception
+	{return panel;}
 }
