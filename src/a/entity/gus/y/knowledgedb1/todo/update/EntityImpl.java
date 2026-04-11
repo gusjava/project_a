@@ -11,6 +11,7 @@ public class EntityImpl implements Entity, P {
 
 	public static final String TABLE_NAME = "todo";
 	public static final String COL_ID = "id";
+	public static final String COL_CODE = "code";
 	public static final String COL_TITLE = "title";
 	public static final String COL_DESCRIPTION = "description";
 
@@ -23,15 +24,17 @@ public class EntityImpl implements Entity, P {
 		Map data = (Map) o[1];
 
 		Object id = data.get(COL_ID);
+		Object code = data.get(COL_CODE);
 		Object title = data.get(COL_TITLE);
 		Object description = data.get(COL_DESCRIPTION);
 
 		String sql = "UPDATE " + TABLE_NAME + " SET "
+				+ COL_CODE + "=?, "
 				+ COL_TITLE + "=?, "
 				+ COL_DESCRIPTION + "=? "
 				+ "WHERE " + COL_ID + "=?";
 
-		executeUpdate(cx, sql, title, description, id);
+		executeUpdate(cx, sql, code, title, description, id);
 	}
 
 	private void executeUpdate(Connection cx, String sql, Object... params) throws SQLException {

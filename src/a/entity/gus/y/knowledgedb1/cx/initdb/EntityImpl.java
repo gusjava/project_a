@@ -20,8 +20,6 @@ public class EntityImpl implements Entity, P, G {
 	private Service initTodoLink;
 	private Service initTodoKnowledge;
 	private Service initTodoTag;
-	private Service initNote;
-	private Service initNoteTag;
 	private Service initDocX;
 	private Service initDocY;
 	private Service initDocZ;
@@ -39,8 +37,6 @@ public class EntityImpl implements Entity, P, G {
 		initTodoLink = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.todo_link");
 		initTodoKnowledge = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.todo_knowledge");
 		initTodoTag = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.todo_tag");
-		initNote = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.note");
-		initNoteTag = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.note_tag");
 		initDocX = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_x");
 		initDocY = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_y");
 		initDocZ = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_z");
@@ -64,8 +60,6 @@ public class EntityImpl implements Entity, P, G {
 		initTodoLink.p(obj);
 		initTodoKnowledge.p(obj);
 		initTodoTag.p(obj);
-		initNote.p(obj);
-		initNoteTag.p(obj);
 		initDocX.p(obj);
 		initDocY.p(obj);
 		initDocZ.p(obj);

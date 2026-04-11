@@ -11,11 +11,13 @@ public class EntityImpl implements Entity, P {
 	public static final String TABLE_NAME = "todo";
 	public static final String COL_ID = "id";
 	public static final String COL_DATE_CREATED = "date_created";
+	public static final String COL_CODE = "code";
 	public static final String COL_TITLE = "title";
 	public static final String COL_DESCRIPTION = "description";
 
 	public static final String DEF_ID = "BIGINT AUTO_INCREMENT PRIMARY KEY NOT NULL";
 	public static final String DEF_DATE_CREATED = "DATETIME NOT NULL";
+	public static final String DEF_CODE = "VARCHAR(10) NOT NULL UNIQUE";
 	public static final String DEF_TITLE = "VARCHAR(200) NOT NULL";
 	public static final String DEF_DESCRIPTION = "TEXT";
 
@@ -24,6 +26,7 @@ public class EntityImpl implements Entity, P {
 		String sql = "CREATE TABLE " + TABLE_NAME + " ("
 				+ COL_ID + " " + DEF_ID + ", "
 				+ COL_DATE_CREATED + " " + DEF_DATE_CREATED + ", "
+				+ COL_CODE + " " + DEF_CODE + ", "
 				+ COL_TITLE + " " + DEF_TITLE + ", "
 				+ COL_DESCRIPTION + " " + DEF_DESCRIPTION + ")";
 		execute(cx, sql);

@@ -16,6 +16,7 @@ public class EntityImpl implements Entity, T {
 	public static final String TABLE_NAME = "todo";
 	public static final String COL_ID = "id";
 	public static final String COL_DATE_CREATED = "date_created";
+	public static final String COL_CODE = "code";
 	public static final String COL_TITLE = "title";
 	public static final String COL_DESCRIPTION = "description";
 
@@ -31,6 +32,7 @@ public class EntityImpl implements Entity, T {
 			Map m = new HashMap();
 			transfer(m, rs, COL_ID);
 			transfer(m, rs, COL_DATE_CREATED);
+			transfer(m, rs, COL_CODE);
 			transfer(m, rs, COL_TITLE);
 			transfer(m, rs, COL_DESCRIPTION);
 			data.add(m);

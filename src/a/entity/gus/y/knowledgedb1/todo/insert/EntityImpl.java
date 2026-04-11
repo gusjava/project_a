@@ -13,6 +13,7 @@ public class EntityImpl implements Entity, T {
 
 	public static final String TABLE_NAME = "todo";
 	public static final String COL_DATE_CREATED = "date_created";
+	public static final String COL_CODE = "code";
 	public static final String COL_TITLE = "title";
 	public static final String COL_DESCRIPTION = "description";
 
@@ -24,16 +25,18 @@ public class EntityImpl implements Entity, T {
 		Connection cx = (Connection) o[0];
 		Map data = (Map) o[1];
 
+		Object code = data.get(COL_CODE);
 		Object title = data.get(COL_TITLE);
 		Object description = data.get(COL_DESCRIPTION);
 
 		String sql = "INSERT INTO " + TABLE_NAME + " ("
-				+ COL_DATE_CREATED + ", " + COL_TITLE + ", " + COL_DESCRIPTION + ") VALUES (?,?,?)";
+				+ COL_DATE_CREATED + ", " + COL_CODE + ", " + COL_TITLE + ", " + COL_DESCRIPTION + ") VALUES (?,?,?,?)";
 
 		PreparedStatement st = cx.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 		st.setObject(1, new Date());
-		st.setObject(2, title);
-		st.setObject(3, description);
+		st.setObject(2, code);
+		st.setObject(3, title);
+		st.setObject(4, description);
 		st.executeUpdate();
 
 		ResultSet rs = st.getGeneratedKeys();
