@@ -35,8 +35,8 @@ public class EntityImpl implements Entity, P, F {
 		File rootDir = (File) ((R) engine).r("rootDir");
 		String devId = (String) ((R) engine).r("devId");
 
-		if (devId != null && !entityName.startsWith(devId + "."))
-			return false;
+//		if (devId != null && !entityName.startsWith(devId + "."))
+//			return false;
 
 		File packageDir = (File) findPackageDir.t(new Object[] { rootDir, entityName });
 		if (!packageDir.isDirectory())
