@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T
 	{
 		engine = Outside.service(this, "gus.y.server1.engine");
 		buildWatchdog = Outside.service(this, "gus.x.thread.watchdog");
-		watchdog = (T) buildWatchdog.t(new Object[]{engine, 10L});
+		watchdog = (T) buildWatchdog.t(new Object[]{engine, 30L});
 	}
 
 	public Object t(Object obj) throws Exception

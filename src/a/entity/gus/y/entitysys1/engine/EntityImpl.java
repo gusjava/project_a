@@ -16,8 +16,9 @@ import a.framework.Outside;
 import a.framework.R;
 import a.framework.S1;
 import a.framework.Service;
+import a.framework.V;
 
-public class EntityImpl extends S1 implements Entity, G, R, E, F {
+public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	public String creationDate() {return "20240111";}
 
 	public static final String PERSIST_KEY = EntityImpl.class.getName() + "_last";
@@ -210,10 +211,30 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F {
 	}
 
 	/*
+	 * V
+	 */
+
+	public void v(String key, Object obj) throws Exception {
+		if (key.equals("entityAdded")) { handleEntityAdded(obj); return; }
+		throw new Exception("Unknown key: " + key);
+	}
+
+	private void handleEntityAdded(Object info) throws Exception {
+		new Thread(() -> {
+			try { load(); entityAdded(); }
+			catch (Exception e) { e.printStackTrace(); }
+		}).start();
+	}
+
+	/*
 	 * EVENTS
 	 */
 
 	private void loaded() {
 		send(this, "loaded()");
+	}
+
+	private void entityAdded() {
+		send(this, "entityAdded()");
 	}
 }

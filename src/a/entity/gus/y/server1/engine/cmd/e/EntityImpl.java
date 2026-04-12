@@ -38,9 +38,10 @@ public class EntityImpl implements Entity, T {
 
 	private Object create(List args) throws Exception
 	{
-		if(args.size()!=2) throw new Exception("Invalid arg number: "+args.size());
-		String rule = (String) args.get(1);
-		entityCreate.f(new Object[]{entityEngine, rule});
+		if(args.size()<2) throw new Exception("Usage: e create <entity> [features]");
+		StringBuilder rule = new StringBuilder((String) args.get(1));
+		for(int i=2; i<args.size(); i++) rule.append(" ").append(args.get(i));
+		entityCreate.f(new Object[]{entityEngine, rule.toString()});
 		return "done";
 	}
 }
