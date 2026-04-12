@@ -1,6 +1,10 @@
 package a.entity.gus.y.server1.engine.cmd.e;
 
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
@@ -12,6 +16,11 @@ public class EntityImpl implements Entity, T {
 	private Service entityRename;
 	private Service entityDuplicate;
 	private Service entityDelete;
+	private Service findDownLinks;
+	private Service findUplinks;
+	private Service findAllSt;
+	private Service findAllEn;
+	private Service findAllCo;
 
 	public EntityImpl() throws Exception
 	{
@@ -20,6 +29,11 @@ public class EntityImpl implements Entity, T {
 		entityRename = Outside.service(this, "gus.y.entitysys1.perform.entity.rename");
 		entityDuplicate = Outside.service(this, "gus.y.entitysys1.perform.entity.duplicate");
 		entityDelete = Outside.service(this, "gus.y.entitysys1.perform.entity.delete");
+		findDownLinks = Outside.service(this, "gus.y.entitydb1.entity_link.find2.sorted");
+		findUplinks = Outside.service(this, "gus.y.entitydb1.entity_link.find1.sorted");
+		findAllSt = Outside.service(this, "gus.y.entitydb1.entity.findall.asmap.st");
+		findAllEn = Outside.service(this, "gus.y.entitydb1.entity.findall.asmap.en");
+		findAllCo = Outside.service(this, "gus.y.entitydb1.entity.findall.asmap.co");
 	}
 
 	public Object t(Object obj) throws Exception
@@ -34,6 +48,11 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("rename")) return rename(args);
 		if(cmd.equals("duplicate")) return duplicate(args);
 		if(cmd.equals("delete")) return delete(args);
+		if(cmd.equals("downlinks")) return downlinks(args);
+		if(cmd.equals("uplinks")) return uplinks(args);
+		if(cmd.equals("st")) return findFiltered(args, findAllSt, "st");
+		if(cmd.equals("en")) return findFiltered(args, findAllEn, "en");
+		if(cmd.equals("co")) return findFiltered(args, findAllCo, "co");
 
 		throw new Exception("e: commande inconnue: " + cmd);
 	}
@@ -45,6 +64,11 @@ public class EntityImpl implements Entity, T {
 		"e rename <name0> <name1> — renomme une entité (avec refactor des liens)\n" +
 		"e duplicate <name0> <name1> — duplique une entité\n" +
 		"e delete <name> — supprime une entité\n" +
+		"e downlinks <entity> — liste les entités qui dépendent de <entity>\n" +
+		"e uplinks <entity> — liste les dépendances de <entity>\n" +
+		"e st <prefix> — liste les entités dont le nom commence par <prefix>\n" +
+		"e en <suffix> — liste les entités dont le nom se termine par <suffix>\n" +
+		"e co <fragment> — liste les entités dont le nom contient <fragment>\n" +
 		"e help — cette aide";
 	}
 
@@ -81,5 +105,32 @@ public class EntityImpl implements Entity, T {
 		String name = (String) args.get(1);
 		boolean done = (Boolean) entityDelete.f(new Object[]{entityEngine, name});
 		return done ? "done" : "delete failed (entity not found or outside devId scope)";
+	}
+
+	private Object downlinks(List args) throws Exception
+	{
+		if(args.size()<2) throw new Exception("Usage: e downlinks <entity>");
+		String name = (String) args.get(1);
+		Connection cx = (Connection) entityEngine.r("cx");
+		return (List) findDownLinks.t(new Object[]{cx, name});
+	}
+
+	private Object uplinks(List args) throws Exception
+	{
+		if(args.size()<2) throw new Exception("Usage: e uplinks <entity>");
+		String name = (String) args.get(1);
+		Connection cx = (Connection) entityEngine.r("cx");
+		return (List) findUplinks.t(new Object[]{cx, name});
+	}
+
+	private Object findFiltered(List args, Service service, String cmd) throws Exception
+	{
+		if(args.size()<2) throw new Exception("Usage: e " + cmd + " <filtre>");
+		String filter = (String) args.get(1);
+		Connection cx = (Connection) entityEngine.r("cx");
+		Map result = (Map) service.t(new Object[]{cx, filter});
+		List names = new ArrayList(result.keySet());
+		Collections.sort(names);
+		return names;
 	}
 }
