@@ -125,7 +125,7 @@ public class EntityImpl extends S1 implements Entity, I, V, G {
 		entityCreate = Outside.service(this,"gus06.y.entitysys1.perform.entity.create.ask");
 		entityRename = Outside.service(this,"gus06.y.entitysys1.perform.entity.rename.ask");
 		entityDuplicate = Outside.service(this,"gus06.y.entitysys1.perform.entity.duplicate.ask");
-		performPaste = Outside.service(this,"gus06.y.entitysys1.perform.paste");
+		performPaste = Outside.service(this,"gus.y.entitysys1.perform.paste");
 		
 		iconEntity = (Icon) Outside.resource(this, "icon#ENTITY");
 		iconEntityLock = (Icon) Outside.resource(this, "icon#ENTITY_lock");

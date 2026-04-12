@@ -7,14 +7,13 @@ public class EntityImpl implements Entity, F, G {
 	
 	public static final String REGEX = "[a-z][a-z0-9]{2,9}(\\.[a-z][a-z0-9_]*)+";
 
-	public boolean f(Object obj) throws Exception {
+	public boolean f(Object obj) throws Exception
+	{
 		String name = (String) obj;
-		if (name == null)
-			return false;
+		if (name == null) return false;
 		return name.matches(REGEX);
 	}
 
-	public Object g() throws Exception {
-		return REGEX;
-	}
+	public Object g() throws Exception
+	{return REGEX;}
 }

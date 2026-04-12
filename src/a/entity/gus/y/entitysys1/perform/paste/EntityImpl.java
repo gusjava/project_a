@@ -1,4 +1,4 @@
-package a.entity.gus06.y.entitysys1.perform.paste;
+package a.entity.gus.y.entitysys1.perform.paste;
 
 import a.framework.*;
 import java.util.List;
@@ -34,7 +34,7 @@ public class EntityImpl implements Entity, P, F {
 		String s = (String) clipboard.g();
 		if(s==null || s.equals("")) return false;
 		
-		if(s.contains("package gus06.entity."))
+		if(s.contains("package a.entity."))
 			return pasteSrcCode(engine, s);
 		return pasteLock(engine, s);
 	}

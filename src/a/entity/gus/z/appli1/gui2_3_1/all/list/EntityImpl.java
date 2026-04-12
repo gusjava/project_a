@@ -134,7 +134,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		listToString = Outside.service(this,"gus.x.list.join.n.string");
 		listToStringHr = Outside.service(this,"gus06.x.list.string.join.hr");
 		stringToList = Outside.service(this,"gus.x.string.split.n.list");
-		performPaste = Outside.service(this,"gus06.y.entitysys1.perform.paste");
+		performPaste = Outside.service(this,"gus.y.entitysys1.perform.paste");
 		
 		// resources
 		iconEntity = (Icon) Outside.resource(this, "icon#ELEMENT_entity");
