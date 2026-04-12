@@ -42,9 +42,10 @@ public class EntityImpl implements Entity, P, F {
 		if (rule == null || rule.trim().equals(""))
 			return false;
 
-		boolean done = perform.f(new Object[] { engine1, rule });
-		if (!done) {
-			JOptionPane.showMessageDialog(window, MESSAGE_ERR, TITLE, JOptionPane.PLAIN_MESSAGE);
+		try {
+			perform.f(new Object[] { engine1, rule });
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(window, e.getMessage(), TITLE, JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 		return true;

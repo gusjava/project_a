@@ -39,10 +39,10 @@ public class EntityImpl implements Entity, P, F {
 			entityName = devId + "." + entityName;
 
 		if (!validate.f(entityName))
-			return false;
-		boolean done = generate.f(new Object[] { rootDir, entityName, features });
+			throw new Exception("Invalid entity name: " + entityName + " (expected: " + validate.g() + ")");
+		boolean done = (Boolean) generate.f(new Object[] { rootDir, entityName, features });
 		if (!done)
-			return false;
+			throw new Exception("Entity already exists: " + entityName);
 
 		log("Entity added: "+entityName);
 		((V) engine).v("entityAdded", entityName);
