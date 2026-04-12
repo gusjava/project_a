@@ -1,4 +1,4 @@
-package a.entity.gus06.y.entitysys1.perform.entity.importsrc;
+package a.entity.gus.y.entitysys1.perform.entity.importsrc;
 
 import java.io.File;
 import java.io.PrintStream;
@@ -36,12 +36,12 @@ public class EntityImpl implements Entity, F, P {
 		
 		src = src.trim().replace("\r\n","\n").replace("\r","\n");
 		
-		File dir = (File) ((R) engine).r("srcDir");
+		File dir = (File) ((R) engine).r("rootDir");
 		String devId = (String) ((R) engine).r("devId");
 
 		String name = (String) extractName.t(src);
 		if (!validate.f(name)) return false;
-		if (devId != null && !name.startsWith(devId + ".")) return false;
+//		if (devId != null && !name.startsWith(devId + ".")) return false;
 
 		src = (String) updateCreationDate.t(src);
 		

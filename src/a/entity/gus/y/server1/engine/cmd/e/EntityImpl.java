@@ -10,7 +10,6 @@ import a.framework.*;
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20260412";}
 
-
 	private Service entityEngine;
 	private Service entityCreate;
 	private Service entityRename;
@@ -31,6 +30,7 @@ public class EntityImpl implements Entity, T {
 	private Service findCompileErrorsAll;
 	private Service findSrc;
 	private Service findMainFile;
+	private Service importFromSrc;
 
 	public EntityImpl() throws Exception
 	{
@@ -54,6 +54,7 @@ public class EntityImpl implements Entity, T {
 		findCompileErrorsAll = Outside.service(this, "gus.y.entitydb1.entity_compile_err.findall");
 		findSrc = Outside.service(this, "gus.y.entitysys1.find.src");
 		findMainFile = Outside.service(this, "gus.y.entitysys1.find.mainfile");
+		importFromSrc = Outside.service(this, "gus.y.entitysys1.perform.entity.importsrc");
 	}
 
 	public Object t(Object obj) throws Exception
@@ -71,6 +72,7 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("delete")) return delete(args);
 		if(cmd.equals("downlinks")) return downlinks(args);
 		if(cmd.equals("uplinks")) return uplinks(args);
+		if(cmd.equals("import")) return import_(args);
 		if(cmd.equals("findall_st")) return findFiltered(args, findAllSt, "findall_st");
 		if(cmd.equals("findall_en")) return findFiltered(args, findAllEn, "findall_en");
 		if(cmd.equals("findall_co")) return findFiltered(args, findAllCo, "findall_co");
@@ -96,6 +98,7 @@ public class EntityImpl implements Entity, T {
 		"e delete <name> — supprime une entité\n" +
 		"e downlinks <entity> — liste les entités qui dépendent de <entity>\n" +
 		"e uplinks <entity> — liste les dépendances de <entity>\n" +
+		"e import <src> — crée une entité correspondant au code source <src>\n" +
 		"e findall_st <prefix> — liste les entités dont le nom commence par <prefix>\n" +
 		"e findall_en <suffix> — liste les entités dont le nom se termine par <suffix>\n" +
 		"e findall_co <fragment> — liste les entités dont le nom contient <fragment>\n" +
@@ -108,7 +111,8 @@ public class EntityImpl implements Entity, T {
 		"e help — cette aide\n" +
 		"e errors [entity] — erreurs de compilation (toutes, ou filtrées par entité)\n" +
 		"e src <entity> — affiche le code source de l'entité\n" +
-		"e path <entity> — retourne le filepath de EntityImpl.java";
+		"e path <entity> — retourne le filepath de EntityImpl.java\n" +
+		"(les actions import, create, rename, duplicate, delete sont asynchrones — patienter un instant avant de vérifier)";
 	}
 	
 	private Object reload() throws Exception
@@ -116,14 +120,19 @@ public class EntityImpl implements Entity, T {
 		entityEngine.e();
 		return "reloading...";
 	}
+	
+	private Object import_(List args) throws Exception
+	{
+		if(args.size()<2) throw new Exception("Usage: e import <src>");
+		boolean done = importFromSrc.f(new Object[]{entityEngine, formatSrc(joinArgs(args))});
+		return done ? "done" : "import failed";
+	}
 
 	private Object create(List args) throws Exception
 	{
 		if(args.size()<2) throw new Exception("Usage: e create <entity> [features]");
-		StringBuilder rule = new StringBuilder((String) args.get(1));
-		for(int i=2; i<args.size(); i++) rule.append(" ").append(args.get(i));
-		entityCreate.f(new Object[]{entityEngine, rule.toString()});
-		return "done";
+		boolean done = entityCreate.f(new Object[]{entityEngine, formatSrc(joinArgs(args))});
+		return done ? "done" : "create failed";
 	}
 
 	private Object rename(List args) throws Exception
@@ -171,8 +180,7 @@ public class EntityImpl implements Entity, T {
 	private Object errors(List args) throws Exception
 	{
 		Connection cx = (Connection) entityEngine.r("cx");
-		if(args.size() >= 2)
-			return (List) findCompileErrors.t(new Object[]{cx, (String) args.get(1)});
+		if(args.size() >= 2) return (List) findCompileErrors.t(new Object[]{cx, (String) args.get(1)});
 		return (Map) findCompileErrorsAll.t(cx);
 	}
 
@@ -192,6 +200,34 @@ public class EntityImpl implements Entity, T {
 		Object file = findMainFile.t(new Object[]{entityEngine, name});
 		if(file == null) throw new Exception("Entity not found: " + name);
 		return file.toString();
+	}
+
+	private String joinArgs(List args)
+	{
+		StringBuilder sb = new StringBuilder((String) args.get(1));
+		for(int i=2; i<args.size(); i++) sb.append(" ").append(args.get(i));
+		return sb.toString();
+	}
+	
+	private String formatSrc(String src)
+	{
+		StringBuilder sb = new StringBuilder();
+		int i = 0;
+		while(i < src.length()) {
+			char c = src.charAt(i);
+			if(c == '\\' && i+1 < src.length()) {
+				char next = src.charAt(i+1);
+				if(next == 'n') { sb.append('\n'); i+=2; }
+				else if(next == 't') { sb.append('\t'); i+=2; }
+				else if(next == 'r') { sb.append('\r'); i+=2; }
+				else if(next == '\\') { sb.append('\\'); i+=2; }
+				else { sb.append(c); i++; }
+			} else {
+				sb.append(c);
+				i++;
+			}
+		}
+		return sb.toString();
 	}
 
 	private Object findFiltered(List args, Service service, String cmd) throws Exception

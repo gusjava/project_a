@@ -13,12 +13,11 @@ public class EntityImpl implements Entity, T {
 		srcToPackage = Outside.service(this,"gus06.java.srccode.extract.package1");
 	}
 	
-	
 	public Object t(Object obj) throws Exception
 	{
 		String packageName = (String) srcToPackage.t(obj);
-		if(packageName.startsWith("gus06.entity."))
-			return packageName.substring(13);
+		if(packageName.startsWith("a.entity."))
+			return packageName.substring(9);
 		return null;
 	}
 }

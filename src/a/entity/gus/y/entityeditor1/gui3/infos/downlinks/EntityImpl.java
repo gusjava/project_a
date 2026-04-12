@@ -117,6 +117,7 @@ public class EntityImpl implements Entity, P, I, MouseListener, ActionListener {
 
 	private List links(String name) {
 		try {
+			if (cx == null || name == null) return new ArrayList();
 			return (List) findLinks.t(new Object[] { cx, name });
 		} catch (Exception e) {
 			Outside.err(this, "links(String)", e);

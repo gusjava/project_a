@@ -61,7 +61,7 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 
 	public EntityImpl() throws Exception {
 		read = Outside.service(this,"gus.x.file.string.read.n");
-		write = Outside.service(this,"gus.x.file.string.write.n");
+		write = Outside.service(this,"gus.x.file.string.write.utf8.n");
 		actionBuilder = Outside.service(this,"gus.y.swing1.action.builder1");
 		buildArea = Outside.service(this,"gus.y.swing1.textarea1.factory");
 		buildScroll = Outside.service(this,"gus.y.swing1.textarea.buildscrollpane.linenb");

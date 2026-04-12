@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, P, F {
 	{
 		clipboard = Outside.service(this,"gus06.x.clipboard.string");
 		stringToList = Outside.service(this,"gus06.x.string.split.n.list");
-		importSrc = Outside.service(this,"gus06.y.entitysys1.perform.entity.importsrc");
+		importSrc = Outside.service(this,"gus.y.entitysys1.perform.entity.importsrc");
 		cutSrc = Outside.service(this,"gus06.y.entitysys1.perform.paste.split");
 	}
 

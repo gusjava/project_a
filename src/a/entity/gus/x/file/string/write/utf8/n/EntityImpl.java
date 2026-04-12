@@ -1,11 +1,11 @@
-package a.entity.gus.x.file.string.write.n;
+package a.entity.gus.x.file.string.write.utf8.n;
 
 import a.framework.*;
 import java.io.File;
 import java.io.PrintStream;
 
 public class EntityImpl implements Entity, P {
-	public String creationDate() {return "20240716";}
+	public String creationDate() {return "20260412";}
 
 	public void p(Object obj) throws Exception
 	{
@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P {
 		File parent = file.getParentFile();
 		if (!parent.exists()) parent.mkdirs();
 
-		PrintStream p = new PrintStream(file);
+		PrintStream p = new PrintStream(file, "UTF-8");
 		p.print(text);
 		p.close();
 	}
