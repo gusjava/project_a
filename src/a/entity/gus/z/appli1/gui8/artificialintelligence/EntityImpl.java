@@ -10,16 +10,22 @@ public class EntityImpl implements Entity, I {
 	
 	private Service gui1;
 	private Service gui2;
-	
+	private Service gui3;
+	private Service gui4;
+
 	public EntityImpl() throws Exception {
 		tabPersist = Outside.service(this,"gus.y.persist1.swing.tabbedpane.tab");
 		tabHolder = Outside.service(this,"*gus.y.swing1.tabbedpane.holder1");
-		gui1 = Outside.service(this,"*gus.y.server1.maingui");
-		gui2 = Outside.service(this,"*gus.x.swing.panel.bg.red");
-		
-		tabHolder.v("GUI_server#Server", gui1);
-		tabHolder.v("GUI_consoleAI#Terminal", gui2);
-		
+		gui1 = Outside.service(this,"*gus.z.appli1.gui8.artificialintelligence.gui1.server");
+		gui2 = Outside.service(this,"*gus.z.appli1.gui8.artificialintelligence.gui2.terminal");
+		gui3 = Outside.service(this,"*gus.z.appli1.gui8.artificialintelligence.gui3.knowledge");
+		gui4 = Outside.service(this,"*gus.z.appli1.gui8.artificialintelligence.gui4.roadmap");
+
+		tabHolder.v("AI_server#Server", gui1);
+		tabHolder.v("AI_terminal#Terminal", gui2);
+		tabHolder.v("AI_knowledge#Knowledge", gui3);
+		tabHolder.v("AI_roadmap#Roadmap", gui4);
+
 		tabPersist.v(getClass().getName()+"_tab",tabHolder.i());
 	}
 	

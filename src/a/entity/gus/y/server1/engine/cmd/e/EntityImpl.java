@@ -21,6 +21,8 @@ public class EntityImpl implements Entity, T {
 	private Service findAllSt;
 	private Service findAllEn;
 	private Service findAllCo;
+	private Service findCompileErrors;
+	private Service findCompileErrorsAll;
 
 	public EntityImpl() throws Exception
 	{
@@ -34,6 +36,8 @@ public class EntityImpl implements Entity, T {
 		findAllSt = Outside.service(this, "gus.y.entitydb1.entity.findall.asmap.st");
 		findAllEn = Outside.service(this, "gus.y.entitydb1.entity.findall.asmap.en");
 		findAllCo = Outside.service(this, "gus.y.entitydb1.entity.findall.asmap.co");
+		findCompileErrors = Outside.service(this, "gus.y.entitydb1.entity_compile_err.find");
+		findCompileErrorsAll = Outside.service(this, "gus.y.entitydb1.entity_compile_err.findall");
 	}
 
 	public Object t(Object obj) throws Exception
@@ -44,6 +48,7 @@ public class EntityImpl implements Entity, T {
 		String cmd = ((String) args.get(0)).toLowerCase();
 
 		if(cmd.equals("help")) return help();
+		if(cmd.equals("reload")) return reload();
 		if(cmd.equals("create")) return create(args);
 		if(cmd.equals("rename")) return rename(args);
 		if(cmd.equals("duplicate")) return duplicate(args);
@@ -53,6 +58,7 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("st")) return findFiltered(args, findAllSt, "st");
 		if(cmd.equals("en")) return findFiltered(args, findAllEn, "en");
 		if(cmd.equals("co")) return findFiltered(args, findAllCo, "co");
+		if(cmd.equals("errors")) return errors(args);
 
 		throw new Exception("e: commande inconnue: " + cmd);
 	}
@@ -69,7 +75,14 @@ public class EntityImpl implements Entity, T {
 		"e st <prefix> — liste les entités dont le nom commence par <prefix>\n" +
 		"e en <suffix> — liste les entités dont le nom se termine par <suffix>\n" +
 		"e co <fragment> — liste les entités dont le nom contient <fragment>\n" +
-		"e help — cette aide";
+		"e help — cette aide\n" +
+		"e errors [entity] — erreurs de compilation (toutes, ou filtrées par entité)";
+	}
+	
+	private Object reload() throws Exception
+	{
+		entityEngine.e();
+		return "reloading...";
 	}
 
 	private Object create(List args) throws Exception
@@ -121,6 +134,14 @@ public class EntityImpl implements Entity, T {
 		String name = (String) args.get(1);
 		Connection cx = (Connection) entityEngine.r("cx");
 		return (List) findUplinks.t(new Object[]{cx, name});
+	}
+
+	private Object errors(List args) throws Exception
+	{
+		Connection cx = (Connection) entityEngine.r("cx");
+		if(args.size() >= 2)
+			return (List) findCompileErrors.t(new Object[]{cx, (String) args.get(1)});
+		return (Map) findCompileErrorsAll.t(cx);
 	}
 
 	private Object findFiltered(List args, Service service, String cmd) throws Exception
