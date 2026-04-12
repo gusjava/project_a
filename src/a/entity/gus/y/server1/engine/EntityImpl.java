@@ -23,6 +23,8 @@ public class EntityImpl implements Entity, T {
 	private Service cmdCoreid;
 	private Service cmdK;
 	private Service cmdKSql;
+	private Service cmdE;
+	private Service cmdESql;
 	private Service cmdR;
 	private Service cmdRSql;
 	private Service cmdEntity;
@@ -46,6 +48,8 @@ public class EntityImpl implements Entity, T {
 		cmdCoreid = Outside.service(this, "gus.y.server1.engine.cmd.coreid");
 		cmdK = Outside.service(this, "gus.y.server1.engine.cmd.k");
 		cmdKSql = Outside.service(this, "gus.y.server1.engine.cmd.k_sql");
+		cmdE = Outside.service(this, "gus.y.server1.engine.cmd.e");
+		cmdESql = Outside.service(this, "gus.y.server1.engine.cmd.e_sql");
 		cmdR = Outside.service(this, "gus.y.server1.engine.cmd.r");
 		cmdRSql = Outside.service(this, "gus.y.server1.engine.cmd.r_sql");
 		cmdEntity = Outside.service(this, "gus.y.server1.engine.cmd.entity");
@@ -78,6 +82,8 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("coreId")) return cmdCoreid.t(args);
 		if(cmd.equals("k")) return cmdK.t(args);
 		if(cmd.equals("k-sql")) return cmdKSql.t(args);
+		if(cmd.equals("e")) return cmdE.t(args);
+		if(cmd.equals("e-sql")) return cmdESql.t(args);
 		if(cmd.equals("r")) return cmdR.t(args);
 		if(cmd.equals("r-sql")) return cmdRSql.t(args);
 		if(cmd.startsWith("@")) return cmdEntity.t(new Object[]{cmd.substring(1), args});
