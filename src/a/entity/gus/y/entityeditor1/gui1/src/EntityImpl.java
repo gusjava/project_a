@@ -16,42 +16,43 @@ public class EntityImpl implements Entity, P, I, ActionListener {
 	
 	private Object data;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		panelSingle = Outside.service(this,"*gus.y.entityeditor1.gui1.src.single");
 		panelMany = Outside.service(this,"*gus.y.entityeditor1.gui1.src.many");
 	}
 
-	public void p(Object obj) throws Exception {
-		if (data != null)
-			((S) data).removeActionListener(this);
-		if (obj == null) {
-			reset();
-			return;
-		}
+	public void p(Object obj) throws Exception
+	{
+		if (data != null) ((S) data).removeActionListener(this);
+		if (obj == null){reset();return;}
 		data = obj;
 		refresh();
 		((S) data).addActionListener(this);
 	}
 
-	public Object i() throws Exception {
-		return shiftPanel.i();
-	}
+	public Object i() throws Exception
+	{return shiftPanel.i();}
 
-	private void reset() throws Exception {
+	private void reset() throws Exception
+	{
 		data = null;
 		panelSingle.p(null);
 		panelMany.p(null);
 		shiftPanel.p(null);
 	}
 	
-	private void refresh() throws Exception {
+	private void refresh() throws Exception
+	{
 		File[] javaFiles = (File[]) ((R) data).r("javaFiles");
-		if(javaFiles.length==1) {
+		if(javaFiles.length==1)
+		{
 			panelSingle.p(data);
 			shiftPanel.p(panelSingle);
 		}
-		else {
+		else
+		{
 			panelMany.p(data);
 			shiftPanel.p(panelMany);
 		}

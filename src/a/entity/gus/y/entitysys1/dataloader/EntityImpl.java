@@ -140,7 +140,7 @@ public class EntityImpl implements Entity, T {
 			}
 		}
 		
-		// 3 - compilation des entités
+		// 3 - compilation des entites
 
 		log("Compiling entities");
 		it = analyzed.iterator();
