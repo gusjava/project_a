@@ -21,6 +21,12 @@ public class EntityImpl implements Entity, T {
 	private Service findAllSt;
 	private Service findAllEn;
 	private Service findAllCo;
+	private Service namesSt;
+	private Service namesEn;
+	private Service namesCo;
+	private Service countSt;
+	private Service countEn;
+	private Service countCo;
 	private Service findCompileErrors;
 	private Service findCompileErrorsAll;
 	private Service findSrc;
@@ -38,6 +44,12 @@ public class EntityImpl implements Entity, T {
 		findAllSt = Outside.service(this, "gus.y.entitydb1.entity.findall.asmap.st");
 		findAllEn = Outside.service(this, "gus.y.entitydb1.entity.findall.asmap.en");
 		findAllCo = Outside.service(this, "gus.y.entitydb1.entity.findall.asmap.co");
+		namesSt = Outside.service(this, "gus.y.entitydb1.entity.findall.names.st");
+		namesEn = Outside.service(this, "gus.y.entitydb1.entity.findall.names.en");
+		namesCo = Outside.service(this, "gus.y.entitydb1.entity.findall.names.co");
+		countSt = Outside.service(this, "gus.y.entitydb1.entity.count.st");
+		countEn = Outside.service(this, "gus.y.entitydb1.entity.count.en");
+		countCo = Outside.service(this, "gus.y.entitydb1.entity.count.co");
 		findCompileErrors = Outside.service(this, "gus.y.entitydb1.entity_compile_err.find");
 		findCompileErrorsAll = Outside.service(this, "gus.y.entitydb1.entity_compile_err.findall");
 		findSrc = Outside.service(this, "gus.y.entitysys1.find.src");
@@ -59,9 +71,15 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("delete")) return delete(args);
 		if(cmd.equals("downlinks")) return downlinks(args);
 		if(cmd.equals("uplinks")) return uplinks(args);
-		if(cmd.equals("st")) return findFiltered(args, findAllSt, "st");
-		if(cmd.equals("en")) return findFiltered(args, findAllEn, "en");
-		if(cmd.equals("co")) return findFiltered(args, findAllCo, "co");
+		if(cmd.equals("findall_st")) return findFiltered(args, findAllSt, "findall_st");
+		if(cmd.equals("findall_en")) return findFiltered(args, findAllEn, "findall_en");
+		if(cmd.equals("findall_co")) return findFiltered(args, findAllCo, "findall_co");
+		if(cmd.equals("names_st")) return findFilteredNames(args, namesSt, "names_st");
+		if(cmd.equals("names_en")) return findFilteredNames(args, namesEn, "names_en");
+		if(cmd.equals("names_co")) return findFilteredNames(args, namesCo, "names_co");
+		if(cmd.equals("count_st")) return countFiltered(args, countSt, "count_st");
+		if(cmd.equals("count_en")) return countFiltered(args, countEn, "count_en");
+		if(cmd.equals("count_co")) return countFiltered(args, countCo, "count_co");
 		if(cmd.equals("errors")) return errors(args);
 		if(cmd.equals("src")) return src(args);
 		if(cmd.equals("path")) return path(args);
@@ -78,9 +96,15 @@ public class EntityImpl implements Entity, T {
 		"e delete <name> — supprime une entité\n" +
 		"e downlinks <entity> — liste les entités qui dépendent de <entity>\n" +
 		"e uplinks <entity> — liste les dépendances de <entity>\n" +
-		"e st <prefix> — liste les entités dont le nom commence par <prefix>\n" +
-		"e en <suffix> — liste les entités dont le nom se termine par <suffix>\n" +
-		"e co <fragment> — liste les entités dont le nom contient <fragment>\n" +
+		"e findall_st <prefix> — liste les entités dont le nom commence par <prefix>\n" +
+		"e findall_en <suffix> — liste les entités dont le nom se termine par <suffix>\n" +
+		"e findall_co <fragment> — liste les entités dont le nom contient <fragment>\n" +
+		"e names_st <prefix> — liste les noms d'entités commençant par <prefix>\n" +
+		"e names_en <suffix> — liste les noms d'entités se terminant par <suffix>\n" +
+		"e names_co <fragment> — liste les noms d'entités contenant <fragment>\n" +
+		"e count_st <prefix> — nombre d'entités dont le nom commence par <prefix>\n" +
+		"e count_en <suffix> — nombre d'entités dont le nom se termine par <suffix>\n" +
+		"e count_co <fragment> — nombre d'entités dont le nom contient <fragment>\n" +
 		"e help — cette aide\n" +
 		"e errors [entity] — erreurs de compilation (toutes, ou filtrées par entité)\n" +
 		"e src <entity> — affiche le code source de l'entité\n" +
@@ -179,5 +203,21 @@ public class EntityImpl implements Entity, T {
 		List names = new ArrayList(result.keySet());
 		Collections.sort(names);
 		return names;
+	}
+
+	private Object findFilteredNames(List args, Service service, String cmd) throws Exception
+	{
+		if(args.size()<2) throw new Exception("Usage: e " + cmd + " <filtre>");
+		String filter = (String) args.get(1);
+		Connection cx = (Connection) entityEngine.r("cx");
+		return (List) service.t(new Object[]{cx, filter});
+	}
+
+	private Object countFiltered(List args, Service service, String cmd) throws Exception
+	{
+		if(args.size()<2) throw new Exception("Usage: e " + cmd + " <filtre>");
+		String filter = (String) args.get(1);
+		Connection cx = (Connection) entityEngine.r("cx");
+		return service.t(new Object[]{cx, filter});
 	}
 }
