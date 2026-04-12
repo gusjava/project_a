@@ -12,7 +12,7 @@ The H feature is used for entities that model a mathematical function from ℝ t
 
 Entity Example :
 
-package gus06.entity.gus.math.function.h.sigmoid;
+package a.entity.gus.math.function.h.sigmoid;
 
 import a.framework.*;
 

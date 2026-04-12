@@ -44,7 +44,7 @@ public class EntityImpl implements Entity, T {
 		String entityName = get(map,KEY_ENTITYNAME);
 		String fileNumber = get(map,KEY_FILENUMBER);
 		
-		String relPath = ("gus06.entity."+entityName).replace(".",File.separator);
+		String relPath = ("a.entity."+entityName).replace(".",File.separator);
 		File packageDir = new File(entityDir,relPath);
 		
 		packageDir.mkdirs();

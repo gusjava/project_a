@@ -13,7 +13,7 @@ It can also be used to generate such objects.
 
 Entity Example :
 
-package gus06.entity.gus.swing.panel.hold.green;
+package a.entity.gus.swing.panel.hold.green;
 
 import java.awt.Color;
 import javax.swing.JComponent;

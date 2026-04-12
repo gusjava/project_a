@@ -13,7 +13,7 @@ Entities implementing E perform actions when invoked, but do not receive paramet
 
 Entity Example :
 
-package gus06.entity.gus.beep;
+package a.entity.gus.beep;
 
 import java.awt.Toolkit;
 import a.framework.*;

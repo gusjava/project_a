@@ -66,7 +66,7 @@ public class EntityImpl implements Entity, F, P {
 	{
 		String src = (String) read.t(f0);
 
-		src = src.replace("package gus06.entity." + name0 + ";", "package gus06.entity." + name1 + ";");
+		src = src.replace("package a.entity." + name0 + ";", "package a.entity." + name1 + ";");
 		src = (String) updateCreationDate.t(src);
 
 		PrintStream p = new PrintStream(f1);

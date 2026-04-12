@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{
 		String name = (String) obj;
-		String relPath = ("gus06.entity."+name).replace(".",File.separator);
+		String relPath = ("a.entity."+name).replace(".",File.separator);
 		return new File(rootDir,relPath);
 	}
 }

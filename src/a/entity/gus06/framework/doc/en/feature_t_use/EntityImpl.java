@@ -13,7 +13,7 @@ or any operation that transforms input into output without maintaining internal 
 
 Entity Example :
 
-package gus06.entity.gus.string.transform.character.keep.first;
+package a.entity.gus.string.transform.character.keep.first;
 
 import a.framework.*;
 

@@ -13,7 +13,7 @@ An entity implementing G can either construct a new instance when invoked, or re
 
 Entity Example :
 
-package gus06.entity.gus.system.prop.userhome;
+package a.entity.gus.system.prop.userhome;
 
 import a.framework.*;
 import java.io.File;

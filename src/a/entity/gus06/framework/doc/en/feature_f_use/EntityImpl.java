@@ -13,7 +13,7 @@ It receives an object as input and returns a boolean value, indicating whether t
 
 Entity Example :
 
-package gus06.entity.gus.filter.string.is.lower;
+package a.entity.gus.filter.string.is.lower;
 
 import a.framework.*;
 

@@ -57,7 +57,7 @@ public class EntityImpl implements Entity, P {
 		boolean isT = ff.contains("T");
 		boolean isX = ff.contains("X");
 		
-		p.println("package gus06.entity."+entityName+";");
+		p.println("package a.entity."+entityName+";");
 		p.println();
 		p.println("import a.framework.*;");
 		

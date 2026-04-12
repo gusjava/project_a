@@ -62,7 +62,7 @@ public class EntityImpl implements Entity, P {
 		
 		boolean isMain = content.contains("public String getCreationDate()");
 		
-		String package1 = "gus06.entity."+newEntityName;
+		String package1 = "a.entity."+newEntityName;
 		String cName1 = isMain?ENTITYIMPL:convertTypes(cName);
 		
 		File file1 = new File(outputDir,cName1+".java");

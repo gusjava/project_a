@@ -9,6 +9,6 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{
 		String name = (String) obj;
-		return "gus06.entity."+name+".EntityImpl";
+		return "a.entity."+name+".EntityImpl";
 	}
 }

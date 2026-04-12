@@ -12,7 +12,7 @@ The P feature is typically used by entities that need to receive an object eithe
 
 Entity Example :
 
-package gus06.entity.gus.clipboard.access.string;
+package a.entity.gus.clipboard.access.string;
 
 import a.framework.*;
 import java.awt.datatransfer.*;

@@ -6,7 +6,7 @@ public class EntityImpl implements Entity, T {
 
 	public String creationDate() {return "20200207";}
 
-	public static final String ST_PACKAGE = "package gus06.entity.";
+	public static final String ST_PACKAGE = "package a.entity.";
 	public static final String ST_IMPORT = "import ";
 	public static final String ST_CLASSHEADER = "public class EntityImpl ";
 	

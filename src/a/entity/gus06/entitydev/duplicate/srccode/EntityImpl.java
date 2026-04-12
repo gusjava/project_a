@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, P {
 	public String creationDate() {return "20140716";}
 
 
-	public static final String PACKAGE_START = "gus06.entity.";
+	public static final String PACKAGE_START = "a.entity.";
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 	private String today() {return sdf.format(new Date());}

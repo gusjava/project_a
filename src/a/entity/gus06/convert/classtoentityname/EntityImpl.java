@@ -11,9 +11,9 @@ public class EntityImpl implements Entity, T {
 	{
 		String name = toName(obj);
 		if(!name.endsWith(".EntityImpl")) return null;
-		if(!name.startsWith("gus06.entity.")) return null;
+		if(!name.startsWith("a.entity.")) return null;
 		
-		return name.substring(13,name.length()-11);
+		return name.substring(9,name.length()-11);
 	}
 	
 	

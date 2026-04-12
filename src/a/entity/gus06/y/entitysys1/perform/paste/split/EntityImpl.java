@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20251125";}
 	
-	public static final String DELIM = "package\\s+gus06\\.entity\\.";
-	public static final String START = "package gus06.entity.";
+	public static final String DELIM = "package\\s+a\\.entity\\.";
+	public static final String START = "package a.entity.";
 	
 	public Object t(Object obj) throws Exception
 	{

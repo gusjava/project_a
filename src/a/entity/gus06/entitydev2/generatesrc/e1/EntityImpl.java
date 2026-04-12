@@ -26,7 +26,7 @@ public class EntityImpl implements Entity, T {
 		String method = get(map,KEY_METHOD);
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("package gus06.entity."+entityName+";\n\n");
+		sb.append("package a.entity."+entityName+";\n\n");
 		sb.append("import a.framework.*;\n\n");
 		sb.append("public class EntityImpl implements Entity, E {\n\n");
 		sb.append((String) creationDate.g());
