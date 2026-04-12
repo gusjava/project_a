@@ -23,6 +23,8 @@ public class EntityImpl implements Entity, T {
 	private Service findAllCo;
 	private Service findCompileErrors;
 	private Service findCompileErrorsAll;
+	private Service findSrc;
+	private Service findMainFile;
 
 	public EntityImpl() throws Exception
 	{
@@ -38,6 +40,8 @@ public class EntityImpl implements Entity, T {
 		findAllCo = Outside.service(this, "gus.y.entitydb1.entity.findall.asmap.co");
 		findCompileErrors = Outside.service(this, "gus.y.entitydb1.entity_compile_err.find");
 		findCompileErrorsAll = Outside.service(this, "gus.y.entitydb1.entity_compile_err.findall");
+		findSrc = Outside.service(this, "gus.y.entitysys1.find.src");
+		findMainFile = Outside.service(this, "gus.y.entitysys1.find.mainfile");
 	}
 
 	public Object t(Object obj) throws Exception
@@ -59,6 +63,8 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("en")) return findFiltered(args, findAllEn, "en");
 		if(cmd.equals("co")) return findFiltered(args, findAllCo, "co");
 		if(cmd.equals("errors")) return errors(args);
+		if(cmd.equals("src")) return src(args);
+		if(cmd.equals("path")) return path(args);
 
 		throw new Exception("e: commande inconnue: " + cmd);
 	}
@@ -76,7 +82,9 @@ public class EntityImpl implements Entity, T {
 		"e en <suffix> — liste les entités dont le nom se termine par <suffix>\n" +
 		"e co <fragment> — liste les entités dont le nom contient <fragment>\n" +
 		"e help — cette aide\n" +
-		"e errors [entity] — erreurs de compilation (toutes, ou filtrées par entité)";
+		"e errors [entity] — erreurs de compilation (toutes, ou filtrées par entité)\n" +
+		"e src <entity> — affiche le code source de l'entité\n" +
+		"e path <entity> — retourne le filepath de EntityImpl.java";
 	}
 	
 	private Object reload() throws Exception
@@ -142,6 +150,24 @@ public class EntityImpl implements Entity, T {
 		if(args.size() >= 2)
 			return (List) findCompileErrors.t(new Object[]{cx, (String) args.get(1)});
 		return (Map) findCompileErrorsAll.t(cx);
+	}
+
+	private Object src(List args) throws Exception
+	{
+		if(args.size()<2) throw new Exception("Usage: e src <entity>");
+		String name = (String) args.get(1);
+		Object src = findSrc.t(new Object[]{entityEngine, name});
+		if(src == null) throw new Exception("Entity not found: " + name);
+		return src;
+	}
+
+	private Object path(List args) throws Exception
+	{
+		if(args.size()<2) throw new Exception("Usage: e path <entity>");
+		String name = (String) args.get(1);
+		Object file = findMainFile.t(new Object[]{entityEngine, name});
+		if(file == null) throw new Exception("Entity not found: " + name);
+		return file.toString();
 	}
 
 	private Object findFiltered(List args, Service service, String cmd) throws Exception
