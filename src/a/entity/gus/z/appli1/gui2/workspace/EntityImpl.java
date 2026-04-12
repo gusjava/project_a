@@ -34,11 +34,11 @@ public class EntityImpl implements Entity, I {
 		gui4 = Outside.service(this,"*gus.z.appli1.gui2_4.cores");
 		gui5 = Outside.service(this,"*gus.z.appli1.gui2_5.configs");
 		
-		tabHolder.v("STRUCT_appli#Applis", gui1);
-		tabHolder.v("STRUCT_rule#Rules", gui2);
 		tabHolder.v("STRUCT_entity#Entities", gui3);
 		tabHolder.v("STRUCT_core#Cores", gui4);
 		tabHolder.v("STRUCT_config#Configs", gui5);
+		tabHolder.v("STRUCT_rule#Rules", gui2);
+		tabHolder.v("STRUCT_appli#Applis", gui1);
 		
 		panel = new JPanel(new BorderLayout());
 		panel.add((JComponent) tabHolder.i(), BorderLayout.CENTER);

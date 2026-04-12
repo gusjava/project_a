@@ -40,11 +40,11 @@ public class EntityImpl implements Entity, I {
 		
 		tabHolder.v("GUI_welcome#Welcome", gui1);
 		tabHolder.v("STRUCT_a#Project a", gui2);
-		tabHolder.v("STRUCT_appli#Applis", gui3);
-		tabHolder.v("STRUCT_rule#Rules", gui4);
 		tabHolder.v("STRUCT_entity#Entities", gui5);
 		tabHolder.v("STRUCT_core#Cores", gui6);
 		tabHolder.v("STRUCT_config#Configs", gui7);
+		tabHolder.v("STRUCT_rule#Rules", gui4);
+		tabHolder.v("STRUCT_appli#Applis", gui3);
 		
 		panel = new JPanel(new BorderLayout());
 		panel.add((JComponent) tabHolder.i(), BorderLayout.CENTER);
