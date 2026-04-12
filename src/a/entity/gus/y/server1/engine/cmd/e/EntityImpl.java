@@ -41,7 +41,7 @@ public class EntityImpl implements Entity, T {
 	private Object help()
 	{
 		return
-		"e create <rule> — crée le code source d'une nouvelle entité\n" +
+		"e create <entity> [features] — crée le code source d'une nouvelle entité (features : BEFGHIPRSTV, ex: GT)\n" +
 		"e rename <name0> <name1> — renomme une entité (avec refactor des liens)\n" +
 		"e duplicate <name0> <name1> — duplique une entité\n" +
 		"e delete <name> — supprime une entité\n" +

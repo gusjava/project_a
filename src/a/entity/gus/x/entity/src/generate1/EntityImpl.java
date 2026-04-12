@@ -161,6 +161,7 @@ public class EntityImpl implements Entity, P, F {
 		}
 
 		if (isV) {
+			p.println("\t");
 			p.println("\tpublic void v(String key, Object obj) throws Exception {");
 			p.println("\t\t");
 			p.println("\t}");

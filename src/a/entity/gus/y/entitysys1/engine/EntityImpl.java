@@ -37,6 +37,7 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	private Long lastTime;
 	private Map dataMap = new HashMap();
 	private List nameList = new ArrayList();
+	private Object info;
 	
 	private Map compileErrMap = new HashMap();
 	private Map xyzErrMap = new HashMap();
@@ -78,10 +79,11 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 		if (key.equals("compileErrMap")) return compileErrMap;
 		if (key.equals("missingLinkMap")) return missingLinkMap;
 		if (key.equals("srcSaveMap")) return srcSaveMap;
+		if (key.equals("info")) return info;
 
-		if (key.equals("keys")) return new String[] { 
-			"rootDir", "binDir", "libDir", "cx", "devId",  "nameList", "lastTime",
-			"xyzErrMap", "compileErrMap",  "missingLinkMap", "srcSaveMap" };
+		if (key.equals("keys")) return new String[] {
+			"rootDir", "binDir", "libDir", "cx", "devId", "nameList", "lastTime",
+			"xyzErrMap", "compileErrMap", "missingLinkMap", "srcSaveMap", "info" };
 
 		throw new Exception("Unknown key: " + key);
 	}
@@ -215,13 +217,68 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	 */
 
 	public void v(String key, Object obj) throws Exception {
-		if (key.equals("entityAdded")) { handleEntityAdded(obj); return; }
+		if (key.equals("entityAdded"))     { handleEntityAdded(obj);     return; }
+		if (key.equals("entityRenamed"))   { handleEntityRenamed(obj);   return; }
+		if (key.equals("entityDuplicated")){ handleEntityDuplicated(obj); return; }
+		if (key.equals("entityDeleted"))   { handleEntityDeleted(obj);   return; }
+		if (key.equals("entityModified"))  { handleEntityModified(obj);  return; }
+		if (key.equals("srcSaved"))        { handleSrcSaved(obj);        return; }
+		if (key.equals("srcCleared"))      { handleSrcCleared(obj);      return; }
 		throw new Exception("Unknown key: " + key);
 	}
 
 	private void handleEntityAdded(Object info) throws Exception {
+		this.info = info;
 		new Thread(() -> {
 			try { load(); entityAdded(); }
+			catch (Exception e) { e.printStackTrace(); }
+		}).start();
+	}
+
+	private void handleEntityRenamed(Object info) throws Exception {
+		this.info = info;
+		new Thread(() -> {
+			try { load(); entityRenamed(); }
+			catch (Exception e) { e.printStackTrace(); }
+		}).start();
+	}
+
+	private void handleEntityDuplicated(Object info) throws Exception {
+		this.info = info;
+		new Thread(() -> {
+			try { load(); entityDuplicated(); }
+			catch (Exception e) { e.printStackTrace(); }
+		}).start();
+	}
+
+	private void handleEntityDeleted(Object info) throws Exception {
+		this.info = info;
+		new Thread(() -> {
+			try { load(); entityDeleted(); }
+			catch (Exception e) { e.printStackTrace(); }
+		}).start();
+	}
+
+	private void handleEntityModified(Object info) throws Exception {
+		this.info = info;
+		new Thread(() -> {
+			try { load(); entityModified(); }
+			catch (Exception e) { e.printStackTrace(); }
+		}).start();
+	}
+
+	private void handleSrcSaved(Object info) throws Exception {
+		this.info = info;
+		new Thread(() -> {
+			try { load(); srcSaved(); }
+			catch (Exception e) { e.printStackTrace(); }
+		}).start();
+	}
+
+	private void handleSrcCleared(Object info) throws Exception {
+		this.info = info;
+		new Thread(() -> {
+			try { load(); srcCleared(); }
 			catch (Exception e) { e.printStackTrace(); }
 		}).start();
 	}
@@ -236,5 +293,29 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 
 	private void entityAdded() {
 		send(this, "entityAdded()");
+	}
+
+	private void entityRenamed() {
+		send(this, "entityRenamed()");
+	}
+
+	private void entityDuplicated() {
+		send(this, "entityDuplicated()");
+	}
+
+	private void entityDeleted() {
+		send(this, "entityDeleted()");
+	}
+
+	private void entityModified() {
+		send(this, "entityModified()");
+	}
+
+	private void srcSaved() {
+		send(this, "srcSaved()");
+	}
+
+	private void srcCleared() {
+		send(this, "srcCleared()");
 	}
 }
