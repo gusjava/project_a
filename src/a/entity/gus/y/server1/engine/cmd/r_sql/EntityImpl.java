@@ -22,11 +22,20 @@ public class EntityImpl implements Entity, T {
 		sqlDelete = Outside.service(this, "gus.y.roadmapdb1.sql.delete");
 	}
 
+	private Object help()
+	{
+		return "r-sql <sql> — SQL brut sur roadmapdb1 (SHOW, SELECT, INSERT, UPDATE, DELETE)\n"
+			 + "r-sql help  — cette aide";
+	}
+
 	public Object t(Object obj) throws Exception
 	{
 		List args = (List) obj;
 		String sql = String.join(" ", args).trim();
 		String type = sql.toLowerCase();
+
+		if(type.equals("help")) return help();
+
 		Connection cx = (Connection) roadmapCx.g();
 		Object[] params = new Object[]{cx, sql};
 
@@ -36,6 +45,6 @@ public class EntityImpl implements Entity, T {
 		if(type.startsWith("update")) return sqlUpdate.t(params);
 		if(type.startsWith("delete")) return sqlDelete.t(params);
 
-		throw new Exception("Unsupported SQL type: " + sql);
+		throw new Exception("r-sql: type SQL non supporté: " + sql);
 	}
 }
