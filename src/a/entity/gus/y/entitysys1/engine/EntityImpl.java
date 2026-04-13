@@ -218,6 +218,7 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 
 	public void v(String key, Object obj) throws Exception {
 		if (key.equals("entityAdded"))     { handleEntityAdded(obj);     return; }
+		if (key.equals("entitiesAdded"))   { handleEntitiesAdded(obj);     return; }
 		if (key.equals("entityRenamed"))   { handleEntityRenamed(obj);   return; }
 		if (key.equals("entityDuplicated")){ handleEntityDuplicated(obj); return; }
 		if (key.equals("entityDeleted"))   { handleEntityDeleted(obj);   return; }
@@ -231,6 +232,14 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 		this.info = info;
 		new Thread(() -> {
 			try { load(); entityAdded(); }
+			catch (Exception e) { e.printStackTrace(); }
+		}).start();
+	}
+
+	private void handleEntitiesAdded(Object info) throws Exception {
+		this.info = info;
+		new Thread(() -> {
+			try { load(); entitiesAdded(); }
 			catch (Exception e) { e.printStackTrace(); }
 		}).start();
 	}
@@ -293,6 +302,10 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 
 	private void entityAdded() {
 		send(this, "entityAdded()");
+	}
+
+	private void entitiesAdded() {
+		send(this, "entitiesAdded()");
 	}
 
 	private void entityRenamed() {

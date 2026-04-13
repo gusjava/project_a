@@ -61,12 +61,12 @@ public class EntityImpl implements Entity, T {
 		String input = (String) obj;
 		Map infos = (Map) parser.t(input);
 		String cmd = (String) infos.get("cmd");
-		List args = (List) infos.get("args");
+		Object args = infos.get("args");
 		Object response = generate(cmd, args);
 		return buildJson.t(response);
 	}
 
-	private Object generate(String cmd, List args) throws Exception
+	private Object generate(String cmd, Object args) throws Exception
 	{
 		if(cmd.equals("hello")) return cmdHello.t(args);
 		if(cmd.equals("help")) return cmdHelp.t(args);

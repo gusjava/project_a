@@ -2,7 +2,6 @@ package a.entity.gus.y.server1.parser;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.List;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
@@ -25,7 +24,7 @@ public class EntityImpl implements Entity, T {
 		String[] n = s.split(" +",2);
 		String cmd = n[0];
 		String args = n.length>1 ? n[1] : null;
-		List argList = (List) parseArgs.t(args);
+		Object argList = parseArgs.t(args);
 		
 		Map map = new HashMap();
 		map.put(CMD, cmd);

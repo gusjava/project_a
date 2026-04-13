@@ -29,6 +29,7 @@ public class EntityImpl implements Entity, T {
 		map.put("e ...",                 "Entity DB commands — use 'e help' for details");
 		map.put("e-sql <sql>",           "Execute a raw SQL query on entitydb1 (select/insert/update/delete)");
 		map.put("@entityName [args...]", "Invoke entity.t(arg) — entity must implement T");
+		map.put("@entityName :<json>",   "Invoke entity.t(parsedJson) — pass a structured object (Map, List, String…)");
 		map.put("#scriptName [args...]", "Not implemented");
 		return map;
 	}

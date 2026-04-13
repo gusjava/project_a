@@ -7,16 +7,25 @@ import a.framework.*;
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20260409";}
 
+	private Service parseJson;
+
+	public EntityImpl() throws Exception
+	{
+		parseJson = Outside.service(this,"gus06.file.convert.json.parser");
+	}
+
 	public Object t(Object obj) throws Exception
 	{
+		if(obj == null) return null;
 		String s = (String) obj;
+		if(s.startsWith(":")) return parseJson.t(s.substring(1));
 		return parseArgs(s);
 	}
-	
+
 	private List parseArgs(String args)
 	{
 		List list = new ArrayList();
-		if(args==null) return list;
+		if(args == null) return list;
 
 		StringBuffer b = new StringBuffer();
 		int i = 0;

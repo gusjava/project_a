@@ -33,6 +33,24 @@ public class EntityImpl implements Entity, T {
 	private Service importFromSrc;
 	private Service findFeatures;
 	private Service findCreationDate;
+	private Service findAllCreationDateMap;
+	private Service findAllCreationDateSt;
+	private Service findAllCreationDateEn;
+	private Service findAllCreationDateCo;
+	private Service findAllFeaturesMap;
+	private Service findAllFeaturesSt;
+	private Service findAllFeaturesEn;
+	private Service findAllFeaturesCo;
+	private Service findAllDescList;
+	private Service findAllDescSt;
+	private Service findAllDescEn;
+	private Service findAllDescCo;
+	private Service uplinksTree;
+	private Service downlinksTree;
+	private Service uplinksTree2;
+	private Service downlinksTree2;
+	private Service entityCreateTree;
+	private Service jsonParser;
 
 	public EntityImpl() throws Exception
 	{
@@ -59,6 +77,24 @@ public class EntityImpl implements Entity, T {
 		importFromSrc = Outside.service(this, "gus.y.entitysys1.perform.entity.importsrc");
 		findFeatures = Outside.service(this, "gus.y.entitydb1.entity.find.features");
 		findCreationDate = Outside.service(this, "gus.y.entitydb1.entity.find.creationdate");
+		findAllCreationDateMap = Outside.service(this, "gus.y.entitydb1.entity.findall.creationdate.asmap");
+		findAllCreationDateSt = Outside.service(this, "gus.y.entitydb1.entity.findall.creationdate.asmap.st");
+		findAllCreationDateEn = Outside.service(this, "gus.y.entitydb1.entity.findall.creationdate.asmap.en");
+		findAllCreationDateCo = Outside.service(this, "gus.y.entitydb1.entity.findall.creationdate.asmap.co");
+		findAllFeaturesMap = Outside.service(this, "gus.y.entitydb1.entity.findall.features.asmap");
+		findAllFeaturesSt = Outside.service(this, "gus.y.entitydb1.entity.findall.features.asmap.st");
+		findAllFeaturesEn = Outside.service(this, "gus.y.entitydb1.entity.findall.features.asmap.en");
+		findAllFeaturesCo = Outside.service(this, "gus.y.entitydb1.entity.findall.features.asmap.co");
+		findAllDescList = Outside.service(this, "gus.y.entitydb1.entity.findall.desc");
+		findAllDescSt = Outside.service(this, "gus.y.entitydb1.entity.findall.desc.st");
+		findAllDescEn = Outside.service(this, "gus.y.entitydb1.entity.findall.desc.en");
+		findAllDescCo = Outside.service(this, "gus.y.entitydb1.entity.findall.desc.co");
+		uplinksTree = Outside.service(this, "gus.y.entitydb1.entity.uplinkstree");
+		downlinksTree = Outside.service(this, "gus.y.entitydb1.entity.downlinkstree");
+		uplinksTree2 = Outside.service(this, "gus.y.entitydb1.entity.uplinkstree2");
+		downlinksTree2 = Outside.service(this, "gus.y.entitydb1.entity.downlinkstree2");
+		entityCreateTree = Outside.service(this, "gus.y.entitysys1.perform.entity.createtree");
+		jsonParser = Outside.service(this, "gus06.file.convert.json.parser");
 	}
 
 	public Object t(Object obj) throws Exception
@@ -76,6 +112,11 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("delete")) return delete(args);
 		if(cmd.equals("downlinks")) return downlinks(args);
 		if(cmd.equals("uplinks")) return uplinks(args);
+		if(cmd.equals("uplinkstree")) return uplinksTree(args);
+		if(cmd.equals("downlinkstree")) return downlinksTree(args);
+		if(cmd.equals("uplinkstree2")) return uplinksTree2(args);
+		if(cmd.equals("downlinkstree2")) return downlinksTree2(args);
+		if(cmd.equals("createtree")) return createtree(args);
 		if(cmd.equals("import")) return import_(args);
 		if(cmd.equals("findall_st")) return findFiltered(args, findAllSt, "findall_st");
 		if(cmd.equals("findall_en")) return findFiltered(args, findAllEn, "findall_en");
@@ -91,6 +132,18 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("path")) return path(args);
 		if(cmd.equals("features")) return features(args);
 		if(cmd.equals("creationdate")) return creationdate(args);
+		if(cmd.equals("findall_creationdate")) return findAll(findAllCreationDateMap);
+		if(cmd.equals("findall_creationdate_st")) return findFilteredMap(args, findAllCreationDateSt, "findall_creationdate_st");
+		if(cmd.equals("findall_creationdate_en")) return findFilteredMap(args, findAllCreationDateEn, "findall_creationdate_en");
+		if(cmd.equals("findall_creationdate_co")) return findFilteredMap(args, findAllCreationDateCo, "findall_creationdate_co");
+		if(cmd.equals("findall_features")) return findAll(findAllFeaturesMap);
+		if(cmd.equals("findall_features_st")) return findFilteredMap(args, findAllFeaturesSt, "findall_features_st");
+		if(cmd.equals("findall_features_en")) return findFilteredMap(args, findAllFeaturesEn, "findall_features_en");
+		if(cmd.equals("findall_features_co")) return findFilteredMap(args, findAllFeaturesCo, "findall_features_co");
+		if(cmd.equals("findall_desc")) return findAll(findAllDescList);
+		if(cmd.equals("findall_desc_st")) return findFilteredNames(args, findAllDescSt, "findall_desc_st");
+		if(cmd.equals("findall_desc_en")) return findFilteredNames(args, findAllDescEn, "findall_desc_en");
+		if(cmd.equals("findall_desc_co")) return findFilteredNames(args, findAllDescCo, "findall_desc_co");
 
 		throw new Exception("e: commande inconnue: " + cmd);
 	}
@@ -98,12 +151,17 @@ public class EntityImpl implements Entity, T {
 	private Object help()
 	{
 		return
+		"e createtree :<json> \u2014 cr\u00e9e un arbre d'entit\u00e9s depuis un JSON [[\"name-features\",[children...]]] (DFS post-order)\n" +
 		"e create <entity> [features] \u2014 cr\u00e9e le code source d'une nouvelle entit\u00e9 (features : BEFGHIPRSTV, ex: GT)\n" +
 		"e rename <name0> <name1> \u2014 renomme une entit\u00e9 (avec refactor des liens)\n" +
 		"e duplicate <name0> <name1> \u2014 duplique une entit\u00e9\n" +
 		"e delete <name> \u2014 supprime une entit\u00e9\n" +
 		"e downlinks <entity> \u2014 liste les entit\u00e9s qui d\u00e9pendent de <entity>\n" +
 		"e uplinks <entity> \u2014 liste les d\u00e9pendances de <entity>\n" +
+		"e uplinkstree <entity> <maxDeep> \u2014 arbre r\u00e9cursif des uplinks jusqu'\u00e0 la profondeur <maxDeep>\n" +
+		"e downlinkstree <entity> <maxDeep> \u2014 arbre r\u00e9cursif des downlinks jusqu'\u00e0 la profondeur <maxDeep>\n" +
+		"e uplinkstree2 <entity> <maxDeep> \u2014 arbre r\u00e9cursif des uplinks avec descriptions (nom-features)\n" +
+		"e downlinkstree2 <entity> <maxDeep> \u2014 arbre r\u00e9cursif des downlinks avec descriptions (nom-features)\n" +
 		"e import <src> \u2014 cr\u00e9e une entit\u00e9 correspondant au code source <src>\n" +
 		"e findall_st <prefix> \u2014 liste les entit\u00e9s dont le nom commence par <prefix>\n" +
 		"e findall_en <suffix> \u2014 liste les entit\u00e9s dont le nom se termine par <suffix>\n" +
@@ -120,6 +178,18 @@ public class EntityImpl implements Entity, T {
 		"e path <entity> \u2014 retourne le filepath de EntityImpl.java\n" +
 		"e features <entity> \u2014 retourne les features impl\u00e9ment\u00e9es par l'entit\u00e9\n" +
 		"e creationdate <entity> \u2014 retourne la date de cr\u00e9ation de l'entit\u00e9\n" +
+		"e findall_creationdate \u2014 toutes les entit\u00e9s avec leur date de cr\u00e9ation\n" +
+		"e findall_creationdate_st <prefix> \u2014 entit\u00e9s dont la date de cr\u00e9ation commence par <prefix>\n" +
+		"e findall_creationdate_en <suffix> \u2014 entit\u00e9s dont la date de cr\u00e9ation se termine par <suffix>\n" +
+		"e findall_creationdate_co <fragment> \u2014 entit\u00e9s dont la date de cr\u00e9ation contient <fragment>\n" +
+		"e findall_features \u2014 toutes les entit\u00e9s avec leurs features\n" +
+		"e findall_features_st <prefix> \u2014 entit\u00e9s dont les features commencent par <prefix>\n" +
+		"e findall_features_en <suffix> \u2014 entit\u00e9s dont les features se terminent par <suffix>\n" +
+		"e findall_features_co <fragment> \u2014 entit\u00e9s dont les features contiennent <fragment>\n" +
+		"e findall_desc \u2014 toutes les entit\u00e9s (nom-features) tri\u00e9es par nom\n" +
+		"e findall_desc_st <prefix> \u2014 entit\u00e9s dont le nom commence par <prefix> (nom-features)\n" +
+		"e findall_desc_en <suffix> \u2014 entit\u00e9s dont le nom se termine par <suffix> (nom-features)\n" +
+		"e findall_desc_co <fragment> \u2014 entit\u00e9s dont le nom contient <fragment> (nom-features)\n" +
 		"(les actions import, create, rename, duplicate, delete sont asynchrones \u2014 patienter un instant avant de v\u00e9rifier)";
 	}
 
@@ -127,6 +197,28 @@ public class EntityImpl implements Entity, T {
 	{
 		entityEngine.e();
 		return "reloading... (wait 1s before compilation and db update is complete)";
+	}
+
+	private Object createtree(List args) throws Exception
+	{
+		if(args.size()<2) throw new Exception("Usage: e createtree :<json>");
+		String json = joinArgs(args);
+		if(json.startsWith(":")) json = json.substring(1);
+		List tree = parseTree((List) jsonParser.t(json));
+		boolean done = (Boolean) entityCreateTree.f(new Object[]{entityEngine, tree});
+		return done ? "done" : "createtree failed (entity already exists or invalid name)";
+	}
+
+	private List parseTree(List jsonTree) throws Exception
+	{
+		List result = new ArrayList();
+		for(int i=0; i<jsonTree.size(); i++) {
+			List node = (List) jsonTree.get(i);
+			String desc = (String) node.get(0);
+			List children = parseTree((List) node.get(1));
+			result.add(new Object[]{desc, children});
+		}
+		return result;
 	}
 
 	private Object import_(List args) throws Exception
@@ -183,6 +275,42 @@ public class EntityImpl implements Entity, T {
 		String name = (String) args.get(1);
 		Connection cx = (Connection) entityEngine.r("cx");
 		return (List) findUplinks.t(new Object[]{cx, name});
+	}
+
+	private Object uplinksTree(List args) throws Exception
+	{
+		if(args.size()<3) throw new Exception("Usage: e uplinkstree <entity> <maxDeep>");
+		String name = (String) args.get(1);
+		int maxDeep = Integer.parseInt((String) args.get(2));
+		Connection cx = (Connection) entityEngine.r("cx");
+		return uplinksTree.t(new Object[]{cx, name, maxDeep});
+	}
+
+	private Object downlinksTree(List args) throws Exception
+	{
+		if(args.size()<3) throw new Exception("Usage: e downlinkstree <entity> <maxDeep>");
+		String name = (String) args.get(1);
+		int maxDeep = Integer.parseInt((String) args.get(2));
+		Connection cx = (Connection) entityEngine.r("cx");
+		return downlinksTree.t(new Object[]{cx, name, maxDeep});
+	}
+
+	private Object uplinksTree2(List args) throws Exception
+	{
+		if(args.size()<3) throw new Exception("Usage: e uplinkstree2 <entity> <maxDeep>");
+		String name = (String) args.get(1);
+		int maxDeep = Integer.parseInt((String) args.get(2));
+		Connection cx = (Connection) entityEngine.r("cx");
+		return uplinksTree2.t(new Object[]{cx, name, maxDeep});
+	}
+
+	private Object downlinksTree2(List args) throws Exception
+	{
+		if(args.size()<3) throw new Exception("Usage: e downlinkstree2 <entity> <maxDeep>");
+		String name = (String) args.get(1);
+		int maxDeep = Integer.parseInt((String) args.get(2));
+		Connection cx = (Connection) entityEngine.r("cx");
+		return downlinksTree2.t(new Object[]{cx, name, maxDeep});
 	}
 
 	private Object errors(List args) throws Exception
@@ -257,6 +385,20 @@ public class EntityImpl implements Entity, T {
 	}
 
 	private Object countFiltered(List args, Service service, String cmd) throws Exception
+	{
+		if(args.size()<2) throw new Exception("Usage: e " + cmd + " <filtre>");
+		String filter = (String) args.get(1);
+		Connection cx = (Connection) entityEngine.r("cx");
+		return service.t(new Object[]{cx, filter});
+	}
+
+	private Object findAll(Service service) throws Exception
+	{
+		Connection cx = (Connection) entityEngine.r("cx");
+		return service.t(cx);
+	}
+
+	private Object findFilteredMap(List args, Service service, String cmd) throws Exception
 	{
 		if(args.size()<2) throw new Exception("Usage: e " + cmd + " <filtre>");
 		String filter = (String) args.get(1);
