@@ -31,7 +31,8 @@ public class EntityImpl implements Entity, T {
 	private Service findSrc;
 	private Service findMainFile;
 	private Service importFromSrc;
-	private Service findEntity;
+	private Service findFeatures;
+	private Service findCreationDate;
 
 	public EntityImpl() throws Exception
 	{
@@ -56,7 +57,8 @@ public class EntityImpl implements Entity, T {
 		findSrc = Outside.service(this, "gus.y.entitysys1.find.src");
 		findMainFile = Outside.service(this, "gus.y.entitysys1.find.mainfile");
 		importFromSrc = Outside.service(this, "gus.y.entitysys1.perform.entity.importsrc");
-		findEntity = Outside.service(this, "gus.y.entitydb1.entity.find1");
+		findFeatures = Outside.service(this, "gus.y.entitydb1.entity.find.features");
+		findCreationDate = Outside.service(this, "gus.y.entitydb1.entity.find.creationdate");
 	}
 
 	public Object t(Object obj) throws Exception
@@ -88,7 +90,7 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("src")) return src(args);
 		if(cmd.equals("path")) return path(args);
 		if(cmd.equals("features")) return features(args);
-		if(cmd.equals("sign")) return sign(args);
+		if(cmd.equals("creationdate")) return creationdate(args);
 
 		throw new Exception("e: commande inconnue: " + cmd);
 	}
@@ -117,27 +119,27 @@ public class EntityImpl implements Entity, T {
 		"e src <entity> \u2014 affiche le code source de l'entit\u00e9\n" +
 		"e path <entity> \u2014 retourne le filepath de EntityImpl.java\n" +
 		"e features <entity> \u2014 retourne les features impl\u00e9ment\u00e9es par l'entit\u00e9\n" +
-		"e sign <entity> \u2014 retourne la sign de l'entit\u00e9 (multiplicit\u00e9 + features)\n" +
+		"e creationdate <entity> \u2014 retourne la date de cr\u00e9ation de l'entit\u00e9\n" +
 		"(les actions import, create, rename, duplicate, delete sont asynchrones \u2014 patienter un instant avant de v\u00e9rifier)";
 	}
 
 	private Object reload() throws Exception
 	{
 		entityEngine.e();
-		return "reloading...";
+		return "reloading... (wait 1s before compilation and db update is complete)";
 	}
 
 	private Object import_(List args) throws Exception
 	{
 		if(args.size()<2) throw new Exception("Usage: e import <src>");
-		boolean done = importFromSrc.f(new Object[]{entityEngine, formatSrc(joinArgs(args))});
+		boolean done = importFromSrc.f(new Object[]{entityEngine, joinArgs(args)});
 		return done ? "done" : "import failed";
 	}
 
 	private Object create(List args) throws Exception
 	{
 		if(args.size()<2) throw new Exception("Usage: e create <entity> [features]");
-		boolean done = entityCreate.f(new Object[]{entityEngine, formatSrc(joinArgs(args))});
+		boolean done = entityCreate.f(new Object[]{entityEngine, joinArgs(args)});
 		return done ? "done" : "create failed";
 	}
 
@@ -215,25 +217,14 @@ public class EntityImpl implements Entity, T {
 		return sb.toString();
 	}
 
-	private String formatSrc(String src)
+	private Object creationdate(List args) throws Exception
 	{
-		StringBuilder sb = new StringBuilder();
-		int i = 0;
-		while(i < src.length()) {
-			char c = src.charAt(i);
-			if(c == '\\' && i+1 < src.length()) {
-				char next = src.charAt(i+1);
-				if(next == 'n') { sb.append('\n'); i+=2; }
-				else if(next == 't') { sb.append('\t'); i+=2; }
-				else if(next == 'r') { sb.append('\r'); i+=2; }
-				else if(next == '\\') { sb.append('\\'); i+=2; }
-				else { sb.append(c); i++; }
-			} else {
-				sb.append(c);
-				i++;
-			}
-		}
-		return sb.toString();
+		if(args.size()<2) throw new Exception("Usage: e creationdate <entity>");
+		String name = (String) args.get(1);
+		Connection cx = (Connection) entityEngine.r("cx");
+		Object creationDate = findCreationDate.t(new Object[]{cx, name});
+		if(creationDate == null) throw new Exception("Entity not found: " + name);
+		return creationDate.toString();
 	}
 
 	private Object features(List args) throws Exception
@@ -241,36 +232,9 @@ public class EntityImpl implements Entity, T {
 		if(args.size()<2) throw new Exception("Usage: e features <entity>");
 		String name = (String) args.get(1);
 		Connection cx = (Connection) entityEngine.r("cx");
-		Map row = (Map) findEntity.t(new Object[]{cx, name});
-		if(row == null) throw new Exception("Entity not found: " + name);
-		String features = (String) row.get("features");
-		return features == null ? "" : features.toUpperCase();
-	}
-
-	private Object sign(List args) throws Exception
-	{
-		if(args.size()<2) throw new Exception("Usage: e sign <entity>");
-		String name = (String) args.get(1);
-		Connection cx = (Connection) entityEngine.r("cx");
-		Map row = (Map) findEntity.t(new Object[]{cx, name});
-		if(row == null) throw new Exception("Entity not found: " + name);
-		String features = (String) row.get("features");
-		String esrc = (String) findSrc.t(new Object[]{entityEngine, name});
-		String mult = detectMultiplicity(esrc);
-		return mult + (features == null ? "" : features.toUpperCase());
-	}
-
-	private String detectMultiplicity(String src)
-	{
-		if(src == null) return "+";
-		String[] lines = src.split("\n");
-		for(String line : lines) {
-			String t = line.trim();
-			if(t.startsWith("private ") && !t.startsWith("private static ") && !t.startsWith("private final ")
-					&& t.endsWith(";") && !t.contains("(") && !t.contains(")"))
-				return "*";
-		}
-		return "+";
+		String features = (String) findFeatures.t(new Object[]{cx, name});
+		if(features == null) throw new Exception("Entity not found: " + name);
+		return features.toUpperCase();
 	}
 
 	private Object findFiltered(List args, Service service, String cmd) throws Exception

@@ -37,6 +37,9 @@ public class EntityImpl implements Entity, T {
 					{
 						char next = args.charAt(i+1);
 						if(next == quote || next == '\\') { b.append(next); i += 2; }
+						else if(next == 'n') { b.append('\n'); i += 2; }
+						else if(next == 't') { b.append('\t'); i += 2; }
+						else if(next == 'r') { b.append('\r'); i += 2; }
 						else { b.append(q); i++; }
 					}
 					else if(q == quote) { i++; break; }

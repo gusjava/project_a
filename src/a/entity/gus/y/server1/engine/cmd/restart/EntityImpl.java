@@ -17,6 +17,6 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{
 		execute1s.p(restart);
-		return "Restarting...";
+		return "Restarting... (wait 10s before initialization is complete)";
 	}
 }
