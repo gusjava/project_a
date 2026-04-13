@@ -176,7 +176,7 @@ public class Parser2 extends Parser1 {
 	
 	
 	
-	private Object parse_array()
+	protected Object parse_array()
 	{
 		debug("parse_array()");
 		int n0 = index();

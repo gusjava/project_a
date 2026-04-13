@@ -17,15 +17,20 @@ public abstract class Parser0 {
 	
 	
 	protected abstract Object parse_object();
-	
-	
-	
-	
-	
+
+	protected abstract Object parse_array();
+
+
+
+
+
 	public Object parse(String input) throws Exception
 	{
 		init(input);
-		return parse_object();
+		Object result = parse_object();
+		if(result != null) return result;
+		init(input);
+		return parse_array();
 	}
 	
 	
