@@ -31,6 +31,7 @@ public class EntityImpl implements Entity, T {
 	private Service findSrc;
 	private Service findMainFile;
 	private Service importFromSrc;
+	private Service findEntity;
 
 	public EntityImpl() throws Exception
 	{
@@ -55,6 +56,7 @@ public class EntityImpl implements Entity, T {
 		findSrc = Outside.service(this, "gus.y.entitysys1.find.src");
 		findMainFile = Outside.service(this, "gus.y.entitysys1.find.mainfile");
 		importFromSrc = Outside.service(this, "gus.y.entitysys1.perform.entity.importsrc");
+		findEntity = Outside.service(this, "gus.y.entitydb1.entity.find1");
 	}
 
 	public Object t(Object obj) throws Exception
@@ -85,6 +87,8 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("errors")) return errors(args);
 		if(cmd.equals("src")) return src(args);
 		if(cmd.equals("path")) return path(args);
+		if(cmd.equals("features")) return features(args);
+		if(cmd.equals("sign")) return sign(args);
 
 		throw new Exception("e: commande inconnue: " + cmd);
 	}
@@ -92,35 +96,37 @@ public class EntityImpl implements Entity, T {
 	private Object help()
 	{
 		return
-		"e create <entity> [features] — crée le code source d'une nouvelle entité (features : BEFGHIPRSTV, ex: GT)\n" +
-		"e rename <name0> <name1> — renomme une entité (avec refactor des liens)\n" +
-		"e duplicate <name0> <name1> — duplique une entité\n" +
-		"e delete <name> — supprime une entité\n" +
-		"e downlinks <entity> — liste les entités qui dépendent de <entity>\n" +
-		"e uplinks <entity> — liste les dépendances de <entity>\n" +
-		"e import <src> — crée une entité correspondant au code source <src>\n" +
-		"e findall_st <prefix> — liste les entités dont le nom commence par <prefix>\n" +
-		"e findall_en <suffix> — liste les entités dont le nom se termine par <suffix>\n" +
-		"e findall_co <fragment> — liste les entités dont le nom contient <fragment>\n" +
-		"e names_st <prefix> — liste les noms d'entités commençant par <prefix>\n" +
-		"e names_en <suffix> — liste les noms d'entités se terminant par <suffix>\n" +
-		"e names_co <fragment> — liste les noms d'entités contenant <fragment>\n" +
-		"e count_st <prefix> — nombre d'entités dont le nom commence par <prefix>\n" +
-		"e count_en <suffix> — nombre d'entités dont le nom se termine par <suffix>\n" +
-		"e count_co <fragment> — nombre d'entités dont le nom contient <fragment>\n" +
-		"e help — cette aide\n" +
-		"e errors [entity] — erreurs de compilation (toutes, ou filtrées par entité)\n" +
-		"e src <entity> — affiche le code source de l'entité\n" +
-		"e path <entity> — retourne le filepath de EntityImpl.java\n" +
-		"(les actions import, create, rename, duplicate, delete sont asynchrones — patienter un instant avant de vérifier)";
+		"e create <entity> [features] \u2014 cr\u00e9e le code source d'une nouvelle entit\u00e9 (features : BEFGHIPRSTV, ex: GT)\n" +
+		"e rename <name0> <name1> \u2014 renomme une entit\u00e9 (avec refactor des liens)\n" +
+		"e duplicate <name0> <name1> \u2014 duplique une entit\u00e9\n" +
+		"e delete <name> \u2014 supprime une entit\u00e9\n" +
+		"e downlinks <entity> \u2014 liste les entit\u00e9s qui d\u00e9pendent de <entity>\n" +
+		"e uplinks <entity> \u2014 liste les d\u00e9pendances de <entity>\n" +
+		"e import <src> \u2014 cr\u00e9e une entit\u00e9 correspondant au code source <src>\n" +
+		"e findall_st <prefix> \u2014 liste les entit\u00e9s dont le nom commence par <prefix>\n" +
+		"e findall_en <suffix> \u2014 liste les entit\u00e9s dont le nom se termine par <suffix>\n" +
+		"e findall_co <fragment> \u2014 liste les entit\u00e9s dont le nom contient <fragment>\n" +
+		"e names_st <prefix> \u2014 liste les noms d'entit\u00e9s commen\u00e7ant par <prefix>\n" +
+		"e names_en <suffix> \u2014 liste les noms d'entit\u00e9s se terminant par <suffix>\n" +
+		"e names_co <fragment> \u2014 liste les noms d'entit\u00e9s contenant <fragment>\n" +
+		"e count_st <prefix> \u2014 nombre d'entit\u00e9s dont le nom commence par <prefix>\n" +
+		"e count_en <suffix> \u2014 nombre d'entit\u00e9s dont le nom se termine par <suffix>\n" +
+		"e count_co <fragment> \u2014 nombre d'entit\u00e9s dont le nom contient <fragment>\n" +
+		"e help \u2014 cette aide\n" +
+		"e errors [entity] \u2014 erreurs de compilation (toutes, ou filtr\u00e9es par entit\u00e9)\n" +
+		"e src <entity> \u2014 affiche le code source de l'entit\u00e9\n" +
+		"e path <entity> \u2014 retourne le filepath de EntityImpl.java\n" +
+		"e features <entity> \u2014 retourne les features impl\u00e9ment\u00e9es par l'entit\u00e9\n" +
+		"e sign <entity> \u2014 retourne la sign de l'entit\u00e9 (multiplicit\u00e9 + features)\n" +
+		"(les actions import, create, rename, duplicate, delete sont asynchrones \u2014 patienter un instant avant de v\u00e9rifier)";
 	}
-	
+
 	private Object reload() throws Exception
 	{
 		entityEngine.e();
 		return "reloading...";
 	}
-	
+
 	private Object import_(List args) throws Exception
 	{
 		if(args.size()<2) throw new Exception("Usage: e import <src>");
@@ -208,7 +214,7 @@ public class EntityImpl implements Entity, T {
 		for(int i=2; i<args.size(); i++) sb.append(" ").append(args.get(i));
 		return sb.toString();
 	}
-	
+
 	private String formatSrc(String src)
 	{
 		StringBuilder sb = new StringBuilder();
@@ -228,6 +234,43 @@ public class EntityImpl implements Entity, T {
 			}
 		}
 		return sb.toString();
+	}
+
+	private Object features(List args) throws Exception
+	{
+		if(args.size()<2) throw new Exception("Usage: e features <entity>");
+		String name = (String) args.get(1);
+		Connection cx = (Connection) entityEngine.r("cx");
+		Map row = (Map) findEntity.t(new Object[]{cx, name});
+		if(row == null) throw new Exception("Entity not found: " + name);
+		String features = (String) row.get("features");
+		return features == null ? "" : features.toUpperCase();
+	}
+
+	private Object sign(List args) throws Exception
+	{
+		if(args.size()<2) throw new Exception("Usage: e sign <entity>");
+		String name = (String) args.get(1);
+		Connection cx = (Connection) entityEngine.r("cx");
+		Map row = (Map) findEntity.t(new Object[]{cx, name});
+		if(row == null) throw new Exception("Entity not found: " + name);
+		String features = (String) row.get("features");
+		String esrc = (String) findSrc.t(new Object[]{entityEngine, name});
+		String mult = detectMultiplicity(esrc);
+		return mult + (features == null ? "" : features.toUpperCase());
+	}
+
+	private String detectMultiplicity(String src)
+	{
+		if(src == null) return "+";
+		String[] lines = src.split("\n");
+		for(String line : lines) {
+			String t = line.trim();
+			if(t.startsWith("private ") && !t.startsWith("private static ") && !t.startsWith("private final ")
+					&& t.endsWith(";") && !t.contains("(") && !t.contains(")"))
+				return "*";
+		}
+		return "+";
 	}
 
 	private Object findFiltered(List args, Service service, String cmd) throws Exception
