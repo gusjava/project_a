@@ -24,7 +24,7 @@ public class EntityImpl implements Entity, I, P, G {
 	{
 		viewerString = Outside.service(this,"*gus06.data.viewer.string");
 		viewerMap = Outside.service(this,"*gus06.data.viewer.map");
-		jsonParser = Outside.service(this,"gus06.file.convert.json.parser");
+		jsonParser = Outside.service(this,"gus.x.json.parse1");
 		
 		tab = new JTabbedPane();
 		tab.addTab("Map",(JComponent) viewerMap.i());

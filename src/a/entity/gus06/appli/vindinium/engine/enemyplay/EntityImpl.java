@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		parseJson = Outside.service(this,"gus06.file.convert.json.parser");
+		parseJson = Outside.service(this,"gus.x.json.parse1");
 		formatData = Outside.service(this,"gus06.appli.vindinium.data.retrievedata.format");
 		isFinished = Outside.service(this,"gus06.appli.vindinium.data.game.isfinished");
 	}

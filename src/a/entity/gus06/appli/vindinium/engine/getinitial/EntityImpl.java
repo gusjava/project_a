@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, G {
 	public EntityImpl() throws Exception
 	{
 		readFile = Outside.service(this,"gus06.file.read.string");
-		parseJson = Outside.service(this,"gus06.file.convert.json.parser");
+		parseJson = Outside.service(this,"gus.x.json.parse1");
 		findFile = Outside.service(this,"gus06.appli.vindinium.engine.getinitial.findfile");
 	}
 

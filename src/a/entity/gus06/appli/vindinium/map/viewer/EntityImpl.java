@@ -49,7 +49,7 @@ public class EntityImpl implements Entity, P, I {
 	public EntityImpl() throws Exception
 	{
 		readFile = Outside.service(this,"gus06.file.read.string");
-		parseJson = Outside.service(this,"gus06.file.convert.json.parser");
+		parseJson = Outside.service(this,"gus.x.json.parse1");
 		generateJson = Outside.service(this,"gus.x.json.build1");
 		updateData = Outside.service(this,"gus06.appli.vindinium.map.viewer.updatedata");
 		

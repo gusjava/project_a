@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, T {
 	{
 		getResponse_fromLocal = Outside.service(this,"gus06.appli.vindinium.engine.getresponse");
 		getResponse_fromWeb = Outside.service(this,"gus06.appli.vindinium.data.retrievedata.getjson.fromweb");
-		parseJson = Outside.service(this,"gus06.file.convert.json.parser");
+		parseJson = Outside.service(this,"gus.x.json.parse1");
 	}
 
 

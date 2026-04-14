@@ -1,4 +1,4 @@
-package a.entity.gus06.file.convert.json.parser;
+package a.entity.gus.x.json.parse1;
 
 import a.framework.*;
 
@@ -10,10 +10,8 @@ public class EntityImpl implements Entity, T {
 
 	private Parser2 parser;
 	
-
 	public EntityImpl() throws Exception
 	{parser = new Parser2(DEBUG);}
-
 
 	public Object t(Object obj) throws Exception
 	{

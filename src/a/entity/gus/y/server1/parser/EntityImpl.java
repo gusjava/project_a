@@ -28,11 +28,11 @@ public class EntityImpl implements Entity, T {
 		String argsStr = n.length>1 ? n[1] : null;
 
 		List cmds = new ArrayList(Arrays.asList(cmdStr.split("-")));
-		Object argList = parseArgs.t(argsStr);
+		Object args = parseArgs.t(argsStr);
 
 		Map map = new HashMap();
 		map.put(CMDS, cmds);
-		map.put(ARGS, argList);
+		map.put(ARGS, args);
 		return map;
 	}
 }

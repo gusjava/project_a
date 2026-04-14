@@ -11,7 +11,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		parseJson = Outside.service(this,"gus06.file.convert.json.parser");
+		parseJson = Outside.service(this,"gus.x.json.parse1");
 	}
 
 	public Object t(Object obj) throws Exception

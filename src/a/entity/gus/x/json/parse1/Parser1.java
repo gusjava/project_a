@@ -1,4 +1,4 @@
-package a.entity.gus06.file.convert.json.parser;
+package a.entity.gus.x.json.parse1;
 
 public abstract class Parser1 extends Parser0 {
 	

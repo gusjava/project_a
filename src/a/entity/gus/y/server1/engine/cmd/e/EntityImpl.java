@@ -99,15 +99,16 @@ public class EntityImpl implements Entity, T {
 
 	public Object t(Object obj) throws Exception
 	{
-		Map map = (Map) obj;
-		List cmds = (List) map.get("cmds");
-		Object args = map.get("args");
+		Map payload = (Map) obj;
+		List cmds = (List) payload.get("cmds");
+		Object args = payload.get("args");
 
-		if(cmds.size() < 2) throw new Exception("e: commande manquante");
-		String cmd = joinCmds(cmds, 1).toLowerCase();
+		if(cmds.size() != 2) throw new Exception("e: incorrect cmd number: "+cmds.size());
+		String cmd = (String) cmds.get(1);
 
 		if(cmd.equals("help"))             return help();
 		if(cmd.equals("reload"))           return reload();
+		
 		if(cmd.equals("sql"))              return cmdESql.t(args);
 		if(cmd.equals("create"))           return create(args);
 		if(cmd.equals("rename"))           return rename(args);
@@ -121,35 +122,45 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("downlinkstree2"))   return downlinksTree2(args);
 		if(cmd.equals("createtree"))       return createtree(args);
 		if(cmd.equals("import"))           return import_(args);
-		if(cmd.equals("findall_st"))       return findFiltered(args, findAllSt, "findall_st");
-		if(cmd.equals("findall_en"))       return findFiltered(args, findAllEn, "findall_en");
-		if(cmd.equals("findall_co"))       return findFiltered(args, findAllCo, "findall_co");
-		if(cmd.equals("names_st"))         return findFilteredNames(args, namesSt, "names_st");
-		if(cmd.equals("names_en"))         return findFilteredNames(args, namesEn, "names_en");
-		if(cmd.equals("names_co"))         return findFilteredNames(args, namesCo, "names_co");
-		if(cmd.equals("count_st"))         return countFiltered(args, countSt, "count_st");
-		if(cmd.equals("count_en"))         return countFiltered(args, countEn, "count_en");
-		if(cmd.equals("count_co"))         return countFiltered(args, countCo, "count_co");
+		
 		if(cmd.equals("errors"))           return errors(args);
 		if(cmd.equals("src"))              return src(args);
 		if(cmd.equals("path"))             return path(args);
 		if(cmd.equals("features"))         return features(args);
 		if(cmd.equals("creationdate"))     return creationdate(args);
-		if(cmd.equals("findall_creationdate"))    return findAll(findAllCreationDateMap);
-		if(cmd.equals("findall_creationdate_st")) return findFilteredMap(args, findAllCreationDateSt, "findall_creationdate_st");
-		if(cmd.equals("findall_creationdate_en")) return findFilteredMap(args, findAllCreationDateEn, "findall_creationdate_en");
-		if(cmd.equals("findall_creationdate_co")) return findFilteredMap(args, findAllCreationDateCo, "findall_creationdate_co");
-		if(cmd.equals("findall_features"))    return findAll(findAllFeaturesMap);
-		if(cmd.equals("findall_features_st")) return findFilteredMap(args, findAllFeaturesSt, "findall_features_st");
-		if(cmd.equals("findall_features_en")) return findFilteredMap(args, findAllFeaturesEn, "findall_features_en");
-		if(cmd.equals("findall_features_co")) return findFilteredMap(args, findAllFeaturesCo, "findall_features_co");
-		if(cmd.equals("findall_desc"))    return findAll(findAllDescList);
-		if(cmd.equals("findall_desc_st")) return findFilteredNames(args, findAllDescSt, "findall_desc_st");
-		if(cmd.equals("findall_desc_en")) return findFilteredNames(args, findAllDescEn, "findall_desc_en");
-		if(cmd.equals("findall_desc_co")) return findFilteredNames(args, findAllDescCo, "findall_desc_co");
+		
+		if(cmd.equals("findall_st"))       return applyOnCxArg(findAllSt, args);
+		if(cmd.equals("findall_en"))       return applyOnCxArg(findAllEn, args);
+		if(cmd.equals("findall_co"))       return applyOnCxArg(findAllCo, args);
+		
+		if(cmd.equals("names_st"))         return applyOnCxArg(namesSt, args);
+		if(cmd.equals("names_en"))         return applyOnCxArg(namesEn, args);
+		if(cmd.equals("names_co"))         return applyOnCxArg(namesCo, args);
+		
+		if(cmd.equals("count_st"))         return applyOnCxArg(countSt, args);
+		if(cmd.equals("count_en"))         return applyOnCxArg(countEn, args);
+		if(cmd.equals("count_co"))         return applyOnCxArg(countCo, args);
+		
+		if(cmd.equals("findall_creationdate")) return applyOnCx(findAllCreationDateMap);
+		if(cmd.equals("findall_features"))     return applyOnCx(findAllFeaturesMap);
+		if(cmd.equals("findall_desc"))         return applyOnCx(findAllDescList);
+		
+		if(cmd.equals("findall_creationdate_st")) return applyOnCxArg(findAllCreationDateSt, args);
+		if(cmd.equals("findall_creationdate_en")) return applyOnCxArg(findAllCreationDateEn, args);
+		if(cmd.equals("findall_creationdate_co")) return applyOnCxArg(findAllCreationDateCo, args);
+		
+		if(cmd.equals("findall_features_st")) return applyOnCxArg(findAllFeaturesSt, args);
+		if(cmd.equals("findall_features_en")) return applyOnCxArg(findAllFeaturesEn, args);
+		if(cmd.equals("findall_features_co")) return applyOnCxArg(findAllFeaturesCo, args);
+		
+		if(cmd.equals("findall_desc_st")) return applyOnCxArg(findAllDescSt, args);
+		if(cmd.equals("findall_desc_en")) return applyOnCxArg(findAllDescEn, args);
+		if(cmd.equals("findall_desc_co")) return applyOnCxArg(findAllDescCo, args);
 
 		throw new Exception("e: commande inconnue: " + cmd);
 	}
+	
+	// SPECIFIC
 
 	private Object help()
 	{
@@ -273,66 +284,49 @@ public class EntityImpl implements Entity, T {
 	{
 		List list = (List) args;
 		if(list == null || list.isEmpty()) throw new Exception("Usage: e-downlinks <entity>");
-		String name = (String) list.get(0);
-		Connection cx = (Connection) entityEngine.r("cx");
-		return (List) findDownLinks.t(new Object[]{cx, name});
+		return (List) applyOnCxArg(findDownLinks, list);
 	}
 
 	private Object uplinks(Object args) throws Exception
 	{
 		List list = (List) args;
 		if(list == null || list.isEmpty()) throw new Exception("Usage: e-uplinks <entity>");
-		String name = (String) list.get(0);
-		Connection cx = (Connection) entityEngine.r("cx");
-		return (List) findUplinks.t(new Object[]{cx, name});
+		return (List) applyOnCxArg(findUplinks, list);
 	}
 
 	private Object uplinksTree(Object args) throws Exception
 	{
 		List list = (List) args;
 		if(list == null || list.size() < 2) throw new Exception("Usage: e-uplinkstree <entity> <maxDeep>");
-		String name = (String) list.get(0);
-		int maxDeep = Integer.parseInt((String) list.get(1));
-		Connection cx = (Connection) entityEngine.r("cx");
-		return uplinksTree.t(new Object[]{cx, name, maxDeep});
+		return uplinksTree.t(new Object[]{cx(), (String) list.get(0), Integer.parseInt((String) list.get(1))});
 	}
 
 	private Object downlinksTree(Object args) throws Exception
 	{
 		List list = (List) args;
 		if(list == null || list.size() < 2) throw new Exception("Usage: e-downlinkstree <entity> <maxDeep>");
-		String name = (String) list.get(0);
-		int maxDeep = Integer.parseInt((String) list.get(1));
-		Connection cx = (Connection) entityEngine.r("cx");
-		return downlinksTree.t(new Object[]{cx, name, maxDeep});
+		return downlinksTree.t(new Object[]{cx(), (String) list.get(0), Integer.parseInt((String) list.get(1))});
 	}
 
 	private Object uplinksTree2(Object args) throws Exception
 	{
 		List list = (List) args;
 		if(list == null || list.size() < 2) throw new Exception("Usage: e-uplinkstree2 <entity> <maxDeep>");
-		String name = (String) list.get(0);
-		int maxDeep = Integer.parseInt((String) list.get(1));
-		Connection cx = (Connection) entityEngine.r("cx");
-		return uplinksTree2.t(new Object[]{cx, name, maxDeep});
+		return uplinksTree2.t(new Object[]{cx(), (String) list.get(0), Integer.parseInt((String) list.get(1))});
 	}
 
 	private Object downlinksTree2(Object args) throws Exception
 	{
 		List list = (List) args;
 		if(list == null || list.size() < 2) throw new Exception("Usage: e-downlinkstree2 <entity> <maxDeep>");
-		String name = (String) list.get(0);
-		int maxDeep = Integer.parseInt((String) list.get(1));
-		Connection cx = (Connection) entityEngine.r("cx");
-		return downlinksTree2.t(new Object[]{cx, name, maxDeep});
+		return downlinksTree2.t(new Object[]{cx(), (String) list.get(0), Integer.parseInt((String) list.get(1))});
 	}
 
 	private Object errors(Object args) throws Exception
 	{
 		List list = (List) args;
-		Connection cx = (Connection) entityEngine.r("cx");
-		if(list != null && !list.isEmpty()) return (List) findCompileErrors.t(new Object[]{cx, (String) list.get(0)});
-		return (Map) findCompileErrorsAll.t(cx);
+		if(list != null && !list.isEmpty()) return (List) applyOnCxArg(findCompileErrors, list);
+		return applyOnCx(findCompileErrorsAll);
 	}
 
 	private Object src(Object args) throws Exception
@@ -360,8 +354,7 @@ public class EntityImpl implements Entity, T {
 		List list = (List) args;
 		if(list == null || list.isEmpty()) throw new Exception("Usage: e-creationdate <entity>");
 		String name = (String) list.get(0);
-		Connection cx = (Connection) entityEngine.r("cx");
-		Object creationDate = findCreationDate.t(new Object[]{cx, name});
+		Object creationDate = findCreationDate.t(new Object[]{cx(), name});
 		if(creationDate == null) throw new Exception("Entity not found: " + name);
 		return creationDate.toString();
 	}
@@ -371,71 +364,33 @@ public class EntityImpl implements Entity, T {
 		List list = (List) args;
 		if(list == null || list.isEmpty()) throw new Exception("Usage: e-features <entity>");
 		String name = (String) list.get(0);
-		Connection cx = (Connection) entityEngine.r("cx");
-		String features = (String) findFeatures.t(new Object[]{cx, name});
+		String features = (String) findFeatures.t(new Object[]{cx(), name});
 		if(features == null) throw new Exception("Entity not found: " + name);
 		return features.toUpperCase();
 	}
+	
+	// GENERIC
 
-	private Object findFiltered(Object args, Service service, String cmd) throws Exception
+	private Object applyOnCx(Service service) throws Exception
+	{return service.t(cx());}
+
+	private Object applyOnCxArg(Service service, Object args) throws Exception
+	{return service.t(new Object[]{cx(), joinArgs(args)});}
+
+	private Connection cx() throws Exception
+	{return (Connection) entityEngine.r("cx");}
+
+	private String joinArgs(Object args) throws Exception
 	{
-		List list = (List) args;
-		if(list == null || list.isEmpty()) throw new Exception("Usage: e-" + cmd + " <filtre>");
-		String filter = (String) list.get(0);
-		Connection cx = (Connection) entityEngine.r("cx");
-		Map result = (Map) service.t(new Object[]{cx, filter});
-		List names = new ArrayList(result.keySet());
-		Collections.sort(names);
-		return names;
+		if(args instanceof String) return (String) args;
+		if(args instanceof List) return joinArgs((List) args);
+		throw new Exception("Invalid args type: "+args.getClass().getSimpleName());
 	}
-
-	private Object findFilteredNames(Object args, Service service, String cmd) throws Exception
-	{
-		List list = (List) args;
-		if(list == null || list.isEmpty()) throw new Exception("Usage: e-" + cmd + " <filtre>");
-		String filter = (String) list.get(0);
-		Connection cx = (Connection) entityEngine.r("cx");
-		return (List) service.t(new Object[]{cx, filter});
-	}
-
-	private Object countFiltered(Object args, Service service, String cmd) throws Exception
-	{
-		List list = (List) args;
-		if(list == null || list.isEmpty()) throw new Exception("Usage: e-" + cmd + " <filtre>");
-		String filter = (String) list.get(0);
-		Connection cx = (Connection) entityEngine.r("cx");
-		return service.t(new Object[]{cx, filter});
-	}
-
-	private Object findAll(Service service) throws Exception
-	{
-		Connection cx = (Connection) entityEngine.r("cx");
-		return service.t(cx);
-	}
-
-	private Object findFilteredMap(Object args, Service service, String cmd) throws Exception
-	{
-		List list = (List) args;
-		if(list == null || list.isEmpty()) throw new Exception("Usage: e-" + cmd + " <filtre>");
-		String filter = (String) list.get(0);
-		Connection cx = (Connection) entityEngine.r("cx");
-		return service.t(new Object[]{cx, filter});
-	}
-
+	
 	private String joinArgs(List args)
 	{
 		StringBuilder sb = new StringBuilder((String) args.get(0));
 		for(int i=1; i<args.size(); i++) sb.append(" ").append(args.get(i));
-		return sb.toString();
-	}
-
-	private static String joinCmds(List cmds, int from)
-	{
-		StringBuffer sb = new StringBuffer();
-		for(int i = from; i < cmds.size(); i++) {
-			if(i > from) sb.append("-");
-			sb.append(cmds.get(i));
-		}
 		return sb.toString();
 	}
 }

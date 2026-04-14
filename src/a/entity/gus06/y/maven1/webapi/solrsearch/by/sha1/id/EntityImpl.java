@@ -25,7 +25,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		parseJson = Outside.service(this,"gus06.file.convert.json.parser");
+		parseJson = Outside.service(this,"gus.x.json.parse1");
 		buildSha1 = Outside.service(this,"gus06.crypto.hash.sha1.hexa");
 		get = Outside.service(this,"gus06.y.maven1.webapi.get");
 	}

@@ -54,41 +54,42 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{
 		String input = (String) obj;
-		Map infos = (Map) parser.t(input);
-		List cmds = (List) infos.get("cmds");
-		Object args = infos.get("args");
-		Object response = generate(cmds, args);
+		Map payload = (Map) parser.t(input);
+		Object response = handlePayload(payload);
 		return buildJson.t(response);
 	}
 
-	private Object generate(List cmds, Object args) throws Exception
+	private Object handlePayload(Map payload) throws Exception
 	{
+		List cmds = (List) payload.get("cmds");
 		String cmd = (String) cmds.get(0);
-		if(cmd.equals("hello"))    return cmdHello.t(args);
-		if(cmd.equals("help"))     return cmdHelp.t(args);
-		if(cmd.equals("exit"))     return cmdExit.t(args);
-		if(cmd.equals("restart"))  return cmdRestart.t(args);
-		if(cmd.equals("infos"))    return cmdInfos.t(args);
-		if(cmd.equals("threads"))  return cmdThreads.t(args);
-		if(cmd.equals("memory"))   return cmdMemory.t(args);
-		if(cmd.equals("errors"))   return cmdErrors.t(args);
-		if(cmd.equals("main"))     return cmdMain.t(args);
-		if(cmd.equals("resource")) return cmdResource.t(args);
-		if(cmd.equals("config"))   return cmdConfig.t(args);
-		if(cmd.equals("coreId"))   return cmdCoreid.t(args);
-		if(cmd.equals("k"))        return cmdK.t(payload(cmds, args));
-		if(cmd.equals("e"))        return cmdE.t(payload(cmds, args));
-		if(cmd.equals("r"))        return cmdR.t(payload(cmds, args));
+		Object args = payload.get("args");
+		
 		if(cmd.startsWith("@"))    return cmdEntity.t(new Object[]{cmd.substring(1), args});
 		if(cmd.startsWith("#"))    return cmdScript.t(new Object[]{cmd.substring(1), args});
-		return null;
+		
+		T builder = findBuilder(cmd);
+		return builder.t(payload);
 	}
-
-	private Map payload(List cmds, Object args)
+	
+	private T findBuilder(String cmd) throws Exception
 	{
-		Map map = new HashMap();
-		map.put("cmds", cmds);
-		map.put("args", args);
-		return map;
+		if(cmd.equals("hello"))    return cmdHello;
+		if(cmd.equals("help"))     return cmdHelp;
+		if(cmd.equals("exit"))     return cmdExit;
+		if(cmd.equals("restart"))  return cmdRestart;
+		if(cmd.equals("infos"))    return cmdInfos;
+		if(cmd.equals("threads"))  return cmdThreads;
+		if(cmd.equals("memory"))   return cmdMemory;
+		if(cmd.equals("errors"))   return cmdErrors;
+		if(cmd.equals("main"))     return cmdMain;
+		if(cmd.equals("resource")) return cmdResource;
+		if(cmd.equals("config"))   return cmdConfig;
+		if(cmd.equals("coreId"))   return cmdCoreid;
+		if(cmd.equals("k"))        return cmdK;
+		if(cmd.equals("e"))        return cmdE;
+		if(cmd.equals("r"))        return cmdR;
+		
+		throw new Exception("Unsupported cmd: "+cmd);
 	}
 }
