@@ -12,6 +12,7 @@ public class EntityImpl implements Entity, P {
 	public static final String COL_ID = "id";
 	public static final String COL_DATE_CREATED = "date_created";
 	public static final String COL_DATE_UPDATED = "date_updated";
+	public static final String COL_CODE = "code";
 	public static final String COL_ACTION = "action";
 	public static final String COL_OBJECT = "object";
 	public static final String COL_DESCRIPTION = "description";
@@ -20,6 +21,7 @@ public class EntityImpl implements Entity, P {
 	public static final String DEF_ID = "BIGINT AUTO_INCREMENT PRIMARY KEY NOT NULL";
 	public static final String DEF_DATE_CREATED = "DATETIME NOT NULL";
 	public static final String DEF_DATE_UPDATED = "DATETIME NULL";
+	public static final String DEF_CODE = "VARCHAR(10) NOT NULL UNIQUE";
 	public static final String DEF_ACTION = "VARCHAR(20) NOT NULL";
 	public static final String DEF_OBJECT = "VARCHAR(200) NOT NULL";
 	public static final String DEF_DESCRIPTION = "TEXT";
@@ -31,6 +33,7 @@ public class EntityImpl implements Entity, P {
 				+ COL_ID + " " + DEF_ID + ", "
 				+ COL_DATE_CREATED + " " + DEF_DATE_CREATED + ", "
 				+ COL_DATE_UPDATED + " " + DEF_DATE_UPDATED + ", "
+				+ COL_CODE + " " + DEF_CODE + ", "
 				+ COL_ACTION + " " + DEF_ACTION + ", "
 				+ COL_OBJECT + " " + DEF_OBJECT + ", "
 				+ COL_DESCRIPTION + " " + DEF_DESCRIPTION + ", "

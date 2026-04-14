@@ -9,7 +9,7 @@ import a.framework.Service;
 public class EntityImpl implements Entity, P, G {
 	public String creationDate() {return "20260410";}
 
-	public static final String STRUCT_LAST_UPDATE = "2026-04-11 00:00:00";
+	public static final String STRUCT_LAST_UPDATE = "2026-04-14 00:00:00";
 	public static final boolean ALWAYS_RESET = false;
 
 	private Service initKnowledge;

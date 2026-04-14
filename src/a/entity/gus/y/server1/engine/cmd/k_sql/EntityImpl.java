@@ -24,7 +24,7 @@ public class EntityImpl implements Entity, T {
 
 	private Object help()
 	{
-		return "k-sql <sql> — SQL brut sur knowledgedb1 (SHOW, SELECT, INSERT, UPDATE, DELETE)\n"
+		return "k-sql <sql> — SQL brut sur knowledgedb1 (SHOW, SELECT, INSERT, UPDATE, DELETE, ALTER, CREATE, DROP)\n"
 			 + "k-sql help  — cette aide";
 	}
 
@@ -44,6 +44,9 @@ public class EntityImpl implements Entity, T {
 		if(type.startsWith("insert")) return sqlInsert.t(params);
 		if(type.startsWith("update")) return sqlUpdate.t(params);
 		if(type.startsWith("delete")) return sqlDelete.t(params);
+		if(type.startsWith("alter"))  return sqlUpdate.t(params);
+		if(type.startsWith("create")) return sqlUpdate.t(params);
+		if(type.startsWith("drop"))   return sqlUpdate.t(params);
 
 		throw new Exception("k-sql: type SQL non supporté: " + sql);
 	}

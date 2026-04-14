@@ -14,6 +14,7 @@ public class EntityImpl implements Entity, T {
 	public static final String TABLE_NAME = "knowledge";
 	public static final String COL_DATE_CREATED = "date_created";
 	public static final String COL_DATE_UPDATED = "date_updated";
+	public static final String COL_CODE = "code";
 	public static final String COL_ACTION = "action";
 	public static final String COL_OBJECT = "object";
 	public static final String COL_DESCRIPTION = "description";
@@ -28,6 +29,7 @@ public class EntityImpl implements Entity, T {
 		Map data = (Map) o[1];
 
 		Date now = new Date();
+		Object code = data.get(COL_CODE);
 		Object action = data.get(COL_ACTION);
 		Object object = data.get(COL_OBJECT);
 		Object description = data.get(COL_DESCRIPTION);
@@ -36,18 +38,20 @@ public class EntityImpl implements Entity, T {
 		String sql = "INSERT INTO " + TABLE_NAME + " ("
 				+ COL_DATE_CREATED + ", "
 				+ COL_DATE_UPDATED + ", "
+				+ COL_CODE + ", "
 				+ COL_ACTION + ", "
 				+ COL_OBJECT + ", "
 				+ COL_DESCRIPTION + ", "
-				+ COL_STATE + ") VALUES (?,?,?,?,?,?)";
+				+ COL_STATE + ") VALUES (?,?,?,?,?,?,?)";
 
 		PreparedStatement st = cx.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 		st.setObject(1, now);
 		st.setObject(2, null);
-		st.setObject(3, action);
-		st.setObject(4, object);
-		st.setObject(5, description);
-		st.setObject(6, state);
+		st.setObject(3, code);
+		st.setObject(4, action);
+		st.setObject(5, object);
+		st.setObject(6, description);
+		st.setObject(7, state);
 		st.executeUpdate();
 
 		ResultSet rs = st.getGeneratedKeys();

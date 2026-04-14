@@ -13,6 +13,7 @@ public class EntityImpl implements Entity, P {
 	public static final String TABLE_NAME = "knowledge";
 	public static final String COL_ID = "id";
 	public static final String COL_DATE_UPDATED = "date_updated";
+	public static final String COL_CODE = "code";
 	public static final String COL_ACTION = "action";
 	public static final String COL_OBJECT = "object";
 	public static final String COL_DESCRIPTION = "description";
@@ -27,6 +28,7 @@ public class EntityImpl implements Entity, P {
 		Map data = (Map) o[1];
 
 		Object id = data.get(COL_ID);
+		Object code = data.get(COL_CODE);
 		Object action = data.get(COL_ACTION);
 		Object object = data.get(COL_OBJECT);
 		Object description = data.get(COL_DESCRIPTION);
@@ -34,13 +36,14 @@ public class EntityImpl implements Entity, P {
 
 		String sql = "UPDATE " + TABLE_NAME + " SET "
 				+ COL_DATE_UPDATED + "=?, "
+				+ COL_CODE + "=?, "
 				+ COL_ACTION + "=?, "
 				+ COL_OBJECT + "=?, "
 				+ COL_DESCRIPTION + "=?, "
 				+ COL_STATE + "=? "
 				+ "WHERE " + COL_ID + "=?";
 
-		executeUpdate(cx, sql, new Date(), action, object, description, state, id);
+		executeUpdate(cx, sql, new Date(), code, action, object, description, state, id);
 	}
 
 	private void executeUpdate(Connection cx, String sql, Object... params) throws SQLException {
