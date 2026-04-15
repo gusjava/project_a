@@ -1,0 +1,19 @@
+package a.entity.gus.y.server1.engine.cmd.e.reload;
+
+import a.framework.*;
+
+public class EntityImpl implements Entity, T {
+	public String creationDate() {return "20260415";}
+
+	private Service entityEngine;
+
+	public EntityImpl() throws Exception {
+		entityEngine = Outside.service(this, "gus.y.entitysys1.engine");
+	}
+
+	public Object t(Object obj) throws Exception
+	{
+		entityEngine.e();
+		return "reloading... (wait 1s before compilation and db update is complete)";
+	}
+}

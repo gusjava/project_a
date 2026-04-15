@@ -331,7 +331,10 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 	private void persistOrClearSrc() throws Exception
 	{
 		if(synchWithFile()) clearSrc();
-		else persistSrc();
+		else {
+			try { persistSrc(); }
+			catch (Exception e) { Outside.err(this, "persistOrClearSrc()", e); }
+		}
 	}
 	
 	private String restoreOrLoadSrc() throws Exception
