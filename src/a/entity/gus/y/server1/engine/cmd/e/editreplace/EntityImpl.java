@@ -1,4 +1,4 @@
-package a.entity.gus.y.server1.engine.cmd.e.replacebloc;
+package a.entity.gus.y.server1.engine.cmd.e.editreplace;
 
 import java.util.Map;
 import a.framework.*;

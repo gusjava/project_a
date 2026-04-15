@@ -11,10 +11,12 @@ public class EntityImpl implements Entity, P, F {
 	public static final String CLASS_NAME = "EntityImpl";
 
 	private Service read;
+	private Service write;
 
 	public EntityImpl() throws Exception
 	{
 		read = Outside.service(this,"gus.x.entity.src.read1");
+		write = Outside.service(this, "gus.x.entity.src.write1");
 	}
 
 	public void p(Object obj) throws Exception {
@@ -43,11 +45,7 @@ public class EntityImpl implements Entity, P, F {
 		String part1 = src.substring(0, Math.min(start, src.length()));
 		String part2 = (end < src.length()) ? src.substring(end) : "";
 
-		PrintStream p = new PrintStream(javaFile);
-
-		p.print(part1);
-		p.print(part2);
-
+		write.p(new Object[]{javaFile, part1 + part2});
 		return true;
 	}
 }

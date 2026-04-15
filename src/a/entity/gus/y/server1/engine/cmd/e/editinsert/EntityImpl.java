@@ -1,4 +1,4 @@
-package a.entity.gus.y.server1.engine.cmd.e.insertbloc;
+package a.entity.gus.y.server1.engine.cmd.e.editinsert;
 
 import java.util.Map;
 import a.framework.*;

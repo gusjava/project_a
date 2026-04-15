@@ -1,8 +1,6 @@
 package a.entity.gus.y.entitysrcedit1.insert;
 
 import java.io.File;
-import java.io.PrintStream;
-
 import a.framework.*;
 
 public class EntityImpl implements Entity, P, F {
@@ -11,10 +9,12 @@ public class EntityImpl implements Entity, P, F {
 	public static final String CLASS_NAME = "EntityImpl";
 
 	private Service read;
+	private Service write;
 
 	public EntityImpl() throws Exception
 	{
 		read = Outside.service(this,"gus.x.entity.src.read1");
+		write = Outside.service(this, "gus.x.entity.src.write1");
 	}
 
 	public void p(Object obj) throws Exception {
@@ -40,13 +40,8 @@ public class EntityImpl implements Entity, P, F {
 		int clampedPos = Math.min(pos, src.length());
 		String part1 = src.substring(0, clampedPos);
 		String part2 = src.substring(clampedPos);
-
-		PrintStream p = new PrintStream(javaFile);
-
-		p.print(part1);
-		p.print(insertion);
-		p.print(part2);
-
+		
+		write.p(new Object[]{javaFile, part1 + insertion + part2});
 		return true;
 	}
 }

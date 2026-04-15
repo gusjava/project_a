@@ -1,4 +1,4 @@
-package a.entity.gus.y.server1.engine.cmd.e.src;
+package a.entity.gus.y.server1.engine.cmd.e.srcpart;
 
 import java.util.List;
 import a.framework.*;
@@ -6,22 +6,26 @@ import a.framework.*;
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20260415";}
 
-	private Service findSrc;
+	private Service findSrcPart;
 	private Service entityEngine;
 
 	public EntityImpl() throws Exception {
-		findSrc      = Outside.service(this, "gus.y.entitysys1.find.src");
+		findSrcPart  = Outside.service(this, "gus.y.entitysys1.find.srcpart");
 		entityEngine = Outside.service(this, "gus.y.entitysys1.engine");
 	}
 
 	public Object t(Object obj) throws Exception
 	{
 		List list = (List) obj;
-		if(list == null || list.size()!=1) 
-			throw new Exception("Usage: e-src <entity>");
-			
+		if(list == null || list.size()!=3)
+			throw new Exception("Usage: e-srcpart <entity> <start> <end>");
+		
 		String name = (String) list.get(0);
-		Object src = findSrc.t(new Object[]{entityEngine, name});
+		Integer start = (Integer) list.get(1);
+		Integer end = (Integer) list.get(2);
+		
+		int[] range = new int[]{start.intValue(), end.intValue()};
+		Object src = findSrcPart.t(new Object[]{entityEngine, name, range});
 		if(src == null) throw new Exception("Entity not found: " + name);
 		return src;
 	}

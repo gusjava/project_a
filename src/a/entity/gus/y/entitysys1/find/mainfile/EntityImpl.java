@@ -14,8 +14,7 @@ public class EntityImpl implements Entity, T {
 
 	public Object t(Object obj) throws Exception {
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
 		File packageDir = (File) findPackageDir.t(obj);
 		return new File(packageDir, "EntityImpl.java");

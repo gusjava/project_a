@@ -58,7 +58,7 @@ public class EntityImpl implements Entity, P, F {
 		boolean isV = features.contains("V");
 		boolean isS = features.contains("S");
 
-		PrintStream p = new PrintStream(javaFile);
+		PrintStream p = new PrintStream(javaFile, "UTF-8");
 
 		p.println("package " + entityPackage + ";");
 		p.println();
@@ -66,8 +66,7 @@ public class EntityImpl implements Entity, P, F {
 		p.println();
 		p.print("public class ");
 		p.print(CLASS_NAME);
-		if (isS)
-			p.print(" extends S1");
+		if (isS) p.print(" extends S1");
 		p.print(" implements Entity");
 		if (isE)
 			p.print(", E");

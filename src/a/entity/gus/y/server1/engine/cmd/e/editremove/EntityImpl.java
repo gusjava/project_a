@@ -1,4 +1,4 @@
-package a.entity.gus.y.server1.engine.cmd.e.removebloc;
+package a.entity.gus.y.server1.engine.cmd.e.editremove;
 
 import java.util.Map;
 import a.framework.*;
