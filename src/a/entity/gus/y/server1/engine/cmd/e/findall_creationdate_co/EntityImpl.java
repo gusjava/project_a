@@ -1,7 +1,6 @@
 package a.entity.gus.y.server1.engine.cmd.e.findall_creationdate_co;
 
 import java.sql.Connection;
-import java.util.List;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
@@ -9,10 +8,12 @@ public class EntityImpl implements Entity, T {
 
 	private Service findAllCreationDateCo;
 	private Service entityEngine;
+	private Service joinArgs;
 
 	public EntityImpl() throws Exception {
 		findAllCreationDateCo = Outside.service(this, "gus.y.entitydb1.entity.findall.creationdate.asmap.co");
 		entityEngine          = Outside.service(this, "gus.y.entitysys1.engine");
+		joinArgs              = Outside.service(this, "gus.y.server1.tool.joinargs");
 	}
 
 	public Object t(Object obj) throws Exception
@@ -22,14 +23,5 @@ public class EntityImpl implements Entity, T {
 	{return (Connection) entityEngine.r("cx");}
 
 	private String joinArgs(Object args) throws Exception
-	{
-		if(args instanceof String) return (String) args;
-		if(args instanceof List) {
-			List list = (List) args;
-			StringBuilder sb = new StringBuilder((String) list.get(0));
-			for(int i=1; i<list.size(); i++) sb.append(" ").append(list.get(i));
-			return sb.toString();
-		}
-		throw new Exception("Invalid args type: "+args.getClass().getSimpleName());
-	}
+	{return (String) joinArgs.t(args);}
 }
