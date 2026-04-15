@@ -21,8 +21,8 @@ public class EntityImpl implements Entity, T {
 			throw new Exception("Usage: e-srcpart <entity> <start> <end>");
 		
 		String name = (String) list.get(0);
-		Integer start = (Integer) list.get(1);
-		Integer end = (Integer) list.get(2);
+		Integer start = Integer.parseInt((String) list.get(1));
+		Integer end = Integer.parseInt((String) list.get(2));
 		
 		int[] range = new int[]{start.intValue(), end.intValue()};
 		Object src = findSrcPart.t(new Object[]{entityEngine, name, range});
