@@ -5,7 +5,6 @@ public abstract class Parser1 extends Parser0 {
 	public Parser1(boolean debug)
 	{super(debug);}
 	
-	
 	/*
 	 * chars = char*
 	 */
@@ -25,7 +24,6 @@ public abstract class Parser1 extends Parser0 {
 		return b.toString();
 	}
 	
-	
 	protected Object parse_blank()
 	{
 		int n0 = index();
@@ -37,7 +35,6 @@ public abstract class Parser1 extends Parser0 {
 		goToPrevious();
 		return b.toString();
 	}
-	
 	
 	/*
 	 * char = 
@@ -86,8 +83,6 @@ public abstract class Parser1 extends Parser0 {
 		return ""+get();
 	}
 	
-	
-	
 	/*
 	 * number = 
 	 * entier
@@ -114,11 +109,8 @@ public abstract class Parser1 extends Parser0 {
 			if(exp!=null) return done(integer+exp);
 			return done(integer);
 		}
-		
 		return reset(n0,"");
 	}
-	
-	
 	
 	private Object parse_integer()
 	{
@@ -143,8 +135,6 @@ public abstract class Parser1 extends Parser0 {
 		
 		return b.toString();
 	}
-	
-	
 	
 	private Object parse_frac()
 	{

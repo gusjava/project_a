@@ -26,8 +26,8 @@ public class EntityImpl implements Entity, T {
 		for(int i=0;i<opList.size();i++)
 		{
 			Map op = (Map) opList.get(i);
-			Integer start = (Integer) get(op,"start",0);
-			Integer end = (Integer) get(op,"end",start);
+			Integer start = Integer.parseInt((String) get(op,"start",0));
+			Integer end = Integer.parseInt((String) get(op,"end",start));
 			String insert = (String) get(op,"insert","");
 			
 			operations.add(new Object[]{start,end,insert});

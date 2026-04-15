@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P, F {
 
 	public boolean f(Object obj) throws Exception {
 		Object[] o = (Object[]) obj;
-		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 4) throw new Exception("Wrong data number: " + o.length);
 
 		Object engine = o[0];
 		String entityName = (String) o[1];

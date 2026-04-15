@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, T {
 	{
 		Map json = (Map) obj;
 		String name  = (String)  json.get("name");
-		Integer pos  = (Integer) json.get("pos");
+		Integer pos  = Integer.parseInt((String) json.get("pos"));
 		String src   = (String)  json.get("src");
 		boolean done = entityEditInsert.f(new Object[]{entityEngine, name, pos, src});
 		return done ? "done" : "edit failed";
