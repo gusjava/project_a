@@ -23,7 +23,7 @@ public class EntityImpl implements Entity, T {
 		
 		if (range.length != 2) throw new Exception("Wrong range size: " + range.length);
 		
-		File mainFile = (File) findMainFile.t(obj);
+		File mainFile = (File) findMainFile.t(new Object[]{engine, entityName});
 		if (!mainFile.isFile()) return null;
 
 		String src = new String(Files.readAllBytes(mainFile.toPath()), "UTF-8");
