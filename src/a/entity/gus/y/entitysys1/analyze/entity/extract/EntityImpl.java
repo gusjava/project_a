@@ -16,6 +16,7 @@ public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20240112";}
 	
 	public static final String KEY_PACKAGE = "package";
+	public static final String KEY_IMPORTS = "imports";
 	public static final String KEY_FEATURES = "features";
 	public static final String KEY_CREATION_DATE = "creation_date";
 	public static final String KEY_RESOURCES = "resources";
@@ -38,6 +39,7 @@ public class EntityImpl implements Entity, T {
 		put(data, KEY_FEATURES, extractFeatures(lines));
 		put(data, KEY_CREATION_DATE, extractCreationDate(lines));
 		
+		put(data, KEY_IMPORTS, extractImports(src));
 		put(data, KEY_RESOURCES, extractResources(src));
 		put(data, KEY_SERVICES, extractServices(src));
 		put(data, KEY_LINKS, extractLinks(src));
@@ -118,6 +120,29 @@ public class EntityImpl implements Entity, T {
 				return m.group(1);
 			}
 		return null;
+	}
+
+	// IMPORTS
+
+	public static final String R_IMPORTS = "import\\s+([\\w\\.\\*]+);";
+	public static final Pattern P_IMPORTS = Pattern.compile(R_IMPORTS, Pattern.DOTALL);
+
+	public static final String R_STATIC_IMPORTS = "import\\s+(static\\s+)?([\\w\\.\\*]+);";
+	public static final Pattern P_STATIC_IMPORTS = Pattern.compile(R_STATIC_IMPORTS, Pattern.DOTALL);
+
+	private Set extractImports(String src) throws Exception {
+		Set set = new HashSet();
+		Matcher m = P_IMPORTS.matcher(src);
+		while(m.find()) {
+			String value = m.group(1);
+			if(!value.startsWith("a.framework.")) set.add(value);
+		}
+		m = P_STATIC_IMPORTS.matcher(src);
+		while(m.find()) {
+			String value = m.group(2);
+			if(!value.startsWith("a.framework.")) set.add(value);
+		}
+		return set;
 	}
 
 	// RESOURCES

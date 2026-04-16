@@ -21,12 +21,14 @@ public class EntityImpl implements Entity, T {
 	private Service insertEntity;
 	private Service updateEntity;
 	
+	private Service insertImports;
 	private Service insertResources;
 	private Service insertServices;
 	private Service insertLinks;
 	private Service insertMissingLinks;
 	private Service insertXyzErr;
 	
+	private Service deleteImports;
 	private Service deleteResources;
 	private Service deleteServices;
 	private Service deleteLinks;
@@ -46,12 +48,14 @@ public class EntityImpl implements Entity, T {
 		insertEntity = Outside.service(this,"gus.y.entitydb1.entity.insert");
 		updateEntity = Outside.service(this,"gus.y.entitydb1.entity.update");
 		
+		insertImports = Outside.service(this,"gus.y.entitysys1.insert.imports");
 		insertResources = Outside.service(this,"gus.y.entitysys1.insert.resources");
 		insertServices = Outside.service(this,"gus.y.entitysys1.insert.services");
 		insertLinks = Outside.service(this,"gus.y.entitysys1.insert.links");
 		insertMissingLinks = Outside.service(this,"gus.y.entitysys1.insert.missinglinks");
 		insertXyzErr = Outside.service(this,"gus.y.entitysys1.insert.xyzerr");
 		
+		deleteImports = Outside.service(this,"gus.y.entitydb1.entity_import.delete");
 		deleteResources = Outside.service(this,"gus.y.entitydb1.entity_resource.delete");
 		deleteServices = Outside.service(this,"gus.y.entitydb1.entity_service.delete");
 		deleteLinks = Outside.service(this,"gus.y.entitydb1.entity_link.delete1");
@@ -113,34 +117,24 @@ public class EntityImpl implements Entity, T {
 			results.put(entityName, entityMap);
 		}
 		
-		// 1 - suppression de xyzErr et missingLink
-
-		log("Removing xyzErr and missingLink");
-		it = analyzed.iterator();
-		while(it.hasNext()) {
-			String entityName = (String) it.next();
-			
-			if(mapDb.containsKey(entityName)) {
-				deleteXyzErr.p(new Object[] {cx, entityName});
-				deleteMissingLinks.p(new Object[] {cx, entityName});
-			}
-		}
-
-		// 2 - suppression des links, services, resources
+		// suppressions
 
 		log("Removing links, services and resources");
 		it = analyzed.iterator();
 		while(it.hasNext()) {
 			String entityName = (String) it.next();
-			
-			if(mapDb.containsKey(entityName)) {
+			if(mapDb.containsKey(entityName))
+			{
+				deleteImports.p(new Object[] {cx, entityName});
 				deleteLinks.p(new Object[] {cx, entityName});
 				deleteServices.p(new Object[] {cx, entityName});
 				deleteResources.p(new Object[] {cx, entityName});
+				deleteXyzErr.p(new Object[] {cx, entityName});
+				deleteMissingLinks.p(new Object[] {cx, entityName});
 			}
 		}
 		
-		// 3 - compilation des entites
+		// compilations
 
 		log("Compiling entities");
 		it = analyzed.iterator();
@@ -149,7 +143,7 @@ public class EntityImpl implements Entity, T {
 			compileEntity.p(new Object[] {engine, entityName});
 		}
 		
-		// 4 - insertion des links, services, resources
+		// insertions
 
 		log("Inserting links, services and resources");
 		it = analyzed.iterator();
@@ -157,12 +151,13 @@ public class EntityImpl implements Entity, T {
 			String entityName = (String) it.next();
 			Map entityMap = (Map) results.get(entityName);
 			
+			insertImports.p(new Object[] {cx, entityMap});
 			insertServices.p(new Object[] {cx, entityMap});
 			insertResources.p(new Object[] {cx, entityMap});
 			insertLinks.p(new Object[] {cx, entityMap});
 		}
 		
-		// 5 - insertion de xyzErr et missingLink
+		// insertion de missingLink
 
 		log("Inserting xyzErr and missingLink");
 		it = analyzed.iterator();

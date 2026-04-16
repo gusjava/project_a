@@ -21,6 +21,7 @@ public class EntityImpl implements Entity, T {
 	public static final String KEY_FILE_NB = "file_nb";
 
 	public static final String KEY_PACKAGE = "package";
+	public static final String KEY_IMPORTS = "imports";
 	public static final String KEY_RESOURCES = "resources";
 	public static final String KEY_SERVICES = "services";
 	public static final String KEY_LINKS = "links";
@@ -59,6 +60,7 @@ public class EntityImpl implements Entity, T {
 			if (!extractedData.containsKey(KEY_PACKAGE)) throw new Exception("Package not found");
 			if (!extractedData.containsKey(KEY_FEATURES)) throw new Exception("Features not found");
 			if (!extractedData.containsKey(KEY_CREATION_DATE)) throw new Exception("Creation date not found");
+			if (!extractedData.containsKey(KEY_IMPORTS)) throw new Exception("Imports not found");
 			if (!extractedData.containsKey(KEY_RESOURCES)) throw new Exception("Resources not found");
 			if (!extractedData.containsKey(KEY_SERVICES)) throw new Exception("Services not found");
 			if (!extractedData.containsKey(KEY_LINKS)) throw new Exception("Links not found");
@@ -66,6 +68,7 @@ public class EntityImpl implements Entity, T {
 			String package1 = (String) extractedData.get(KEY_PACKAGE);
 			String features = (String) extractedData.get(KEY_FEATURES);
 			String creationDate = (String) extractedData.get(KEY_CREATION_DATE);
+			Set imports = (Set) extractedData.get(KEY_IMPORTS);
 			Set resources = (Set) extractedData.get(KEY_RESOURCES);
 			Set services = (Set) extractedData.get(KEY_SERVICES);
 			Set links = (Set) extractedData.get(KEY_LINKS);
@@ -87,6 +90,7 @@ public class EntityImpl implements Entity, T {
 			data.put(KEY_LENGTH, length);
 			data.put(KEY_CALL_NB, callNb);
 			data.put(KEY_FILE_NB, fileNb);
+			data.put(KEY_IMPORTS, imports);
 			data.put(KEY_RESOURCES, resources);
 			data.put(KEY_SERVICES, services);
 			data.put(KEY_LINKS, links1);

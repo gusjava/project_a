@@ -130,13 +130,13 @@ public class EntityImpl implements Entity, T {
 		while(m.find())
 		{
 			String value = m.group(1);
-			if(!value.startsWith("gus06.framework.")) set.add(value);
+			if(!value.startsWith("a.framework.")) set.add(value);
 		}
 		m = P_STATIC_IMPORTS.matcher(src);
 		while(m.find())
 		{
 			String value = m.group(2);
-			if(!value.startsWith("gus06.framework.")) set.add(value);
+			if(!value.startsWith("a.framework.")) set.add(value);
 		}
 		return set;
 	}
