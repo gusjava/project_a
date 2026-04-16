@@ -104,4 +104,5 @@ public class GyemConst {
 	public static final Class M060_T_RB_PROP =					a.core.gus.gyem.m060.t.rb.prop.Module.class;
 	public static final Class M061_T_RB_PROPBOOL =				a.core.gus.gyem.m061.t.rb.propbool.Module.class;
 	public static final Class M062_T_RB_PROPINT =				a.core.gus.gyem.m062.t.rb.propint.Module.class;
+	public static final Class M063_T_RB_R =						a.core.gus.gyem.m063.t.rb.r.Module.class;
 }
