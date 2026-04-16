@@ -28,6 +28,11 @@ public class EntityImpl implements Entity, P {
 		}
 
 		{
+			String sql = "ALTER TABLE entity_import ADD FOREIGN KEY (entity_name) REFERENCES entity(entity_name)";
+			execute(cx, sql);
+		}
+
+		{
 			String sql = "ALTER TABLE entity_link ADD FOREIGN KEY (entity_name) REFERENCES entity(entity_name)";
 			execute(cx, sql);
 		}
@@ -49,6 +54,26 @@ public class EntityImpl implements Entity, P {
 
 		{
 			String sql = "ALTER TABLE entity_xyz_err ADD FOREIGN KEY (entity_name) REFERENCES entity(entity_name)";
+			execute(cx, sql);
+		}
+
+		{
+			String sql = "ALTER TABLE jar_import ADD FOREIGN KEY (jar_sha1) REFERENCES jar(sha1)";
+			execute(cx, sql);
+		}
+
+		{
+			String sql = "ALTER TABLE jar_class ADD FOREIGN KEY (jar_sha1) REFERENCES jar(sha1)";
+			execute(cx, sql);
+		}
+
+		{
+			String sql = "ALTER TABLE jar_jar ADD FOREIGN KEY (jar1_sha1) REFERENCES jar(sha1)";
+			execute(cx, sql);
+		}
+
+		{
+			String sql = "ALTER TABLE jar_jar ADD FOREIGN KEY (jar2_sha1) REFERENCES jar(sha1)";
 			execute(cx, sql);
 		}
 	}
