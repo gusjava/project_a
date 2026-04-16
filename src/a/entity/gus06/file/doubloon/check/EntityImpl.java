@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, F {
 
 
 	public EntityImpl() throws Exception
-	{buildMd5 = Outside.service(this,"gus06.crypto.hash.md5");}
+	{buildMd5 = Outside.service(this,"gus.x.messagedigest.md5");}
 	
 	
 	

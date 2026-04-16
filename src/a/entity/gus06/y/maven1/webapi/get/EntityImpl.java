@@ -24,7 +24,7 @@ public class EntityImpl implements Entity, T {
 		URL url = new URL(urlStr);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setConnectTimeout(15000);
-		conn.setReadTimeout(30000);
+		conn.setReadTimeout(60000);
 
 		if (conn.getResponseCode() != 200)
 			throw new Exception("Failed to query Maven Central - HTTP " + conn.getResponseCode());

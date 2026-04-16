@@ -39,7 +39,7 @@ public class EntityImpl implements Entity, I, P {
 		utf8 = Outside.service(this,"gus06.convert.bytearraytoutf8");
 		string = Outside.service(this,"gus06.convert.bytearraytostring");
 		base64 = Outside.service(this,"gus06.tostring.bytetobase64");
-		hexa = Outside.service(this,"gus06.tostring.bytetohexa");
+		hexa = Outside.service(this,"gus.x.bytearraytohexa1");
 		binary = Outside.service(this,"gus06.tostring.bytetobinary");
 		long1 = Outside.service(this,"gus06.convert.bytearraytolong");
 		int1 = Outside.service(this,"gus06.convert.bytearraytoint");

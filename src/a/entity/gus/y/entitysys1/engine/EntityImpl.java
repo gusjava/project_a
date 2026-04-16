@@ -28,7 +28,8 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	private Service findMissingLinkMap;
 	private Service findSrcSaveMap;
 	
-	private Service dataLoader;
+	private Service dataLoaderEntity;
+	private Service dataLoaderJar;
 	private Service getCx;
 	private Service getRootDir;
 	private Service persist;
@@ -36,6 +37,7 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 
 	private Long lastTime;
 	private Map dataMap = new HashMap();
+	private Map jarMap = new HashMap();
 	private List nameList = new ArrayList();
 	private Object info;
 	
@@ -50,7 +52,8 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 		findMissingLinkMap = Outside.service(this, "gus.y.entitydb1.entity_missing_link.findall");
 		findSrcSaveMap = Outside.service(this, "gus.y.entitydb1.entity_src_save.findall");
 		
-		dataLoader = Outside.service(this, "gus.y.entitysys1.dataloader");
+		dataLoaderEntity = Outside.service(this, "gus.y.entitysys1.dataloader.entity");
+		dataLoaderJar = Outside.service(this, "gus.y.entitysys1.dataloader.jar");
 		getCx = Outside.service(this, "gus.y.entitydb1.cx.main");
 		getRootDir = Outside.service(this, "gus.y.srcroot1");
 		getDevId = Outside.service(this, "gus.y.srcroot1.dev");
@@ -79,11 +82,12 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 		if (key.equals("compileErrMap")) return compileErrMap;
 		if (key.equals("missingLinkMap")) return missingLinkMap;
 		if (key.equals("srcSaveMap")) return srcSaveMap;
+		if (key.equals("jarMap")) return jarMap;
 		if (key.equals("info")) return info;
 
 		if (key.equals("keys")) return new String[] {
 			"rootDir", "binDir", "libDir", "cx", "devId", "nameList", "lastTime",
-			"xyzErrMap", "compileErrMap", "missingLinkMap", "srcSaveMap", "info" };
+			"xyzErrMap", "compileErrMap", "missingLinkMap", "srcSaveMap", "jarMap", "info" };
 
 		throw new Exception("Unknown key: " + key);
 	}
@@ -123,7 +127,8 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 			return false;
 
 		lastTime = findLastTime();
-		dataMap = (Map) dataLoader.t(this);
+		dataMap = (Map) dataLoaderEntity.t(this);
+		jarMap = (Map) dataLoaderJar.t(this);
 		compileErrMap = (Map) findCompileErrMap.t(getCx());
 		xyzErrMap = (Map) findXyzErrMap.t(getCx());
 		missingLinkMap = (Map) findMissingLinkMap.t(getCx());

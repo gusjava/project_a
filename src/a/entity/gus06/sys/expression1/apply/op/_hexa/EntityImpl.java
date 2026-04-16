@@ -11,7 +11,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		byteToHexa = Outside.service(this,"gus06.tostring.bytetohexa");
+		byteToHexa = Outside.service(this,"gus.x.bytearraytohexa1");
 	}
 
 	

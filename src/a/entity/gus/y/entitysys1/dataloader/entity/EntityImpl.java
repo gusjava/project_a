@@ -1,4 +1,4 @@
-package a.entity.gus.y.entitysys1.dataloader;
+package a.entity.gus.y.entitysys1.dataloader.entity;
 
 import java.io.File;
 import java.sql.Connection;

@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		toClasspath = Outside.service(this,"gus06.file.jar.entry.toclasspath");
+		toClasspath = Outside.service(this,"gus.x.file.jar.entry.toclasspath");
 		extractImports = Outside.service(this,"gus06.java.bytecode.jdepend.analyze.imports");
 	}
 	

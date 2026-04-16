@@ -1,4 +1,4 @@
-package a.entity.gus06.tostring.bytetohexa;
+package a.entity.gus.x.bytearraytohexa1;
 
 import a.framework.*;
 

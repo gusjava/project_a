@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		sign = Outside.service(this,"gus06.crypto.asymkeys.signature.dsa.sign2");
-		toHexa = Outside.service(this,"gus06.tostring.bytetohexa");
+		toHexa = Outside.service(this,"gus.x.bytearraytohexa1");
 	}
 	
 	

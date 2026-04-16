@@ -1,4 +1,4 @@
-package a.entity.gus06.file.jar.entry.toclasspath;
+package a.entity.gus.x.file.jar.entry.toclasspath;
 
 import a.framework.*;
 import java.util.jar.JarEntry;
