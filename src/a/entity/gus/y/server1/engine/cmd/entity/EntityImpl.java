@@ -17,11 +17,15 @@ public class EntityImpl implements Entity, T {
 	{
 		Object[] o = (Object[]) obj;
 		if(o.length != 2) throw new Exception("Wrong data number: " + o.length);
+		
 		String entityName = (String) o[0];
 		Object rawArgs = o[1];
+		
 		Object entity = uniqueentity.t(entityName);
 		if(rawArgs == null) return ((G) entity).g();
+		
 		if(!(rawArgs instanceof List)) return ((T) entity).t(rawArgs);
+		
 		List args = (List) rawArgs;
 		if(args.size() == 1) return ((T) entity).t(args.get(0));
 		return ((T) entity).t(args);

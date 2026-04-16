@@ -9,7 +9,8 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{
 		if(obj instanceof String) return (String) obj;
-		if(obj instanceof List) {
+		if(obj instanceof List)
+		{
 			List list = (List) obj;
 			StringBuilder sb = new StringBuilder((String) list.get(0));
 			for(int i=1; i<list.size(); i++) sb.append(" ").append(list.get(i));

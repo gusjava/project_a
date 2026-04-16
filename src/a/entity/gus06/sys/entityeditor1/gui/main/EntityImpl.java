@@ -17,9 +17,9 @@ public class EntityImpl implements Entity, I, P, Runnable {
 	public EntityImpl() throws Exception
 	{
 		tab = Outside.service(this,"*gus06.swing.tabbedpane.holder1");
-		gui1 = Outside.service(this, "*gus.sys.entityeditor1.gui.gui1");
-		gui2 = Outside.service(this, "*gus.sys.entityeditor1.gui.gui2");
-		gui3 = Outside.service(this, "*gus.sys.entityeditor1.gui.gui3");
+		gui1 = Outside.service(this,"*gus06.sys.entityeditor1.gui.gui1");
+		gui2 = Outside.service(this,"*gus06.sys.entityeditor1.gui.gui2");
+		gui3 = Outside.service(this,"*gus06.sys.entityeditor1.gui.gui3");
 		
 		tab.v("ENTITY#Entities",gui1.i());
 		tab.v("JAVA_import#Imports",gui2.i());
