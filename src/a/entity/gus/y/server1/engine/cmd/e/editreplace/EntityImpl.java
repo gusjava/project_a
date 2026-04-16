@@ -18,8 +18,8 @@ public class EntityImpl implements Entity, T {
 	{
 		Map json = (Map) obj;
 		String name   = (String)  json.get("name");
-		Integer start = Integer.parseInt((String) json.get("start"));
-		Integer end   = Integer.parseInt((String) json.get("end"));
+		Integer start = Integer.parseInt(""+json.get("start"));
+		Integer end   = Integer.parseInt(""+json.get("end"));
 		String src    = (String)  json.get("src");
 		boolean done = entityEditReplace.f(new Object[]{entityEngine, name, new int[]{start, end}, src});
 		return done ? "done" : "edit failed";
