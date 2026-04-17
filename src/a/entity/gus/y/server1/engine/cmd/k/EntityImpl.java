@@ -30,17 +30,17 @@ public class EntityImpl implements Entity, T {
 	private Service addlink;
 	private Service removelink;
 
-	// commandes todo-knowledge
+	// commandes todoknowledge
 
 	private Service addtodoknowledge;
 	private Service removetodoknowledge;
 
-	// commandes avec table (create/update/delete/detail-of)
+	// commandes avec knowledge
 
 	private Service create;
 	private Service update;
 	private Service delete;
-	private Service detailof;
+	private Service find;
 
 	public EntityImpl() throws Exception
 	{
@@ -68,17 +68,17 @@ public class EntityImpl implements Entity, T {
 		addlink    = Outside.service(this, "gus.y.server1.engine.cmd.k.addlink");
 		removelink = Outside.service(this, "gus.y.server1.engine.cmd.k.removelink");
 
-		// commandes todo-knowledge
+		// commandes todoknowledge
 
 		addtodoknowledge    = Outside.service(this, "gus.y.server1.engine.cmd.k.addtodoknowledge");
 		removetodoknowledge = Outside.service(this, "gus.y.server1.engine.cmd.k.removetodoknowledge");
 
-		// commandes avec table
+		// commandes knowledge
 
 		create   = Outside.service(this, "gus.y.server1.engine.cmd.k.create");
 		update   = Outside.service(this, "gus.y.server1.engine.cmd.k.update");
 		delete   = Outside.service(this, "gus.y.server1.engine.cmd.k.delete");
-		detailof = Outside.service(this, "gus.y.server1.engine.cmd.k.detailof");
+		find     = Outside.service(this, "gus.y.server1.engine.cmd.k.find");
 	}
 
 	private Service findCmd(String cmd) throws Exception
@@ -97,22 +97,29 @@ public class EntityImpl implements Entity, T {
 
 		// commandes tag
 
-		if(cmd.equals("tags-of"))    return tagsof;
-		if(cmd.equals("add-tag"))    return addtag;
-		if(cmd.equals("remove-tag")) return removetag;
+		if(cmd.equals("tagsof"))    return tagsof;
+		if(cmd.equals("addtag"))    return addtag;
+		if(cmd.equals("removetag")) return removetag;
 
 		// commandes link
 
-		if(cmd.equals("links-of"))    return linksof;
-		if(cmd.equals("add-link"))    return addlink;
-		if(cmd.equals("remove-link")) return removelink;
+		if(cmd.equals("linksof"))    return linksof;
+		if(cmd.equals("addlink"))    return addlink;
+		if(cmd.equals("removelink")) return removelink;
 
-		// commandes todo-knowledge
+		// commandes todoknowledge
 
-		if(cmd.equals("add-todo-knowledge"))    return addtodoknowledge;
-		if(cmd.equals("remove-todo-knowledge")) return removetodoknowledge;
+		if(cmd.equals("addtodoknowledge"))    return addtodoknowledge;
+		if(cmd.equals("removetodoknowledge")) return removetodoknowledge;
 
-		throw new Exception("k: commande inconnue: " + cmd);
+		// commandes knowledge
+
+		if(cmd.equals("create"))   return create;
+		if(cmd.equals("update"))   return update;
+		if(cmd.equals("delete"))   return delete;
+		if(cmd.equals("find"))     return find;
+
+		throw new Exception("commande inconnue: " + cmd);
 	}
 
 	public Object t(Object obj) throws Exception
@@ -121,45 +128,9 @@ public class EntityImpl implements Entity, T {
 		List cmds = (List) payload.get("cmds");
 		Object args = payload.get("args");
 
-		if(cmds.size() < 2) throw new Exception("k: commande manquante");
-		String cmd = joinCmds(cmds, 1).toLowerCase();
-
-		// commandes avec table (create/update/delete/detail-of)
-
-		if(cmd.startsWith("create-"))    return create.t(enrichedArgs("create-", cmd, args));
-		if(cmd.startsWith("update-"))    return update.t(enrichedArgs("update-", cmd, args));
-		if(cmd.startsWith("delete-"))    return delete.t(idArgs("delete-", cmd, args));
-		if(cmd.startsWith("detail-of-")) return detailof.t(idArgs("detail-of-", cmd, args));
+		if(cmds.size() != 2) throw new Exception("Incorrect cmd number: "+cmds.size());
+		String cmd = (String) cmds.get(1);
 
 		return findCmd(cmd).t(args);
-	}
-
-	private Map enrichedArgs(String prefix, String cmd, Object args)
-	{
-		String table = cmd.substring(prefix.length()).replace("-", "_");
-		Map p = (args instanceof Map) ? new HashMap((Map) args) : new HashMap();
-		p.put("table", table);
-		return p;
-	}
-
-	private Map idArgs(String prefix, String cmd, Object args)
-	{
-		String table = cmd.substring(prefix.length()).replace("-", "_");
-		List l = (List) args;
-		String id = (l != null && !l.isEmpty()) ? (String) l.get(0) : null;
-		Map p = new HashMap();
-		p.put("table", table);
-		p.put("id", id);
-		return p;
-	}
-
-	private static String joinCmds(List cmds, int from)
-	{
-		StringBuffer sb = new StringBuffer();
-		for(int i = from; i < cmds.size(); i++) {
-			if(i > from) sb.append("-");
-			sb.append(cmds.get(i));
-		}
-		return sb.toString();
 	}
 }
