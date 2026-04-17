@@ -172,7 +172,6 @@ public class EntityImpl implements Entity, T {
 		findall_st  = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_st");
 		findall_en  = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_en");
 		findall_co  = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_co");
-		
 	}
 
 	public Object t(Object obj) throws Exception
@@ -181,89 +180,94 @@ public class EntityImpl implements Entity, T {
 		List cmds = (List) payload.get("cmds");
 		Object args = payload.get("args");
 
-		if(cmds.size() != 2) throw new Exception("e: incorrect cmd number: "+cmds.size());
+		if(cmds.size() != 2) throw new Exception("Incorrect cmd number: "+cmds.size());
 		String cmd = (String) cmds.get(1);
-		
+
+		return findCmd(cmd).t(args);
+	}
+
+	private Service findCmd(String cmd) throws Exception
+	{
 		// commandes generales
-		
-		if(cmd.equals("help"))             return help.t(args);
-		if(cmd.equals("reload"))           return reload.t(args);
-		if(cmd.equals("sql"))              return sql.t(args);
-		if(cmd.equals("errors"))           return errors.t(args);
-		
+
+		if(cmd.equals("help"))             return help;
+		if(cmd.equals("reload"))           return reload;
+		if(cmd.equals("sql"))              return sql;
+		if(cmd.equals("errors"))           return errors;
+
 		// manipulations d'entite
-		
-		if(cmd.equals("create"))           return create.t(args);
-		if(cmd.equals("delete"))           return delete.t(args);
-		if(cmd.equals("rename"))           return rename.t(args);
-		if(cmd.equals("duplicate"))        return duplicate.t(args);
-		if(cmd.equals("createtree"))       return createtree.t(args);
-		if(cmd.equals("importsrc"))        return importsrc.t(args);
-		if(cmd.equals("editinsert"))       return editinsert.t(args);
-		if(cmd.equals("editremove"))       return editremove.t(args);
-		if(cmd.equals("editreplace"))      return editreplace.t(args);
-		if(cmd.equals("editmulti"))        return editmulti.t(args);
-	
+
+		if(cmd.equals("create"))           return create;
+		if(cmd.equals("delete"))           return delete;
+		if(cmd.equals("rename"))           return rename;
+		if(cmd.equals("duplicate"))        return duplicate;
+		if(cmd.equals("createtree"))       return createtree;
+		if(cmd.equals("importsrc"))        return importsrc;
+		if(cmd.equals("editinsert"))       return editinsert;
+		if(cmd.equals("editremove"))       return editremove;
+		if(cmd.equals("editreplace"))      return editreplace;
+		if(cmd.equals("editmulti"))        return editmulti;
+
 		// informations sur l'entite
-		
-		if(cmd.equals("src"))              return src.t(args);
-		if(cmd.equals("srcpart"))          return srcpart.t(args);
-		if(cmd.equals("path"))             return path.t(args);
-		if(cmd.equals("features"))         return features.t(args);
-		if(cmd.equals("creationdate"))     return creationdate.t(args);
-	
+
+		if(cmd.equals("src"))              return src;
+		if(cmd.equals("srcpart"))          return srcpart;
+		if(cmd.equals("path"))             return path;
+		if(cmd.equals("features"))         return features;
+		if(cmd.equals("creationdate"))     return creationdate;
+
 		// parcours descendant
-		
-		if(cmd.equals("downlinks"))        return downlinks.t(args);
-		if(cmd.equals("downlinkstree"))    return downlinkstree.t(args);
-		if(cmd.equals("downlinkstree2"))   return downlinkstree2.t(args);
-		
+
+		if(cmd.equals("downlinks"))        return downlinks;
+		if(cmd.equals("downlinkstree"))    return downlinkstree;
+		if(cmd.equals("downlinkstree2"))   return downlinkstree2;
+
 		// parcours montant
-		
-		if(cmd.equals("uplinks"))          return uplinks.t(args);
-		if(cmd.equals("uplinkstree"))      return uplinkstree.t(args);
-		if(cmd.equals("uplinkstree2"))     return uplinkstree2.t(args);
-		
+
+		if(cmd.equals("uplinks"))          return uplinks;
+		if(cmd.equals("uplinkstree"))      return uplinkstree;
+		if(cmd.equals("uplinkstree2"))     return uplinkstree2;
+
 		// comptages
-		
-		if(cmd.equals("count"))            return count.t(args);
-		if(cmd.equals("count_st"))         return count_st.t(args);
-		if(cmd.equals("count_en"))         return count_en.t(args);
-		if(cmd.equals("count_co"))         return count_co.t(args);
-		
+
+		if(cmd.equals("count"))            return count;
+		if(cmd.equals("count_st"))         return count_st;
+		if(cmd.equals("count_en"))         return count_en;
+		if(cmd.equals("count_co"))         return count_co;
+
 		// nommages
-		
-		if(cmd.equals("names"))            return names.t(args);
-		if(cmd.equals("names_st"))         return names_st.t(args);
-		if(cmd.equals("names_en"))         return names_en.t(args);
-		if(cmd.equals("names_co"))         return names_co.t(args);
-		
+
+		if(cmd.equals("names"))            return names;
+		if(cmd.equals("names_st"))         return names_st;
+		if(cmd.equals("names_en"))         return names_en;
+		if(cmd.equals("names_co"))         return names_co;
+
 		// recherche des features
-		
-		if(cmd.equals("findall_features"))        return findall_features.t(args);
-		if(cmd.equals("findall_features_st"))     return findall_features_st.t(args);
-		if(cmd.equals("findall_features_en"))     return findall_features_en.t(args);
-		if(cmd.equals("findall_features_co"))     return findall_features_co.t(args);
-		
+
+		if(cmd.equals("findall_features"))        return findall_features;
+		if(cmd.equals("findall_features_st"))     return findall_features_st;
+		if(cmd.equals("findall_features_en"))     return findall_features_en;
+		if(cmd.equals("findall_features_co"))     return findall_features_co;
+
 		// recherche des dates de creation
-		
-		if(cmd.equals("findall_creationdate"))    return findall_creationdate.t(args);
-		if(cmd.equals("findall_creationdate_st")) return findall_creationdate_st.t(args);
-		if(cmd.equals("findall_creationdate_en")) return findall_creationdate_en.t(args);
-		if(cmd.equals("findall_creationdate_co")) return findall_creationdate_co.t(args);
-		
+
+		if(cmd.equals("findall_creationdate"))    return findall_creationdate;
+		if(cmd.equals("findall_creationdate_st")) return findall_creationdate_st;
+		if(cmd.equals("findall_creationdate_en")) return findall_creationdate_en;
+		if(cmd.equals("findall_creationdate_co")) return findall_creationdate_co;
+
 		// recherche des dates de descriptions (name-features)
-		
-		if(cmd.equals("findall_desc"))            return findall_desc.t(args);
-		if(cmd.equals("findall_desc_st"))         return findall_desc_st.t(args);
-		if(cmd.equals("findall_desc_en"))         return findall_desc_en.t(args);
-		if(cmd.equals("findall_desc_co"))         return findall_desc_co.t(args);
-		
+
+		if(cmd.equals("findall_desc"))            return findall_desc;
+		if(cmd.equals("findall_desc_st"))         return findall_desc_st;
+		if(cmd.equals("findall_desc_en"))         return findall_desc_en;
+		if(cmd.equals("findall_desc_co"))         return findall_desc_co;
+
 		// recherche globale
-		
-		if(cmd.equals("findall_st"))       return findall_st.t(args);
-		if(cmd.equals("findall_en"))       return findall_en.t(args);
-		if(cmd.equals("findall_co"))       return findall_co.t(args);
+
+		if(cmd.equals("findall_st"))       return findall_st;
+		if(cmd.equals("findall_en"))       return findall_en;
+		if(cmd.equals("findall_co"))       return findall_co;
 
 		throw new Exception("e: commande inconnue: " + cmd);
 	}
