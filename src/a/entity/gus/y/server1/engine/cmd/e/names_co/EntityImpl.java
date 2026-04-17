@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception {
 		namesCo      = Outside.service(this, "gus.y.entitydb1.entity.findall.names.co");
 		entityEngine = Outside.service(this, "gus.y.entitysys1.engine");
-		joinArgs     = Outside.service(this, "gus.y.server1.tool.joinargs");
+		joinArgs     = Outside.service(this, "gus.y.server1.tool.args.fullstring");
 	}
 
 	public Object t(Object obj) throws Exception

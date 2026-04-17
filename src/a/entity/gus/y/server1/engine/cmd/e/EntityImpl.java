@@ -95,8 +95,8 @@ public class EntityImpl implements Entity, T {
 		
 		help       = Outside.service(this, "gus.y.server1.engine.cmd.e.help");
 		reload     = Outside.service(this, "gus.y.server1.engine.cmd.e.reload");
-		errors      = Outside.service(this, "gus.y.server1.engine.cmd.e.errors");
-		sql        = Outside.service(this, "gus.y.server1.engine.cmd.e_sql");
+		errors     = Outside.service(this, "gus.y.server1.engine.cmd.e.errors");
+		sql        = Outside.service(this, "gus.y.server1.engine.cmd.e.sql");
 		
 		// manipulations d'entite
 		

@@ -1,27 +1,24 @@
-package a.entity.gus.y.server1.engine.cmd.main;
+package a.entity.gus.y.server1.engine.cmd.prop;
 
 import java.util.List;
 import java.util.Map;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260410";}
+	public String creationDate() {return "20260417";}
 
-	private Service buildDesc;
 	private Service getArg;
-	private Map main;
+	private Map prop;
 
 	public EntityImpl() throws Exception
 	{
-		buildDesc = Outside.service(this, "gus06.tostring.desc");
 		getArg = Outside.service(this,"gus.y.server1.tool.payload.args.fullstring");
-		main = (Map) Outside.resource(this, "main");
+		prop = (Map) Outside.resource(this, "props");
 	}
 
 	public Object t(Object obj) throws Exception
 	{
 		String arg = (String) getArg.t(obj);
-		Object value = arg!=null ? main.get(arg) : main;
-		return buildDesc.t(value);
+		return arg!=null ? prop.get(arg) : prop;
 	}
 }

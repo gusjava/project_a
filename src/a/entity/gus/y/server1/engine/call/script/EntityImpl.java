@@ -1,4 +1,4 @@
-package a.entity.gus.y.server1.engine.cmd.script;
+package a.entity.gus.y.server1.engine.call.script;
 
 import java.util.HashMap;
 import a.framework.*;

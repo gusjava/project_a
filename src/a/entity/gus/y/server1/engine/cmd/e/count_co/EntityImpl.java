@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception {
 		countCo = Outside.service(this, "gus.y.entitydb1.entity.count.co");
-		joinArgs = Outside.service(this,"gus.y.server1.tool.joinargs");
+		joinArgs = Outside.service(this,"gus.y.server1.tool.args.fullstring");
 		entityEngine = Outside.service(this, "gus.y.entitysys1.engine");
 	}
 

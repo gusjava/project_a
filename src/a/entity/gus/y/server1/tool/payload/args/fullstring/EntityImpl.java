@@ -1,18 +1,16 @@
-package a.entity.gus.y.server1.engine.cmd.resource;
+package a.entity.gus.y.server1.tool.payload.args.fullstring;
 
 import java.util.List;
 import java.util.Map;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260410";}
+	public String creationDate() {return "20260417";}
 
-	private Service buildDesc;
 	private Service joinArgs;
 
 	public EntityImpl() throws Exception
 	{
-		buildDesc = Outside.service(this, "gus06.tostring.desc");
 		joinArgs = Outside.service(this,"gus.y.server1.tool.args.fullstring");
 	}
 
@@ -20,7 +18,7 @@ public class EntityImpl implements Entity, T {
 	{
 		Map payload = (Map) obj;
 		List args = (List) payload.get("args");
-		String rule = (String) joinArgs.t(args);
-		return buildDesc.t(Outside.resource(this, rule));
+		if(args==null || args.isEmpty()) return null;
+		return joinArgs.t(args);
 	}
 }

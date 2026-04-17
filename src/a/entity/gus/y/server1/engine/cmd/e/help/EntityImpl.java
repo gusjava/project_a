@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, T {
 		"e-rename <name0> <name1> \u2014 renomme une entit\u00e9 (avec refactor des liens)\n" +
 		"e-duplicate <name0> <name1> \u2014 duplique une entit\u00e9\n" +
 		"e-createtree :<json> \u2014 cr\u00e9e un arbre d'entit\u00e9s depuis un JSON [[\"name-features\",[children...]]] (DFS post-order)\n" +
-		"e-importsrc <src> \u2014 cr\u00e9e une entit\u00e9 \u00e0 partir du code source <src>\n" +
+		"e-importsrc :{src} \u2014 cr\u00e9e une entit\u00e9 \u00e0 partir du code source <src>\n" +
 		"e-editinsert :{name,pos,src} \u2014 ins\u00e8re src \u00e0 la position pos dans l'entit\u00e9 name\n" +
 		"e-editremove :{name,start,end} \u2014 supprime les lignes start\u2192end dans l'entit\u00e9 name\n" +
 		"e-editreplace :{name,start,end,src} \u2014 remplace les lignes start\u2192end par src dans l'entit\u00e9 name\n" +

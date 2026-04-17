@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, T {
 		sqlInsert   = Outside.service(this, "gus.y.knowledgedb1.sql.insert");
 		sqlDelete   = Outside.service(this, "gus.y.knowledgedb1.sql.delete");
 		sqlUpdate   = Outside.service(this, "gus.y.knowledgedb1.sql.update");
-		cmdKSql     = Outside.service(this, "gus.y.server1.engine.cmd.k_sql");
+		cmdKSql     = Outside.service(this, "gus.y.server1.engine.cmd.k.sql");
 	}
 
 	public Object t(Object obj) throws Exception

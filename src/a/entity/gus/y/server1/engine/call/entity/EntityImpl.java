@@ -1,4 +1,4 @@
-package a.entity.gus.y.server1.engine.cmd.entity;
+package a.entity.gus.y.server1.engine.call.entity;
 
 import java.util.List;
 import a.framework.*;

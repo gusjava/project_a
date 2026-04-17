@@ -1,4 +1,4 @@
-package a.entity.gus.y.server1.tool.joinargs;
+package a.entity.gus.y.server1.tool.args.fullstring;
 
 import java.util.List;
 import a.framework.*;
