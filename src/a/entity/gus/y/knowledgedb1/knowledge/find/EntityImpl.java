@@ -15,6 +15,7 @@ public class EntityImpl implements Entity, T {
 	public static final String COL_ID = "id";
 	public static final String COL_DATE_CREATED = "date_created";
 	public static final String COL_DATE_UPDATED = "date_updated";
+	public static final String COL_CODE = "code";
 	public static final String COL_ACTION = "action";
 	public static final String COL_OBJECT = "object";
 	public static final String COL_DESCRIPTION = "description";
@@ -39,6 +40,7 @@ public class EntityImpl implements Entity, T {
 			transfer(data, rs, COL_ID);
 			transfer(data, rs, COL_DATE_CREATED);
 			transfer(data, rs, COL_DATE_UPDATED);
+			transfer(data, rs, COL_CODE);
 			transfer(data, rs, COL_ACTION);
 			transfer(data, rs, COL_OBJECT);
 			transfer(data, rs, COL_DESCRIPTION);
