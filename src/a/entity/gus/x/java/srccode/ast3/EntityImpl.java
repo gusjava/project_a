@@ -95,7 +95,10 @@ public class EntityImpl implements Entity, T {
 			else if (member instanceof InitializerDeclaration)
 			{
 				InitializerDeclaration init = (InitializerDeclaration) member;
-				inits.add(init.isStatic() ? "static" : "instance");
+				Map initMap = new HashMap();
+				initMap.put("kind", init.isStatic() ? "static" : "instance");
+				initMap.put("body", init.getBody().toString());
+				inits.add(initMap);
 			}
 		}
 		if (!fields.isEmpty()) map.put("fields", fields);
@@ -138,6 +141,7 @@ public class EntityImpl implements Entity, T {
 		if (!params.isEmpty()) map.put("params", params);
 		List throws_ = buildThrows(cd.getThrownExceptions());
 		if (!throws_.isEmpty()) map.put("throws", throws_);
+		map.put("body", cd.getBody().toString());
 		return map;
 	}
 
@@ -157,6 +161,7 @@ public class EntityImpl implements Entity, T {
 		if (!params.isEmpty()) map.put("params", params);
 		List throws_ = buildThrows(md.getThrownExceptions());
 		if (!throws_.isEmpty()) map.put("throws", throws_);
+		md.getBody().ifPresent(body -> map.put("body", body.toString()));
 		return map;
 	}
 
