@@ -74,7 +74,9 @@ public class EntityImpl implements Entity, R {
 		for(int i=0;i<list.size();i++) {
 			String path = (String) list.get(i);
 			if(path.startsWith("/")) path = path.substring(1);
-			String dev = path.split("\\/")[2];
+			String[] parts = path.split("\\/");
+			if(parts.length < 3) continue;
+			String dev = parts[2];
 			addToMap(map,dev,path);
 		}
 		return map;

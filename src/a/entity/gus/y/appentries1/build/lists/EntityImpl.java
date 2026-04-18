@@ -27,6 +27,7 @@ public class EntityImpl implements Entity, T {
 		int nb = entries.size();
 		for (int i = 0; i < nb; i++) {
 			String entry = formatEntry((String) entries.get(i));
+			if (entry.endsWith("/")) continue;
 
 			if (entry.startsWith("a/framework/"))
 				list1.add(entry);

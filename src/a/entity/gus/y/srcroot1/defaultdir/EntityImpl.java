@@ -11,21 +11,25 @@ public class EntityImpl implements Entity, G {
 	
 	private Service appLocation;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		appLocation = Outside.service(this, "gus.x.app.location");
 	}
 	
-	public Object g() throws Exception {
+	public Object g() throws Exception
+	{
 		File location = (File) appLocation.g();
 		File parentDir = location.getParentFile();
+		File userDir = new File(".").getCanonicalFile();
 
-		File srcDir1 = new File(parentDir, DIRNAME);
-		if (srcDir1.isDirectory())
-			return srcDir1;
+		File srcDir1 = new File(userDir, DIRNAME);
+		if (srcDir1.isDirectory()) return srcDir1;
 
-		File srcDir2 = new File(parentDir.getParentFile(), DIRNAME);
-		if (srcDir2.isDirectory())
-			return srcDir2;
+		File srcDir2 = new File(parentDir, DIRNAME);
+		if (srcDir2.isDirectory()) return srcDir2;
+
+		File srcDir3 = new File(parentDir.getParentFile(), DIRNAME);
+		if (srcDir3.isDirectory()) return srcDir3;
 		
 		return null;
 	}

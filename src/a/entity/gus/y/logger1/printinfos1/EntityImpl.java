@@ -60,6 +60,7 @@ public class EntityImpl implements Entity, E, P {
 		String javaVersion = System.getProperty("java.runtime.version");
 		File jdkDir = (File) findJDK.g();
 
+		p.p(new Object[] {this, "launchDir=" + System.getProperty("user.dir")});
 		p.p(new Object[] {this, "appLocation=" + fileDisplay.t(appLoc)});
 		p.p(new Object[] {this, "appPID=" + appPID});
 		p.p(new Object[] {this, "javaHome=" + javaHome});
