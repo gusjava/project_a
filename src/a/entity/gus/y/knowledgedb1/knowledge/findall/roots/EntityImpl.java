@@ -1,16 +1,17 @@
-package a.entity.gus.y.knowledgedb1.knowledge.findall;
+package a.entity.gus.y.knowledgedb1.knowledge.findall.roots;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260410";}
+	public String creationDate() {return "20260418";}
 
 	private Service rsToMap;
 
@@ -22,7 +23,7 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{
 		Connection cx = (Connection) obj;
-		String sql = "SELECT * FROM knowledge ORDER BY id";
+		String sql = "SELECT * FROM knowledge WHERE id NOT IN (SELECT DISTINCT id_linked FROM knowledge_link) ORDER BY id";
 		
 		PreparedStatement st = cx.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();

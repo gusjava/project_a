@@ -1,46 +1,27 @@
 package a.entity.gus.y.knowledgesys1.maingui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JComponent;
-import javax.swing.JSplitPane;
-
 import a.framework.*;
 
-public class EntityImpl implements Entity, I, ActionListener
+public class EntityImpl implements Entity, I
 {
-	public String creationDate() {return "20260414";}
+	public String creationDate() {return "20260418";}
 
-	private Service guiListing;
-	private Service guiDetail;
-
-	private JSplitPane split;
+	private Service engine;
+	private Service tabHolder;
+	private Service gui2;
 
 	public EntityImpl() throws Exception
 	{
-		guiListing = Outside.service(this, "*gus.y.knowledgesys1.maingui.gui2.list");
-		guiDetail = Outside.service(this, "*gus.y.knowledgesys1.maingui.gui2.detail");
+		engine = Outside.service(this, "*gus.y.knowledgesys1.maingui.engine");
+		tabHolder = Outside.service(this, "*gus.y.swing1.tabbedpane.holder1");
+		gui2 = Outside.service(this, "*gus.y.knowledgesys1.maingui.gui2");
 
-		split = new JSplitPane();
-		split.setDividerSize(3);
-		split.setDividerLocation(350);
-
-		split.setLeftComponent((JComponent) guiListing.i());
-		split.setRightComponent((JComponent) guiDetail.i());
-
-		guiListing.addActionListener(this);
-		guiListing.e();
+		tabHolder.v("Tree", gui2);
+		
+		gui2.v("engine", engine);
+		
+		engine.e();
 	}
 
-	public Object i() throws Exception {return split;}
-
-	public void actionPerformed(ActionEvent e) {selectionChanged();}
-
-	private void selectionChanged()
-	{
-		try {guiDetail.p(guiListing.g());}
-		catch(Exception e) {Outside.err(this, "selectionChanged()", e);}
-	}
+	public Object i() throws Exception {return tabHolder.i();}
 }
-
