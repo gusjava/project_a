@@ -30,7 +30,7 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 		locker = Outside.service(this, "*gus.z.appli1.tool.entitylocker");
 
 		rebuild();
-		((S) engine).addActionListener(this);
+		engine.addActionListener(this);
 	}
 
 	public void actionPerformed(ActionEvent evt) {
@@ -42,14 +42,17 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 			}
 			else if (s.equals("entityAdded()")) {
 				rebuild();
+				lockJustAdded();
 				entityAdded();
 			}
 			else if (s.equals("entityRenamed()")) {
 				rebuild();
+				lockJustRenamed();
 				entityRenamed();
 			}
 			else if (s.equals("entityDuplicated()")) {
 				rebuild();
+				lockJustDuplicated();
 				entityDuplicated();
 			}
 			else if (s.equals("entityDeleted()")) {
@@ -70,6 +73,24 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 	private void rebuild() throws Exception {
 		nameList = (List) engine.r("nameList");
 		locker.p(new Object[] {"update", nameList});
+	}
+	
+	private void lockJustAdded() throws Exception
+	{
+		Object info = engine.r("info");
+		locker.f(new Object[] {"lock", info, nameList});
+	}
+	
+	private void lockJustRenamed() throws Exception
+	{
+		String[] info = (String[]) engine.r("info");
+		locker.f(new Object[] {"lock", info[1], nameList});
+	}
+	
+	private void lockJustDuplicated() throws Exception
+	{
+		String[] info = (String[]) engine.r("info");
+		locker.f(new Object[] {"lock", info[1], nameList});
 	}
 
 	public void e() throws Exception {

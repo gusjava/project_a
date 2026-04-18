@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.maingui.gui2;
+package a.entity.gus.y.knowledgesys1.gui.gui2;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +8,7 @@ import javax.swing.JSplitPane;
 
 import a.framework.*;
 
-public class EntityImpl implements Entity, I, ActionListener
+public class EntityImpl implements Entity, I, V, ActionListener
 {
 	public String creationDate() {return "20260418";}
 
@@ -19,8 +19,8 @@ public class EntityImpl implements Entity, I, ActionListener
 
 	public EntityImpl() throws Exception
 	{
-		guiTree = Outside.service(this, "*gus.y.knowledgesys1.maingui.gui2.tree");
-		guiDetail = Outside.service(this, "*gus.y.knowledgesys1.maingui.gui2.detail");
+		guiTree = Outside.service(this, "*gus.y.knowledgesys1.gui.gui2.tree");
+		guiDetail = Outside.service(this, "*gus.y.knowledgesys1.gui.detail.gui1");
 
 		split = new JSplitPane();
 		split.setDividerSize(3);
@@ -30,7 +30,11 @@ public class EntityImpl implements Entity, I, ActionListener
 		split.setRightComponent((JComponent) guiDetail.i());
 
 		guiTree.addActionListener(this);
-		guiTree.e();
+	}
+
+	public void v(String key, Object obj) throws Exception
+	{
+		if ("engine".equals(key)) guiTree.v(key, obj);
 	}
 
 	public Object i() throws Exception {return split;}

@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.maingui.gui2.detail;
+package a.entity.gus.y.knowledgesys1.gui.detail.gui1;
 
 import java.awt.BorderLayout;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.maingui.gui2.tree;
+package a.entity.gus.y.knowledgesys1.gui.gui1.list;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -26,22 +26,19 @@ import javax.swing.tree.TreePath;
 
 import a.framework.*;
 
-public class EntityImpl extends S1 implements Entity, E, G, I, ActionListener, TreeSelectionListener {
-	public String creationDate() {return "20260414";}
+public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, TreeSelectionListener {
+	public String creationDate() {return "20260418";}
 
-	private Service engine;
 	private Service findLinks;
 	private Service findKnowledge;
 	private Service custUI;
 
+	private Object engine;
 	private Icon icon;
 	private JPanel panel;
 	private JTree tree;
 
-	private static final Object ROOT = new Object();
-
 	public EntityImpl() throws Exception {
-		engine = Outside.service(this, "*gus.y.knowledgesys1.maingui.engine");
 		findLinks = Outside.service(this, "gus.y.knowledgedb1.knowledge_link.find1");
 		findKnowledge = Outside.service(this, "gus.y.knowledgedb1.knowledge.find");
 		custUI = Outside.service(this, "gus.y.swing1.tree.cust.ui.expandcollapseicons2");
@@ -56,7 +53,6 @@ public class EntityImpl extends S1 implements Entity, E, G, I, ActionListener, T
 		panel = new JPanel(new BorderLayout());
 		panel.add(new JScrollPane(tree), BorderLayout.CENTER);
 
-		engine.addActionListener(this);
 		tree.addTreeSelectionListener(this);
 
 		tree.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke("F5"), "reload");
@@ -65,12 +61,22 @@ public class EntityImpl extends S1 implements Entity, E, G, I, ActionListener, T
 		});
 	}
 
-	public void e() throws Exception {
-		engine.e();
+	public void v(String key, Object obj) throws Exception
+	{
+		if ("engine".equals(key)) initEngine(obj);
+	}
+
+	private void initEngine(Object engine) throws Exception
+	{
+		if(this.engine!=null)
+		((S) engine).removeActionListener(this);
+		
+		this.engine = engine;
+		((S) engine).addActionListener(this);
 	}
 
 	private void reload() {
-		try {engine.e();}
+		try {((E) engine).e();}
 		catch (Exception e) {Outside.err(this, "reload()", e);}
 	}
 
@@ -103,7 +109,7 @@ public class EntityImpl extends S1 implements Entity, E, G, I, ActionListener, T
 
 	private List roots() {
 		try {
-			List r = (List) engine.g();
+			List r = (List) ((G) engine).g();
 			return r != null ? r : new ArrayList();
 		} catch (Exception e) {
 			Outside.err(this, "roots()", e);
@@ -113,7 +119,7 @@ public class EntityImpl extends S1 implements Entity, E, G, I, ActionListener, T
 
 	private List children(Map node) {
 		try {
-			Object cx = engine.r("cx");
+			Object cx = ((R) engine).r("cx");
 			Long id = toLong(node.get("id"));
 			List links = (List) findLinks.t(new Object[] {cx, id});
 			List result = new ArrayList();
@@ -135,6 +141,7 @@ public class EntityImpl extends S1 implements Entity, E, G, I, ActionListener, T
 	}
 
 	private class TreeModel1 implements TreeModel {
+		private static final Object ROOT = new Object();
 
 		public Object getRoot() {
 			return ROOT;

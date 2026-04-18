@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, I {
 		tabHolder = Outside.service(this,"*gus.y.swing1.tabbedpane.holder1");
 		gui1 = Outside.service(this,"*gus.z.appli1.gui8.artificialintelligence.gui1.server");
 		gui2 = Outside.service(this,"*gus.z.appli1.gui8.artificialintelligence.gui2.terminal");
-		gui3 = Outside.service(this,"*gus.y.knowledgesys1.maingui");
+		gui3 = Outside.service(this,"*gus.y.knowledgesys1.gui.maingui");
 		gui4 = Outside.service(this,"*gus.y.roadmapsys1.maingui");
 
 		tabHolder.v("AI_server#Server", gui1);

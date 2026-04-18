@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.maingui.engine;
+package a.entity.gus.y.knowledgesys1.engine;
 
 import java.sql.Connection;
 import java.util.List;
