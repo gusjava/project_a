@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.gui.detail.gui2.uplinks;
+package a.entity.gus.y.knowledgesys1.gui.gui4.tags;
 
 import java.awt.BorderLayout;
 import java.util.Map;
@@ -12,11 +12,10 @@ import javax.swing.JTextField;
 
 import a.framework.*;
 
-public class EntityImpl implements Entity, I, P {
+public class EntityImpl implements Entity, I, V {
 	public String creationDate() {return "20260418";}
 
 	private JPanel panel;
-	private Map data;
 
 	public EntityImpl() throws Exception {
 
@@ -27,7 +26,8 @@ public class EntityImpl implements Entity, I, P {
 		return panel;
 	}
 
-	public void p(Object obj) throws Exception {
-		data = (Map) obj;
+	public void v(String key, Object obj) throws Exception
+	{
+		if (key.equals("engine")) {}
 	}
 }
