@@ -2,6 +2,9 @@ package a.entity.gus.y.server1.engine.cmd.k.create;
 
 import java.sql.Connection;
 import java.util.*;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.charset.StandardCharsets;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
@@ -21,6 +24,20 @@ public class EntityImpl implements Entity, T {
 		Map args = (Map) obj;
 		if(args.isEmpty()) throw new Exception("JSON manquant (utiliser :<json>)");
 		Connection cx = (Connection) knowledgeCx.g();
+		completeMap(args);
 		return knowledgeInsert.t(new Object[]{cx, args});
+	}
+	
+	private void completeMap(Map m) throws Exception
+	{
+		String code = (String) m.get("code");
+		if(code.startsWith("K"))
+		{
+			String ctxFileName = (String) m.get("ctxfilename");
+			File ctxFile = new File("C:/GUS/A/.claude/ctx", ctxFileName);
+			
+			String content = Files.readString(ctxFile.toPath(), StandardCharsets.UTF_8).replace(System.lineSeparator(), "\n");
+			m.put("description", content);
+		}
 	}
 }

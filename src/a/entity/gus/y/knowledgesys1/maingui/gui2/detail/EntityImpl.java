@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.maingui.detail;
+package a.entity.gus.y.knowledgesys1.maingui.gui2.detail;
 
 import java.awt.BorderLayout;
 import java.util.Map;
@@ -7,6 +7,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import java.awt.Insets;
 import javax.swing.JTextField;
 
 import a.framework.*;
@@ -21,6 +22,7 @@ public class EntityImpl implements Entity, I, P {
 	private JTextField fieldId = new JTextField();
 	private JTextField fieldDateCreated = new JTextField();
 	private JTextField fieldDateUpdated = new JTextField();
+	private JTextField fieldCode = new JTextField();
 	private JTextField fieldState = new JTextField();
 	private JTextField fieldAction = new JTextField();
 	private JTextField fieldObject = new JTextField();
@@ -32,16 +34,20 @@ public class EntityImpl implements Entity, I, P {
 		fieldId.setEditable(false);
 		fieldDateCreated.setEditable(false);
 		fieldDateUpdated.setEditable(false);
+		fieldCode.setEditable(false);
 		fieldState.setEditable(false);
 		fieldAction.setEditable(false);
 		fieldObject.setEditable(false);
+		
 		taDescription.setEditable(false);
 		taDescription.setLineWrap(true);
 		taDescription.setWrapStyleWord(true);
+		taDescription.setMargin(new Insets(3,3,3,3));
 
 		formPanel.v("id", fieldId);
 		formPanel.v("date_created", fieldDateCreated);
 		formPanel.v("date_updated", fieldDateUpdated);
+		formPanel.v("code", fieldCode);
 		formPanel.v("state", fieldState);
 		formPanel.v("action", fieldAction);
 		formPanel.v("object", fieldObject);
@@ -60,6 +66,7 @@ public class EntityImpl implements Entity, I, P {
 			fieldId.setText("");
 			fieldDateCreated.setText("");
 			fieldDateUpdated.setText("");
+			fieldCode.setText("");
 			fieldState.setText("");
 			fieldAction.setText("");
 			fieldObject.setText("");
@@ -71,10 +78,13 @@ public class EntityImpl implements Entity, I, P {
 		fieldId.setText(str(m.get("id")));
 		fieldDateCreated.setText(str(m.get("date_created")));
 		fieldDateUpdated.setText(str(m.get("date_updated")));
+		fieldCode.setText(str(m.get("code")));
 		fieldState.setText(str(m.get("state")));
 		fieldAction.setText(str(m.get("action")));
 		fieldObject.setText(str(m.get("object")));
+		
 		taDescription.setText(str(m.get("description")));
+		taDescription.setCaretPosition(0);
 	}
 
 	private String str(Object value) {

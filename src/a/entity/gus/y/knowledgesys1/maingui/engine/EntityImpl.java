@@ -61,6 +61,7 @@ public class EntityImpl extends S1 implements Entity, E, G, R {
 		transfer(m, rs, "date_created");
 		transfer(m, rs, "date_updated");
 		transfer(m, rs, "action");
+		transfer(m, rs, "code");
 		transfer(m, rs, "object");
 		transfer(m, rs, "description");
 		transfer(m, rs, "state");

@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.maingui.list;
+package a.entity.gus.y.knowledgesys1.maingui.gui2.list;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -178,7 +178,7 @@ public class EntityImpl extends S1 implements Entity, E, G, I, ActionListener, T
 				boolean expanded, boolean leaf, int row, boolean hasFocus) {
 			if (value instanceof Map) {
 				Map m = (Map) value;
-				setText(m.get("action") + ":" + m.get("object"));
+				setText(m.get("code") + ":" + m.get("action") + ":" + m.get("object"));
 				setIcon(icon);
 			} else {
 				setText("");
