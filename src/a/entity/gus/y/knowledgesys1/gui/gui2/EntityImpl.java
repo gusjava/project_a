@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, I, V, ActionListener
 	public EntityImpl() throws Exception
 	{
 		guiTree = Outside.service(this, "*gus.y.knowledgesys1.gui.gui2.tree");
-		guiDetail = Outside.service(this, "*gus.y.knowledgesys1.gui.detail.gui1");
+		guiDetail = Outside.service(this, "*ggus.y.knowledgesys1.gui.detail");
 
 		split = new JSplitPane();
 		split.setDividerSize(3);
