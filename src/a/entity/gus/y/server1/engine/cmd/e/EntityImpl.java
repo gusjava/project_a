@@ -29,6 +29,8 @@ public class EntityImpl implements Entity, T {
 	
 	// informations sur l'entite
 	
+	private Service ast1;
+	private Service ast2;
 	private Service src;
 	private Service srcpart;
 	private Service path;
@@ -113,6 +115,8 @@ public class EntityImpl implements Entity, T {
 		
 		// informations sur l'entite
 		
+		ast1        = Outside.service(this, "gus.y.server1.engine.cmd.e.ast1");
+		ast2        = Outside.service(this, "gus.y.server1.engine.cmd.e.ast2");
 		src         = Outside.service(this, "gus.y.server1.engine.cmd.e.src");
 		srcpart     = Outside.service(this, "gus.y.server1.engine.cmd.e.srcpart");
 		path        = Outside.service(this, "gus.y.server1.engine.cmd.e.path");
@@ -210,6 +214,8 @@ public class EntityImpl implements Entity, T {
 
 		// informations sur l'entite
 
+		if(cmd.equals("ast1"))             return ast1;
+		if(cmd.equals("ast2"))             return ast2;
 		if(cmd.equals("src"))              return src;
 		if(cmd.equals("srcpart"))          return srcpart;
 		if(cmd.equals("path"))             return path;
