@@ -77,19 +77,18 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 	
 	private void lockJustAdded() throws Exception
 	{
-		Object info = engine.r("info");
-		locker.f(new Object[] {"lock", info, nameList});
+		locker.f(new Object[] {"lock", this.info, nameList});
 	}
-	
+
 	private void lockJustRenamed() throws Exception
 	{
-		String[] info = (String[]) engine.r("info");
+		String[] info = (String[]) this.info;
 		locker.f(new Object[] {"lock", info[1], nameList});
 	}
-	
+
 	private void lockJustDuplicated() throws Exception
 	{
-		String[] info = (String[]) engine.r("info");
+		String[] info = (String[]) this.info;
 		locker.f(new Object[] {"lock", info[1], nameList});
 	}
 
@@ -185,18 +184,21 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 	private void handleEntityAdded(Object info) throws Exception {
 		this.info = info;
 		performLoad();
+		lockJustAdded();
 		entityAdded();
 	}
 
 	private void handleEntityRenamed(Object info) throws Exception {
 		this.info = info;
 		performLoad();
+		lockJustRenamed();
 		entityRenamed();
 	}
 
 	private void handleEntityDuplicated(Object info) throws Exception {
 		this.info = info;
 		performLoad();
+		lockJustDuplicated();
 		entityDuplicated();
 	}
 
