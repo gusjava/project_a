@@ -11,11 +11,10 @@ import com.github.javaparser.ast.body.*;
 import com.github.javaparser.ast.expr.*;
 import com.github.javaparser.ast.type.*;
 import com.github.javaparser.ast.stmt.*;
-import com.github.javaparser.ast.expr.VariableDeclarationExpr;
 
 public class EntityImpl implements Entity, T {
 
-	public String creationDate() {return "20260418";}
+	public String creationDate() {return "20260419";}
 
 	public Object t(Object obj) throws Exception
 	{
@@ -75,19 +74,19 @@ public class EntityImpl implements Entity, T {
 			if (!constants.isEmpty()) map.put("constants", constants);
 		}
 		else map.put("kind", "annotation");
-		
+
 		List mods = buildModifiers(td.getModifiers().iterator());
 		if (!mods.isEmpty()) map.put("modifiers", mods);
-		
+
 		List annots = buildAnnotations(td.getAnnotations());
 		if (!annots.isEmpty()) map.put("annotations", annots);
-		
+
 		List fields = new ArrayList();
 		List constructors = new ArrayList();
 		List methods = new ArrayList();
 		List nested = new ArrayList();
 		List inits = new ArrayList();
-		
+
 		for (BodyDeclaration<?> member : td.getMembers())
 		{
 			if (member instanceof FieldDeclaration)
@@ -127,7 +126,7 @@ public class EntityImpl implements Entity, T {
 			map.put("type", vd.getType().asString());
 			if (!mods.isEmpty()) map.put("modifiers", mods);
 			if (!annots.isEmpty()) map.put("annotations", annots);
-			vd.getInitializer().ifPresent(init -> map.put("initializer", init.toString()));
+			vd.getInitializer().ifPresent(init -> map.put("initializer", buildExpression(init)));
 			result.add(map);
 		}
 		return result;
@@ -206,7 +205,29 @@ public class EntityImpl implements Entity, T {
 	{
 		List list = new ArrayList();
 		for (AnnotationExpr ae : annotations)
-			list.add(ae.toString());
+		{
+			Map m = new HashMap();
+			m.put("name", ae.getNameAsString());
+			if (ae instanceof SingleMemberAnnotationExpr)
+			{
+				SingleMemberAnnotationExpr sma = (SingleMemberAnnotationExpr) ae;
+				m.put("value", buildExpression(sma.getMemberValue()));
+			}
+			else if (ae instanceof NormalAnnotationExpr)
+			{
+				NormalAnnotationExpr na = (NormalAnnotationExpr) ae;
+				List pairs = new ArrayList();
+				for (MemberValuePair mvp : na.getPairs())
+				{
+					Map pm = new HashMap();
+					pm.put("key", mvp.getNameAsString());
+					pm.put("value", buildExpression(mvp.getValue()));
+					pairs.add(pm);
+				}
+				if (!pairs.isEmpty()) m.put("pairs", pairs);
+			}
+			list.add(m);
+		}
 		return list;
 	}
 
@@ -216,158 +237,339 @@ public class EntityImpl implements Entity, T {
 		while (it.hasNext()) mods.add(it.next().name().toLowerCase());
 		return mods;
 	}
-	
+
 	private List buildBody(BlockStmt body)
 	{
-		List<Statement> statements = body.getStatements();
 		List stmts = new ArrayList();
-		for(Statement stmt : statements)
+		for (Statement stmt : body.getStatements())
 			stmts.add(buildStatment(stmt));
 		return stmts;
 	}
-	
+
 	private Map buildStatment(Statement stmt)
 	{
 		Map m = new HashMap();
 		m.put("type", stmt.getClass().getSimpleName());
-		
-		if(stmt instanceof IfStmt)
+
+		if (stmt instanceof IfStmt)
 		{
 			IfStmt ifs = (IfStmt) stmt;
-			m.put("condition", ifs.getCondition().toString());
+			m.put("condition", buildExpression(ifs.getCondition()));
 			m.put("then", buildStatment(ifs.getThenStmt()));
-			
-			if(ifs.getElseStmt().isPresent())
-			m.put("else", buildStatment(ifs.getElseStmt().get()));
+			if (ifs.getElseStmt().isPresent())
+				m.put("else", buildStatment(ifs.getElseStmt().get()));
 		}
-		else if(stmt instanceof ReturnStmt)
+		else if (stmt instanceof ReturnStmt)
 		{
 			ReturnStmt rs = (ReturnStmt) stmt;
-			if(rs.getExpression().isPresent())
-			m.put("exp", rs.getExpression().get().toString());
+			if (rs.getExpression().isPresent())
+				m.put("exp", buildExpression(rs.getExpression().get()));
 		}
-		else if(stmt instanceof BlockStmt)
+		else if (stmt instanceof BlockStmt)
 		{
-			BlockStmt bs = (BlockStmt) stmt;
-			m.put("body", buildBody(bs));
+			m.put("body", buildBody((BlockStmt) stmt));
 		}
-		else if(stmt instanceof ExpressionStmt)
+		else if (stmt instanceof ExpressionStmt)
 		{
-			ExpressionStmt es = (ExpressionStmt) stmt;
-			m.put("exp", es.getExpression().toString());
+			m.put("exp", buildExpression(((ExpressionStmt) stmt).getExpression()));
 		}
-		else if(stmt instanceof ForStmt)
+		else if (stmt instanceof ForStmt)
 		{
 			ForStmt fs = (ForStmt) stmt;
-			
 			List initList = new ArrayList();
-			for(Expression e : fs.getInitialization())
-				initList.add(e.toString());
-			
+			for (Expression e : fs.getInitialization())
+				initList.add(buildExpression(e));
 			List updateList = new ArrayList();
-			for(Expression e : fs.getUpdate())
-				updateList.add(e.toString());
-			
+			for (Expression e : fs.getUpdate())
+				updateList.add(buildExpression(e));
 			m.put("init", initList);
-			if(fs.getCompare().isPresent())
-			m.put("compare", fs.getCompare().get().toString());
+			if (fs.getCompare().isPresent())
+				m.put("compare", buildExpression(fs.getCompare().get()));
 			m.put("update", updateList);
 			m.put("body", buildStatment(fs.getBody()));
 		}
-		else if(stmt instanceof WhileStmt)
+		else if (stmt instanceof ForeachStmt)
+		{
+			ForeachStmt fes = (ForeachStmt) stmt;
+			m.put("variable", buildExpression(fes.getVariable()));
+			m.put("iterable", buildExpression(fes.getIterable()));
+			m.put("body", buildStatment(fes.getBody()));
+		}
+		else if (stmt instanceof WhileStmt)
 		{
 			WhileStmt ws = (WhileStmt) stmt;
-			
-			m.put("condition", ws.getCondition().toString());
+			m.put("condition", buildExpression(ws.getCondition()));
 			m.put("body", buildStatment(ws.getBody()));
 		}
-		else if(stmt instanceof TryStmt)
+		else if (stmt instanceof DoStmt)
+		{
+			DoStmt ds = (DoStmt) stmt;
+			m.put("condition", buildExpression(ds.getCondition()));
+			m.put("body", buildStatment(ds.getBody()));
+		}
+		else if (stmt instanceof TryStmt)
 		{
 			TryStmt ts = (TryStmt) stmt;
-			
 			m.put("try", buildBody(ts.getTryBlock()));
-			
 			List catches = new ArrayList();
-			for(CatchClause cc : ts.getCatchClauses())
+			for (CatchClause cc : ts.getCatchClauses())
 			{
 				Map cm = new HashMap();
-				cm.put("param", cc.getParameter().toString());
+				Parameter p = cc.getParameter();
+				Map pm = new HashMap();
+				pm.put("name", p.getNameAsString());
+				pm.put("type", p.getType().asString());
+				cm.put("param", pm);
 				cm.put("body", buildBody(cc.getBody()));
 				catches.add(cm);
 			}
 			m.put("catches", catches);
-			
-			if(ts.getFinallyBlock().isPresent())
+			if (ts.getFinallyBlock().isPresent())
 				m.put("finally", buildBody(ts.getFinallyBlock().get()));
 		}
-		else if(stmt instanceof ExpressionStmt)
+		else if (stmt instanceof SwitchStmt)
 		{
-			ExpressionStmt es = (ExpressionStmt) stmt;
-			if(es.getExpression() instanceof VariableDeclarationExpr)
+			SwitchStmt ss = (SwitchStmt) stmt;
+			m.put("selector", buildExpression(ss.getSelector()));
+			List entries = new ArrayList();
+			for (SwitchEntryStmt se : ss.getEntries())
 			{
-				VariableDeclarationExpr vde = (VariableDeclarationExpr) es.getExpression();
-				List vars = new ArrayList();
-				for(VariableDeclarator vd : vde.getVariables())
-				{
-					Map vm = new HashMap();
-					vm.put("name", vd.getNameAsString());
-					vm.put("type", vd.getType().toString());
-					
-					if(vd.getInitializer().isPresent())
-						vm.put("init", buildExpression(vd.getInitializer().get()));
-					
-					vars.add(vm);
-				}
-				
-				m.put("variables", vars);
+				Map em = new HashMap();
+				if (se.getLabel().isPresent())
+					em.put("label", buildExpression(se.getLabel().get()));
+				else
+					em.put("default", true);
+				List stmts2 = new ArrayList();
+				for (Statement s2 : se.getStatements())
+					stmts2.add(buildStatment(s2));
+				em.put("stmts", stmts2);
+				entries.add(em);
 			}
+			m.put("entries", entries);
+		}
+		else if (stmt instanceof ThrowStmt)
+		{
+			m.put("exp", buildExpression(((ThrowStmt) stmt).getExpression()));
+		}
+		else if (stmt instanceof BreakStmt)
+		{
+			BreakStmt bs = (BreakStmt) stmt;
+			bs.getLabel().ifPresent(l -> m.put("label", l.toString()));
+		}
+		else if (stmt instanceof ContinueStmt)
+		{
+			ContinueStmt cs = (ContinueStmt) stmt;
+			cs.getLabel().ifPresent(l -> m.put("label", l.toString()));
+		}
+		else if (stmt instanceof SynchronizedStmt)
+		{
+			SynchronizedStmt ss = (SynchronizedStmt) stmt;
+			m.put("condition", buildExpression(ss.getExpression()));
+			m.put("body", buildBody(ss.getBody()));
+		}
+		else if (stmt instanceof LabeledStmt)
+		{
+			LabeledStmt ls = (LabeledStmt) stmt;
+			m.put("label", ls.getLabel().toString());
+			m.put("body", buildStatment(ls.getStatement()));
+		}
+		else if (stmt instanceof AssertStmt)
+		{
+			AssertStmt as = (AssertStmt) stmt;
+			m.put("check", buildExpression(as.getCheck()));
+			as.getMessage().ifPresent(msg -> m.put("message", buildExpression(msg)));
+		}
+		else if (stmt instanceof ExplicitConstructorInvocationStmt)
+		{
+			ExplicitConstructorInvocationStmt ec = (ExplicitConstructorInvocationStmt) stmt;
+			m.put("isThis", ec.isThis());
+			List args = new ArrayList();
+			for (Expression e : ec.getArguments())
+				args.add(buildExpression(e));
+			m.put("args", args);
+			ec.getExpression().ifPresent(scope -> m.put("scope", buildExpression(scope)));
 		}
 		else
 		{
 			m.put("raw", stmt.toString());
 		}
-		
+
 		return m;
 	}
-	
+
 	private Map buildExpression(Expression expr)
 	{
 		Map m = new HashMap();
 		m.put("type", expr.getClass().getSimpleName());
-		
-		if(expr instanceof NameExpr)
+
+		if (expr instanceof NameExpr)
 		{
 			m.put("name", ((NameExpr) expr).getNameAsString());
 		}
-		else if(expr instanceof LiteralStringValueExpr)
+		else if (expr instanceof LiteralStringValueExpr)
 		{
 			m.put("value", expr.toString());
 		}
-		else if(expr instanceof BinaryExpr)
+		else if (expr instanceof NullLiteralExpr)
+		{
+			m.put("value", "null");
+		}
+		else if (expr instanceof BooleanLiteralExpr)
+		{
+			m.put("value", String.valueOf(((BooleanLiteralExpr) expr).getValue()));
+		}
+		else if (expr instanceof ThisExpr)
+		{
+		}
+		else if (expr instanceof SuperExpr)
+		{
+		}
+		else if (expr instanceof ClassExpr)
+		{
+			m.put("type", ((ClassExpr) expr).getType().asString());
+		}
+		else if (expr instanceof TypeExpr)
+		{
+			m.put("type", ((TypeExpr) expr).getType().asString());
+		}
+		else if (expr instanceof AssignExpr)
+		{
+			AssignExpr ae = (AssignExpr) expr;
+			m.put("operator", ae.getOperator().toString());
+			m.put("target", buildExpression(ae.getTarget()));
+			m.put("value", buildExpression(ae.getValue()));
+		}
+		else if (expr instanceof BinaryExpr)
 		{
 			BinaryExpr be = (BinaryExpr) expr;
 			m.put("operator", be.getOperator().toString());
 			m.put("left", buildExpression(be.getLeft()));
 			m.put("right", buildExpression(be.getRight()));
 		}
-		else if(expr instanceof MethodCallExpr)
+		else if (expr instanceof UnaryExpr)
+		{
+			UnaryExpr ue = (UnaryExpr) expr;
+			m.put("operator", ue.getOperator().toString());
+			m.put("exp", buildExpression(ue.getExpression()));
+		}
+		else if (expr instanceof ConditionalExpr)
+		{
+			ConditionalExpr ce = (ConditionalExpr) expr;
+			m.put("condition", buildExpression(ce.getCondition()));
+			m.put("then", buildExpression(ce.getThenExpr()));
+			m.put("else", buildExpression(ce.getElseExpr()));
+		}
+		else if (expr instanceof EnclosedExpr)
+		{
+			m.put("inner", buildExpression(((EnclosedExpr) expr).getInner()));
+		}
+		else if (expr instanceof CastExpr)
+		{
+			CastExpr ce = (CastExpr) expr;
+			m.put("type", ce.getType().asString());
+			m.put("exp", buildExpression(ce.getExpression()));
+		}
+		else if (expr instanceof InstanceOfExpr)
+		{
+			InstanceOfExpr ioe = (InstanceOfExpr) expr;
+			m.put("exp", buildExpression(ioe.getExpression()));
+			m.put("type", ioe.getType().asString());
+		}
+		else if (expr instanceof MethodCallExpr)
 		{
 			MethodCallExpr mc = (MethodCallExpr) expr;
 			m.put("name", mc.getNameAsString());
-			
 			List args = new ArrayList();
-			for(Expression e : mc.getArguments())
+			for (Expression e : mc.getArguments())
 				args.add(buildExpression(e));
-			
 			m.put("args", args);
-			
-			if(mc.getScope().isPresent())
+			if (mc.getScope().isPresent())
 				m.put("scope", buildExpression(mc.getScope().get()));
+		}
+		else if (expr instanceof ObjectCreationExpr)
+		{
+			ObjectCreationExpr oce = (ObjectCreationExpr) expr;
+			m.put("class", oce.getType().asString());
+			List args = new ArrayList();
+			for (Expression e : oce.getArguments())
+				args.add(buildExpression(e));
+			m.put("args", args);
+			if (oce.getScope().isPresent())
+				m.put("scope", buildExpression(oce.getScope().get()));
+		}
+		else if (expr instanceof FieldAccessExpr)
+		{
+			FieldAccessExpr fae = (FieldAccessExpr) expr;
+			m.put("scope", buildExpression(fae.getScope()));
+			m.put("field", fae.getNameAsString());
+		}
+		else if (expr instanceof ArrayAccessExpr)
+		{
+			ArrayAccessExpr aae = (ArrayAccessExpr) expr;
+			m.put("name", buildExpression(aae.getName()));
+			m.put("index", buildExpression(aae.getIndex()));
+		}
+		else if (expr instanceof ArrayCreationExpr)
+		{
+			ArrayCreationExpr ace = (ArrayCreationExpr) expr;
+			m.put("type", ace.getElementType().asString());
+			if (ace.getInitializer().isPresent())
+				m.put("initializer", buildExpression(ace.getInitializer().get()));
+		}
+		else if (expr instanceof ArrayInitializerExpr)
+		{
+			ArrayInitializerExpr aie = (ArrayInitializerExpr) expr;
+			List values = new ArrayList();
+			for (Expression e : aie.getValues())
+				values.add(buildExpression(e));
+			m.put("values", values);
+		}
+		else if (expr instanceof VariableDeclarationExpr)
+		{
+			VariableDeclarationExpr vde = (VariableDeclarationExpr) expr;
+			List vars = new ArrayList();
+			for (VariableDeclarator vd : vde.getVariables())
+			{
+				Map vm = new HashMap();
+				vm.put("name", vd.getNameAsString());
+				vm.put("type", vd.getType().asString());
+				if (vd.getInitializer().isPresent())
+					vm.put("init", buildExpression(vd.getInitializer().get()));
+				vars.add(vm);
+			}
+			m.put("variables", vars);
+		}
+		else if (expr instanceof MethodReferenceExpr)
+		{
+			MethodReferenceExpr mre = (MethodReferenceExpr) expr;
+			m.put("scope", buildExpression(mre.getScope()));
+			m.put("identifier", mre.getIdentifier());
+		}
+		else if (expr instanceof LambdaExpr)
+		{
+			LambdaExpr le = (LambdaExpr) expr;
+			List params = new ArrayList();
+			for (Parameter p : le.getParameters())
+			{
+				Map pm = new HashMap();
+				pm.put("name", p.getNameAsString());
+				pm.put("type", p.getType().asString());
+				params.add(pm);
+			}
+			m.put("params", params);
+			Statement body = le.getBody();
+			if (body instanceof ExpressionStmt)
+				m.put("body", buildExpression(((ExpressionStmt) body).getExpression()));
+			else if (body instanceof BlockStmt)
+				m.put("body", buildBody((BlockStmt) body));
+			else
+				m.put("body", buildStatment(body));
 		}
 		else
 		{
 			m.put("raw", expr.toString());
 		}
+
 		return m;
 	}
 }
