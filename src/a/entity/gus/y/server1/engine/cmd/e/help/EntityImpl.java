@@ -35,6 +35,7 @@ public class EntityImpl implements Entity, T {
 		"e-path <entity> — retourne le filepath de EntityImpl.java\n" +
 		"e-features <entity> — retourne les features implémentées par l'entité\n" +
 		"e-creationdate <entity> — retourne la date de création de l'entité\n" +
+		"e-hash <entity> — hash sémantique de l'entité (insensible au package, imports, formatage, fins de ligne)\n" +
 		"\n" +
 		"parcours descendant:\n" +
 		"e-downlinks <entity> — liste les entités qui dépendent de <entity>\n" +

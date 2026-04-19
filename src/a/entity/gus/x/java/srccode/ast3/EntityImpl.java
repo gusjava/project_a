@@ -111,6 +111,7 @@ public class EntityImpl implements Entity, T {
 		if (!methods.isEmpty()) map.put("methods", methods);
 		if (!nested.isEmpty()) map.put("nested", nested);
 		if (!inits.isEmpty()) map.put("initializers", inits);
+		
 		return map;
 	}
 
@@ -136,38 +137,198 @@ public class EntityImpl implements Entity, T {
 	{
 		Map map = new HashMap();
 		map.put("name", cd.getNameAsString());
+		
 		List mods = buildModifiers(cd.getModifiers().iterator());
 		if (!mods.isEmpty()) map.put("modifiers", mods);
+		
 		List annots = buildAnnotations(cd.getAnnotations());
 		if (!annots.isEmpty()) map.put("annotations", annots);
+		
 		List typeParams = buildTypeParams(cd.getTypeParameters());
 		if (!typeParams.isEmpty()) map.put("typeParameters", typeParams);
+		
 		List params = buildParams(cd.getParameters());
 		if (!params.isEmpty()) map.put("params", params);
+		
 		List throws_ = buildThrows(cd.getThrownExceptions());
 		if (!throws_.isEmpty()) map.put("throws", throws_);
+		
 		map.put("body", buildBody(cd.getBody()));
+		map.put("sign", buildSignature(cd));
+		
 		return map;
+	}
+	
+	private String buildSignature(CallableDeclaration<?> cd)
+	{
+		StringBuilder sb = new StringBuilder();
+	
+		// MODIFIERS (sorted)
+		List<String> mods = cd.getModifiers().stream()
+			.map(m -> m.asString())
+			.sorted()
+			.toList();
+	
+		for (String m : mods)
+			sb.append(m).append(" ");
+	
+		// TYPE PARAMETERS (methods only)
+		if (cd instanceof MethodDeclaration md && !md.getTypeParameters().isEmpty())
+		{
+			sb.append("<");
+	
+			List<String> tps = md.getTypeParameters().stream()
+				.map(TypeParameter::asString)
+				.sorted()
+				.toList();
+	
+			for (int i = 0; i < tps.size(); i++)
+			{
+				sb.append(tps.get(i));
+				if (i < tps.size() - 1)
+					sb.append(", ");
+			}
+	
+			sb.append("> ");
+		}
+	
+		// NAME
+		sb.append(cd.getNameAsString());
+	
+		// PARAMS (sorted)
+		sb.append("(");
+	
+		List<Parameter> params = new ArrayList<>(cd.getParameters());
+	
+		params.sort((a, b) ->
+			(a.getType().asString() + a.getNameAsString())
+			.compareTo(b.getType().asString() + b.getNameAsString())
+		);
+	
+		for (int i = 0; i < params.size(); i++)
+		{
+			Parameter p = params.get(i);
+	
+			sb.append(p.getType().asString())
+			  .append(" ")
+			  .append(p.getNameAsString());
+	
+			if (i < params.size() - 1)
+				sb.append(", ");
+		}
+	
+		sb.append(")");
+	
+		// THROWS (sorted)
+		if (!cd.getThrownExceptions().isEmpty())
+		{
+			sb.append(" throws ");
+	
+			List<String> thr = cd.getThrownExceptions().stream()
+				.map(Type::asString)
+				.sorted()
+				.toList();
+	
+			for (int i = 0; i < thr.size(); i++)
+			{
+				sb.append(thr.get(i));
+				if (i < thr.size() - 1)
+					sb.append(", ");
+			}
+		}
+	
+		return sb.toString();
 	}
 
 	private Map buildMethod(MethodDeclaration md)
 	{
 		Map map = new HashMap();
+		
 		map.put("name", md.getNameAsString());
-		String ret = md.getType().asString();
-		if (!ret.equals("void")) map.put("return", ret);
+		String returnType = md.getType().asString();
+		if (!returnType.equals("void")) map.put("return", returnType);
+		
 		List mods = buildModifiers(md.getModifiers().iterator());
 		if (!mods.isEmpty()) map.put("modifiers", mods);
+		
 		List annots = buildAnnotations(md.getAnnotations());
 		if (!annots.isEmpty()) map.put("annotations", annots);
+		
 		List typeParams = buildTypeParams(md.getTypeParameters());
 		if (!typeParams.isEmpty()) map.put("typeParameters", typeParams);
+		
 		List params = buildParams(md.getParameters());
 		if (!params.isEmpty()) map.put("params", params);
+		
 		List throws_ = buildThrows(md.getThrownExceptions());
 		if (!throws_.isEmpty()) map.put("throws", throws_);
-		md.getBody().ifPresent(body -> map.put("body", buildBody(body)));
+		
+		List body = buildBody(md.getBody().get());
+		if (body!=null) map.put("body", body);
+		
+		map.put("sign", buildSignature(md));
+		
 		return map;
+	}
+	
+	private String buildSignature(MethodDeclaration md)
+	{
+		StringBuilder sb = new StringBuilder();
+	
+		// Modifiers
+		List<String> mods = md.getModifiers().stream()
+		.map(m -> m.asString()).sorted().toList();
+		for (String mod : mods) sb.append(mod).append(" ");
+	
+		// Type params
+		if (!md.getTypeParameters().isEmpty())
+		{
+			sb.append("<");
+			
+			List<String> tps = md.getTypeParameters().stream()
+			.map(TypeParameter::asString).sorted().toList();
+			
+			for (int i = 0; i < tps.size(); i++)
+			{
+				sb.append(tps.get(i));
+				if (i < tps.size() - 1) sb.append(", ");
+			}
+			sb.append("> ");
+		}
+	
+		// Return type
+		sb.append(md.getType().asString()).append(" ");
+	
+		// Name
+		sb.append(md.getNameAsString());
+	
+		// Params
+		sb.append("(");
+		for (int i = 0; i < md.getParameters().size(); i++)
+		{
+			Parameter p = md.getParameter(i);
+			sb.append(p.getType().asString())
+			  .append(" ")
+			  .append(p.getNameAsString());
+	
+			if (i < md.getParameters().size() - 1)
+				sb.append(", ");
+		}
+		sb.append(")");
+	
+		// Throws
+		if (!md.getThrownExceptions().isEmpty())
+		{
+			sb.append(" throws ");
+			for (int i = 0; i < md.getThrownExceptions().size(); i++)
+			{
+				sb.append(md.getThrownExceptions().get(i).asString());
+				if (i < md.getThrownExceptions().size() - 1)
+					sb.append(", ");
+			}
+		}
+	
+		return sb.toString();
 	}
 
 	private List buildParams(NodeList<Parameter> parameters)
@@ -240,6 +401,7 @@ public class EntityImpl implements Entity, T {
 
 	private List buildBody(BlockStmt body)
 	{
+		if(body==null) return null;
 		List stmts = new ArrayList();
 		for (Statement stmt : body.getStatements())
 			stmts.add(buildStatment(stmt));
@@ -426,11 +588,11 @@ public class EntityImpl implements Entity, T {
 		}
 		else if (expr instanceof ClassExpr)
 		{
-			m.put("type", ((ClassExpr) expr).getType().asString());
+			m.put("javaType", ((ClassExpr) expr).getType().asString());
 		}
 		else if (expr instanceof TypeExpr)
 		{
-			m.put("type", ((TypeExpr) expr).getType().asString());
+			m.put("javaType", ((TypeExpr) expr).getType().asString());
 		}
 		else if (expr instanceof AssignExpr)
 		{
@@ -466,14 +628,14 @@ public class EntityImpl implements Entity, T {
 		else if (expr instanceof CastExpr)
 		{
 			CastExpr ce = (CastExpr) expr;
-			m.put("type", ce.getType().asString());
+			m.put("castType", ce.getType().asString());
 			m.put("exp", buildExpression(ce.getExpression()));
 		}
 		else if (expr instanceof InstanceOfExpr)
 		{
 			InstanceOfExpr ioe = (InstanceOfExpr) expr;
 			m.put("exp", buildExpression(ioe.getExpression()));
-			m.put("type", ioe.getType().asString());
+			m.put("checkType", ioe.getType().asString());
 		}
 		else if (expr instanceof MethodCallExpr)
 		{
@@ -496,6 +658,20 @@ public class EntityImpl implements Entity, T {
 			m.put("args", args);
 			if (oce.getScope().isPresent())
 				m.put("scope", buildExpression(oce.getScope().get()));
+			if (oce.getAnonymousClassBody().isPresent())
+			{
+				List members = new ArrayList();
+				for (BodyDeclaration<?> member : oce.getAnonymousClassBody().get())
+				{
+					if (member instanceof MethodDeclaration)
+						members.add(buildMethod((MethodDeclaration) member));
+					else if (member instanceof FieldDeclaration)
+						members.addAll(buildFields((FieldDeclaration) member));
+					else if (member instanceof TypeDeclaration)
+						members.add(buildType((TypeDeclaration<?>) member));
+				}
+				if (!members.isEmpty()) m.put("anonymousBody", members);
+			}
 		}
 		else if (expr instanceof FieldAccessExpr)
 		{
@@ -553,7 +729,8 @@ public class EntityImpl implements Entity, T {
 			{
 				Map pm = new HashMap();
 				pm.put("name", p.getNameAsString());
-				pm.put("type", p.getType().asString());
+				String ptype = p.getType().asString();
+				if (!ptype.isEmpty()) pm.put("type", ptype);
 				params.add(pm);
 			}
 			m.put("params", params);

@@ -1,4 +1,4 @@
-package a.entity.gus.x.test.javaparsing;
+package a.entity.gus.x.test.javaparsing.test2;
 
 import a.framework.Entity;
 import java.util.*;
@@ -385,5 +385,4 @@ public class EntityImpl implements Entity {
 	public void setCount(int count) { this.count = count; }
 	public String getName() { return name; }
 	public boolean isActive() { return active; }
-
 }
