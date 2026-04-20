@@ -19,6 +19,7 @@ public class EntityImpl implements Entity, P {
 	public static final String COL_LENGTH = "length";
 	public static final String COL_CALL_NB = "call_nb";
 	public static final String COL_FILE_NB = "file_nb";
+	public static final String COL_HASH = "hash";
 
 	public EntityImpl() throws Exception {
 
@@ -38,16 +39,18 @@ public class EntityImpl implements Entity, P {
 		Object length = data.get(COL_LENGTH);
 		Object callNb = data.get(COL_CALL_NB);
 		Object fileNb = data.get(COL_FILE_NB);
+		Object hash = data.get(COL_HASH);
 
-		String sql = "INSERT INTO " + TABLE_NAME + " (" 
-		+ COL_ENTITY_NAME + "," 
-		+ COL_FEATURES + "," 
+		String sql = "INSERT INTO " + TABLE_NAME + " ("
+		+ COL_ENTITY_NAME + ","
+		+ COL_FEATURES + ","
 		+ COL_CREATION_DATE + ","
-		+ COL_LENGTH + "," 
-		+ COL_CALL_NB + "," 
-		+ COL_FILE_NB + ") VALUES (?,?,?,?,?,?)";
+		+ COL_LENGTH + ","
+		+ COL_CALL_NB + ","
+		+ COL_FILE_NB + ","
+		+ COL_HASH + ") VALUES (?,?,?,?,?,?,?)";
 
-		executeUpdate(cx, sql, entityName, features, creationDate, length, callNb, fileNb);
+		executeUpdate(cx, sql, entityName, features, creationDate, length, callNb, fileNb, hash);
 	}
 
 	private void executeUpdate(Connection cx, String sql, Object... params) throws SQLException {

@@ -20,6 +20,7 @@ public class EntityImpl implements Entity, T {
 	public static final String COL_LENGTH = "length";
 	public static final String COL_CALL_NB = "call_nb";
 	public static final String COL_FILE_NB = "file_nb";
+	public static final String COL_HASH = "hash";
 
 	public Object t(Object obj) throws Exception {
 		Connection cx = (Connection) obj;
@@ -37,6 +38,7 @@ public class EntityImpl implements Entity, T {
 			transfer(m, rs, COL_LENGTH);
 			transfer(m, rs, COL_CALL_NB);
 			transfer(m, rs, COL_FILE_NB);
+			transfer(m, rs, COL_HASH);
 
 			String entityName = (String) m.get(COL_ENTITY_NAME);
 			data.put(entityName, m);

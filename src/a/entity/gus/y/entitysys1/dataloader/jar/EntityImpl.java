@@ -156,7 +156,7 @@ public class EntityImpl implements Entity, T {
 				Map m1 = new HashMap();
 				m1.put(COL_JAR_SHA1, sha1);
 				m1.put(COL_JAR_CLASS, entry);
-				insertClass.p(new Object[]{cx, m1});
+				doInsertClass(cx, m1);
 			}
 		}
 
@@ -173,6 +173,14 @@ public class EntityImpl implements Entity, T {
 		}
 
 		return data;
+	}
+
+	private void doInsertClass(Connection cx, Map m1) {
+		try {
+			insertClass.p(new Object[]{cx, m1});
+		} catch (Exception e) {
+			Outside.err(this, "doInsertClass", e);
+		}
 	}
 
 	private String[] retrieveMavenId(File jar, String sha1) {

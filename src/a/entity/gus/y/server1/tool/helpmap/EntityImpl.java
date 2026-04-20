@@ -25,7 +25,8 @@ public class EntityImpl implements Entity, G {
 		map.put("coreId",                "Current core ID");
 		map.put("infos",                 "JVM and server info");
 		
-		map.put("threads",               "Snapshot of all JVM threads (id → info map)");
+		map.put("threads",               "Snapshot of all JVM threads");
+		map.put("thread",                "Detailed snapshot of one JVM thread (id → info map)");
 		map.put("memory",                "JVM memory usage (heap and non-heap)");
 		map.put("errors",                "List of accumulated errors");
 		map.put("main [key]",            "Describe main map or a specific entry");

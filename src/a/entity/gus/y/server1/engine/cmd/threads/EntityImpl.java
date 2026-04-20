@@ -12,5 +12,6 @@ public class EntityImpl implements Entity, T {
 		threadsMap = Outside.service(this, "gus.x.threads.build.map");
 	}
 
-	public Object t(Object obj) throws Exception {return threadsMap.g();}
+	public Object t(Object obj) throws Exception
+	{return threadsMap.g();}
 }

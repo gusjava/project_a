@@ -19,6 +19,7 @@ public class EntityImpl implements Entity, T {
 	public static final String KEY_LENGTH = "length";
 	public static final String KEY_CALL_NB = "call_nb";
 	public static final String KEY_FILE_NB = "file_nb";
+	public static final String KEY_HASH = "hash";
 
 	public static final String KEY_PACKAGE = "package";
 	public static final String KEY_IMPORTS = "imports";
@@ -59,6 +60,7 @@ public class EntityImpl implements Entity, T {
 
 			if (!extractedData.containsKey(KEY_PACKAGE)) throw new Exception("Package not found");
 			if (!extractedData.containsKey(KEY_FEATURES)) throw new Exception("Features not found");
+			if (!extractedData.containsKey(KEY_HASH)) throw new Exception("Hash not found");
 			if (!extractedData.containsKey(KEY_CREATION_DATE)) throw new Exception("Creation date not found");
 			if (!extractedData.containsKey(KEY_IMPORTS)) throw new Exception("Imports not found");
 			if (!extractedData.containsKey(KEY_RESOURCES)) throw new Exception("Resources not found");
@@ -67,6 +69,7 @@ public class EntityImpl implements Entity, T {
 
 			String package1 = (String) extractedData.get(KEY_PACKAGE);
 			String features = (String) extractedData.get(KEY_FEATURES);
+			String hash = (String) extractedData.get(KEY_HASH);
 			String creationDate = (String) extractedData.get(KEY_CREATION_DATE);
 			Set imports = (Set) extractedData.get(KEY_IMPORTS);
 			Set resources = (Set) extractedData.get(KEY_RESOURCES);
@@ -90,6 +93,7 @@ public class EntityImpl implements Entity, T {
 			data.put(KEY_LENGTH, length);
 			data.put(KEY_CALL_NB, callNb);
 			data.put(KEY_FILE_NB, fileNb);
+			data.put(KEY_HASH, hash);
 			data.put(KEY_IMPORTS, imports);
 			data.put(KEY_RESOURCES, resources);
 			data.put(KEY_SERVICES, services);

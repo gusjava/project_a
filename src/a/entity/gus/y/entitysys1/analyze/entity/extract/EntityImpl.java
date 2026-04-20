@@ -18,15 +18,18 @@ public class EntityImpl implements Entity, T {
 	public static final String KEY_PACKAGE = "package";
 	public static final String KEY_IMPORTS = "imports";
 	public static final String KEY_FEATURES = "features";
+	public static final String KEY_HASH = "hash";
 	public static final String KEY_CREATION_DATE = "creation_date";
 	public static final String KEY_RESOURCES = "resources";
 	public static final String KEY_SERVICES = "services";
 	public static final String KEY_LINKS = "links";
 
 	private Service toArray;
+	private Service buildHash;
 
 	public EntityImpl() throws Exception {
-		toArray = Outside.service(this, "gus.x.javasrc.toarray");
+		toArray = Outside.service(this,"gus.x.javasrc.toarray");
+		buildHash = Outside.service(this,"gus.y.entityhash1.src.build");
 	}
 
 	public Object t(Object obj) throws Exception {
@@ -34,17 +37,27 @@ public class EntityImpl implements Entity, T {
 		String[] lines = (String[]) toArray.t(obj);
 
 		Map data = new HashMap();
-		
+
 		put(data, KEY_PACKAGE, extractPackage(lines));
 		put(data, KEY_FEATURES, extractFeatures(lines));
+		put(data, KEY_HASH, buildHash(src));
 		put(data, KEY_CREATION_DATE, extractCreationDate(lines));
-		
+
 		put(data, KEY_IMPORTS, extractImports(src));
 		put(data, KEY_RESOURCES, extractResources(src));
 		put(data, KEY_SERVICES, extractServices(src));
 		put(data, KEY_LINKS, extractLinks(src));
 
 		return data;
+	}
+
+	private Object buildHash(String src) throws Exception {
+		try {
+			return buildHash.t(src);
+		} catch (Exception e) {
+			Outside.err(this, "buildHash", e);
+			return "###";
+		}
 	}
 
 	private void put(Map data, String key, Object value) {

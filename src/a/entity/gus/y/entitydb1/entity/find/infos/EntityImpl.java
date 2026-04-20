@@ -18,13 +18,14 @@ public class EntityImpl implements Entity, T {
 	public static final String COL_LENGTH = "length";
 	public static final String COL_CALL_NB = "call_nb";
 	public static final String COL_FILE_NB = "file_nb";
+	public static final String COL_HASH = "hash";
 
 	public Object t(Object obj) throws Exception {
 		Object[] o = (Object[]) obj;
 		Connection cx = (Connection) o[0];
 		String name = (String) o[1];
 
-		String sql = "SELECT " + COL_NAME + ", " + COL_FEATURES + ", " + COL_CREATION_DATE + ", " + COL_LENGTH + ", " + COL_CALL_NB + ", " + COL_FILE_NB + " FROM " + TABLE_NAME + " WHERE " + COL_NAME + " = ?";
+		String sql = "SELECT " + COL_NAME + ", " + COL_FEATURES + ", " + COL_CREATION_DATE + ", " + COL_LENGTH + ", " + COL_CALL_NB + ", " + COL_FILE_NB + ", " + COL_HASH + " FROM " + TABLE_NAME + " WHERE " + COL_NAME + " = ?";
 		PreparedStatement st = cx.prepareStatement(sql);
 		st.setString(1, name);
 		ResultSet rs = st.executeQuery();
@@ -38,6 +39,7 @@ public class EntityImpl implements Entity, T {
 			result.put(COL_LENGTH, rs.getInt(COL_LENGTH));
 			result.put(COL_CALL_NB, rs.getInt(COL_CALL_NB));
 			result.put(COL_FILE_NB, rs.getInt(COL_FILE_NB));
+			result.put(COL_HASH, rs.getString(COL_HASH));
 		}
 		st.close();
 		return result;

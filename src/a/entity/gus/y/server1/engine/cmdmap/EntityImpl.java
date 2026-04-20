@@ -18,6 +18,7 @@ public class EntityImpl implements Entity, G {
 	private Service cmdRestart;
 	
 	private Service cmdThreads;
+	private Service cmdThread;
 	private Service cmdMemory;
 	private Service cmdErrors;
 	private Service cmdMain;
@@ -43,6 +44,7 @@ public class EntityImpl implements Entity, G {
 		cmdInfos    = Outside.service(this, "gus.y.server1.engine.cmd.infos");
 		
 		cmdThreads  = Outside.service(this, "gus.y.server1.engine.cmd.threads");
+		cmdThread  = Outside.service(this, "gus.y.server1.engine.cmd.thread");
 		cmdMemory   = Outside.service(this, "gus.y.server1.engine.cmd.memory");
 		cmdErrors   = Outside.service(this, "gus.y.server1.engine.cmd.errors");
 		cmdMain     = Outside.service(this, "gus.y.server1.engine.cmd.main");
@@ -78,6 +80,7 @@ public class EntityImpl implements Entity, G {
 		cmdMap.put("infos", cmdInfos);
 		
 		cmdMap.put("threads", cmdThreads);
+		cmdMap.put("thread", cmdThread);
 		cmdMap.put("memory", cmdMemory);
 		cmdMap.put("errors", cmdErrors);
 		cmdMap.put("main", cmdMain);

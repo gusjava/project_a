@@ -17,6 +17,7 @@ public class EntityImpl implements Entity, P {
 	public static final String COL_LENGTH = "length";
 	public static final String COL_CALL_NB = "call_nb";
 	public static final String COL_FILE_NB = "file_nb";
+	public static final String COL_HASH = "hash";
 
 	public static final String DEF_ENTITY_NAME = "VARCHAR(200) PRIMARY KEY NOT NULL";
 	public static final String DEF_FEATURES = "VARCHAR(11) NOT NULL";
@@ -24,6 +25,7 @@ public class EntityImpl implements Entity, P {
 	public static final String DEF_LENGTH = "INT NOT NULL";
 	public static final String DEF_CALL_NB = "INT NOT NULL";
 	public static final String DEF_FILE_NB = "INT NOT NULL";
+	public static final String DEF_HASH = "VARCHAR(32) NOT NULL";
 	
 	
 	public void p(Object obj) throws Exception
@@ -36,7 +38,8 @@ public class EntityImpl implements Entity, P {
 				+COL_CREATION_DATE+" "+DEF_CREATION_DATE+", "
 				+COL_LENGTH+" "+DEF_LENGTH+", "
 				+COL_CALL_NB+" "+DEF_CALL_NB+", "
-				+COL_FILE_NB+" "+DEF_FILE_NB+")";
+				+COL_FILE_NB+" "+DEF_FILE_NB+", "
+				+COL_HASH+" "+DEF_HASH+")";
 		
 		execute(cx, sql);
 	}
