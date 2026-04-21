@@ -36,7 +36,7 @@ public class EntityImpl implements Entity, T {
 	private Service findAll;
 	private Service jarEntries;
 	private Service insertJar;
-	private Service insertClass;
+	private Service mergeClass;
 	private Service deleteJar;
 	private Service deleteClass;
 	private Service searchMavenIdInsideJar;
@@ -49,7 +49,7 @@ public class EntityImpl implements Entity, T {
 		findAll = Outside.service(this, "gus.y.entitydb1.jar.findall.asmap");
 		jarEntries = Outside.service(this, "gus.x.file.jar.build.entries");
 		insertJar = Outside.service(this, "gus.y.entitydb1.jar.insert");
-		insertClass = Outside.service(this, "gus.y.entitydb1.jar_class.insert");
+		mergeClass = Outside.service(this, "gus.y.entitydb1.jar_class.merge");
 		deleteJar = Outside.service(this, "gus.y.entitydb1.jar.delete");
 		deleteClass = Outside.service(this, "gus.y.entitydb1.jar_class.delete");
 		searchMavenIdInsideJar = Outside.service(this, "gus06.file.jar.find.mavenpom.asid");
@@ -104,9 +104,12 @@ public class EntityImpl implements Entity, T {
 				continue;
 			}
 			if(sha1Found.contains(sha1))
+			{
 				System.out.println("sha1["+sha1+"] : found many times inside directory");
-			else sha1Found.add(sha1);
-			
+				continue;
+			}
+			sha1Found.add(sha1);
+
 			String md5 = (String) buildMd5.t(jar);
 			if(md5ToName.containsKey(md5))
 			{
@@ -115,8 +118,11 @@ public class EntityImpl implements Entity, T {
 				continue;
 			}
 			if(md5Found.contains(md5))
+			{
 				System.out.println("md5["+md5+"] : found many times inside directory");
-			else md5Found.add(md5);
+				continue;
+			}
+			md5Found.add(md5);
 			
 			long lastModified = jar.lastModified();
 			List entries = (List) jarEntries.t(jar);
@@ -177,7 +183,7 @@ public class EntityImpl implements Entity, T {
 
 	private void doInsertClass(Connection cx, Map m1) {
 		try {
-			insertClass.p(new Object[]{cx, m1});
+			mergeClass.p(new Object[]{cx, m1});
 		} catch (Exception e) {
 			Outside.err(this, "doInsertClass", e);
 		}
