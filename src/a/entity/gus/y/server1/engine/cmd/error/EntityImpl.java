@@ -20,6 +20,8 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{
 		int pos = Integer.parseInt("" + getArg.t(obj));
+		if(pos<0) pos += errList.size();
+		
 		Object err = errList.get(pos);
 		return makeSerializable.t(err);
 	}

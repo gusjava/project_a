@@ -19,6 +19,8 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{
 		int pos = Integer.parseInt("" + getArg.t(obj));
+		if(pos<0) pos += errList.size();
+		
 		Object[] o = (Object[]) errList.get(pos);
 		Throwable t = (Throwable) o[3];
 		return stackTraceToList(t);
