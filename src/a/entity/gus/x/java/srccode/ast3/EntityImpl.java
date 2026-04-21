@@ -285,8 +285,11 @@ public class EntityImpl implements Entity, T {
 		List throws_ = buildThrows(md.getThrownExceptions());
 		if (!throws_.isEmpty()) map.put("throws", throws_);
 		
-		List body = buildBody(md.getBody().get());
-		if (body!=null) map.put("body", body);
+		if (md.getBody().isPresent())
+		{
+			List body = buildBody(md.getBody().get());
+			if (body != null) map.put("body", body);
+		}
 		
 		map.put("sign", buildSignature(md));
 		

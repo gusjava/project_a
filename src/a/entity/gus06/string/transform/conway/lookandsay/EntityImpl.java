@@ -2,7 +2,7 @@ package a.entity.gus06.string.transform.conway.lookandsay;
 
 import a.framework.*;
 
-public class EntityImpl implements T {
+public class EntityImpl implements Entity, T {
 
 	public String creationDate() {return "20251204";}
 
