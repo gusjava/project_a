@@ -17,10 +17,13 @@ public class EntityImpl implements Entity, G {
 	private Service cmdExit;
 	private Service cmdRestart;
 	
+	private Service cmdMemory;
 	private Service cmdThreads;
 	private Service cmdThread;
-	private Service cmdMemory;
 	private Service cmdErrors;
+	private Service cmdError;
+	private Service cmdErrorNb;
+	private Service cmdErrorSTE;
 	private Service cmdMain;
 	private Service cmdProp;
 	private Service cmdResource;
@@ -43,10 +46,13 @@ public class EntityImpl implements Entity, G {
 		cmdCoreid   = Outside.service(this, "gus.y.server1.engine.cmd.coreid");
 		cmdInfos    = Outside.service(this, "gus.y.server1.engine.cmd.infos");
 		
-		cmdThreads  = Outside.service(this, "gus.y.server1.engine.cmd.threads");
-		cmdThread  = Outside.service(this, "gus.y.server1.engine.cmd.thread");
 		cmdMemory   = Outside.service(this, "gus.y.server1.engine.cmd.memory");
+		cmdThreads  = Outside.service(this, "gus.y.server1.engine.cmd.threads");
+		cmdThread   = Outside.service(this, "gus.y.server1.engine.cmd.thread");
 		cmdErrors   = Outside.service(this, "gus.y.server1.engine.cmd.errors");
+		cmdError    = Outside.service(this, "gus.y.server1.engine.cmd.error");
+		cmdErrorNb  = Outside.service(this, "gus.y.server1.engine.cmd.errornumber");
+		cmdErrorSTE  = Outside.service(this, "gus.y.server1.engine.cmd.errorstacktrace");
 		cmdMain     = Outside.service(this, "gus.y.server1.engine.cmd.main");
 		cmdProp     = Outside.service(this, "gus.y.server1.engine.cmd.prop");
 		cmdResource = Outside.service(this, "gus.y.server1.engine.cmd.resource");
@@ -83,6 +89,9 @@ public class EntityImpl implements Entity, G {
 		cmdMap.put("thread", cmdThread);
 		cmdMap.put("memory", cmdMemory);
 		cmdMap.put("errors", cmdErrors);
+		cmdMap.put("error", cmdError);
+		cmdMap.put("errornumber", cmdErrorNb);
+		cmdMap.put("errorstacktrace", cmdErrorSTE);
 		cmdMap.put("main", cmdMain);
 		cmdMap.put("prop", cmdProp);
 		cmdMap.put("resource", cmdResource);

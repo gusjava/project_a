@@ -37,10 +37,12 @@ public class EntityImpl implements Entity, T {
 		String[] lines = (String[]) toArray.t(obj);
 
 		Map data = new HashMap();
+		
+		String packageName = extractPackage(lines);
 
-		put(data, KEY_PACKAGE, extractPackage(lines));
+		put(data, KEY_PACKAGE, packageName);
 		put(data, KEY_FEATURES, extractFeatures(lines));
-		put(data, KEY_HASH, buildHash(src));
+		put(data, KEY_HASH, buildHash(src, packageName));
 		put(data, KEY_CREATION_DATE, extractCreationDate(lines));
 
 		put(data, KEY_IMPORTS, extractImports(src));
@@ -51,11 +53,12 @@ public class EntityImpl implements Entity, T {
 		return data;
 	}
 
-	private Object buildHash(String src) throws Exception {
+	private Object buildHash(String src,  String packageName) throws Exception {
 		try {
 			return buildHash.t(src);
 		} catch (Exception e) {
-			Outside.err(this, "buildHash", e);
+			Outside.err(this, "buildHash(String, String)",
+			new Exception("parsing failed for "+packageName, e));
 			return "###";
 		}
 	}

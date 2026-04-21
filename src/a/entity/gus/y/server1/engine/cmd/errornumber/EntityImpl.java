@@ -1,20 +1,18 @@
-package a.entity.gus.y.server1.engine.cmd.errors;
+package a.entity.gus.y.server1.engine.cmd.errornumber;
 
 import java.util.List;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260410";}
+	public String creationDate() {return "20260420";}
 
 	private List errList;
-	private Service makeSerializable;
 
 	public EntityImpl() throws Exception
 	{
 		errList = (List) Outside.resource(this, "errlist");
-		makeSerializable = Outside.service(this,"gus.x.json.makeserialisable");
 	}
 
 	public Object t(Object obj) throws Exception
-	{return makeSerializable.t(errList);}
+	{return errList.size();}
 }

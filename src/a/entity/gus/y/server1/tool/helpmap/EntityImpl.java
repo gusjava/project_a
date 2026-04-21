@@ -29,6 +29,8 @@ public class EntityImpl implements Entity, G {
 		map.put("thread",                "Detailed snapshot of one JVM thread (id → info map)");
 		map.put("memory",                "JVM memory usage (heap and non-heap)");
 		map.put("errors",                "List of accumulated errors");
+		map.put("error <n>",             "Detail of error at index n (Map)");
+		map.put("errornumber",           "Number of accumulated errors (int)");
 		map.put("main [key]",            "Describe main map or a specific entry");
 		map.put("prop [key]",            "Property map or a specific entry");
 		map.put("resource <rule>",       "Call Outside.resource with the given rule");
