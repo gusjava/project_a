@@ -1,16 +1,37 @@
 package a.entity.gus.x.java.srccode.ast3;
 
-import a.framework.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
 import com.github.javaparser.ast.Modifier;
 import com.github.javaparser.ast.NodeList;
-import com.github.javaparser.ast.body.*;
+import com.github.javaparser.ast.body.BodyDeclaration;
+import com.github.javaparser.ast.body.CallableDeclaration;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.ConstructorDeclaration;
+import com.github.javaparser.ast.body.EnumConstantDeclaration;
+import com.github.javaparser.ast.body.EnumDeclaration;
+import com.github.javaparser.ast.body.FieldDeclaration;
+import com.github.javaparser.ast.body.InitializerDeclaration;
+import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.body.Parameter;
+import com.github.javaparser.ast.body.TypeDeclaration;
+import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.expr.*;
-import com.github.javaparser.ast.type.*;
 import com.github.javaparser.ast.stmt.*;
+import com.github.javaparser.ast.type.ClassOrInterfaceType;
+import com.github.javaparser.ast.type.ReferenceType;
+import com.github.javaparser.ast.type.Type;
+import com.github.javaparser.ast.type.TypeParameter;
+
+import a.framework.Entity;
+import a.framework.T;
 
 public class EntityImpl implements Entity, T {
 
@@ -19,7 +40,8 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{
 		String src = (String) obj;
-		CompilationUnit cu = JavaParser.parse(src);
+		JavaParser jp = new JavaParser();
+		CompilationUnit cu = jp.parse(src).getResult().get();
 		return buildStruct(cu);
 	}
 
@@ -165,7 +187,7 @@ public class EntityImpl implements Entity, T {
 	
 		// MODIFIERS (sorted)
 		List<String> mods = cd.getModifiers().stream()
-			.map(m -> m.asString())
+			.map(m -> m.getKeyword().asString())
 			.sorted()
 			.toList();
 	
@@ -277,7 +299,7 @@ public class EntityImpl implements Entity, T {
 	
 		// Modifiers
 		List<String> mods = md.getModifiers().stream()
-		.map(m -> m.asString()).sorted().toList();
+		.map(m ->  m.getKeyword().asString()).sorted().toList();
 		for (String mod : mods) sb.append(mod).append(" ");
 	
 		// Type params
@@ -395,7 +417,7 @@ public class EntityImpl implements Entity, T {
 	private List buildModifiers(Iterator<Modifier> it)
 	{
 		List mods = new ArrayList();
-		while (it.hasNext()) mods.add(it.next().name().toLowerCase());
+		while (it.hasNext()) mods.add(it.next().getKeyword().name().toLowerCase());
 		return mods;
 	}
 
@@ -450,9 +472,9 @@ public class EntityImpl implements Entity, T {
 			m.put("update", updateList);
 			m.put("body", buildStatment(fs.getBody()));
 		}
-		else if (stmt instanceof ForeachStmt)
+		else if (stmt instanceof ForEachStmt)
 		{
-			ForeachStmt fes = (ForeachStmt) stmt;
+			ForEachStmt fes = (ForEachStmt) stmt;
 			m.put("variable", buildExpression(fes.getVariable()));
 			m.put("iterable", buildExpression(fes.getIterable()));
 			m.put("body", buildStatment(fes.getBody()));
@@ -494,13 +516,18 @@ public class EntityImpl implements Entity, T {
 			SwitchStmt ss = (SwitchStmt) stmt;
 			m.put("selector", buildExpression(ss.getSelector()));
 			List entries = new ArrayList();
-			for (SwitchEntryStmt se : ss.getEntries())
-			{
+			for (SwitchEntry se : ss.getEntries()) {
 				Map em = new HashMap();
-				if (se.getLabel().isPresent())
-					em.put("label", buildExpression(se.getLabel().get()));
-				else
+				if (se.getLabels().isEmpty())
 					em.put("default", true);
+				else if (se.getLabels().size() == 1)
+					em.put("label", buildExpression(se.getLabels().get(0)));
+				else {
+					List labels = new ArrayList();
+					for (Expression lbl : se.getLabels())
+						labels.add(buildExpression(lbl));
+					em.put("labels", labels);
+				}
 				List stmts2 = new ArrayList();
 				for (Statement s2 : se.getStatements())
 					stmts2.add(buildStatment(s2));

@@ -15,10 +15,11 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{
 		if(obj instanceof CompilationUnit) return obj;
-		if(obj instanceof File) return JavaParser.parse((File) obj);
-		if(obj instanceof String) return JavaParser.parse((String) obj);
-		if(obj instanceof InputStream) return JavaParser.parse((InputStream) obj);
-		if(obj instanceof Reader) return JavaParser.parse((Reader) obj);
+		JavaParser jp = new JavaParser();
+		if(obj instanceof File) return jp.parse((File) obj).getResult().get();
+		if(obj instanceof String) return jp.parse((String) obj).getResult().get();
+		if(obj instanceof InputStream) return jp.parse((InputStream) obj).getResult().get();
+		if(obj instanceof Reader) return jp.parse((Reader) obj).getResult().get();
 		
 		throw new Exception("Invalid data type: "+obj.getClass().getName());
 	}

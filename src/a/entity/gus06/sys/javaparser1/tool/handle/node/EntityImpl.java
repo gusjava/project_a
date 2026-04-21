@@ -123,7 +123,7 @@ public class EntityImpl implements Entity, P {
 		while(it.hasNext())
 		{
 			Modifier m = it.next();
-			set.add(m.name().toLowerCase());
+			set.add(m.getKeyword().name().toLowerCase());
 		}
 		return set;
 	}

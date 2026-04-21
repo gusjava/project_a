@@ -72,7 +72,7 @@ public class EntityImpl implements Entity, P, T {
 	{
 		List modifiers = new ArrayList();
 		Iterator<Modifier> it = fd.getModifiers().iterator();
-		while(it.hasNext()) modifiers.add(it.next().name().toLowerCase());
+		while(it.hasNext()) modifiers.add(it.next().getKeyword().name().toLowerCase());
 		return modifiers;
 	}
 	

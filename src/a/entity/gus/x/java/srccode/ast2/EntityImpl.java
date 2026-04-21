@@ -18,7 +18,8 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{
 		String src = (String) obj;
-		CompilationUnit cu = JavaParser.parse(src);
+		JavaParser jp = new JavaParser();
+		CompilationUnit cu = jp.parse(src).getResult().get();
 		return buildStruct(cu);
 	}
 
@@ -202,7 +203,7 @@ public class EntityImpl implements Entity, T {
 	private List buildModifiers(Iterator<Modifier> it)
 	{
 		List mods = new ArrayList();
-		while (it.hasNext()) mods.add(it.next().name().toLowerCase());
+		while (it.hasNext()) mods.add(it.next().getKeyword().name().toLowerCase());
 		return mods;
 	}
 }
