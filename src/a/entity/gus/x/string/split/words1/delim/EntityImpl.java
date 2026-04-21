@@ -5,7 +5,7 @@ import a.framework.*;
 public class EntityImpl implements Entity, G {
 	public String creationDate() {return "20240120";}
 
-	public static String DELIM = "\"`'”\\ \n\r\t/[](){}<>|!?:.,;=_-+*%@#&$§£¤^¨";
+	public static String DELIM = "\"`'Â”\\ \n\r\t/[](){}<>|!?:.,;=_-+*%@#&$Â§Â£Â¤^Â¨";
 
 	public Object g() throws Exception {
 		return DELIM;

@@ -36,9 +36,9 @@ public class EntityImpl implements Entity, I {
 	public static final int SIZE3 = 14;
 	public static final int SIZE4 = 10;
 
-	public static final String MESSAGE_CREATEDBY = "Application créée par ";
-	public static final String MESSAGE_INCOMPLETE = "Version non finalisée!";
-	public static final String MESSAGE_UNDEFINED = "indéfini";
+	public static final String MESSAGE_CREATEDBY = "Application crÃ©Ã©e par ";
+	public static final String MESSAGE_INCOMPLETE = "Version non finalisÃ©e!";
+	public static final String MESSAGE_UNDEFINED = "indÃ©fini";
 	
 	private Service findColor;
 

@@ -47,9 +47,9 @@ public class EntityImpl implements Entity, P {
 			end = reachClosing(text, length, end + 1, '{', '}');
 		} else if (c_before == '>') {
 			// A FAIRE
-			// ici il faut détecter si le caret est juste après un tag xml ouvrant <name> ou
+			// ici il faut dÃ©tecter si le caret est juste aprÃ¨s un tag xml ouvrant <name> ou
 			// <name ...>
-			// et sélection jusqu'au caractère avant le tag xml fermant correspondant
+			// et sÃ©lection jusqu'au caractÃ¨re avant le tag xml fermant correspondant
 			// </name>
 		}
 

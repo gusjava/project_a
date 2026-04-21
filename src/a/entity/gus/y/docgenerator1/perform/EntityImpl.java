@@ -126,7 +126,7 @@ public class EntityImpl implements Entity, G {
 	private String buildXDocInit(String xName, String entityX) throws Exception {
 		StringBuffer b = new StringBuffer();
 		b.append("@description\n");
-		b.append("Description de l'entité "+entityX+"\n\n");
+		b.append("Description de l'entitÃ© "+entityX+"\n\n");
 		b.append("@infos\n");
 		b.append("state=GENERATED\n");
 		b.append("sign=\n");
@@ -137,7 +137,7 @@ public class EntityImpl implements Entity, G {
 	private String buildYDocInit(String devId, String yName, List entities) throws Exception {
 		StringBuffer b = new StringBuffer();
 		b.append("@description\n");
-		b.append("Description du système "+devId+".y."+yName+"\n\n");
+		b.append("Description du systÃ¨me "+devId+".y."+yName+"\n\n");
 		for(int i=0;i<entities.size();i++) {
 			String entity = (String) entities.get(i);
 			b.append(entity+"\n");
