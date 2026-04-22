@@ -20,8 +20,8 @@ public class EntityImpl implements Entity, I, ActionListener {
 	private JSplitPane split;
 	
 	public EntityImpl() throws Exception {
-		guiListing = Outside.service(this, "gus.z.appli1.gui2_3_4.z.list");
-		guiDetail = Outside.service(this, "gus.z.appli1.gui2_3_4.z.detail");
+		guiListing = Outside.service(this,"*gus.z.appli1.gui2_3_4.z.list");
+		guiDetail = Outside.service(this,"*gus.z.appli1.gui2_3_4.z.detail");
 		
 		split = new JSplitPane();
 		split.setDividerSize(3);
