@@ -5,7 +5,7 @@ import java.util.Map;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260414";}
+	public String creationDate() {return "20260422";}
 
 	// commandes generales
 	
@@ -57,14 +57,22 @@ public class EntityImpl implements Entity, T {
 	private Service count_st;
 	private Service count_en;
 	private Service count_co;
+	private Service count_importedby;
+	private Service count_importedby_co;
 	
 	// nommages
-	
+
 	private Service names;
 	private Service names_st;
 	private Service names_en;
 	private Service names_co;
-	
+
+	// imports
+
+	private Service imports;
+	private Service importedby;
+	private Service importedby_co;
+
 	// recherche des features
 	
 	private Service findall_features;
@@ -145,6 +153,8 @@ public class EntityImpl implements Entity, T {
 		count_st    = Outside.service(this, "gus.y.server1.engine.cmd.e.count_st");
 		count_en    = Outside.service(this, "gus.y.server1.engine.cmd.e.count_en");
 		count_co    = Outside.service(this, "gus.y.server1.engine.cmd.e.count_co");
+		count_importedby = Outside.service(this, "gus.y.server1.engine.cmd.e.count_importedby");
+		count_importedby_co = Outside.service(this, "gus.y.server1.engine.cmd.e.count_importedby_co");
 		
 		// nommages
 		
@@ -152,7 +162,13 @@ public class EntityImpl implements Entity, T {
 		names_st    = Outside.service(this, "gus.y.server1.engine.cmd.e.names_st");
 		names_en    = Outside.service(this, "gus.y.server1.engine.cmd.e.names_en");
 		names_co    = Outside.service(this, "gus.y.server1.engine.cmd.e.names_co");
-		
+
+		// imports
+
+		imports       = Outside.service(this, "gus.y.server1.engine.cmd.e.imports");
+		importedby    = Outside.service(this, "gus.y.server1.engine.cmd.e.importedby");
+		importedby_co = Outside.service(this, "gus.y.server1.engine.cmd.e.importedby_co");
+
 		// recherche des features
 		
 		findall_features        = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_features");
@@ -246,6 +262,8 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("count_st"))         return count_st;
 		if(cmd.equals("count_en"))         return count_en;
 		if(cmd.equals("count_co"))         return count_co;
+		if(cmd.equals("count_importedby")) return count_importedby;
+		if(cmd.equals("count_importedby_co")) return count_importedby_co;
 
 		// nommages
 
@@ -253,6 +271,12 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("names_st"))         return names_st;
 		if(cmd.equals("names_en"))         return names_en;
 		if(cmd.equals("names_co"))         return names_co;
+
+		// imports
+
+		if(cmd.equals("imports"))          return imports;
+		if(cmd.equals("importedby"))       return importedby;
+		if(cmd.equals("importedby_co"))    return importedby_co;
 
 		// recherche des features
 
