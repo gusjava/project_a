@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, T {
 	private Service entityEngine;
 
 	public EntityImpl() throws Exception {
-		findAllFeaturesMap = Outside.service(this, "gus.y.entitydb1.entity.findall.features.asmap");
+		findAllFeaturesMap = Outside.service(this, "gus.y.entitydb1.entity.featuresbyname");
 		entityEngine       = Outside.service(this, "gus.y.entitysys1.engine");
 	}
 

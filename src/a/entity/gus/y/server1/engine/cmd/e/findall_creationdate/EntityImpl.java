@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, T {
 	private Service entityEngine;
 
 	public EntityImpl() throws Exception {
-		findAllCreationDateMap = Outside.service(this, "gus.y.entitydb1.entity.findall.creationdate.asmap");
+		findAllCreationDateMap = Outside.service(this, "gus.y.entitydb1.entity.creationdatebyname");
 		entityEngine           = Outside.service(this, "gus.y.entitysys1.engine");
 	}
 

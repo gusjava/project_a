@@ -10,19 +10,14 @@ import a.framework.P;
 public class EntityImpl implements Entity, P {
 	public String creationDate() {return "20240112";}
 
-	public static final String TABLE_NAME = "entity";
-
-	public static final String COL_ENTITY_NAME = "entity_name";
-
 	public void p(Object obj) throws Exception {
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
 		Connection cx = (Connection) o[0];
 		String entityName = (String) o[1];
 
-		String sql = "DELETE FROM " + TABLE_NAME + " WHERE " + COL_ENTITY_NAME + "=?";
+		String sql = "DELETE FROM entity WHERE entity_name=?";
 		executeUpdate(cx, sql, entityName);
 	}
 

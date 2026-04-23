@@ -11,7 +11,7 @@ public class EntityImpl implements Entity, T {
 	private Service entityEngine;
 
 	public EntityImpl() throws Exception {
-		findFeatures = Outside.service(this, "gus.y.entitydb1.entity.find.features");
+		findFeatures = Outside.service(this, "gus.y.entitydb1.entity.features.w_name");
 		entityEngine = Outside.service(this, "gus.y.entitysys1.engine");
 	}
 

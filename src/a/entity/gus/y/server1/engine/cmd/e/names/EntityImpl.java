@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, T {
 	private Service entityEngine;
 
 	public EntityImpl() throws Exception {
-		names      = Outside.service(this, "gus.y.entitydb1.entity.findall.names");
+		names      = Outside.service(this, "gus.y.entitydb1.entity.names");
 		entityEngine = Outside.service(this, "gus.y.entitysys1.engine");
 	}
 

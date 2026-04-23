@@ -11,7 +11,7 @@ public class EntityImpl implements Entity, T {
 	private Service joinArgs;
 
 	public EntityImpl() throws Exception {
-		findAllCreationDateEn = Outside.service(this, "gus.y.entitydb1.entity.findall.creationdate.asmap.en");
+		findAllCreationDateEn = Outside.service(this, "gus.y.entitydb1.entity.creationdatebyname.w_en");
 		entityEngine          = Outside.service(this, "gus.y.entitysys1.engine");
 		joinArgs              = Outside.service(this, "gus.y.server1.tool.args.fullstring");
 	}

@@ -12,8 +12,8 @@ public class EntityImpl implements Entity, T {
 	private Service entityEngine;
 
 	public EntityImpl() throws Exception {
-		findCompileErrors    = Outside.service(this, "gus.y.entitydb1.entity_compile_err.find");
-		findCompileErrorsAll = Outside.service(this, "gus.y.entitydb1.entity_compile_err.findall");
+		findCompileErrors    = Outside.service(this, "gus.y.entitydb1.entity_compile_err.infos.w_name");
+		findCompileErrorsAll = Outside.service(this, "gus.y.entitydb1.entity_compile_err.infosbyname");
 		entityEngine         = Outside.service(this, "gus.y.entitysys1.engine");
 	}
 

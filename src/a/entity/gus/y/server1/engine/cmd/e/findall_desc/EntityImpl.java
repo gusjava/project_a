@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, T {
 	private Service entityEngine;
 
 	public EntityImpl() throws Exception {
-		findAllDescList = Outside.service(this, "gus.y.entitydb1.entity.findall.desc");
+		findAllDescList = Outside.service(this, "gus.y.entitydb1.entity.descs");
 		entityEngine    = Outside.service(this, "gus.y.entitysys1.engine");
 	}
 

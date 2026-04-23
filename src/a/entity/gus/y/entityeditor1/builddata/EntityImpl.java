@@ -39,7 +39,7 @@ public class EntityImpl implements Entity, T {
 		findUpLinks = Outside.service(this, "gus.y.entitydb1.entity_link.find1");
 		findServices = Outside.service(this, "gus.y.entitydb1.entity_service.find");
 		findResources = Outside.service(this, "gus.y.entitydb1.entity_resource.find");
-		findCompileErr = Outside.service(this, "gus.y.entitydb1.entity_compile_err.find");
+		findCompileErr = Outside.service(this, "gus.y.entitydb1.entity_compile_err.infos.w_name");
 		findXyzErr = Outside.service(this, "gus.y.entitydb1.entity_xyz_err.find");
 		findMissingLink = Outside.service(this, "gus.y.entitydb1.entity_missing_link.find");
 	}

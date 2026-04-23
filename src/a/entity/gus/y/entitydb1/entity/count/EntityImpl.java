@@ -9,13 +9,13 @@ import a.framework.*;
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20260415";}
 
-	public static final String TABLE_NAME = "entity";
-
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		Connection cx = (Connection) obj;
 
-		String sql = "SELECT COUNT(*) FROM " + TABLE_NAME;
+		String sql = "SELECT COUNT(*) FROM entity";
 		PreparedStatement st = cx.prepareStatement(sql);
+		
 		ResultSet rs = st.executeQuery();
 		rs.next();
 		int count = rs.getInt(1);

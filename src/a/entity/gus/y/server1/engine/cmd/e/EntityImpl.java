@@ -32,12 +32,16 @@ public class EntityImpl implements Entity, T {
 	private Service ast1;
 	private Service ast2;
 	private Service ast3;
-	private Service hash;
 	private Service src;
 	private Service srcpart;
 	private Service path;
 	private Service features;
 	private Service creationdate;
+	private Service hash;
+	
+	// calculs sur l'entite
+	
+	private Service computeHash;
 	
 	// parcours descendant
 	
@@ -128,12 +132,16 @@ public class EntityImpl implements Entity, T {
 		ast1        = Outside.service(this, "gus.y.server1.engine.cmd.e.ast1");
 		ast2        = Outside.service(this, "gus.y.server1.engine.cmd.e.ast2");
 		ast3        = Outside.service(this, "gus.y.server1.engine.cmd.e.ast3");
-		hash        = Outside.service(this, "gus.y.server1.engine.cmd.e.hash");
 		src         = Outside.service(this, "gus.y.server1.engine.cmd.e.src");
 		srcpart     = Outside.service(this, "gus.y.server1.engine.cmd.e.srcpart");
 		path        = Outside.service(this, "gus.y.server1.engine.cmd.e.path");
 		features    = Outside.service(this, "gus.y.server1.engine.cmd.e.features");
 		creationdate = Outside.service(this, "gus.y.server1.engine.cmd.e.creationdate");
+		hash        = Outside.service(this, "gus.y.server1.engine.cmd.e.hash");
+		
+		// calculs sur l'entite
+		
+		computeHash = Outside.service(this, "gus.y.server1.engine.cmd.e.computehash");
 		
 		// parcours descendant
 		
@@ -237,12 +245,16 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("ast1"))             return ast1;
 		if(cmd.equals("ast2"))             return ast2;
 		if(cmd.equals("ast3"))             return ast3;
-		if(cmd.equals("hash"))             return hash;
 		if(cmd.equals("src"))              return src;
 		if(cmd.equals("srcpart"))          return srcpart;
 		if(cmd.equals("path"))             return path;
 		if(cmd.equals("features"))         return features;
 		if(cmd.equals("creationdate"))     return creationdate;
+		if(cmd.equals("hash"))             return hash;
+
+		// calculs sur l'entite
+		
+		if(cmd.equals("computehash"))      return computeHash;
 
 		// parcours descendant
 

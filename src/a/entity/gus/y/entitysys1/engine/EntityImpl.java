@@ -47,7 +47,7 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	private Map srcSaveMap = new HashMap();
 
 	public EntityImpl() throws Exception {
-		findCompileErrMap = Outside.service(this, "gus.y.entitydb1.entity_compile_err.findall");
+		findCompileErrMap = Outside.service(this, "gus.y.entitydb1.entity_compile_err.infosbyname");
 		findXyzErrMap = Outside.service(this, "gus.y.entitydb1.entity_xyz_err.findall");
 		findMissingLinkMap = Outside.service(this, "gus.y.entitydb1.entity_missing_link.findall");
 		findSrcSaveMap = Outside.service(this, "gus.y.entitydb1.entity_src_save.findall");

@@ -11,7 +11,7 @@ public class EntityImpl implements Entity, T {
 	private Service entityEngine;
 
 	public EntityImpl() throws Exception {
-		findCreationDate = Outside.service(this, "gus.y.entitydb1.entity.find.creationdate");
+		findCreationDate = Outside.service(this, "gus.y.entitydb1.entity.creationdate.w_name");
 		entityEngine     = Outside.service(this, "gus.y.entitysys1.engine");
 	}
 

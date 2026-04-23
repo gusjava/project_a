@@ -1,30 +1,30 @@
 package a.entity.gus.y.server1.engine.cmd.e.hash;
 
+import java.sql.Connection;
 import java.util.List;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260419";}
+	public String creationDate() {return "20260422";}
 
-	private Service findSrc;
+	private Service findHash;
 	private Service entityEngine;
-	private Service buildHash;
 
 	public EntityImpl() throws Exception {
-		findSrc      = Outside.service(this, "gus.y.entitysys1.find.src");
-		entityEngine = Outside.service(this, "gus.y.entitysys1.engine");
-		buildHash     = Outside.service(this, "gus.y.entityhash1.src.build");
+		findHash = Outside.service(this, "gus.y.entitydb1.entity.hash.w_name");
+		entityEngine     = Outside.service(this, "gus.y.entitysys1.engine");
 	}
 
 	public Object t(Object obj) throws Exception
 	{
 		List list = (List) obj;
-		if(list == null || list.size()!=1) 
-			throw new Exception("Usage: e-src <entity>");
-			
+		if(list == null || list.isEmpty()) throw new Exception("Usage: e-hash <entity>");
 		String name = (String) list.get(0);
-		Object src = findSrc.t(new Object[]{entityEngine, name});
-		if(src == null) throw new Exception("Entity not found: " + name);
-		return buildHash.t(src);
+		Object hash = findHash.t(new Object[]{cx(), name});
+		if(hash == null) throw new Exception("Entity not found: " + name);
+		return hash.toString();
 	}
+
+	private Connection cx() throws Exception
+	{return (Connection) entityEngine.r("cx");}
 }

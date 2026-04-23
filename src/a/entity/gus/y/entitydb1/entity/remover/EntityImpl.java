@@ -41,7 +41,7 @@ public class EntityImpl implements Entity, P {
 		deleteSrcSave = Outside.service(this, "gus.y.entitydb1.entity_src_save.delete");
 
 		deleteImport = Outside.service(this, "gus.y.entitydb1.entity_import.delete");
-		deleteEntityIn = Outside.service(this, "gus.y.entitydb1.entity.delete.in");
+		deleteEntityIn = Outside.service(this, "gus.y.entitydb1.entity.delete.w_in");
 		deleteServicesIn = Outside.service(this, "gus.y.entitydb1.entity_service.delete.in");
 		deleteResourcesIn = Outside.service(this, "gus.y.entitydb1.entity_resource.delete.in");
 		deleteLinks1In = Outside.service(this, "gus.y.entitydb1.entity_link.delete1.in");

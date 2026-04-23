@@ -11,7 +11,7 @@ public class EntityImpl implements Entity, T {
 	private Service joinArgs;
 
 	public EntityImpl() throws Exception {
-		findAllSt    = Outside.service(this, "gus.y.entitydb1.entity.findall.asmap.st");
+		findAllSt    = Outside.service(this, "gus.y.entitydb1.entity.infosbyname.w_st");
 		entityEngine = Outside.service(this, "gus.y.entitysys1.engine");
 		joinArgs     = Outside.service(this, "gus.y.server1.tool.args.fullstring");
 	}

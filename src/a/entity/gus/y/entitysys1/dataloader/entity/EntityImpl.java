@@ -62,7 +62,7 @@ public class EntityImpl implements Entity, T {
 		deleteMissingLinks = Outside.service(this,"gus.y.entitydb1.entity_missing_link.delete1");
 		deleteXyzErr = Outside.service(this,"gus.y.entitydb1.entity_xyz_err.delete");
 		
-		findAll = Outside.service(this,"gus.y.entitydb1.entity.findall.asmap");
+		findAll = Outside.service(this,"gus.y.entitydb1.entity.infosbyname");
 		remover = Outside.service(this,"gus.y.entitydb1.entity.remover");
 	}
 	
