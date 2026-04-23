@@ -1,44 +1,78 @@
 package a.entity.gus.y.knowledgesys1.gui.todo.detail1.gui1.form;
 
 import java.awt.BorderLayout;
+import java.awt.Insets;
 import java.util.Map;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import a.framework.*;
 
 public class EntityImpl implements Entity, I, P {
 	public String creationDate() {return "20260423";}
 
-	private JPanel panel;
-	private JTextArea textDescription;
+	private Service formPanel;
+
+	private JPanel mainPanel;
+
+	private JTextField fieldId = new JTextField();
+	private JTextField fieldDateCreated = new JTextField();
+	private JTextField fieldCode = new JTextField();
+	private JTextField fieldTitle = new JTextField();
+	private JTextArea taDescription = new JTextArea();
 
 	public EntityImpl() throws Exception {
+		formPanel = Outside.service(this, "*gus.x.swing.panel.formpanel");
 
-		textDescription = new JTextArea();
-		textDescription.setEditable(false);
-		textDescription.setLineWrap(true);
-		textDescription.setWrapStyleWord(true);
+		fieldId.setEditable(false);
+		fieldDateCreated.setEditable(false);
+		fieldCode.setEditable(false);
+		fieldTitle.setEditable(false);
 
-		panel = new JPanel(new BorderLayout());
-		panel.add(new JScrollPane(textDescription), BorderLayout.CENTER);
+		taDescription.setEditable(false);
+		taDescription.setLineWrap(true);
+		taDescription.setWrapStyleWord(true);
+		taDescription.setMargin(new Insets(3,3,3,3));
+
+		formPanel.v("id", fieldId);
+		formPanel.v("date_created", fieldDateCreated);
+		formPanel.v("code", fieldCode);
+		formPanel.v("title", fieldTitle);
+
+		mainPanel = new JPanel(new BorderLayout());
+		mainPanel.add((JComponent) formPanel.i(), BorderLayout.NORTH);
+		mainPanel.add(new JScrollPane(taDescription), BorderLayout.CENTER);
 	}
 
 	public Object i() throws Exception {
-		return panel;
+		return mainPanel;
 	}
 
 	public void p(Object obj) throws Exception {
-		if (obj instanceof Map) {
-			Map m = (Map) obj;
-			Object desc = m.get("description");
-			textDescription.setText(desc != null ? desc.toString() : "");
-		} else {
-			textDescription.setText("");
+		if (obj == null) {
+			fieldId.setText("");
+			fieldDateCreated.setText("");
+			fieldCode.setText("");
+			fieldTitle.setText("");
+			taDescription.setText("");
+			return;
 		}
+
+		Map m = (Map) obj;
+		fieldId.setText(str(m.get("id")));
+		fieldDateCreated.setText(str(m.get("date_created")));
+		fieldCode.setText(str(m.get("code")));
+		fieldTitle.setText(str(m.get("title")));
+
+		taDescription.setText(str(m.get("description")));
+		taDescription.setCaretPosition(0);
+	}
+
+	private String str(Object value) {
+		return value != null ? value.toString() : "";
 	}
 }

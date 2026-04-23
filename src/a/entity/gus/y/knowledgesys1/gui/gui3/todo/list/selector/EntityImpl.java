@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.gui.gui3.todo.selector;
+package a.entity.gus.y.knowledgesys1.gui.gui3.todo.list.selector;
 
 import java.awt.BorderLayout;
 import java.awt.Component;

@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.gui.gui3.todo;
+package a.entity.gus.y.knowledgesys1.gui.gui3.todo.list;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, I, V, ActionListener {
 	private JSplitPane split;
 
 	public EntityImpl() throws Exception {
-		guiSelector = Outside.service(this, "*gus.y.knowledgesys1.gui.gui3.todo.selector");
+		guiSelector = Outside.service(this, "*gus.y.knowledgesys1.gui.gui3.todo.list.selector");
 		guiDetail   = Outside.service(this, "*gus.y.knowledgesys1.gui.todo.detail1");
 
 		split = new JSplitPane();
