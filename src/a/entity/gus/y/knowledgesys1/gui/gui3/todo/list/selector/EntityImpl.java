@@ -132,23 +132,27 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 
 	private void loaded() {
 		try {
-			todo = (engine != null) ? (List) ((R) engine).r("todo") : new ArrayList();
-			if (todo == null) todo = new ArrayList();
+			todo = retrieveList();
 			refresh();
 		} catch (Exception e) {
 			Outside.err(this, "loaded()", e);
 		}
 	}
-
-	private void handleInputEdition() {
-		try {
-			refresh();
-		} catch (Exception e) {
-			Outside.err(this, "handleInputEdition()", e);
-		}
+	
+	private List retrieveList() throws Exception {
+		if(engine==null) return new ArrayList();
+		List list = (List) ((R) engine).r("todoList");
+		return list != null ? list : new ArrayList();
 	}
 
-	private void refresh() throws Exception {
+	private void handleInputEdition() {
+		try{refresh();}
+		catch(Exception e)
+		{Outside.err(this, "handleInputEdition()", e);}
+	}
+
+	private void refresh() throws Exception
+	{
 		String search = (String) fieldHolder.g();
 		filtered = filter(todo, search);
 		Map previousSelection = (Map) g();
@@ -158,14 +162,16 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 		if (previousSelection != null) setSelection(previousSelection);
 	}
 
-	private List filter(List source, String search) {
+	private List filter(List source, String search)
+	{
 		if (search == null || search.trim().isEmpty()) return source;
 		String s = search.trim().toLowerCase();
 		List result = new ArrayList();
-		for (int i = 0; i < source.size(); i++) {
+		for (int i = 0; i < source.size(); i++)
+		{
 			Map m = (Map) source.get(i);
-			String text = "" + m.get("code") + " " + m.get("title");
-			if (text.toLowerCase().contains(s)) result.add(m);
+			String display = (String) m.get("display");
+			if (display.toLowerCase().contains(s)) result.add(m);
 		}
 		return result;
 	}
@@ -209,11 +215,12 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 		public Component getListCellRendererComponent(JList list, Object value, int index,
 				boolean isSelected, boolean cellHasFocus) {
 			JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-			if (value instanceof Map) {
-				Map m = (Map) value;
-				label.setText(m.get("code") + ":" + m.get("title"));
-			}
+			
+			Map m = (Map) value;
+			String display = (String) m.get("display");
+			label.setText(display);
 			label.setIcon(icon);
+			
 			return label;
 		}
 	}

@@ -21,6 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.Icon;
+import java.awt.Color;
 import javax.swing.event.ListSelectionListener;
 
 import a.framework.*;
@@ -133,12 +134,17 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 
 	private void loaded() {
 		try {
-			all = (engine != null) ? (List) ((R) engine).r("all") : new ArrayList();
-			if (all == null) all = new ArrayList();
+			all = retrieveList();
 			refresh();
 		} catch (Exception e) {
 			Outside.err(this, "loaded()", e);
 		}
+	}
+	
+	private List retrieveList() throws Exception {
+		if(engine==null) return new ArrayList();
+		List list = (List) ((R) engine).r("knowledgeList");
+		return list != null ? list : new ArrayList();
 	}
 
 	private void handleInputEdition() {
@@ -165,8 +171,8 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 		List result = new ArrayList();
 		for (int i = 0; i < source.size(); i++) {
 			Map m = (Map) source.get(i);
-			String text = "" + m.get("code") + " " + m.get("action") + " " + m.get("object");
-			if (text.toLowerCase().contains(s)) result.add(m);
+			String display = (String) m.get("display");
+			if (display.toLowerCase().contains(s)) result.add(m);
 		}
 		return result;
 	}
@@ -209,12 +215,15 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 	private class CellRenderer0 extends DefaultListCellRenderer {
 		public Component getListCellRendererComponent(JList list, Object value, int index,
 				boolean isSelected, boolean cellHasFocus) {
+			
 			JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-			if (value instanceof Map) {
-				Map m = (Map) value;
-				label.setText(m.get("code") + ":" + m.get("action") + ":" + m.get("object"));
-			}
+			
+			Map m = (Map) value;
+			String display = (String) m.get("display");
+			label.setText(display);
 			label.setIcon(icon);
+			
+			setBackground(isSelected ? new Color(244, 244, 244) : Color.WHITE);
 			return label;
 		}
 	}

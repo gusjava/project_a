@@ -52,12 +52,17 @@ public class EntityImpl implements Entity, I, P {
 		return panel;
 	}
 
-	public void p(Object obj) throws Exception {
-		if (obj instanceof Map) {
+	public void p(Object obj) throws Exception
+	{
+		if (obj!=null)
+		{
 			Map m = (Map) obj;
-			labelTitle.setText(m.get("code") + ":" + m.get("title"));
+			String display = (String) m.get("display"); 
+			labelTitle.setText(display);
 			labelTitle.setIcon(icon);
-		} else {
+		}
+		else
+		{
 			labelTitle.setText(" ");
 			labelTitle.setIcon(null);
 		}

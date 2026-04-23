@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.gui.gui2.knowledge.tree.selector;
+package a.entity.gus.y.knowledgesys1.gui.gui4.todo.tree.selector;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,16 +22,15 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreeModel;
-import java.util.HashMap;
 import javax.swing.tree.TreePath;
 
 import a.framework.*;
 
 public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, TreeSelectionListener {
-	public String creationDate() {return "20260414";}
+	public String creationDate() {return "20260423";}
 
 	private Service findLinks;
-	private Service findKnowledge;
+	private Service findTodo;
 	private Service custUI;
 
 	private Object engine;
@@ -40,11 +39,11 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, T
 	private JTree tree;
 
 	public EntityImpl() throws Exception {
-		findLinks = Outside.service(this, "gus.y.knowledgedb1.knowledge_link.find1");
-		findKnowledge = Outside.service(this, "gus.y.knowledgedb1.knowledge.find");
+		findLinks = Outside.service(this, "gus.y.knowledgedb1.todo_link.find1");
+		findTodo = Outside.service(this, "gus.y.knowledgedb1.todo.find");
 		custUI = Outside.service(this, "gus.y.swing1.tree.cust.ui.expandcollapseicons2");
 
-		icon = (Icon) Outside.resource(this, "icon#KNOWLEDGE");
+		icon = (Icon) Outside.resource(this, "icon#TODO");
 
 		tree = new JTree(new TreeModel1());
 		tree.setRootVisible(false);
@@ -111,7 +110,7 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, T
 	private List roots() {
 		try {
 			if(engine==null) return new ArrayList();
-			List r = (List) ((R) engine).r("knowledgeRoots");
+			List r = (List) ((R) engine).r("todoRoots");
 			return r != null ? r : new ArrayList();
 		} catch (Exception e) {
 			Outside.err(this, "roots()", e);
@@ -128,7 +127,7 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, T
 			List result = new ArrayList();
 			for (int i = 0; i < links.size(); i++) {
 				Long idLinked = toLong(((Map) links.get(i)).get("id_linked"));
-				Map k = (Map) findKnowledge.t(new Object[] {cx, idLinked});
+				Map k = (Map) findTodo.t(new Object[] {cx, idLinked});
 				if (k != null) result.add(k);
 			}
 			return result;
@@ -146,26 +145,26 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, T
 	private class TreeModel1 implements TreeModel {
 
 		public Object getRoot() {
-			return "ROOT";
+			return null;
 		}
 
 		public Object getChild(Object parent, int index) {
-			if (parent.equals("ROOT")) return roots().get(index);
+			if (parent == null) return roots().get(index);
 			return children((Map) parent).get(index);
 		}
 
 		public int getChildCount(Object parent) {
-			if (parent.equals("ROOT")) return roots().size();
+			if (parent == null) return roots().size();
 			return children((Map) parent).size();
 		}
 
 		public boolean isLeaf(Object node) {
-			if (node.equals("ROOT")) return false;
+			if (node == null) return false;
 			return children((Map) node).isEmpty();
 		}
 
 		public int getIndexOfChild(Object parent, Object child) {
-			if (parent.equals("ROOT")) return roots().indexOf(child);
+			if (parent == null) return roots().indexOf(child);
 			return children((Map) parent).indexOf(child);
 		}
 
@@ -185,8 +184,8 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, T
 
 		public Component getTreeCellRendererComponent(JTree tree, Object value, boolean isSelected,
 				boolean expanded, boolean leaf, int row, boolean hasFocus) {
-					
-			if(value.equals("ROOT"))
+			
+			if(value==null)
 			{
 				setText("");
 				setIcon(null);
@@ -203,3 +202,4 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, T
 		}
 	}
 }
+

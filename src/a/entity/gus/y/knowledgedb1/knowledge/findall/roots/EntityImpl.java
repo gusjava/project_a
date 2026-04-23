@@ -23,7 +23,8 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{
 		Connection cx = (Connection) obj;
-		String sql = "SELECT * FROM knowledge WHERE id NOT IN (SELECT DISTINCT id_linked FROM knowledge_link) ORDER BY id";
+		String sql = "SELECT * FROM knowledge " + 
+		"WHERE id NOT IN (SELECT DISTINCT id_linked FROM knowledge_link) ORDER BY id";
 		
 		PreparedStatement st = cx.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();

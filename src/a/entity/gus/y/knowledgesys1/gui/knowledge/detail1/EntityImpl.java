@@ -55,11 +55,15 @@ public class EntityImpl implements Entity, I, P
 
 	public void p(Object obj) throws Exception
 	{
-		if (obj instanceof Map) {
+		if (obj!=null)
+		{
 			Map m = (Map) obj;
-			labelTitle.setText(m.get("code") + ":" + m.get("action") + ":" + m.get("object"));
+			String display = (String) m.get("display"); 
+			labelTitle.setText(display);
 			labelTitle.setIcon(icon);
-		} else {
+		}
+		else
+		{
 			labelTitle.setText(" ");
 			labelTitle.setIcon(null);
 		}

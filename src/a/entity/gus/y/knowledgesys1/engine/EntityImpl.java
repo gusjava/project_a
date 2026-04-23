@@ -5,31 +5,44 @@ import java.util.List;
 
 import a.framework.*;
 
-public class EntityImpl extends S1 implements Entity, E, G, R {
+public class EntityImpl extends S1 implements Entity, E, R {
 	public String creationDate() {return "20260414";}
 
 	private Service cxMain;
-	private Service findallRoots;
-	private Service findall;
-	private Service findallTodo;
+	
+	private Service findallKnowledgeRoots;
+	private Service findallKnowledgeList;
+	
+	private Service findallTodoRoot;
+	private Service findallTodoList;
 
 	private Connection cx;
-	private List roots;
-	private List all;
-	private List todo;
+	
+	private List knowledgeRoots;
+	private List knowledgeList;
+	
+	private List todoRoots;
+	private List todoList;
 
 	public EntityImpl() throws Exception {
 		cxMain = Outside.service(this, "gus.y.knowledgedb1.cx.main");
-		findallRoots = Outside.service(this, "gus.y.knowledgedb1.knowledge.findall.roots");
-		findall = Outside.service(this, "gus.y.knowledgedb1.knowledge.findall");
-		findallTodo = Outside.service(this, "gus.y.knowledgedb1.todo.findall");
+		
+		findallKnowledgeRoots = Outside.service(this, "gus.y.knowledgedb1.knowledge.findall.roots");
+		findallKnowledgeList = Outside.service(this, "gus.y.knowledgedb1.knowledge.findall");
+		
+		findallTodoRoot = Outside.service(this, "gus.y.knowledgedb1.todo.findall.roots");
+		findallTodoList = Outside.service(this, "gus.y.knowledgedb1.todo.findall");
 	}
 
 	public void e() throws Exception {
 		cx = (Connection) cxMain.g();
-		roots = (List) findallRoots.t(cx);
-		all = (List) findall.t(cx);
-		todo = (List) findallTodo.t(cx);
+		
+		knowledgeRoots = (List) findallKnowledgeRoots.t(cx);
+		knowledgeList = (List) findallKnowledgeList.t(cx);
+		
+		todoRoots = (List) findallTodoRoot.t(cx);
+		todoList = (List) findallTodoList.t(cx);
+		
 		loaded();
 	}
 
@@ -37,17 +50,22 @@ public class EntityImpl extends S1 implements Entity, E, G, R {
 		send(this, "loaded()");
 	}
 
-	public Object g() throws Exception {
-		return roots;
-	}
-
 	public Object r(String key) throws Exception {
 		if (key.equals("cx")) return cx;
-		if (key.equals("roots")) return roots;
-		if (key.equals("all")) return all;
-		if (key.equals("todo")) return todo;
+		
+		if (key.equals("knowledgeRoots")) return knowledgeRoots;
+		if (key.equals("knowledgeList")) return knowledgeList;
+		
+		if (key.equals("todoRoots")) return todoRoots;
+		if (key.equals("todoList")) return todoList;
 
-		if (key.equals("keys")) return new String[] {"cx", "roots", "all", "todo"};
+		if (key.equals("keys")) return new String[] 
+			{"cx", 
+			"knowledgeRoots", 
+			"knowledgeList", 
+			"todoRoots", 
+			"todoList"};
+			
 		throw new Exception("Unknown key: " + key);
 	}
 }
