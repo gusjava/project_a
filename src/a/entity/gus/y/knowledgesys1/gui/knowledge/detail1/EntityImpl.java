@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.gui.detail1;
+package a.entity.gus.y.knowledgesys1.gui.knowledge.detail1;
 
 import java.awt.BorderLayout;
 import java.util.Map;
@@ -28,10 +28,10 @@ public class EntityImpl implements Entity, I, P
 	public EntityImpl() throws Exception
 	{
 		tabHolder = Outside.service(this, "*gus.y.swing1.tabbedpane.holder1");
-		gui1 = Outside.service(this, "*gus.y.knowledgesys1.gui.detail1.gui1.form");
-		gui2 = Outside.service(this, "*gus.y.knowledgesys1.gui.detail1.gui2.uplinks");
-		gui3 = Outside.service(this, "*gus.y.knowledgesys1.gui.detail1.gui3.downlinks");
-		gui4 = Outside.service(this, "*gus.y.knowledgesys1.gui.detail1.gui4.tags");
+		gui1 = Outside.service(this, "*gus.y.knowledgesys1.gui.knowledge.detail1.gui1.form");
+		gui2 = Outside.service(this, "*gus.y.knowledgesys1.gui.knowledge.detail1.gui2.uplinks");
+		gui3 = Outside.service(this, "*gus.y.knowledgesys1.gui.knowledge.detail1.gui3.downlinks");
+		gui4 = Outside.service(this, "*gus.y.knowledgesys1.gui.knowledge.detail1.gui4.tags");
 
 		icon = (Icon) Outside.resource(this, "icon#KNOWLEDGE");
 

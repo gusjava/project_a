@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.gui.gui2.tree;
+package a.entity.gus.y.knowledgesys1.gui.gui2.knowledge.tree;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,8 +19,8 @@ public class EntityImpl implements Entity, I, V, ActionListener
 
 	public EntityImpl() throws Exception
 	{
-		guiSelector = Outside.service(this, "*gus.y.knowledgesys1.gui.gui2.tree.selector");
-		guiDetail = Outside.service(this, "*gus.y.knowledgesys1.gui.detail1");
+		guiSelector = Outside.service(this, "*gus.y.knowledgesys1.gui.gui2.knowledge.tree.selector");
+		guiDetail = Outside.service(this, "*gus.y.knowledgesys1.gui.knowledge.detail1");
 
 		split = new JSplitPane();
 		split.setDividerSize(3);

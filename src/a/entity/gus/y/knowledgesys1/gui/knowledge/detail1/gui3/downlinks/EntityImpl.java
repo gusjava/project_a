@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.gui.detail1.gui2.uplinks;
+package a.entity.gus.y.knowledgesys1.gui.knowledge.detail1.gui3.downlinks;
 
 import java.awt.BorderLayout;
 import java.util.Map;

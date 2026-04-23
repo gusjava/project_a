@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.gui.detail1.gui1.form;
+package a.entity.gus.y.knowledgesys1.gui.knowledge.detail1.gui1.form;
 
 import java.awt.BorderLayout;
 import java.util.Map;

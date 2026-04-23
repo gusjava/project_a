@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.gui.gui2.tree.selector;
+package a.entity.gus.y.knowledgesys1.gui.gui2.knowledge.tree.selector;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

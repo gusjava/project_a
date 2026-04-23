@@ -19,8 +19,8 @@ public class EntityImpl implements Entity, I
 		engine = Outside.service(this, "*gus.y.knowledgesys1.engine");
 		tabHolder = Outside.service(this, "*gus.y.swing1.tabbedpane.holder1");
 		
-		gui1 = Outside.service(this, "*gus.y.knowledgesys1.gui.gui1.list");
-		gui2 = Outside.service(this, "*gus.y.knowledgesys1.gui.gui2.tree");
+		gui1 = Outside.service(this, "*gus.y.knowledgesys1.gui.gui1.knowledge.list");
+		gui2 = Outside.service(this, "*gus.y.knowledgesys1.gui.gui2.knowledge.tree");
 		gui3 = Outside.service(this, "*gus.y.knowledgesys1.gui.gui3.todo");
 		gui4 = Outside.service(this, "*gus.y.knowledgesys1.gui.gui4.tags");
 
