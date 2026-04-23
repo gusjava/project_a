@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.Icon;
 import javax.swing.event.ListSelectionListener;
 
 import a.framework.*;
@@ -33,6 +34,7 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 
 	private Service buildAction;
 	private Service fieldHolder;
+	private Service toolbarFactory;
 
 	private Object engine;
 	private JPanel panel;
@@ -40,6 +42,8 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 	private DefaultListModel model;
 	private JComponent field;
 	private JToolBar bar;
+	
+	private Icon icon;
 
 	private Action actionAdd;
 	private Action actionEdit;
@@ -49,15 +53,17 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 	private List filtered = new ArrayList();
 
 	public EntityImpl() throws Exception {
-		buildAction = Outside.service(this, "gus.y.swing1.action.builder1");
-		fieldHolder = Outside.service(this, "*gus.y.swing1.textfield.editor1");
+		buildAction    = Outside.service(this, "gus.y.swing1.action.builder1");
+		fieldHolder    = Outside.service(this, "*gus.y.swing1.textfield.editor1");
+		toolbarFactory = Outside.service(this, "gus.x.swing.toolbar.factory1");
+		
+		icon = (Icon) Outside.resource(this, "icon#KNOWLEDGE");
 
 		actionAdd    = (Action) buildAction.t(new Object[] { DISPLAY_ADD,    (E) this::f1_add });
 		actionEdit   = (Action) buildAction.t(new Object[] { DISPLAY_EDIT,   (E) this::f2_edit });
 		actionDelete = (Action) buildAction.t(new Object[] { DISPLAY_DELETE, (E) this::del_delete });
 
-		bar = new JToolBar();
-		bar.setFloatable(false);
+		bar = (JToolBar) toolbarFactory.i();
 		bar.add(actionAdd);
 		bar.add(actionEdit);
 		bar.add(actionDelete);
@@ -208,6 +214,7 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 				Map m = (Map) value;
 				label.setText(m.get("code") + ":" + m.get("action") + ":" + m.get("object"));
 			}
+			label.setIcon(icon);
 			return label;
 		}
 	}

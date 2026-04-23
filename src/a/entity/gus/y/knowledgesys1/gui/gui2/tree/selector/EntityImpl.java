@@ -43,7 +43,7 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, T
 		findKnowledge = Outside.service(this, "gus.y.knowledgedb1.knowledge.find");
 		custUI = Outside.service(this, "gus.y.swing1.tree.cust.ui.expandcollapseicons2");
 
-		icon = (Icon) Outside.resource(this, "icon#COMMENT_blue");
+		icon = (Icon) Outside.resource(this, "icon#KNOWLEDGE");
 
 		tree = new JTree(new TreeModel1());
 		tree.setRootVisible(false);
