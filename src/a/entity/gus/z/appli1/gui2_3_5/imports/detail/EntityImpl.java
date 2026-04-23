@@ -25,6 +25,7 @@ public class EntityImpl implements Entity, I, P {
 	
 	public EntityImpl() throws Exception
 	{
+		engine = Outside.service(this,"gus.y.entitysys1.engine");
 		textGui = Outside.service(this,"*gus06.data.editor.string.textarea.editor1");
 		findAll = Outside.service(this,"gus06.y.entitydb1.entity_import.find2.in");
 		setToString = Outside.service(this,"gus06.tostring.set.join.n");

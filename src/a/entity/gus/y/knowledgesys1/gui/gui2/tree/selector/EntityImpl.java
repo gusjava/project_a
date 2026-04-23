@@ -110,7 +110,7 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, T
 	private List roots() {
 		try {
 			if(engine==null) return new ArrayList();
-			List r = (List) ((G) engine).g();
+			List r = (List) ((R) engine).r("roots");
 			return r != null ? r : new ArrayList();
 		} catch (Exception e) {
 			Outside.err(this, "roots()", e);

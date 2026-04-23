@@ -10,18 +10,22 @@ public class EntityImpl extends S1 implements Entity, E, G, R {
 
 	private Service cxMain;
 	private Service findallRoots;
+	private Service findall;
 
 	private Connection cx;
 	private List roots;
+	private List all;
 
 	public EntityImpl() throws Exception {
 		cxMain = Outside.service(this, "gus.y.knowledgedb1.cx.main");
 		findallRoots = Outside.service(this, "gus.y.knowledgedb1.knowledge.findall.roots");
+		findall = Outside.service(this, "gus.y.knowledgedb1.knowledge.findall");
 	}
 
 	public void e() throws Exception {
 		cx = (Connection) cxMain.g();
 		roots = (List) findallRoots.t(cx);
+		all = (List) findall.t(cx);
 		loaded();
 	}
 
@@ -35,7 +39,10 @@ public class EntityImpl extends S1 implements Entity, E, G, R {
 
 	public Object r(String key) throws Exception {
 		if (key.equals("cx")) return cx;
-		if (key.equals("keys")) return new String[] {"cx"};
+		if (key.equals("roots")) return roots;
+		if (key.equals("all")) return all;
+
+		if (key.equals("keys")) return new String[] {"cx", "roots", "all"};
 		throw new Exception("Unknown key: " + key);
 	}
 }
