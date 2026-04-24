@@ -61,8 +61,8 @@ public class EntityImpl implements Entity, T {
 	private Service count_st;
 	private Service count_en;
 	private Service count_co;
-	private Service count_importedby;
-	private Service count_importedby_co;
+	private Service count_import;
+	private Service count_import_co;
 	
 	// nommages
 
@@ -70,39 +70,42 @@ public class EntityImpl implements Entity, T {
 	private Service names_st;
 	private Service names_en;
 	private Service names_co;
+	private Service names_import;
+	private Service names_import_co;
+
 
 	// imports
 
 	private Service imports;
-	private Service importedby;
-	private Service importedby_co;
-
+	
 	// recherche des features
 	
-	private Service findall_features;
-	private Service findall_features_st;
-	private Service findall_features_en;
-	private Service findall_features_co;
+	private Service featuresbyname;
+	private Service featuresbyname_st;
+	private Service featuresbyname_en;
+	private Service featuresbyname_co;
 	
 	// recherche des dates de creation
 	
-	private Service findall_creationdate;
-	private Service findall_creationdate_st;
-	private Service findall_creationdate_en;
-	private Service findall_creationdate_co;
+	private Service creationdatebyname;
+	private Service creationdatebyname_st;
+	private Service creationdatebyname_en;
+	private Service creationdatebyname_co;
 	
 	// recherche des dates de descriptions (name-features)
 	
-	private Service findall_desc;
-	private Service findall_desc_st;
-	private Service findall_desc_en;
-	private Service findall_desc_co;
+	private Service descs;
+	private Service descs_st;
+	private Service descs_en;
+	private Service descs_co;
 	
 	// recherche globale
 	
-	private Service findall_st;
-	private Service findall_en;
-	private Service findall_co;
+	private Service infosbyname_st;
+	private Service infosbyname_en;
+	private Service infosbyname_co;
+	
+	private Service countbyhash_multi;
 	
 	
 	public EntityImpl() throws Exception
@@ -135,13 +138,13 @@ public class EntityImpl implements Entity, T {
 		src         = Outside.service(this, "gus.y.server1.engine.cmd.e.src");
 		srcpart     = Outside.service(this, "gus.y.server1.engine.cmd.e.srcpart");
 		path        = Outside.service(this, "gus.y.server1.engine.cmd.e.path");
-		features    = Outside.service(this, "gus.y.server1.engine.cmd.e.features");
+		features    = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.features_w_name");
 		creationdate = Outside.service(this, "gus.y.server1.engine.cmd.e.creationdate");
-		hash        = Outside.service(this, "gus.y.server1.engine.cmd.e.hash");
+		hash        = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.hash_w_name");
 		
 		// calculs sur l'entite
 		
-		computeHash = Outside.service(this, "gus.y.server1.engine.cmd.e.computehash");
+		computeHash = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.computehash");
 		
 		// parcours descendant
 		
@@ -155,55 +158,48 @@ public class EntityImpl implements Entity, T {
 		uplinkstree    = Outside.service(this, "gus.y.server1.engine.cmd.e.uplinkstree");
 		uplinkstree2   = Outside.service(this, "gus.y.server1.engine.cmd.e.uplinkstree2");
 		
-		// comptages
+		// n0
 		
-		count       = Outside.service(this, "gus.y.server1.engine.cmd.e.count");
-		count_st    = Outside.service(this, "gus.y.server1.engine.cmd.e.count_st");
-		count_en    = Outside.service(this, "gus.y.server1.engine.cmd.e.count_en");
-		count_co    = Outside.service(this, "gus.y.server1.engine.cmd.e.count_co");
-		count_importedby = Outside.service(this, "gus.y.server1.engine.cmd.e.count_importedby");
-		count_importedby_co = Outside.service(this, "gus.y.server1.engine.cmd.e.count_importedby_co");
+		count       = Outside.service(this, "gus.y.server1.engine.cmd.e.n0.count");
+		names       = Outside.service(this, "gus.y.server1.engine.cmd.e.n0.names");
 		
-		// nommages
+		// n1
 		
-		names       = Outside.service(this, "gus.y.server1.engine.cmd.e.names");
-		names_st    = Outside.service(this, "gus.y.server1.engine.cmd.e.names_st");
-		names_en    = Outside.service(this, "gus.y.server1.engine.cmd.e.names_en");
-		names_co    = Outside.service(this, "gus.y.server1.engine.cmd.e.names_co");
+		count_st    = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.count_w_st");
+		count_en    = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.count_w_en");
+		count_co    = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.count_w_co");
+		count_import = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.count_w_import");
+		count_import_co = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.count_w_import_co");
+		
+		names_st    = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.names_w_st");
+		names_en    = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.names_w_en");
+		names_co    = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.names_w_co");
+		names_import    = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.names_w_import");
+		names_import_co = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.names_w_import_co");
 
-		// imports
-
-		imports       = Outside.service(this, "gus.y.server1.engine.cmd.e.imports");
-		importedby    = Outside.service(this, "gus.y.server1.engine.cmd.e.importedby");
-		importedby_co = Outside.service(this, "gus.y.server1.engine.cmd.e.importedby_co");
-
-		// recherche des features
+		imports       = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.imports_w_name");
 		
-		findall_features        = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_features");
-		findall_features_st     = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_features_st");
-		findall_features_en     = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_features_en");
-		findall_features_co     = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_features_co");
+		featuresbyname        = Outside.service(this, "gus.y.server1.engine.cmd.e.n0.featuresbyname");
+		featuresbyname_st     = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.featuresbyname_w_st");
+		featuresbyname_en     = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.featuresbyname_w_en");
+		featuresbyname_co     = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.featuresbyname_w_co");
 		
-		// recherche des dates de creation
+		creationdatebyname    = Outside.service(this, "gus.y.server1.engine.cmd.e.n0.creationdatebyname");
+		creationdatebyname_st = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.creationdatebyname_w_st");
+		creationdatebyname_en = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.creationdatebyname_w_en");
+		creationdatebyname_co = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.creationdatebyname_w_co");
 		
-		findall_creationdate    = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_creationdate");
-		findall_creationdate_st = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_creationdate_st");
-		findall_creationdate_en = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_creationdate_en");
-		findall_creationdate_co = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_creationdate_co");
+		descs            = Outside.service(this, "gus.y.server1.engine.cmd.e.n0.descs");
+		descs_st         = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.descs_w_st");
+		descs_en         = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.descs_w_en");
+		descs_co         = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.descs_w_co");
 		
-		// recherche des dates de descriptions (name-features)
+		//infosbyname (trop dangereux)
+		infosbyname_st  = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.infosbyname_w_st");
+		infosbyname_en  = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.infosbyname_w_en");
+		infosbyname_co  = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.infosbyname_w_co");
 		
-		findall_desc            = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_desc");
-		findall_desc_st         = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_desc_st");
-		findall_desc_en         = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_desc_en");
-		findall_desc_co         = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_desc_co");
-
-		// recherche globale
-		
-		//findall (trop dangereux)
-		findall_st  = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_st");
-		findall_en  = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_en");
-		findall_co  = Outside.service(this, "gus.y.server1.engine.cmd.e.findall_co");
+		countbyhash_multi = Outside.service(this, "gus.y.server1.engine.cmd.e.n0.countbyhash_multi");
 	}
 
 	public Object t(Object obj) throws Exception
@@ -274,8 +270,8 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("count_st"))         return count_st;
 		if(cmd.equals("count_en"))         return count_en;
 		if(cmd.equals("count_co"))         return count_co;
-		if(cmd.equals("count_importedby")) return count_importedby;
-		if(cmd.equals("count_importedby_co")) return count_importedby_co;
+		if(cmd.equals("count_import")) return count_import;
+		if(cmd.equals("count_import_co")) return count_import_co;
 
 		// nommages
 
@@ -287,35 +283,37 @@ public class EntityImpl implements Entity, T {
 		// imports
 
 		if(cmd.equals("imports"))          return imports;
-		if(cmd.equals("importedby"))       return importedby;
-		if(cmd.equals("importedby_co"))    return importedby_co;
+		if(cmd.equals("names_import"))       return names_import;
+		if(cmd.equals("names_import_co"))    return names_import_co;
 
 		// recherche des features
 
-		if(cmd.equals("findall_features"))        return findall_features;
-		if(cmd.equals("findall_features_st"))     return findall_features_st;
-		if(cmd.equals("findall_features_en"))     return findall_features_en;
-		if(cmd.equals("findall_features_co"))     return findall_features_co;
+		if(cmd.equals("featuresbyname"))        return featuresbyname;
+		if(cmd.equals("featuresbyname_st"))     return featuresbyname_st;
+		if(cmd.equals("featuresbyname_en"))     return featuresbyname_en;
+		if(cmd.equals("featuresbyname_co"))     return featuresbyname_co;
 
 		// recherche des dates de creation
 
-		if(cmd.equals("findall_creationdate"))    return findall_creationdate;
-		if(cmd.equals("findall_creationdate_st")) return findall_creationdate_st;
-		if(cmd.equals("findall_creationdate_en")) return findall_creationdate_en;
-		if(cmd.equals("findall_creationdate_co")) return findall_creationdate_co;
+		if(cmd.equals("creationdatebyname"))    return creationdatebyname;
+		if(cmd.equals("creationdatebyname_st")) return creationdatebyname_st;
+		if(cmd.equals("creationdatebyname_en")) return creationdatebyname_en;
+		if(cmd.equals("creationdatebyname_co")) return creationdatebyname_co;
 
 		// recherche des dates de descriptions (name-features)
 
-		if(cmd.equals("findall_desc"))            return findall_desc;
-		if(cmd.equals("findall_desc_st"))         return findall_desc_st;
-		if(cmd.equals("findall_desc_en"))         return findall_desc_en;
-		if(cmd.equals("findall_desc_co"))         return findall_desc_co;
+		if(cmd.equals("descs"))            return descs;
+		if(cmd.equals("descs_st"))         return descs_st;
+		if(cmd.equals("descs_en"))         return descs_en;
+		if(cmd.equals("descs_co"))         return descs_co;
 
 		// recherche globale
 
-		if(cmd.equals("findall_st"))       return findall_st;
-		if(cmd.equals("findall_en"))       return findall_en;
-		if(cmd.equals("findall_co"))       return findall_co;
+		if(cmd.equals("infosbyname_st"))       return infosbyname_st;
+		if(cmd.equals("infosbyname_en"))       return infosbyname_en;
+		if(cmd.equals("infosbyname_co"))       return infosbyname_co;
+		
+		if(cmd.equals("countbyhash_multi"))       return countbyhash_multi;
 
 		throw new Exception("e: commande inconnue: " + cmd);
 	}

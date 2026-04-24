@@ -1,4 +1,4 @@
-package a.entity.gus.y.entitydb1.entity_import.names.w_import_co;
+package a.entity.gus.y.entitydb1.entity_import.names.w_import_st;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.util.List;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260422";}
+	public String creationDate() {return "20260424";}
 
 	public Object t(Object obj) throws Exception
 	{
@@ -23,7 +23,7 @@ public class EntityImpl implements Entity, T {
 		"WHERE entity_import LIKE ? ORDER BY entity_name";
 		
 		PreparedStatement st = cx.prepareStatement(sql);
-		st.setString(1, "%" + fragment + "%");
+		st.setString(1, fragment + "%");
 		ResultSet rs = st.executeQuery();
 
 		List data = new ArrayList();
