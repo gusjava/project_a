@@ -16,15 +16,7 @@ import javax.swing.JTree;
 import javax.swing.event.TreeModelListener;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
-
-import a.framework.Entity;
-import a.framework.I;
-import a.framework.Outside;
-import a.framework.P;
-import a.framework.R;
-import a.framework.S;
-import a.framework.Service;
-import a.framework.V;
+import a.framework.*;
 
 public class EntityImpl implements Entity, P, I, MouseListener, ActionListener {
 	public String creationDate() {return "20240114";}

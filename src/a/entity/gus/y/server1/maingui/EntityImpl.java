@@ -11,9 +11,12 @@ import a.framework.*;
 
 public class EntityImpl implements Entity, I {
 	public String creationDate() {return "20260405";}
+	
+	public static final String KEY_SERVER1_ENABLED = "server1.enabled";
 
 	private Service console;
 	private Service manager;
+	private Service propbool;
 
 	private JPanel panel;
 	private JTextArea area;
@@ -22,6 +25,7 @@ public class EntityImpl implements Entity, I {
 	{
 		console = Outside.service(this,"*gus.y.server1.gui.console");
 		manager = Outside.service(this,"*gus.y.server1.manager");
+		propbool = Outside.service(this,"propbool_dt");
 
 		area = (JTextArea) console.i();
 		panel = new JPanel(new BorderLayout());
@@ -32,7 +36,9 @@ public class EntityImpl implements Entity, I {
 		
 		manager.v("in", in);
 		manager.v("out", out);
-		manager.e();
+		
+		if(propbool.f(KEY_SERVER1_ENABLED))
+			manager.e();
 	}
 
 	public Object i() throws Exception

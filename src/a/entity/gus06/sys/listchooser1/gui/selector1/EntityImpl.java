@@ -40,7 +40,7 @@ public class EntityImpl extends S1 implements Entity, I, P, G, V, R, ActionListe
 	{
 		fieldHolder = Outside.service(this,"*gus06.data.editor.string.textfield.editor1");
 		buildRenderer = Outside.service(this,"gus06.swing.list.build.renderer1");
-		linkerListField = Outside.service(this,"gus06.swing.list.textfield.linker");
+		linkerListField = Outside.service(this,"gus.x.swing.list.textfield.linker");
 		listFilter = Outside.service(this,"gus06.list.filter.rule");
 		findList = Outside.service(this,"gus06.find.list");
 		clearCPC = Outside.service(this,"gus06.swing.comp.action.clearcopypastecut");

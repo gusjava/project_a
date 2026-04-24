@@ -41,7 +41,7 @@ public class EntityImpl extends S1 implements Entity, I, G, P, ActionListener, L
 	{
 		fieldHolder = Outside.service(this,"*gus06.data.editor.string.textfield.editor1");
 		buildKeys = Outside.service(this,"gus06.data.viewer.class1.introspector.selector.buildkeys");
-		linkerListField = Outside.service(this,"gus06.swing.list.textfield.linker");
+		linkerListField = Outside.service(this,"gus.x.swing.list.textfield.linker");
 		listRenderer = Outside.service(this,"gus06.data.viewer.class1.introspector.listrenderer");
 		
 		label = new JLabel(" ");

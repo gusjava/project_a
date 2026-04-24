@@ -11,26 +11,32 @@ public class EntityImpl extends S1 implements Entity, E, R {
 	private Service cxMain;
 	
 	private Service findallKnowledgeRoots;
+	private Service findallKnowledgeLeafs;
 	private Service findallKnowledgeList;
 	
-	private Service findallTodoRoot;
+	private Service findallTodoRoots;
+	private Service findallTodoLeafs;
 	private Service findallTodoList;
 
 	private Connection cx;
 	
 	private List knowledgeRoots;
+	private List knowledgeLeafs;
 	private List knowledgeList;
 	
 	private List todoRoots;
+	private List todoLeafs;
 	private List todoList;
 
 	public EntityImpl() throws Exception {
 		cxMain = Outside.service(this, "gus.y.knowledgedb1.cx.main");
 		
 		findallKnowledgeRoots = Outside.service(this, "gus.y.knowledgedb1.knowledge.findall.roots");
+		findallKnowledgeLeafs = Outside.service(this, "gus.y.knowledgedb1.knowledge.findall.leafs");
 		findallKnowledgeList = Outside.service(this, "gus.y.knowledgedb1.knowledge.findall");
 		
-		findallTodoRoot = Outside.service(this, "gus.y.knowledgedb1.todo.findall.roots");
+		findallTodoRoots = Outside.service(this, "gus.y.knowledgedb1.todo.findall.roots");
+		findallTodoLeafs = Outside.service(this, "gus.y.knowledgedb1.todo.findall.leafs");
 		findallTodoList = Outside.service(this, "gus.y.knowledgedb1.todo.findall");
 	}
 
@@ -38,9 +44,11 @@ public class EntityImpl extends S1 implements Entity, E, R {
 		cx = (Connection) cxMain.g();
 		
 		knowledgeRoots = (List) findallKnowledgeRoots.t(cx);
+		knowledgeLeafs = (List) findallKnowledgeLeafs.t(cx);
 		knowledgeList = (List) findallKnowledgeList.t(cx);
 		
-		todoRoots = (List) findallTodoRoot.t(cx);
+		todoRoots = (List) findallTodoRoots.t(cx);
+		todoLeafs = (List) findallTodoLeafs.t(cx);
 		todoList = (List) findallTodoList.t(cx);
 		
 		loaded();
@@ -54,16 +62,22 @@ public class EntityImpl extends S1 implements Entity, E, R {
 		if (key.equals("cx")) return cx;
 		
 		if (key.equals("knowledgeRoots")) return knowledgeRoots;
+		if (key.equals("knowledgeLeafs")) return knowledgeLeafs;
 		if (key.equals("knowledgeList")) return knowledgeList;
 		
 		if (key.equals("todoRoots")) return todoRoots;
+		if (key.equals("todoLeafs")) return todoLeafs;
 		if (key.equals("todoList")) return todoList;
 
 		if (key.equals("keys")) return new String[] 
 			{"cx", 
+			
 			"knowledgeRoots", 
+			"knowledgeLeafs", 
 			"knowledgeList", 
+			
 			"todoRoots", 
+			"todoLeafs", 
 			"todoList"};
 			
 		throw new Exception("Unknown key: " + key);

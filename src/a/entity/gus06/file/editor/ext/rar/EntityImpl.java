@@ -43,7 +43,7 @@ public class EntityImpl implements Entity, I, P, G, ActionListener, ListSelectio
 		listRenderer = Outside.service(this,"gus06.file.editor.ext.zip.listrenderer");
 		entryViewer = Outside.service(this,"*gus06.file.editor.ext.zip.entryviewer");
 		listFilter = Outside.service(this,"gus06.list.filter.rule.one");
-		linkerListField = Outside.service(this,"gus06.swing.list.textfield.linker");
+		linkerListField = Outside.service(this,"gus.x.swing.list.textfield.linker");
 		splitCust = Outside.service(this,"gus06.swing.splitpane.cust.cust1");
 		
 		list = new JList();

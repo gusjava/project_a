@@ -52,7 +52,7 @@ public class EntityImpl extends S1 implements Entity, I, G, E, ActionListener, L
 		fieldHolder = Outside.service(this,"*gus06.data.editor.string.textfield.editor1");
 		buildKeys = Outside.service(this,"gus06.appli.gusclient1.gui.entity.selector.buildkeys");
 		buildJList = Outside.service(this,"gus06.swing.list.build.fromicon");
-		linkerListField = Outside.service(this,"gus06.swing.list.textfield.linker");
+		linkerListField = Outside.service(this,"gus.x.swing.list.textfield.linker");
 		fieldPersister = Outside.service(this,"gus06.swing.textcomp.persister.text");
 		buildActionCopy = Outside.service(this,"gus06.swing.list.build.action.copy");
 		
