@@ -623,10 +623,11 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	}
 
 	private void refresh(String newSelection) throws Exception {
+		String currentSelection = getSelection();
 		dataFiltered = (List) buildDataFiltered.t(new Object[] { engine, dataFull, getSearch() });
 		labelNumber.setText(" " + getFilteredNumber() + "  ");
 
-		boolean selectionChange = !Objects.equals(getSelection(), newSelection);
+		boolean selectionChange = !Objects.equals(currentSelection, newSelection);
 		
 		selectionSup.setActivated(false);
 		model.fireTableDataChanged();
