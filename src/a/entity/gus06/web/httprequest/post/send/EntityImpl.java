@@ -25,7 +25,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		prepare = Outside.service(this,"gus06.web.httprequest.post.send.prepare");
-		urlEncoding = Outside.service(this,"gus06.tostring.map.urlencoding");
+		urlEncoding = Outside.service(this,"gus.x.tostring.map.urlencoding");
 	}
 
 	

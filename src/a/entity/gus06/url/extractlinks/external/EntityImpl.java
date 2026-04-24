@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		findURL = Outside.service(this,"gus06.find.url");
+		findURL = Outside.service(this,"gus.y.find1.url");
 		urlToText = Outside.service(this,"gus06.web.download.urltotext.utf8");
 		extractSrc = Outside.service(this,"gus06.string.extract.html.src.a");
 		extractHref = Outside.service(this,"gus06.string.extract.html.href.a");

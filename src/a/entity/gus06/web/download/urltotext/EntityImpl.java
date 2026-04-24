@@ -5,9 +5,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20140919";}
-
 
 	private Service findURL;
 	private Service connect;
@@ -16,7 +14,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		findURL = Outside.service(this,"gus06.find.url");
+		findURL = Outside.service(this,"gus.y.find1.url");
 		connect = Outside.service(this,"gus06.url.connect.as.mozilla50");
 		perform = Outside.service(this,"gus06.web.download.urltotext.perform");
 		apacheHttp = Outside.service(this,"gus06.sys.apachehttp.m.get");

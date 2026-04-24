@@ -21,7 +21,7 @@ public class EntityImpl implements Entity {
 	public EntityImpl() throws Exception
 	{
 		findJar = Outside.service(this,"gus06.app.jarfile");
-		findArgs = Outside.service(this,"gus06.app.argsline");
+		findArgs = Outside.service(this,"gus.y.app1.argsline");
 		launchJar = Outside.service(this,"gus06.java.launchjar");
 		props = (Map) Outside.resource(this,"props");
 	

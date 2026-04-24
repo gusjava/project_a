@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		findURL = Outside.service(this,"gus06.find.url");
+		findURL = Outside.service(this,"gus.y.find1.url");
 		connect = Outside.service(this,"gus06.url.connect.as.mozilla50");
 		perform = Outside.service(this,"gus06.web.download.urltofile.perform");
 	}

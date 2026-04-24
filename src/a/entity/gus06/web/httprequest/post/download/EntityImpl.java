@@ -26,8 +26,8 @@ public class EntityImpl implements Entity, T, V {
 	public EntityImpl() throws Exception
 	{
 		getFileName = Outside.service(this,"gus06.web.httprequest.getfilename");
-		mapToString = Outside.service(this,"gus06.tostring.map.urlencoding");
-		findUrl = Outside.service(this,"gus06.find.url");
+		mapToString = Outside.service(this,"gus.x.tostring.map.urlencoding");
+		findUrl = Outside.service(this,"gus.y.find1.url");
 		
 		storeDir = (File) Outside.resource(this,"defaultdir");
 	}

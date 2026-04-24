@@ -27,7 +27,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		setAuth = Outside.service(this,"gus06.web.httprequest.auth.basic");
-		findURL = Outside.service(this,"gus06.find.url");
+		findURL = Outside.service(this,"gus.y.find1.url");
 	}
 
 	

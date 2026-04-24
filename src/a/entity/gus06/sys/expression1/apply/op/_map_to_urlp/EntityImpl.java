@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		perform = Outside.service(this,"gus06.tostring.map.urlencoding");
+		perform = Outside.service(this,"gus.x.tostring.map.urlencoding");
 	}
 	
 	public Object t(Object obj) throws Exception

@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		mapEncoding = Outside.service(this,"gus06.tostring.map.urlencoding");
+		mapEncoding = Outside.service(this,"gus.x.tostring.map.urlencoding");
 	}
 
 	

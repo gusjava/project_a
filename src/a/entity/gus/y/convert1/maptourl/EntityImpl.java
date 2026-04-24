@@ -1,4 +1,4 @@
-package a.entity.gus06.convert.maptourl;
+package a.entity.gus.y.convert1.maptourl;
 
 import a.framework.*;
 import java.net.URL;
@@ -6,18 +6,14 @@ import java.net.MalformedURLException;
 import java.util.Map;
 
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20230220";}
-
 
 	private Service mapToParams;
 
 	public EntityImpl() throws Exception
 	{
-		mapToParams = Outside.service(this,"gus06.tostring.map.urlencoding");
-		
+		mapToParams = Outside.service(this,"gus.x.tostring.map.urlencoding");
 	}
-
 	
 	public Object t(Object obj) throws Exception
 	{

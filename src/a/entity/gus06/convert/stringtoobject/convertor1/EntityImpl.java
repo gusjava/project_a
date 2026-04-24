@@ -28,7 +28,7 @@ public class EntityImpl implements Entity, T {
 		stringToKeystroke = Outside.service(this,"gus06.convert.stringtokeystroke");
 		stringToString = Outside.service(this,"gus06.convert.stringtostring");
 		stringToFile = Outside.service(this,"gus06.convert.stringtofile");
-		stringToUrl = Outside.service(this,"gus06.convert.stringtourl");
+		stringToUrl = Outside.service(this,"gus.y.convert1.stringtourl");
 		stringToHexa = Outside.service(this,"gus06.convert.stringtobytearray.hexa");
 		stringToBase64 = Outside.service(this,"gus06.convert.stringtobytearray.base64");
 		stringToDate = Outside.service(this,"gus06.convert.stringtodate");

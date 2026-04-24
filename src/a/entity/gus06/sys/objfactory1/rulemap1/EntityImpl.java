@@ -47,7 +47,7 @@ public class EntityImpl implements Entity, G {
 		ruleNew = Outside.service(this,"gus06.find.obj1");
 		rulePanel = Outside.service(this,"gus06.find.jpanel");
 		ruleString = Outside.service(this,"gus06.tostring.tostring1");
-		ruleUrl = Outside.service(this,"gus06.find.url");
+		ruleUrl = Outside.service(this,"gus.y.find1.url");
 		ruleView = Outside.service(this,"gus06.data.viewer.object.factory.comp");
 		
 		map = new HashMap();

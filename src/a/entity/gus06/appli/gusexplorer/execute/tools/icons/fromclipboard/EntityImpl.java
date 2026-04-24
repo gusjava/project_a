@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, E {
 		clipboardFile = Outside.service(this,"gus06.clipboard.access.file");
 		clipboardImage = Outside.service(this,"gus06.clipboard.access.image");
 		clipboardString = Outside.service(this,"gus06.clipboard.access.string");
-		stringToUrl = Outside.service(this,"gus06.convert.stringtourl");
+		stringToUrl = Outside.service(this,"gus.y.convert1.stringtourl");
 	}
 	
 	public void e() throws Exception

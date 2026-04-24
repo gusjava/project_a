@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, E {
 
 	public EntityImpl() throws Exception
 	{
-		findArgs = Outside.service(this,"gus06.app.argsline");
+		findArgs = Outside.service(this,"gus.y.app1.argsline");
 		restart = Outside.service(this,"gus06.app.restart");
 	}
 	

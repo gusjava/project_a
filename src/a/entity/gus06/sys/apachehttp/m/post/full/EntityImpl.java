@@ -29,7 +29,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		buildClient = Outside.service(this,"gus06.sys.apachehttp.build.client");
-		urlEncoding = Outside.service(this,"gus06.tostring.map.urlencoding");
+		urlEncoding = Outside.service(this,"gus.x.tostring.map.urlencoding");
 	}
 	
 	

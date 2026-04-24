@@ -1,12 +1,10 @@
-package a.entity.gus06.app.argsline;
+package a.entity.gus.y.app1.argsline;
 
 import a.framework.*;
 
 public class EntityImpl implements Entity, G {
-
 	public String creationDate() {return "20140703";}
 
-	
 	private String line;
 
 	public EntityImpl() throws Exception
@@ -15,13 +13,8 @@ public class EntityImpl implements Entity, G {
 		line = toString(args);
 	}
 	
-	
 	public Object g() throws Exception
 	{return line;}
-	
-	
-	
-	
 	
 	private String toString(String[] args)
 	{

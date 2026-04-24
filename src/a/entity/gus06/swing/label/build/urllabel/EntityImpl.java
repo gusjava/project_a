@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		labelCust = Outside.service(this,"gus06.swing.label.cust.link.web");
-		toUrl = Outside.service(this,"gus06.find.url");
+		toUrl = Outside.service(this,"gus.y.find1.url");
 	}
 	
 	public Object t(Object obj) throws Exception

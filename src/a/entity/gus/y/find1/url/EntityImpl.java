@@ -1,4 +1,4 @@
-package a.entity.gus06.find.url;
+package a.entity.gus.y.find1.url;
 
 import a.framework.*;
 import java.net.URI;
@@ -7,20 +7,16 @@ import java.io.File;
 import java.util.Map;
 
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20151126";}
-
 
 	private Service stringToUrl;
 	private Service mapToUrl;
 	
 	public EntityImpl() throws Exception
 	{
-		stringToUrl = Outside.service(this,"gus06.convert.stringtourl");
-		mapToUrl = Outside.service(this,"gus06.convert.maptourl");
+		stringToUrl = Outside.service(this,"gus.y.convert1.stringtourl");
+		mapToUrl = Outside.service(this,"gus.y.convert1.maptourl");
 	}
-
-	
 	
 	public Object t(Object obj) throws Exception
 	{

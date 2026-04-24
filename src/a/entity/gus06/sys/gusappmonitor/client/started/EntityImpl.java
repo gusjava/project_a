@@ -36,7 +36,7 @@ public class EntityImpl implements Entity, ActionListener, P {
 	{
 		infoMap = Outside.service(this,"gus06.app.infomap");
 		exitSup = Outside.service(this,"g#gus.y.cust1.rb.guiexit");
-		encodeMap = Outside.service(this,"gus06.tostring.map.urlencoding");
+		encodeMap = Outside.service(this,"gus.x.tostring.map.urlencoding");
 		buildStringMap = Outside.service(this,"gus06.map.build.stringmap");
 		perform = Outside.service(this,"gus06.sys.gusappmonitor.client.perform");
 		
