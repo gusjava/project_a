@@ -36,6 +36,7 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 	private Service buildAction;
 	private Service fieldHolder;
 	private Service toolbarFactory;
+	private Service linkerField;
 
 	private Object engine;
 	private JPanel panel;
@@ -57,6 +58,7 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 		buildAction    = Outside.service(this, "gus.y.swing1.action.builder1");
 		fieldHolder    = Outside.service(this, "*gus.y.swing1.textfield.editor1");
 		toolbarFactory = Outside.service(this, "gus.x.swing.toolbar.factory1");
+		linkerField = Outside.service(this, "gus06.swing.list.textfield.linker");
 		
 		icon = (Icon) Outside.resource(this, "icon#KNOWLEDGE");
 
@@ -98,6 +100,7 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 		panel.add(new JScrollPane(list), BorderLayout.CENTER);
 		panel.add(bar, BorderLayout.SOUTH);
 
+		linkerField.p(new Object[]{list, field});
 		fieldHolder.addActionListener(e -> handleInputEdition());
 	}
 

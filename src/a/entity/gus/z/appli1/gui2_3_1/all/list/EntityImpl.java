@@ -62,7 +62,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	
 	// x
 	private Service tableTooltip;
-	private Service linkerListField;
+	private Service linkerField;
 	private Service toolbarFactory;
 	private Service clearCopyPasteCut;
 	private Service buildSelectionSup;
@@ -126,7 +126,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		
 		// x
 		tableTooltip = Outside.service(this, "gus.x.swing.table.cust.tooltip1");
-		linkerListField = Outside.service(this, "gus.x.swing.table.textfield.linker");
+		linkerField = Outside.service(this, "gus.x.swing.table.textfield.linker");
 		toolbarFactory = Outside.service(this, "gus.x.swing.toolbar.factory1");
 		clearCopyPasteCut = Outside.service(this, "gus.x.swing.comp.action.clear.copypastecut");
 		buildSelectionSup = Outside.service(this, "gus.x.swing.table.selection.buildsupport");
@@ -251,7 +251,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		initColumnSize(1, 70);
 		initColumnSize(2, 20);
 
-		linkerListField.p(new Object[] { table, field });
+		linkerField.p(new Object[] { table, field });
 		selectionSup = (S1) buildSelectionSup.t(table);
 
 		selectionSup.addActionListener(e -> handleSelection());
