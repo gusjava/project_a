@@ -5,27 +5,25 @@ import java.util.List;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260417";}
+	public String creationDate() {return "20260425";}
 
-	private Service knowledgeCx;
-	private Service sqlDelete;
+	private Service tagRemove;
+	private Service knowledgeEngine;
 
-	public EntityImpl() throws Exception
-	{
-		knowledgeCx = Outside.service(this, "gus.y.knowledgedb1.cx.main");
-		sqlDelete   = Outside.service(this, "gus.y.knowledgedb1.sql.delete");
+	public EntityImpl() throws Exception {
+		tagRemove       = Outside.service(this, "gus.y.knowledgesys1.perform.tag.remove");
+		knowledgeEngine = Outside.service(this, "gus.y.knowledgesys1.engine");
 	}
 
-	public Object t(Object obj) throws Exception
-	{
+	public Object t(Object obj) throws Exception {
 		List list = (List) obj;
 		if(list == null || list.size() < 3) throw new Exception("k-remove-tag: usage: k-remove-tag <table> <id> <tag>");
 		String table = (String) list.get(0);
 		String id    = (String) list.get(1);
 		String tag   = (String) list.get(2);
-		String fk    = "ID_" + table.toUpperCase();
-		String sql   = "DELETE FROM " + table + "_tag WHERE " + fk + " = " + id + " AND TAG = '" + tag.replace("'", "''") + "'";
-		Connection cx = (Connection) knowledgeCx.g();
-		return sqlDelete.t(new Object[]{cx, sql});
+		return tagRemove.t(new Object[]{cx(), table, id, tag});
 	}
+
+	private Connection cx() throws Exception
+	{return (Connection) knowledgeEngine.r("cx");}
 }

@@ -4,21 +4,21 @@ import java.sql.Connection;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260417";}
+	public String creationDate() {return "20260425";}
 
-	private Service knowledgeCx;
 	private Service knowledgeFind;
+	private Service knowledgeEngine;
 
-	public EntityImpl() throws Exception
-	{
-		knowledgeCx   = Outside.service(this, "gus.y.knowledgedb1.cx.main");
-		knowledgeFind = Outside.service(this, "gus.y.knowledgedb1.knowledge.find");
+	public EntityImpl() throws Exception {
+		knowledgeFind   = Outside.service(this, "gus.y.knowledgedb1.knowledge.find");
+		knowledgeEngine = Outside.service(this, "gus.y.knowledgesys1.engine");
 	}
 
-	public Object t(Object obj) throws Exception
-	{
+	public Object t(Object obj) throws Exception {
 		Long id = Long.parseLong("" + obj);
-		Connection cx = (Connection) knowledgeCx.g();
-		return knowledgeFind.t(new Object[]{cx, id});
+		return knowledgeFind.t(new Object[]{cx(), id});
 	}
+
+	private Connection cx() throws Exception
+	{return (Connection) knowledgeEngine.r("cx");}
 }

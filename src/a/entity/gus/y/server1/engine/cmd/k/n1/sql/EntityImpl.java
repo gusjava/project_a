@@ -1,36 +1,33 @@
 package a.entity.gus.y.server1.engine.cmd.k.n1.sql;
 
 import java.sql.Connection;
-import java.util.List;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260411";}
+	public String creationDate() {return "20260425";}
 
 	private Service fullString;
-	private Service knowledgeCx;
+	private Service knowledgeEngine;
 	private Service sqlSelect;
 	private Service sqlInsert;
 	private Service sqlUpdate;
 	private Service sqlDelete;
 
-	public EntityImpl() throws Exception
-	{
-		fullString = Outside.service(this,"gus.y.server1.tool.args.fullstring");
-		knowledgeCx = Outside.service(this, "gus.y.knowledgedb1.cx.main");
-		sqlSelect = Outside.service(this, "gus.y.knowledgedb1.sql.select");
-		sqlInsert = Outside.service(this, "gus.y.knowledgedb1.sql.insert");
-		sqlUpdate = Outside.service(this, "gus.y.knowledgedb1.sql.update");
-		sqlDelete = Outside.service(this, "gus.y.knowledgedb1.sql.delete");
+	public EntityImpl() throws Exception {
+		fullString      = Outside.service(this, "gus.y.server1.tool.args.fullstring");
+		knowledgeEngine = Outside.service(this, "gus.y.knowledgesys1.engine");
+		sqlSelect       = Outside.service(this, "gus.y.knowledgedb1.sql.select");
+		sqlInsert       = Outside.service(this, "gus.y.knowledgedb1.sql.insert");
+		sqlUpdate       = Outside.service(this, "gus.y.knowledgedb1.sql.update");
+		sqlDelete       = Outside.service(this, "gus.y.knowledgedb1.sql.delete");
 	}
 
-	public Object t(Object obj) throws Exception
-	{
-		String sql = (String) fullString.t(obj);
+	public Object t(Object obj) throws Exception {
+		String sql  = (String) fullString.t(obj);
 		String sql_ = sql.toLowerCase();
 
-		Connection cx = (Connection) knowledgeCx.g();
-		Object[] params = new Object[]{cx, sql};
+		Connection cx    = cx();
+		Object[] params  = new Object[]{cx, sql};
 
 		if(sql_.startsWith("show"))   return sqlSelect.t(params);
 		if(sql_.startsWith("select")) return sqlSelect.t(params);
@@ -43,4 +40,7 @@ public class EntityImpl implements Entity, T {
 
 		throw new Exception("SQL non supporté: " + sql);
 	}
+
+	private Connection cx() throws Exception
+	{return (Connection) knowledgeEngine.r("cx");}
 }

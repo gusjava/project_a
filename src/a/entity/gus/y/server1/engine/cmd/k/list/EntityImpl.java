@@ -5,25 +5,24 @@ import java.util.List;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260417";}
+	public String creationDate() {return "20260425";}
 
-	private Service knowledgeCx;
-	private Service sqlSelect;
+	private Service findList;
+	private Service knowledgeEngine;
 
-	public EntityImpl() throws Exception
-	{
-		knowledgeCx = Outside.service(this, "gus.y.knowledgedb1.cx.main");
-		sqlSelect   = Outside.service(this, "gus.y.knowledgedb1.sql.select");
+	public EntityImpl() throws Exception {
+		findList        = Outside.service(this, "gus.y.knowledgesys1.find.list");
+		knowledgeEngine = Outside.service(this, "gus.y.knowledgesys1.engine");
 	}
 
-	public Object t(Object obj) throws Exception
-	{
+	public Object t(Object obj) throws Exception {
 		List list = (List) obj;
 		if(list == null || list.isEmpty()) throw new Exception("k-list: usage: k-list <table> [limit]");
 		String table = (String) list.get(0);
-		int limit    = list.size() >= 2 ? Integer.parseInt((String) list.get(1)) : 20;
-		String sql   = "SELECT * FROM " + table + " ORDER BY date_created DESC LIMIT " + limit;
-		Connection cx = (Connection) knowledgeCx.g();
-		return sqlSelect.t(new Object[]{cx, sql});
+		String limit = list.size() >= 2 ? (String) list.get(1) : "20";
+		return findList.t(new Object[]{cx(), table, limit});
 	}
+
+	private Connection cx() throws Exception
+	{return (Connection) knowledgeEngine.r("cx");}
 }

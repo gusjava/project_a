@@ -5,25 +5,24 @@ import java.util.List;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260417";}
+	public String creationDate() {return "20260425";}
 
-	private Service knowledgeCx;
-	private Service sqlSelect;
+	private Service findLinksof;
+	private Service knowledgeEngine;
 
-	public EntityImpl() throws Exception
-	{
-		knowledgeCx = Outside.service(this, "gus.y.knowledgedb1.cx.main");
-		sqlSelect   = Outside.service(this, "gus.y.knowledgedb1.sql.select");
+	public EntityImpl() throws Exception {
+		findLinksof     = Outside.service(this, "gus.y.knowledgesys1.find.linksof");
+		knowledgeEngine = Outside.service(this, "gus.y.knowledgesys1.engine");
 	}
 
-	public Object t(Object obj) throws Exception
-	{
+	public Object t(Object obj) throws Exception {
 		List list = (List) obj;
 		if(list == null || list.size() < 2) throw new Exception("k-links-of: usage: k-links-of <table> <id>");
 		String table = (String) list.get(0);
 		String id    = (String) list.get(1);
-		String sql   = "SELECT * FROM " + table + "_link WHERE ID_LINKER = " + id + " OR ID_LINKED = " + id;
-		Connection cx = (Connection) knowledgeCx.g();
-		return sqlSelect.t(new Object[]{cx, sql});
+		return findLinksof.t(new Object[]{cx(), table, id});
 	}
+
+	private Connection cx() throws Exception
+	{return (Connection) knowledgeEngine.r("cx");}
 }

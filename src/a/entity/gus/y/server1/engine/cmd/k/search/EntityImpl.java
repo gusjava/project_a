@@ -5,26 +5,25 @@ import java.util.List;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260417";}
+	public String creationDate() {return "20260425";}
 
-	private Service knowledgeCx;
-	private Service sqlSelect;
+	private Service findSearch;
+	private Service knowledgeEngine;
 
-	public EntityImpl() throws Exception
-	{
-		knowledgeCx = Outside.service(this, "gus.y.knowledgedb1.cx.main");
-		sqlSelect   = Outside.service(this, "gus.y.knowledgedb1.sql.select");
+	public EntityImpl() throws Exception {
+		findSearch      = Outside.service(this, "gus.y.knowledgesys1.find.search");
+		knowledgeEngine = Outside.service(this, "gus.y.knowledgesys1.engine");
 	}
 
-	public Object t(Object obj) throws Exception
-	{
+	public Object t(Object obj) throws Exception {
 		List list = (List) obj;
 		if(list == null || list.size() < 3) throw new Exception("k-search: usage: k-search <table> <field> <value>");
 		String table = (String) list.get(0);
 		String field = (String) list.get(1);
 		String value = (String) list.get(2);
-		String sql   = "SELECT * FROM " + table + " WHERE " + field + " LIKE '%" + value.replace("'", "''") + "%'";
-		Connection cx = (Connection) knowledgeCx.g();
-		return sqlSelect.t(new Object[]{cx, sql});
+		return findSearch.t(new Object[]{cx(), table, field, value});
 	}
+
+	private Connection cx() throws Exception
+	{return (Connection) knowledgeEngine.r("cx");}
 }
