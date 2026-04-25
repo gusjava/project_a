@@ -112,34 +112,34 @@ public class EntityImpl implements Entity, T {
 	{
 		// commandes generales
 		
-		help       = Outside.service(this, "gus.y.server1.engine.cmd.e.help");
-		reload     = Outside.service(this, "gus.y.server1.engine.cmd.e.reload");
-		errors     = Outside.service(this, "gus.y.server1.engine.cmd.e.errors");
-		sql        = Outside.service(this, "gus.y.server1.engine.cmd.e.sql");
+		help       = Outside.service(this, "gus.y.server1.engine.cmd.e.n0.help");
+		reload     = Outside.service(this, "gus.y.server1.engine.cmd.e.n0.reload");
+		errors     = Outside.service(this, "gus.y.server1.engine.cmd.e.n01.errors");
+		sql        = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.sql");
 		
 		// manipulations d'entite
 		
-		create     = Outside.service(this, "gus.y.server1.engine.cmd.e.create");
-		delete     = Outside.service(this, "gus.y.server1.engine.cmd.e.delete");
-		rename     = Outside.service(this, "gus.y.server1.engine.cmd.e.rename");
-		duplicate  = Outside.service(this, "gus.y.server1.engine.cmd.e.duplicate");
-		createtree  = Outside.service(this, "gus.y.server1.engine.cmd.e.createtree");
-		importsrc   = Outside.service(this, "gus.y.server1.engine.cmd.e.importsrc");
-		editinsert  = Outside.service(this, "gus.y.server1.engine.cmd.e.editinsert");
-		editremove  = Outside.service(this, "gus.y.server1.engine.cmd.e.editremove");
-		editreplace = Outside.service(this, "gus.y.server1.engine.cmd.e.editreplace");
-		editmulti = Outside.service(this, "gus.y.server1.engine.cmd.e.editmulti");
+		create     = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.create");
+		delete     = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.delete");
+		rename     = Outside.service(this, "gus.y.server1.engine.cmd.e.n2.rename");
+		duplicate  = Outside.service(this, "gus.y.server1.engine.cmd.e.n2.duplicate");
+		createtree  = Outside.service(this, "gus.y.server1.engine.cmd.e.nr.createtree");
+		importsrc   = Outside.service(this, "gus.y.server1.engine.cmd.e.nj.importsrc");
+		editinsert  = Outside.service(this, "gus.y.server1.engine.cmd.e.nj.editinsert");
+		editremove  = Outside.service(this, "gus.y.server1.engine.cmd.e.nj.editremove");
+		editreplace = Outside.service(this, "gus.y.server1.engine.cmd.e.nj.editreplace");
+		editmulti = Outside.service(this, "gus.y.server1.engine.cmd.e.nj.editmulti");
 		
 		// informations sur l'entite
 		
-		ast1        = Outside.service(this, "gus.y.server1.engine.cmd.e.ast1");
-		ast2        = Outside.service(this, "gus.y.server1.engine.cmd.e.ast2");
-		ast3        = Outside.service(this, "gus.y.server1.engine.cmd.e.ast3");
-		src         = Outside.service(this, "gus.y.server1.engine.cmd.e.src");
-		srcpart     = Outside.service(this, "gus.y.server1.engine.cmd.e.srcpart");
-		path        = Outside.service(this, "gus.y.server1.engine.cmd.e.path");
+		ast1        = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.ast1");
+		ast2        = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.ast2");
+		ast3        = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.ast3");
+		src         = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.src");
+		srcpart     = Outside.service(this, "gus.y.server1.engine.cmd.e.n3.srcpart");
+		path        = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.path");
 		features    = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.features_w_name");
-		creationdate = Outside.service(this, "gus.y.server1.engine.cmd.e.creationdate");
+		creationdate = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.creationdate_w_name");
 		hash        = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.hash_w_name");
 		
 		// calculs sur l'entite
@@ -148,15 +148,15 @@ public class EntityImpl implements Entity, T {
 		
 		// parcours descendant
 		
-		downlinks      = Outside.service(this, "gus.y.server1.engine.cmd.e.downlinks");
-		downlinkstree  = Outside.service(this, "gus.y.server1.engine.cmd.e.downlinkstree");
-		downlinkstree2 = Outside.service(this, "gus.y.server1.engine.cmd.e.downlinkstree2");
+		downlinks      = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.downlinks");
+		downlinkstree  = Outside.service(this, "gus.y.server1.engine.cmd.e.n2.downlinkstree");
+		downlinkstree2 = Outside.service(this, "gus.y.server1.engine.cmd.e.n2.downlinkstree2");
 		
 		// parcours montant
 		
-		uplinks        = Outside.service(this, "gus.y.server1.engine.cmd.e.uplinks");
-		uplinkstree    = Outside.service(this, "gus.y.server1.engine.cmd.e.uplinkstree");
-		uplinkstree2   = Outside.service(this, "gus.y.server1.engine.cmd.e.uplinkstree2");
+		uplinks        = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.uplinks");
+		uplinkstree    = Outside.service(this, "gus.y.server1.engine.cmd.e.n2.uplinkstree");
+		uplinkstree2   = Outside.service(this, "gus.y.server1.engine.cmd.e.n2.uplinkstree2");
 		
 		// n0
 		

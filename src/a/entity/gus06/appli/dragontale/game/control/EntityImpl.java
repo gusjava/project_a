@@ -25,7 +25,7 @@ public class EntityImpl implements Entity, ActionListener {
 		level0Controller = Outside.service(this,"gus06.appli.dragontale.level0.controller");
 		startLevel = Outside.service(this,"gus06.appli.dragontale.game.startlevel");
 		startGame = Outside.service(this,"gus06.appli.dragontale.game.start");
-		exit = Outside.service(this,"gus06.app.execute.exit");
+		exit = Outside.service(this,"gus.y.app1.execute.exit");
 		
 		control.addActionListener(this);
 	}

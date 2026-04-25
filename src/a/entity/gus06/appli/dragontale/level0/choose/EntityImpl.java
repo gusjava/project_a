@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		start = Outside.service(this,"gus06.appli.dragontale.level1.start");
-		exit = Outside.service(this,"gus06.app.execute.exit");
+		exit = Outside.service(this,"gus.y.app1.execute.exit");
 	}
 
 

@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, E, G {
 	
 	public EntityImpl() throws Exception
 	{
-		execute = Outside.service(this,"gus06.app.execute.exit");
+		execute = Outside.service(this,"gus.y.app1.execute.exit");
 		buildAction = Outside.service(this,"gus06.swing.action.builder1");
 		
 		action = (Action) buildAction.t(new Object[]{DISPLAY,this});

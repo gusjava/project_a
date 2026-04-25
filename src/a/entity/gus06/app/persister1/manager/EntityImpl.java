@@ -25,7 +25,7 @@ public class EntityImpl implements Entity, V, R, ActionListener {
 	public EntityImpl() throws Exception
 	{
 		persister1 = Outside.service(this,"gus06.app.persister1");
-		exit = Outside.service(this,"gus06.app.execute.exit");
+		exit = Outside.service(this,"gus.y.app1.execute.exit");
 		
 		map = new HashMap();
 		

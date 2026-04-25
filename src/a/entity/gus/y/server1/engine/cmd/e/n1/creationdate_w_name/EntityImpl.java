@@ -1,26 +1,26 @@
-package a.entity.gus.y.server1.engine.cmd.e.n1.hash_w_name;
+package a.entity.gus.y.server1.engine.cmd.e.n1.creationdate_w_name;
 
 import java.sql.Connection;
 import java.util.List;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260422";}
+	public String creationDate() {return "20260415";}
 
 	private Service joinArgs;
-	private Service perform;
+	private Service findCreationDate;
 	private Service entityEngine;
 
 	public EntityImpl() throws Exception
 	{
 		joinArgs     = Outside.service(this, "gus.y.server1.tool.args.fullstring");
-		perform = Outside.service(this, "gus.y.entitydb1.entity.hash.w_name");
+		findCreationDate = Outside.service(this, "gus.y.entitydb1.entity.creationdate.w_name");
 		entityEngine     = Outside.service(this, "gus.y.entitysys1.engine");
 	}
 
 	public Object t(Object obj) throws Exception
 	{
-		return perform.t(new Object[]{cx(), joinArgs(obj)});
+		return findCreationDate.t(new Object[]{cx(), joinArgs(obj)});
 	}
 
 	private Connection cx() throws Exception

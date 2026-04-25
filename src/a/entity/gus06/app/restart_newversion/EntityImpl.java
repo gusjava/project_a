@@ -23,7 +23,7 @@ public class EntityImpl implements Entity, P {
 		findArgs = Outside.service(this,"gus.y.app1.argsline");
 		appJar = Outside.service(this,"gus06.app.jarfile");
 		javaExe = Outside.service(this,"gus06.java.dir.bin.javaexe");
-		exit = Outside.service(this,"gus06.app.execute.exit");
+		exit = Outside.service(this,"gus.y.app1.execute.exit");
 		
 		store = (File) Outside.resource(this,"defaultdir");
 		batchFile = new File(store, "restart.bat");

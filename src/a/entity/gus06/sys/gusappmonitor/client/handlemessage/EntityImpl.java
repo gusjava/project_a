@@ -26,7 +26,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		executeKill = Outside.service(this,"gus06.app.execute.kill");
-		executeExit = Outside.service(this,"gus06.app.execute.exit");
+		executeExit = Outside.service(this,"gus.y.app1.execute.exit");
 		executeRestart = Outside.service(this,"gus06.app.restart");
 		handleStacktrace = Outside.service(this,"gus06.sys.gusappmonitor.client.handle.stacktrace");
 		handleThreadState = Outside.service(this,"gus06.sys.gusappmonitor.client.handle.threadstate");

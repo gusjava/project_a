@@ -23,7 +23,7 @@ public class EntityImpl implements Entity, P, E {
 		getClasspath = Outside.service(this, "gus.y.entityclass1.cl.classpath");
 		launchJar    = Outside.service(this, "gus06.java.launchjar");
 		launchBin    = Outside.service(this, "gus06.java.launchbin");
-		exit         = Outside.service(this, "gus06.app.execute.exit");
+		exit         = Outside.service(this, "gus.y.app1.execute.exit");
 	}
 
 

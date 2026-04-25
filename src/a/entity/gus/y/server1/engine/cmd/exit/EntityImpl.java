@@ -11,7 +11,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		execute1s = Outside.service(this, "gus.x.execute.th.delay1s");
-		exit = Outside.service(this, "gus06.app.execute.exit");
+		exit = Outside.service(this, "gus.y.app1.execute.exit");
 	}
 
 	public Object t(Object obj) throws Exception

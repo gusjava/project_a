@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, P {
 		copy = Outside.service(this,"gus06.file.op.copy.replace");
 		appJar = Outside.service(this,"gus06.app.jarfile");
 		launchJar = Outside.service(this,"gus06.java.launchjar");
-		exit = Outside.service(this,"gus06.app.execute.exit");
+		exit = Outside.service(this,"gus.y.app1.execute.exit");
 	}
 	
 	
