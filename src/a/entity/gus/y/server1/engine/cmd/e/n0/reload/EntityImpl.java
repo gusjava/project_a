@@ -1,5 +1,6 @@
 package a.entity.gus.y.server1.engine.cmd.e.n0.reload;
 
+import java.util.Map;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
@@ -7,13 +8,17 @@ public class EntityImpl implements Entity, T {
 
 	private Service entityEngine;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		entityEngine = Outside.service(this, "gus.y.entitysys1.engine");
 	}
 
 	public Object t(Object obj) throws Exception
 	{
 		entityEngine.e();
-		return "reloading... (wait 1s before compilation and db update is complete)";
+		Map map = (Map) entityEngine.r("compileErrMap");
+		if(map.size()>0) return map;
+		
+		return "complete without compile errors";
 	}
 }

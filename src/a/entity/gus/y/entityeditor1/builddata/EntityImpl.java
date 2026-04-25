@@ -17,6 +17,7 @@ public class EntityImpl implements Entity, T {
 	private Service findUpLinks;
 	private Service findServices;
 	private Service findResources;
+	private Service findNamesSameAs;
 	private Service findCompileErr;
 	private Service findXyzErr;
 	private Service findMissingLink;
@@ -31,6 +32,7 @@ public class EntityImpl implements Entity, T {
 		findUpLinks = Outside.service(this, "gus.y.entitydb1.entity_link.find1");
 		findServices = Outside.service(this, "gus.y.entitydb1.entity_service.find");
 		findResources = Outside.service(this, "gus.y.entitydb1.entity_resource.find");
+		findNamesSameAs = Outside.service(this, "gus.y.entitydb1.entity.names.sameas");
 		findCompileErr = Outside.service(this, "gus.y.entitydb1.entity_compile_err.infos.w_name");
 		findXyzErr = Outside.service(this, "gus.y.entitydb1.entity_xyz_err.find");
 		findMissingLink = Outside.service(this, "gus.y.entitydb1.entity_missing_link.find");
@@ -52,10 +54,13 @@ public class EntityImpl implements Entity, T {
 		private File[] javaFiles;
 		private File mainJavaFile;
 		private File docFile;
+		
 		private Set downLinks;
 		private Set upLinks;
 		private Set services;
 		private Set resources;
+		
+		private List same;
 		private List compileErrList;
 		private List xyzErrList;
 		private List missingLinkList;
@@ -137,6 +142,7 @@ public class EntityImpl implements Entity, T {
 			if (key.equals("upLinks")) return upLinks();
 			if (key.equals("services")) return services();
 			if (key.equals("resources")) return resources();
+			if (key.equals("same")) return same();
 			if (key.equals("compileErrList")) return compileErrList();
 			if (key.equals("xyzErrList")) return xyzErrList();
 			if (key.equals("missingLinkList")) return missingLinkList();
@@ -219,6 +225,13 @@ public class EntityImpl implements Entity, T {
 			if (resources == null)
 				resources = (Set) findResources.t(new Object[] { cx(), entityName });
 			return resources;
+		}
+
+		private List same() throws Exception
+		{
+			if (same == null)
+				same = (List) findNamesSameAs.t(new Object[] { cx(), entityName });
+			return same;
 		}
 
 		private List compileErrList() throws Exception

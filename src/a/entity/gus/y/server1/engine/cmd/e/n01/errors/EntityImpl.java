@@ -7,11 +7,13 @@ import a.framework.*;
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20260415";}
 
+	private Service joinArgs;
 	private Service findCompileErrors;
 	private Service findCompileErrorsAll;
 	private Service entityEngine;
 
 	public EntityImpl() throws Exception {
+		joinArgs     = Outside.service(this, "gus.y.server1.tool.args.fullstring");
 		findCompileErrors    = Outside.service(this, "gus.y.entitydb1.entity_compile_err.infos.w_name");
 		findCompileErrorsAll = Outside.service(this, "gus.y.entitydb1.entity_compile_err.infosbyname");
 		entityEngine         = Outside.service(this, "gus.y.entitysys1.engine");
@@ -28,10 +30,6 @@ public class EntityImpl implements Entity, T {
 	private Connection cx() throws Exception
 	{return (Connection) entityEngine.r("cx");}
 
-	private String joinArgs(List args)
-	{
-		StringBuilder sb = new StringBuilder((String) args.get(0));
-		for(int i=1; i<args.size(); i++) sb.append(" ").append(args.get(i));
-		return sb.toString();
-	}
+	private String joinArgs(Object args) throws Exception
+	{return (String) joinArgs.t(args);}
 }
