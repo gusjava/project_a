@@ -3,10 +3,8 @@ package a.entity.gus06.java.launchjar;
 import java.io.File;
 import java.util.List;
 import java.util.ArrayList;
-
 import a.framework.*;
 import java.util.Map;
-
 
 public class EntityImpl implements Entity, P, T {
 
@@ -15,13 +13,11 @@ public class EntityImpl implements Entity, P, T {
 	public static final String KEY_JAR = "jar";
 	public static final String KEY_ARGS = "args";
 	public static final String KEY_OPTIONS = "options";
-
 	
 	private Service findExe;
 	private Service pJar;
 	private Service pArgs;
 	private Service pOptions;
-
 
 	public EntityImpl() throws Exception
 	{
@@ -31,11 +27,8 @@ public class EntityImpl implements Entity, P, T {
 		pOptions = Outside.service(this,"gus06.java.launchjar.p.options");
 	}
 	
-	
 	public void p(Object obj) throws Exception
 	{t(obj);}
-	
-	
 	
 	public Object t(Object obj) throws Exception
 	{
@@ -50,9 +43,6 @@ public class EntityImpl implements Entity, P, T {
 		pb.redirectErrorStream(true);
 		return pb.start();
 	}
-	
-	
-	
 	
 	private void handleData(List list, Object obj) throws Exception
 	{
@@ -86,9 +76,6 @@ public class EntityImpl implements Entity, P, T {
 		}
 		throw new Exception("Invalid data type: "+obj.getClass().getName());
 	}
-	
-	
-	
 	
 	public Object get(Map map, String key)
 	{

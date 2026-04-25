@@ -46,12 +46,12 @@ public class EntityImpl implements Entity, T {
 	{
 		// commandes simples
 
-		show   = Outside.service(this, "gus.y.server1.engine.cmd.k.show");
-		count  = Outside.service(this, "gus.y.server1.engine.cmd.k.count");
-		tables = Outside.service(this, "gus.y.server1.engine.cmd.k.tables");
-		tags   = Outside.service(this, "gus.y.server1.engine.cmd.k.tags");
+		show   = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.sql_columns");
+		count  = Outside.service(this, "gus.y.server1.engine.cmd.k.n0.count");
+		tables = Outside.service(this, "gus.y.server1.engine.cmd.k.n0.sql_tables");
+		tags   = Outside.service(this, "gus.y.server1.engine.cmd.k.n0.tags");
 		help   = Outside.service(this, "gus.y.server1.engine.cmd.k.help");
-		sql    = Outside.service(this, "gus.y.server1.engine.cmd.k.sql");
+		sql    = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.sql");
 		get    = Outside.service(this, "gus.y.server1.engine.cmd.k.get");
 		list   = Outside.service(this, "gus.y.server1.engine.cmd.k.list");
 		search = Outside.service(this, "gus.y.server1.engine.cmd.k.search");
@@ -70,14 +70,14 @@ public class EntityImpl implements Entity, T {
 
 		// commandes todoknowledge
 
-		addtodoknowledge    = Outside.service(this, "gus.y.server1.engine.cmd.k.addtodoknowledge");
+		addtodoknowledge    = Outside.service(this, "gus.y.server1.engine.cmd.k.n3.addtodoknowledge");
 		removetodoknowledge = Outside.service(this, "gus.y.server1.engine.cmd.k.removetodoknowledge");
 
 		// commandes knowledge
 
-		create   = Outside.service(this, "gus.y.server1.engine.cmd.k.create");
+		create   = Outside.service(this, "gus.y.server1.engine.cmd.k.nj.create_k");
 		update   = Outside.service(this, "gus.y.server1.engine.cmd.k.update");
-		delete   = Outside.service(this, "gus.y.server1.engine.cmd.k.delete");
+		delete   = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.delete_k");
 		find     = Outside.service(this, "gus.y.server1.engine.cmd.k.find");
 	}
 

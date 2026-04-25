@@ -1,4 +1,4 @@
-package a.entity.gus.y.server1.engine.cmd.k.tables;
+package a.entity.gus.y.server1.engine.cmd.k.n0.sql_tables;
 
 import java.sql.*;
 import java.util.*;

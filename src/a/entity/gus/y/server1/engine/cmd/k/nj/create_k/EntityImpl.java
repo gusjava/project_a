@@ -1,4 +1,4 @@
-package a.entity.gus.y.server1.engine.cmd.k.create;
+package a.entity.gus.y.server1.engine.cmd.k.nj.create_k;
 
 import java.sql.Connection;
 import java.util.*;
@@ -21,12 +21,13 @@ public class EntityImpl implements Entity, T {
 
 	public Object t(Object obj) throws Exception
 	{
-		Map args = (Map) obj;
-		if(args.isEmpty()) throw new Exception("JSON manquant (utiliser :<json>)");
-		Connection cx = (Connection) knowledgeCx.g();
-		completeMap(args);
-		return knowledgeInsert.t(new Object[]{cx, args});
+		Map json = (Map) obj;
+		completeMap(json);
+		return knowledgeInsert.t(new Object[]{cx(), json});
 	}
+
+	private Connection cx() throws Exception
+	{return (Connection) knowledgeCx.r("cx");}
 	
 	private void completeMap(Map m) throws Exception
 	{

@@ -1,4 +1,4 @@
-package a.entity.gus.y.server1.engine.cmd.k.show;
+package a.entity.gus.y.server1.engine.cmd.k.n1.sql_columns;
 
 import java.sql.*;
 import java.util.List;

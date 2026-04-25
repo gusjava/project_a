@@ -1,4 +1,4 @@
-package a.entity.gus.y.server1.engine.cmd.k.addtodoknowledge;
+package a.entity.gus.y.server1.engine.cmd.k.n3.addtodoknowledge;
 
 import java.sql.Connection;
 import java.util.List;
@@ -19,10 +19,13 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{
 		List list = (List) obj;
-		if(list == null || list.size() < 2) throw new Exception("k-add-todo-knowledge: usage: k-add-todo-knowledge <id_todo> <id_knowledge> [type]");
+		if(list == null || list.size() < 2)
+			throw new Exception("k-add-todo-knowledge: usage: k-add-todo-knowledge <id_todo> <id_knowledge> [type]");
+		
 		String idTodo      = (String) list.get(0);
 		String idKnowledge = (String) list.get(1);
 		String type        = list.size() >= 3 ? (String) list.get(2) : "";
+		
 		String sql         = "INSERT INTO todo_knowledge (ID_TODO, ID_KNOWLEDGE, TYPE) VALUES (" + idTodo + ", " + idKnowledge + ", '" + type.replace("'", "''") + "')";
 		Connection cx      = (Connection) knowledgeCx.g();
 		return sqlInsert.t(new Object[]{cx, sql});
