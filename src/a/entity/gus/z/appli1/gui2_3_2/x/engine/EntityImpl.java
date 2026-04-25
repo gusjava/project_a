@@ -16,7 +16,7 @@ import a.framework.Service;
 import a.framework.V;
 
 public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListener {
-	public String creationDate() {return "20240113";}
+	public String creationDate() {return "20260425";}
 	
 	private Service engine;
 	private Service locker;
@@ -26,7 +26,6 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 	private List nameList;
 	private List xNameList;
 	private String selectedName;
-	private Object info;
 
 	public EntityImpl() throws Exception {
 		engine = Outside.service(this, "gus.y.entitysys1.engine");
@@ -45,16 +44,21 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 				rebuild();
 				loaded();
 			}
+			else if (s.equals("loading()")) {
+			}
 			else if (s.equals("entityAdded()")) {
 				rebuild();
+				lockJustAdded(engine.r("info"));
 				entityAdded();
 			}
 			else if (s.equals("entityRenamed()")) {
 				rebuild();
+				lockJustRenamed((String[]) engine.r("info"));
 				entityRenamed();
 			}
 			else if (s.equals("entityDuplicated()")) {
 				rebuild();
+				lockJustDuplicated((String[]) engine.r("info"));
 				entityDuplicated();
 			}
 			else if (s.equals("entityDeleted()")) {
@@ -64,6 +68,14 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 			else if (s.equals("entityModified()")) {
 				rebuild();
 				entityModified();
+			}
+			else if (s.equals("srcSaved()")) {
+				rebuild();
+				srcSaved();
+			}
+			else if (s.equals("srcCleared()")) {
+				rebuild();
+				srcCleared();
 			}
 			else
 				throw new Exception("Unsupported command: " + s);
@@ -78,6 +90,21 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 		locker.p(new Object[] {"update", xNameList});
 	}
 
+	private void lockJustAdded(Object info) throws Exception
+	{
+		locker.f(new Object[] {"lock", info, xNameList});
+	}
+
+	private void lockJustRenamed(String[] info) throws Exception
+	{
+		locker.f(new Object[] {"lock", info[1], xNameList});
+	}
+
+	private void lockJustDuplicated(String[] info) throws Exception
+	{
+		locker.f(new Object[] {"lock", info[1], xNameList});
+	}
+
 	public void e() throws Exception {
 		engine.e();
 	}
@@ -90,13 +117,27 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 		return engine.f(obj);
 	}
 
-	public Object r(String key) throws Exception {
+	public Object r(String key) throws Exception
+	{
 		if (key.equals("lockSet")) return locker.g();
 		if (key.equals("selectedName")) return selectedName;
 		if (key.equals("xNameList")) return xNameList;
 		if (key.equals("nameList")) return nameList;
-		if (key.equals("info")) return info;
-		return engine.r(key);
+		if (key.equals("info")) return engine.r("info");
+		if (key.equals("devId")) return engine.r("devId");
+		if (key.equals("compileErrMap")) return engine.r("compileErrMap");
+		if (key.equals("xyzErrMap")) return engine.r("xyzErrMap");
+		if (key.equals("missingLinkMap")) return engine.r("missingLinkMap");
+		if (key.equals("srcSaveMap")) return engine.r("srcSaveMap");
+		if (key.equals("rootDir")) return engine.r("rootDir");
+		if (key.equals("cx")) return engine.r("cx");
+
+		if (key.equals("keys")) return new String[] {
+			"lockSet", "selectedName", "nameList", "info", "devId", 
+			"compileErrMap", "xyzErrMap", "missingLinkMap", "srcSaveMap", 
+			"rootDir", "cx" };
+
+		throw new Exception("Unknown key: " + key);
 	}
 
 	public void v(String key, Object obj) throws Exception {
@@ -113,34 +154,34 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 			return;
 		}
 		if (key.equals("entityAdded")) {
-			handleEntityAdded(obj);
+			engine.v("entityAdded", obj);
 			return;
 		}
 		if (key.equals("entityRenamed")) {
-			handleEntityRenamed(obj);
+			engine.v("entityRenamed", obj);
 			return;
 		}
 		if (key.equals("entityDuplicated")) {
-			handleEntityDuplicated(obj);
+			engine.v("entityDuplicated", obj);
 			return;
 		}
 		if (key.equals("entityDeleted")) {
-			handleEntityDeleted(obj);
+			engine.v("entityDeleted", obj);
 			return;
 		}
 		if (key.equals("entityModified")) {
-			handleEntityModified(obj);
+			engine.v("entityModified", obj);
 			return;
 		}
 		if (key.equals("srcSaved")) {
-			handleSrcSaved(obj);
+			engine.v("srcSaved", obj);
 			return;
 		}
 		if (key.equals("srcCleared")) {
-			handleSrcCleared(obj);
+			engine.v("srcCleared", obj);
 			return;
 		}
-		engine.v(key, obj);
+		throw new Exception("Unknown key: " + key);
 	}
 	
 	/*
@@ -164,52 +205,6 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 		selected();
 	}
 
-	private void handleEntityAdded(Object info) throws Exception {
-		this.info = info;
-		performLoad();
-		entityAdded();
-	}
-
-	private void handleEntityRenamed(Object info) throws Exception {
-		this.info = info;
-		performLoad();
-		entityRenamed();
-	}
-
-	private void handleEntityDuplicated(Object info) throws Exception {
-		this.info = info;
-		performLoad();
-		entityDuplicated();
-	}
-
-	private void handleEntityDeleted(Object info) throws Exception {
-		this.info = info;
-		performLoad();
-		entityDeleted();
-	}
-
-	private void handleEntityModified(Object info) throws Exception {
-		this.info = info;
-		performLoad();
-		entityModified();
-	}
-	
-	private void handleSrcSaved(Object info) throws Exception {
-		this.info = info;
-		performLoad();
-		srcSaved();
-	}
-	
-	private void handleSrcCleared(Object info) throws Exception {
-		this.info = info;
-		performLoad();
-		srcCleared();
-	}
-	
-	private void performLoad() throws Exception {
-		engine.e();
-	}
-	
 	/*
 	 * EVENTS
 	 */

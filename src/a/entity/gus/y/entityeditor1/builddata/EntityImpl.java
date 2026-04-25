@@ -4,16 +4,7 @@ import java.io.File;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Set;
-
-import a.framework.E;
-import a.framework.Entity;
-import a.framework.F;
-import a.framework.Outside;
-import a.framework.R;
-import a.framework.S1;
-import a.framework.Service;
-import a.framework.T;
-import a.framework.V;
+import a.framework.*;
 
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20240113";}
@@ -30,7 +21,8 @@ public class EntityImpl implements Entity, T {
 	private Service findXyzErr;
 	private Service findMissingLink;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		findPackageDir = Outside.service(this, "gus.x.entity.src.find.packagedir");
 		findJavaFiles = Outside.service(this, "gus.x.dir.listing0.files.java");
 		findMainJavaFile = Outside.service(this, "gus.x.entity.src.find.entityfile");
@@ -44,15 +36,15 @@ public class EntityImpl implements Entity, T {
 		findMissingLink = Outside.service(this, "gus.y.entitydb1.entity_missing_link.find");
 	}
 
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Invalid data number: " + o.length);
-
+		if (o.length != 2) throw new Exception("Invalid data number: " + o.length);
 		return new Holder(o[0], (String) o[1]);
 	}
 
-	private class Holder extends S1 implements R, V, F, E {
+	private class Holder extends S1 implements R, V, F, E
+	{
 		private Object engine;
 		private String entityName;
 
@@ -70,56 +62,69 @@ public class EntityImpl implements Entity, T {
 
 		private Object infos;
 
-		public Holder(Object engine, String entityName) {
+		public Holder(Object engine, String entityName)
+		{
 			this.engine = engine;
 			this.entityName = entityName;
 		}
 
-		public boolean f(Object obj) throws Exception {
+		public boolean f(Object obj) throws Exception
+		{
 			return ((F) engine).f(obj);
 		}
 
-		public void v(String key, Object obj) throws Exception {
-			if (key.equals("srcSaved")) {
+		public void v(String key, Object obj) throws Exception
+		{
+			if (key.equals("srcSaved"))
+			{
 				((V) engine).v("srcSaved", entityName);
 				return;
 			}
-			if (key.equals("srcCleared")) {
+			if (key.equals("srcCleared"))
+			{
 				((V) engine).v("srcCleared", entityName);
 				return;
 			}
-			if (key.equals("srcModified")) {
+			if (key.equals("srcModified"))
+			{
 				handleSrcModified(obj);
 				return;
 			}
-			if (key.equals("fileAdded")) {
+			if (key.equals("fileAdded"))
+			{
 				handleFileAdded(obj);
 				return;
 			}
-			if (key.equals("fileDeleted")) {
+			if (key.equals("fileDeleted"))
+			{
 				handleFileDeleted(obj);
 				return;
 			}
-			if (key.equals("fileRenamed")) {
+			if (key.equals("fileRenamed"))
+			{
 				handleFileRenamed(obj);
 				return;
 			}
-			if (key.equals("fileDuplicated")) {
+			if (key.equals("fileDuplicated"))
+			{
 				handleFileDuplicated(obj);
 				return;
 			}
-			if (key.equals("select")) {
+			if (key.equals("select"))
+			{
 				((V) engine).v("select", obj);
 				return;
 			}
 			throw new Exception("Unsupported key: " + key);
 		}
 
-		public void e() throws Exception {
+		public void e() throws Exception
+		{
 			clearData();
 		}
 
-		public Object r(String key) throws Exception {
+		public Object r(String key) throws Exception
+		{
 			if (key.equals("engine")) return engine;
 			if (key.equals("entityName")) return entityName;
 			if (key.equals("cx")) return cx();
@@ -150,81 +155,95 @@ public class EntityImpl implements Entity, T {
 			throw new Exception("Uknown key: " + key);
 		}
 
-		private Connection cx() throws Exception {
+		private Connection cx() throws Exception
+		{
 			return (Connection) ((R) engine).r("cx");
 		}
 
-		private File rootDir() throws Exception {
+		private File rootDir() throws Exception
+		{
 			return (File) ((R) engine).r("rootDir");
 		}
 
-		private File packageDir() throws Exception {
+		private File packageDir() throws Exception
+		{
 			if (packageDir == null)
 				packageDir = (File) findPackageDir.t(new Object[] { rootDir(), entityName });
 			return packageDir;
 		}
 
-		private File[] javaFiles() throws Exception {
+		private File[] javaFiles() throws Exception
+		{
 			if (javaFiles == null)
 				javaFiles = (File[]) findJavaFiles.t(packageDir());
 			return javaFiles;
 		}
 		
-		private File mainJavaFile() throws Exception {
+		private File mainJavaFile() throws Exception
+		{
 			if (mainJavaFile == null)
 				mainJavaFile = (File) findMainJavaFile.t(packageDir());
 			return mainJavaFile;
 		}
 
-		private File docFile() throws Exception {
+		private File docFile() throws Exception
+		{
 			if (docFile == null)
 				docFile = (File) findDocFile.t(new Object[] { rootDir(), entityName });
 			return docFile;
 		}
 
-		private Set downLinks() throws Exception {
+		private Set downLinks() throws Exception
+		{
 			if (downLinks == null)
 				downLinks = (Set) findDownLinks.t(new Object[] { cx(), entityName });
 			return downLinks;
 		}
 
-		private Set upLinks() throws Exception {
+		private Set upLinks() throws Exception
+		{
 			if (upLinks == null)
 				upLinks = (Set) findUpLinks.t(new Object[] { cx(), entityName });
 			return upLinks;
 		}
 
-		private Set services() throws Exception {
+		private Set services() throws Exception
+		{
 			if (services == null)
 				services = (Set) findServices.t(new Object[] { cx(), entityName });
 			return services;
 		}
 
-		private Set resources() throws Exception {
+		private Set resources() throws Exception
+		{
 			if (resources == null)
 				resources = (Set) findResources.t(new Object[] { cx(), entityName });
 			return resources;
 		}
 
-		private List compileErrList() throws Exception {
+		private List compileErrList() throws Exception
+		{
 			if (compileErrList == null)
 				compileErrList = (List) findCompileErr.t(new Object[] { cx(), entityName });
 			return compileErrList;
 		}
 
-		private List xyzErrList() throws Exception {
+		private List xyzErrList() throws Exception
+		{
 			if (xyzErrList == null)
 				xyzErrList = (List) findXyzErr.t(new Object[] { cx(), entityName });
 			return xyzErrList;
 		}
 
-		private List missingLinkList() throws Exception {
+		private List missingLinkList() throws Exception
+		{
 			if (missingLinkList == null)
 				missingLinkList = (List) findMissingLink.t(new Object[] { cx(), entityName });
 			return missingLinkList;
 		}
 
-		private void clearData() {
+		private void clearData()
+		{
 			javaFiles = null;
 			mainJavaFile = null;
 			downLinks = null;
@@ -240,35 +259,40 @@ public class EntityImpl implements Entity, T {
 		 * HANDLE EVENTS
 		 */
 
-		private void handleSrcModified(Object infos) throws Exception {
+		private void handleSrcModified(Object infos) throws Exception
+		{
 			this.infos = infos;
 			((V) engine).v("entityModified", entityName);
 			clearData();
 			srcModified();
 		}
 
-		private void handleFileAdded(Object infos) throws Exception {
+		private void handleFileAdded(Object infos) throws Exception
+		{
 			this.infos = infos;
 			((V) engine).v("entityModified", entityName);
 			clearData();
 			fileAdded();
 		}
 
-		private void handleFileDeleted(Object infos) throws Exception {
+		private void handleFileDeleted(Object infos) throws Exception
+		{
 			this.infos = infos;
 			((V) engine).v("entityModified", entityName);
 			clearData();
 			fileDeleted();
 		}
 
-		private void handleFileRenamed(Object infos) throws Exception {
+		private void handleFileRenamed(Object infos) throws Exception
+		{
 			this.infos = infos;
 			((V) engine).v("entityModified", entityName);
 			clearData();
 			fileRenamed();
 		}
 
-		private void handleFileDuplicated(Object infos) throws Exception {
+		private void handleFileDuplicated(Object infos) throws Exception
+		{
 			this.infos = infos;
 			((V) engine).v("entityModified", entityName);
 			clearData();
@@ -279,24 +303,19 @@ public class EntityImpl implements Entity, T {
 		 * GENERATE EVENTS
 		 */
 
-		private void srcModified() {
-			send(this, "srcModified()");
-		}
+		private void srcModified()
+		{send(this, "srcModified()");}
 
-		private void fileAdded() {
-			send(this, "fileAdded()");
-		}
+		private void fileAdded()
+		{send(this, "fileAdded()");}
 
-		private void fileRenamed() {
-			send(this, "fileRenamed()");
-		}
+		private void fileRenamed()
+		{send(this, "fileRenamed()");}
 
-		private void fileDuplicated() {
-			send(this, "fileDuplicated()");
-		}
+		private void fileDuplicated()
+		{send(this, "fileDuplicated()");}
 
-		private void fileDeleted() {
-			send(this, "fileDeleted()");
-		}
+		private void fileDeleted()
+		{send(this, "fileDeleted()");}
 	}
 }

@@ -1,4 +1,4 @@
-package a.entity.gus.y.server1.engine.cmd.k.removetodoknowledge;
+package a.entity.gus.y.server1.engine.cmd.k.n2.remove_tk;
 
 import java.sql.Connection;
 import java.util.List;
@@ -18,9 +18,11 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception {
 		List list = (List) obj;
 		if(list == null || list.size() < 2) throw new Exception("k-remove-todo-knowledge: usage: k-remove-todo-knowledge <id_todo> <id_knowledge>");
-		String idTodo      = (String) list.get(0);
-		String idKnowledge = (String) list.get(1);
-		return todoKnowledgeRemove.t(new Object[]{cx(), idTodo, idKnowledge});
+		
+		String idT = (String) list.get(0);
+		String idK = (String) list.get(1);
+		
+		return todoKnowledgeRemove.t(new Object[]{cx(), idT, idK});
 	}
 
 	private Connection cx() throws Exception

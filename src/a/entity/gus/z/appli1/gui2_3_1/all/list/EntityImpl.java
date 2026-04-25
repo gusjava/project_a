@@ -267,11 +267,13 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	 * FEATURES
 	 */
 
-	public Object g() throws Exception {
+	public Object g() throws Exception
+	{
 		return getSelection();
 	}
 
-	public Object i() throws Exception {
+	public Object i() throws Exception
+	{
 		return panel;
 	}
 
@@ -279,23 +281,28 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	 * ENGINE DATA ACCESS
 	 */
 
-	private Map compileErrMap() throws Exception {
+	private Map compileErrMap() throws Exception
+	{
 		return (Map) engine.r("compileErrMap");
 	}
 
-	private Map xyzErrMap() throws Exception {
+	private Map xyzErrMap() throws Exception
+	{
 		return (Map) engine.r("xyzErrMap");
 	}
 
-	private Map missingLinkMap() throws Exception {
+	private Map missingLinkMap() throws Exception
+	{
 		return (Map) engine.r("missingLinkMap");
 	}
 
-	private Map srcSaveMap() throws Exception {
+	private Map srcSaveMap() throws Exception
+	{
 		return (Map) engine.r("srcSaveMap");
 	}
 
-	private Set lockSet() throws Exception {
+	private Set lockSet() throws Exception
+	{
 		return (Set) engine.r("lockSet");
 	}
 
@@ -303,12 +310,14 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	 * ENGINE CONTROLS
 	 */
 
-	private void lock(List list) throws Exception {
+	private void lock(List list) throws Exception
+	{
 		engine.v("lock", list);
 		table.repaint();
 	}
 
-	private void unlock(List list) throws Exception {
+	private void unlock(List list) throws Exception
+	{
 		engine.v("unlock", list);
 		table.repaint();
 	}
@@ -317,25 +326,28 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	 * HANDLE EVENTS
 	 */
 
-	private void handleInputEdition() {
-		try {
-			refresh();
-		} catch (Exception e) {
-			Outside.err(this, "handleInputEdition()", e);
-		}
+	private void handleInputEdition()
+	{
+		try {refresh();}
+		catch (Exception e)
+		{Outside.err(this, "handleInputEdition()", e);}
 	}
 	
-	public void handleSelection() {
-		try {
+	public void handleSelection()
+	{
+		try
+		{
 			refreshActions();
 			selectionChanged();
-		} catch (Exception e) {
-			Outside.err(this, "handleSelection()", e);
 		}
+		catch (Exception e)
+		{Outside.err(this, "handleSelection()", e);}
 	}
 
-	private void handleEngineEvent(String s) {
-		try {
+	private void handleEngineEvent(String s)
+	{
+		try
+		{
 			if (s.equals("locked()")) refresh();
 			else if (s.equals("unlocked()")) refresh();
 			
@@ -350,9 +362,9 @@ public class EntityImpl extends S1 implements Entity, G, I {
 			else if (s.equals("entityDuplicated()")) handleEntityDuplicated();
 			else if (s.equals("entityDeleted()")) handleEntityDeleted();
 			else if (s.equals("entityModified()")) rebuild();
-		} catch (Exception e) {
-			Outside.err(this, "handleEngineEvent(String)", e);
 		}
+		catch (Exception e)
+		{Outside.err(this, "handleEngineEvent(String)", e);}
 	}
 	
 	private void handleEntityAdded() throws Exception {
@@ -362,14 +374,14 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	}
 	
 	private void handleEntityRenamed() throws Exception {
-		String[] infos = (String[]) engine.r("info");
-		rebuild(infos[1]);
+		String[] info = (String[]) engine.r("info");
+		rebuild(info[1]);
 		selectionChanged();
 	}
 	
 	private void handleEntityDuplicated() throws Exception {
-		String[] infos = (String[]) engine.r("info");
-		rebuild(infos[1]);
+		String[] info = (String[]) engine.r("info");
+		rebuild(info[1]);
 		selectionChanged();
 	}
 	

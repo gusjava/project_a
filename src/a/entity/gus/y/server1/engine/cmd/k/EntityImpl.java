@@ -29,6 +29,8 @@ public class EntityImpl implements Entity, T {
 	private Service linksof;
 	private Service addlink;
 	private Service removelink;
+	
+	private Service linkK;
 
 	// commandes todoknowledge
 
@@ -67,11 +69,12 @@ public class EntityImpl implements Entity, T {
 		linksof    = Outside.service(this, "gus.y.server1.engine.cmd.k.linksof");
 		addlink    = Outside.service(this, "gus.y.server1.engine.cmd.k.addlink");
 		removelink = Outside.service(this, "gus.y.server1.engine.cmd.k.removelink");
+		linkK = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.link_k");
 
 		// commandes todoknowledge
 
-		addtodoknowledge    = Outside.service(this, "gus.y.server1.engine.cmd.k.n3.addtodoknowledge");
-		removetodoknowledge = Outside.service(this, "gus.y.server1.engine.cmd.k.removetodoknowledge");
+		addtodoknowledge    = Outside.service(this, "gus.y.server1.engine.cmd.k.n3.add_tk");
+		removetodoknowledge = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.remove_tk");
 
 		// commandes knowledge
 

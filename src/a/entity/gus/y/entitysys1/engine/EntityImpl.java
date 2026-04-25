@@ -46,7 +46,8 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	private Map missingLinkMap = new HashMap();
 	private Map srcSaveMap = new HashMap();
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		findCompileErrMap = Outside.service(this, "gus.y.entitydb1.entity_compile_err.infosbyname");
 		findXyzErrMap = Outside.service(this, "gus.y.entitydb1.entity_xyz_err.findall");
 		findMissingLinkMap = Outside.service(this, "gus.y.entitydb1.entity_missing_link.findall");
@@ -62,15 +63,18 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 		load();
 	}
 
-	public void e() throws Exception {
+	public void e() throws Exception
+	{
 		load();
 	}
 
-	public Object g() throws Exception {
+	public Object g() throws Exception
+	{
 		return dataMap;
 	}
 
-	public Object r(String key) throws Exception {
+	public Object r(String key) throws Exception
+	{
 		if (key.equals("rootDir")) return getRootDir();
 		if (key.equals("binDir")) return getBinDir();
 		if (key.equals("libDir")) return getLibDir();
@@ -92,7 +96,8 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 		throw new Exception("Unknown key: " + key);
 	}
 
-	public boolean f(Object obj) throws Exception {
+	public boolean f(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
 		if (o.length != 2)
 			throw new Exception("Wrong data number: " + o.length);
@@ -117,35 +122,38 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	 * LOAD
 	 */
 
-	private void load() throws Exception {
-		if (performLoad())
+	private void load()
+	{
+		try
+		{
+			if (getRootDir() == null) throw new Exception("Root dir not found");
+			loading();
+			
+			lastTime = findLastTime();
+			dataMap = (Map) dataLoaderEntity.t(this);
+			jarMap = (Map) dataLoaderJar.t(this);
+			compileErrMap = (Map) findCompileErrMap.t(getCx());
+			xyzErrMap = (Map) findXyzErrMap.t(getCx());
+			missingLinkMap = (Map) findMissingLinkMap.t(getCx());
+			srcSaveMap = (Map) findSrcSaveMap.t(getCx());
+			
+			persist.v(PERSIST_KEY, "" + System.currentTimeMillis());
+	
+			nameList = new ArrayList(dataMap.keySet());
+			Collections.sort(nameList);
+			
 			loaded();
-	}
-
-	private boolean performLoad() throws Exception {
-		if (getRootDir() == null)
-			return false;
-
-		lastTime = findLastTime();
-		dataMap = (Map) dataLoaderEntity.t(this);
-		jarMap = (Map) dataLoaderJar.t(this);
-		compileErrMap = (Map) findCompileErrMap.t(getCx());
-		xyzErrMap = (Map) findXyzErrMap.t(getCx());
-		missingLinkMap = (Map) findMissingLinkMap.t(getCx());
-		srcSaveMap = (Map) findSrcSaveMap.t(getCx());
-		
-		persist.v(PERSIST_KEY, "" + System.currentTimeMillis());
-
-		nameList = new ArrayList(dataMap.keySet());
-		Collections.sort(nameList);
-		return true;
+		}
+		catch(Exception e)
+		{Outside.err(this,"load()",e);}
 	}
 
 	/*
 	 * LAST TIME
 	 */
 
-	private long findLastTime() throws Exception {
+	private long findLastTime() throws Exception
+	{
 		String str = (String) persist.r(PERSIST_KEY);
 		return str != null ? Long.parseLong(str) : 0L;
 	}
@@ -154,7 +162,8 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	 * DEV
 	 */
 
-	private String getDevId() throws Exception {
+	private String getDevId() throws Exception
+	{
 		return (String) getDevId.g();
 	}
 
@@ -162,7 +171,8 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	 * CX
 	 */
 
-	private Connection getCx() throws Exception {
+	private Connection getCx() throws Exception
+	{
 		return (Connection) getCx.g();
 	}
 
@@ -174,12 +184,14 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 		return (File) getRootDir.g();
 	}
 
-	private File getBinDir() throws Exception {
+	private File getBinDir() throws Exception
+	{
 		File rootDir = getRootDir();
 		return rootDir!=null ? new File(rootDir.getParentFile(), "bin") : null;
 	}
 
-	private File getLibDir() throws Exception {
+	private File getLibDir() throws Exception
+	{
 		File rootDir = getRootDir();
 		return rootDir!=null ? new File(rootDir.getParentFile(), "lib") : null;
 	}
@@ -188,23 +200,28 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	 * CAN
 	 */
 
-	private boolean canCreateEntity() throws Exception {
+	private boolean canCreateEntity() throws Exception
+	{
 		return getDevId()!=null;
 	}
 
-	private boolean canDeleteEntity(String entityName) throws Exception {
+	private boolean canDeleteEntity(String entityName) throws Exception
+	{
 		return isMyEntity(entityName);
 	}
 
-	private boolean canRenameEntity(String entityName) throws Exception {
+	private boolean canRenameEntity(String entityName) throws Exception
+	{
 		return isMyEntity(entityName);
 	}
 
-	private boolean canDuplicateEntity(String entityName) throws Exception {
+	private boolean canDuplicateEntity(String entityName) throws Exception
+	{
 		return getDevId()!=null && entityName != null;
 	}
 
-	private boolean canModifyEntity(String entityName) throws Exception {
+	private boolean canModifyEntity(String entityName) throws Exception
+	{
 		return isMyEntity(entityName);
 	}
 
@@ -212,7 +229,8 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	 * IS MY ENTITY
 	 */
 
-	private boolean isMyEntity(String entityName) throws Exception {
+	private boolean isMyEntity(String entityName) throws Exception
+	{
 		return true;
 //		return entityName != null && entityName.startsWith(getDevId() + ".");
 	}
@@ -221,7 +239,8 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	 * V
 	 */
 
-	public void v(String key, Object obj) throws Exception {
+	public void v(String key, Object obj) throws Exception
+	{
 		if (key.equals("entityAdded"))     { handleEntityAdded(obj);     return; }
 		if (key.equals("entitiesAdded"))   { handleEntitiesAdded(obj);     return; }
 		if (key.equals("entityRenamed"))   { handleEntityRenamed(obj);   return; }
@@ -233,107 +252,85 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 		throw new Exception("Unknown key: " + key);
 	}
 
-	private void handleEntityAdded(Object info) throws Exception {
+	private void handleEntityAdded(Object info) throws Exception
+	{
 		this.info = info;
-		new Thread(() -> {
-			try { load(); entityAdded(); }
-			catch (Exception e) { e.printStackTrace(); }
-		}).start();
+		new Thread(() -> {load(); entityAdded();}).start();
 	}
 
-	private void handleEntitiesAdded(Object info) throws Exception {
+	private void handleEntitiesAdded(Object info) throws Exception
+	{
 		this.info = info;
-		new Thread(() -> {
-			try { load(); entitiesAdded(); }
-			catch (Exception e) { e.printStackTrace(); }
-		}).start();
+		new Thread(() -> {load(); entitiesAdded(); }).start();
 	}
 
-	private void handleEntityRenamed(Object info) throws Exception {
+	private void handleEntityRenamed(Object info) throws Exception
+	{
 		this.info = info;
-		new Thread(() -> {
-			try { load(); entityRenamed(); }
-			catch (Exception e) { e.printStackTrace(); }
-		}).start();
+		new Thread(() -> {load(); entityRenamed(); }).start();
 	}
 
-	private void handleEntityDuplicated(Object info) throws Exception {
+	private void handleEntityDuplicated(Object info) throws Exception
+	{
 		this.info = info;
-		new Thread(() -> {
-			try { load(); entityDuplicated(); }
-			catch (Exception e) { e.printStackTrace(); }
-		}).start();
+		new Thread(() -> {load(); entityDuplicated(); }).start();
 	}
 
-	private void handleEntityDeleted(Object info) throws Exception {
+	private void handleEntityDeleted(Object info) throws Exception
+	{
 		this.info = info;
-		new Thread(() -> {
-			try { load(); entityDeleted(); }
-			catch (Exception e) { e.printStackTrace(); }
-		}).start();
+		new Thread(() -> {load(); entityDeleted();}).start();
 	}
 
-	private void handleEntityModified(Object info) throws Exception {
+	private void handleEntityModified(Object info) throws Exception
+	{
 		this.info = info;
-		new Thread(() -> {
-			try { load(); entityModified(); }
-			catch (Exception e) { e.printStackTrace(); }
-		}).start();
+		new Thread(() -> {load(); entityModified();}).start();
 	}
 
-	private void handleSrcSaved(Object info) throws Exception {
+	private void handleSrcSaved(Object info) throws Exception
+	{
 		this.info = info;
-		new Thread(() -> {
-			try { load(); srcSaved(); }
-			catch (Exception e) { e.printStackTrace(); }
-		}).start();
+		new Thread(() -> {load(); srcSaved();}).start();
 	}
 
-	private void handleSrcCleared(Object info) throws Exception {
+	private void handleSrcCleared(Object info) throws Exception
+	{
 		this.info = info;
-		new Thread(() -> {
-			try { load(); srcCleared(); }
-			catch (Exception e) { e.printStackTrace(); }
-		}).start();
+		new Thread(() -> {load(); srcCleared(); }).start();
 	}
 
 	/*
 	 * EVENTS
 	 */
 
-	private void loaded() {
-		send(this, "loaded()");
-	}
+	private void loading()
+	{send(this, "loading()");}
+	
+	private void loaded()
+	{send(this, "loaded()");}
 
-	private void entityAdded() {
-		send(this, "entityAdded()");
-	}
+	private void entityAdded()
+	{send(this, "entityAdded()");}
 
-	private void entitiesAdded() {
-		send(this, "entitiesAdded()");
-	}
+	private void entitiesAdded()
+	{send(this, "entitiesAdded()");}
 
-	private void entityRenamed() {
-		send(this, "entityRenamed()");
-	}
+	private void entityRenamed()
+	{send(this, "entityRenamed()");}
 
-	private void entityDuplicated() {
-		send(this, "entityDuplicated()");
-	}
+	private void entityDuplicated()
+	{send(this, "entityDuplicated()");}
 
-	private void entityDeleted() {
-		send(this, "entityDeleted()");
-	}
+	private void entityDeleted()
+	{send(this, "entityDeleted()");}
 
-	private void entityModified() {
-		send(this, "entityModified()");
-	}
+	private void entityModified()
+	{send(this, "entityModified()");}
 
-	private void srcSaved() {
-		send(this, "srcSaved()");
-	}
+	private void srcSaved()
+	{send(this, "srcSaved()");}
 
-	private void srcCleared() {
-		send(this, "srcCleared()");
-	}
+	private void srcCleared()
+	{send(this, "srcCleared()");}
 }

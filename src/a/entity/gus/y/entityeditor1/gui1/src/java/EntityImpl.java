@@ -118,42 +118,40 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 		});
 	}
 	
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		if(data!=null) persistOrClearSrc();
+		if(obj==null) {reset();return;}
 		
-		if(obj==null) {
-			reset();
-			return;
-		}
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
 		Object data1 = o[0];
 		File javaFile1 = (File) o[1];
 		
-		if(Objects.equals(javaFile1, javaFile)) return;
-		
-		data = data1;
-		javaFile = javaFile1;
-		entityName = (String) ((R) data).r("entityName");
-		fileName = javaFile.getName();
-
-		canModify = canModifyEntity();
-		text0 = readFile();
-
-		area.getDocument().removeDocumentListener(this);
-		area.setText(restoreOrLoadSrc());
-		area.getDocument().addDocumentListener(this);
-		
+		if(!Objects.equals(javaFile1, javaFile))
+		{
+			data = data1;
+			javaFile = javaFile1;
+			entityName = (String) ((R) data).r("entityName");
+			fileName = javaFile.getName();
+	
+			canModify = canModifyEntity();
+			text0 = readFile();
+	
+			area.getDocument().removeDocumentListener(this);
+			area.setText(restoreOrLoadSrc());
+			area.getDocument().addDocumentListener(this);
+	
+			area.setEditable(canModify);
+			refreshActions();
+			area.setCaretPosition(0);
+		}
 		displayCompilingErrors();
-
-		area.setEditable(canModify);
-		refreshActions();
-		area.setCaretPosition(0);
 	}
 	
-	private void reset() {
+	private void reset()
+	{
 		data = null;
 		javaFile = null;
 		entityName = null;
@@ -193,17 +191,20 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 
 	public void changedUpdate(DocumentEvent e) {}
 
-	private void changed() {
-		try {
+	private void changed()
+	{
+		try
+		{
 			if (!canModify) throw new Exception("canModify=false");
 			if (text0 == null) throw new Exception("text0==null");
 			refreshActions();
-		} catch (Exception e) {
-			Outside.err(this, "changed()", e);
 		}
+		catch (Exception e)
+		{Outside.err(this, "changed()", e);}
 	}
 
-	private JComponent bottomPanel() throws Exception {
+	private JComponent bottomPanel() throws Exception
+	{
 		bar2 = (JToolBar) barFactory.i();
 		bar2.add(countComp);
 		bar2.addSeparator();
@@ -223,7 +224,8 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 		{Outside.err(this, "save()", e);}
 	}
 
-	private void save_() throws Exception {
+	private void save_() throws Exception
+	{
 		if (!canModify)
 			throw new Exception("canModify=false");
 		if (text0 == null)
@@ -235,9 +237,6 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 		persistOrClearSrc();
 		refreshActions();
 		((V) data).v("srcModified", javaFile);
-		
-		displayCompilingErrors();
-		SwingUtilities.invokeLater(() -> area.requestFocusInWindow());
 	}
 
 	/*

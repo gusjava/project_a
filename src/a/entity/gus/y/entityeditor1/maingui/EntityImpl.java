@@ -6,11 +6,13 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
 
 import a.framework.*;
 
-public class EntityImpl implements Entity, P, I {
+public class EntityImpl implements Entity, P, I, ActionListener {
 	public String creationDate() {return "20240113";}
 	
 	private Service buildData;
@@ -27,9 +29,11 @@ public class EntityImpl implements Entity, P, I {
 	private Icon entityIcon;
 
 	private String entityName;
+	private Object engine;
 	private Object data;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		buildData = Outside.service(this, "gus.y.entityeditor1.builddata");
 		tabHolder = Outside.service(this, "*gus.y.swing1.tabbedpane.holder1");
 		gui1 = Outside.service(this, "*gus.y.entityeditor1.gui1.src");
@@ -56,43 +60,64 @@ public class EntityImpl implements Entity, P, I {
 		panel.add(tab, BorderLayout.CENTER);
 	}
 
-	public void p(Object obj) throws Exception {
-		if (obj == null) {
-			reset();
-			return;
-		}
+	public Object i() throws Exception
+	{return panel;}
+
+	public void p(Object obj) throws Exception
+	{
+		if (obj == null) {reset();return;}
 		Object[] o = (Object[]) obj;
+		if (o[0]==null || o[1]==null){reset();return;}
+		
+		if(engine!=null) ((S) engine).removeActionListener(this);
+		engine = o[0];
 		entityName = (String) o[1];
+		((S) engine).addActionListener(this);
 		
-		if (entityName==null) {
-			reset();
-			return;
-		}
-		
-		data = buildData.t(obj);
+		data = buildData.t(new Object[]{engine,entityName});
 		labelTitle.setText(entityName);
 		labelTitle.setIcon(entityIcon);
-		handleData(data);
+		refreshGui();
+	}
+	
+	public void actionPerformed(ActionEvent e)
+	{handleEngineEvent(e.getActionCommand());}
+	
+	private void handleEngineEvent(String cmd)
+	{
+		if(cmd.equals("loaded()")) reload();
 	}
 
-	private void reset() throws Exception {
+	private void reset() throws Exception
+	{
+		if(engine!=null) ((S) engine).removeActionListener(this);
 		entityName = null;
+		engine = null;
 		data = null;
 
 		labelTitle.setText(" ");
 		labelTitle.setIcon(null);
-		handleData(null);
+		refreshGui();
 	}
 	
-	private void handleData(Object data) throws Exception {
+	private void reload()
+	{
+		try
+		{
+			if(engine==null) return;
+			data = buildData.t(new Object[]{engine,entityName});
+			refreshGui();
+		}
+		catch(Exception e)
+		{Outside.err(this,"reload()",e);}
+	}
+	
+	private void refreshGui() throws Exception
+	{
 		gui1.p(data);
 		gui2.p(data);
 		gui3.p(data);
 		gui4.p(data);
 		gui5.p(data);
-	}
-
-	public Object i() throws Exception {
-		return panel;
 	}
 }
