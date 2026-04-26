@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, T, R, G {
 	
 	public EntityImpl() throws Exception
 	{
-		fileToIcon = Outside.service(this,"gus06.file.icon.os");
+		fileToIcon = Outside.service(this,"gus.x.file.icon.os");
 		fileSample = Outside.service(this,"gus06.file.ext.filesample");
 		
 		cache = new HashMap();

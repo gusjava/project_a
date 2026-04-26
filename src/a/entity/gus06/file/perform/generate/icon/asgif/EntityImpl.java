@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		fileToIcon = Outside.service(this,"gus06.file.icon.os");
+		fileToIcon = Outside.service(this,"gus.x.file.icon.os");
 		writeGif = Outside.service(this,"gus06.file.write.image.gif");
 	}
 	

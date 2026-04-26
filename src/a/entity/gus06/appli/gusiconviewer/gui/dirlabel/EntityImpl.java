@@ -23,7 +23,7 @@ public class EntityImpl extends S1 implements Entity, P, G, I {
 	public EntityImpl() throws Exception
 	{
 		dnd = Outside.service(this,"gus06.awt.dnd");
-		fileIcon = Outside.service(this,"gus06.file.icon.os");
+		fileIcon = Outside.service(this,"gus.x.file.icon.os");
 		findFile = Outside.service(this,"gus06.find.file");
 		
 		label = new JLabel("<>");

@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		extractPath = Outside.service(this,"gus06.file.lnk.extract.path");
-		iconOs = Outside.service(this,"gus06.file.icon.os");
+		iconOs = Outside.service(this,"gus.x.file.icon.os");
 	}
 
 	public Object t(Object obj) throws Exception

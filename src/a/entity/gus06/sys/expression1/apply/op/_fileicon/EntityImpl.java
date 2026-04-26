@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		findIcon = Outside.service(this,"gus06.file.icon.os");
+		findIcon = Outside.service(this,"gus.x.file.icon.os");
 		buildFile = Outside.service(this,"gus06.sys.expression1.file.build");
 		nameToIcon = Outside.service(this,"gus06.file.name.icon.os");
 	}
