@@ -49,7 +49,7 @@ public class EntityImpl implements Entity, T {
 		
 		nameToDir = Outside.service(this,"gus06.x.entity.src.find.packagedir");
 		nameToFile = Outside.service(this,"gus06.x.entity.src.find.entityfile");
-		readFile = Outside.service(this,"gus06.x.file.string.read.n");
+		readFile = Outside.service(this,"gus.x.file.string.read.n");
 	}
 	
 	

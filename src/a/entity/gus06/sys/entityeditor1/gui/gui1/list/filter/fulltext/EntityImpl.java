@@ -8,7 +8,6 @@ import java.io.File;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20251112";}
 
 	private Service findPackageDir;
@@ -19,7 +18,7 @@ public class EntityImpl implements Entity, T {
 	{
 		findPackageDir = Outside.service(this, "gus.x.entity.src.find.packagedir");
 		findJavaFiles = Outside.service(this, "gus.x.dir.listing0.files.java");
-		read = Outside.service(this,"gus06.x.file.string.read.n");
+		read = Outside.service(this,"gus.x.file.string.read.n");
 	}
 	
 	public Object t(Object obj) throws Exception

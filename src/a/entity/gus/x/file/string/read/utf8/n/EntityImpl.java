@@ -1,4 +1,4 @@
-package a.entity.gus06.x.file.string.read.utf8.n;
+package a.entity.gus.x.file.string.read.utf8.n;
 
 import java.io.File;
 import a.framework.*;
