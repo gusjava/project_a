@@ -37,7 +37,7 @@ public class EntityImpl implements Entity, I, ActionListener {
 	{
 		buildOutput = Outside.service(this,"gus06.io.outputstream.textarea1");
 		custArea = Outside.service(this,"gus06.swing.textcomp.cust.console1.blue");
-		custFieldClear = Outside.service(this,"gus06.swing.textcomp.cust.action.escap.clear");
+		custFieldClear = Outside.service(this,"gus.x.swing.textcomp.cust.action.escap.clear");
 		perform = Outside.service(this,"gus06.appli.gusclient1.gui.console.perform");
 		historyHolder = Outside.service(this,"gus06.swing.textcomp.build.historyholder");
 		

@@ -26,7 +26,7 @@ public class EntityImpl implements Entity, I, P {
 	{
 		formPanel = Outside.service(this,"*gus06.swing.panel.formpanel");
 		custField = Outside.service(this,"gus06.swing.textfield.cust.actions1");
-		clearField = Outside.service(this,"gus06.swing.textcomp.cust.action.escap.clear");
+		clearField = Outside.service(this,"gus.x.swing.textcomp.cust.action.escap.clear");
 		
 		field_key = new JTextField();
 		field_value = new JTextField();

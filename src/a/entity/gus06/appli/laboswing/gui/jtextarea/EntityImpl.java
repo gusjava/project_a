@@ -32,7 +32,7 @@ public class EntityImpl implements Entity, ActionListener, I {
 		persister = Outside.service(this,"gus06.swing.textcomp.persister.text");
 		support = Outside.service(this,"gus06.appli.laboswing.gui.jtextarea.support");
 		custConsole = Outside.service(this,"gus06.swing.textcomp.cust.console1.black");
-		escapClear = Outside.service(this,"gus06.swing.textcomp.cust.action.escap.clear");
+		escapClear = Outside.service(this,"gus.x.swing.textcomp.cust.action.escap.clear");
 		eventToString = Outside.service(this,"gus06.appli.laboswing.gui.jtextarea.eventtostring");
 		
 		area = new JTextArea();

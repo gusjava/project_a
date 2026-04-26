@@ -21,7 +21,7 @@ public class EntityImpl extends S1 implements Entity, I, G, P, ActionListener {
 	public EntityImpl() throws Exception
 	{
 		textChanged = Outside.service(this,"gus06.swing.textcomp.textchanged.delayed");
-		actionClear = Outside.service(this,"gus06.swing.textcomp.cust.action.escap.clear");
+		actionClear = Outside.service(this,"gus.x.swing.textcomp.cust.action.escap.clear");
 		custArea = Outside.service(this,"gus06.swing.textcomp.cust.console1.black");
 
 		area = new JTextArea();

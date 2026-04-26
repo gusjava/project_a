@@ -47,7 +47,7 @@ public class EntityImpl extends S1 implements Entity, I, R, ActionListener, Runn
 		scriptHolder = Outside.service(this,"*gus06.sys.script1.main.main2");
 		textPanelHolder = Outside.service(this,"*gus06.swing.textpane.holder.printstreamcomp");
 		formatLine = Outside.service(this,"gus06.appli.laboscript.gui.consolegui.format");
-		custFieldClear = Outside.service(this,"gus06.swing.textcomp.cust.action.escap.clear");
+		custFieldClear = Outside.service(this,"gus.x.swing.textcomp.cust.action.escap.clear");
 		historyHolder = Outside.service(this,"gus06.swing.textcomp.build.historyholder");
 		autoCompleteOP = Outside.service(this,"gus06.swing.textcomp.cust.action.f2.gusscript.autocomplete.op");
 		

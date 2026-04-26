@@ -12,24 +12,23 @@ public class EntityImpl implements Entity, P {
 
 	public static final KeyStroke ESCAPE = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
 
-	public void p(Object obj) throws Exception {
-		new Holder((JTextComponent) obj);
-	}
+	public void p(Object obj) throws Exception
+	{new Holder((JTextComponent) obj);}
 
-	private class Holder extends AbstractAction {
+	private class Holder extends AbstractAction
+	{
 		private JTextComponent comp;
 
-		public Holder(JTextComponent comp) {
+		public Holder(JTextComponent comp)
+		{
 			this.comp = comp;
 			comp.getInputMap().put(ESCAPE, this);
 		}
 
-		public void actionPerformed(ActionEvent e) {
-			clear();
-		}
+		public void actionPerformed(ActionEvent e)
+		{clear();}
 
-		private void clear() {
-			comp.setText("");
-		}
+		private void clear()
+		{comp.setText("");}
 	}
 }

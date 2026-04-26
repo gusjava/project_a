@@ -23,7 +23,7 @@ public class EntityImpl implements Entity, G, I, E {
 	{
 		factory = Outside.service(this,"gus06.swing.textarea.factory.console1.black.white");
 		build = Outside.service(this,"gus06.io.printstream.textarea1");
-		clear = Outside.service(this,"gus06.swing.textcomp.cust.action.escap.clear");
+		clear = Outside.service(this,"gus.x.swing.textcomp.cust.action.escap.clear");
 		
 		area = (JTextArea) factory.i();
 		scroll = new JScrollPane(area);

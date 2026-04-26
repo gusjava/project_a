@@ -32,7 +32,7 @@ public class EntityImpl implements Entity, ActionListener, I, P, Runnable {
 	{
 		buildResults = Outside.service(this,"gus06.sys.filemanagement1.gui.gui1_3.search.buildresults");
 		resultPanel = Outside.service(this,"*gus06.sys.filemanagement1.gui.gui1_3.search.resultpanel1");
-		clearOnEscape = Outside.service(this,"gus06.swing.textcomp.cust.action.escap.clear");
+		clearOnEscape = Outside.service(this,"gus.x.swing.textcomp.cust.action.escap.clear");
 		
 		field = new JTextField();
 		field.setMargin(new Insets(3,3,3,3));
