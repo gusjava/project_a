@@ -30,7 +30,7 @@ public class EntityImpl implements Entity, F {
 		readList = Outside.service(this,"gus06.file.read.string.list.autodetect");
 		showErr = Outside.service(this,"gus06.swing.optionpane.showmessage.error");
 		listToSet = Outside.service(this,"gus06.tostring.set");
-		writeText = Outside.service(this,"gus06.file.write.string");
+		writeText = Outside.service(this,"gus.x.file.string.write");
 		putField = Outside.service(this,"gus06.file.properties.perform.field.put");
 	}
 	

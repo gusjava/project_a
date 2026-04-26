@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, T {
 	{
 		randomNumber = Outside.service(this,"gus06.data.generate.string.random.number10");
 		readString = Outside.service(this,"gus06.file.read.string.autodetect");
-		writeString = Outside.service(this,"gus06.file.write.string");
+		writeString = Outside.service(this,"gus.x.file.string.write");
 		initRoot = Outside.service(this,"gus06.sys.tesseract1.init");
 		
 		tempDir = (File) Outside.resource(this,"defaultdir");

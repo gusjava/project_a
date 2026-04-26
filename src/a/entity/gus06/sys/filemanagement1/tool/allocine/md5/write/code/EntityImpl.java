@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		writeFile = Outside.service(this,"gus06.file.write.string");
+		writeFile = Outside.service(this,"gus.x.file.string.write");
 		deleteFile = Outside.service(this,"gus06.file.op.delete");
 		findFile = Outside.service(this,"gus06.sys.filemanagement1.tool.allocine.md5.find.file");
 	}

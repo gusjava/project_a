@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		writeFile = Outside.service(this,"gus06.file.write.string.cs.default0");
+		writeFile = Outside.service(this,"gus.x.file.string.write");
 	}
 
 	

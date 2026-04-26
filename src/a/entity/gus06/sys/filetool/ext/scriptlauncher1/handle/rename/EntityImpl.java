@@ -32,7 +32,7 @@ public class EntityImpl implements Entity, T {
 		listing = Outside.service(this,"gus06.dir.listing0.files");
 		move = Outside.service(this,"gus06.dir.perform.movefile");
 		readFile = Outside.service(this,"gus06.file.read.string");
-		writeFile = Outside.service(this,"gus06.file.write.string");
+		writeFile = Outside.service(this,"gus.x.file.string.write");
 	}
 	
 	

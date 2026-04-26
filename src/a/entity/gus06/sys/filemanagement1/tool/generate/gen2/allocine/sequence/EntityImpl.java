@@ -29,7 +29,7 @@ public class EntityImpl implements Entity, P {
 		getName0 = Outside.service(this,"gus06.file.getname0");
 		readProp = Outside.service(this,"gus06.file.read.properties");
 		setToString = Outside.service(this,"gus06.tostring.set");
-		writeText = Outside.service(this,"gus06.file.write.string");
+		writeText = Outside.service(this,"gus.x.file.string.write");
 		splitSequence = Outside.service(this,"gus06.string.split.sequence2");
 	}
 	

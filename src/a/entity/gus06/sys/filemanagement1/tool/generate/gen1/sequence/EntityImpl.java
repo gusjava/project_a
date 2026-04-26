@@ -26,7 +26,7 @@ public class EntityImpl implements Entity, P {
 	{
 		emptyDir = Outside.service(this,"gus06.dir.perform.empty.andcreate");
 		setToString = Outside.service(this,"gus06.tostring.set");
-		writeText = Outside.service(this,"gus06.file.write.string");
+		writeText = Outside.service(this,"gus.x.file.string.write");
 		splitSequence = Outside.service(this,"gus06.string.split.sequence2");
 	}
 	

@@ -7,7 +7,8 @@ import java.io.PrintStream;
 public class EntityImpl implements Entity, P {
 	public String creationDate() {return "20231128";}
 
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
 		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 

@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		readString = Outside.service(this,"gus06.file.read.string");
-		writeString = Outside.service(this,"gus06.file.write.string");
+		writeString = Outside.service(this,"gus.x.file.string.write");
 		
 		readProp = Outside.service(this,"gus06.file.read.properties");
 		writeProp = Outside.service(this,"gus06.file.write.properties");

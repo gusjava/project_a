@@ -26,7 +26,7 @@ public class EntityImpl implements Entity, T {
 		readText = Outside.service(this,"gus06.file.read.string");
 		getName0 = Outside.service(this,"gus06.file.getname0");
 		setToString = Outside.service(this,"gus06.tostring.set");
-		writeText = Outside.service(this,"gus06.file.write.string");
+		writeText = Outside.service(this,"gus.x.file.string.write");
 	}
 	
 	
