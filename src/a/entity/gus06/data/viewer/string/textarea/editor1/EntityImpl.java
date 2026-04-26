@@ -39,7 +39,6 @@ public class EntityImpl implements Entity, I, P, G, R {
 	private JComponent hiddenComp;
 	private JComponent caretComp;
 	
-	
 
 	public EntityImpl() throws Exception
 	{
@@ -52,7 +51,7 @@ public class EntityImpl implements Entity, I, P, G, R {
 		
 		buildHighCount = Outside.service(this,"gus06.swing.textcomp.highlight.sys1.countbar");
 		buildFocusLabel = Outside.service(this,"gus06.swing.textcomp.textfocus.label");
-		buildCaretLabel = Outside.service(this,"gus06.swing.textcomp.buildlabel.caretposition");
+		buildCaretLabel = Outside.service(this,"gus.x.swing.textcomp.build.caretpositionlabel");
 		buildAutoCopyLabel = Outside.service(this,"gus06.swing.textcomp.autocopy.label");
 		buildHiddenLabel = Outside.service(this,"gus06.swing.textcomp.buildlabel.hiddenchars");
 		
