@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		trimStart = Outside.service(this,"gus06.string.transform.str.trim.start");
+		trimStart = Outside.service(this,"gus.x.transform.string.trim.start");
 		enlargeToLine = Outside.service(this,"gus06.swing.textcomp.cust.action.ctrl_space.enlargeselection.perform.q2");
 	}
 

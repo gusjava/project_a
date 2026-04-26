@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		performString = Outside.service(this,"gus06.string.transform.str.trim.start");
+		performString = Outside.service(this,"gus.x.transform.string.trim.start");
 		performList = Outside.service(this,"gus06.list.trim.start");
 		performArray = Outside.service(this,"gus06.array.trim.start");
 	}

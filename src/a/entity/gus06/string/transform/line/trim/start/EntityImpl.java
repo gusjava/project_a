@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		trimStart = Outside.service(this,"gus06.string.transform.str.trim.start");
+		trimStart = Outside.service(this,"gus.x.transform.string.trim.start");
 	}
 	
 	public Object t(Object obj) throws Exception
