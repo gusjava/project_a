@@ -90,7 +90,7 @@ public class EntityImpl implements Entity, I, V, R, G, ActionListener {
 		clearCopyPasteCut = Outside.service(this, "gus.x.swing.comp.action.clear.copypastecut");
 		sortTable = Outside.service(this,"gus06.swing.table.cust.sort2");
 		filterList = Outside.service(this,"gus06.y.openrouter.gui3models.filterlist");
-		clipboard = Outside.service(this,"gus06.clipboard.access.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 		listToString = Outside.service(this,"gus06.tostring.list.join.n");
 		autoScroll = Outside.service(this,"gus06.swing.scroll.autoposition1");
 		iconLLM = (Icon) Outside.resource(this,"icon#AI_llm");

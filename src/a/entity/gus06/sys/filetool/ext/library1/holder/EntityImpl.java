@@ -87,7 +87,7 @@ public class EntityImpl implements Entity, I, P {
 		onKey = Outside.service(this,"gus06.swing.comp.cust3.on.keypressed.with.execute");
 		executeFile = Outside.service(this,"gus06.file.execute.generic");
 		clipboardFiles = Outside.service(this,"gus06.clipboard.access.listfiles");
-		clipboardString = Outside.service(this,"gus06.clipboard.access.string");
+		clipboardString = Outside.service(this,"gus.x.clipboard.string");
 		showInFrame = Outside.service(this,"gus06.file.editor.show.inframe2");
 		runTask = Outside.service(this,"gus06.sys.runtask1.input.path");
 		runPreviousTask = Outside.service(this,"gus06.sys.runtask1.input.path.previous");

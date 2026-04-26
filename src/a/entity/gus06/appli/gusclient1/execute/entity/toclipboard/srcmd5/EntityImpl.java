@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, E {
 		selection = Outside.service(this,"gus06.appli.gusclient1.gui.entity.holder");
 		findDir = Outside.service(this,"gus06.entitydev.entityname.packagedir");
 		dirToSrcmd5 = Outside.service(this,"gus06.entitydev.dirtosrcmd5.full");
-		toClipboard = Outside.service(this,"gus06.clipboard.access.string");
+		toClipboard = Outside.service(this,"gus.x.clipboard.string");
 	}
 	
 	

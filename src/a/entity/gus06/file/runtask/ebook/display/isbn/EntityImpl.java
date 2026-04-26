@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, P {
 	{
 		findISBN = Outside.service(this,"gus06.file.info.ebook.isbn");
 		showMessage = Outside.service(this,"gus06.swing.optionpane.showmessage.info");
-		toClipboard = Outside.service(this,"gus06.clipboard.access.string");
+		toClipboard = Outside.service(this,"gus.x.clipboard.string");
 	}
 
 	

@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		toClipboard = Outside.service(this,"gus06.clipboard.access.string");
+		toClipboard = Outside.service(this,"gus.x.clipboard.string");
 		onKey = Outside.service(this,"gus06.swing.comp.cust3.on.keypressed.with.execute");
 	}
 	

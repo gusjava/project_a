@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, G {
 	public EntityImpl() throws Exception
 	{
 		history = Outside.service(this,"gus06.sys.clipboardwatcher1.history");
-		clipboard = Outside.service(this,"gus06.clipboard.access.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 		chooser = Outside.service(this,"gus06.list.string.chooser.dialog");
 	}
 	

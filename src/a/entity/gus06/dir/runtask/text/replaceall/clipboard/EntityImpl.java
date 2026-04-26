@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		clipboard = Outside.service(this,"gus06.clipboard.access.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 		buildMap = Outside.service(this,"gus06.data.perform.msplit_tn");
 		buildListing = Outside.service(this,"gus06.dir.listing.dirtofiles");
 		isTextFile = Outside.service(this,"gus06.file.string.check");

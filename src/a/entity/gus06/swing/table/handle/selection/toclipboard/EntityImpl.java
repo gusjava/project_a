@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		clipboard = Outside.service(this,"gus06.clipboard.access.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 		selectionToString = Outside.service(this,"gus06.swing.table.selection.tostring");
 	}
 

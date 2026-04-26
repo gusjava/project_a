@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, F {
 	public EntityImpl() throws Exception
 	{
 		buildSql = Outside.service(this,"gus06.jdbc.gui.tableview.tool.table.sql.select");
-		clipboard = Outside.service(this,"gus06.clipboard.access.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 	}
 	
 	

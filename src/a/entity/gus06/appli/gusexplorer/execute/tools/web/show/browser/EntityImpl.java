@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, E {
 	public EntityImpl() throws Exception
 	{
 		show = Outside.service(this,"*gus06.swt.webbrowser.show");
-		clipboard = Outside.service(this,"gus06.clipboard.access.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 	}
 	
 	public void e() throws Exception

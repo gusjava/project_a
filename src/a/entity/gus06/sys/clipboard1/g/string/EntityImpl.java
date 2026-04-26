@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, G {
 	public EntityImpl() throws Exception
 	{
 		accessFile = Outside.service(this,"gus06.clipboard.access.file");
-		accessString = Outside.service(this,"gus06.clipboard.access.string");
+		accessString = Outside.service(this,"gus.x.clipboard.string");
 		
 		convertFile = Outside.service(this,"gus06.file.read.string.autodetect");
 	}

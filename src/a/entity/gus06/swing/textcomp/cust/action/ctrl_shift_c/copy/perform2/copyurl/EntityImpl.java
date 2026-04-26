@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, F {
 
 	public EntityImpl() throws Exception
 	{
-		copyText = Outside.service(this,"gus06.clipboard.access.string");
+		copyText = Outside.service(this,"gus.x.clipboard.string");
 		urlToText = Outside.service(this,"gus06.web.download.urltotext.utf8");
 	}
 	

@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, P {
 		importIcon = Outside.service(this,"gus06.icon.importer");
 		input = Outside.service(this,"gus06.input.text.dialog");
 		confirm = Outside.service(this,"gus06.input.confirm.dialog");
-		clipboardString = Outside.service(this,"gus06.clipboard.access.string");
+		clipboardString = Outside.service(this,"gus.x.clipboard.string");
 	}
 	
 	public void p(Object obj) throws Exception

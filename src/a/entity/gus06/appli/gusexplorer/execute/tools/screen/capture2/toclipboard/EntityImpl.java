@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, E {
 	{
 		before = Outside.service(this,"gus06.appli.gusexplorer.execute.tools.screen.beforecapture");
 		captureText = Outside.service(this,"gus06.sys.tesseract1.imagetotext.capturescreen");
-		clipboard = Outside.service(this,"gus06.clipboard.access.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 	}
 	
 	public void e() throws Exception

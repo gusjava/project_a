@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, E {
 	{
 		accessImage = Outside.service(this,"gus06.clipboard.access.image");
 		accessListFiles = Outside.service(this,"gus06.clipboard.access.listfiles");
-		accessString = Outside.service(this,"gus06.clipboard.access.string");
+		accessString = Outside.service(this,"gus.x.clipboard.string");
 		
 		convertImage = Outside.service(this,"gus06.sys.clipboard1.g.listfiles.convertimage");
 		convertString = Outside.service(this,"gus06.sys.clipboard1.g.listfiles.convertstring");

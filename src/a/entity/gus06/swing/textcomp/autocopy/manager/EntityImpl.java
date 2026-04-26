@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, T, F {
 
 	public EntityImpl() throws Exception
 	{
-		clipboard = Outside.service(this,"gus06.clipboard.access.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 		map = new HashMap();
 	}
 	

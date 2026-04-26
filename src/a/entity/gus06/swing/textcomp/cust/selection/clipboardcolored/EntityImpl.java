@@ -23,7 +23,7 @@ public class EntityImpl implements Entity, ActionListener, P {
 
 	public EntityImpl() throws Exception
 	{
-		clipboard = Outside.service(this,"gus06.clipboard.access.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 		each100 = Outside.service(this,"gus06.time.timer.ms100");
 		
 		map = new HashMap();

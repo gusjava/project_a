@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		clipboard = Outside.service(this,"gus06.clipboard.access.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 		findFile = Outside.service(this,"gus06.sys.filetool.ext.scriptlauncher1.find.scriptfile");
 	}
 	

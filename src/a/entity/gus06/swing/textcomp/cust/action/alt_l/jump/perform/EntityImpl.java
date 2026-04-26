@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		jump = Outside.service(this,"gus06.swing.textcomp.caret.jump.byrule");
-		clipboard = Outside.service(this,"gus06.clipboard.access.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 	}
 	
 	

@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		enlargeSelection = Outside.service(this,"gus06.swing.textcomp.cust.action.ctrl_space.enlargeselection.perform");
-		clipboardAccess = Outside.service(this,"gus06.clipboard.access.string");
+		clipboardAccess = Outside.service(this,"gus.x.clipboard.string");
 		applyToComp = Outside.service(this,"gus06.appli.gusexplorer.gui.editor.fillbar.applytocomp.p");
 	}
 	

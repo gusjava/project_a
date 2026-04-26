@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, E {
 		importer = Outside.service(this,"gus06.appli.gusexplorer.icons.importer");
 		clipboardFile = Outside.service(this,"gus06.clipboard.access.file");
 		clipboardImage = Outside.service(this,"gus06.clipboard.access.image");
-		clipboardString = Outside.service(this,"gus06.clipboard.access.string");
+		clipboardString = Outside.service(this,"gus.x.clipboard.string");
 		stringToUrl = Outside.service(this,"gus.y.convert1.stringtourl");
 	}
 	

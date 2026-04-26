@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, G, T {
 	public EntityImpl() throws Exception
 	{
 		dialog = Outside.service(this,"gus06.input.textarea.dialog");
-		clipboard = Outside.service(this,"gus06.clipboard.access.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 	}
 	
 	

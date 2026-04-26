@@ -24,7 +24,7 @@ public class EntityImpl implements Entity, P {
 	{
 		listing = Outside.service(this,"gus06.dir.listing.dirtofiles");
 		stringToList = Outside.service(this,"gus06.string.split.delim.n.list");
-		fromClipboard = Outside.service(this,"gus06.clipboard.access.string");
+		fromClipboard = Outside.service(this,"gus.x.clipboard.string");
 		buildMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
 		copyFiles = Outside.service(this,"gus06.clipboard.access.listfiles");
 		showMessage = Outside.service(this,"gus06.swing.optionpane.showmessage.info");

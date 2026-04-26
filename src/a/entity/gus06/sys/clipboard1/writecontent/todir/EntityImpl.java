@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P, F {
 	public EntityImpl() throws Exception
 	{
 		accessImage = Outside.service(this,"gus06.clipboard.access.image");
-		accessString = Outside.service(this,"gus06.clipboard.access.string");
+		accessString = Outside.service(this,"gus.x.clipboard.string");
 		
 		writeImage = Outside.service(this,"gus06.sys.clipboard1.writecontent.todir.image");
 		writeString = Outside.service(this,"gus06.sys.clipboard1.writecontent.todir.string");

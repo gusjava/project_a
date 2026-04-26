@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, E {
 	{
 		before = Outside.service(this,"gus06.appli.gusexplorer.execute.tools.screen.beforecapture");
 		captureColor = Outside.service(this,"gus06.sys.capturecolor1.capture");
-		clipboard = Outside.service(this,"gus06.clipboard.access.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 		colorToString = Outside.service(this,"gus06.convert.colortostring.rgb");
 	}
 	

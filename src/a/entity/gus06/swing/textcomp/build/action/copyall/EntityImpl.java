@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		buildAction = Outside.service(this,"gus06.swing.action.builder1");
-		perform = Outside.service(this,"gus06.clipboard.access.string");
+		perform = Outside.service(this,"gus.x.clipboard.string");
 	}
 	
 	public Object t(Object obj) throws Exception

@@ -27,7 +27,7 @@ public class EntityImpl implements Entity, P {
 		listing = Outside.service(this,"gus06.dir.listing0.ext.properties");
 		read = Outside.service(this,"gus06.file.read.properties");
 		showMessage = Outside.service(this,"gus06.swing.optionpane.showmessage.info");
-		toClipboard = Outside.service(this,"gus06.clipboard.access.string");
+		toClipboard = Outside.service(this,"gus.x.clipboard.string");
 		setToString = Outside.service(this,"gus06.tostring.set");
 	}
 

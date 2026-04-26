@@ -23,7 +23,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		getPainter = Outside.service(this,"gus06.swing.textcomp.highlight.painter.manager1");
-		clipboard = Outside.service(this,"gus06.clipboard.access.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 		
 		painter1 = (DefaultHighlighter.DefaultHighlightPainter) getPainter.r(PAINTER_KEY1);
 		painter2 = (DefaultHighlighter.DefaultHighlightPainter) getPainter.r(PAINTER_KEY2);
