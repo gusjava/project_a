@@ -17,7 +17,8 @@ public class EntityImpl implements Entity, P {
 	public static final String DEF_ID_LINKED = "BIGINT NOT NULL";
 	public static final String DEF_TYPE = "VARCHAR(20) NOT NULL";
 
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		Connection cx = (Connection) obj;
 		String sql = "CREATE TABLE " + TABLE_NAME + " ("
 				+ COL_ID_LINKER + " " + DEF_ID_LINKER + ", "
@@ -27,7 +28,8 @@ public class EntityImpl implements Entity, P {
 		execute(cx, sql);
 	}
 
-	private void execute(Connection cx, String sql) throws SQLException {
+	private void execute(Connection cx, String sql) throws SQLException
+	{
 		Statement st = cx.createStatement();
 		st.execute(sql);
 		st.close();

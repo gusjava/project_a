@@ -19,10 +19,10 @@ public class EntityImpl implements Entity, P {
 	public static final String COL_DESCRIPTION = "description";
 	public static final String COL_STATE = "state";
 
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
 		Connection cx = (Connection) o[0];
 		Map data = (Map) o[1];

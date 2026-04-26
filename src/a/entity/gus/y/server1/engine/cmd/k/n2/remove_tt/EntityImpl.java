@@ -1,18 +1,18 @@
-package a.entity.gus.y.server1.engine.cmd.k.n2.remove_tk;
+package a.entity.gus.y.server1.engine.cmd.k.n2.remove_tt;
 
 import java.sql.Connection;
 import java.util.List;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260425";}
+	public String creationDate() {return "20260426";}
 
 	private Service perform;
 	private Service engine;
 
 	public EntityImpl() throws Exception
 	{
-		perform = Outside.service(this, "gus.y.knowledgesys1.perform.todo_knowledge.remove");
+		perform = Outside.service(this, "gus.y.knowledgesys1.perform.todo_link.remove");
 		engine = Outside.service(this, "gus.y.knowledgesys1.engine");
 	}
 

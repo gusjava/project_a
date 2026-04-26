@@ -7,25 +7,27 @@ import a.framework.*;
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20260425";}
 
-	private Service addTK;
-	private Service knowledgeEngine;
+	private Service perform;
+	private Service engine;
 
-	public EntityImpl() throws Exception {
-		addTK = Outside.service(this, "gus.y.knowledgesys1.perform.todoknowledge.add");
-		knowledgeEngine  = Outside.service(this, "gus.y.knowledgesys1.engine");
+	public EntityImpl() throws Exception
+	{
+		perform = Outside.service(this, "gus.y.knowledgesys1.perform.todoknowledge.add");
+		engine  = Outside.service(this, "gus.y.knowledgesys1.engine");
 	}
 
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		List list = (List) obj;
 		if(list.size() != 3) throw new Exception("wrong arg number: "+list.size());
 		
-		String idT  = (String) list.get(0);
-		String idK = (String) list.get(1);
-		String type  = (String) list.get(2);
+		Long id1 = Long.parseLong("" + list.get(0));
+		Long id2 = Long.parseLong("" + list.get(1));
+		String type = (String) list.get(2);
 		
-		return addTK.t(new Object[]{cx(), idT, idK, type});
+		return perform.t(new Object[]{cx(), id1, id2, type});
 	}
 
 	private Connection cx() throws Exception
-	{return (Connection) knowledgeEngine.r("cx");}
+	{return (Connection) engine.r("cx");}
 }

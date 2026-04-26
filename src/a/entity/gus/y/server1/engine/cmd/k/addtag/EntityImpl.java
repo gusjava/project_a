@@ -8,11 +8,11 @@ public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20260425";}
 
 	private Service tagAdd;
-	private Service knowledgeEngine;
+	private Service engine;
 
 	public EntityImpl() throws Exception {
 		tagAdd          = Outside.service(this, "gus.y.knowledgesys1.perform.tag.add");
-		knowledgeEngine = Outside.service(this, "gus.y.knowledgesys1.engine");
+		engine = Outside.service(this, "gus.y.knowledgesys1.engine");
 	}
 
 	public Object t(Object obj) throws Exception {
@@ -25,5 +25,5 @@ public class EntityImpl implements Entity, T {
 	}
 
 	private Connection cx() throws Exception
-	{return (Connection) knowledgeEngine.r("cx");}
+	{return (Connection) engine.r("cx");}
 }

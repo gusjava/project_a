@@ -17,32 +17,30 @@ public class EntityImpl implements Entity, T {
 	private Service get;
 	private Service list;
 	private Service search;
-
-	// commandes tag
-
 	private Service tagsof;
 	private Service addtag;
 	private Service removetag;
+	private Service linksof;
+	private Service find;
 
 	// commandes link
-
-	private Service linksof;
-	private Service addlink;
-	private Service removelink;
 	
-	private Service linkK;
+	private Service add_kk;
+	private Service add_tt;
+	private Service add_tk;
+	
+	private Service remove_kk;
+	private Service remove_tt;
+	private Service remove_tk;
 
-	// commandes todoknowledge
-
-	private Service addtodoknowledge;
-	private Service removetodoknowledge;
-
-	// commandes avec knowledge
-
-	private Service create;
-	private Service update;
-	private Service delete;
-	private Service find;
+	private Service create_k;
+	private Service create_t;
+	
+	private Service update_k;
+	private Service update_t;
+	
+	private Service delete_k;
+	private Service delete_t;
 
 	public EntityImpl() throws Exception
 	{
@@ -57,31 +55,28 @@ public class EntityImpl implements Entity, T {
 		get    = Outside.service(this, "gus.y.server1.engine.cmd.k.get");
 		list   = Outside.service(this, "gus.y.server1.engine.cmd.k.list");
 		search = Outside.service(this, "gus.y.server1.engine.cmd.k.search");
-
-		// commandes tag
-
 		tagsof    = Outside.service(this, "gus.y.server1.engine.cmd.k.tagsof");
 		addtag    = Outside.service(this, "gus.y.server1.engine.cmd.k.addtag");
 		removetag = Outside.service(this, "gus.y.server1.engine.cmd.k.removetag");
-
-		// commandes link
-
 		linksof    = Outside.service(this, "gus.y.server1.engine.cmd.k.linksof");
-		addlink    = Outside.service(this, "gus.y.server1.engine.cmd.k.addlink");
-		removelink = Outside.service(this, "gus.y.server1.engine.cmd.k.removelink");
-		linkK = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.link_k");
-
-		// commandes todoknowledge
-
-		addtodoknowledge    = Outside.service(this, "gus.y.server1.engine.cmd.k.n3.add_tk");
-		removetodoknowledge = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.remove_tk");
-
-		// commandes knowledge
-
-		create   = Outside.service(this, "gus.y.server1.engine.cmd.k.nj.create_k");
-		update   = Outside.service(this, "gus.y.server1.engine.cmd.k.update");
-		delete   = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.delete_k");
 		find     = Outside.service(this, "gus.y.server1.engine.cmd.k.find");
+		
+		add_kk = Outside.service(this, "gus.y.server1.engine.cmd.k.n3.add_kk");
+		add_tt = Outside.service(this, "gus.y.server1.engine.cmd.k.n3.add_tt");
+		add_tk = Outside.service(this, "gus.y.server1.engine.cmd.k.n3.add_tk");
+
+		remove_kk = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.remove_kk");
+		remove_tt = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.remove_tt");
+		remove_tk = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.remove_tk");
+
+		create_k = Outside.service(this, "gus.y.server1.engine.cmd.k.nj.create_k");
+		create_t = Outside.service(this, "gus.y.server1.engine.cmd.k.nj.create_t");
+		
+		update_k = Outside.service(this, "gus.y.server1.engine.cmd.k.nj.update_k");
+		update_t = Outside.service(this, "gus.y.server1.engine.cmd.k.nj.update_t");
+		
+		delete_k = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.delete_k");
+		delete_t = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.delete_t");
 	}
 
 	private Service findCmd(String cmd) throws Exception
@@ -97,30 +92,28 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("get"))     return get;
 		if(cmd.equals("list"))    return list;
 		if(cmd.equals("search"))  return search;
-
-		// commandes tag
-
 		if(cmd.equals("tagsof"))    return tagsof;
 		if(cmd.equals("addtag"))    return addtag;
 		if(cmd.equals("removetag")) return removetag;
-
-		// commandes link
-
 		if(cmd.equals("linksof"))    return linksof;
-		if(cmd.equals("addlink"))    return addlink;
-		if(cmd.equals("removelink")) return removelink;
-
-		// commandes todoknowledge
-
-		if(cmd.equals("addtodoknowledge"))    return addtodoknowledge;
-		if(cmd.equals("removetodoknowledge")) return removetodoknowledge;
-
-		// commandes knowledge
-
-		if(cmd.equals("create"))   return create;
-		if(cmd.equals("update"))   return update;
-		if(cmd.equals("delete"))   return delete;
 		if(cmd.equals("find"))     return find;
+
+		if(cmd.equals("add_kk")) return add_kk;
+		if(cmd.equals("add_tt")) return add_tt;
+		if(cmd.equals("add_tk")) return add_tk;
+
+		if(cmd.equals("remove_kk")) return remove_kk;
+		if(cmd.equals("remove_tt")) return remove_tt;
+		if(cmd.equals("remove_tk")) return remove_tk;
+
+		if(cmd.equals("create_k"))   return create_k;
+		if(cmd.equals("create_t"))   return create_t;
+		
+		if(cmd.equals("update_k"))   return update_k;
+		if(cmd.equals("update_t"))   return update_t;
+		
+		if(cmd.equals("delete_k"))   return delete_k;
+		if(cmd.equals("delete_t"))   return delete_t;
 
 		throw new Exception("commande inconnue: " + cmd);
 	}

@@ -17,10 +17,10 @@ public class EntityImpl implements Entity, T {
 	public static final String COL_TITLE = "title";
 	public static final String COL_DESCRIPTION = "description";
 
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
 		Connection cx = (Connection) o[0];
 		Map data = (Map) o[1];
@@ -30,7 +30,8 @@ public class EntityImpl implements Entity, T {
 		Object description = data.get(COL_DESCRIPTION);
 
 		String sql = "INSERT INTO " + TABLE_NAME + " ("
-				+ COL_DATE_CREATED + ", " + COL_CODE + ", " + COL_TITLE + ", " + COL_DESCRIPTION + ") VALUES (?,?,?,?)";
+			+ COL_DATE_CREATED + ", " + COL_CODE + ", " + COL_TITLE 
+			+ ", " + COL_DESCRIPTION + ") VALUES (?,?,?,?)";
 
 		PreparedStatement st = cx.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 		st.setObject(1, new Date());

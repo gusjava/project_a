@@ -1,4 +1,4 @@
-package a.entity.gus.y.server1.engine.cmd.k.nj.create_k;
+package a.entity.gus.y.server1.engine.cmd.k.nj.create_t;
 
 import java.sql.Connection;
 import java.util.*;
@@ -8,14 +8,14 @@ import java.nio.charset.StandardCharsets;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20260425";}
+	public String creationDate() {return "20260426";}
 
 	private Service perform;
 	private Service engine;
 
 	public EntityImpl() throws Exception
 	{
-		perform = Outside.service(this, "gus.y.knowledgedb1.knowledge.insert");
+		perform = Outside.service(this, "gus.y.knowledgedb1.todo.insert");
 		engine = Outside.service(this, "gus.y.knowledgesys1.engine");
 	}
 

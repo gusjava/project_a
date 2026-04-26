@@ -8,9 +8,6 @@ import a.framework.*;
 public class EntityImpl implements Entity, P, F {
 	public String creationDate() {return "20260410";}
 
-	public static final String TABLE_NAME = "knowledge";
-	public static final String COL_ID = "id";
-
 	public void p(Object obj) throws Exception
 	{f(obj);}
 	
@@ -22,7 +19,7 @@ public class EntityImpl implements Entity, P, F {
 		Connection cx = (Connection) o[0];
 		Long id = (Long) o[1];
 
-		String sql = "DELETE FROM " + TABLE_NAME + " WHERE " + COL_ID + "=?";
+		String sql = "DELETE FROM knowledge WHERE id=?";
 		return executeUpdate(cx, sql, id)==1;
 	}
 

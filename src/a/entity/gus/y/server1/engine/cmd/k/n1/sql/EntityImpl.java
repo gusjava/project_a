@@ -7,7 +7,7 @@ public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20260425";}
 
 	private Service fullString;
-	private Service knowledgeEngine;
+	private Service engine;
 	private Service sqlSelect;
 	private Service sqlInsert;
 	private Service sqlUpdate;
@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception {
 		fullString      = Outside.service(this, "gus.y.server1.tool.args.fullstring");
-		knowledgeEngine = Outside.service(this, "gus.y.knowledgesys1.engine");
+		engine = Outside.service(this, "gus.y.knowledgesys1.engine");
 		sqlSelect       = Outside.service(this, "gus.y.knowledgedb1.sql.select");
 		sqlInsert       = Outside.service(this, "gus.y.knowledgedb1.sql.insert");
 		sqlUpdate       = Outside.service(this, "gus.y.knowledgedb1.sql.update");
@@ -42,5 +42,5 @@ public class EntityImpl implements Entity, T {
 	}
 
 	private Connection cx() throws Exception
-	{return (Connection) knowledgeEngine.r("cx");}
+	{return (Connection) engine.r("cx");}
 }

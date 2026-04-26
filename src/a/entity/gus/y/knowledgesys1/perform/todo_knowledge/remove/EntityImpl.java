@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.perform.todoknowledge.remove;
+package a.entity.gus.y.knowledgesys1.perform.todo_knowledge.remove;
 
 import java.sql.Connection;
 import a.framework.*;
@@ -17,8 +17,8 @@ public class EntityImpl implements Entity, T {
 		if(o.length!=3) throw new Exception("Wrong data number: "+o.length);
 		
 		Connection cx      = (Connection) o[0];
-		String idTodo      = (String) o[1];
-		String idKnowledge = (String) o[2];
+		Long idTodo      = (Long) o[1];
+		Long idKnowledge = (Long) o[2];
 		
 		String sql = "DELETE FROM todo_knowledge " + 
 		"WHERE ID_TODO = " + idTodo + " AND ID_KNOWLEDGE = " + idKnowledge;
