@@ -12,12 +12,14 @@ public class EntityImpl implements Entity, F, P {
 	private Service findPackageDir;
 	private Service findJavaFiles;
 	private Service findClassFiles;
+	private Service hasRights;
 
 	public EntityImpl() throws Exception
 	{
 		findPackageDir = Outside.service(this, "gus.x.entity.src.find.packagedir");
 		findJavaFiles = Outside.service(this, "gus.x.dir.listing0.files.java");
 		findClassFiles = Outside.service(this, "gus.x.dir.listing0.files.class1");
+		hasRights = Outside.service(this,"gus.x.entity.hasrights");
 	}
 
 	public void p(Object obj) throws Exception
@@ -37,7 +39,7 @@ public class EntityImpl implements Entity, F, P {
 		for(int i=0;i<entityNames.size();i++)
 		{
 			String entityName = (String) entityNames.get(i);
-			if(devId != null && !entityName.startsWith(devId + ".")) return false;
+			if(!hasRights.f(new Object[]{devId, entityName})) return false;
 			
 			File packageDir = (File) findPackageDir.t(new Object[] { srcDir, entityName });
 			if (!packageDir.isDirectory()) return false;

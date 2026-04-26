@@ -21,30 +21,32 @@ public class EntityImpl implements Entity, P, F {
 
 	private Service perform;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		perform = Outside.service(this, "gus.y.entitysys1.perform.entity.create");
 	}
 
-	public void p(Object obj) throws Exception {
-		f(obj);
-	}
+	public void p(Object obj) throws Exception
+	{f(obj);}
 
-	public boolean f(Object obj) throws Exception {
+	public boolean f(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
 		Object engine1 = o[0];
 		Object anchor = o[1];
 
 		Window window = SwingUtilities.getWindowAncestor((Component) anchor);
 		String rule = (String) JOptionPane.showInputDialog(window, MESSAGE, TITLE, JOptionPane.PLAIN_MESSAGE);
-		if (rule == null || rule.trim().equals(""))
-			return false;
+		if (rule == null || rule.trim().equals("")) return false;
 
-		try {
+		try
+		{
 			perform.f(new Object[] { engine1, rule });
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			JOptionPane.showMessageDialog(window, e.getMessage(), TITLE, JOptionPane.ERROR_MESSAGE);
 			return false;
 		}

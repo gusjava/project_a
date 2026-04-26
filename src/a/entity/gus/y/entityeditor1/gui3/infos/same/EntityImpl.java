@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import java.util.List;
+import javax.swing.JButton;
 import a.framework.*;
 
 public class EntityImpl implements Entity, P, I, ActionListener {
@@ -20,6 +21,7 @@ public class EntityImpl implements Entity, P, I, ActionListener {
 
 	private JPanel panel;
 	private JTextArea area;
+	private JButton button;
 
 	private Object data;
 
@@ -30,9 +32,13 @@ public class EntityImpl implements Entity, P, I, ActionListener {
 		area = new JTextArea();
 		area.setMargin(new Insets(3, 3, 3, 3));
 		area.setEditable(false);
+		
+		button = new JButton("Replace all by current");
+		button.addActionListener(e->replaceAllByCurrent());
 
-		panel = new JPanel(new GridLayout(1, 1));
-		panel.add(titled(area, "Same Hash"));
+		panel = new JPanel(new BorderLayout());
+		panel.add(titled(area, "Same Hash"), BorderLayout.CENTER);
+		panel.add(button, BorderLayout.SOUTH);
 	}
 
 	private JPanel titled(JComponent comp, String title)
@@ -47,12 +53,9 @@ public class EntityImpl implements Entity, P, I, ActionListener {
 
 	public void p(Object obj) throws Exception
 	{
-		if (data != null)
-			((S) data).removeActionListener(this);
-		if (obj == null) {
-			reset();
-			return;
-		}
+		if (data != null) ((S) data).removeActionListener(this);
+		if (obj == null) {reset(); return;}
+		
 		data = obj;
 		refresh();
 		((S) data).addActionListener(this);
@@ -90,4 +93,15 @@ public class EntityImpl implements Entity, P, I, ActionListener {
 		String s = (String) toString.t(same);
 		area.setText(s);
 	}
+	
+	private void replaceAllByCurrent()
+	{
+		try
+		{
+			
+		}
+		catch(Exception e)
+		{Outside.err(this,"replaceAllByCurrent()",e);}
+	}
+
 }

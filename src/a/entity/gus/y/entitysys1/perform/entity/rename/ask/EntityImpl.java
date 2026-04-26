@@ -30,19 +30,21 @@ public class EntityImpl implements Entity, P, F {
 	private Service perform;
 	private Service findDownLinks;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		perform = Outside.service(this, "gus.y.entitysys1.perform.entity.rename");
 		findDownLinks = Outside.service(this, "gus.y.entitydb1.entity_link.find2");
 	}
 
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		f(obj);
 	}
 
-	public boolean f(Object obj) throws Exception {
+	public boolean f(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
-		if (o.length != 3)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 3) throw new Exception("Wrong data number: " + o.length);
 
 		Object engine = o[0];
 		String oldName = (String) o[1];
@@ -60,7 +62,8 @@ public class EntityImpl implements Entity, P, F {
 		Set downLinks = (Set) findDownLinks.t(new Object[] { cx, oldName });
 		boolean refactor = false;
 
-		if (!downLinks.isEmpty()) {
+		if (!downLinks.isEmpty())
+		{
 			String message = "The entity " + oldName + " is used by " + downLinks.size() + " other entities:\n"
 					+ toString(downLinks) + "\nWould you like to update these links with the new name ?";
 			int r = JOptionPane.showConfirmDialog(window, message, TITLE_DEPENDENCIES,
@@ -74,14 +77,16 @@ public class EntityImpl implements Entity, P, F {
 		// rename entity
 
 		boolean done = perform.f(new Object[] { engine, oldName, newName, refactor });
-		if (!done) {
+		if (!done)
+		{
 			JOptionPane.showMessageDialog(window, MESSAGE_ERR, TITLE, JOptionPane.PLAIN_MESSAGE);
 			return false;
 		}
 		return true;
 	}
 
-	private String toString(Set links) {
+	private String toString(Set links)
+	{
 		StringBuffer b = new StringBuffer();
 		List list = new ArrayList(links);
 		Collections.sort(list);

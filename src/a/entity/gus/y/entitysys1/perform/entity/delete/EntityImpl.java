@@ -12,39 +12,38 @@ public class EntityImpl implements Entity, P, F {
 	private Service findPackageDir;
 	private Service findJavaFiles;
 	private Service findClassFiles;
+	private Service hasRights;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		logger = Outside.service(this, "logger");
 		findPackageDir = Outside.service(this, "gus.x.entity.src.find.packagedir");
 		findJavaFiles = Outside.service(this, "gus.x.dir.listing0.files.java");
 		findClassFiles = Outside.service(this, "gus.x.dir.listing0.files.class1");
+		hasRights = Outside.service(this,"gus.x.entity.hasrights");
 	}
 
-	public void p(Object obj) throws Exception {
-		f(obj);
-	}
+	public void p(Object obj) throws Exception
+	{f(obj);}
 
-	public boolean f(Object obj) throws Exception {
+	public boolean f(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
 		Object engine = o[0];
 		String entityName = (String) o[1];
 
 		File rootDir = (File) ((R) engine).r("rootDir");
 		String devId = (String) ((R) engine).r("devId");
-
-//		if (devId != null && !entityName.startsWith(devId + "."))
-//			return false;
+		
+		if(!hasRights.f(new Object[]{devId, entityName})) return false;
 
 		File packageDir = (File) findPackageDir.t(new Object[] { rootDir, entityName });
-		if (!packageDir.isDirectory())
-			return false;
+		if (!packageDir.isDirectory()) return false;
 
 		File[] javaFiles = (File[]) findJavaFiles.t(packageDir);
-		if (javaFiles == null || javaFiles.length == 0)
-			return false;
+		if (javaFiles == null || javaFiles.length == 0) return false;
 
 		log("Deleting entity " + entityName);
 

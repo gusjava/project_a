@@ -8,15 +8,18 @@ public class EntityImpl implements Entity, P, F {
 
 	private Service edit;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		edit = Outside.service(this, "gus.y.entitysrcedit1.remove");
 	}
 
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		f(obj);
 	}
 
-	public boolean f(Object obj) throws Exception {
+	public boolean f(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
 		if (o.length != 3) throw new Exception("Wrong data number: " + o.length);
 

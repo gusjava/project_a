@@ -9,18 +9,21 @@ public class EntityImpl implements Entity, P, F {
 	private Service logger;
 	private Service generate;
 	private Service validate;
+	private Service completeName;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		logger = Outside.service(this, "logger");
 		generate = Outside.service(this, "gus.x.entity.src.generate1");
 		validate = Outside.service(this, "gus.x.entity.name.validate");
+		completeName = Outside.service(this,"gus.x.entity.completename");
 	}
 
-	public void p(Object obj) throws Exception {
-		f(obj);
-	}
+	public void p(Object obj) throws Exception
+	{f(obj);}
 
-	public boolean f(Object obj) throws Exception {
+	public boolean f(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
 		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
@@ -34,14 +37,12 @@ public class EntityImpl implements Entity, P, F {
 		String entityName = nn[0];
 		String features = nn.length > 1 ? nn[1] : "";
 
-		if (devId != null && !entityName.startsWith(devId + "."))
-			entityName = devId + "." + entityName;
-
+		entityName = (String) completeName.t(new Object[]{devId, entityName});
 		if (!validate.f(entityName))
 			throw new Exception("Invalid entity name: " + entityName + " (expected: " + validate.g() + ")");
+		
 		boolean done = (Boolean) generate.f(new Object[] { rootDir, entityName, features });
-		if (!done)
-			throw new Exception("Entity already exists: " + entityName);
+		if (!done) throw new Exception("Entity already exists: " + entityName);
 
 		log("Entity added: "+entityName);
 		((V) engine).v("entityAdded", entityName);
@@ -52,7 +53,6 @@ public class EntityImpl implements Entity, P, F {
 	 * LOGGER
 	 */
 	
-	private void log(String msg) throws Exception {
-		logger.p(new Object[] {this, msg});
-	}
+	private void log(String msg) throws Exception
+	{logger.p(new Object[] {this, msg});}
 }
