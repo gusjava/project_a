@@ -21,7 +21,7 @@ public class EntityImpl extends S1 implements Entity, I, P, ActionListener {
 	
 	public EntityImpl() throws Exception
 	{
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		toolManager = Outside.service(this,"gus06.appli.gusclient1.tool.manager");
 		toolBuilder = Outside.service(this,"gus06.appli.gusclient1.tool.builder");
 		

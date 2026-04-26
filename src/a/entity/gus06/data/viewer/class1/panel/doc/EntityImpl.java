@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, I, P, G {
 
 	public EntityImpl() throws Exception
 	{
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		urlViewer = Outside.service(this,"*gus06.data.viewer.class1.panel.doc.url");
 		entityViewer = Outside.service(this,"*gus06.data.viewer.class1.panel.doc.entity");
 		findEntityName = Outside.service(this,"gus06.convert.classtoentityname");

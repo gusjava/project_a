@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, I, P, E {
 	{
     		guiTabbedPane = Outside.service(this,"gus06.appli.gusexplorer.gui.tabbedpane");
 		handleDnd = Outside.service(this,"gus06.appli.gusexplorer.gui.centralpane.dnd");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		
 		tabbedPane = (JTabbedPane) guiTabbedPane.i();
 		handleDnd.p(tabbedPane);

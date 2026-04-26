@@ -26,7 +26,7 @@ public class EntityImpl implements Entity, I, P {
 		editor = Outside.service(this,"*gus06.file.editor.main-1");
 		editor1 = Outside.service(this,"*gus06.file.editor.main-2");
 		editor2 = Outside.service(this,"*gus06.file.editor.main-3");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		splitCust = Outside.service(this,"gus06.swing.splitpane.cust.cust1");
 		initCtrlH = Outside.service(this,"gus06.swing.splitpane.init.inv.ctrl_h");
         

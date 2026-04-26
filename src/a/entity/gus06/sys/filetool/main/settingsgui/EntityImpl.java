@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, I, P {
 
 	public EntityImpl() throws Exception
 	{
-		shift = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shift = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		mapToComp = Outside.service(this,"gus06.sys.filetool.main.settingsgui.maptocomp");
 		exceptionViewer = Outside.service(this,"*gus06.data.viewer.exception");
 	}

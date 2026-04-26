@@ -59,7 +59,7 @@ public class EntityImpl extends S1 implements Entity, I, P, R {
 		splitCust = Outside.service(this,"gus06.swing.splitpane.cust.cust1");
 		fieldHolder = Outside.service(this,"*gus06.data.editor.string.textfield.editor1");
 		previewPanel = Outside.service(this,"*gus06.sys.filemovedown1.gui1.preview");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		moveOp = Outside.service(this,"gus06.file.op.move.autorename");
 		dragFrame = Outside.service(this,"gus06.swing.comp.cust.dragframe");
 		

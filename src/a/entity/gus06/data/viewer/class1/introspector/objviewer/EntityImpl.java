@@ -28,7 +28,7 @@ public class EntityImpl implements Entity, I, P {
 	public EntityImpl() throws Exception
 	{
 		repaintLabel = Outside.service(this,"gus06.data.viewer.class1.introspector.listrenderer.repaintlabel");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		methodViewer = Outside.service(this,"*gus06.data.viewer.method");
 		fieldViewer = Outside.service(this,"*gus06.data.viewer.field");
 		

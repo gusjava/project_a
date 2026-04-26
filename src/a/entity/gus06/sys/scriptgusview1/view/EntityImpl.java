@@ -38,7 +38,7 @@ public class EntityImpl implements Entity, ActionListener, I, P, G, R, E, Runnab
 	public EntityImpl() throws Exception
 	{
 		viewer = Outside.service(this,"*gus06.data.viewer.string");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		console = Outside.service(this,"*gus06.sys.scriptgusview1.view.console");
 		putAction = Outside.service(this,"gus06.swing.textcomp.cust.putaction");
 		executeAfter = Outside.service(this,"gus06.thread.start.executeafter");

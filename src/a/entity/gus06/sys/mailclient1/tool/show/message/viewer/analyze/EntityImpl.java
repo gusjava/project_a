@@ -24,7 +24,7 @@ public class EntityImpl implements Entity, I, P {
 	public EntityImpl() throws Exception
 	{
 		viewBuilder = Outside.service(this,"gus06.sys.mailclient1.tool.mimecontent.viewbuilder");
-		shiftPanel = Outside.service(this,"gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"gus.x.swing.panel.shiftpanel");
 		
 		label = new JLabel(" ");
 		

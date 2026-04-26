@@ -31,7 +31,7 @@ public class EntityImpl implements Entity, I, P, PropertyChangeListener {
 
 	public EntityImpl() throws Exception
 	{
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 	}
 	
 	

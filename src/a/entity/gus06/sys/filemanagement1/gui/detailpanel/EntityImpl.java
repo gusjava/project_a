@@ -39,7 +39,7 @@ public class EntityImpl implements Entity, I, P {
 	{
 		titleLabel = Outside.service(this,"*gus06.sys.filemanagement1.gui.detailpanel.titlelabel");
 		formatProp = Outside.service(this,"gus06.sys.filemanagement1.tool.prop.format.map");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		
 		guiFile = Outside.service(this,"*gus06.sys.filemanagement1.gui.detailpanel.file");
 		guiDir = Outside.service(this,"*gus06.sys.filemanagement1.gui.detailpanel.dir");

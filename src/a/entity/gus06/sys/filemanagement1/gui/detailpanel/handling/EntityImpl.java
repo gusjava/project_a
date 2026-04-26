@@ -26,7 +26,7 @@ public class EntityImpl extends S1 implements Entity, I, P {
 	{
 		summaryFile = Outside.service(this,"*gus06.sys.filemanagement1.gui.detailpanel.file.handling");
 		summaryDir = Outside.service(this,"*gus06.sys.filemanagement1.gui.detailpanel.dir.handling");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		
 		summaryFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)

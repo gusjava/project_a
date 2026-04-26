@@ -30,7 +30,7 @@ public class EntityImpl implements Entity, V, I {
 	public EntityImpl() throws Exception
 	{
 		manager = Outside.service(this,"*gus06.sys.tuto1.manager");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		
 		button_next = new JButton("Next");
 		button_next.addActionListener(new ActionListener(){

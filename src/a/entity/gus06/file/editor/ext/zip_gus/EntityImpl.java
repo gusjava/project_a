@@ -27,7 +27,7 @@ public class EntityImpl implements Entity, I, P, G {
 
 	public EntityImpl() throws Exception
 	{
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		buildZipFile = Outside.service(this,"gus06.file.zip.build.zipfile");
 		isToString = Outside.service(this,"gus06.io.transfer.tostring.autodetect");
 		executeScript = Outside.service(this,"gus06.sys.script1.build2.g");

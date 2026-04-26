@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, I, P {
 	public EntityImpl() throws Exception
 	{
 		buildSupport = Outside.service(this,"gus06.map.build.supportmap");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		gui1 = Outside.service(this,"*gus06.map.string.editor1.gui1");
 		gui2 = Outside.service(this,"*gus06.map.string.editor1.gui2");
 		

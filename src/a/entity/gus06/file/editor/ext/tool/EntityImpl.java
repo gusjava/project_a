@@ -41,7 +41,7 @@ public class EntityImpl implements Entity, I, P, G, ActionListener {
 		readFile = Outside.service(this,"gus.x.file.prop.read");
 		writeFile = Outside.service(this,"gus06.file.write.properties");
 		tabHolder = Outside.service(this,"*gus06.swing.tabbedpane.holder1");
-		shift = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shift = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		
 		gui1 = Outside.service(this,"*gus06.sys.filetool.main.gui");
 		gui2 = Outside.service(this,"*gus06.map.string.editor1");

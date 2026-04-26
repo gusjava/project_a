@@ -32,7 +32,7 @@ public class EntityImpl implements Entity, ActionListener, I, P, G {
 		mainEditor = Outside.service(this,"*gus06.file.editor.main");
 		fieldActions = Outside.service(this,"gus06.swing.textfield.cust.actions1");
 		fileProvider = Outside.service(this,"m102.r.fileprovider");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		
 		field = new JTextField();
 		field.addActionListener(this);

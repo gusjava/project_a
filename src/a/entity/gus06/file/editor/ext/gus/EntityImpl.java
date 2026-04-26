@@ -40,7 +40,7 @@ public class EntityImpl implements Entity, ActionListener, I, P, G, R, V, E, Run
 	public EntityImpl() throws Exception
 	{
 		txtEditor = Outside.service(this,"*gus06.file.editor.ext.txt");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		console = Outside.service(this,"*gus06.file.editor.ext.gus.console");
 		putAction = Outside.service(this,"gus06.swing.textcomp.cust.putaction");
 		autoCompleteOP = Outside.service(this,"gus06.swing.textcomp.cust.action.f2.gusscript.autocomplete.op");

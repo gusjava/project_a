@@ -45,7 +45,7 @@ public class EntityImpl implements Entity, I, P {
 	{
 		executeScript = Outside.service(this,"gus06.sys.script1.build2.g");
 		exceptionViewer = Outside.service(this,"*gus06.data.viewer.exception");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		repaintLabel = Outside.service(this,"gus06.swing.label.cust2.display2");
 		buildLabel = Outside.service(this,"gus06.swing.label.build.titlelabel1");
 		formatData = Outside.service(this,"gus06.string.transform.line.rm.c0.tab");

@@ -28,7 +28,7 @@ public class EntityImpl implements Entity, I, P {
 		editorSqlite = Outside.service(this,"*gus06.file.editor.ext.sqlite");
 		editorH2 = Outside.service(this,"*gus06.file.editor.ext.db.h2");
 		editorH2Trace = Outside.service(this,"*gus06.file.editor.ext.db.h2trace");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 	}
 	
 	

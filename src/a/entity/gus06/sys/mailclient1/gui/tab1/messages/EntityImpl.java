@@ -31,7 +31,7 @@ public class EntityImpl extends S1 implements Entity, ActionListener, I, P, G, V
 	public EntityImpl() throws Exception
 	{
 		tableHolder = Outside.service(this,"*gus06.sys.mailclient1.gui.tab1.messages.table");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		
 		label = new JLabel(" ");
 		label.setBorder(BorderFactory.createRaisedBevelBorder());

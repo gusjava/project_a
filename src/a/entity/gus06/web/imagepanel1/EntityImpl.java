@@ -32,7 +32,7 @@ public class EntityImpl implements Entity, I, P, G, ActionListener {
 	
 	public EntityImpl() throws Exception
 	{
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		screen = Outside.service(this,"*gus06.swing.panel.screen.image");
 		
 		buildWaitPanel = Outside.service(this,"gus06.swing.panel.build.waitpanel1");

@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, I, P, G {
 
 	public EntityImpl() throws Exception
 	{
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		imagePanel = Outside.service(this,"*gus06.web.imagepanel1");
 		webPanel = Outside.service(this,"*gus06.web.webpanel1");
 		isImage = Outside.service(this,"gus06.url.isimage");

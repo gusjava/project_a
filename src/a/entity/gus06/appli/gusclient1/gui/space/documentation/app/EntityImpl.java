@@ -41,7 +41,7 @@ public class EntityImpl implements Entity, I, ListSelectionListener {
 	public EntityImpl() throws Exception
 	{
 		listRenderer = Outside.service(this,"gus06.swing.list.cust.renderer.display");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		splitCust = Outside.service(this,"gus06.swing.splitpane.cust.cust1");
 		
 		gui_framework = Outside.service(this,"*gus06.appli.gusclient1.gui.appdoc.framework");

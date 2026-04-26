@@ -51,7 +51,7 @@ public class EntityImpl implements Entity, I, P {
 	{
 		readProp = Outside.service(this,"gus.x.file.prop.read");
 		writeProp = Outside.service(this,"gus06.file.write.properties");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		mapEditor = Outside.service(this,"*gus06.map.string.editor1");
 		askPwd = Outside.service(this,"gus06.security.askinfo.password1");
 		askPwdLogin = Outside.service(this,"gus06.security.askinfo.loginpassword1");

@@ -38,7 +38,7 @@ public class EntityImpl extends S1 implements Entity, I, P, R, G, E {
 	{
 		fileLabel = Outside.service(this,"*gus06.swing.label.hold.file.v");
 		fileToName = Outside.service(this,"gus06.file.editor.main.filetoname");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		barPanel = Outside.service(this,"*gus06.file.editor.main.barpanel");
 		tipAction = Outside.service(this,"*gus06.app.execute.help.tipaction");
 		buildBar = Outside.service(this,"gus06.swing.toolbar.toolbar1");

@@ -145,7 +145,7 @@ public class EntityImpl implements Entity, T {
 		departementsFr = Outside.service(this,"gus06.data.geo.france.department");
 		mp3Button = Outside.service(this,"factory#gus06.io.inputstream.mp3.play.button");
 		wavButton = Outside.service(this,"factory#gus06.io.inputstream.wav.play.button");
-		shiftPanel = Outside.service(this,"factory#gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"factory#gus.x.swing.panel.shiftpanel");
 		redmineWeb = Outside.service(this,"gus06.web.redmine.urltotext");
 		learning1 = Outside.service(this,"gus06.sys.learning1.engine");
 		chessGame = Outside.service(this,"factory#gus06.sys.chessgame1.gui.game");

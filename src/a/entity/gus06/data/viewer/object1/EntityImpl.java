@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, I, P, G {
 	public EntityImpl() throws Exception
 	{
 		viewerBuilder = Outside.service(this,"*gus06.data.viewer.object.builder.async");
-		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shiftPanel = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 	}
 	
 	

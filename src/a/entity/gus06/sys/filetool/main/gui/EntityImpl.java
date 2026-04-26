@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, I, P {
 
 	public EntityImpl() throws Exception
 	{
-		shift = Outside.service(this,"*gus06.swing.panel.shiftpanel");
+		shift = Outside.service(this,"*gus.x.swing.panel.shiftpanel");
 		mapToName = Outside.service(this,"gus06.sys.filetool.main.maptoname");
 		uniqueEntity = Outside.service(this,"entityunique");
 		exceptionViewer = Outside.service(this,"*gus06.data.viewer.exception");
