@@ -13,7 +13,6 @@ public class EntityImpl implements Entity, P, F {
 
 	public static final String TITLE = "Entity duplication";
 	public static final String MESSAGE = "Please, enter entity's new name:";
-	public static final String MESSAGE_ERR = "Entity duplication has been aborted";
 
 	private Service perform;
 
@@ -40,9 +39,10 @@ public class EntityImpl implements Entity, P, F {
 		if (newName == null || newName.trim().equals("") || newName.equals(oldName))
 			return false;
 
-		boolean done = perform.f(new Object[] { engine1, oldName, newName });
-		if (!done) {
-			JOptionPane.showMessageDialog(window, MESSAGE_ERR, TITLE, JOptionPane.PLAIN_MESSAGE);
+		String errMsg = (String) perform.t(new Object[] { engine1, oldName, newName });
+		if (errMsg!=null)
+		{
+			JOptionPane.showMessageDialog(window, errMsg, TITLE, JOptionPane.PLAIN_MESSAGE);
 			return false;
 		}
 		return true;

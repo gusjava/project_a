@@ -3,7 +3,7 @@ package a.entity.gus.y.entitysys1.perform.entity.duplicate;
 import java.io.File;
 import a.framework.*;
 
-public class EntityImpl implements Entity, P, F {
+public class EntityImpl implements Entity, P, F, T {
 	public String creationDate() {return "20240116";}
 	
 	public static final String ENTITY_FILENAME = "EntityImpl.java";
@@ -30,9 +30,12 @@ public class EntityImpl implements Entity, P, F {
 	}
 
 	public void p(Object obj) throws Exception
-	{f(obj);}
+	{t(obj);}
 
 	public boolean f(Object obj) throws Exception
+	{return t(obj)!=null;}
+		
+	public Object t(Object obj) throws Exception
 	{
 		Object[] o = (Object[]) obj;
 		if (o.length != 3) throw new Exception("Wrong data number: " + o.length);
@@ -45,12 +48,13 @@ public class EntityImpl implements Entity, P, F {
 		String devId = (String) ((R) engine).r("devId");
 
 		name1 = (String) completeName.t(new Object[]{devId, name1});
-		if (!validate.f(name1)) return false;
+		if (!validate.f(name1)) return "Invalid entity name: "+name1;
 
 		File packageDir0 = (File) findPackageDir.t(new Object[] { rootDir, name0 });
 		File packageDir1 = (File) findPackageDir.t(new Object[] { rootDir, name1 });
+		File entityFile1 = new File(packageDir1, ENTITY_FILENAME);
 
-		if (new File(packageDir1, ENTITY_FILENAME).exists()) return false;
+		if (entityFile1.exists()) return entityFile1+" already exists";
 
 		File[] javaFiles0 = (File[]) findJavaFiles.t(packageDir0);
 
@@ -65,7 +69,7 @@ public class EntityImpl implements Entity, P, F {
 		}
 
 		((V) engine).v("entityDuplicated", new String[] { name0, name1 });
-		return true;
+		return null;
 	}
 
 	private void transfer(File f0, File f1, String name0, String name1) throws Exception

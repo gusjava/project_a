@@ -7,23 +7,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-
-import a.framework.Entity;
-import a.framework.F;
-import a.framework.Outside;
-import a.framework.P;
-import a.framework.R;
-import a.framework.Service;
+import a.framework.*;
 
 public class EntityImpl implements Entity, P, F {
 	public String creationDate() {return "20240116";}
 
 	public static final String TITLE = "Entity rename";
 	public static final String MESSAGE = "Please, enter entity's new name:";
-	public static final String MESSAGE_ERR = "Entity rename has been aborted";
 
 	public static final String TITLE_DEPENDENCIES = "Entity's dependencies";
 
@@ -76,10 +68,10 @@ public class EntityImpl implements Entity, P, F {
 
 		// rename entity
 
-		boolean done = perform.f(new Object[] { engine, oldName, newName, refactor });
-		if (!done)
+		String errMsg = (String) perform.t(new Object[] { engine, oldName, newName, refactor });
+		if (errMsg!=null)
 		{
-			JOptionPane.showMessageDialog(window, MESSAGE_ERR, TITLE, JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(window, errMsg, TITLE, JOptionPane.PLAIN_MESSAGE);
 			return false;
 		}
 		return true;

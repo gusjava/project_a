@@ -3,11 +3,12 @@ package a.entity.gus.y.entitysys1.perform.entity.rename;
 import java.io.File;
 import java.io.PrintStream;
 import java.nio.file.Files;
-
 import a.framework.*;
 
-public class EntityImpl implements Entity, P, F {
+public class EntityImpl implements Entity, P, F, T {
 	public String creationDate() {return "20240116";}
+	
+	public static final String ENTITY_FILENAME = "EntityImpl.java";
 
 	private Service logger;
 	private Service findPackageDir;
@@ -31,11 +32,12 @@ public class EntityImpl implements Entity, P, F {
 	}
 
 	public void p(Object obj) throws Exception
-	{
-		f(obj);
-	}
+	{t(obj);}
 
 	public boolean f(Object obj) throws Exception
+	{return t(obj)!=null;}
+		
+	public Object t(Object obj) throws Exception
 	{
 		Object[] o = (Object[]) obj;
 		if (o.length != 4) throw new Exception("Wrong data number: " + o.length);
@@ -50,13 +52,13 @@ public class EntityImpl implements Entity, P, F {
 		
 		if(!hasRights.f(new Object[]{devId, name0})) return false;
 		if(!hasRights.f(new Object[]{devId, name1})) return false;
-		if (!validate.f(name1)) return false;
+		if (!validate.f(name1)) return "Invalid entity name: "+name1;
 
 		File packageDir0 = (File) findPackageDir.t(new Object[] { rootDir, name0 });
 		File packageDir1 = (File) findPackageDir.t(new Object[] { rootDir, name1 });
+		File entityFile1 = new File(packageDir1, ENTITY_FILENAME);
 
-		if (new File(packageDir1, "EntityImpl.java").exists())
-			return false;
+		if (entityFile1.exists()) return entityFile1+" already exists";
 
 		File[] javaFiles0 = (File[]) findJavaFiles.t(packageDir0);
 		log("Renaming entity " + name0 + " into " + name1);
@@ -90,7 +92,7 @@ public class EntityImpl implements Entity, P, F {
 		if (refactor) refactorLinks.p(new Object[] { engine, name0, name1 });
 		((V) engine).v("entityRenamed", new String[] { name0, name1 });
 
-		return true;
+		return null;
 	}
 
 	private void transfer(File f0, File f1, String name0, String name1) throws Exception

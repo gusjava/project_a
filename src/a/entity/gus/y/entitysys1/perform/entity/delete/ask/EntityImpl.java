@@ -59,16 +59,23 @@ public class EntityImpl implements Entity, P, F {
 			String message = "The entity " + entityName + " is used by " + downLinks.size() + " other entities:\n"
 					+ toString(downLinks) + "\nAre you really sure you want to delete this entity ?";
 			int r = JOptionPane.showConfirmDialog(window, message, TITLE_DEPENDENCIES, JOptionPane.YES_NO_OPTION);
-			if (r != JOptionPane.YES_OPTION)
-				return false;
+			if (r != JOptionPane.YES_OPTION) return false;
 		}
 
 		// delete entity
 
-		return perform.f(new Object[] { engine, entityName });
+		String errMsg = (String) perform.t(new Object[] { engine, entityName });
+		if(errMsg!=null)
+		{
+			JOptionPane.showMessageDialog(window, errMsg, TITLE, JOptionPane.PLAIN_MESSAGE);
+			return false;
+		}
+		
+		return true;
 	}
 
-	private String toString(Set links) {
+	private String toString(Set links)
+	{
 		StringBuffer b = new StringBuffer();
 		List list = new ArrayList(links);
 		Collections.sort(list);

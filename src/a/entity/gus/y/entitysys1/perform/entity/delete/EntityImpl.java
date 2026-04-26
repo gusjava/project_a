@@ -5,7 +5,7 @@ import java.nio.file.Files;
 
 import a.framework.*;
 
-public class EntityImpl implements Entity, P, F {
+public class EntityImpl implements Entity, P, F, T {
 	public String creationDate() {return "20240116";}
 
 	private Service logger;
@@ -27,6 +27,9 @@ public class EntityImpl implements Entity, P, F {
 	{f(obj);}
 
 	public boolean f(Object obj) throws Exception
+	{return t(obj)!=null;}
+	
+	public Object t(Object obj) throws Exception
 	{
 		Object[] o = (Object[]) obj;
 		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
@@ -37,40 +40,46 @@ public class EntityImpl implements Entity, P, F {
 		File rootDir = (File) ((R) engine).r("rootDir");
 		String devId = (String) ((R) engine).r("devId");
 		
-		if(!hasRights.f(new Object[]{devId, entityName})) return false;
+		if(!hasRights.f(new Object[]{devId, entityName}))
+			return "Dev "+devId+" is not allowed to delete entity "+entityName;
 
 		File packageDir = (File) findPackageDir.t(new Object[] { rootDir, entityName });
-		if (!packageDir.isDirectory()) return false;
+		if (!packageDir.isDirectory())
+			return "Package dir already exists: "+packageDir;
 
 		File[] javaFiles = (File[]) findJavaFiles.t(packageDir);
-		if (javaFiles == null || javaFiles.length == 0) return false;
+		if (javaFiles == null || javaFiles.length == 0)
+			return "Not java file found inside package dir: "+packageDir;
 
 		log("Deleting entity " + entityName);
 
-		for (File javaFile : javaFiles) {
-			Files.deleteIfExists(javaFile.toPath());
-		}
+		for (File javaFile : javaFiles) 
+		Files.deleteIfExists(javaFile.toPath());
+		
 		cleanDir(packageDir);
 		
 		// clean entity package inside bin
 		
 		File binDir = new File(rootDir.getParentFile(), "bin");
 		File binPackageDir = (File) findPackageDir.t(new Object[] { binDir, entityName });
-		if (binPackageDir.isDirectory()) {
+		
+		if (binPackageDir.isDirectory())
+		{
 			File[] classFiles = (File[]) findClassFiles.t(binPackageDir);
 			if (classFiles != null)
-				for (File classFile : classFiles) {
-					Files.deleteIfExists(classFile.toPath());
-				}
+				for (File classFile : classFiles) 
+				Files.deleteIfExists(classFile.toPath());
 			cleanDir(binPackageDir);
 		}
 		
 		((V) engine).v("entityDeleted", entityName);
-		return true;
+		return null;
 	}
 
-	private void cleanDir(File dir) throws Exception {
-		while (dir != null && dir.isDirectory() && dir.list() != null && dir.list().length == 0) {
+	private void cleanDir(File dir) throws Exception
+	{
+		while (dir != null && dir.isDirectory() && dir.list() != null && dir.list().length == 0)
+		{
 			Files.deleteIfExists(dir.toPath());
 			dir = dir.getParentFile();
 		}
@@ -80,7 +89,6 @@ public class EntityImpl implements Entity, P, F {
 	 * LOGGER
 	 */
 	
-	private void log(String msg) throws Exception {
-		logger.p(new Object[] {this, msg});
-	}
+	private void log(String msg) throws Exception
+	{logger.p(new Object[] {this, msg});}
 }

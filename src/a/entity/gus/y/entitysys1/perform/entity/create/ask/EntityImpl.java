@@ -34,22 +34,20 @@ public class EntityImpl implements Entity, P, F {
 		Object[] o = (Object[]) obj;
 		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
-		Object engine1 = o[0];
+		Object engine = o[0];
 		Object anchor = o[1];
 
 		Window window = SwingUtilities.getWindowAncestor((Component) anchor);
 		String rule = (String) JOptionPane.showInputDialog(window, MESSAGE, TITLE, JOptionPane.PLAIN_MESSAGE);
 		if (rule == null || rule.trim().equals("")) return false;
 
-		try
+		String errMsg = (String) perform.t(new Object[] { engine, rule });
+		if(errMsg!=null)
 		{
-			perform.f(new Object[] { engine1, rule });
-		}
-		catch (Exception e)
-		{
-			JOptionPane.showMessageDialog(window, e.getMessage(), TITLE, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(window, errMsg, TITLE, JOptionPane.PLAIN_MESSAGE);
 			return false;
 		}
+			
 		return true;
 	}
 }
