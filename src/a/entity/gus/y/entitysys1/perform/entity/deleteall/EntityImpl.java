@@ -68,8 +68,8 @@ public class EntityImpl implements Entity, F, P {
 				
 				cleanDir(binPackageDir);
 			}
-			((V) engine).v("entityDeleted", entityName);
 		}
+		((V) engine).v("entitiesDeleted", entityNames);
 		return true;
 	}
 

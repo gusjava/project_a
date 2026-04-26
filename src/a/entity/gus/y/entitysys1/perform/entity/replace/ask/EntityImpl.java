@@ -52,23 +52,18 @@ public class EntityImpl implements Entity, P, F {
 
 		Connection cx = (Connection) ((R) engine).r("cx");
 		Set downLinks = (Set) findDownLinks.t(new Object[] { cx, oldName });
-		boolean refactor = false;
 
 		if (!downLinks.isEmpty())
 		{
 			String message = "The entity " + oldName + " is used by " + downLinks.size() + " other entities:\n"
-					+ toString(downLinks) + "\nWould you like to update these links with the new name ?";
-			int r = JOptionPane.showConfirmDialog(window, message, TITLE_DEPENDENCIES,
-					JOptionPane.YES_NO_CANCEL_OPTION);
-			if (r == JOptionPane.CANCEL_OPTION)
-				return false;
-
-			refactor = r == JOptionPane.YES_OPTION;
+					+ toString(downLinks) + "\nThese links will be updated with the new name. Proceed ?";
+			int r = JOptionPane.showConfirmDialog(window, message, TITLE_DEPENDENCIES,JOptionPane.YES_NO_OPTION);
+			if (r == JOptionPane.NO_OPTION) return false;
 		}
 
 		// replace entity
 
-		String errMsg = (String) perform.t(new Object[] { engine, oldName, newName, refactor });
+		String errMsg = (String) perform.t(new Object[] { engine, oldName, newName });
 		if (errMsg!=null)
 		{
 			JOptionPane.showMessageDialog(window, errMsg, TITLE, JOptionPane.PLAIN_MESSAGE);

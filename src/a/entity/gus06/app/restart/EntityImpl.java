@@ -7,9 +7,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class EntityImpl implements Entity, P, E {
-
 	public String creationDate() {return "20140705";}
-
 
 	private Service appLocation;
 	private Service getClasspath;
@@ -26,10 +24,8 @@ public class EntityImpl implements Entity, P, E {
 		exit         = Outside.service(this, "gus.y.app1.execute.exit");
 	}
 
-
 	public void e() throws Exception
 	{p(null);}
-
 
 	public void p(Object obj) throws Exception
 	{
@@ -38,7 +34,6 @@ public class EntityImpl implements Entity, P, E {
 		else if(obj instanceof Map) handleMap((Map) obj);
 		else throw new Exception("Invalid data type: "+obj.getClass().getName());
 	}
-
 
 	private void handleNull() throws Exception
 	{

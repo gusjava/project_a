@@ -12,11 +12,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import java.util.List;
 import javax.swing.JButton;
+import java.util.ArrayList;
 import a.framework.*;
 
 public class EntityImpl implements Entity, P, I, ActionListener {
 	public String creationDate() {return "20260425";}
 
+	private Service replaceAll;
 	private Service toString;
 
 	private JPanel panel;
@@ -27,6 +29,7 @@ public class EntityImpl implements Entity, P, I, ActionListener {
 
 	public EntityImpl() throws Exception
 	{
+		replaceAll = Outside.service(this,"gus.y.entitysys1.perform.entity.replaceall");
 		toString = Outside.service(this, "gus.x.tostring.list");
 
 		area = new JTextArea();
@@ -98,7 +101,10 @@ public class EntityImpl implements Entity, P, I, ActionListener {
 	{
 		try
 		{
+			List names = new ArrayList((List) ((R) data).r("same"));
+			names.add(((R) data).r("entityName"));
 			
+			replaceAll.p(names);
 		}
 		catch(Exception e)
 		{Outside.err(this,"replaceAllByCurrent()",e);}
