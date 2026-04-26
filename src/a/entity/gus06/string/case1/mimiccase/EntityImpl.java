@@ -24,7 +24,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		toLower = Outside.service(this,"gus06.string.transform.str.lower");
-		toUpper = Outside.service(this,"gus06.string.transform.str.upper");
+		toUpper = Outside.service(this,"gus.x.transform.string.case1.uppercase");
 		toCamelCase = Outside.service(this,"gus06.string.case1.to.camelcase");
 		toPascalCase = Outside.service(this,"gus06.string.case1.to.pascalcase");
 		toUpperSnakeCase = Outside.service(this,"gus06.string.case1.to.upper.snakecase");

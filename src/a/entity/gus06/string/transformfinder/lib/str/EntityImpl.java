@@ -38,7 +38,7 @@ public class EntityImpl implements Entity, T, G {
 		put("trimnw",Outside.service(this,"gus06.string.transform.str.trim.ifnotwhite"));
 		put("trimw",Outside.service(this,"gus06.string.transform.str.trim.ifwhite"));
 		put("triple",Outside.service(this,"gus06.string.transform.str.triple"));
-		put("upper",Outside.service(this,"gus06.string.transform.str.upper"));
+		put("upper",Outside.service(this,"gus.x.transform.string.case1.uppercase"));
 		put("whiten",Outside.service(this,"gus06.string.transform.str.whiten"));
 	}
 	
