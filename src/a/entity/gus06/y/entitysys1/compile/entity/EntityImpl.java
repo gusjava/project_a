@@ -43,7 +43,7 @@ public class EntityImpl implements Entity, P, F {
 	{
 		findEntityPackageDir = Outside.service(this, "gus06.x.entity.src.find.packagedir");
 		findFrameworkPackageDir = Outside.service(this, "gus06.x.framework.src.find.packagedir");
-		listingJava = Outside.service(this, "gus06.x.dir.listing0.files.java");
+		listingJava = Outside.service(this, "gus.x.dir.listing0.files.java");
 		listingClass = Outside.service(this, "gus06.x.dir.listing0.files.class1");
 		findJavac = Outside.service(this, "gus06.x.jdkdir.find.javac");
 		

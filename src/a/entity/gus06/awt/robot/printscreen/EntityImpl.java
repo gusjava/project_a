@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, G, T {
 
 	public EntityImpl() throws Exception
 	{
-		findScreenRect = Outside.service(this,"gus06.awt.screen.rect");
+		findScreenRect = Outside.service(this,"gus.x.awt.screen.rect");
 		screenRect = (Rectangle) findScreenRect.g();
 		robot = new Robot();
 	}

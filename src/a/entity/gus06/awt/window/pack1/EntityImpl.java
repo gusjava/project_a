@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		getScreenRect = Outside.service(this,"gus06.awt.screen.rect");
+		getScreenRect = Outside.service(this,"gus.x.awt.screen.rect");
 		screenRect = (Rectangle) getScreenRect.g();
 	}
 	

@@ -19,7 +19,7 @@ public class EntityImpl extends S1 implements Entity, E {
 	public EntityImpl() throws Exception
 	{
 		show = Outside.service(this,"gus06.swing.frame.show2");
-		build = Outside.service(this,"factory#gus.sys.filetool.ext.appmonitoring1.holder");
+		build = Outside.service(this,"factory#gus06.sys.filetool.ext.appmonitoring1.holder");
 	}
 	
 	

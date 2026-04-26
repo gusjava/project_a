@@ -54,7 +54,7 @@ public class EntityImpl implements Entity, G, MouseListener, MouseMotionListener
 
 	public EntityImpl() throws Exception
 	{
-		getScreenRect = Outside.service(this,"gus06.awt.screen.rect");
+		getScreenRect = Outside.service(this,"gus.x.awt.screen.rect");
 		autoFront = Outside.service(this,"gus06.awt.window.autofront");
 		controlMouse = Outside.service(this,"gus06.mouse.control.withkeys");
 		
