@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		findSize = Outside.service(this,"gus06.find.size");
+		findSize = Outside.service(this,"gus.x.find.size");
 		find = Outside.service(this,"gus06.list.ruletoindex.find");
 	}
 	
