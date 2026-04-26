@@ -27,7 +27,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		getBase = Outside.service(this,"gus06.url.getbase");
+		getBase = Outside.service(this,"gus.x.url.getbase");
 	}
 	
 	public Object t(Object obj) throws Exception
