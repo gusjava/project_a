@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P {
 	{
 		info = Outside.service(this,"gus06.swing.optionpane.showmessage.info");
 		waitWritten = Outside.service(this,"gus06.file.tool.waituntil.written");
-		clipboard = Outside.service(this,"gus06.clipboard.access.listfiles");
+		clipboard = Outside.service(this,"gus.y.clipboard1.files");
 	}
 
 	

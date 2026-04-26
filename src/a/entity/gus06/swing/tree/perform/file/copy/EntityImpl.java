@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		copyFiles = Outside.service(this,"gus06.clipboard.access.listfiles");
+		copyFiles = Outside.service(this,"gus.y.clipboard1.files");
 		selectionToList = Outside.service(this,"gus06.swing.tree.selection.tofileslist");
 	}
 	

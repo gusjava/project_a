@@ -53,7 +53,7 @@ public class EntityImpl implements Entity, I, P {
 		editor1 = Outside.service(this,"*gus06.file.editor.main2-1");
 		editor2 = Outside.service(this,"*gus06.file.editor.main2-2");
 		onKey = Outside.service(this,"gus06.swing.comp.cust3.on.keypressed.with.execute");
-		clipboard = Outside.service(this,"gus06.clipboard.access.listfiles");
+		clipboard = Outside.service(this,"gus.y.clipboard1.files");
 		listToString = Outside.service(this,"gus06.tostring.list.join.semicolon");
 		stringToList = Outside.service(this,"gus06.string.split.delim.semicolon.list");
 		

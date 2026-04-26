@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		fromClipboard = Outside.service(this,"gus06.clipboard.access.listfiles");
+		fromClipboard = Outside.service(this,"gus.y.clipboard1.files");
 		moveFile = Outside.service(this,"gus06.dir.perform.movefile");
 	}
 

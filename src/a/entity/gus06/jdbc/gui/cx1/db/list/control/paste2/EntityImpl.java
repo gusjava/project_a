@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, P, F {
 	{
 		dialog = Outside.service(this,"gus06.input.confirm.dialog");
 		warning = Outside.service(this,"gus06.swing.optionpane.showmessage.warning");
-		clipboard = Outside.service(this,"gus06.clipboard.access.listfiles");
+		clipboard = Outside.service(this,"gus.y.clipboard1.files");
 		recreateDb = Outside.service(this,"gus06.jdbc.mysql.perform.db.recreate");
 		getName0 = Outside.service(this,"gus06.file.getname0");
 		hasTables = Outside.service(this,"gus06.jdbc.mysql.perform.counttable.bydb.selection.has");

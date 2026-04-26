@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		fromClipboard = Outside.service(this,"gus06.clipboard.access.listfiles");
+		fromClipboard = Outside.service(this,"gus.y.clipboard1.files");
 		buildListing = Outside.service(this,"gus06.dir.listing.dir1tofiles");
 		relPathMap = Outside.service(this,"gus06.dir.listing.dirtomap.relpath_file");
 		move = Outside.service(this,"gus06.file.op.move.autorename");

@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, P {
 	{
 		inputDialog = Outside.service(this,"gus06.input.text.dialog");
 		buildListing = Outside.service(this,"gus06.dir.listing0.ext2");
-		toClipboard = Outside.service(this,"gus06.clipboard.access.listfiles");
+		toClipboard = Outside.service(this,"gus.y.clipboard1.files");
 	}
 	
 	public void p(Object obj) throws Exception

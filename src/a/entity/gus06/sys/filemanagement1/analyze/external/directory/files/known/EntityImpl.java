@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		clipboard = Outside.service(this,"gus06.clipboard.access.listfiles");
+		clipboard = Outside.service(this,"gus.y.clipboard1.files");
 		dirToMd5Map = Outside.service(this,"gus06.dir.listing.dir1tomap.md5_files");
 		buildFileMap = Outside.service(this,"gus06.sys.filemanagement1.tool.scan.filemap.latest");
 		walkThrough = Outside.service(this,"gus06.sys.filemanagement1.tool.scan.filemap.walkthrough");

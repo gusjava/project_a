@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		perform = Outside.service(this,"gus06.clipboard.access.listfiles");
+		perform = Outside.service(this,"gus.y.clipboard1.files");
 		compare = Outside.service(this,"gus06.clipboard.data.compare");
 	}
 

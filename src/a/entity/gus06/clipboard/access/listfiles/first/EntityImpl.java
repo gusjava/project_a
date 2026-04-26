@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, G {
 	
 	
 	public EntityImpl() throws Exception
-	{clipboard = Outside.service(this,"gus06.clipboard.access.listfiles");}
+	{clipboard = Outside.service(this,"gus.y.clipboard1.files");}
 
 
 	public Object g() throws Exception

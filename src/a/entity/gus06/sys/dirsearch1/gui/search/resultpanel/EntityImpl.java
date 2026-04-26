@@ -102,7 +102,7 @@ public class EntityImpl extends S1 implements Entity, ActionListener, MouseListe
 		findIcon = Outside.service(this,"gus06.file.icon.t1");
 		executeDelayed = Outside.service(this,"gus06.time.execute.delayed.ms100.thr");
 		tableTooltip = Outside.service(this,"gus06.swing.table.cust.tooltip2");
-		clipboard = Outside.service(this,"gus06.clipboard.access.listfiles");
+		clipboard = Outside.service(this,"gus.y.clipboard1.files");
 		buildAction = Outside.service(this,"gus06.swing.action.builder1");
 		toolbar = Outside.service(this,"gus06.swing.toolbar.toolbar1");
 		

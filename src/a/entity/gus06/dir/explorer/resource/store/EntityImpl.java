@@ -54,7 +54,7 @@ public class EntityImpl implements Entity, I, P, ListSelectionListener {
 		rename = Outside.service(this,"gus06.file.perform.rename.ask");
 		duplicate = Outside.service(this,"gus06.file.perform.duplicate.ask");
 		paste = Outside.service(this,"gus06.dir.perform.copyfiles.fromclipboard");
-		copy = Outside.service(this,"gus06.clipboard.access.listfiles");
+		copy = Outside.service(this,"gus.y.clipboard1.files");
 	
 		list = (JList) buildJList.t(ICONID);
 		clearCPC.p(list);

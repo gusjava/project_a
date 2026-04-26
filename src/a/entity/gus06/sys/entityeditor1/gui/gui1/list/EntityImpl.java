@@ -114,7 +114,7 @@ public class EntityImpl extends S1 implements Entity, I, V, G {
 		clearCopyPasteCut = Outside.service(this, "gus.x.swing.comp.action.clear.copypastecut");
 		buildSelectionSup = Outside.service(this, "gus06.x.swing.table.selection.buildsupport.multi");
 		buildAction = Outside.service(this, "gus.y.swing1.action.builder1");
-		clipboard = Outside.service(this,"gus06.x.clipboard.string");
+		clipboard = Outside.service(this,"gus.x.clipboard.string");
 		listToString = Outside.service(this,"gus06.x.list.string.join.n");
 		listToStringHr = Outside.service(this,"gus06.x.list.string.join.hr");
 		stringToList = Outside.service(this,"gus06.x.string.split.n.list");
