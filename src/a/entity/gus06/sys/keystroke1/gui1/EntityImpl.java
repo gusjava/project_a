@@ -36,7 +36,7 @@ public class EntityImpl implements Entity, ActionListener, I {
 	public EntityImpl() throws Exception
 	{
 		manager = Outside.service(this,"gus06.sys.keystroke1.manager");
-		tableTooltip = Outside.service(this,"gus06.swing.table.cust.tooltip1");
+		tableTooltip = Outside.service(this,"gus.x.swing.table.cust.tooltip1");
 		toEntityName = Outside.service(this,"gus06.convert.classtoentityname");
 		
 		map = (Map) manager.g();

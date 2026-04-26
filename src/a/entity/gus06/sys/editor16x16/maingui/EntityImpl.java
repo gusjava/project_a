@@ -107,7 +107,7 @@ public class EntityImpl extends S1 implements Entity, I, P, G {
 		clearCopyPasteCut = Outside.service(this,"gus06.swing.comp.action.clearcopypastecut");
 		buildSelector = Outside.service(this,"gus06.swing.table.buildselector.selector1");
 		colorChooser = Outside.service(this,"gus06.awt.color.chooser.choose1");
-		tooltip = Outside.service(this,"gus06.swing.table.cust.tooltip1");
+		tooltip = Outside.service(this,"gus.x.swing.table.cust.tooltip1");
 		toRgba = Outside.service(this,"gus06.find.bufferedimage.rgba");
 		selectUp = Outside.service(this,"gus06.sys.editor16x16.select.d.up");
 		selectDown = Outside.service(this,"gus06.sys.editor16x16.select.d.down");

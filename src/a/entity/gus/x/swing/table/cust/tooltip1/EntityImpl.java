@@ -10,21 +10,25 @@ import javax.swing.table.JTableHeader;
 public class EntityImpl implements Entity, P {
 	public String creationDate() {return "20240112";}
 
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		JTable table = (JTable) obj;
 		new TooltipHandler(table);
 	}
 
-	private class TooltipHandler extends MouseMotionAdapter {
+	private class TooltipHandler extends MouseMotionAdapter
+	{
 		private JTable table;
 
-		public TooltipHandler(JTable table) {
+		public TooltipHandler(JTable table)
+		{
 			super();
 			this.table = table;
 			table.addMouseMotionListener(this);
 		}
 
-		public void mouseMoved(MouseEvent evt) {
+		public void mouseMoved(MouseEvent evt)
+		{
 			Point p = evt.getPoint();
 
 			int x = table.rowAtPoint(p);
@@ -33,24 +37,21 @@ public class EntityImpl implements Entity, P {
 			table.setToolTipText(tooltip1(x, y));
 
 			JTableHeader header = table.getTableHeader();
-			if (header != null)
-				header.setToolTipText(tooltip2(x, y));
+			if (header != null) header.setToolTipText(tooltip2(x, y));
 		}
 
-		private String tooltip1(int x, int y) {
-			if (x == -1)
-				return null;
-			if (y == -1)
-				return null;
+		private String tooltip1(int x, int y)
+		{
+			if (x == -1) return null;
+			if (y == -1) return null;
 			Object value = table.getValueAt(x, y);
 			return value != null ? value.toString() : null;
 		}
 
-		private String tooltip2(int x, int y) {
-			if (x != -1)
-				return null;
-			if (y == -1)
-				return null;
+		private String tooltip2(int x, int y)
+		{
+			if (x != -1) return null;
+			if (y == -1) return null;
 			return table.getColumnName(y);
 		}
 	}

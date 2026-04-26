@@ -34,7 +34,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		synchronizer = Outside.service(this,"gus06.swing.scrollpane.scrollsynchronizer");
-		tableTooltip = Outside.service(this,"gus06.swing.table.cust.tooltip1");
+		tableTooltip = Outside.service(this,"gus.x.swing.table.cust.tooltip1");
 		renderer = Outside.service(this,"gus06.sys.treetable1.filesize.renderer");
 	}
 	

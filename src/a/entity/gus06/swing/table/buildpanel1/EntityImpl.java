@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		labelCellPosition = Outside.service(this,"gus06.swing.table.buildlabel.cellposition");
-		tableTooltip = Outside.service(this,"gus06.swing.table.cust.tooltip1");
+		tableTooltip = Outside.service(this,"gus.x.swing.table.cust.tooltip1");
 	}
 	
 	

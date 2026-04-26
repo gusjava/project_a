@@ -42,7 +42,7 @@ public class EntityImpl implements Entity, I, P, MouseListener {
 
 	public EntityImpl() throws Exception
 	{
-		tableTooltip = Outside.service(this,"gus06.swing.table.cust.tooltip1");
+		tableTooltip = Outside.service(this,"gus.x.swing.table.cust.tooltip1");
 		
 		currentYear = PlanningTool.currentYear();
 		model = new PlanningTableModel();

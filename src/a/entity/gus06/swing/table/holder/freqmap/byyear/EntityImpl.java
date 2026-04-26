@@ -38,7 +38,7 @@ public class EntityImpl implements Entity, V, I, P {
 	public EntityImpl() throws Exception
 	{
 		tableSort = Outside.service(this,"gus06.swing.table.cust.sort1");
-		tableTooltip = Outside.service(this,"gus06.swing.table.cust.tooltip1");
+		tableTooltip = Outside.service(this,"gus.x.swing.table.cust.tooltip1");
 		tableRenderer = Outside.service(this,"gus06.swing.table.cust.renderer.freqmap");
 		rebuild = Outside.service(this,"gus06.time.timestamp.yyyy.buildrange");
 		

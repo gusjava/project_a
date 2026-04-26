@@ -57,7 +57,7 @@ public class EntityImpl extends S1 implements Entity, I, P, E, KeyListener, Mous
 	{
 		selectAllWhere = Outside.service(this,"gus06.jdbc.mysql.perform.select.all.where");
 		rsToList = Outside.service(this,"gus06.jdbc.resultset.toobjectarraylist");
-		tooltip = Outside.service(this,"gus06.swing.table.cust.tooltip1");
+		tooltip = Outside.service(this,"gus.x.swing.table.cust.tooltip1");
 		adjuster = Outside.service(this,"gus06.swing.table.cust.columnsize.adjuster");
 		findPk = Outside.service(this,"gus06.jdbc.mysql.perform.table.findprimarykeys");
 		findCx = Outside.service(this,"gus06.jdbc.connection.find");

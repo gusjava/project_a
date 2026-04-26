@@ -105,7 +105,7 @@ public class EntityImpl implements Entity, ActionListener, I, P, ListSelectionLi
 	{
 		findListing = Outside.service(this,"gus06.dir.listing0.ext.properties");
 		readProp = Outside.service(this,"gus.x.file.prop.read");
-		tooltip = Outside.service(this,"gus06.swing.table.cust.tooltip1");
+		tooltip = Outside.service(this,"gus.x.swing.table.cust.tooltip1");
 		buildButton = Outside.service(this,"gus06.swing.button.build2.execute");
 		performAdd = Outside.service(this,"gus06.sys.filemanagement1.perform.root.add");
 		performDelete = Outside.service(this,"gus06.sys.filemanagement1.perform.root.delete");
@@ -117,7 +117,7 @@ public class EntityImpl implements Entity, ActionListener, I, P, ListSelectionLi
 		buildRootNameMap = Outside.service(this,"gus06.file.roots.map.name");
 		formatSize = Outside.service(this,"gus06.string.transform.format.datasize.en");
 		formatDuration = Outside.service(this,"gus06.string.transform.format.duration.ms.en");
-		tableTooltip = Outside.service(this,"gus06.swing.table.cust.tooltip1");
+		tableTooltip = Outside.service(this,"gus.x.swing.table.cust.tooltip1");
 		executeAfter = Outside.service(this,"gus06.thread.start.executeafter");
 		keyTypedWith = Outside.service(this,"gus06.swing.comp.cust3.on.keytyped.with.execute");
 		
