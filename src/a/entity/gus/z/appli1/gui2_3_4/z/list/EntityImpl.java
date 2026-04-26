@@ -270,6 +270,10 @@ public class EntityImpl extends S1 implements Entity, G, I, ListSelectionListene
 				rebuild();
 			else if(s.equals("entityDeleted()"))
 				rebuild();
+			else if(s.equals("entitiesReplaced()"))
+				rebuild();
+			else if(s.equals("entitiesDeleted()"))
+				rebuild();
 			else if(s.equals("entityModified()"))
 				rebuild();
 		} catch (Exception e) {

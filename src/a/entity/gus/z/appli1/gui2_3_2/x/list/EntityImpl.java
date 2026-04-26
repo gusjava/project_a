@@ -335,7 +335,9 @@ public class EntityImpl extends S1 implements Entity, G, I {
 			else if (s.equals("entityRenamed()")) handleEntityRenamed();
 			else if (s.equals("entityDuplicated()")) handleEntityDuplicated();
 			else if (s.equals("entityReplaced()")) handleEntityReplaced();
+			else if (s.equals("entitiesReplaced()")) handleEntitiesReplaced();
 			else if (s.equals("entityDeleted()")) handleEntityDeleted();
+			else if (s.equals("entitiesDeleted()")) handleEntitiesDeleted();
 			else if (s.equals("entityModified()")) rebuild();
 		} catch (Exception e) {
 			Outside.err(this, "handleEngineEvent(String)", e);
@@ -366,7 +368,18 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		selectionChanged();
 	}
 
+	private void handleEntitiesReplaced() throws Exception {
+		List info = (List) engine.r("info");
+		rebuild((String) info.get(info.size()-1));
+		selectionChanged();
+	}
+
 	private void handleEntityDeleted() throws Exception {
+		rebuild(null);
+		selectionChanged();
+	}
+
+	private void handleEntitiesDeleted() throws Exception {
 		rebuild(null);
 		selectionChanged();
 	}

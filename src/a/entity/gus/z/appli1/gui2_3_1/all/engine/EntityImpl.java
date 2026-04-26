@@ -69,10 +69,21 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 				lockJustReplaced(engine.r("info"));
 				entityDuplicated();
 			}
+			else if (s.equals("entitiesReplaced()"))
+			{
+				rebuild();
+				lockJustEntitiesReplaced(engine.r("info"));
+				entitiesReplaced();
+			}
 			else if (s.equals("entityDeleted()"))
 			{
 				rebuild();
 				entityDeleted();
+			}
+			else if (s.equals("entitiesDeleted()"))
+			{
+				rebuild();
+				entitiesDeleted();
 			}
 			else if (s.equals("entityModified()"))
 			{
@@ -119,6 +130,12 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 	private void lockJustReplaced(Object info) throws Exception
 	{
 		locker.f(new Object[] {"lock", ((String[])info)[1], nameList});
+	}
+
+	private void lockJustEntitiesReplaced(Object info) throws Exception
+	{
+		List list = (List) info;
+		locker.f(new Object[] {"lock", list.get(list.size()-1), nameList});
 	}
 
 	public void e() throws Exception
@@ -189,9 +206,19 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 			engine.v("entityReplaced", obj);
 			return;
 		}
+		if (key.equals("entitiesReplaced"))
+		{
+			engine.v("entitiesReplaced", obj);
+			return;
+		}
 		if (key.equals("entityDeleted"))
 		{
 			engine.v("entityDeleted", obj);
+			return;
+		}
+		if (key.equals("entitiesDeleted"))
+		{
+			engine.v("entitiesDeleted", obj);
 			return;
 		}
 		if (key.equals("entityModified"))
@@ -264,8 +291,14 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 	private void entityReplaced()
 	{send(this, "entityReplaced()");}
 
+	private void entitiesReplaced()
+	{send(this, "entitiesReplaced()");}
+
 	private void entityDeleted()
 	{send(this, "entityDeleted()");}
+
+	private void entitiesDeleted()
+	{send(this, "entitiesDeleted()");}
 
 	private void entityModified()
 	{send(this, "entityModified()");}

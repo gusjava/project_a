@@ -101,10 +101,14 @@ public class EntityImpl implements Entity, P, I, ActionListener {
 	{
 		try
 		{
-			List names = new ArrayList((List) ((R) data).r("same"));
-			names.add(((R) data).r("entityName"));
+			Object engine = ((R) data).r("engine");
+			List sames = (List) ((R) data).r("same");
+			String entityName = (String) ((R) data).r("entityName");
 			
-			replaceAll.p(names);
+			List names = new ArrayList(sames);
+			names.add(entityName);
+			
+			replaceAll.p(new Object[] {engine, names});
 		}
 		catch(Exception e)
 		{Outside.err(this,"replaceAllByCurrent()",e);}

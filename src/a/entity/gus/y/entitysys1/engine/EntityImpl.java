@@ -238,9 +238,11 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 		if (key.equals("entitiesAdded"))   { handleEntitiesAdded(obj);    return; }
 		if (key.equals("entityRenamed"))   { handleEntityRenamed(obj);    return; }
 		if (key.equals("entityDuplicated")){ handleEntityDuplicated(obj); return; }
-		if (key.equals("entityReplaced"))  { handleEntityReplaced(obj);  return; }
-		if (key.equals("entityDeleted"))   { handleEntityDeleted(obj);   return; }
-		if (key.equals("entityModified"))  { handleEntityModified(obj);  return; }
+		if (key.equals("entityReplaced"))   { handleEntityReplaced(obj);   return; }
+		if (key.equals("entitiesReplaced")) { handleEntitiesReplaced(obj); return; }
+		if (key.equals("entityDeleted"))    { handleEntityDeleted(obj);    return; }
+		if (key.equals("entitiesDeleted"))  { handleEntitiesDeleted(obj);  return; }
+		if (key.equals("entityModified"))   { handleEntityModified(obj);   return; }
 		if (key.equals("srcSaved"))        { handleSrcSaved(obj);        return; }
 		if (key.equals("srcCleared"))      { handleSrcCleared(obj);      return; }
 		throw new Exception("Unknown key: " + key);
@@ -276,10 +278,22 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 		new Thread(() -> {load(); entityReplaced(); }).start();
 	}
 
+	private void handleEntitiesReplaced(Object info) throws Exception
+	{
+		this.info = info;
+		new Thread(() -> {load(); entitiesReplaced(); }).start();
+	}
+
 	private void handleEntityDeleted(Object info) throws Exception
 	{
 		this.info = info;
 		new Thread(() -> {load(); entityDeleted();}).start();
+	}
+
+	private void handleEntitiesDeleted(Object info) throws Exception
+	{
+		this.info = info;
+		new Thread(() -> {load(); entitiesDeleted();}).start();
 	}
 
 	private void handleEntityModified(Object info) throws Exception
@@ -325,8 +339,14 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	private void entityReplaced()
 	{send(this, "entityReplaced()");}
 
+	private void entitiesReplaced()
+	{send(this, "entitiesReplaced()");}
+
 	private void entityDeleted()
 	{send(this, "entityDeleted()");}
+
+	private void entitiesDeleted()
+	{send(this, "entitiesDeleted()");}
 
 	private void entityModified()
 	{send(this, "entityModified()");}

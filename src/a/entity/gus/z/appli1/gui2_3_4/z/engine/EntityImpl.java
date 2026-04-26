@@ -52,6 +52,10 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 			entityDuplicated();
 		else if(s.equals("entityDeleted()"))
 			entityDeleted();
+		else if(s.equals("entitiesReplaced()"))
+			entitiesReplaced();
+		else if(s.equals("entitiesDeleted()"))
+			entitiesDeleted();
 		else if(s.equals("entityModified()"))
 			entityModified();
 	}
@@ -151,6 +155,14 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 
 	private void entityDeleted() {
 		send(this, "entityDeleted()");
+	}
+
+	private void entitiesReplaced() {
+		send(this, "entitiesReplaced()");
+	}
+
+	private void entitiesDeleted() {
+		send(this, "entitiesDeleted()");
 	}
 
 	private void entityModified() {
