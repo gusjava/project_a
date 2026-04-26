@@ -11,7 +11,7 @@ public class EntityImpl implements Entity, T {
 		if(o.length!=2) throw new Exception("Wrong data number: "+o.length);
 		
 		String devId = (String) o[0];
-		String entityName = (String) o[0];
+		String entityName = (String) o[1];
 		
 		if(!entityName.startsWith(devId+".")) return devId+"."+entityName;
 		return entityName;
