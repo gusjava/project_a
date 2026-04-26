@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, G, T {
 
 	public EntityImpl() throws Exception
 	{
-		now = Outside.service(this,"gus06.time.now.yyyymmdd_hhmmss_sss");
+		now = Outside.service(this,"gus.x.time.now.yyyymmdd_hhmmss_sss");
 		tmpDir = (File) Outside.resource(this,"defaultdir");
 	}
 	

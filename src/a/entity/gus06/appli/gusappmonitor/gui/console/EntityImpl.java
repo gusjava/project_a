@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, I, P {
 	public EntityImpl() throws Exception
 	{
 		console = Outside.service(this,"gus06.swing.textarea.factory.console1.black.white");
-		now = Outside.service(this,"gus06.time.now.yyyymmdd_hhmmss_sss");
+		now = Outside.service(this,"gus.x.time.now.yyyymmdd_hhmmss_sss");
 		
 		area = (JTextArea) console.i();
 		

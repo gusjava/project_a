@@ -2,7 +2,6 @@ package a.entity.gus.x.time.now.yyyymmdd_hhmmss_sss;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import a.framework.*;
 
 public class EntityImpl implements Entity, G {
