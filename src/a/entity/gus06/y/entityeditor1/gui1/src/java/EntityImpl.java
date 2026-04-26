@@ -71,7 +71,7 @@ public class EntityImpl implements Entity, P, I, R, DocumentListener {
 		buildHighScroll = Outside.service(this,"gus06.y.swinghigh1.scrollpaint");
 		buildHighCount = Outside.service(this,"gus06.y.swinghigh1.countbar");
 		buildHiddenLabel = Outside.service(this,"gus06.swing.textcomp.buildlabel.hiddenchars");
-		buildCaretPos = Outside.service(this,"gus06.x.swing.textcomp.build.caretpositionlabel");
+		buildCaretPos = Outside.service(this,"gus.x.swing.textcomp.build.caretpositionlabel");
 		barFactory = Outside.service(this,"gus06.x.swing.toolbar.factory1");
 		custArea = Outside.service(this,"gus06.y.entityeditor1.gui1.src.java.custcomp");
 		handleErr = Outside.service(this,"gus06.y.entityeditor1.gui1.src.java.handle.err");

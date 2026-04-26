@@ -66,7 +66,7 @@ public class EntityImpl implements Entity, I, P, G, R, V {
 		
 		buildHighCount = Outside.service(this,"gus06.swing.textcomp.highlight.sys1.countbar");
 		buildFocusLabel = Outside.service(this,"gus06.swing.textcomp.textfocus.label");
-		buildCaretLabel = Outside.service(this,"gus06.swing.textcomp.buildlabel.caretposition");
+		buildCaretLabel = Outside.service(this,"gus.x.swing.textcomp.build.caretpositionlabel");
 		buildAutoCopyLabel = Outside.service(this,"gus06.swing.textcomp.autocopy.label");
 		buildHiddenLabel = Outside.service(this,"gus06.swing.textcomp.buildlabel.hiddenchars");
 		buildSmartLabel = Outside.service(this,"gus06.sys.quickreplace.holder.find.label");

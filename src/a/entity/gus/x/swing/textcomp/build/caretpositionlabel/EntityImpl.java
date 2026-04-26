@@ -1,6 +1,5 @@
 package a.entity.gus.x.swing.textcomp.build.caretpositionlabel;
 
-
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -17,8 +16,8 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{return new JLabel1((JTextComponent) obj);}
 
-	public class JLabel1 extends JLabel implements CaretListener, MouseMotionListener {
-	
+	public class JLabel1 extends JLabel implements CaretListener, MouseMotionListener
+	{
 		private JTextComponent comp;
 		
 		public JLabel1(JTextComponent comp) throws Exception
