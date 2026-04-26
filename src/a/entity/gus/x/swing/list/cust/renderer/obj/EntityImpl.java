@@ -7,9 +7,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
-
-import a.framework.Entity;
-import a.framework.P;
+import a.framework.*;
 
 public class EntityImpl implements Entity, P {
 	public String creationDate() {return "20231128";}
@@ -17,16 +15,19 @@ public class EntityImpl implements Entity, P {
 	public static final Color COLOR_SELECT = new Color(244, 244, 244);
 	public static final Color COLOR_UNSELECT = Color.WHITE;
 
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		JList list = (JList) obj;
 		list.setCellRenderer(new ListRenderer0());
 	}
 
-	private class ListRenderer0 extends JLabel implements ListCellRenderer {
+	private class ListRenderer0 extends JLabel implements ListCellRenderer
+	{
 		private Font font_p;
 		private Font font_i;
 
-		public ListRenderer0() {
+		public ListRenderer0()
+		{
 			super();
 			setOpaque(true);
 			font_p = getFont().deriveFont(Font.PLAIN);
@@ -44,15 +45,18 @@ public class EntityImpl implements Entity, P {
 			return this;
 		}
 
-		public String getText(Object value) {
+		public String getText(Object value)
+		{
 			return value != null ? value.toString() : "null";
 		}
 
-		public Font getFont(Object value) {
+		public Font getFont(Object value)
+		{
 			return value != null ? font_p : font_i;
 		}
 
-		public Color getBackground(boolean isSelected) {
+		public Color getBackground(boolean isSelected)
+		{
 			return isSelected ? COLOR_SELECT : COLOR_UNSELECT;
 		}
 	}
