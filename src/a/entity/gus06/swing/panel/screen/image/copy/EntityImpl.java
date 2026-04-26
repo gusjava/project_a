@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, I, P, G {
 	{
 		screen = Outside.service(this,"*gus06.swing.panel.screen.image");
 		onKey = Outside.service(this,"gus06.swing.comp.cust3.on.keypressed.with.execute");
-		clipboard = Outside.service(this,"gus06.clipboard.access.image");
+		clipboard = Outside.service(this,"gus.x.clipboard.image");
 		
 		onKey.p(new Object[]{screen.i(),"ctrl c",new E(){
 			public void e() throws Exception {copy();}

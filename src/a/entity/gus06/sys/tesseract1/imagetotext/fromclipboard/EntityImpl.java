@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, G {
 	public EntityImpl() throws Exception
 	{
 		imageToText = Outside.service(this,"gus06.sys.tesseract1.imagetotext");
-		fromClipboard = Outside.service(this,"gus06.clipboard.access.image");
+		fromClipboard = Outside.service(this,"gus.x.clipboard.image");
 	}
 	
 	

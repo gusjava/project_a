@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		perform = Outside.service(this,"gus06.clipboard.access.image");
+		perform = Outside.service(this,"gus.x.clipboard.image");
 	}
 
 	

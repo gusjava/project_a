@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, E {
 	{
 		before = Outside.service(this,"gus06.appli.gusexplorer.execute.tools.screen.beforecapture");
 		captureImage = Outside.service(this,"gus06.sys.capturescreen1.capture");
-		clipboard = Outside.service(this,"gus06.clipboard.access.image");
+		clipboard = Outside.service(this,"gus.x.clipboard.image");
 		fromClipboard = Outside.service(this,"gus06.appli.gusexplorer.execute.tabs.add.temp.fromclipboard");
 	}
 	
