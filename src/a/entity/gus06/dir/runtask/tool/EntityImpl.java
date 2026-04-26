@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		unique = Outside.service(this,"entityunique");
-		readFile = Outside.service(this,"gus06.file.read.properties");
+		readFile = Outside.service(this,"gus.x.file.prop.read");
 	}
 
 	

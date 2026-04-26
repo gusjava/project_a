@@ -49,7 +49,7 @@ public class EntityImpl extends S1 implements Entity, T, G, R {
 		consoleGui = Outside.service(this,"gus06.appli.gusappmonitor.gui.console");
 		executeStart = Outside.service(this,"gus06.appli.gusappmonitor.execute.app.start");
 		decodeMap = Outside.service(this,"gus06.map.string.stringtomap.builder3.urldecoding");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		writeProp = Outside.service(this,"gus06.file.write.properties");
 		logger = Outside.service(this,"gus06.appli.gusappmonitor.logger");
 		warnPopup = Outside.service(this,"gus06.appli.gusappmonitor.tool.warnpopup");

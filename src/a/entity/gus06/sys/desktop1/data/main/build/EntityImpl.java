@@ -43,7 +43,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		buildItemManager = Outside.service(this,"gus06.sys.desktop1.item.manager");
 		buildObjFactory = Outside.service(this,"gus06.sys.objfactory1.engine.builder2");
 		buildMapAccess = Outside.service(this,"gus06.sys.store2.build.mapaccess.dir.properties");

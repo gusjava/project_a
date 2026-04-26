@@ -25,7 +25,7 @@ public class EntityImpl implements Entity, P {
 	{
 		retrieveMd5Set = Outside.service(this,"gus06.sys.filemanagement1.tool.ebook.retrieve.md5set");
 		findMapping = Outside.service(this,"gus06.data.authorname.list.mapping");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		writeProp = Outside.service(this,"gus06.file.write.properties");
 	}
 	

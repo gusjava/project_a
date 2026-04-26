@@ -29,7 +29,7 @@ public class EntityImpl implements Entity, P {
 		selectTablePath = Outside.service(this,"gus06.jdbc.gui.selector.path.dialog1");
 		insertRow = Outside.service(this,"gus06.jdbc.mysql.perform.row.insert");
 		buildListing = Outside.service(this,"gus06.dir.listing0.ext.properties");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 	}
 
 	

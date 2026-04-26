@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, R {
 	{
 		manager = Outside.service(this,"gus06.appli.gusclient1.project.manager");
 		idToDir = Outside.service(this,"gus06.appli.gusclient1.project.idtodir.resource");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 	}
 	
 	

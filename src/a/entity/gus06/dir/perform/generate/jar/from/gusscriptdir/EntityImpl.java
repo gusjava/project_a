@@ -31,7 +31,7 @@ public class EntityImpl implements Entity, P {
 		buildPaths = Outside.service(this,"gus06.dir.listing.dirtopathmap");
 		findFilesGus = Outside.service(this,"gus06.dir.listing0.ext.gus");
 		findFilesGif = Outside.service(this,"gus06.dir.listing0.ext.gif");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		readText = Outside.service(this,"gus06.file.read.string");
 	}
 	

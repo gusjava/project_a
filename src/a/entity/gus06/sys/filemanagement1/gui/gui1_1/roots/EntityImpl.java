@@ -104,7 +104,7 @@ public class EntityImpl implements Entity, ActionListener, I, P, ListSelectionLi
 	public EntityImpl() throws Exception
 	{
 		findListing = Outside.service(this,"gus06.dir.listing0.ext.properties");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		tooltip = Outside.service(this,"gus06.swing.table.cust.tooltip1");
 		buildButton = Outside.service(this,"gus06.swing.button.build2.execute");
 		performAdd = Outside.service(this,"gus06.sys.filemanagement1.perform.root.add");

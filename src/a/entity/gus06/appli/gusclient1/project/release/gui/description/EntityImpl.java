@@ -31,7 +31,7 @@ public class EntityImpl implements Entity, ActionListener, I, P {
 	public EntityImpl() throws Exception
 	{
 		textDelayed = Outside.service(this,"gus06.swing.textcomp.textchanged.delayed");
-		readFile = Outside.service(this,"gus06.file.read.properties");
+		readFile = Outside.service(this,"gus.x.file.prop.read");
 		writeFile = Outside.service(this,"gus06.file.write.properties");
 		
 		area = new JTextArea();

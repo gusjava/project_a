@@ -71,7 +71,7 @@ public class EntityImpl implements Entity, P, I {
 	
 	public EntityImpl() throws Exception
 	{
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		writeProp = Outside.service(this,"gus06.file.write.properties");
 		buildEditableTable = Outside.service(this,"gus06.sys.spreadsheet1.build.editabletable");
 		completeValueTable0 = Outside.service(this,"gus06.sys.spreadsheet1.valuetable.complete0");

@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		chooseFile = Outside.service(this,"gus06.file.choose.save.file.ext.csv.en");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		listing = Outside.service(this,"gus06.dir.listing0.ext.properties");
 		buildPrinter = Outside.service(this,"gus06.io.printstream.formatter.csv1");
 	}

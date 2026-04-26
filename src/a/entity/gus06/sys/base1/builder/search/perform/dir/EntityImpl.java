@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		buildFilter = Outside.service(this,"gus06.filter.map.build.fromstring.rule1");
-		load = Outside.service(this,"gus06.file.read.properties");
+		load = Outside.service(this,"gus.x.file.prop.read");
 		getName = Outside.service(this,"gus06.file.getname0");
 	}
 	

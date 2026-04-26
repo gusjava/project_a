@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, G {
 	public EntityImpl() throws Exception
 	{
 		getFile = Outside.service(this,"gus06.sys.crypto.pseudo.getfile");
-		readFile = Outside.service(this,"gus06.file.read.properties");
+		readFile = Outside.service(this,"gus.x.file.prop.read");
 	}
 	
 	

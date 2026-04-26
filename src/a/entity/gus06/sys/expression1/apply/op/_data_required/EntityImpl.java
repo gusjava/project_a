@@ -42,7 +42,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		buildFile = Outside.service(this,"gus06.sys.expression1.file.build");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		writeProp = Outside.service(this,"gus06.file.write.properties");
 		findArray = Outside.service(this,"gus06.find.objectarray");
 	}

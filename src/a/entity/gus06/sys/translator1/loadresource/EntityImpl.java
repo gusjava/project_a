@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, T {
 	{
 		tToR = Outside.service(this,"gus06.convert.ttor");
 		mapToR = Outside.service(this,"gus06.convert.maptor");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 	}
 	
 	public Object t(Object obj) throws Exception

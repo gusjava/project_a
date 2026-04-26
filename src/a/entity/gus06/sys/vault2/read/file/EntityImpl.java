@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		writeProp = Outside.service(this,"gus06.file.write.properties");
 		decryptMap = Outside.service(this,"gus06.sys.vault2.decrypt.map");
 		encryptMap = Outside.service(this,"gus06.sys.vault2.encrypt.map");

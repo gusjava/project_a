@@ -85,7 +85,7 @@ public class EntityImpl implements Entity, ActionListener, I, P, V {
 	public EntityImpl() throws Exception
 	{
 		findListing = Outside.service(this,"gus06.dir.listing0.ext.properties");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		tooltip = Outside.service(this,"gus06.swing.table.cust.tooltip1");
 		formatter = Outside.service(this,"gus06.file.size.formatter1.en");
 		rootWatcher = Outside.service(this,"gus06.watching.dir.roots");

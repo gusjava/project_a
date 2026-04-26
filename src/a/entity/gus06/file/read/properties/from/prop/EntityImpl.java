@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		propFromProp = Outside.service(this,"gus06.file.read.properties");
+		propFromProp = Outside.service(this,"gus.x.file.prop.read");
 	}
 	
 	

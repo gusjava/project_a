@@ -34,7 +34,7 @@ public class EntityImpl implements Entity, P {
 	{
 		listing = Outside.service(this,"gus06.dir.listing0.ext.properties");
 		formatter = Outside.service(this,"gus06.io.printstream.formatter.csv1");
-		readFile = Outside.service(this,"gus06.file.read.properties");
+		readFile = Outside.service(this,"gus.x.file.prop.read");
 	}
 
 	

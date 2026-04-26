@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		listing = Outside.service(this,"gus06.dir.listing0.ext.properties");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		statCollector = Outside.service(this,"*gus06.sys.statistics1.collector2");
 		writeProp = Outside.service(this,"gus06.file.write.properties");
 	}

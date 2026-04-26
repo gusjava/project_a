@@ -31,7 +31,7 @@ public class EntityImpl implements Entity {
 		manager = Outside.service(this,"gus06.appli.gusappmonitor.manager");
 		consoleGui = Outside.service(this,"gus06.appli.gusappmonitor.gui.console");
 		launchJar = Outside.service(this,"gus06.java.launchjar");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		
 		File rootDir = (File) manager.r("rootDir");
 		File[] dirs = rootDir.listFiles();

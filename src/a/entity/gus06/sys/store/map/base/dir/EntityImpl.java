@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, T, R {
 
 	public EntityImpl() throws Exception
 	{
-		readFile = Outside.service(this,"gus06.file.read.properties");
+		readFile = Outside.service(this,"gus.x.file.prop.read");
 		dir = (File) Outside.resource(this,"path#path.storedir");
 	}
 	

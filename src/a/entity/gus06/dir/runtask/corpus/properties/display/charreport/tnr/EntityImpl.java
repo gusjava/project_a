@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		read = Outside.service(this,"gus06.file.read.properties");
+		read = Outside.service(this,"gus.x.file.prop.read");
 		listing = Outside.service(this,"gus06.dir.listing0.ext.properties");
 		showMessage = Outside.service(this,"gus06.swing.optionpane.showmessage.info");
 	}

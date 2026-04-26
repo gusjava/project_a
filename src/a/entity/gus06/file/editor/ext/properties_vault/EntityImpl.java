@@ -49,7 +49,7 @@ public class EntityImpl implements Entity, I, P {
 
 	public EntityImpl() throws Exception
 	{
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		writeProp = Outside.service(this,"gus06.file.write.properties");
 		shiftPanel = Outside.service(this,"*gus06.swing.panel.shiftpanel");
 		mapEditor = Outside.service(this,"*gus06.map.string.editor1");

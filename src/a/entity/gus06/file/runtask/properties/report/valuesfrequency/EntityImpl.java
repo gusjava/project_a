@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		read = Outside.service(this,"gus06.file.read.properties");
+		read = Outside.service(this,"gus.x.file.prop.read");
 		buildFreqMap = Outside.service(this,"gus06.map.intmap.build.freqmap");
 		buildSortedKeys = Outside.service(this,"gus06.map.build.sortedkeys.byvalue");
 	}

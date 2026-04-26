@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, P {
 		listing = Outside.service(this,"gus06.dir.listing0.ext.properties");
 		buildFilter = Outside.service(this,"gus06.filter.string.build.contains_i");
 		getInput = Outside.service(this,"gus06.input.text.dialog");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 	}
 
 	

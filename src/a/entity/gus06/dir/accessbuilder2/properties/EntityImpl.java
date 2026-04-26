@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		readFile = Outside.service(this,"gus06.file.read.properties");
+		readFile = Outside.service(this,"gus.x.file.prop.read");
 		writeFile = Outside.service(this,"gus06.file.write.properties");
 		dirToSet = Outside.service(this,"gus06.dir.children.dirtoset.name0");
 	}

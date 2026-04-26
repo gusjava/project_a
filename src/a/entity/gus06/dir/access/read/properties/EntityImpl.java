@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, T {
 	private Service readFile;
 	
 	public EntityImpl() throws Exception
-	{readFile = Outside.service(this,"gus06.file.read.properties");}
+	{readFile = Outside.service(this,"gus.x.file.prop.read");}
 	
 	
 	public Object t(Object obj) throws Exception

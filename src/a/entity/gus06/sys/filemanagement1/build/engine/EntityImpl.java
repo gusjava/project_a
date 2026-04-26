@@ -36,7 +36,7 @@ public class EntityImpl implements Entity, T {
 		findPreviewFile = Outside.service(this,"gus06.sys.filemanagement1.tool.preview.find.file");
 		findProp = Outside.service(this,"gus06.sys.filemanagement1.tool.prop.find.map");
 		findPropFile = Outside.service(this,"gus06.sys.filemanagement1.tool.prop.find.file");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		writeProp = Outside.service(this,"gus06.file.write.properties");
 		walkThrough = Outside.service(this,"gus06.dir.walkthrough.files");
 	}

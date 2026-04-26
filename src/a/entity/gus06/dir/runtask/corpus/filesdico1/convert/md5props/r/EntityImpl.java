@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, P {
 	{
 		mostRecent = Outside.service(this,"gus06.dir.listing0.timestamped.mostrecent");
 		seqValue = Outside.service(this,"gus06.map.string.seqvalue.complete.sorted");
-		readProp = Outside.service(this,"gus06.file.read.properties");
+		readProp = Outside.service(this,"gus.x.file.prop.read");
 		writeProp = Outside.service(this,"gus06.file.write.properties");
 	}
 
