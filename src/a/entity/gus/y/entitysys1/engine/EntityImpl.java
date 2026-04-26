@@ -125,7 +125,7 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	 * LOAD
 	 */
 
-	private void load()
+	private synchronized void load()
 	{
 		try
 		{
