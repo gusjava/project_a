@@ -63,6 +63,12 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 				lockJustDuplicated(engine.r("info"));
 				entityDuplicated();
 			}
+			else if (s.equals("entityReplaced()"))
+			{
+				rebuild();
+				lockJustReplaced(engine.r("info"));
+				entityDuplicated();
+			}
 			else if (s.equals("entityDeleted()"))
 			{
 				rebuild();
@@ -110,20 +116,19 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 		locker.f(new Object[] {"lock", ((String[])info)[1], nameList});
 	}
 
-	public void e() throws Exception
+	private void lockJustReplaced(Object info) throws Exception
 	{
-		engine.e();
+		locker.f(new Object[] {"lock", ((String[])info)[1], nameList});
 	}
+
+	public void e() throws Exception
+	{engine.e();}
 
 	public Object g() throws Exception
-	{
-		return engine.g();
-	}
+	{return engine.g();}
 
 	public boolean f(Object obj) throws Exception
-	{
-		return engine.f(obj);
-	}
+	{return engine.f(obj);}
 
 	public Object r(String key) throws Exception
 	{
@@ -177,6 +182,11 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 		if (key.equals("entityDuplicated"))
 		{
 			engine.v("entityDuplicated", obj);
+			return;
+		}
+		if (key.equals("entityReplaced"))
+		{
+			engine.v("entityReplaced", obj);
 			return;
 		}
 		if (key.equals("entityDeleted"))
@@ -250,6 +260,9 @@ public class EntityImpl extends S1 implements Entity, G, R, V, E, F, ActionListe
 
 	private void entityDuplicated()
 	{send(this, "entityDuplicated()");}
+
+	private void entityReplaced()
+	{send(this, "entityReplaced()");}
 
 	private void entityDeleted()
 	{send(this, "entityDeleted()");}

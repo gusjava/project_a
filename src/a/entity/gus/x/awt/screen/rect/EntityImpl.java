@@ -3,14 +3,13 @@ package a.entity.gus.x.awt.screen.rect;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-
-import a.framework.Entity;
-import a.framework.G;
+import a.framework.*;
 
 public class EntityImpl implements Entity, G {
 	public String creationDate() {return "20240104";}
 	
-	public Object g() throws Exception {
+	public Object g() throws Exception
+	{
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice device = env.getDefaultScreenDevice();
 		GraphicsConfiguration gc = device.getDefaultConfiguration();

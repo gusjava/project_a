@@ -10,7 +10,8 @@ import a.framework.*;
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20231202";}
 
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		if (obj instanceof byte[])
 			return crc(((byte[]) obj));
 		if (obj instanceof String)
@@ -25,7 +26,8 @@ public class EntityImpl implements Entity, T {
 		throw new Exception("Invalid input: " + obj.getClass().getName());
 	}
 
-	private String crc(byte[] bytes) {
+	private String crc(byte[] bytes)
+	{
 		int crc = 0x0000;
 		for (byte b : bytes) {
 			crc = (crc >>> 8) ^ table[(crc ^ b) & 0xff];
@@ -33,7 +35,8 @@ public class EntityImpl implements Entity, T {
 		return "" + crc;
 	}
 
-	private String crc(InputStream in) throws IOException {
+	private String crc(InputStream in) throws IOException
+	{
 		int crc = 0x0000;
 		int b;
 		while ((b = in.read()) != -1) {

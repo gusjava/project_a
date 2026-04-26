@@ -8,13 +8,12 @@ public class EntityImpl implements Entity, G {
 
 	private String pid;
 
-	public Object g() throws Exception {
-		if (pid == null)
-			pid = find();
+	public Object g() throws Exception
+	{
+		if (pid == null) pid = find();
 		return pid;
 	}
 
-	private String find() {
-		return ManagementFactory.getRuntimeMXBean().getName().split("@")[0];
-	}
+	private String find()
+	{return ManagementFactory.getRuntimeMXBean().getName().split("@")[0];}
 }

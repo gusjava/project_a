@@ -30,9 +30,10 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	public String creationDate() {return "20240112";}
 
 	public static final String DISPLAY_CREATE = "ELEMENT_entity_add#Create entity [F1]";
-	public static final String DISPLAY_DELETE = "ELEMENT_entity_delete#Delete entity [DEL]";
 	public static final String DISPLAY_RENAME = "ELEMENT_entity_rename#Rename entity [F2]";
 	public static final String DISPLAY_DUPLICATE = "ELEMENT_entity_duplicate#Duplicate entity [F3]";
+	public static final String DISPLAY_REPLACE = "ELEMENT_entity_replace#Replace entity [F4]";
+	public static final String DISPLAY_DELETE = "ELEMENT_entity_delete#Delete entity [DEL]";
 	public static final String DISPLAY_PASTE = "ELEMENT_entity_paste#Paste entity [Ctrl-V]";
 	public static final String DISPLAY_COPY = "ELEMENT_entity_copy#Copy entity [Ctrl-C]";
 
@@ -57,6 +58,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Service entityCreate;
 	private Service entityRename;
 	private Service entityDuplicate;
+	private Service entityReplace;
 	private Service persistField;
 	private Service persistSet;
 	
@@ -101,6 +103,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Action actionDelete;
 	private Action actionRename;
 	private Action actionDuplicate;
+	private Action actionReplace;
 	private Action actionPaste;
 	private Action actionCopy;
 
@@ -121,6 +124,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		entityCreate = Outside.service(this,"gus.y.entitysys1.perform.entity.create.ask");
 		entityRename = Outside.service(this,"gus.y.entitysys1.perform.entity.rename.ask");
 		entityDuplicate = Outside.service(this,"gus.y.entitysys1.perform.entity.duplicate.ask");
+		entityReplace = Outside.service(this,"gus.y.entitysys1.perform.entity.replace.ask");
 		persistField = Outside.service(this, "gus.y.persist1.swing.textcomp");
 		persistSet = Outside.service(this, "gus.y.persist1.set.string");
 		
@@ -146,9 +150,10 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		iconSrcSave = (Icon) Outside.resource(this, "icon#UTIL_saveSrc");
 
 		actionCreate = (Action) buildAction.t(new Object[] { DISPLAY_CREATE, (E) this::f1_entityCreate });
-		actionDelete = (Action) buildAction.t(new Object[] { DISPLAY_DELETE, (E) this::del_entityDelete });
 		actionRename = (Action) buildAction.t(new Object[] { DISPLAY_RENAME, (E) this::f2_entityRename });
 		actionDuplicate = (Action) buildAction.t(new Object[] { DISPLAY_DUPLICATE, (E) this::f3_entityDuplicate });
+		actionReplace = (Action) buildAction.t(new Object[] { DISPLAY_REPLACE, (E) this::f4_entityReplace });
+		actionDelete = (Action) buildAction.t(new Object[] { DISPLAY_DELETE, (E) this::del_entityDelete });
 		actionPaste = (Action) buildAction.t(new Object[] { DISPLAY_PASTE, (E) this::ctrl_shift_v_pasteSrc });
 		actionCopy = (Action) buildAction.t(new Object[] { DISPLAY_COPY, (E) this::ctrl_shift_c_copySrc });
 		
@@ -177,6 +182,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		bar.addSeparator();
 		bar.add(actionCreate);
 		bar.add(actionDuplicate);
+		bar.add(actionReplace);
 		bar.add(actionDelete);
 		bar.add(actionRename);
 
@@ -191,6 +197,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 					if (code == KeyEvent.VK_F1) f1_entityCreate();
 					else if (code == KeyEvent.VK_F2) f2_entityRename();
 					else if (code == KeyEvent.VK_F3) f3_entityDuplicate();
+					else if (code == KeyEvent.VK_F4) f4_entityReplace();
 					else if (code == KeyEvent.VK_F5) f5_forceReload();
 				}
 			}
@@ -222,9 +229,11 @@ public class EntityImpl extends S1 implements Entity, G, I {
 				else
 				{
 					if (code == KeyEvent.VK_DELETE) del_entityDelete();
+					if (code == KeyEvent.VK_ESCAPE) escape_entityClear();
 					else if (code == KeyEvent.VK_F1) f1_entityCreate();
 					else if (code == KeyEvent.VK_F2) f2_entityRename();
 					else if (code == KeyEvent.VK_F3) f3_entityDuplicate();
+					else if (code == KeyEvent.VK_F4) f4_entityReplace();
 					else if (code == KeyEvent.VK_F5) f5_forceReload();
 				}
 			}
@@ -360,6 +369,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 			else if (s.equals("entityAdded()")) handleEntityAdded();
 			else if (s.equals("entityRenamed()")) handleEntityRenamed();
 			else if (s.equals("entityDuplicated()")) handleEntityDuplicated();
+			else if (s.equals("entityReplaced()")) handleEntityReplaced();
 			else if (s.equals("entityDeleted()")) handleEntityDeleted();
 			else if (s.equals("entityModified()")) rebuild();
 		}
@@ -384,7 +394,13 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		rebuild(info[1]);
 		selectionChanged();
 	}
-	
+
+	private void handleEntityReplaced() throws Exception {
+		String[] info = (String[]) engine.r("info");
+		rebuild(info[1]);
+		selectionChanged();
+	}
+
 	private void handleEntityDeleted() throws Exception {
 		rebuild(null);
 		selectionChanged();
@@ -472,7 +488,8 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		{Outside.err(this, "ctrl_shift_v_pasteSrc()", e);}
 	}
 
-	private void del_entityDelete() {
+	private void del_entityDelete()
+	{
 		try {
 			String entityName = getSelection();
 			if (canDeleteEntity(entityName))
@@ -481,17 +498,28 @@ public class EntityImpl extends S1 implements Entity, G, I {
 			Outside.err(this, "del_entityDelete()", e);
 		}
 	}
+	
+	private void escape_entityClear()
+	{
+		try {
+			table.clearSelection();
+		} catch (Exception e) {
+			Outside.err(this, "escape_entityClear()", e);
+		}
+	}
 
-	private void f1_entityCreate() {
+	private void f1_entityCreate()
+	{
 		try {
 			if(canCreateEntity())
-				entityCreate.p(new Object[] { engine, table });
+				entityCreate.p(new Object[] { engine, table, getSearch() });
 		} catch (Exception e) {
 			Outside.err(this, "f1_entityCreate()", e);
 		}
 	}
 
-	private void f2_entityRename() {
+	private void f2_entityRename()
+	{
 		try {
 			String entityName = getSelection();
 			if (canRenameEntity(entityName))
@@ -501,7 +529,8 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		}
 	}
 
-	private void f3_entityDuplicate() {
+	private void f3_entityDuplicate()
+	{
 		try {
 			String entityName = getSelection();
 			if (canDuplicateEntity(entityName))
@@ -511,36 +540,43 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		}
 	}
 
-	private void f5_forceReload() {
+	private void f4_entityReplace()
+	{
 		try {
-			engine.e();
+			String entityName = getSelection();
+			if (canReplaceEntity(entityName))
+				entityReplace.p(new Object[] { engine, entityName, table });
 		} catch (Exception e) {
-			Outside.err(this, "f5_forceReload()", e);
+			Outside.err(this, "f4_entityReplace()", e);
 		}
+	}
+
+	private void f5_forceReload()
+	{
+		try
+		{
+			engine.e();
+		}
+		catch(Exception e)
+		{Outside.err(this, "f5_forceReload()", e);}
 	}
 
 	/*
 	 * TABLE MODEL
 	 */
 
-	private class TableModel0 extends AbstractTableModel {
-		public int getColumnCount() {
-			return 3;
-		}
+	private class TableModel0 extends AbstractTableModel
+	{
+		public int getColumnCount() {return 3;}
+		public int getRowCount() {return getFilteredNumber();}
+		public Class getColumnClass(int y) {return String.class;}
 
-		public int getRowCount() {
-			return getFilteredNumber();
-		}
-
-		public String getColumnName(int y) {
+		public String getColumnName(int y)
+		{
 			if (y == 0) return "Entity name";
 			if (y == 1) return "Features";
 			if (y == 2) return "N";
 			return "";
-		}
-
-		public Class getColumnClass(int y) {
-			return String.class;
 		}
 
 		public Object getValueAt(int x, int y) {
@@ -889,6 +925,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		actionDelete.setEnabled(canDeleteEntity(entityName));
 		actionRename.setEnabled(canRenameEntity(entityName));
 		actionDuplicate.setEnabled(canDuplicateEntity(entityName));
+		actionReplace.setEnabled(canReplaceEntity(entityName));
 	}
 
 	/*
@@ -909,6 +946,10 @@ public class EntityImpl extends S1 implements Entity, G, I {
 
 	private boolean canDuplicateEntity(String entityName) throws Exception {
 		return engine.f(new String[] { "canDuplicateEntity", entityName });
+	}
+
+	private boolean canReplaceEntity(String entityName) throws Exception {
+		return engine.f(new String[] { "canReplaceEntity", entityName });
 	}
 
 	/*

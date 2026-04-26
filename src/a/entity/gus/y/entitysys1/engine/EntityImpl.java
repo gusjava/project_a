@@ -7,16 +7,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import a.framework.E;
-import a.framework.Entity;
-import a.framework.F;
-import a.framework.G;
-import a.framework.Outside;
-import a.framework.R;
-import a.framework.S1;
-import a.framework.Service;
-import a.framework.V;
+import a.framework.*;
 
 public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	public String creationDate() {return "20240111";}
@@ -27,6 +18,7 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	private Service findXyzErrMap;
 	private Service findMissingLinkMap;
 	private Service findSrcSaveMap;
+	private Service hasRights;
 	
 	private Service dataLoaderEntity;
 	private Service dataLoaderJar;
@@ -52,6 +44,7 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 		findXyzErrMap = Outside.service(this, "gus.y.entitydb1.entity_xyz_err.findall");
 		findMissingLinkMap = Outside.service(this, "gus.y.entitydb1.entity_missing_link.findall");
 		findSrcSaveMap = Outside.service(this, "gus.y.entitydb1.entity_src_save.findall");
+		hasRights = Outside.service(this, "gus.x.entity.hasrights");
 		
 		dataLoaderEntity = Outside.service(this, "gus.y.entitysys1.dataloader.entity");
 		dataLoaderJar = Outside.service(this, "gus.y.entitysys1.dataloader.jar");
@@ -65,7 +58,7 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 
 	public void e() throws Exception
 	{
-		load();
+		new Thread(() -> {load();}).start();
 	}
 
 	public Object g() throws Exception
@@ -90,8 +83,11 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 		if (key.equals("info")) return info;
 
 		if (key.equals("keys")) return new String[] {
-			"rootDir", "binDir", "libDir", "cx", "devId", "nameList", "lastTime",
-			"xyzErrMap", "compileErrMap", "missingLinkMap", "srcSaveMap", "jarMap", "info" };
+			"rootDir", "binDir", "libDir", "cx", 
+			"devId", "nameList", "lastTime",
+			"xyzErrMap", "compileErrMap", 
+			"missingLinkMap", "srcSaveMap", 
+			"jarMap", "info" };
 
 		throw new Exception("Unknown key: " + key);
 	}
@@ -106,12 +102,19 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 		
 		if (permission.equals("canCreateEntity"))
 			return canCreateEntity();
+			
 		if (permission.equals("canDeleteEntity"))
 			return canDeleteEntity((String) o[1]);
+			
 		if (permission.equals("canRenameEntity"))
 			return canRenameEntity((String) o[1]);
+			
 		if (permission.equals("canDuplicateEntity"))
 			return canDuplicateEntity((String) o[1]);
+			
+		if (permission.equals("canReplaceEntity"))
+			return canReplaceEntity((String) o[1]);
+			
 		if (permission.equals("canModifyEntity"))
 			return canModifyEntity((String) o[1]);
 
@@ -201,39 +204,29 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	 */
 
 	private boolean canCreateEntity() throws Exception
-	{
-		return getDevId()!=null;
-	}
-
-	private boolean canDeleteEntity(String entityName) throws Exception
-	{
-		return isMyEntity(entityName);
-	}
-
-	private boolean canRenameEntity(String entityName) throws Exception
-	{
-		return isMyEntity(entityName);
-	}
+	{return getDevId()!=null;}
 
 	private boolean canDuplicateEntity(String entityName) throws Exception
-	{
-		return getDevId()!=null && entityName != null;
-	}
+	{return entityName != null && getDevId()!=null;}
+
+	private boolean canDeleteEntity(String entityName) throws Exception
+	{return entityName != null && hasRights(entityName);}
+
+	private boolean canRenameEntity(String entityName) throws Exception
+	{return entityName != null && hasRights(entityName);}
+	
+	private boolean canReplaceEntity(String entityName) throws Exception
+	{return entityName != null && hasRights(entityName);}
 
 	private boolean canModifyEntity(String entityName) throws Exception
-	{
-		return isMyEntity(entityName);
-	}
+	{return entityName != null && hasRights(entityName);}
 
 	/*
-	 * IS MY ENTITY
+	 * HAS RIGHTS
 	 */
 
-	private boolean isMyEntity(String entityName) throws Exception
-	{
-		return true;
-//		return entityName != null && entityName.startsWith(getDevId() + ".");
-	}
+	private boolean hasRights(String entityName) throws Exception
+	{return hasRights.f(new Object[]{getDevId(), entityName});}
 
 	/*
 	 * V
@@ -241,10 +234,11 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 
 	public void v(String key, Object obj) throws Exception
 	{
-		if (key.equals("entityAdded"))     { handleEntityAdded(obj);     return; }
-		if (key.equals("entitiesAdded"))   { handleEntitiesAdded(obj);     return; }
-		if (key.equals("entityRenamed"))   { handleEntityRenamed(obj);   return; }
+		if (key.equals("entityAdded"))     { handleEntityAdded(obj);      return; }
+		if (key.equals("entitiesAdded"))   { handleEntitiesAdded(obj);    return; }
+		if (key.equals("entityRenamed"))   { handleEntityRenamed(obj);    return; }
 		if (key.equals("entityDuplicated")){ handleEntityDuplicated(obj); return; }
+		if (key.equals("entityReplaced"))  { handleEntityReplaced(obj);  return; }
 		if (key.equals("entityDeleted"))   { handleEntityDeleted(obj);   return; }
 		if (key.equals("entityModified"))  { handleEntityModified(obj);  return; }
 		if (key.equals("srcSaved"))        { handleSrcSaved(obj);        return; }
@@ -274,6 +268,12 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 	{
 		this.info = info;
 		new Thread(() -> {load(); entityDuplicated(); }).start();
+	}
+	
+	private void handleEntityReplaced(Object info) throws Exception
+	{
+		this.info = info;
+		new Thread(() -> {load(); entityReplaced(); }).start();
 	}
 
 	private void handleEntityDeleted(Object info) throws Exception
@@ -321,6 +321,9 @@ public class EntityImpl extends S1 implements Entity, G, R, E, F, V {
 
 	private void entityDuplicated()
 	{send(this, "entityDuplicated()");}
+	
+	private void entityReplaced()
+	{send(this, "entityReplaced()");}
 
 	private void entityDeleted()
 	{send(this, "entityDeleted()");}

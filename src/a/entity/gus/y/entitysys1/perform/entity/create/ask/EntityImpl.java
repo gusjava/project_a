@@ -17,7 +17,6 @@ public class EntityImpl implements Entity, P, F {
 
 	public static final String TITLE = "Entity creation";
 	public static final String MESSAGE = "Please, enter entity's generation rule:";
-	public static final String MESSAGE_ERR = "Entity generation has been aborted";
 
 	private Service perform;
 
@@ -32,13 +31,24 @@ public class EntityImpl implements Entity, P, F {
 	public boolean f(Object obj) throws Exception
 	{
 		Object[] o = (Object[]) obj;
-		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
-
-		Object engine = o[0];
-		Object anchor = o[1];
-
+		if(o.length == 2) return handle(o[0], o[1], null);
+		if(o.length == 3) return handle(o[0], o[1], (String) o[2]);
+		
+		throw new Exception("Wrong data number: " + o.length);
+	}
+	
+	private boolean handle(Object engine, Object anchor, String initValue) throws Exception
+	{
 		Window window = SwingUtilities.getWindowAncestor((Component) anchor);
-		String rule = (String) JOptionPane.showInputDialog(window, MESSAGE, TITLE, JOptionPane.PLAIN_MESSAGE);
+		String rule = (String) JOptionPane.showInputDialog(
+			window, 
+			MESSAGE, 
+			TITLE, 
+			JOptionPane.PLAIN_MESSAGE,
+			null,
+			null,
+			initValue
+		);
 		if (rule == null || rule.trim().equals("")) return false;
 
 		String errMsg = (String) perform.t(new Object[] { engine, rule });
@@ -47,7 +57,6 @@ public class EntityImpl implements Entity, P, F {
 			JOptionPane.showMessageDialog(window, errMsg, TITLE, JOptionPane.PLAIN_MESSAGE);
 			return false;
 		}
-			
 		return true;
 	}
 }

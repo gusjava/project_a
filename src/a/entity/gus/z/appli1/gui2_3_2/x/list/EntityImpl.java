@@ -23,14 +23,7 @@ import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
-
-import a.framework.E;
-import a.framework.Entity;
-import a.framework.G;
-import a.framework.I;
-import a.framework.Outside;
-import a.framework.S1;
-import a.framework.Service;
+import a.framework.*;
 
 public class EntityImpl extends S1 implements Entity, G, I {
 	public String creationDate() {return "20240113";}
@@ -39,6 +32,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	public static final String DISPLAY_DELETE = "ELEMENT_entity_delete#Delete entity [DEL]";
 	public static final String DISPLAY_RENAME = "ELEMENT_entity_rename#Rename entity [F2]";
 	public static final String DISPLAY_DUPLICATE = "ELEMENT_entity_duplicate#Duplicate entity [F3]";
+	public static final String DISPLAY_REPLACE = "ELEMENT_entity_replace#Replace entity [F4]";
 
 	public static final Color BG_SELECTED = new Color(244, 244, 244);
 	public static final Color BG_UNSELECTED = Color.WHITE;
@@ -61,6 +55,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Service entityCreate;
 	private Service entityRename;
 	private Service entityDuplicate;
+	private Service entityReplace;
 	private Service persistField;
 	private Service persistSet;
 	
@@ -103,6 +98,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Action actionDelete;
 	private Action actionRename;
 	private Action actionDuplicate;
+	private Action actionReplace;
 
 	private List dataFull = new ArrayList();
 	private List dataFiltered = new ArrayList();
@@ -121,6 +117,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		entityCreate = Outside.service(this,"gus.y.entitysys1.perform.entity.create.ask");
 		entityRename = Outside.service(this,"gus.y.entitysys1.perform.entity.rename.ask");
 		entityDuplicate = Outside.service(this,"gus.y.entitysys1.perform.entity.duplicate.ask");
+		entityReplace = Outside.service(this,"gus.y.entitysys1.perform.entity.replace.ask");
 		persistField = Outside.service(this, "gus.y.persist1.swing.textcomp");
 		persistSet = Outside.service(this, "gus.y.persist1.set.string");
 		
@@ -147,6 +144,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		actionDelete = (Action) buildAction.t(new Object[] { DISPLAY_DELETE, (E) this::del_entityDelete });
 		actionRename = (Action) buildAction.t(new Object[] { DISPLAY_RENAME, (E) this::f2_entityRename });
 		actionDuplicate = (Action) buildAction.t(new Object[] { DISPLAY_DUPLICATE, (E) this::f3_entityDuplicate });
+		actionReplace = (Action) buildAction.t(new Object[] { DISPLAY_REPLACE, (E) this::f4_entityReplace });
 
 		labelNumber = new JLabel(" ");
 		labelNumberLocked = new JLabel(" ");
@@ -170,6 +168,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 
 		bar.add(actionCreate);
 		bar.add(actionDuplicate);
+		bar.add(actionReplace);
 		bar.add(actionDelete);
 		bar.add(actionRename);
 
@@ -184,6 +183,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 					if (code == KeyEvent.VK_F1) f1_entityCreate();
 					else if (code == KeyEvent.VK_F2) f2_entityRename();
 					else if (code == KeyEvent.VK_F3) f3_entityDuplicate();
+					else if (code == KeyEvent.VK_F4) f4_entityReplace();
 					else if (code == KeyEvent.VK_F5) f5_forceReload();
 				}
 			}
@@ -210,6 +210,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 					else if (code == KeyEvent.VK_F1) f1_entityCreate();
 					else if (code == KeyEvent.VK_F2) f2_entityRename();
 					else if (code == KeyEvent.VK_F3) f3_entityDuplicate();
+					else if (code == KeyEvent.VK_F4) f4_entityReplace();
 					else if (code == KeyEvent.VK_F5) f5_forceReload();
 				}
 			}
@@ -333,6 +334,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 			else if (s.equals("entityAdded()")) handleEntityAdded();
 			else if (s.equals("entityRenamed()")) handleEntityRenamed();
 			else if (s.equals("entityDuplicated()")) handleEntityDuplicated();
+			else if (s.equals("entityReplaced()")) handleEntityReplaced();
 			else if (s.equals("entityDeleted()")) handleEntityDeleted();
 			else if (s.equals("entityModified()")) rebuild();
 		} catch (Exception e) {
@@ -357,7 +359,13 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		rebuild(infos[1]);
 		selectionChanged();
 	}
-	
+
+	private void handleEntityReplaced() throws Exception {
+		String[] infos = (String[]) engine.r("info");
+		rebuild(infos[1]);
+		selectionChanged();
+	}
+
 	private void handleEntityDeleted() throws Exception {
 		rebuild(null);
 		selectionChanged();
@@ -459,6 +467,16 @@ public class EntityImpl extends S1 implements Entity, G, I {
 				entityDuplicate.p(new Object[] { engine, entityName, table });
 		} catch (Exception e) {
 			Outside.err(this, "f3_entityDuplicate()", e);
+		}
+	}
+
+	private void f4_entityReplace() {
+		try {
+			String entityName = getSelection();
+			if (canReplaceEntity(entityName))
+				entityReplace.p(new Object[] { engine, entityName, table });
+		} catch (Exception e) {
+			Outside.err(this, "f4_entityReplace()", e);
 		}
 	}
 
@@ -822,6 +840,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		actionDelete.setEnabled(canDeleteEntity(entityName));
 		actionRename.setEnabled(canRenameEntity(entityName));
 		actionDuplicate.setEnabled(canDuplicateEntity(entityName));
+		actionReplace.setEnabled(canReplaceEntity(entityName));
 	}
 
 	/*
@@ -842,6 +861,10 @@ public class EntityImpl extends S1 implements Entity, G, I {
 
 	private boolean canDuplicateEntity(String entityName) throws Exception {
 		return engine.f(new String[] { "canDuplicateEntity", entityName });
+	}
+
+	private boolean canReplaceEntity(String entityName) throws Exception {
+		return engine.f(new String[] { "canReplaceEntity", entityName });
 	}
 
 	/*
