@@ -2,21 +2,17 @@ package a.entity.gus.x.file.icon.read.imageio;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-
-import a.framework.Entity;
-import a.framework.T;
+import a.framework.*;
 
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20231128";}
 
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		File file = (File) obj;
-		if (file == null || !file.exists())
-			return null;
-
+		if (file == null || !file.exists()) return null;
 		BufferedImage img = ImageIO.read(file);
 		return new ImageIcon(img);
 	}

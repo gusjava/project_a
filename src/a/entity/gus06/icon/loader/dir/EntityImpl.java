@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T, F {
 	
 	public EntityImpl() throws Exception
 	{
-		readIcon = Outside.service(this,"gus06.file.read.image.imageio.icon");
+		readIcon = Outside.service(this,"gus.x.file.icon.read.imageio");
 		isFile = Outside.service(this,"gus06.file.isfile.casesensitive");
 	}
 		

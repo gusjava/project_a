@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		perform = Outside.service(this,"gus06.file.read.image.imageio.icon");
+		perform = Outside.service(this,"gus.x.file.icon.read.imageio");
 	}
 	
 	public Object t(Object obj) throws Exception
