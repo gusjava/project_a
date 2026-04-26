@@ -26,7 +26,7 @@ public class EntityImpl implements Entity, T, G {
 		put("double",Outside.service(this,"gus06.string.transform.str.double1"));
 		put("empty",Outside.service(this,"gus06.string.transform.str.empty"));
 		put("length",Outside.service(this,"gus06.string.transform.str.length"));
-		put("lower",Outside.service(this,"gus06.string.transform.str.lower"));
+		put("lower",Outside.service(this,"gus.x.transform.string.case1.lowercase"));
 		put("now",Outside.service(this,"gus06.string.transform.str.now"));
 		put("same",Outside.service(this,"gus06.string.transform.str.same"));
 		put("spacing",Outside.service(this,"gus06.string.transform.str.spacing"));

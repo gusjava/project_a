@@ -48,7 +48,7 @@ public class EntityImpl implements Entity, ActionListener, I, G, E, Runnable {
 		Outside.service(this,"gus06.beep");
 		Outside.service(this,"gus06.beep.sleep1000");
 		Outside.service(this,"gus.x.transform.string.case1.uppercase");
-		Outside.service(this,"gus06.string.transform.str.lower");
+		Outside.service(this,"gus.x.transform.string.case1.lowercase");
 		
 		
 		button = new JButton("Execute");

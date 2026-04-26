@@ -37,7 +37,7 @@ public class EntityImpl implements Entity, T, G {
 	{
 		op_now = Outside.service(this,"gus06.time.now.pattern");
 		op_upper = Outside.service(this,"gus.x.transform.string.case1.uppercase");
-		op_lower = Outside.service(this,"gus06.string.transform.str.lower");
+		op_lower = Outside.service(this,"gus.x.transform.string.case1.lowercase");
 		op_titled = Outside.service(this,"gus06.string.transform.str.titled");
 		op_glued = Outside.service(this,"gus06.string.transform.normalize.diacritics.lower.glued");
 		op_html = Outside.service(this,"gus06.string.transform.format.html.encode");

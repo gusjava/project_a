@@ -24,7 +24,7 @@ public class EntityImpl implements Entity, T {
 		titled = Outside.service(this,"gus06.string.transform.str.titled");
 		titledInv = Outside.service(this,"gus06.string.transform.str.titled.inv");
 		upper = Outside.service(this,"gus.x.transform.string.case1.uppercase");
-		lower = Outside.service(this,"gus06.string.transform.str.lower");
+		lower = Outside.service(this,"gus.x.transform.string.case1.lowercase");
 		upperSnakecase = Outside.service(this,"gus06.string.case1.to.upper.snakecase");
 		lowerSnakecase = Outside.service(this,"gus06.string.case1.to.lower.snakecase");
 		upperKebabcase = Outside.service(this,"gus06.string.case1.to.upper.kebabcase");
