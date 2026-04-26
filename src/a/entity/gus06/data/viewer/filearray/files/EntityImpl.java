@@ -39,7 +39,7 @@ public class EntityImpl implements Entity, I, P, ListSelectionListener {
 		listRenderer = Outside.service(this,"gus06.swing.list.cust.renderer.file");
 		find = Outside.service(this,"gus06.find.filearray");
 		handleCtrlC = Outside.service(this,"gus06.data.viewer.filearray.files.ctrl_c");
-		clearCPC = Outside.service(this,"gus06.swing.comp.action.clearcopypastecut");
+		clearCPC = Outside.service(this,"gus.x.swing.comp.action.clear.copypastecut");
 		
 		list = new JList();
 		listRenderer.p(list);

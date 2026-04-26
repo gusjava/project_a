@@ -10,11 +10,11 @@ public class EntityImpl implements Entity, P {
 	public String creationDate() {return "20240112";}
 
 	public static final Action EMPTYACTION = new AbstractAction() {
-		public void actionPerformed(ActionEvent e) {
-		}
+		public void actionPerformed(ActionEvent e) {}
 	};
 
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		JComponent comp = (JComponent) obj;
 
 		comp.getActionMap().put("copy", EMPTYACTION);

@@ -40,7 +40,7 @@ public class EntityImpl extends S1 implements Entity, ActionListener, I, P, G, R
 		renderList = Outside.service(this,"gus06.sys.filetool.ext.library1.gui.list.renderer");
 		listTooltip = Outside.service(this,"gus06.swing.list.cust3.tooltip1");
 		dnd = Outside.service(this,"gus06.awt.dnd");
-		clearCPC = Outside.service(this,"gus06.swing.comp.action.clearcopypastecut");
+		clearCPC = Outside.service(this,"gus.x.swing.comp.action.clear.copypastecut");
 		fileToMark = Outside.service(this,"gus06.file.findcolor1.filetomark");
 		fileProvider = Outside.service(this,"m102.r.fileprovider");
 		

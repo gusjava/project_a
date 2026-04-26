@@ -37,7 +37,7 @@ public class EntityImpl implements Entity, P, I, V, E {
 	{
 		dirToMap = Outside.service(this,"gus06.dir.dirtoiconmap.jar");
 		mapViewer = Outside.service(this,"*gus06.data.viewer.map.iconmap");
-		clearCPC = Outside.service(this,"gus06.swing.comp.action.clearcopypastecut");
+		clearCPC = Outside.service(this,"gus.x.swing.comp.action.clear.copypastecut");
 		
 		opDelete = Outside.service(this,"gus06.file.op.delete.confirm.en");
 		opLaunch = Outside.service(this,"gus06.awt.desktop.open");

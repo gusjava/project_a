@@ -100,7 +100,7 @@ public class EntityImpl extends S1 implements Entity, ActionListener, KeyListene
 		collect = Outside.service(this,"gus06.list.collect");
 		custLabel = Outside.service(this,"gus06.swing.label.cust2.display");
 		tooltip = Outside.service(this,"gus.x.swing.table.cust.tooltip1");
-		clearCopyPasteCut = Outside.service(this,"gus06.swing.comp.action.clearcopypastecut");
+		clearCopyPasteCut = Outside.service(this,"gus.x.swing.comp.action.clear.copypastecut");
 		clipboard = Outside.service(this,"gus06.clipboard.access");
 		join = Outside.service(this,"gus06.tostring.list.join.n");
 		
@@ -719,4 +719,4 @@ public class EntityImpl extends S1 implements Entity, ActionListener, KeyListene
 			manager.v("addFile", new Object[]{name, file});
 		}
 	}
-}
+}  

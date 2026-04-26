@@ -48,7 +48,7 @@ public class EntityImpl implements Entity, I, P, ListSelectionListener {
 		dirToMap = Outside.service(this,"gus06.dir.children.dirtomap.name_file");
 		editor = Outside.service(this,"*gus06.file.editor.ext.properties");
 		splitCust = Outside.service(this,"gus06.swing.splitpane.cust.cust1");
-		clearCPC = Outside.service(this,"gus06.swing.comp.action.clearcopypastecut");
+		clearCPC = Outside.service(this,"gus.x.swing.comp.action.clear.copypastecut");
 		
 		create = Outside.service(this,"gus06.file.perform.create.ask");
 		remove = Outside.service(this,"gus06.file.perform.remove.ask");

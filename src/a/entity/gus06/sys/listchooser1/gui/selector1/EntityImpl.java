@@ -43,7 +43,7 @@ public class EntityImpl extends S1 implements Entity, I, P, G, V, R, ActionListe
 		linkerListField = Outside.service(this,"gus.x.swing.list.textfield.linker");
 		listFilter = Outside.service(this,"gus06.list.filter.rule");
 		findList = Outside.service(this,"gus06.find.list");
-		clearCPC = Outside.service(this,"gus06.swing.comp.action.clearcopypastecut");
+		clearCPC = Outside.service(this,"gus.x.swing.comp.action.clear.copypastecut");
 		
 		Icon icon = (Icon) Outside.resource(this,"icon#ELEMENT");
 		
