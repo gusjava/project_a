@@ -63,7 +63,7 @@ public class EntityImpl extends S1 implements Entity, I, E, G, R, V, ListSelecti
 		insideIcons = Outside.service(this,"gus06.app.jarfile.listing.resources.iconmap.gyem");
 		onF5 = Outside.service(this,"gus06.swing.comp.cust3.execute.f5");
 		fieldHolder = Outside.service(this,"*gus06.data.editor.string.textfield.editor1");
-		tableLinker = Outside.service(this,"gus06.swing.table.textfield.linker");
+		tableLinker = Outside.service(this,"gus.x.swing.table.textfield.linker");
 		listFilter = Outside.service(this,"gus06.list.filter.rule.all");
 		
 		field = (JTextField) fieldHolder.i();

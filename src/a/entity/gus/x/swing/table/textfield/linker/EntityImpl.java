@@ -13,10 +13,10 @@ import java.awt.Rectangle;
 public class EntityImpl implements Entity, P {
 	public String creationDate() {return "20240112";}
 	
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
 		JTable table = (JTable) o[0];
 		JTextField field = (JTextField) o[1];
@@ -24,11 +24,13 @@ public class EntityImpl implements Entity, P {
 		new Holder(table, field);
 	}
 
-	private class Holder extends KeyAdapter {
+	private class Holder extends KeyAdapter
+	{
 		private JTable table;
 		private JTextField field;
 
-		public Holder(JTable table, JTextField field) {
+		public Holder(JTable table, JTextField field)
+		{
 			this.table = table;
 			this.field = field;
 
@@ -46,49 +48,55 @@ public class EntityImpl implements Entity, P {
 			});
 		}
 
-		public void keyPressed(KeyEvent e) {
+		public void keyPressed(KeyEvent e)
+		{
 			int code = e.getKeyCode();
 			int nb = table.getModel().getRowCount();
 
-			if (code == KeyEvent.VK_UP && table.getSelectedRow() == 0) {
+			if (code == KeyEvent.VK_UP && table.getSelectedRow() == 0)
+			{
 				focusField();
 				return;
 			}
-			if (code == KeyEvent.VK_DOWN && table.getSelectedRow() == nb - 1) {
+			if (code == KeyEvent.VK_DOWN && table.getSelectedRow() == nb - 1)
+			{
 				focusField();
 				return;
 			}
-			if (code == KeyEvent.VK_ESCAPE) {
+			if (code == KeyEvent.VK_ESCAPE)
+			{
 				focusField();
 				return;
 			}
 		}
 
-		private void focusTop() {
+		private void focusTop()
+		{
 			table.requestFocusInWindow();
 			int nb = table.getModel().getRowCount();
-			if (nb == 0)
-				return;
+			if (nb == 0) return;
 
 			table.getSelectionModel().setSelectionInterval(0, 0);
 			ensureRowIsVisible(table.getSelectedRow());
 		}
 
-		private void focusBottom() {
+		private void focusBottom()
+		{
 			table.requestFocusInWindow();
 			int nb = table.getModel().getRowCount();
-			if (nb == 0)
-				return;
+			if (nb == 0) return;
 
 			table.getSelectionModel().setSelectionInterval(nb - 1, nb - 1);
 			ensureRowIsVisible(table.getSelectedRow());
 		}
 
-		private void focusField() {
+		private void focusField()
+		{
 			field.requestFocusInWindow();
 		}
 
-		private void ensureRowIsVisible(int row) {
+		private void ensureRowIsVisible(int row)
+		{
 			Rectangle rect = table.getCellRect(row, 0, true);
 			table.scrollRectToVisible(rect);
 		}

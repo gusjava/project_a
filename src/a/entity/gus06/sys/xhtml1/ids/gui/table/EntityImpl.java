@@ -46,7 +46,7 @@ public class EntityImpl extends S1 implements Entity, G, P, I {
 	{
 		findAll = Outside.service(this,"gus06.sys.xhtml1.ids.findall.asmap");
 		fieldHolder = Outside.service(this,"*gus06.data.editor.string.textfield.editor1");
-		linkerTableField = Outside.service(this,"gus06.swing.table.textfield.linker");
+		linkerTableField = Outside.service(this,"gus.x.swing.table.textfield.linker");
 		listFilter = Outside.service(this,"gus06.list.filter.rule.all");
 		
 		fieldHolder.addActionListener(new ActionListener(){

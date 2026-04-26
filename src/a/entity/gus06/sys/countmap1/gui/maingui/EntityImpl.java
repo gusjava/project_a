@@ -37,7 +37,7 @@ public class EntityImpl extends S1 implements Entity, ActionListener, I, V, P, G
 		tableGui = Outside.service(this,"*gus06.sys.countmap1.gui.table");
 		filterString = Outside.service(this,"gus06.filter.string.build.allofthem_n");
 		filterMap = Outside.service(this,"gus06.map.key.filter");
-		linker = Outside.service(this,"gus06.swing.table.textfield.linker");
+		linker = Outside.service(this,"gus.x.swing.table.textfield.linker");
 		
 		table = (JTable) tableGui.i();
 		field = (JComponent) fieldGui.i();

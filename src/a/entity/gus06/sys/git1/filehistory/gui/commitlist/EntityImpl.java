@@ -60,7 +60,7 @@ public class EntityImpl extends S1 implements Entity, ActionListener, I, P, G, R
 		fieldGui = Outside.service(this,"*gus06.data.editor.string.textfield.editor1");
 		tableGui = Outside.service(this,"*gus06.sys.git1.filehistory.gui.commitlist.table");
 		filterCommit = Outside.service(this,"gus06.sys.git1.tool.commit.build.filter");
-		linker = Outside.service(this,"gus06.swing.table.textfield.linker");
+		linker = Outside.service(this,"gus.x.swing.table.textfield.linker");
 		handleCommitsSrc = Outside.service(this,"gus06.sys.git1.filehistory.handle.commits.src");
 		handleCommitsSrcN = Outside.service(this,"gus06.sys.git1.filehistory.handle.commits.srcn");
 		buildToolbar = Outside.service(this,"gus06.swing.toolbar.toolbar1");
