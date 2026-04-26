@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, E {
 		before = Outside.service(this,"gus06.appli.gusexplorer.execute.tools.screen.beforecapture");
 		captureImage = Outside.service(this,"gus06.sys.capturescreen1.capture");
 		showInFrame = Outside.service(this,"gus06.image.show.inframe.alwaysontop");
-		now = Outside.service(this,"gus06.time.now.hhmmss1");
+		now = Outside.service(this,"gus.x.time.now.hhmmss1");
 	}
 	
 	public void e() throws Exception

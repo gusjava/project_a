@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, P {
 	{
 		newViewerString = Outside.service(this,"factory#gus06.data.editor.string.textarea.editor1");
 		showInFrame = Outside.service(this,"gus06.swing.comp.inframe.alwaysontop");
-		now = Outside.service(this,"gus06.time.now.hhmmss1");
+		now = Outside.service(this,"gus.x.time.now.hhmmss1");
 	}
 
 	

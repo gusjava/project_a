@@ -28,7 +28,7 @@ public class EntityImpl implements Entity, E {
 		
 		clipboard = Outside.service(this,"gus06.clipboard.access");
 		showInFrame = Outside.service(this,"gus06.swing.comp.inframe.alwaysontop");
-		now = Outside.service(this,"gus06.time.now.hhmmss1");
+		now = Outside.service(this,"gus.x.time.now.hhmmss1");
 	}
 	
 	public void e() throws Exception
