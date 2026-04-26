@@ -19,9 +19,9 @@ public class EntityImpl implements Entity, T {
 		if(o.length!=4) throw new Exception("Wrong data number: "+o.length);
 		
 		Connection cx = (Connection) o[0];
-		Long id1    = (Long) o[2];
-		Long id2    = (Long) o[3];
-		String type   = (String) o[4];
+		Long id1    = (Long) o[1];
+		Long id2    = (Long) o[2];
+		String type   = (String) o[3];
 		
 		String sql = "INSERT INTO knowledge_link (ID_LINKER, ID_LINKED, TYPE) " + 
 		"VALUES (" + id1 + ", " + id2 + ", '" + type + "')";

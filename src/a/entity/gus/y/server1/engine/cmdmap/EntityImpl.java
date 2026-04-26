@@ -66,7 +66,7 @@ public class EntityImpl implements Entity, G {
 		
 		cmdKSql     = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.sql");
 		cmdESql     = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.sql");
-		cmdRSql     = Outside.service(this, "gus.y.server1.engine.cmd.r.sql");
+		cmdRSql     = Outside.service(this, "gus.y.server1.engine.cmd.r.n1.sql");
 	}
 
 	public Object g() throws Exception

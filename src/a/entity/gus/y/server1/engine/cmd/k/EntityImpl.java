@@ -28,6 +28,8 @@ public class EntityImpl implements Entity, T {
 	private Service add_kk;
 	private Service add_tt;
 	private Service add_tk;
+	private Service add_ka;
+	private Service add_ta;
 	
 	private Service remove_kk;
 	private Service remove_tt;
@@ -64,6 +66,8 @@ public class EntityImpl implements Entity, T {
 		add_kk = Outside.service(this, "gus.y.server1.engine.cmd.k.n3.add_kk");
 		add_tt = Outside.service(this, "gus.y.server1.engine.cmd.k.n3.add_tt");
 		add_tk = Outside.service(this, "gus.y.server1.engine.cmd.k.n3.add_tk");
+		add_ka = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.add_ka");
+		add_ta = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.add_ta");
 
 		remove_kk = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.remove_kk");
 		remove_tt = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.remove_tt");
