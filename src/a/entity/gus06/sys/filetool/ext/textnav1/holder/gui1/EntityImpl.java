@@ -48,7 +48,7 @@ public class EntityImpl implements Entity, V, I, P, R, Runnable {
 		fileLabel = Outside.service(this,"*gus06.swing.label.hold.file");
 		listGui = Outside.service(this,"*gus06.sys.filetool.ext.textnav1.holder.list");
 		autoSaver = Outside.service(this,"*gus06.file.editor.holder.text.autosaver");
-		xyToLen = Outside.service(this,"gus06.string.coord.xytolen");
+		xyToLen = Outside.service(this,"gus.x.string.coord.xytolen");
 		textChanged = Outside.service(this,"gus06.swing.textcomp.textchanged.delayed");
 		
 		JPanel panelRight = new JPanel(new BorderLayout());

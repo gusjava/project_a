@@ -25,7 +25,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		convertXYtoLen = Outside.service(this,"gus06.x.string.coord.xytolen");
+		convertXYtoLen = Outside.service(this,"gus.x.string.coord.xytolen");
 	}
 	
 	public void p(Object obj) throws Exception

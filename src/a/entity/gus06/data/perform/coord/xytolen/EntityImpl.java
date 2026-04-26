@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		performArray2 = Outside.service(this,"gus06.array.d2.objectarray.coord.xytolen");
-		performString = Outside.service(this,"gus06.string.coord.xytolen");
+		performString = Outside.service(this,"gus.x.string.coord.xytolen");
 		performComp = Outside.service(this,"gus06.swing.textcomp.text.coord.xytolen");
 	}
 
