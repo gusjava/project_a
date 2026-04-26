@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, T, P {
 	
 	public EntityImpl() throws Exception
 	{
-		transfer = Outside.service(this,"gus06.io.transfer.toprintstream");
+		transfer = Outside.service(this,"gus.x.io.transfer.toprintstream");
 		wrapPO = Outside.service(this,"gus06.feature.wrap.po.e");
 		startTh = Outside.service(this,"gus06.thread.start");
 	}

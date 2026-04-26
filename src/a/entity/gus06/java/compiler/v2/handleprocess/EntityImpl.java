@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		killer = Outside.service(this,"gus06.process.timeout.killer");
-		ioTransfer = Outside.service(this,"gus06.io.transfer.toprintstream");
+		ioTransfer = Outside.service(this,"gus.x.io.transfer.toprintstream");
 	}
 
 

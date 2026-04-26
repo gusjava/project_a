@@ -6,10 +6,10 @@ import java.io.*;
 public class EntityImpl implements Entity, P {
 	public String creationDate() {return "20231128";}
 	
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
 		InputStream is = (InputStream) o[0];
 		PrintStream p = (PrintStream) o[1];
@@ -17,16 +17,15 @@ public class EntityImpl implements Entity, P {
 		InputStreamReader isr = null;
 		BufferedReader br = null;
 
-		try {
+		try
+		{
 			isr = new InputStreamReader(is);
 			br = new BufferedReader(isr);
 
 			String line = null;
-			while ((line = br.readLine()) != null)
-				p.println(line);
-		} finally {
-			if (br != null)
-				br.close();
+			while ((line = br.readLine()) != null) p.println(line);
 		}
+		finally
+		{if (br != null) br.close();}
 	}
 }
