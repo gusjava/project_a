@@ -719,4 +719,4 @@ public class EntityImpl extends S1 implements Entity, ActionListener, KeyListene
 			manager.v("addFile", new Object[]{name, file});
 		}
 	}
-}  
+}
