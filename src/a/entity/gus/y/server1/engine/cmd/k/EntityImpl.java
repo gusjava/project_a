@@ -17,21 +17,26 @@ public class EntityImpl implements Entity, T {
 	private Service get;
 	private Service list;
 	private Service search;
-	private Service tagsof;
-	private Service addtag;
-	private Service removetag;
 	private Service linksof;
-	private Service find;
 
 	// commandes link
+	
+	private Service tags_k;
+	private Service tags_t;
+	
+	private Service find_k;
+	private Service find_t;
 	
 	private Service add_kk;
 	private Service add_tt;
 	private Service add_tk;
+	
 	private Service add_ka;
 	private Service add_ta;
 	
+	private Service remove_ka;
 	private Service remove_kk;
+	private Service remove_ta;
 	private Service remove_tt;
 	private Service remove_tk;
 
@@ -57,19 +62,24 @@ public class EntityImpl implements Entity, T {
 		get    = Outside.service(this, "gus.y.server1.engine.cmd.k.get");
 		list   = Outside.service(this, "gus.y.server1.engine.cmd.k.list");
 		search = Outside.service(this, "gus.y.server1.engine.cmd.k.search");
-		tagsof    = Outside.service(this, "gus.y.server1.engine.cmd.k.tagsof");
-		addtag    = Outside.service(this, "gus.y.server1.engine.cmd.k.addtag");
-		removetag = Outside.service(this, "gus.y.server1.engine.cmd.k.removetag");
 		linksof    = Outside.service(this, "gus.y.server1.engine.cmd.k.linksof");
-		find     = Outside.service(this, "gus.y.server1.engine.cmd.k.find");
+		
+		find_k = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.find_k");
+		find_t = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.find_t");
+		
+		tags_k = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.tags_k");
+		tags_t = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.tags_t");
 		
 		add_kk = Outside.service(this, "gus.y.server1.engine.cmd.k.n3.add_kk");
 		add_tt = Outside.service(this, "gus.y.server1.engine.cmd.k.n3.add_tt");
 		add_tk = Outside.service(this, "gus.y.server1.engine.cmd.k.n3.add_tk");
+		
 		add_ka = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.add_ka");
 		add_ta = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.add_ta");
 
+		remove_ka = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.remove_ka");
 		remove_kk = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.remove_kk");
+		remove_ta = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.remove_ta");
 		remove_tt = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.remove_tt");
 		remove_tk = Outside.service(this, "gus.y.server1.engine.cmd.k.n2.remove_tk");
 
@@ -96,17 +106,24 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("get"))     return get;
 		if(cmd.equals("list"))    return list;
 		if(cmd.equals("search"))  return search;
-		if(cmd.equals("tagsof"))    return tagsof;
-		if(cmd.equals("addtag"))    return addtag;
-		if(cmd.equals("removetag")) return removetag;
 		if(cmd.equals("linksof"))    return linksof;
-		if(cmd.equals("find"))     return find;
+		
+		if(cmd.equals("find_k")) return find_k;
+		if(cmd.equals("find_t")) return find_t;
+		
+		if(cmd.equals("tags_k")) return tags_k;
+		if(cmd.equals("tags_t")) return tags_t;
 
 		if(cmd.equals("add_kk")) return add_kk;
 		if(cmd.equals("add_tt")) return add_tt;
 		if(cmd.equals("add_tk")) return add_tk;
+		
+		if(cmd.equals("add_ka")) return add_ka;
+		if(cmd.equals("add_ta")) return add_ta;
 
+		if(cmd.equals("remove_ka")) return remove_ka;
 		if(cmd.equals("remove_kk")) return remove_kk;
+		if(cmd.equals("remove_ta")) return remove_ta;
 		if(cmd.equals("remove_tt")) return remove_tt;
 		if(cmd.equals("remove_tk")) return remove_tk;
 

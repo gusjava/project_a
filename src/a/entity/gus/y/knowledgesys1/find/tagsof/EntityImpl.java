@@ -7,9 +7,8 @@ import a.framework.*;
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20260425";}
 
-	public EntityImpl() throws Exception {}
-
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		Object[] o  = (Object[]) obj;
 		Connection cx = (Connection) o[0];
 		String table  = (String) o[1];
