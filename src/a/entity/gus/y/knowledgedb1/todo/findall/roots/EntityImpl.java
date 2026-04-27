@@ -24,7 +24,8 @@ public class EntityImpl implements Entity, T {
 	{
 		Connection cx = (Connection) obj;
 		String sql = "SELECT * FROM todo " + 
-		"WHERE id NOT IN (SELECT DISTINCT id_linked FROM todo_link) ORDER BY id";
+		"WHERE id NOT IN (SELECT DISTINCT id_linked FROM todo_link) " + 
+		"ORDER BY id";
 
 		PreparedStatement st = cx.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();

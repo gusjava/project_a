@@ -28,7 +28,8 @@ public class EntityImpl extends S1 implements Entity, E, R {
 	private List todoLeafs;
 	private List todoList;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		cxMain = Outside.service(this, "gus.y.knowledgedb1.cx.main");
 		
 		findallKnowledgeRoots = Outside.service(this, "gus.y.knowledgedb1.knowledge.findall.roots");
@@ -38,27 +39,42 @@ public class EntityImpl extends S1 implements Entity, E, R {
 		findallTodoRoots = Outside.service(this, "gus.y.knowledgedb1.todo.findall.roots");
 		findallTodoLeafs = Outside.service(this, "gus.y.knowledgedb1.todo.findall.leafs");
 		findallTodoList = Outside.service(this, "gus.y.knowledgedb1.todo.findall");
+		
+		load();
 	}
 
-	public void e() throws Exception {
-		cx = (Connection) cxMain.g();
-		
-		knowledgeRoots = (List) findallKnowledgeRoots.t(cx);
-		knowledgeLeafs = (List) findallKnowledgeLeafs.t(cx);
-		knowledgeList = (List) findallKnowledgeList.t(cx);
-		
-		todoRoots = (List) findallTodoRoots.t(cx);
-		todoLeafs = (List) findallTodoLeafs.t(cx);
-		todoList = (List) findallTodoList.t(cx);
-		
-		loaded();
+	public void e() throws Exception
+	{
+		new Thread(() -> {load();}).start();
+	}
+	
+	private void load()
+	{
+		try
+		{
+			cx = (Connection) cxMain.g();
+			
+			knowledgeRoots = (List) findallKnowledgeRoots.t(cx);
+			knowledgeLeafs = (List) findallKnowledgeLeafs.t(cx);
+			knowledgeList = (List) findallKnowledgeList.t(cx);
+			
+			todoRoots = (List) findallTodoRoots.t(cx);
+			todoLeafs = (List) findallTodoLeafs.t(cx);
+			todoList = (List) findallTodoList.t(cx);
+			
+			loaded();
+		}
+		catch(Exception e)
+		{Outside.err(this,"load()",e);}
 	}
 
-	private void loaded() {
+	private void loaded()
+	{
 		send(this, "loaded()");
 	}
 
-	public Object r(String key) throws Exception {
+	public Object r(String key) throws Exception
+	{
 		if (key.equals("cx")) return cx;
 		
 		if (key.equals("knowledgeRoots")) return knowledgeRoots;

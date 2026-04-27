@@ -39,7 +39,7 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, T
 	private JTree tree;
 
 	public EntityImpl() throws Exception {
-		findLinks = Outside.service(this, "gus.y.knowledgedb1.todo_link.find1");
+		findLinks = Outside.service(this, "gus.y.knowledgedb1.todo_link.find2");
 		findTodo = Outside.service(this, "gus.y.knowledgedb1.todo.find");
 		custUI = Outside.service(this, "gus.y.swing1.tree.cust.ui.expandcollapseicons2");
 

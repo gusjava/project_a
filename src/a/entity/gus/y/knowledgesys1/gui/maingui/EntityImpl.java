@@ -53,8 +53,6 @@ public class EntityImpl implements Entity, I
 		gui2_3.v("engine", engine);
 		
 		gui3_1.v("engine", engine);
-		
-		engine.e();
 	}
 
 	public Object i() throws Exception

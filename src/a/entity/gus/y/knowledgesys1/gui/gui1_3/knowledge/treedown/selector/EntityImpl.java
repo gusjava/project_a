@@ -39,8 +39,9 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, T
 	private JPanel panel;
 	private JTree tree;
 
-	public EntityImpl() throws Exception {
-		findLinks = Outside.service(this, "gus.y.knowledgedb1.knowledge_link.find1");
+	public EntityImpl() throws Exception
+	{
+		findLinks = Outside.service(this, "gus.y.knowledgedb1.knowledge_link.find2");
 		findKnowledge = Outside.service(this, "gus.y.knowledgedb1.knowledge.find");
 		custUI = Outside.service(this, "gus.y.swing1.tree.cust.ui.expandcollapseicons2");
 
@@ -74,6 +75,7 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, T
 		
 		this.engine = engine;
 		((S) engine).addActionListener(this);
+		loaded();
 	}
 
 	private void reload() {

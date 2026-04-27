@@ -38,12 +38,14 @@ public class EntityImpl implements Entity, G, ActionListener {
 		exit.addActionListener(this);
 	}
 
-	public Object g() throws Exception {
+	public Object g() throws Exception
+	{
 		if (cx == null || cx.isClosed()) init();
 		return cx;
 	}
 
-	private void init() throws Exception {
+	private void init() throws Exception
+	{
 		cx = (Connection) buildCx.t(new Object[] { file, USER, PWD });
 		checkDb.p(new Object[] { cx, initDb });
 	}

@@ -113,6 +113,7 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 			((S) this.engine).removeActionListener(this);
 		this.engine = engine;
 		((S) engine).addActionListener(this);
+		loaded();
 	}
 
 	private void reload() {
