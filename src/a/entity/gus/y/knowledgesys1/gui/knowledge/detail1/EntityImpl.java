@@ -11,7 +11,7 @@ import javax.swing.JTabbedPane;
 
 import a.framework.*;
 
-public class EntityImpl implements Entity, I, P
+public class EntityImpl implements Entity, I, P, V
 {
 	public String creationDate() {return "20260423";}
 
@@ -52,6 +52,16 @@ public class EntityImpl implements Entity, I, P
 
 	public Object i() throws Exception
 	{return panel;}
+
+	public void v(String key, Object obj) throws Exception
+	{
+		if (key.equals("engine"))
+		{
+			gui1.v("engine", obj);
+			gui2.v("engine", obj);
+			gui3.v("engine", obj);
+		}
+	}
 
 	public void p(Object obj) throws Exception
 	{

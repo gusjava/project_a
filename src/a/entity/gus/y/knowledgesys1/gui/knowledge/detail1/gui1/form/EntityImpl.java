@@ -8,16 +8,22 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import java.awt.Insets;
+import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import a.framework.*;
 
-public class EntityImpl implements Entity, I, P {
+public class EntityImpl implements Entity, I, P, V {
 	public String creationDate() {return "20260414";}
 
+	private Service edit;
 	private Service formPanel;
+	
+	private Object engine;
+	private Map data;
 
 	private JPanel mainPanel;
+	private JButton buttonEdit;
 
 	private JTextField fieldId = new JTextField();
 	private JTextField fieldDateCreated = new JTextField();
@@ -28,7 +34,9 @@ public class EntityImpl implements Entity, I, P {
 	private JTextField fieldObject = new JTextField();
 	private JTextArea taDescription = new JTextArea();
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
+		edit = Outside.service(this,"gus.y.knowledgesys1.gui.knowledge.edit");
 		formPanel = Outside.service(this, "*gus.x.swing.panel.formpanel");
 
 		fieldId.setEditable(false);
@@ -51,18 +59,34 @@ public class EntityImpl implements Entity, I, P {
 		formPanel.v("state", fieldState);
 		formPanel.v("action", fieldAction);
 		formPanel.v("object", fieldObject);
+		
+		buttonEdit = new JButton("Edit");
+		buttonEdit.addActionListener(e->edit());
+		buttonEdit.setEnabled(false);
 
 		mainPanel = new JPanel(new BorderLayout());
 		mainPanel.add((JComponent) formPanel.i(), BorderLayout.NORTH);
 		mainPanel.add(new JScrollPane(taDescription), BorderLayout.CENTER);
+		mainPanel.add(buttonEdit, BorderLayout.SOUTH);
 	}
 
-	public Object i() throws Exception {
+	public Object i() throws Exception
+	{
 		return mainPanel;
 	}
 
-	public void p(Object obj) throws Exception {
-		if (obj == null) {
+	public void v(String key, Object obj) throws Exception
+	{
+		if (key.equals("engine")) {engine = obj;return;}
+		throw new Exception("Unkwown key: "+key);
+	}
+
+	public void p(Object obj) throws Exception
+	{
+		if (obj == null)
+		{
+			data = null;
+			
 			fieldId.setText("");
 			fieldDateCreated.setText("");
 			fieldDateUpdated.setText("");
@@ -71,23 +95,41 @@ public class EntityImpl implements Entity, I, P {
 			fieldAction.setText("");
 			fieldObject.setText("");
 			taDescription.setText("");
+			buttonEdit.setEnabled(false);
 			return;
 		}
 
-		Map m = (Map) obj;
-		fieldId.setText(str(m.get("id")));
-		fieldDateCreated.setText(str(m.get("date_created")));
-		fieldDateUpdated.setText(str(m.get("date_updated")));
-		fieldCode.setText(str(m.get("code")));
-		fieldState.setText(str(m.get("state")));
-		fieldAction.setText(str(m.get("action")));
-		fieldObject.setText(str(m.get("object")));
+		data = (Map) obj;
 		
-		taDescription.setText(str(m.get("description")));
+		fieldId.setText(valueFor("id"));
+		fieldDateCreated.setText(valueFor("date_created"));
+		fieldDateUpdated.setText(valueFor("date_updated"));
+		fieldCode.setText(valueFor("code"));
+		fieldState.setText(valueFor("state"));
+		fieldAction.setText(valueFor("action"));
+		fieldObject.setText(valueFor("object"));
+		buttonEdit.setEnabled(true);
+		
+		taDescription.setText(valueFor("description"));
 		taDescription.setCaretPosition(0);
 	}
 
-	private String str(Object value) {
+	private String valueFor(String key)
+	{
+		if(data==null) return "";
+		Object value = data.get(key);
 		return value != null ? value.toString() : "";
 	}
+	
+	private void edit()
+	{
+		try
+		{
+			if(data==null || engine==null) return;
+			edit.p(new Object[]{engine, data});
+		}
+		catch(Exception e)
+		{Outside.err(this,"edit()",e);}
+	}
+
 }

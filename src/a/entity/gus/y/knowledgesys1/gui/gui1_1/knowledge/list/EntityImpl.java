@@ -35,7 +35,10 @@ public class EntityImpl implements Entity, I, V, ActionListener
 	public void v(String key, Object obj) throws Exception
 	{
 		if (key.equals("engine"))
-		guiSelector.v(key, obj);
+		{
+			guiSelector.v(key, obj);
+			guiDetail.v(key, obj);
+		}
 	}
 
 	public Object i() throws Exception

@@ -7,25 +7,19 @@ import javax.swing.JFrame;
 import a.framework.*;
 
 public class EntityImpl extends S1 implements Entity, P, V, F {
-
 	public String creationDate() {return "20151007";}
 
-	
 	private JFrame mainFrame;
 	private Dialog0 dialog;
 	
 	private int width = -1;
 	private int height = -1;
 	
-	
-
 	public EntityImpl() throws Exception
 	{
 		mainFrame = (JFrame) Outside.resource(this,"mainframe");
 		dialog = new Dialog0(mainFrame);
 	}
-	
-	
 	
 	public void v(String key, Object obj) throws Exception
 	{
@@ -50,27 +44,20 @@ public class EntityImpl extends S1 implements Entity, P, V, F {
 		}
 	}
 
-	
 	public void p(Object obj) throws Exception
 	{
 		if(obj==null) dialog.hideContent();
 		else dialog.showContent((JComponent) obj);
 	}
 	
-	
 	public boolean f(Object obj) throws Exception
 	{return dialog.isVisible();}
-	
-	
 	
 	private void dialogHidden()
 	{send(this,"dialogHidden()");}
 	
-	
 	private int int_(Object obj)
 	{return Integer.parseInt(""+obj);}
-	
-	
 	
 	private class Dialog0 extends JDialog
 	{

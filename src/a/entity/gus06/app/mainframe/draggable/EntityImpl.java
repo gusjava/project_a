@@ -12,7 +12,7 @@ public class EntityImpl implements Entity {
 
 	public EntityImpl() throws Exception
 	{
-		dragframe = Outside.service(this,"gus06.swing.comp.cust.dragframe");
+		dragframe = Outside.service(this,"gus.x.swing.comp.cust.dragframe");
 		
 		JFrame frame = (JFrame) Outside.resource(this,"mainframe");
 		dragframe.p(frame);

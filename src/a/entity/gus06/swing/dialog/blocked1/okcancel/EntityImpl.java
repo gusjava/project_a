@@ -12,7 +12,6 @@ import javax.swing.BorderFactory;
 import java.awt.Color;
 
 public class EntityImpl implements Entity, F, V, R {
-
 	public String creationDate() {return "20151007";}
 	
 	public static final int GAP = 20;
@@ -29,7 +28,7 @@ public class EntityImpl implements Entity, F, V, R {
 	public EntityImpl() throws Exception
 	{
 		dialog = Outside.service(this,"gus06.swing.dialog.blocked1");
-		dragFrame = Outside.service(this,"gus06.swing.comp.cust.dragframe");
+		dragFrame = Outside.service(this,"gus.x.swing.comp.cust.dragframe");
 		
 		button_ok = new JButton("OK");
 		button_ok.addActionListener(new ActionListener(){

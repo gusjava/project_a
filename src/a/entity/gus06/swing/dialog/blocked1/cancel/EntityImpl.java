@@ -31,7 +31,7 @@ public class EntityImpl implements Entity, F, V, R {
 	public EntityImpl() throws Exception
 	{
 		dialog = Outside.service(this,"gus06.swing.dialog.blocked1");
-		dragFrame = Outside.service(this,"gus06.swing.comp.cust.dragframe");
+		dragFrame = Outside.service(this,"gus.x.swing.comp.cust.dragframe");
 		
 		button_cancel = new JButton("Cancel");
 		button_cancel.addActionListener(new ActionListener(){

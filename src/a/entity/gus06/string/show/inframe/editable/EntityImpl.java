@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, V {
 		show = Outside.service(this,"gus06.swing.frame.show");
 		onKey = Outside.service(this,"gus06.swing.comp.cust3.on.keypressed.with.execute");
 		newEditor = Outside.service(this,"factory#gus06.data.editor.string.textarea.editor1");
-		dragframe = Outside.service(this,"gus06.swing.comp.cust.dragframe");
+		dragframe = Outside.service(this,"gus.x.swing.comp.cust.dragframe");
 		shiftUndecorated = Outside.service(this,"gus06.swing.frame.undecorated.shift");
 		custDisplay = Outside.service(this,"gus06.swing.frame.cust2.display");
 	}

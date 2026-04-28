@@ -22,7 +22,7 @@ public class EntityImpl extends S1 implements Entity, R, G, V, P {
 	public EntityImpl() throws Exception
 	{
 		onTop = Outside.service(this,"gus06.swing.dialog.build.dialogontop");
-		draggable = Outside.service(this,"gus06.swing.comp.cust.dragframe");
+		draggable = Outside.service(this,"gus.x.swing.comp.cust.dragframe");
 		locationPersister = Outside.service(this,"gus06.swing.dialog.persister.position");
 		
 		map = new HashMap();

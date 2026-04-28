@@ -42,7 +42,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		repaint = Outside.service(this,"gus06.swing.frame.cust2.display");
-		draggable = Outside.service(this,"gus06.swing.comp.cust.dragframe");
+		draggable = Outside.service(this,"gus.x.swing.comp.cust.dragframe");
 		boundsPersister = Outside.service(this,"gus06.swing.frame.persister.bounds");
 		findDimension = Outside.service(this,"gus06.find.dimension");
 		findEmptyBorder = Outside.service(this,"gus06.find.emptyborder");

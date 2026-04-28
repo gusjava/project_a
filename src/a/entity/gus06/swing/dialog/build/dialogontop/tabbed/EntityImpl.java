@@ -28,7 +28,7 @@ public class EntityImpl implements Entity, T, P {
 	{
 		toComp = Outside.service(this,"gus06.swing.comp.find");
 		getTimer = Outside.service(this,"gus06.time.timer.unique");
-		draggable = Outside.service(this,"gus06.swing.comp.cust.dragframe");
+		draggable = Outside.service(this,"gus.x.swing.comp.cust.dragframe");
 		executeOnDel = Outside.service(this,"gus06.swing.comp.cust3.execute.del");
 		timer = (Timer) getTimer.g();
 	}

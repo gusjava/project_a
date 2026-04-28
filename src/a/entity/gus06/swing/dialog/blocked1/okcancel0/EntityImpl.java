@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, F, V {
 	public EntityImpl() throws Exception
 	{
 		dialog = Outside.service(this,"gus06.swing.dialog.blocked1");
-		dragFrame = Outside.service(this,"gus06.swing.comp.cust.dragframe");
+		dragFrame = Outside.service(this,"gus.x.swing.comp.cust.dragframe");
 	}
 	
 	public void v(String key, Object obj) throws Exception

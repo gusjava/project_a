@@ -25,7 +25,7 @@ public class EntityImpl implements Entity, P {
 	{
 		custBounds = Outside.service(this,"gus06.swing.dialog.cust2.bounds");
 		disposeOnKey = Outside.service(this,"gus06.swing.dialog.cust2.disposeonkey");
-		setDraggable = Outside.service(this,"gus06.swing.comp.cust.dragframe");
+		setDraggable = Outside.service(this,"gus.x.swing.comp.cust.dragframe");
 	}
 	
 	

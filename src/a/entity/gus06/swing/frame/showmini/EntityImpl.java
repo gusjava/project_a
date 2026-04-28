@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, T, P {
 
 	public EntityImpl() throws Exception
 	{
-		draggable = Outside.service(this,"gus06.swing.comp.cust.dragframe");
+		draggable = Outside.service(this,"gus.x.swing.comp.cust.dragframe");
 		removable = Outside.service(this,"gus06.swing.comp.cust.removable");
 		autoPack = Outside.service(this,"gus06.awt.window.autopack");
 		emptyBorder = Outside.service(this,"gus06.find.emptyborder");

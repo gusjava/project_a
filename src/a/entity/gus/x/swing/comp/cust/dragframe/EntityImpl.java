@@ -1,4 +1,4 @@
-package a.entity.gus06.swing.comp.cust.dragframe;
+package a.entity.gus.x.swing.comp.cust.dragframe;
 
 import a.framework.*;
 import java.awt.Component;
@@ -7,16 +7,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import javax.swing.SwingUtilities;
 
-
 public class EntityImpl implements Entity, P {
-
 	public String creationDate() {return "20140913";}
-
 
 	public void p(Object obj) throws Exception
 	{new DragHolder((Component) obj);}
-	
-	
 	
 	public class DragHolder implements MouseMotionListener
 	{
