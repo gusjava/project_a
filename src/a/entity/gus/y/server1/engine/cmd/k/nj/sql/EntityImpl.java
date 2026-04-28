@@ -24,12 +24,10 @@ public class EntityImpl implements Entity, T {
 
 	public Object t(Object obj) throws Exception
 	{
-		Map json = (Map) obj;
-		String sql  = (String) json.get("sql");
+		String sql  = toSql(obj);
 		String sql_ = sql.toLowerCase();
 
-		Connection cx    = cx();
-		Object[] params  = new Object[]{cx, sql};
+		Object[] params  = new Object[]{cx(), sql};
 
 		if(sql_.startsWith("show"))   return sqlSelect.t(params);
 		if(sql_.startsWith("select")) return sqlSelect.t(params);
@@ -40,7 +38,14 @@ public class EntityImpl implements Entity, T {
 		if(sql_.startsWith("create")) return sqlUpdate.t(params);
 		if(sql_.startsWith("drop"))   return sqlUpdate.t(params);
 
-		throw new Exception("SQL non supporté: " + sql);
+		throw new Exception("Unsupported SQL: " + sql);
+	}
+	
+	private String toSql(Object obj) throws Exception
+	{
+		if(obj instanceof String) return (String) obj;
+		if(obj instanceof Map) return (String) ((Map) obj).get("sql");
+		throw new Exception("Invalid data type: "+obj.getClass().getName());
 	}
 
 	private Connection cx() throws Exception

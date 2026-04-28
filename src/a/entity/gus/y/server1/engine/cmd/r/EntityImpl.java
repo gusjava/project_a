@@ -64,7 +64,7 @@ public class EntityImpl implements Entity, T {
 	{
 		// commandes generales
 		help    = Outside.service(this, "gus.y.server1.engine.cmd.r.help");
-		sql     = Outside.service(this, "gus.y.server1.engine.cmd.r.n1.sql");
+		sql     = Outside.service(this, "gus.y.server1.engine.cmd.r.nj.sql");
 		tables  = Outside.service(this, "gus.y.server1.engine.cmd.r.tables");
 		tags    = Outside.service(this, "gus.y.server1.engine.cmd.r.tags");
 

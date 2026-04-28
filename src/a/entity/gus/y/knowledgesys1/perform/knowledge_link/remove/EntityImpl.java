@@ -19,8 +19,8 @@ public class EntityImpl implements Entity, T {
 		if (o.length != 3) throw new Exception("Wrong data number: " + o.length);
 		
 		Connection cx = (Connection) o[0];
-		Long id1    = (Long) o[2];
-		Long id2    = (Long) o[3];
+		Long id1    = (Long) o[1];
+		Long id2    = (Long) o[2];
 		
 		String sql = "DELETE FROM knowledge_link " + 
 		"WHERE ID_LINKER = " + id1 + " AND ID_LINKED = " + id2;
