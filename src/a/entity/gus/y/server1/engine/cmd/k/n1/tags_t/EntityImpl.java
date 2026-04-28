@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		perform  = Outside.service(this, "gus.y.knowledgesys1.find.tagsof");
+		perform = Outside.service(this, "gus.y.knowledgedb1.todo_tag.find1");
 		engine = Outside.service(this, "gus.y.knowledgesys1.engine");
 	}
 
@@ -21,8 +21,8 @@ public class EntityImpl implements Entity, T {
 		List list = (List) obj;
 		if(list.size() != 1) throw new Exception("Invalid arg number: "+list.size());
 		
-		Long id = Long.parseLong(""+list.get(1));
-		return perform.t(new Object[]{cx(), "todo", id});
+		Long id = Long.parseLong(""+list.get(0));
+		return perform.t(new Object[]{cx(), id});
 	}
 
 	private Connection cx() throws Exception

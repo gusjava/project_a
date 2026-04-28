@@ -13,37 +13,32 @@ import a.framework.*;
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20260410";}
 
-	public static final String TABLE_NAME = "knowledge_link";
-	public static final String COL_ID_LINKER = "id_linker";
-	public static final String COL_ID_LINKED = "id_linked";
-	public static final String COL_TYPE = "type";
-
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
 		Connection cx = (Connection) o[0];
 		Long idLinked = (Long) o[1];
 
-		String sql = "SELECT " + COL_ID_LINKER + ", " + COL_TYPE + " FROM " + TABLE_NAME
-				+ " WHERE " + COL_ID_LINKED + "=?";
+		String sql = "SELECT id_linker, type FROM knowledge_link WHERE id_linked=?";
+		
 		PreparedStatement st = cx.prepareStatement(sql);
 		st.setObject(1, idLinked);
 		ResultSet rs = st.executeQuery();
 
 		List data = new ArrayList();
-		while (rs.next()) {
+		while (rs.next())
+		{
 			Map m = new HashMap();
-			transfer(m, rs, COL_ID_LINKER);
-			transfer(m, rs, COL_TYPE);
+			transfer(m, rs, "id_linker");
+			transfer(m, rs, "type");
 			data.add(m);
 		}
 		st.close();
 		return data;
 	}
 
-	private void transfer(Map m, ResultSet rs, String key) throws SQLException {
-		m.put(key, rs.getObject(key));
-	}
+	private void transfer(Map m, ResultSet rs, String key) throws SQLException
+	{m.put(key, rs.getObject(key));}
 }

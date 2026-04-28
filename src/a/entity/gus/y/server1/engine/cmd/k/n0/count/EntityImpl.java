@@ -9,8 +9,9 @@ public class EntityImpl implements Entity, T {
 	private Service perform;
 	private Service engine;
 
-	public EntityImpl() throws Exception {
-		perform        = Outside.service(this, "gus.y.knowledgedb1.knowledge.count");
+	public EntityImpl() throws Exception
+	{
+		perform = Outside.service(this, "gus.y.knowledgedb1.knowledge.count");
 		engine = Outside.service(this, "gus.y.knowledgesys1.engine");
 	}
 

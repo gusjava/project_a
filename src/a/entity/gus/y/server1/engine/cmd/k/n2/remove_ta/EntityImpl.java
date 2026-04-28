@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, T {
 		List list = (List) obj;
 		if(list.size()!=2) throw new Exception("Wrong arg number: "+list.size());
 		
-		Long id = Long.parseLong("" + list.get(0));
+		Long id = Long.parseLong(""+list.get(0));
 		String tag = (String) list.get(1);
 		
 		return perform.t(new Object[]{cx(), "todo", id, tag});

@@ -1,20 +1,20 @@
-package a.entity.gus.y.server1.engine.cmd.k.n1.sql;
+package a.entity.gus.y.server1.engine.cmd.k.nj.sql;
 
 import java.sql.Connection;
+import java.util.Map;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20260425";}
 
-	private Service fullString;
 	private Service engine;
 	private Service sqlSelect;
 	private Service sqlInsert;
 	private Service sqlUpdate;
 	private Service sqlDelete;
 
-	public EntityImpl() throws Exception {
-		fullString      = Outside.service(this, "gus.y.server1.tool.args.fullstring");
+	public EntityImpl() throws Exception
+	{
 		engine = Outside.service(this, "gus.y.knowledgesys1.engine");
 		sqlSelect       = Outside.service(this, "gus.y.knowledgedb1.sql.select");
 		sqlInsert       = Outside.service(this, "gus.y.knowledgedb1.sql.insert");
@@ -22,8 +22,10 @@ public class EntityImpl implements Entity, T {
 		sqlDelete       = Outside.service(this, "gus.y.knowledgedb1.sql.delete");
 	}
 
-	public Object t(Object obj) throws Exception {
-		String sql  = (String) fullString.t(obj);
+	public Object t(Object obj) throws Exception
+	{
+		Map json = (Map) obj;
+		String sql  = (String) json.get("sql");
 		String sql_ = sql.toLowerCase();
 
 		Connection cx    = cx();

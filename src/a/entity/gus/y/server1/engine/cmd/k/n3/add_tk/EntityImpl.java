@@ -21,8 +21,8 @@ public class EntityImpl implements Entity, T {
 		List list = (List) obj;
 		if(list.size() != 3) throw new Exception("wrong arg number: "+list.size());
 		
-		Long id1 = Long.parseLong("" + list.get(0));
-		Long id2 = Long.parseLong("" + list.get(1));
+		Long id1 = Long.parseLong(""+list.get(0));
+		Long id2 = Long.parseLong(""+list.get(1));
 		String type = (String) list.get(2);
 		
 		return perform.t(new Object[]{cx(), id1, id2, type});
