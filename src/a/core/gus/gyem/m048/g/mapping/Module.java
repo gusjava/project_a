@@ -17,8 +17,14 @@ public class Module extends GyemSystem implements G {
 
 	private void init() throws Exception {
 		mapping = new HashMap();
-		
+
 		Map configMapping = (Map) moduleG(M049_G_CONFIG_MAPPING).g();
-		if(configMapping!= null) mapping.putAll(configMapping);
+		if(configMapping!=null) mapping.putAll(configMapping);
+
+		Map outsideFile = (Map) moduleG(M067_G_MAPPING_OUTSIDE_FILE).g();
+		if(outsideFile!=null) mapping.putAll(outsideFile);
+
+		Map outsideParams = (Map) moduleG(M068_G_MAPPING_OUTSIDE_PARAMS).g();
+		if(outsideParams!=null) mapping.putAll(outsideParams);
 	}
 }

@@ -105,4 +105,9 @@ public class GyemConst {
 	public static final Class M061_T_RB_PROPBOOL =				a.core.gus.gyem.m061.t.rb.propbool.Module.class;
 	public static final Class M062_T_RB_PROPINT =				a.core.gus.gyem.m062.t.rb.propint.Module.class;
 	public static final Class M063_T_RB_R =						a.core.gus.gyem.m063.t.rb.r.Module.class;
+	public static final Class M064_G_PARAM_ROOTDIR =			a.core.gus.gyem.m064.g.param.rootdir.Module.class;
+	public static final Class M065_G_PROP_OUTSIDE_FILE =		a.core.gus.gyem.m065.g.prop.outside.file.Module.class;
+	public static final Class M066_G_PROP_OUTSIDE_PARAMS =		a.core.gus.gyem.m066.g.prop.outside.params.Module.class;
+	public static final Class M067_G_MAPPING_OUTSIDE_FILE =		a.core.gus.gyem.m067.g.mapping.outside.file.Module.class;
+	public static final Class M068_G_MAPPING_OUTSIDE_PARAMS =	a.core.gus.gyem.m068.g.mapping.outside.params.Module.class;
 }
