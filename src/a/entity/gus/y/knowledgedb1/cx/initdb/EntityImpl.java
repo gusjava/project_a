@@ -28,7 +28,8 @@ public class EntityImpl implements Entity, P, G {
 	private Service initDocZTag;
 	private Service initFK;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		initKnowledge = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.knowledge");
 		initKnowledgeLink = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.knowledge_link");
 		initKnowledgeTag = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.knowledge_tag");
@@ -46,12 +47,14 @@ public class EntityImpl implements Entity, P, G {
 		initFK = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.fk");
 	}
 
-	public Object g() throws Exception {
+	public Object g() throws Exception
+	{
 		if (ALWAYS_RESET) return null;
 		return STRUCT_LAST_UPDATE;
 	}
 
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		initKnowledge.p(obj);
 		initKnowledgeLink.p(obj);
 		initKnowledgeTag.p(obj);

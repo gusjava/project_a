@@ -26,7 +26,8 @@ public class EntityImpl implements Entity, G, ActionListener {
 	private File file;
 	private Connection cx;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		buildCx = Outside.service(this, "gus.y.api2.h2.cx.build");
 		initDb = Outside.service(this, "gus.y.knowledgedb1.cx.initdb");
 		checkDb = Outside.service(this, "gus.y.h2cache1.check");
@@ -50,11 +51,13 @@ public class EntityImpl implements Entity, G, ActionListener {
 		checkDb.p(new Object[] { cx, initDb });
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e)
+	{
 		closeCx();
 	}
 
-	private void closeCx() {
+	private void closeCx()
+	{
 		try { if (cx != null) cx.close(); }
 		catch (Exception e) {}
 	}
