@@ -17,52 +17,56 @@ public class EntityImpl implements Entity, T {
 
 	private Service readFile;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		readFile = Outside.service(this, "gus.x.file.string.read");
 	}
 
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		File f = (File) obj;
 		if (f == null)
 			return null;
 
 		List parents = buildParents(f);
-		for (int i = 0; i < parents.size(); i++) {
+		for (int i = 0; i < parents.size(); i++)
+		{
 			File f1 = (File) parents.get(i);
 			File f2 = findLink(f1);
-			if (f2 != null)
-				return redirect(f, f1, f2);
+			if (f2 != null) return redirect(f, f1, f2);
 		}
-		if (f.isDirectory()) {
+		if (f.isDirectory())
+		{
 			File f2 = findLink(f);
-			if (f2 != null)
-				return f2;
+			if (f2 != null) return f2;
 		}
 		return f;
 	}
 
-	private File findLink(File dir) throws Exception {
+	private File findLink(File dir) throws Exception
+	{
 		File linkFile = new File(dir, GUSLINK_FILENAME);
-		if (!linkFile.isFile())
-			return null;
+		if (!linkFile.isFile()) return null;
 
 		String link = (String) readFile.t(linkFile);
-		if (link == null || link.trim().equals(""))
-			return null;
+		if (link == null || link.trim().equals("")) return null;
 
 		return new File(link);
 	}
 
-	private File redirect(File f, File f1, File f2) throws Exception {
+	private File redirect(File f, File f1, File f2) throws Exception
+	{
 		String p = f.getAbsolutePath();
 		String p1 = f1.getAbsolutePath();
 		String r = p.substring(p1.length());
 		return new File(f2, r);
 	}
 
-	private List buildParents(File f) {
+	private List buildParents(File f)
+	{
 		List list = new ArrayList();
-		while (f.getParentFile() != null) {
+		while (f.getParentFile() != null)
+		{
 			f = f.getParentFile();
 			list.add(f);
 		}

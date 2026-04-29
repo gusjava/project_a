@@ -56,8 +56,8 @@ public class EntityImpl implements Entity, P {
 
 		populate(data);
 
-		dialogOkCancel.v("width", "500");
-		dialogOkCancel.v("height", "400");
+		dialogOkCancel.v("width", "800");
+		dialogOkCancel.v("height", "600");
 		boolean ok = dialogOkCancel.f(contentPanel);
 
 		if (!ok) return;

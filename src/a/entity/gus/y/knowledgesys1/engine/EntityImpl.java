@@ -2,6 +2,7 @@ package a.entity.gus.y.knowledgesys1.engine;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
 
 import a.framework.*;
 
@@ -13,6 +14,7 @@ public class EntityImpl extends S1 implements Entity, E, R {
 	private Service findallKnowledgeRoots;
 	private Service findallKnowledgeLeafs;
 	private Service findallKnowledgeList;
+	private Service findallKnowledgeTags;
 	
 	private Service findallTodoRoots;
 	private Service findallTodoLeafs;
@@ -23,10 +25,14 @@ public class EntityImpl extends S1 implements Entity, E, R {
 	private List knowledgeRoots;
 	private List knowledgeLeafs;
 	private List knowledgeList;
+	private List knowledgeLinks;
+	private Map knowledgeTags;
 	
 	private List todoRoots;
 	private List todoLeafs;
 	private List todoList;
+	private List todoLinks;
+	private Map todoTags;
 
 	public EntityImpl() throws Exception
 	{
@@ -35,6 +41,7 @@ public class EntityImpl extends S1 implements Entity, E, R {
 		findallKnowledgeRoots = Outside.service(this, "gus.y.knowledgedb1.knowledge.findall.roots");
 		findallKnowledgeLeafs = Outside.service(this, "gus.y.knowledgedb1.knowledge.findall.leafs");
 		findallKnowledgeList = Outside.service(this, "gus.y.knowledgedb1.knowledge.findall");
+		findallKnowledgeTags = Outside.service(this, "gus.y.knowledgedb1.knowledge_tag.countbytag");
 		
 		findallTodoRoots = Outside.service(this, "gus.y.knowledgedb1.todo.findall.roots");
 		findallTodoLeafs = Outside.service(this, "gus.y.knowledgedb1.todo.findall.leafs");
@@ -57,6 +64,7 @@ public class EntityImpl extends S1 implements Entity, E, R {
 			knowledgeRoots = (List) findallKnowledgeRoots.t(cx);
 			knowledgeLeafs = (List) findallKnowledgeLeafs.t(cx);
 			knowledgeList = (List) findallKnowledgeList.t(cx);
+			knowledgeTags = (Map) findallKnowledgeTags.t(cx);
 			
 			todoRoots = (List) findallTodoRoots.t(cx);
 			todoLeafs = (List) findallTodoLeafs.t(cx);
@@ -68,11 +76,6 @@ public class EntityImpl extends S1 implements Entity, E, R {
 		{Outside.err(this,"load()",e);}
 	}
 
-	private void loaded()
-	{
-		send(this, "loaded()");
-	}
-
 	public Object r(String key) throws Exception
 	{
 		if (key.equals("cx")) return cx;
@@ -80,6 +83,7 @@ public class EntityImpl extends S1 implements Entity, E, R {
 		if (key.equals("knowledgeRoots")) return knowledgeRoots;
 		if (key.equals("knowledgeLeafs")) return knowledgeLeafs;
 		if (key.equals("knowledgeList")) return knowledgeList;
+		if (key.equals("knowledgeTags")) return knowledgeTags;
 		
 		if (key.equals("todoRoots")) return todoRoots;
 		if (key.equals("todoLeafs")) return todoLeafs;
@@ -91,6 +95,7 @@ public class EntityImpl extends S1 implements Entity, E, R {
 			"knowledgeRoots", 
 			"knowledgeLeafs", 
 			"knowledgeList", 
+			"knowledgeTags", 
 			
 			"todoRoots", 
 			"todoLeafs", 
@@ -98,4 +103,7 @@ public class EntityImpl extends S1 implements Entity, E, R {
 			
 		throw new Exception("Unknown key: " + key);
 	}
+
+	private void loaded()
+	{send(this, "loaded()");}
 }
