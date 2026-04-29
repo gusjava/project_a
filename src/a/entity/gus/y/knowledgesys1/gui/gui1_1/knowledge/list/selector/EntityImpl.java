@@ -44,7 +44,8 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 	private DefaultListModel model;
 	private JComponent field;
 	private JToolBar bar;
-	
+	private JLabel labelNumber;
+
 	private Icon icon;
 
 	private Action actionAdd;
@@ -95,10 +96,16 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 			}
 		});
 
+		labelNumber = new JLabel("");
+
+		JPanel bottomPanel = new JPanel(new BorderLayout());
+		bottomPanel.add(bar, BorderLayout.WEST);
+		bottomPanel.add(labelNumber, BorderLayout.EAST);
+
 		panel = new JPanel(new BorderLayout());
 		panel.add(field, BorderLayout.NORTH);
 		panel.add(new JScrollPane(list), BorderLayout.CENTER);
-		panel.add(bar, BorderLayout.SOUTH);
+		panel.add(bottomPanel, BorderLayout.SOUTH);
 
 		linkerField.p(new Object[]{list, field});
 		fieldHolder.addActionListener(e -> handleInputEdition());
@@ -167,6 +174,10 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 		for (int i = 0; i < filtered.size(); i++)
 			model.addElement(filtered.get(i));
 		if (previousSelection != null) setSelection(previousSelection);
+		if (search == null || search.trim().isEmpty())
+			labelNumber.setText(String.valueOf(all.size()));
+		else
+			labelNumber.setText(filtered.size() + " / " + all.size());
 	}
 
 	private List filter(List source, String search) {

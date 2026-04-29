@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgesys1.gui.gui1_4.knowledge.tags.selector;
+package a.entity.gus.y.knowledgesys1.gui.gui1_5.knowledge.links;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -7,7 +7,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,25 +20,23 @@ import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import a.framework.*;
 
-public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, ListSelectionListener {
+public class EntityImpl extends S1 implements Entity, I, V, ActionListener {
 	public String creationDate() {return "20260429";}
 
-	public static final String DISPLAY_DELETE = "KNOWLEDGE_delete#Delete [DEL]";
-	public static final String DISPLAY_RENAME = "KNOWLEDGE_rename#Rename [F2]";
+	public static final String DISPLAY_DELETE      = "KNOWLEDGE_delete#Delete [DEL]";
+	public static final String DISPLAY_CHANGE_TYPE = "KNOWLEDGE_rename#Change type [F2]";
 
 	private Service buildAction;
 	private Service fieldHolder;
 	private Service toolbarFactory;
-	private Service deleteByTag;
-	private Service renameByTag;
+	private Service deleteLink;
+	private Service updateType;
 	private Service linker;
 
 	private Object engine;
@@ -52,50 +49,52 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 	private JLabel labelNumber;
 
 	private Action actionDelete;
-	private Action actionRename;
+	private Action actionChangeType;
 
 	public EntityImpl() throws Exception {
 		buildAction    = Outside.service(this, "gus.y.swing1.action.builder1");
 		fieldHolder    = Outside.service(this, "*gus.y.swing1.textfield.editor1");
 		toolbarFactory = Outside.service(this, "gus.x.swing.toolbar.factory1");
-		deleteByTag    = Outside.service(this, "gus.y.knowledgedb1.knowledge_tag.deletebytag");
-		renameByTag    = Outside.service(this, "gus.y.knowledgedb1.knowledge_tag.renamebytag");
+		deleteLink     = Outside.service(this, "gus.y.knowledgedb1.knowledge_link.delete3");
+		updateType     = Outside.service(this, "gus.y.knowledgedb1.knowledge_link.updatetype");
 		linker         = Outside.service(this, "gus.x.swing.table.textfield.linker");
 
-		actionDelete = (Action) buildAction.t(new Object[] { DISPLAY_DELETE, (E) this::del_delete });
-		actionRename = (Action) buildAction.t(new Object[] { DISPLAY_RENAME, (E) this::f2_rename });
+		actionDelete     = (Action) buildAction.t(new Object[] { DISPLAY_DELETE,      (E) this::del_delete });
+		actionChangeType = (Action) buildAction.t(new Object[] { DISPLAY_CHANGE_TYPE, (E) this::f2_changeType });
 
 		bar = (JToolBar) toolbarFactory.i();
 		bar.add(actionDelete);
-		bar.add(actionRename);
+		bar.add(actionChangeType);
 
 		field = (JComponent) fieldHolder.i();
 		field.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				int code = e.getKeyCode();
-				if (code == KeyEvent.VK_DELETE) del_delete();
-				else if (code == KeyEvent.VK_F2) f2_rename();
-				else if (code == KeyEvent.VK_F5) reload();
+				if      (code == KeyEvent.VK_DELETE) del_delete();
+				else if (code == KeyEvent.VK_F2)     f2_changeType();
+				else if (code == KeyEvent.VK_F5)     reload();
 			}
 		});
 
-		model = new DefaultTableModel(new String[]{"Tag", "Count"}, 0) {
+		model = new DefaultTableModel(new String[]{"Linker", "Linked", "Type", "id_linker", "id_linked"}, 0) {
 			public boolean isCellEditable(int r, int c) { return false; }
-			public Class getColumnClass(int c) { return c == 1 ? Long.class : String.class; }
 		};
 		table = new JTable(model);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		sorter = new TableRowSorter(model);
 		table.setRowSorter(sorter);
-		table.getSelectionModel().addListSelectionListener(this);
 		table.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				int code = e.getKeyCode();
-				if (code == KeyEvent.VK_DELETE) del_delete();
-				else if (code == KeyEvent.VK_F2) f2_rename();
-				else if (code == KeyEvent.VK_F5) reload();
+				if      (code == KeyEvent.VK_DELETE) del_delete();
+				else if (code == KeyEvent.VK_F2)     f2_changeType();
+				else if (code == KeyEvent.VK_F5)     reload();
 			}
 		});
+
+		TableColumnModel cm = table.getColumnModel();
+		cm.removeColumn(cm.getColumn(4));
+		cm.removeColumn(cm.getColumn(3));
 
 		linker.p(new Object[]{table, field});
 
@@ -130,18 +129,6 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 		catch (Exception e) {Outside.err(this, "reload()", e);}
 	}
 
-	public Object g() throws Exception {
-		int row = table.getSelectedRow();
-		if (row < 0) return null;
-		int modelRow = table.convertRowIndexToModel(row);
-		String tag = (String) model.getValueAt(modelRow, 0);
-		Long count = (Long) model.getValueAt(modelRow, 1);
-		Map m = new HashMap();
-		m.put("tag", tag);
-		m.put("count", count);
-		return m;
-	}
-
 	public Object i() throws Exception {
 		return panel;
 	}
@@ -153,37 +140,30 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 
 	private void loaded() {
 		try {
-			Map tags = engine != null ? (Map) ((R) engine).r("knowledgeTags") : null;
-			String prevTag = getSelectedTag();
+			List links = engine != null ? (List) ((R) engine).r("knowledgeLinks") : null;
 			model.setRowCount(0);
-			if (tags != null) {
-				for (Object key : tags.keySet())
-					model.addRow(new Object[]{key, tags.get(key)});
+			if (links != null) {
+				for (int i = 0; i < links.size(); i++) {
+					Map m = (Map) links.get(i);
+					model.addRow(new Object[]{
+						m.get("linker"),
+						m.get("linked"),
+						m.get("type"),
+						m.get("id_linker"),
+						m.get("id_linked")
+					});
+				}
 			}
 			applyFilter();
-			if (prevTag != null) restoreSelection(prevTag);
 		} catch (Exception e) {
 			Outside.err(this, "loaded()", e);
 		}
 	}
 
-	private String getSelectedTag() {
+	private int getSelectedModelRow() {
 		int row = table.getSelectedRow();
-		if (row < 0) return null;
-		return (String) model.getValueAt(table.convertRowIndexToModel(row), 0);
-	}
-
-	private void restoreSelection(String tag) {
-		for (int i = 0; i < model.getRowCount(); i++) {
-			if (tag.equals(model.getValueAt(i, 0))) {
-				int viewRow = table.convertRowIndexToView(i);
-				if (viewRow >= 0) {
-					table.setRowSelectionInterval(viewRow, viewRow);
-					table.scrollRectToVisible(table.getCellRect(viewRow, 0, true));
-				}
-				return;
-			}
-		}
+		if (row < 0) return -1;
+		return table.convertRowIndexToModel(row);
 	}
 
 	private void handleInputEdition() {
@@ -197,46 +177,50 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 			sorter.setRowFilter(null);
 			labelNumber.setText(String.valueOf(model.getRowCount()));
 		} else {
-			sorter.setRowFilter(RowFilter.regexFilter("(?i)" + search.trim(), 0));
+			String regex = "(?i)" + search.trim();
+			List filters = new ArrayList();
+			filters.add(RowFilter.regexFilter(regex, 0));
+			filters.add(RowFilter.regexFilter(regex, 1));
+			filters.add(RowFilter.regexFilter(regex, 2));
+			sorter.setRowFilter(RowFilter.orFilter(filters));
 			labelNumber.setText(table.getRowCount() + " / " + model.getRowCount());
 		}
 	}
 
-	public void valueChanged(ListSelectionEvent e) {
-		if (!e.getValueIsAdjusting()) selected();
-	}
-
-	private void selected() {
-		send(this, "selected()");
-	}
-
 	private void del_delete() {
-		String tag = getSelectedTag();
-		if (tag == null) return;
+		int modelRow = getSelectedModelRow();
+		if (modelRow < 0) return;
+		String linkerCode = (String) model.getValueAt(modelRow, 0);
+		String linkedCode = (String) model.getValueAt(modelRow, 1);
 		int res = JOptionPane.showConfirmDialog(panel,
-			"Delete tag \"" + tag + "\" from all knowledges?",
+			"Delete link \"" + linkerCode + "\" \u2192 \"" + linkedCode + "\"?",
 			"Confirm delete", JOptionPane.YES_NO_OPTION);
 		if (res != JOptionPane.YES_OPTION) return;
 		try {
 			Connection cx = (Connection) ((R) engine).r("cx");
-			deleteByTag.t(new Object[]{cx, tag});
+			Long idLinker = (Long) model.getValueAt(modelRow, 3);
+			Long idLinked = (Long) model.getValueAt(modelRow, 4);
+			deleteLink.p(new Object[]{cx, idLinker, idLinked});
 			reload();
 		} catch (Exception e) { Outside.err(this, "del_delete()", e); }
 	}
 
-	private void f2_rename() {
-		String tag = getSelectedTag();
-		if (tag == null) return;
-		String newTag = (String) JOptionPane.showInputDialog(panel,
-			"New name for tag:", "Rename tag",
-			JOptionPane.PLAIN_MESSAGE, null, null, tag);
-		if (newTag == null || newTag.trim().isEmpty()) return;
-		newTag = newTag.trim();
-		if (newTag.equals(tag)) return;
+	private void f2_changeType() {
+		int modelRow = getSelectedModelRow();
+		if (modelRow < 0) return;
+		String currentType = (String) model.getValueAt(modelRow, 2);
+		String newType = (String) JOptionPane.showInputDialog(panel,
+			"New type:", "Change type",
+			JOptionPane.PLAIN_MESSAGE, null, null, currentType);
+		if (newType == null || newType.trim().isEmpty()) return;
+		newType = newType.trim();
+		if (newType.equals(currentType)) return;
 		try {
 			Connection cx = (Connection) ((R) engine).r("cx");
-			renameByTag.t(new Object[]{cx, tag, newTag});
+			Long idLinker = (Long) model.getValueAt(modelRow, 3);
+			Long idLinked = (Long) model.getValueAt(modelRow, 4);
+			updateType.t(new Object[]{cx, idLinker, idLinked, newType});
 			reload();
-		} catch (Exception e) { Outside.err(this, "f2_rename()", e); }
+		} catch (Exception e) { Outside.err(this, "f2_changeType()", e); }
 	}
 }
