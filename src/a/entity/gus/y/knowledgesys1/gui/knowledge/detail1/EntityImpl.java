@@ -60,6 +60,7 @@ public class EntityImpl implements Entity, I, P, V
 			gui1.v("engine", obj);
 			gui2.v("engine", obj);
 			gui3.v("engine", obj);
+			gui4.v("engine", obj);
 		}
 	}
 

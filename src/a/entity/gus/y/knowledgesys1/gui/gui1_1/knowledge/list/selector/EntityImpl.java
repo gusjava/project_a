@@ -37,6 +37,9 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 	private Service fieldHolder;
 	private Service toolbarFactory;
 	private Service linkerField;
+	private Service add;
+	private Service edit;
+	private Service delete;
 
 	private Object engine;
 	private JPanel panel;
@@ -60,6 +63,9 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 		fieldHolder    = Outside.service(this, "*gus.y.swing1.textfield.editor1");
 		toolbarFactory = Outside.service(this, "gus.x.swing.toolbar.factory1");
 		linkerField = Outside.service(this, "gus.x.swing.list.textfield.linker");
+		add    = Outside.service(this, "gus.y.knowledgesys1.gui.knowledge.add");
+		edit   = Outside.service(this, "gus.y.knowledgesys1.gui.knowledge.edit");
+		delete = Outside.service(this, "gus.y.knowledgesys1.gui.knowledge.delete");
 		
 		icon = (Icon) Outside.resource(this, "icon#KNOWLEDGE");
 
@@ -219,12 +225,32 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 	 */
 
 	private void f1_add() {
+		try {
+			if (engine == null) return;
+			add.p(engine);
+		} catch (Exception e) {
+			Outside.err(this, "f1_add()", e);
+		}
 	}
 
 	private void f2_edit() {
+		try {
+			Map selected = (Map) g();
+			if (selected == null) return;
+			edit.p(new Object[]{engine, selected});
+		} catch (Exception e) {
+			Outside.err(this, "f2_edit()", e);
+		}
 	}
 
 	private void del_delete() {
+		try {
+			Map selected = (Map) g();
+			if (selected == null) return;
+			delete.p(new Object[]{engine, selected});
+		} catch (Exception e) {
+			Outside.err(this, "del_delete()", e);
+		}
 	}
 
 	private class CellRenderer0 extends DefaultListCellRenderer {
