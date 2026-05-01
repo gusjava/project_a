@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import a.framework.*;
 
 public class EntityImpl implements Entity, P, F {
@@ -18,7 +17,8 @@ public class EntityImpl implements Entity, P, F {
 	public void p(Object obj) throws Exception
 	{f(obj);}
 
-	public boolean f(Object obj) throws Exception {
+	public boolean f(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
 		if (o.length != 3) throw new Exception("Wrong data number: " + o.length);
 
@@ -81,7 +81,8 @@ public class EntityImpl implements Entity, P, F {
 		p.println("\t\t");
 		p.println("\t}");
 
-		if (isE) {
+		if (isE)
+		{
 			p.println("\t");
 			p.println("\tpublic void e() throws Exception");
 			p.println("\t{");
@@ -89,7 +90,8 @@ public class EntityImpl implements Entity, P, F {
 			p.println("\t}");
 		}
 
-		if (isG) {
+		if (isG)
+		{
 			p.println("\t");
 			p.println("\tpublic Object g() throws Exception");
 			p.println("\t{");
@@ -97,7 +99,8 @@ public class EntityImpl implements Entity, P, F {
 			p.println("\t}");
 		}
 
-		if (isP) {
+		if (isP)
+		{
 			p.println("\t");
 			p.println("\tpublic void p(Object obj) throws Exception");
 			p.println("\t{");
@@ -113,7 +116,8 @@ public class EntityImpl implements Entity, P, F {
 			p.println("\t}");
 		}
 
-		if (isB) {
+		if (isB)
+		{
 			p.println("\t");
 			p.println("\tpublic boolean b() throws Exception");
 			p.println("\t{");
@@ -121,7 +125,8 @@ public class EntityImpl implements Entity, P, F {
 			p.println("\t}");
 		}
 
-		if (isF) {
+		if (isF)
+		{
 			p.println("\t");
 			p.println("\tpublic boolean f(Object obj) throws Exception");
 			p.println("\t{");
@@ -129,7 +134,8 @@ public class EntityImpl implements Entity, P, F {
 			p.println("\t}");
 		}
 
-		if (isH) {
+		if (isH)
+		{
 			p.println("\t");
 			p.println("\tpublic double h(double value) throws Exception");
 			p.println("\t{");
@@ -137,7 +143,8 @@ public class EntityImpl implements Entity, P, F {
 			p.println("\t}");
 		}
 
-		if (isI) {
+		if (isI)
+		{
 			p.println("\t");
 			p.println("\tpublic Object i() throws Exception");
 			p.println("\t{");
@@ -145,7 +152,8 @@ public class EntityImpl implements Entity, P, F {
 			p.println("\t}");
 		}
 
-		if (isR) {
+		if (isR)
+		{
 			p.println("\t");
 			p.println("\tpublic Object r(String key) throws Exception");
 			p.println("\t{");
@@ -154,7 +162,8 @@ public class EntityImpl implements Entity, P, F {
 			p.println("\t}");
 		}
 
-		if (isV) {
+		if (isV)
+		{
 			p.println("\t");
 			p.println("\tpublic void v(String key, Object obj) throws Exception");
 			p.println("\t{");

@@ -41,7 +41,7 @@ public class EntityImpl implements Entity, P, F {
 
 	public EntityImpl() throws Exception
 	{
-		findEntityPackageDir = Outside.service(this, "gus06.x.entity.src.find.packagedir");
+		findEntityPackageDir = Outside.service(this, "gus.x.entity.src.find.packagedir");
 		findFrameworkPackageDir = Outside.service(this, "gus06.x.framework.src.find.packagedir");
 		listingJava = Outside.service(this, "gus.x.dir.listing0.files.java");
 		listingClass = Outside.service(this, "gus.x.dir.listing0.files.class1");

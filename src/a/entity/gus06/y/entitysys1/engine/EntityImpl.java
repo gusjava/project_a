@@ -47,8 +47,8 @@ public class EntityImpl implements Entity, T {
 		findMissingLinkMap = Outside.service(this,"gus06.y.entitydb1.entity_missing_link.findall");
 		findSrcMap = Outside.service(this,"gus06.y.entitydb1.entity_src.findall");
 		
-		nameToDir = Outside.service(this,"gus06.x.entity.src.find.packagedir");
-		nameToFile = Outside.service(this,"gus06.x.entity.src.find.entityfile");
+		nameToDir = Outside.service(this,"gus.x.entity.src.find.packagedir");
+		nameToFile = Outside.service(this,"gus.x.entity.src.find.entityfile");
 		readFile = Outside.service(this,"gus.x.file.string.read.n");
 	}
 	

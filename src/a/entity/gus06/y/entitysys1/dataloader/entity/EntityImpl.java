@@ -35,7 +35,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		getListing = Outside.service(this,"gus06.x.entity.srcfile.map_lastmodified.root0");
+		getListing = Outside.service(this,"gus.x.entity.srcfile.map_lastmodified.root0");
 		findAll = Outside.service(this,"gus06.y.entitydb1.entity.findall.asmap");
 		remover = Outside.service(this,"gus06.y.entitydb1.entity.remover");
 		analyzeEntity = Outside.service(this,"gus06.y.entitysys1.analyze.entity");
