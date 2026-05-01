@@ -1,27 +1,97 @@
 package a.entity.gus.y.knowledgesys1.gui.knowledge.detail1.gui2.uplinks;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.util.List;
 import java.util.Map;
 
-import javax.swing.JComponent;
+import javax.swing.Action;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import java.awt.Insets;
-import javax.swing.JTextField;
+import javax.swing.JTable;
+import javax.swing.JToolBar;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import a.framework.*;
 
-public class EntityImpl implements Entity, I, P, V {
+public class EntityImpl implements Entity, I, P, V, ActionListener {
 	public String creationDate() {return "20260418";}
 
-	private JPanel panel;
-	private Map data;
+	public static final String DISPLAY_ADD         = "KNOWLEDGE_add#Add [F1]";
+	public static final String DISPLAY_DELETE      = "KNOWLEDGE_delete#Delete [DEL]";
+	public static final String DISPLAY_CHANGE_TYPE = "KNOWLEDGE_rename#Change type [F2]";
+
+	private Service buildAction;
+	private Service toolbarFactory;
+	private Service addUplink;
+	private Service deleteLink;
+	private Service updateType;
+
 	private Object engine;
+	private Map data;
+
+	private JPanel panel;
+	private JTable table;
+	private DefaultTableModel model;
+	private JToolBar bar;
+
+	private Action actionAdd;
+	private Action actionDelete;
+	private Action actionChangeType;
 
 	public EntityImpl() throws Exception {
+		buildAction    = Outside.service(this, "gus.y.swing1.action.builder1");
+		toolbarFactory = Outside.service(this, "gus.x.swing.toolbar.factory1");
+		addUplink      = Outside.service(this, "*gus.y.knowledgesys1.gui.knowledge.uplink.add");
+		deleteLink     = Outside.service(this, "gus.y.knowledgedb1.knowledge_link.delete3");
+		updateType     = Outside.service(this, "gus.y.knowledgedb1.knowledge_link.updatetype");
+
+		actionAdd        = (Action) buildAction.t(new Object[] { DISPLAY_ADD,         (E) this::add_add });
+		actionDelete     = (Action) buildAction.t(new Object[] { DISPLAY_DELETE,      (E) this::del_delete });
+		actionChangeType = (Action) buildAction.t(new Object[] { DISPLAY_CHANGE_TYPE, (E) this::f2_changeType });
+		actionDelete.setEnabled(false);
+		actionChangeType.setEnabled(false);
+
+		bar = (JToolBar) toolbarFactory.i();
+		bar.add(actionAdd);
+		bar.add(actionDelete);
+		bar.add(actionChangeType);
+
+		model = new DefaultTableModel(new String[]{"Knowledge", "Type", "id_linker", "id_linked"}, 0) {
+			public boolean isCellEditable(int r, int c) { return false; }
+		};
+		table = new JTable(model);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				if (!e.getValueIsAdjusting()) refreshActions();
+			}
+		});
+		table.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+				int code = e.getKeyCode();
+				if      (code == KeyEvent.VK_F1)     add_add();
+				else if (code == KeyEvent.VK_DELETE) del_delete();
+				else if (code == KeyEvent.VK_F2)     f2_changeType();
+			}
+		});
+
+		TableColumnModel cm = table.getColumnModel();
+		cm.removeColumn(cm.getColumn(3));
+		cm.removeColumn(cm.getColumn(2));
 
 		panel = new JPanel(new BorderLayout());
+		panel.add(new JScrollPane(table), BorderLayout.CENTER);
+		panel.add(bar, BorderLayout.SOUTH);
 	}
 
 	public Object i() throws Exception {
@@ -29,11 +99,107 @@ public class EntityImpl implements Entity, I, P, V {
 	}
 
 	public void v(String key, Object obj) throws Exception {
-		if (key.equals("engine"))
-		engine = obj;
+		if (key.equals("engine")) initEngine(obj);
+	}
+
+	private void initEngine(Object engine) throws Exception {
+		if (this.engine != null)
+			((S) this.engine).removeActionListener(this);
+		this.engine = engine;
+		((S) engine).addActionListener(this);
+		loaded();
 	}
 
 	public void p(Object obj) throws Exception {
 		data = (Map) obj;
+		loaded();
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getActionCommand().equals("loaded()"))
+			loaded();
+	}
+
+	private void loaded() {
+		try {
+			model.setRowCount(0);
+			if (engine == null || data == null) return;
+			String display = (String) data.get("display");
+			List links = (List) ((R) engine).r("knowledgeLinks");
+			if (links == null || display == null) return;
+			for (int i = 0; i < links.size(); i++) {
+				Map m = (Map) links.get(i);
+				if (display.equals(m.get("linked")))
+					model.addRow(new Object[]{m.get("linker"), m.get("type"), m.get("id_linker"), m.get("id_linked")});
+			}
+		} catch (Exception e) {
+			Outside.err(this, "loaded()", e);
+		}
+	}
+
+	private int getSelectedModelRow() {
+		int row = table.getSelectedRow();
+		if (row < 0) return -1;
+		return table.convertRowIndexToModel(row);
+	}
+
+	private void add_add() {
+		if (data == null) return;
+		try { addUplink.p((String) data.get("code")); }
+		catch (Exception e) { Outside.err(this, "add_add()", e); }
+	}
+
+	private void del_delete() {
+		int modelRow = getSelectedModelRow();
+		if (modelRow < 0) return;
+		String linkerCode = (String) model.getValueAt(modelRow, 0);
+		String linkedCode = (String) data.get("code");
+		int res = JOptionPane.showConfirmDialog(panel,
+			"Delete link \"" + linkerCode + "\" \u2192 \"" + linkedCode + "\"?",
+			"Confirm delete", JOptionPane.YES_NO_OPTION);
+		if (res != JOptionPane.YES_OPTION) return;
+		try {
+			Connection cx = (Connection) ((R) engine).r("cx");
+			Long idLinker = (Long) model.getValueAt(modelRow, 2);
+			Long idLinked = (Long) model.getValueAt(modelRow, 3);
+			deleteLink.p(new Object[]{cx, idLinker, idLinked});
+			reload();
+		} catch (Exception e) { Outside.err(this, "del_delete()", e); }
+	}
+
+	private void f2_changeType() {
+		int modelRow = getSelectedModelRow();
+		if (modelRow < 0) return;
+		String currentType = (String) model.getValueAt(modelRow, 1);
+		String newType = (String) JOptionPane.showInputDialog(panel,
+			"New type:", "Change type",
+			JOptionPane.PLAIN_MESSAGE, null, null, currentType);
+		if (newType == null || newType.trim().isEmpty()) return;
+		newType = newType.trim();
+		if (newType.equals(currentType)) return;
+		try {
+			Connection cx = (Connection) ((R) engine).r("cx");
+			Long idLinker = (Long) model.getValueAt(modelRow, 2);
+			Long idLinked = (Long) model.getValueAt(modelRow, 3);
+			updateType.t(new Object[]{cx, idLinker, idLinked, newType});
+			reload();
+		} catch (Exception e) { Outside.err(this, "f2_changeType()", e); }
+	}
+
+	private void reload() {
+		try {((E) engine).e();}
+		catch (Exception e) {Outside.err(this, "reload()", e);}
+	}
+
+	private void refreshActions()
+	{
+		try
+		{
+			boolean sel = getSelectedModelRow() >= 0;
+			actionDelete.setEnabled(sel);
+			actionChangeType.setEnabled(sel);
+		}
+		catch(Exception e)
+		{Outside.err(this,"refreshActions()",e);}
 	}
 }

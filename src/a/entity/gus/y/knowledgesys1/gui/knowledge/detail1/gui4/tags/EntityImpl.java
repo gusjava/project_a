@@ -62,8 +62,7 @@ public class EntityImpl implements Entity, I, P, V {
 		list = new JList(model);
 		list.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
-				if (!e.getValueIsAdjusting())
-					actionRemove.setEnabled(list.getSelectedValue() != null);
+				if (!e.getValueIsAdjusting()) refreshActions();
 			}
 		});
 		list.addKeyListener(new KeyAdapter() {
@@ -139,4 +138,15 @@ public class EntityImpl implements Entity, I, P, V {
 			Outside.err(this, "actionRemove()", e);
 		}
 	}
+	
+	private void refreshActions()
+	{
+		try
+		{
+			actionRemove.setEnabled(list.getSelectedValue() != null);
+		}
+		catch(Exception e)
+		{Outside.err(this,"refreshActions()",e);}
+	}
+
 }

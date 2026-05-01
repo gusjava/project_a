@@ -72,6 +72,8 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 		actionAdd    = (Action) buildAction.t(new Object[] { DISPLAY_ADD,    (E) this::f1_add });
 		actionEdit   = (Action) buildAction.t(new Object[] { DISPLAY_EDIT,   (E) this::f2_edit });
 		actionDelete = (Action) buildAction.t(new Object[] { DISPLAY_DELETE, (E) this::del_delete });
+		actionEdit.setEnabled(false);
+		actionDelete.setEnabled(false);
 
 		bar = (JToolBar) toolbarFactory.i();
 		bar.add(actionAdd);
@@ -213,7 +215,10 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 	}
 
 	public void valueChanged(ListSelectionEvent e) {
-		if (!e.getValueIsAdjusting()) selected();
+		if (!e.getValueIsAdjusting()) {
+			selected();
+			refreshActions();
+		}
 	}
 
 	private void selected() {
@@ -223,6 +228,18 @@ public class EntityImpl extends S1 implements Entity, G, I, V, ActionListener, L
 	/*
 	 * ACTIONS
 	 */
+
+	private void refreshActions()
+	{
+		try
+		{
+			boolean sel = list.getSelectedValue() != null;
+			actionEdit.setEnabled(sel);
+			actionDelete.setEnabled(sel);
+		}
+		catch(Exception e)
+		{Outside.err(this,"refreshActions()",e);}
+	}
 
 	private void f1_add() {
 		try {

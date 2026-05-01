@@ -23,6 +23,8 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import a.framework.*;
 
@@ -61,6 +63,8 @@ public class EntityImpl extends S1 implements Entity, I, V, ActionListener {
 
 		actionDelete     = (Action) buildAction.t(new Object[] { DISPLAY_DELETE,      (E) this::del_delete });
 		actionChangeType = (Action) buildAction.t(new Object[] { DISPLAY_CHANGE_TYPE, (E) this::f2_changeType });
+		actionDelete.setEnabled(false);
+		actionChangeType.setEnabled(false);
 
 		bar = (JToolBar) toolbarFactory.i();
 		bar.add(actionDelete);
@@ -83,6 +87,11 @@ public class EntityImpl extends S1 implements Entity, I, V, ActionListener {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		sorter = new TableRowSorter(model);
 		table.setRowSorter(sorter);
+		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				if (!e.getValueIsAdjusting()) refreshActions();
+			}
+		});
 		table.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				int code = e.getKeyCode();
@@ -222,5 +231,17 @@ public class EntityImpl extends S1 implements Entity, I, V, ActionListener {
 			updateType.t(new Object[]{cx, idLinker, idLinked, newType});
 			reload();
 		} catch (Exception e) { Outside.err(this, "f2_changeType()", e); }
+	}
+
+	private void refreshActions()
+	{
+		try
+		{
+			boolean sel = getSelectedModelRow() >= 0;
+			actionDelete.setEnabled(sel);
+			actionChangeType.setEnabled(sel);
+		}
+		catch(Exception e)
+		{Outside.err(this,"refreshActions()",e);}
 	}
 }
