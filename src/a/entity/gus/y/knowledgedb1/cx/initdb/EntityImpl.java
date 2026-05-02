@@ -9,8 +9,7 @@ import a.framework.Service;
 public class EntityImpl implements Entity, P, G {
 	public String creationDate() {return "20260410";}
 
-	public static final String STRUCT_LAST_UPDATE = "2026-04-14 00:00:00";
-	public static final boolean ALWAYS_RESET = false;
+	public static final String FIXED_DATE = "2026-04-10 00:00:00";
 
 	private Service initKnowledge;
 	private Service initKnowledgeLink;
@@ -49,8 +48,7 @@ public class EntityImpl implements Entity, P, G {
 
 	public Object g() throws Exception
 	{
-		if (ALWAYS_RESET) return null;
-		return STRUCT_LAST_UPDATE;
+		return FIXED_DATE;
 	}
 
 	public void p(Object obj) throws Exception

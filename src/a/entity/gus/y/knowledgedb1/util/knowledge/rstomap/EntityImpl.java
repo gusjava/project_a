@@ -17,6 +17,7 @@ public class EntityImpl implements Entity, T {
 	public static final String COL_OBJECT = "object";
 	public static final String COL_DESCRIPTION = "description";
 	public static final String COL_STATE = "state";
+	public static final String COL_PREPROCESSOR = "preprocessor";
 
 	public Object t(Object obj) throws Exception {
 		ResultSet rs = (ResultSet) obj;
@@ -30,6 +31,7 @@ public class EntityImpl implements Entity, T {
 		transfer(data, rs, COL_OBJECT);
 		transfer(data, rs, COL_DESCRIPTION);
 		transfer(data, rs, COL_STATE);
+		transfer(data, rs, COL_PREPROCESSOR);
 		
 		String display = 
 			data.get(COL_CODE)+":"+ 

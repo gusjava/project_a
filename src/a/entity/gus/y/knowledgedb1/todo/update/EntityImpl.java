@@ -3,11 +3,13 @@ package a.entity.gus.y.knowledgedb1.todo.update;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import a.framework.*;
 
 public class EntityImpl implements Entity, P {
-	public String creationDate() {return "20260410";}
+	public String creationDate() {return "20260502";}
 
 	public static final String TABLE_NAME = "todo";
 	public static final String COL_ID = "id";
@@ -23,18 +25,31 @@ public class EntityImpl implements Entity, P {
 		Connection cx = (Connection) o[0];
 		Map data = (Map) o[1];
 
+		if (!data.containsKey(COL_ID)) throw new Exception("Id key not found inside map");
+		if (data.size() == 1) return;
+
 		Object id = data.get(COL_ID);
-		Object code = data.get(COL_CODE);
-		Object title = data.get(COL_TITLE);
-		Object description = data.get(COL_DESCRIPTION);
 
-		String sql = "UPDATE " + TABLE_NAME + " SET "
-				+ COL_CODE + "=?, "
-				+ COL_TITLE + "=?, "
-				+ COL_DESCRIPTION + "=? "
-				+ "WHERE " + COL_ID + "=?";
+		List<Object> params = new ArrayList<>();
+		StringBuilder sql = new StringBuilder("UPDATE " + TABLE_NAME + " SET ");
+		boolean first = true;
 
-		executeUpdate(cx, sql, code, title, description, id);
+		String[] cols = {COL_CODE, COL_TITLE, COL_DESCRIPTION};
+		for (String col : cols)
+		{
+			if (data.containsKey(col))
+			{
+				if (!first) sql.append(", ");
+				sql.append(col).append("=?");
+				params.add(data.get(col));
+				first = false;
+			}
+		}
+
+		sql.append(" WHERE ").append(COL_ID).append("=?");
+		params.add(id);
+
+		executeUpdate(cx, sql.toString(), params.toArray());
 	}
 
 	private void executeUpdate(Connection cx, String sql, Object... params) throws SQLException

@@ -32,6 +32,7 @@ public class EntityImpl implements Entity, I, P, V {
 	private JTextField fieldState = new JTextField();
 	private JTextField fieldAction = new JTextField();
 	private JTextField fieldObject = new JTextField();
+	private JTextField fieldPreprocessor = new JTextField();
 	private JTextArea taDescription = new JTextArea();
 
 	public EntityImpl() throws Exception
@@ -46,7 +47,8 @@ public class EntityImpl implements Entity, I, P, V {
 		fieldState.setEditable(false);
 		fieldAction.setEditable(false);
 		fieldObject.setEditable(false);
-		
+		fieldPreprocessor.setEditable(false);
+
 		taDescription.setEditable(false);
 		taDescription.setLineWrap(true);
 		taDescription.setWrapStyleWord(true);
@@ -59,7 +61,8 @@ public class EntityImpl implements Entity, I, P, V {
 		formPanel.v("state", fieldState);
 		formPanel.v("action", fieldAction);
 		formPanel.v("object", fieldObject);
-		
+		formPanel.v("preprocessor", fieldPreprocessor);
+
 		buttonEdit = new JButton("Edit");
 		buttonEdit.addActionListener(e->edit());
 		buttonEdit.setEnabled(false);
@@ -94,6 +97,7 @@ public class EntityImpl implements Entity, I, P, V {
 			fieldState.setText("");
 			fieldAction.setText("");
 			fieldObject.setText("");
+			fieldPreprocessor.setText("");
 			taDescription.setText("");
 			buttonEdit.setEnabled(false);
 			return;
@@ -108,6 +112,7 @@ public class EntityImpl implements Entity, I, P, V {
 		fieldState.setText(valueFor("state"));
 		fieldAction.setText(valueFor("action"));
 		fieldObject.setText(valueFor("object"));
+		fieldPreprocessor.setText(valueFor("preprocessor"));
 		buttonEdit.setEnabled(true);
 		
 		taDescription.setText(valueFor("description"));

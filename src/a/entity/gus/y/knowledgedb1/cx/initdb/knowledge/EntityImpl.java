@@ -17,6 +17,7 @@ public class EntityImpl implements Entity, P {
 	public static final String COL_OBJECT = "object";
 	public static final String COL_DESCRIPTION = "description";
 	public static final String COL_STATE = "state";
+	public static final String COL_PREPROCESSOR = "preprocessor";
 
 	public static final String DEF_ID = "BIGINT AUTO_INCREMENT PRIMARY KEY NOT NULL";
 	public static final String DEF_DATE_CREATED = "DATETIME NOT NULL";
@@ -26,6 +27,7 @@ public class EntityImpl implements Entity, P {
 	public static final String DEF_OBJECT = "VARCHAR(200) NOT NULL";
 	public static final String DEF_DESCRIPTION = "TEXT";
 	public static final String DEF_STATE = "VARCHAR(20) NOT NULL";
+	public static final String DEF_PREPROCESSOR = "VARCHAR(400) NULL";
 
 	public void p(Object obj) throws Exception {
 		Connection cx = (Connection) obj;
@@ -37,7 +39,8 @@ public class EntityImpl implements Entity, P {
 				+ COL_ACTION + " " + DEF_ACTION + ", "
 				+ COL_OBJECT + " " + DEF_OBJECT + ", "
 				+ COL_DESCRIPTION + " " + DEF_DESCRIPTION + ", "
-				+ COL_STATE + " " + DEF_STATE + ")";
+				+ COL_STATE + " " + DEF_STATE + ", "
+				+ COL_PREPROCESSOR + " " + DEF_PREPROCESSOR + ")";
 		execute(cx, sql);
 	}
 

@@ -22,7 +22,8 @@ public class EntityImpl implements Entity, I, P, V {
 	private JList list;
 	private DefaultListModel model;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		findallByTag = Outside.service(this, "gus.y.knowledgedb1.knowledge.findall.bytag");
 
 		model = new DefaultListModel();
@@ -32,21 +33,25 @@ public class EntityImpl implements Entity, I, P, V {
 		panel.add(new JScrollPane(list), BorderLayout.CENTER);
 	}
 
-	public Object i() throws Exception {
+	public Object i() throws Exception
+	{
 		return panel;
 	}
 
-	public void v(String key, Object obj) throws Exception {
+	public void v(String key, Object obj) throws Exception
+	{
 		if (key.equals("engine")) engine = obj;
 	}
 
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		model.clear();
 		if (obj == null || engine == null) return;
 		String tag = (String) ((Map) obj).get("tag");
 		Connection cx = (Connection) ((R) engine).r("cx");
 		List knowledges = (List) findallByTag.t(new Object[]{cx, tag});
-		for (int i = 0; i < knowledges.size(); i++) {
+		for (int i = 0; i < knowledges.size(); i++)
+		{
 			Map m = (Map) knowledges.get(i);
 			model.addElement(m.get("display"));
 		}

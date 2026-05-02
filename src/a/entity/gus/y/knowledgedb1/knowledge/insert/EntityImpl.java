@@ -19,6 +19,7 @@ public class EntityImpl implements Entity, T {
 	public static final String COL_OBJECT = "object";
 	public static final String COL_DESCRIPTION = "description";
 	public static final String COL_STATE = "state";
+	public static final String COL_PREPROCESSOR = "preprocessor";
 
 	public Object t(Object obj) throws Exception
 	{
@@ -34,6 +35,7 @@ public class EntityImpl implements Entity, T {
 		Object object = data.get(COL_OBJECT);
 		Object description = data.get(COL_DESCRIPTION);
 		Object state = data.get(COL_STATE);
+		Object preprocessor = data.get(COL_PREPROCESSOR);
 
 		String sql = "INSERT INTO " + TABLE_NAME + " ("
 				+ COL_DATE_CREATED + ", "
@@ -42,7 +44,8 @@ public class EntityImpl implements Entity, T {
 				+ COL_ACTION + ", "
 				+ COL_OBJECT + ", "
 				+ COL_DESCRIPTION + ", "
-				+ COL_STATE + ") VALUES (?,?,?,?,?,?,?)";
+				+ COL_STATE + ", "
+				+ COL_PREPROCESSOR + ") VALUES (?,?,?,?,?,?,?,?)";
 
 		PreparedStatement st = cx.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 		st.setObject(1, now);
@@ -52,6 +55,7 @@ public class EntityImpl implements Entity, T {
 		st.setObject(5, object);
 		st.setObject(6, description);
 		st.setObject(7, state);
+		st.setObject(8, preprocessor);
 		st.executeUpdate();
 
 		ResultSet rs = st.getGeneratedKeys();

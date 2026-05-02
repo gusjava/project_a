@@ -22,6 +22,7 @@ public class EntityImpl implements Entity, P {
 	private JTextField fieldState = new JTextField();
 	private JTextField fieldAction = new JTextField();
 	private JTextField fieldObject = new JTextField();
+	private JTextField fieldPreprocessor = new JTextField();
 	private JTextArea taDescription = new JTextArea();
 
 	private JPanel contentPanel;
@@ -40,6 +41,7 @@ public class EntityImpl implements Entity, P {
 		formPanel.v("state", fieldState);
 		formPanel.v("action", fieldAction);
 		formPanel.v("object", fieldObject);
+		formPanel.v("preprocessor", fieldPreprocessor);
 
 		contentPanel = new JPanel(new BorderLayout());
 		contentPanel.add((JComponent) formPanel.i(), BorderLayout.NORTH);
@@ -67,6 +69,7 @@ public class EntityImpl implements Entity, P {
 		updated.put("state", fieldState.getText().trim());
 		updated.put("action", fieldAction.getText().trim());
 		updated.put("object", fieldObject.getText().trim());
+		updated.put("preprocessor", fieldPreprocessor.getText().trim());
 		updated.put("description", taDescription.getText());
 
 		update.p(new Object[]{engine.r("cx"), updated});
@@ -79,6 +82,7 @@ public class EntityImpl implements Entity, P {
 		fieldState.setText(valueFor(data, "state"));
 		fieldAction.setText(valueFor(data, "action"));
 		fieldObject.setText(valueFor(data, "object"));
+		fieldPreprocessor.setText(valueFor(data, "preprocessor"));
 		taDescription.setText(valueFor(data, "description"));
 		taDescription.setCaretPosition(0);
 	}

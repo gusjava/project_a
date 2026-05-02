@@ -22,6 +22,7 @@ public class EntityImpl implements Entity, P {
 	private JTextField fieldState = new JTextField();
 	private JTextField fieldAction = new JTextField();
 	private JTextField fieldObject = new JTextField();
+	private JTextField fieldPreprocessor = new JTextField();
 	private JTextArea taDescription = new JTextArea();
 
 	private JPanel contentPanel;
@@ -40,6 +41,7 @@ public class EntityImpl implements Entity, P {
 		formPanel.v("state", fieldState);
 		formPanel.v("action", fieldAction);
 		formPanel.v("object", fieldObject);
+		formPanel.v("preprocessor", fieldPreprocessor);
 
 		contentPanel = new JPanel(new BorderLayout());
 		contentPanel.add((JComponent) formPanel.i(), BorderLayout.NORTH);
@@ -54,6 +56,7 @@ public class EntityImpl implements Entity, P {
 		fieldState.setText("");
 		fieldAction.setText("");
 		fieldObject.setText("");
+		fieldPreprocessor.setText("");
 		taDescription.setText("");
 
 		dialogOkCancel.v("width", "800");
@@ -66,6 +69,7 @@ public class EntityImpl implements Entity, P {
 		data.put("state", fieldState.getText().trim());
 		data.put("action", fieldAction.getText().trim());
 		data.put("object", fieldObject.getText().trim());
+		data.put("preprocessor", fieldPreprocessor.getText().trim());
 		data.put("description", taDescription.getText());
 
 		insert.t(new Object[]{engine.r("cx"), data});
