@@ -1,14 +1,10 @@
 package a.entity.gus.x.app.classpath.str;
 
 import java.io.File;
-
-import a.framework.Entity;
-import a.framework.T;
+import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20260409";}
-
 
 	public Object t(Object obj) throws Exception
 	{

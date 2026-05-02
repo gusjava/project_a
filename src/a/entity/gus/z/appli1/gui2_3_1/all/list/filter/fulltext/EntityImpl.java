@@ -1,16 +1,15 @@
 package a.entity.gus.z.appli1.gui2_3_1.all.list.filter.fulltext;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.regex.Pattern;
-import java.io.File;
-
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20240715";}
-	
+
 	private Service findPackageDir;
 	private Service findJavaFiles;
 	private Service read;
@@ -18,23 +17,21 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception {
 		findPackageDir = Outside.service(this, "gus.x.entity.src.find.packagedir");
 		findJavaFiles = Outside.service(this, "gus.x.dir.listing0.files.java");
-		read = Outside.service(this,"gus.x.file.string.read.n");
+		read = Outside.service(this, "gus.x.file.string.read.n");
 	}
 
 	public Object t(Object obj) throws Exception {
 		Object[] o = (Object[]) obj;
-		if (o.length != 6)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 3) throw new Exception("Wrong data number: " + o.length);
 
 		R engine = (R) o[0];
 		List list = (List) o[1];
 		String search = (String) o[2];
-		String devId = (String) o[3];
-		Set lockSet = (Set) o[4];
-		Set errSet = (Set) o[5];
 
-		if (list == null)
-			return null;
+		if (list == null) return null;
+
+		Set lockSet = lockSet(engine);
+		Set errSet = errSet(engine);
 
 		Filter filter = new Filter(engine, search);
 
@@ -61,29 +58,38 @@ public class EntityImpl implements Entity, T {
 		return results;
 	}
 
+	private Map compileErrMap(R engine) throws Exception
+	{return (Map) engine.r("compileErrMap");}
+
+	private Set errSet(R engine) throws Exception
+	{
+		Map m = compileErrMap(engine);
+		return m != null ? m.keySet() : null;
+	}
+
+	private Set lockSet(R engine) throws Exception
+	{return (Set) engine.r("lockSet");}
+
 	private class Filter implements F {
-		private R engine;
 		private String search;
 		private File rootDir;
 
 		public Filter(R engine, String search) throws Exception {
-			this.engine = engine;
 			this.search = search;
-			
 			rootDir = (File) engine.r("rootDir");
 		}
 
 		public boolean f(Object obj) throws Exception {
 			String[] data = (String[]) obj;
 			String name = data[0];
-			
-			File packageDir = (File) findPackageDir.t(new Object[] {rootDir, name});
+
+			File packageDir = (File) findPackageDir.t(new Object[]{rootDir, name});
 			File[] javaFiles = (File[]) findJavaFiles.t(packageDir);
-			
-			for(File javaFile : javaFiles) {
+
+			for (File javaFile : javaFiles) {
 				//TODO on est pas oblige de lire le fichier en entier
 				String s = (String) read.t(javaFile);
-				if(s.contains(search)) return true;
+				if (s.contains(search)) return true;
 			}
 			return false;
 		}

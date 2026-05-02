@@ -1,23 +1,19 @@
 package a.entity.gus.x.app.location;
 
 import java.io.File;
-
-import a.framework.Entity;
-import a.framework.G;
-import a.framework.Outside;
+import a.framework.*;
 
 public class EntityImpl implements Entity, G {
 	public String creationDate() {return "20231128";}
 
 	private File location;
 
-	public Object g() throws Exception {
-		if (location == null)
-			location = find();
+	public Object g() throws Exception
+	{
+		if (location == null) location = find();
 		return location;
 	}
 
-	private File find() throws Exception {
-		return new File(Outside.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
-	}
+	private File find() throws Exception
+	{return new File(Outside.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());}
 }

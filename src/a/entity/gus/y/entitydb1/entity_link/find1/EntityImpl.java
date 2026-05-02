@@ -21,10 +21,10 @@ public class EntityImpl implements Entity, T {
 
 	}
 
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
 		Connection cx = (Connection) o[0];
 		String entityName = (String) o[1];
