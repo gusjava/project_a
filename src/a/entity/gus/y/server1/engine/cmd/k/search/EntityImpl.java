@@ -10,17 +10,21 @@ public class EntityImpl implements Entity, T {
 	private Service findSearch;
 	private Service engine;
 
-	public EntityImpl() throws Exception {
-		findSearch      = Outside.service(this, "gus.y.knowledgesys1.find.search");
+	public EntityImpl() throws Exception
+	{
+		findSearch = Outside.service(this, "gus.y.knowledgesys1.find.search");
 		engine = Outside.service(this, "gus.y.knowledgesys1.engine");
 	}
 
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		List list = (List) obj;
 		if(list == null || list.size() < 3) throw new Exception("k-search: usage: k-search <table> <field> <value>");
+		
 		String table = (String) list.get(0);
 		String field = (String) list.get(1);
 		String value = (String) list.get(2);
+		
 		return findSearch.t(new Object[]{cx(), table, field, value});
 	}
 

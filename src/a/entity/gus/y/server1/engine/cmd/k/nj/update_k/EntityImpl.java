@@ -1,7 +1,7 @@
 package a.entity.gus.y.server1.engine.cmd.k.nj.update_k;
 
 import java.sql.Connection;
-import java.util.*;
+import java.util.Map;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
@@ -10,7 +10,8 @@ public class EntityImpl implements Entity, T {
 	private Service perform;
 	private Service engine;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		perform = Outside.service(this, "gus.y.knowledgedb1.knowledge.update");
 		engine = Outside.service(this, "gus.y.knowledgesys1.engine");
 	}

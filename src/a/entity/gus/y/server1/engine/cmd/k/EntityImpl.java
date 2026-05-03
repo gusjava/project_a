@@ -49,6 +49,8 @@ public class EntityImpl implements Entity, T {
 	
 	private Service delete_k;
 	private Service delete_t;
+	
+	private Service prompt;
 
 	public EntityImpl() throws Exception
 	{
@@ -95,6 +97,8 @@ public class EntityImpl implements Entity, T {
 		
 		delete_k = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.delete_k");
 		delete_t = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.delete_t");
+		
+		prompt = Outside.service(this, "gus.y.server1.engine.cmd.k.nj.prompt");
 	}
 
 	private Service findCmd(String cmd) throws Exception
@@ -142,6 +146,8 @@ public class EntityImpl implements Entity, T {
 		
 		if(cmd.equals("delete_k"))   return delete_k;
 		if(cmd.equals("delete_t"))   return delete_t;
+		
+		if(cmd.equals("prompt"))   return prompt;
 
 		throw new Exception("commande inconnue: " + cmd);
 	}
