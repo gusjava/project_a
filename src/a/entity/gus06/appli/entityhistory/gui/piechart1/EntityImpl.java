@@ -43,7 +43,7 @@ public class EntityImpl implements Entity, P, I {
 	{
 		mapHolder = Outside.service(this,"gus06.appli.entityhistory.map.holder");
 		buildList = Outside.service(this,"gus06.appli.entityhistory.gui.piechart1.buildlist");
-		onF1 = Outside.service(this,"gus06.swing.comp.cust3.execute.f1");
+		onF1 = Outside.service(this,"gus.x.swing.comp.cust3.execute.f1");
 		
 		points = new HashMap();
 		list = (List) buildList.t(mapHolder.g());

@@ -27,7 +27,7 @@ public class EntityImpl implements Entity, P {
 		dataFile = Outside.service(this,"gus06.appli.mosaique.data.file");
 		dataDir = Outside.service(this,"gus06.appli.mosaique.data.dir");
 		trigger = Outside.service(this,"gus06.appli.mosaique.engine.trigger");
-		refresh = Outside.service(this,"gus06.swing.comp.cust3.execute.f5");
+		refresh = Outside.service(this,"gus.x.swing.comp.cust3.execute.f5");
 		
 		holder = new P() {
 			public void p(Object obj) throws Exception

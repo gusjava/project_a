@@ -45,10 +45,10 @@ public class EntityImpl extends S1 implements Entity, I, P, V, R {
 	{
 		textEditor = Outside.service(this,"*gus06.data.editor.string.textarea.editor1");
 		undoRedo = Outside.service(this,"gus06.swing.textcomp.cust.action.ctrl_zy.undoredo");
-		onEscape = Outside.service(this,"gus06.swing.comp.cust3.execute.escape");
-		onCtrlS = Outside.service(this,"gus06.swing.comp.cust3.execute.ctrl_s");
-		onCtrlN = Outside.service(this,"gus06.swing.comp.cust3.execute.ctrl_n");
-		onCtrlP = Outside.service(this,"gus06.swing.comp.cust3.execute.ctrl_p");
+		onEscape = Outside.service(this,"gus.x.swing.comp.cust3.execute.escape");
+		onCtrlS = Outside.service(this,"gus.x.swing.comp.cust3.execute.ctrl_s");
+		onCtrlN = Outside.service(this,"gus.x.swing.comp.cust3.execute.ctrl_n");
+		onCtrlP = Outside.service(this,"gus.x.swing.comp.cust3.execute.ctrl_p");
 		
 		label = new JLabel(" ");
 		textComp = (JTextComponent) textEditor.r("comp");

@@ -58,7 +58,7 @@ public class EntityImpl implements Entity, ActionListener, I, P, V {
 		ebookViewer = Outside.service(this,"*gus06.sys.filemanagement1.gui.ebooks.ebooklist.viewer");
 		custSplit = Outside.service(this,"gus06.swing.splitpane.cust.cust1");
 		readCounts = Outside.service(this,"gus06.file.read.string.map.tn.count.utf8");
-		onF2 = Outside.service(this,"gus06.swing.comp.cust3.execute.f2");
+		onF2 = Outside.service(this,"gus.x.swing.comp.cust3.execute.f2");
 		modifier = Outside.service(this,"gus06.sys.filemanagement1.tool.prop.modifier.byvalue");
 		
 		map = new HashMap();

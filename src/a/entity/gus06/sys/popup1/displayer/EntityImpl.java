@@ -34,7 +34,7 @@ public class EntityImpl implements Entity, ActionListener, P {
 		pack1 = Outside.service(this,"gus06.awt.window.pack1");
 		buildController = Outside.service(this,"gus06.sys.popup1.gui.controller");
 		dragFrame = Outside.service(this,"gus.x.swing.comp.cust.dragframe");
-		onDelete = Outside.service(this,"gus06.swing.comp.cust3.execute.del");
+		onDelete = Outside.service(this,"gus.x.swing.comp.cust3.execute.del");
 		
 		list = new ArrayList();
 		

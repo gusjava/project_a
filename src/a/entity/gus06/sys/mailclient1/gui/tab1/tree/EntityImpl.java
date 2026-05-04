@@ -36,7 +36,7 @@ public class EntityImpl extends S1 implements Entity, I, P, G, TreeSelectionList
 	{
 		buildHolder = Outside.service(this,"gus06.sys.mailclient1.tool.folder.buildholder");
 		renderer = Outside.service(this,"gus06.sys.mailclient1.gui.tab1.tree.renderer");
-		executeF5 = Outside.service(this,"gus06.swing.comp.cust3.execute.f5");
+		executeF5 = Outside.service(this,"gus.x.swing.comp.cust3.execute.f5");
 		
 		tree = new JTree1();
 		tree.addTreeSelectionListener(this);

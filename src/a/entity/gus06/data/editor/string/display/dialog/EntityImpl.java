@@ -27,7 +27,7 @@ public class EntityImpl implements Entity, T {
 	{
 		editor = Outside.service(this,"*gus06.data.editor.string.display");
 		dialog = Outside.service(this,"gus06.swing.dialog.blocked1.okcancel");
-		onEscape = Outside.service(this,"gus06.swing.comp.cust3.execute.escape");
+		onEscape = Outside.service(this,"gus.x.swing.comp.cust3.execute.escape");
 		
 		editorComp = (JComponent) editor.i();
 		editorField = (JTextField) editor.r("field");

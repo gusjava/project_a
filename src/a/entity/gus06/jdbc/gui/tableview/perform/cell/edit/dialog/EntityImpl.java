@@ -38,8 +38,8 @@ public class EntityImpl implements Entity, T, G, ItemListener {
 		buildLabelTitle = Outside.service(this,"gus06.swing.label.build.titlelabel1");
 		buildTextArea = Outside.service(this,"gus06.swing.textarea.buildarea1");
 		okCancel = Outside.service(this,"gus06.swing.dialog.blocked1.okcancel");
-		onF1 = Outside.service(this,"gus06.swing.comp.cust3.execute.f1");
-		onEscape = Outside.service(this,"gus06.swing.comp.cust3.execute.escape");
+		onF1 = Outside.service(this,"gus.x.swing.comp.cust3.execute.f1");
+		onEscape = Outside.service(this,"gus.x.swing.comp.cust3.execute.escape");
 		
 		labelTitle = (JLabel) buildLabelTitle.i();
 		textArea = (JTextArea) buildTextArea.i();

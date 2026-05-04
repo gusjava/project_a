@@ -24,7 +24,7 @@ public class EntityImpl implements Entity, E, I, P {
 	{
 		findVariableMap = Outside.service(this,"gus06.jdbc.generic.perform.find.variablemap");
 		mapViewer = Outside.service(this,"*gus06.data.viewer.map.stringmap");
-		executeF5 = Outside.service(this,"gus06.swing.comp.cust3.execute.f5");
+		executeF5 = Outside.service(this,"gus.x.swing.comp.cust3.execute.f5");
 		
 		executeF5.p(new Object[]{mapViewer.i(),this});
 	}

@@ -32,7 +32,7 @@ public class EntityImpl extends S1 implements Entity, ActionListener, I, P, G {
 	{
 		screen = Outside.service(this,"*gus06.swing.panel.screen.image");
 		bar = Outside.service(this,"*gus06.data.editor.renderedimage.editor3.bar");
-		executeF5 = Outside.service(this,"gus06.swing.comp.cust3.execute.f5");
+		executeF5 = Outside.service(this,"gus.x.swing.comp.cust3.execute.f5");
 		
 		JToolBar toolbar = (JToolBar) bar.i();
 		

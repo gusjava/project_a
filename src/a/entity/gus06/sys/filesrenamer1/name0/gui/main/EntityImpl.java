@@ -39,8 +39,8 @@ public class EntityImpl extends S1 implements Entity, I, P, E, R {
 		titled = Outside.service(this,"gus06.swing.comp.build.titledpanel");
 		name0Ext = Outside.service(this,"gus06.file.getname0ext");
 		scrollSync = Outside.service(this,"gus06.swing.scrollpane.scrollsynchronizer.v");
-		onCtrlQ = Outside.service(this,"gus06.swing.comp.cust3.execute.ctrl_q");
-		onEscape = Outside.service(this,"gus06.swing.comp.cust3.execute.escape");
+		onCtrlQ = Outside.service(this,"gus.x.swing.comp.cust3.execute.ctrl_q");
+		onEscape = Outside.service(this,"gus.x.swing.comp.cust3.execute.escape");
 		
 		panel = new JPanel(new GridLayout(1,2));
 		panel.add(titled("Initial",(JComponent) viewer1.i()));

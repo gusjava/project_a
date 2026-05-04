@@ -45,7 +45,7 @@ public class EntityImpl implements Entity, I, P, R, V, G, E {
 		buildBar = Outside.service(this,"gus06.swing.toolbar.toolbar1");
 		editorBuilder = Outside.service(this,"*gus06.file.editor.main.builder.async");
 		recorder = Outside.service(this,"gus06.file.editor.main.recorder");
-		executeF5 = Outside.service(this,"gus06.swing.comp.cust3.execute.f5");
+		executeF5 = Outside.service(this,"gus.x.swing.comp.cust3.execute.f5");
 		checkSize = Outside.service(this,"gus06.file.editor.main.checksize");
 		
 		Action action = (Action) tipAction.g();

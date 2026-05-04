@@ -31,7 +31,7 @@ public class EntityImpl extends S1 implements Entity, I, P, G {
 	{
 		editionPanel = Outside.service(this,"*gus06.data.editor.renderedimage.editor1.panel");
 		editionBar = Outside.service(this,"*gus06.data.editor.renderedimage.editor1.bar");
-		executeF5 = Outside.service(this,"gus06.swing.comp.cust3.execute.f5");
+		executeF5 = Outside.service(this,"gus.x.swing.comp.cust3.execute.f5");
 		
 		JToolBar toolbar = (JToolBar) editionBar.i();
 		

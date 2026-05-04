@@ -35,7 +35,7 @@ public class EntityImpl implements Entity, T, G {
 		buildTextArea = Outside.service(this,"gus06.swing.textarea.buildarea1");
 		okCancel = Outside.service(this,"gus06.swing.dialog.blocked1.okcancel");
 		onEscape = Outside.service(this,"gus06.swing.textcomp.cust.action.escap.clear2");
-		onF1 = Outside.service(this,"gus06.swing.comp.cust3.execute.f1");
+		onF1 = Outside.service(this,"gus.x.swing.comp.cust3.execute.f1");
 		
 		labelTitle = (JLabel) buildLabelTitle.i();
 		textArea = (JTextArea) buildTextArea.i();

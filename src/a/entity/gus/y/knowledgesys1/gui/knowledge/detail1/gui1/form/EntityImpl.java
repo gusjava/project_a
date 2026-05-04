@@ -18,6 +18,7 @@ public class EntityImpl implements Entity, I, P, V {
 
 	private Service edit;
 	private Service formPanel;
+	private Service f2;
 	
 	private Object engine;
 	private Map data;
@@ -39,6 +40,7 @@ public class EntityImpl implements Entity, I, P, V {
 	{
 		edit = Outside.service(this,"gus.y.knowledgesys1.gui.knowledge.edit");
 		formPanel = Outside.service(this, "*gus.x.swing.panel.formpanel");
+		f2 = Outside.service(this, "gus.x.swing.comp.cust3.execute.f2");
 
 		fieldId.setEditable(false);
 		fieldDateCreated.setEditable(false);
@@ -71,6 +73,7 @@ public class EntityImpl implements Entity, I, P, V {
 		mainPanel.add((JComponent) formPanel.i(), BorderLayout.NORTH);
 		mainPanel.add(new JScrollPane(taDescription), BorderLayout.CENTER);
 		mainPanel.add(buttonEdit, BorderLayout.SOUTH);
+		f2.p(new Object[]{mainPanel, (E)this::edit});
 	}
 
 	public Object i() throws Exception

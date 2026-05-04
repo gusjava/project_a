@@ -27,7 +27,7 @@ public class EntityImpl implements Entity, ActionListener, I {
 	public EntityImpl() throws Exception
 	{
 		onDoubleClicked = Outside.service(this,"gus06.swing.label.cust3.ondoubleclick.execute");
-		onDel = Outside.service(this,"gus06.swing.comp.cust3.execute.del");
+		onDel = Outside.service(this,"gus.x.swing.comp.cust3.execute.del");
 		showViewer = Outside.service(this,"gus06.exception.gui.viewer.show");
 		
 		errors = (List) Outside.resource(this,"errlist");

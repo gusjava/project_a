@@ -75,7 +75,7 @@ public class EntityImpl implements Entity, ActionListener, G {
 	public EntityImpl() throws Exception
 	{
 		okCancel = Outside.service(this,"gus06.swing.dialog.blocked1.okcancel0");
-		onEscape = Outside.service(this,"gus06.swing.comp.cust3.execute.escape");
+		onEscape = Outside.service(this,"gus.x.swing.comp.cust3.execute.escape");
 		
 		field = new JTextField();
 		field.setMargin(new Insets(3,3,3,3));

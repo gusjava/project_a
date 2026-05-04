@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		onF9 = Outside.service(this,"gus06.swing.comp.cust3.execute.f9");
+		onF9 = Outside.service(this,"gus.x.swing.comp.cust3.execute.f9");
 		showData = Outside.service(this,"gus06.swing.frame.show.data");
 	}
 	
