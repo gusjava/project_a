@@ -10,13 +10,9 @@ import java.awt.Container;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-
 public class EntityImpl implements Entity, P {
-
 	public String creationDate() {return "20221111";}
 
-	
-	
 	public void p(Object obj) throws Exception
 	{
 		Object[] o = (Object[]) obj;
@@ -27,7 +23,6 @@ public class EntityImpl implements Entity, P {
 		
 		new Holder(comp,ex);
 	}
-	
 
 	private class Holder implements KeyListener, MouseListener
 	{
@@ -67,7 +62,6 @@ public class EntityImpl implements Entity, P {
 		public void mousePressed(MouseEvent evt)
 		{comp.requestFocusInWindow();}
 	}
-	
 	
 	private void execute(E ex)
 	{
