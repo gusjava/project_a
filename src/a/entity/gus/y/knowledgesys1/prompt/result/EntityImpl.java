@@ -21,37 +21,22 @@ public class EntityImpl implements Entity, T {
 
 	public Object t(Object obj) throws Exception
 	{
-		Map json = (Map) obj;
-		List cluster = (List) json.get("cluster");
-		List extraCodes = (List) json.get("extra_codes");
+		Object[] args = (Object[]) obj;
+		List cluster = (List) args[0];
+		List extraCodes = (List) args[1];
+
+		if (extraCodes == null || extraCodes.isEmpty()) return cluster;
 
 		Map seen = new LinkedHashMap();
-		List result = new ArrayList();
+		for (int i = 0; i < cluster.size(); i++)
+			seen.put(((Map) cluster.get(i)).get("id"), Boolean.TRUE);
 
-		if (cluster != null) {
-			for (int i = 0; i < cluster.size(); i++) {
-				Map row = (Map) cluster.get(i);
-				Long id = (Long) row.get("id");
-				if (!seen.containsKey(id)) {
-					seen.put(id, Boolean.TRUE);
-					result.add(row);
-				}
-			}
-		}
-
-		if (extraCodes != null && !extraCodes.isEmpty()) {
-			Connection cx = cx();
-			for (int i = 0; i < extraCodes.size(); i++) {
-				String code = (String) extraCodes.get(i);
-				Map row = findByCode(cx, code);
-				if (row != null) {
-					Long id = (Long) row.get("id");
-					if (!seen.containsKey(id)) {
-						seen.put(id, Boolean.TRUE);
-						result.add(row);
-					}
-				}
-			}
+		List result = new ArrayList(cluster);
+		Connection cx = cx();
+		for (int i = 0; i < extraCodes.size(); i++) {
+			Map row = findByCode(cx, (String) extraCodes.get(i));
+			if (row != null && !seen.containsKey(row.get("id")))
+				result.add(row);
 		}
 		return result;
 	}

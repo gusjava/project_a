@@ -3,7 +3,6 @@ package a.entity.gus.y.knowledgesys1.prompt;
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
@@ -26,24 +25,13 @@ public class EntityImpl implements Entity, T {
 	{
 		Map json = (Map) obj;
 		List keywords = (List) json.get("keywords");
+		String description = (String) json.get("description");
 
 		Map root = (Map) rootfinder.t(keywords);
 		if (root == null) return new ArrayList();
 
 		List cluster = (List) rootexpander.t(root);
-		
-		String description = (String) json.get("description");
-		String preprocessorEntity = (String) root.get("preprocessor");
-		Map preInput = new LinkedHashMap();
-		preInput.put("preprocessor_entity", preprocessorEntity);
-		preInput.put("description", description);
-		
-		Map preOutput = (Map) preprocessor.t(preInput);
-		List extraCodes = (List) preOutput.get("codes");
-
-		Map resultInput = new LinkedHashMap();
-		resultInput.put("cluster", cluster);
-		resultInput.put("extra_codes", extraCodes);
-		return result.t(resultInput);
+		List extraCodes = (List) preprocessor.t(new Object[]{root, description});
+		return result.t(new Object[]{cluster, extraCodes});
 	}
 }
