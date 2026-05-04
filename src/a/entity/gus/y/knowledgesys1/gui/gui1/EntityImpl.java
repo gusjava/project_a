@@ -4,7 +4,7 @@ import a.framework.*;
 
 public class EntityImpl implements Entity, I, V
 {
-	public String creationDate() {return "20260429";}
+	public String creationDate() {return "20260504";}
 
 	private Service tabHolder;
 
@@ -13,6 +13,7 @@ public class EntityImpl implements Entity, I, V
 	private Service gui1_3;
 	private Service gui1_4;
 	private Service gui1_5;
+	private Service gui1_6;
 
 	public EntityImpl() throws Exception
 	{
@@ -23,12 +24,14 @@ public class EntityImpl implements Entity, I, V
 		gui1_3 = Outside.service(this, "*gus.y.knowledgesys1.gui.gui1_3.knowledge.treedown");
 		gui1_4 = Outside.service(this, "*gus.y.knowledgesys1.gui.gui1_4.knowledge.tags");
 		gui1_5 = Outside.service(this, "*gus.y.knowledgesys1.gui.gui1_5.knowledge.links");
+		gui1_6 = Outside.service(this, "*gus.y.knowledgesys1.gui.gui1_6.knowledge.prompt");
 
-		tabHolder.v("KNOWLEDGE#List",  gui1_1);
-		tabHolder.v("KNOWLEDGE#Up",    gui1_2);
-		tabHolder.v("KNOWLEDGE#Down",  gui1_3);
-		tabHolder.v("KNOWLEDGE#Tags",  gui1_4);
-		tabHolder.v("KNOWLEDGE#Links", gui1_5);
+		tabHolder.v("KNOWLEDGE#List",   gui1_1);
+		tabHolder.v("KNOWLEDGE#Up",     gui1_2);
+		tabHolder.v("KNOWLEDGE#Down",   gui1_3);
+		tabHolder.v("KNOWLEDGE#Tags",   gui1_4);
+		tabHolder.v("KNOWLEDGE#Links",  gui1_5);
+		tabHolder.v("KNOWLEDGE#Prompt", gui1_6);
 	}
 
 	public void v(String key, Object obj) throws Exception
@@ -40,9 +43,9 @@ public class EntityImpl implements Entity, I, V
 			gui1_3.v(key, obj);
 			gui1_4.v(key, obj);
 			gui1_5.v(key, obj);
+			gui1_6.v(key, obj);
 		}
 	}
 
-	public Object i() throws Exception
-	{return tabHolder.i();}
+	public Object i() throws Exception {return tabHolder.i();}
 }
