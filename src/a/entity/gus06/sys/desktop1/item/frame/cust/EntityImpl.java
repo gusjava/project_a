@@ -38,8 +38,8 @@ public class EntityImpl implements Entity, P {
 		custDisplay = Outside.service(this,"gus06.swing.internalframe.cust2.display");
 		autoPack = Outside.service(this,"gus06.swing.internalframe.autopack");
 		findColor = Outside.service(this,"gus06.find.color");
-		setForeground = Outside.service(this,"gus06.swing.comp.cust3.foreground.full");
-		setBackground = Outside.service(this,"gus06.swing.comp.cust3.background.full");
+		setForeground = Outside.service(this,"gus.x.swing.comp.cust3.foreground.full");
+		setBackground = Outside.service(this,"gus.x.swing.comp.cust3.background.full");
 		setOpaque = Outside.service(this,"gus06.swing.comp.cust.opaque.full");
 	}
 	

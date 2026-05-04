@@ -35,7 +35,7 @@ public class EntityImpl implements Entity, F {
 		setIcon = Outside.service(this,"gus06.swing.comp.seticon");
 		showMini = Outside.service(this,"gus06.swing.frame.showmini");
 		cellEdit = Outside.service(this,"gus06.jdbc.gui.tableview.perform.cell.edit");
-		onDoubleClick = Outside.service(this,"gus06.swing.comp.cust3.on.mousedoubleclicked.execute");
+		onDoubleClick = Outside.service(this,"gus.x.swing.comp.cust3.on.mousedoubleclicked.execute");
 	}
 	
 	

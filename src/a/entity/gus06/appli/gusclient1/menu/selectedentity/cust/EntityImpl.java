@@ -11,7 +11,7 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		compCust = Outside.service(this,"gus06.swing.comp.cust3.enable");
+		compCust = Outside.service(this,"gus.x.swing.comp.cust3.enable");
 		selection = Outside.service(this,"gus06.appli.gusclient1.gui.entity.holder");
 	}
 	

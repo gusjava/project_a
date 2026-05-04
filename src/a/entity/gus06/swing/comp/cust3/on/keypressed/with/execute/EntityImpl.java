@@ -1,18 +1,15 @@
 package a.entity.gus06.swing.comp.cust3.on.keypressed.with.execute;
 
 import javax.swing.JComponent;
-import a.framework.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.KeyStroke;
 import java.util.Map;
 import java.util.Iterator;
-
+import a.framework.*;
 
 public class EntityImpl implements Entity, P {
-
 	public String creationDate() {return "20170819";}
-
 
 	private Service find;
 
@@ -20,8 +17,6 @@ public class EntityImpl implements Entity, P {
 	{
 		find = Outside.service(this,"gus06.find.keystroke");
 	}
-
-
 
 	public void p(Object obj) throws Exception
 	{
@@ -49,14 +44,11 @@ public class EntityImpl implements Entity, P {
 		else throw new Exception("Wong data number: "+t.length);
 	}
 	
-	
 	private void handleKey(JComponent comp, Object key, E exec) throws Exception
 	{
 		KeyStroke ks = (KeyStroke) find.t(key);
 		new Holder(comp,ks,exec);
 	}
-	
-	
 	
 	private class Holder extends KeyAdapter
 	{
@@ -79,8 +71,6 @@ public class EntityImpl implements Entity, P {
 			if(ks.equals(ks1)) exec(exec);
 		}
 	}
-	
-	
 	
 	private void exec(E exec)
 	{

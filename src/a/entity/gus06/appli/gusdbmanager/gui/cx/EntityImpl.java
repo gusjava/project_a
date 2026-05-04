@@ -25,7 +25,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		setForeground = Outside.service(this,"gus06.swing.comp.cust3.foreground.full");
+		setForeground = Outside.service(this,"gus.x.swing.comp.cust3.foreground.full");
 		buildBottombar = Outside.service(this,"gus06.appli.gusdbmanager.gui.cx.bottombar");
 		buildDataPane = Outside.service(this,"gus06.appli.gusdbmanager.gui.cx.data");
 	}

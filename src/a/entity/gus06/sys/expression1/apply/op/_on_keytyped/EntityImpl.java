@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		perform = Outside.service(this,"gus06.swing.comp.cust3.on.keytyped.execute");
+		perform = Outside.service(this,"gus.x.swing.comp.cust3.on.keytyped.execute");
 		findComp = Outside.service(this,"gus06.find.jcomponent");
 	}
 

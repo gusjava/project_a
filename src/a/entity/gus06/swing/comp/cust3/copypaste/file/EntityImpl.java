@@ -11,7 +11,6 @@ public class EntityImpl implements Entity, P {
 	public static final String KEY_C = "ctrl c";
 	public static final String KEY_V = "ctrl v";
 
-
 	private Service toClipboard;
 	private Service onKey;
 
@@ -20,7 +19,6 @@ public class EntityImpl implements Entity, P {
 		toClipboard = Outside.service(this,"gus06.clipboard.access.file");
 		onKey = Outside.service(this,"gus06.swing.comp.cust3.on.keypressed.with.execute");
 	}
-	
 	
 	public void p(Object obj) throws Exception
 	{
@@ -37,7 +35,6 @@ public class EntityImpl implements Entity, P {
 		onKey.p(new Object[]{comp,KEY_V,paster});
 		onKey.p(new Object[]{comp,KEY_C,copier});
 	}
-	
 	
 	private class Copier implements E
 	{

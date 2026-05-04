@@ -44,7 +44,7 @@ public class EntityImpl implements Entity, P {
 		dialog = Outside.service(this,"gus06.swing.dialog.blocked1.okcancel0");
 		normalize = Outside.service(this,"gus06.string.transform.normalize.diacritics.lower");
 		onKey = Outside.service(this,"gus06.swing.comp.cust3.on.keypressed.with.execute");
-		onClicked = Outside.service(this,"gus06.swing.comp.cust3.on.mouseclicked.execute");
+		onClicked = Outside.service(this,"gus.x.swing.comp.cust3.on.mouseclicked.execute");
 		
 		model = new TableModel0();
 		
