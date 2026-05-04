@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, I, P {
 	public EntityImpl() throws Exception
 	{
 		findRoot = Outside.service(this,"gus06.sys.filetool.findroot");
-		gui = Outside.service(this,"*gus06.sys.desktop1.gui.maingui");
+		gui = Outside.service(this,"*gus.y.desktop1.gui.maingui");
 	}
 	
 	public Object i() throws Exception
