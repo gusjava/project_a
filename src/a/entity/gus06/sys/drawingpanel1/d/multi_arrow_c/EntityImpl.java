@@ -23,7 +23,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		findPoint = Outside.service(this,"gus06.sys.drawingpanel1.build.point2d");
-		drawArrow = Outside.service(this,"*gus06.graphics.draw.point2d.arrow1");
+		drawArrow = Outside.service(this,"*gus.x.graphics.draw.point2d.arrow1");
 	}
 	
 	

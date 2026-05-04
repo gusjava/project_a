@@ -1,4 +1,4 @@
-package a.entity.gus06.sys.carto1.panelholder;
+package a.entity.gus.y.carto1.panelholder;
 
 import a.framework.*;
 import javax.swing.JComponent;
@@ -41,12 +41,12 @@ public class EntityImpl extends S1 implements Entity, P, G, I, V, R, MouseListen
 
 	public EntityImpl() throws Exception
 	{
-		screen = Outside.service(this,"*gus06.swing.panel.screen.drawn");
-		selection = Outside.service(this,"*gus06.sys.carto1.selection");
-		drawer = Outside.service(this,"*gus06.sys.carto1.paneldrawer1");
-		drag = Outside.service(this,"*gus06.sys.carto1.drag");
+		screen = Outside.service(this,"*gus.x.swing.panel.screen.drawn");
+		selection = Outside.service(this,"*gus.y.carto1.selection");
+		drawer = Outside.service(this,"*gus.y.carto1.paneldrawer1");
+		drag = Outside.service(this,"*gus.y.carto1.drag");
 		
-		labelBuilder = Outside.service(this,"gus06.sys.carto1.labelbuilder");
+		labelBuilder = Outside.service(this,"gus.y.carto1.labelbuilder");
 		
 		rectMap = new HashMap();
 		

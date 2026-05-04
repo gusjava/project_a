@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, P, I, V, R {
 	
 	public EntityImpl() throws Exception
 	{
-		screen = Outside.service(this,"*gus06.swing.panel.screen.drawn");
+		screen = Outside.service(this,"*gus.x.swing.panel.screen.drawn");
 		drawer = Outside.service(this,"*gus06.sys.drawingpanel1.drawer");
 		mouse = Outside.service(this,"*gus06.sys.drawingpanel1.mouse");
 		

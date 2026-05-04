@@ -1,4 +1,4 @@
-package a.entity.gus06.sys.carto1.paneldrawer2;
+package a.entity.gus.y.carto1.paneldrawer2;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -44,7 +44,7 @@ public class EntityImpl implements Entity, P, V, R {
 	
 	public EntityImpl() throws Exception
 	{
-		drawArrow = Outside.service(this,"*gus06.graphics.draw.point2d.arrow1");
+		drawArrow = Outside.service(this,"*gus.x.graphics.draw.point2d.arrow1");
 	}
 	
 	

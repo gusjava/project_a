@@ -1,4 +1,4 @@
-package a.entity.gus06.sys.carto1.panelholder.demo;
+package a.entity.gus.y.carto1.panelholder.demo;
 
 import a.framework.*;
 import javax.swing.JComponent;
@@ -19,7 +19,6 @@ public class EntityImpl implements Entity, I, ActionListener {
 
 	public String creationDate() {return "20161202";}
 
-
 	private Service panelholder;
 	private Service drawer2;
 	private Service buildButtonColor;
@@ -36,14 +35,11 @@ public class EntityImpl implements Entity, I, ActionListener {
 	
 	private JPanel panel;
 
-
-
-
 	public EntityImpl() throws Exception
 	{
-		panelholder = Outside.service(this,"gus06.sys.carto1.panelholder");
-		drawer2 = Outside.service(this,"gus06.sys.carto1.paneldrawer1");
-		buildButtonColor = Outside.service(this,"gus06.swing.button.build.colorchooser");
+		panelholder = Outside.service(this,"gus.y.carto1.panelholder");
+		drawer2 = Outside.service(this,"gus.y.carto1.paneldrawer1");
+		buildButtonColor = Outside.service(this,"gus.x.swing.button.build.colorchooser");
 		
 		linksMap = new HashMap();
 		colorMap = new HashMap();
@@ -83,16 +79,11 @@ public class EntityImpl implements Entity, I, ActionListener {
 		panel.add((JComponent) panelholder.i(),BorderLayout.CENTER);
 	}
 
-
-
 	public Object i() throws Exception
 	{return panel;}
 	
 	public void actionPerformed(ActionEvent e)
 	{perform();}
-
-	
-	
 	
 	private void perform()
 	{

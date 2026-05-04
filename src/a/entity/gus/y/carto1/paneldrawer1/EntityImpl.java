@@ -1,4 +1,4 @@
-package a.entity.gus06.sys.carto1.paneldrawer1;
+package a.entity.gus.y.carto1.paneldrawer1;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -14,9 +14,7 @@ import java.awt.RenderingHints;
 import a.framework.*;
 
 public class EntityImpl implements Entity, P, V, R {
-
 	public String creationDate() {return "20161202";}
-
 
 	public static final int EDGE = 10;
 	public static final int MARGIN = 2;
@@ -29,9 +27,6 @@ public class EntityImpl implements Entity, P, V, R {
 	public static final Color FOREGROUND_LABEL = Color.BLACK;
 	public static final Color COLOR_SELECTION = Color.GRAY;
 	public static final Color COLOR_LINK = Color.BLACK;
-	
-	
-	
 
 	private Service drawArrow;
 	private Map rectMap;
@@ -44,9 +39,8 @@ public class EntityImpl implements Entity, P, V, R {
 	
 	public EntityImpl() throws Exception
 	{
-		drawArrow = Outside.service(this,"*gus06.graphics.draw.point2d.arrow1");
+		drawArrow = Outside.service(this,"*gus.x.graphics.draw.point2d.arrow1");
 	}
-	
 	
 	public void v(String key, Object obj) throws Exception
 	{
@@ -58,8 +52,6 @@ public class EntityImpl implements Entity, P, V, R {
 		
 		throw new Exception("Unknown key: "+key);
 	}
-
-
 
 	public Object r(String key) throws Exception
 	{
@@ -73,10 +65,6 @@ public class EntityImpl implements Entity, P, V, R {
 			return new String[]{"rectMap","linksMap","colorMap","selectedSet","selectionArea"};
 		throw new Exception("Unknown key: "+key);
 	}
-
-
-	
-	
 	
 	public void p(Object obj) throws Exception
 	{
@@ -106,9 +94,6 @@ public class EntityImpl implements Entity, P, V, R {
 			g2.draw(selectionArea);
 		}
 	}
-	
-	
-	
 	
 	private void drawLabel(Graphics2D g2, String name)
 	{
@@ -140,8 +125,6 @@ public class EntityImpl implements Entity, P, V, R {
 		g2.drawString(name,x,y);
 		g2.setComposite(ALPHA2);
 	}
-	
-	
 	
 	private Color labelBackground(String name)
 	{

@@ -90,7 +90,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		play1 = Outside.service(this,"factory#gus06.sys.play1.manager");
-		carto1 = Outside.service(this,"factory#gus06.sys.carto1.panelholder");
+		carto1 = Outside.service(this,"factory#gus.y.carto1.panelholder");
 		points1 = Outside.service(this,"factory#gus06.swing.panel.screen.points");
 		drawing1 = Outside.service(this,"factory#gus06.sys.drawingpanel1.screen");
 		mapEditor = Outside.service(this,"factory#gus06.sys.mapediting1.gui.main");

@@ -1,4 +1,4 @@
-package a.entity.gus06.swing.button.build.colorchooser;
+package a.entity.gus.x.swing.button.build.colorchooser;
 
 import a.framework.*;
 import javax.swing.JButton;
@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 public class EntityImpl implements Entity, I, T {
-
 	public String creationDate() {return "20170306";}
 	
 	public static final Color DEFAULT_COLOR = Color.BLACK;
@@ -18,8 +17,6 @@ public class EntityImpl implements Entity, I, T {
 	
 	public Object t(Object obj) throws Exception
 	{return new JButtonColorChooser((Color) obj);}
-	
-	
 	
 	private class JButtonColorChooser extends JButton implements P, G, ActionListener
 	{

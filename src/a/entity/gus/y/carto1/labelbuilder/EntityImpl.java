@@ -1,4 +1,4 @@
-package a.entity.gus06.sys.carto1.labelbuilder;
+package a.entity.gus.y.carto1.labelbuilder;
 
 import java.awt.Rectangle;
 import javax.swing.JLabel;

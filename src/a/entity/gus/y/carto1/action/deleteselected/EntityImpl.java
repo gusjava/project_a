@@ -1,4 +1,4 @@
-package a.entity.gus06.sys.carto1.action.deleteselected;
+package a.entity.gus.y.carto1.action.deleteselected;
 
 import a.framework.*;
 

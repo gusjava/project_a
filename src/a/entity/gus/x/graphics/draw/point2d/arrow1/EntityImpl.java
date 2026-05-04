@@ -1,4 +1,4 @@
-package a.entity.gus06.graphics.draw.point2d.arrow1;
+package a.entity.gus.x.graphics.draw.point2d.arrow1;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
@@ -6,15 +6,12 @@ import java.awt.geom.Point2D;
 import a.framework.*;
 
 public class EntityImpl implements Entity, P, V {
-
 	public String creationDate() {return "20161202";}
 	
 	public static final double ARROW_COEF = 8;
-	
 
 	private Graphics2D g2;
 	private double arrowCoef = ARROW_COEF;
-	
 	
 	public void v(String key, Object obj) throws Exception
 	{
@@ -22,15 +19,12 @@ public class EntityImpl implements Entity, P, V {
 		if(key.equals("arrowCoef")) {arrowCoef = Double.parseDouble((String) obj);return;}
 		throw new Exception("Unknown key: "+key);
 	}
-
-
 	
 	public void p(Object obj) throws Exception
 	{
 		Point2D[] p = (Point2D[]) obj;
 		drawArrow(p[0],p[1]);
 	}
-	
 	
 	private void drawArrow(Point2D p1, Point2D p2)
 	{
@@ -47,8 +41,6 @@ public class EntityImpl implements Entity, P, V {
 		drawLine(pc,pa1);
 		drawLine(pc,pa2);
 	}
-
-
 	
 	private Point2D getCenter(Point2D p1, Point2D p2)
 	{
@@ -57,14 +49,12 @@ public class EntityImpl implements Entity, P, V {
 		return new Point2D.Double(x,y);
 	}
 	
-	
 	private double getDistance(Point2D p1, Point2D p2)
 	{
 		double dx = p1.getX() - p2.getX();
 		double dy = p1.getY() - p2.getY();
 		return Math.sqrt(dx*dx + dy*dy);
 	}
-	
 	
 	private Point2D getArrowPoint1(Point2D p1, Point2D p2, Point2D pc, double k)
 	{
