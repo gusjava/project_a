@@ -1,5 +1,6 @@
 package a.entity.gus.y.entityeditor1.maingui;
 
+import java.util.List;
 import java.awt.BorderLayout;
 
 import javax.swing.BorderFactory;
@@ -105,6 +106,12 @@ public class EntityImpl implements Entity, P, I, ActionListener {
 		try
 		{
 			if(engine==null) return;
+			List nameList = (List) ((R) engine).r("nameList");
+			if(!nameList.contains(entityName))
+			{
+				reset();
+				return;
+			}
 			data = buildData.t(new Object[]{engine,entityName});
 			refreshGui();
 		}
