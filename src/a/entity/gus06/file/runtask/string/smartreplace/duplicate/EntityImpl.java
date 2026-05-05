@@ -24,7 +24,7 @@ public class EntityImpl implements Entity, P {
 		isTextFile = Outside.service(this,"gus06.file.string.check");
 		transformFile = Outside.service(this,"gus06.file.string.perform2.apply.t");
 		copyFile = Outside.service(this,"gus06.file.op.copy.replace");
-		getName0Ext = Outside.service(this,"gus06.file.getname0ext");
+		getName0Ext = Outside.service(this,"gus.x.file.getname0ext");
 	}
 
 	

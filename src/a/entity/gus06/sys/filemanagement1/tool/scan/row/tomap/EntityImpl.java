@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		name0Ext = Outside.service(this,"gus06.file.getname0ext");
+		name0Ext = Outside.service(this,"gus.x.file.getname0ext");
 	}
 	
 	public Object t(Object obj) throws Exception

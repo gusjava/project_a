@@ -37,7 +37,7 @@ public class EntityImpl extends S1 implements Entity, I, P, E, R {
 		viewer1 = Outside.service(this,"gus06.data.viewer.string.textarea.editor1");
 		editor2 = Outside.service(this,"*gus06.data.editor.string.textarea.editor1");
 		titled = Outside.service(this,"gus06.swing.comp.build.titledpanel");
-		name0Ext = Outside.service(this,"gus06.file.getname0ext");
+		name0Ext = Outside.service(this,"gus.x.file.getname0ext");
 		scrollSync = Outside.service(this,"gus06.swing.scrollpane.scrollsynchronizer.v");
 		onCtrlQ = Outside.service(this,"gus.x.swing.comp.cust3.execute.ctrl_q");
 		onEscape = Outside.service(this,"gus.x.swing.comp.cust3.execute.escape");

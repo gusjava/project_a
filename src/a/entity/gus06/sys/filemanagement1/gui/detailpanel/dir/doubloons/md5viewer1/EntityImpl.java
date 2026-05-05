@@ -62,7 +62,7 @@ public class EntityImpl implements Entity, I, P, ActionListener {
 		formatSize = Outside.service(this,"gus06.string.transform.format.datasize.en");
 		selector = Outside.service(this,"*gus06.sys.filemanagement1.gui.detailpanel.dir.doubloons.md5viewer1.selector");
 		findIcon = Outside.service(this,"gus06.file.ext.icon.t1");
-		getName0Ext = Outside.service(this,"gus06.file.getname0ext");
+		getName0Ext = Outside.service(this,"gus.x.file.getname0ext");
 		
 		JComponent imageComp = (JComponent) screen.i();
 		imageComp.setPreferredSize(new Dimension(POSTER_WIDTH,0));

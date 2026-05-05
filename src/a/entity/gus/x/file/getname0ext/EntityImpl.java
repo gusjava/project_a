@@ -1,20 +1,17 @@
-package a.entity.gus06.file.getname0ext;
+package a.entity.gus.x.file.getname0ext;
 
 import a.framework.*;
 import java.io.File;
 
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20160602";}
 
-	
 	public Object t(Object obj) throws Exception
 	{
 		if(obj instanceof File) return name0Ext((File) obj);
 		if(obj instanceof String) return name0Ext(extractName((String) obj));
 		throw new Exception("Invalid data type: "+obj.getClass().getName());
 	}
-	
 	
 	private String[] name0Ext(File file) throws Exception
 	{

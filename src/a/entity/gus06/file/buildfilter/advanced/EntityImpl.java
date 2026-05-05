@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		name0ext = Outside.service(this,"gus06.file.getname0ext");
+		name0ext = Outside.service(this,"gus.x.file.getname0ext");
 		builder = Outside.service(this,"gus06.sys.expression1.builder1a.f");
 	}
 

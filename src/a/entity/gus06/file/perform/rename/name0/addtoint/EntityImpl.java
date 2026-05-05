@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, P, T {
 	
 	public EntityImpl() throws Exception
 	{
-		name0ext = Outside.service(this,"gus06.file.getname0ext");
+		name0ext = Outside.service(this,"gus.x.file.getname0ext");
 		autoRename = Outside.service(this,"gus06.file.newfile.autorename2");
 		p = Pattern.compile("[0-9]+");
 	}

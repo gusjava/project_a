@@ -31,7 +31,7 @@ public class EntityImpl implements Entity, F {
 		checkMode = Outside.service(this,"gus06.sys.filemanagement1.scan.store.properties.mode");
 		getMimeType = Outside.service(this,"gus06.file.mime.tika.detect.asstring.s");
 		getMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa.s");
-		getName0Ext = Outside.service(this,"gus06.file.getname0ext");
+		getName0Ext = Outside.service(this,"gus.x.file.getname0ext");
 		getNow = Outside.service(this,"gus06.time.now");
 		
 		handleEbook = Outside.service(this,"gus06.sys.filemanagement1.scan.store.properties.handle.ebook");

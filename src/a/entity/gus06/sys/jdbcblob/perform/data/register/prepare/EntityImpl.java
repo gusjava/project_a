@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		getName0Ext = Outside.service(this,"gus06.file.getname0ext");
+		getName0Ext = Outside.service(this,"gus.x.file.getname0ext");
 		readFile = Outside.service(this,"gus06.file.read.raw");
 		readImage = Outside.service(this,"gus06.file.read.image.preview");
 		imageToRawJpg = Outside.service(this,"gus06.awt.bufferedimage.tojpg.raw");
