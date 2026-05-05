@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		getClassVer = Outside.service(this,"gus06.file.class1.classversion");
+		getClassVer = Outside.service(this,"gus.x.file.class1.classversion");
 	}
 	
 	public void p(Object obj) throws Exception

@@ -37,7 +37,7 @@ public class EntityImpl implements Entity, I, P, ActionListener, ListSelectionLi
 	public EntityImpl() throws Exception
 	{
 		fieldHolder = Outside.service(this,"*gus06.data.editor.string.textfield.editor1");
-		findEntries = Outside.service(this,"gus06.file.jar.findentries");
+		findEntries = Outside.service(this,"gus.x.file.jar.findentries");
 		listRenderer = Outside.service(this,"gus06.file.editor.ext.zip.listrenderer");
 		entryViewer = Outside.service(this,"*gus06.file.editor.ext.zip.entryviewer");
 		listFilter = Outside.service(this,"gus06.list.filter.rule.one");

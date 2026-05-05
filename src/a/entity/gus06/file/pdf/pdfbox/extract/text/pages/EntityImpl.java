@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		isLocked = Outside.service(this,"gus06.file.filter.islocked");
+		isLocked = Outside.service(this,"gus.x.file.filter.islocked");
 	}
 	
 	public Object t(Object obj) throws Exception

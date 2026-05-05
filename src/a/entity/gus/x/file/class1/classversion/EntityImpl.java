@@ -1,4 +1,4 @@
-package a.entity.gus06.file.class1.classversion;
+package a.entity.gus.x.file.class1.classversion;
 
 import a.framework.*;
 import java.io.DataInputStream;

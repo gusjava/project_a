@@ -11,7 +11,7 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		existsIC = Outside.service(this,"gus06.file.filter.exists.ignorecase");
+		existsIC = Outside.service(this,"gus.x.file.filter.exists.ignorecase");
 	}
 	
 	public void p(Object obj) throws Exception

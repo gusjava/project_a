@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		perform = Outside.service(this,"gus06.file.jar.findentries");
+		perform = Outside.service(this,"gus.x.file.jar.findentries");
 	}
 
 	

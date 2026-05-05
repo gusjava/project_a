@@ -32,7 +32,7 @@ public class EntityImpl extends S1 implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		getNextDir = Outside.service(this,"gus06.appli.usbwebprint.fileregister.nextsubdir");
-		isLocked = Outside.service(this,"gus06.file.filter.islocked");
+		isLocked = Outside.service(this,"gus.x.file.filter.islocked");
 		fileMove = Outside.service(this,"gus06.file.op.move");
 		fileCopy = Outside.service(this,"gus06.file.op.copy");
 		

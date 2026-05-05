@@ -1,27 +1,22 @@
-package a.entity.gus06.file.filter.islocked;
+package a.entity.gus.x.file.filter.islonely;
 
 import a.framework.*;
 import java.io.File;
 import java.io.FileFilter;
 
 public class EntityImpl implements Entity, F, G, FileFilter {
+	public String creationDate() {return "20150628";}
 
-	public String creationDate() {return "20140916";}
-	
-	
 	public boolean f(Object obj) throws Exception
 	{return accept((File) obj);}
-	
 	
 	public Object g() throws Exception
 	{return this;}
 	
-	
 	public boolean accept(File f)
 	{
-		File f_ = new File(f.getAbsolutePath()+"_");
-		if(!f.renameTo(f_)) return true;
-		f_.renameTo(f);
-		return false;
+		if(f.isDirectory()) return false;
+		File p = f.getParentFile();
+		return p.list().length==1;
 	}
 }

@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		imageToText = Outside.service(this,"gus06.sys.tesseract1.imagetotext");
-		isLocked = Outside.service(this,"gus06.file.filter.islocked");
+		isLocked = Outside.service(this,"gus.x.file.filter.islocked");
 	}
 
 	

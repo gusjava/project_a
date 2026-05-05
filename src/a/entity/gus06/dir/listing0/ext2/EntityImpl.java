@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		buildFilter = Outside.service(this,"gus06.file.filter.build.ext2");
+		buildFilter = Outside.service(this,"gus.x.file.filter.build.ext2");
 	}
 
 	public Object t(Object obj) throws Exception

@@ -1,26 +1,23 @@
-package a.entity.gus06.file.filter.islonely;
+package a.entity.gus.x.file.filter.exists.ignorecase;
 
 import a.framework.*;
 import java.io.File;
 import java.io.FileFilter;
 
 public class EntityImpl implements Entity, F, G, FileFilter {
-
-	public String creationDate() {return "20150628";}
-
-
+	public String creationDate() {return "20250210";}
+	
 	public boolean f(Object obj) throws Exception
 	{return accept((File) obj);}
-	
 	
 	public Object g() throws Exception
 	{return this;}
 	
-	
 	public boolean accept(File f)
 	{
-		if(f.isDirectory()) return false;
-		File p = f.getParentFile();
-		return p.list().length==1;
+		String fileName = f.getName();
+		String[] names = f.getParentFile().list();
+		for(String name : names) if(name.equals(fileName)) return true;
+		return false;
 	}
 }

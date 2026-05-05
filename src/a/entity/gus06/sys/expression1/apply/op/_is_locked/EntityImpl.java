@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		check = Outside.service(this,"gus06.file.filter.islocked");
+		check = Outside.service(this,"gus.x.file.filter.islocked");
 	}
 
 	

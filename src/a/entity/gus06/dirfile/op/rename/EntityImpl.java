@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, P {
 	{
 		renameDir = Outside.service(this,"gus06.dir.op.rename");
 		renameFile = Outside.service(this,"gus06.file.op.rename");
-		existsIC = Outside.service(this,"gus06.file.filter.exists.ignorecase");
+		existsIC = Outside.service(this,"gus.x.file.filter.exists.ignorecase");
 	}
 	
 	

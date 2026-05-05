@@ -1,4 +1,4 @@
-package a.entity.gus06.file.jar.findentries;
+package a.entity.gus.x.file.jar.findentries;
 
 import a.framework.*;
 import java.io.File;
