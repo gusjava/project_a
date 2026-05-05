@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		copy = Outside.service(this,"gus06.file.op.copy");
+		copy = Outside.service(this,"gus.x.file.op.copy");
 		appJar = Outside.service(this,"gus06.app.jarfile");
 	}
 	

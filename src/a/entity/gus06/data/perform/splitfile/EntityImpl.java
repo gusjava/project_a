@@ -21,8 +21,8 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		isPdf = Outside.service(this,"gus06.file.filter.ext.istype.pdf");
-		isWav = Outside.service(this,"gus06.file.filter.ext.istype.audio.wav");
+		isPdf = Outside.service(this,"gus.x.file.filter.ext.istype.pdf");
+		isWav = Outside.service(this,"gus.x.file.filter.ext.istype.audio.wav");
 		
 		performPdf = Outside.service(this,"gus06.file.pdf.split.todir");
 		performWav = Outside.service(this,"gus06.file.wav.split.todir");

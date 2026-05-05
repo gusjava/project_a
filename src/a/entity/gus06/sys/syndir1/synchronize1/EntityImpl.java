@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, P {
 	{
 		buildPathMap = Outside.service(this,"gus06.dir.listing.dirtopathmap");
 		replacer = Outside.service(this,"gus06.file.op.copy.replace.syncmd5");
-		deleter = Outside.service(this,"gus06.file.op.delete");
+		deleter = Outside.service(this,"gus.x.file.op.delete");
 		
 		out = (PrintStream) Outside.resource(this,"sysout");
 	}

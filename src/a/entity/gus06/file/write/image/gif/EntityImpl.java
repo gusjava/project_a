@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		toBufferedImage = Outside.service(this,"gus06.find.bufferedimage");
-		copyFile = Outside.service(this,"gus06.file.op.copy");
+		copyFile = Outside.service(this,"gus.x.file.op.copy");
 	}
 	
 

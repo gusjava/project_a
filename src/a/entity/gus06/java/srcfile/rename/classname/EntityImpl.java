@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, T {
 		readFile = Outside.service(this,"gus06.file.read.string");
 		handleSrc = Outside.service(this,"gus06.java.srccode.rename.classname");
 		writeFile = Outside.service(this,"gus06.file.write.string.charsetfrom");
-		deleteFile = Outside.service(this,"gus06.file.op.delete");
+		deleteFile = Outside.service(this,"gus.x.file.op.delete");
 	}
 	
 	

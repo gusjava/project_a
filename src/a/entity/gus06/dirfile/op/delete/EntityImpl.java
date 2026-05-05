@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		deleteDir = Outside.service(this,"gus06.dir.op.delete");
-		deleteFile = Outside.service(this,"gus06.file.op.delete");
+		deleteFile = Outside.service(this,"gus.x.file.op.delete");
 	}
 	
 	

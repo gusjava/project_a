@@ -28,7 +28,7 @@ public class EntityImpl implements Entity, T {
 	{
 		move = Outside.service(this,"gus06.file.op.move.replace");
 		copy = Outside.service(this,"gus06.file.op.copy.replace");
-		delete = Outside.service(this,"gus06.file.op.delete");
+		delete = Outside.service(this,"gus.x.file.op.delete");
 		buildListing = Outside.service(this,"gus06.dir.listing.dirtofiles");
 		clean = Outside.service(this,"gus06.dir.perform.clean");
 		readFile = Outside.service(this,"gus06.file.read.raw");

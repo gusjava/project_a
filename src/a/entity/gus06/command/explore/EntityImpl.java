@@ -29,7 +29,7 @@ public class EntityImpl implements Entity, P {
 		parseArgs = Outside.service(this,"gus06.command.explore.parseargs");
 		rebuildPath = Outside.service(this,"gus06.file.absolute.rebuild");
 		readFile = Outside.service(this,"gus06.file.read.string");
-		copyFile = Outside.service(this,"gus06.file.op.copy");
+		copyFile = Outside.service(this,"gus.x.file.op.copy");
 		
 		File file = (File) appJar.g();
 		dir0 = file.getParentFile();

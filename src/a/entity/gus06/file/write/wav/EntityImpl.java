@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		fromMp3 = Outside.service(this,"gus06.file.mp3.perform.convert.towav");
-		isMp3 = Outside.service(this,"gus06.file.filter.ext.istype.audio.mp3");
+		isMp3 = Outside.service(this,"gus.x.file.filter.ext.istype.audio.mp3");
 	}
 	
 	public void p(Object obj) throws Exception

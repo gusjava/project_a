@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, P, F {
 	{
 		listing = Outside.service(this,"gus06.dir.listing0.ext.lnk");
 		checkTarget = Outside.service(this,"gus06.file.lnk.check.target");
-		performDelete = Outside.service(this,"gus06.file.op.delete");
+		performDelete = Outside.service(this,"gus.x.file.op.delete");
 	}
 	
 	

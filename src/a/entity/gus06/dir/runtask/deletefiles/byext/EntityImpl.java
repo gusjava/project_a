@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		listing = Outside.service(this,"gus06.dir.listing.dirtofiles");
-		delete = Outside.service(this,"gus06.file.op.delete");
+		delete = Outside.service(this,"gus.x.file.op.delete");
 		getInput = Outside.service(this,"gus06.input.text.dialog");
 		getExtension = Outside.service(this,"gus06.file.getextension.lowercase");
 	}

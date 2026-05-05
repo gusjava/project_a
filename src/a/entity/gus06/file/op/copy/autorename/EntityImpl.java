@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		perform = Outside.service(this,"gus06.file.op.copy");
+		perform = Outside.service(this,"gus.x.file.op.copy");
 		autoRename = Outside.service(this,"gus06.file.newfile.autorename2");
 	}
 

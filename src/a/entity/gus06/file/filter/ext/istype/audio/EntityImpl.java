@@ -13,8 +13,8 @@ public class EntityImpl implements Entity, F, G, FileFilter {
 	
 	public EntityImpl() throws Exception
 	{
-		archive_mp3 = Outside.service(this,"gus06.file.filter.ext.istype.audio.mp3");
-		archive_wav = Outside.service(this,"gus06.file.filter.ext.istype.audio.wav");
+		archive_mp3 = Outside.service(this,"gus.x.file.filter.ext.istype.audio.mp3");
+		archive_wav = Outside.service(this,"gus.x.file.filter.ext.istype.audio.wav");
 	}
 	
 	public boolean f(Object obj) throws Exception

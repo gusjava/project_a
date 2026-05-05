@@ -23,7 +23,7 @@ public class EntityImpl implements Entity, P {
 		replace = Outside.service(this,"gus06.data.string.replace1.smart");
 		isTextFile = Outside.service(this,"gus06.file.string.check");
 		transformFile = Outside.service(this,"gus06.file.string.perform2.apply.t");
-		deleteFile = Outside.service(this,"gus06.file.op.delete");
+		deleteFile = Outside.service(this,"gus.x.file.op.delete");
 		moveFile = Outside.service(this,"gus06.file.op.move.replace");
 	}
 

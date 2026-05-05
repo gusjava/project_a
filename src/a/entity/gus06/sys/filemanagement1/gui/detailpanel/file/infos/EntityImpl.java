@@ -37,7 +37,7 @@ public class EntityImpl extends S1 implements Entity, I, P {
 	{
 		propEditor = Outside.service(this,"*gus06.file.editor.ext.properties");
 		buildButton = Outside.service(this,"gus06.swing.button.build2.execute");
-		deleteFile = Outside.service(this,"gus06.file.op.delete");
+		deleteFile = Outside.service(this,"gus.x.file.op.delete");
 		
 		button_resetInfos = build(this::resetInfos,"CLIPBOARD_text_empty#Reset infos");
 		

@@ -71,7 +71,7 @@ public class EntityImpl extends S1 implements Entity, I, P {
 		modifyCode = Outside.service(this,"gus06.sys.filemanagement1.tool.allocine.code.change");
 		
 		buildButton = Outside.service(this,"gus06.swing.button.build2.execute");
-		deleteFile = Outside.service(this,"gus06.file.op.delete");
+		deleteFile = Outside.service(this,"gus.x.file.op.delete");
 		showData = Outside.service(this,"gus06.swing.frame.show.data");
 		titled = Outside.service(this,"gus06.swing.label.cust.title");
 		textDialog = Outside.service(this,"gus06.input.text.dialog.from");

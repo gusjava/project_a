@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		copyFile = Outside.service(this,"gus06.file.op.copy");
+		copyFile = Outside.service(this,"gus.x.file.op.copy");
 		fileToIcon = Outside.service(this,"gus06.file.icon.os.lnk");
 		writeImage = Outside.service(this,"gus06.file.write.image.gif");
 		urlToImage = Outside.service(this,"gus06.convert.urltoimage");

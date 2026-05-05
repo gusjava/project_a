@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, F {
 
 	public EntityImpl() throws Exception
 	{
-		perform = Outside.service(this,"gus06.file.op.delete");
+		perform = Outside.service(this,"gus.x.file.op.delete");
 		showErr = Outside.service(this,"gus06.swing.optionpane.showmessage.error");
 		confirm = Outside.service(this,"gus06.input.confirm.dialog");
 	}

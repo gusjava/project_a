@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, E {
 	
 	public EntityImpl() throws Exception
 	{
-		delete = Outside.service(this,"gus06.file.op.delete");
+		delete = Outside.service(this,"gus.x.file.op.delete");
 		params = (Map) Outside.resource(this,"params");
 	}
 

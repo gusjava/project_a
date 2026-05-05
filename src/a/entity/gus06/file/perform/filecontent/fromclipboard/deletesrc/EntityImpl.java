@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, P, F, T {
 	public EntityImpl() throws Exception
 	{
 		perform = Outside.service(this,"gus06.file.perform.filecontent.fromclipboard");
-		delete = Outside.service(this,"gus06.file.op.delete");
+		delete = Outside.service(this,"gus.x.file.op.delete");
 	}
 	
 	public void p(Object obj) throws Exception

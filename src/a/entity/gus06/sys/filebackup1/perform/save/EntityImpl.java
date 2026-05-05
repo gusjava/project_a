@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		getNow = Outside.service(this,"gus06.time.now");
-		copy = Outside.service(this,"gus06.file.op.copy");
+		copy = Outside.service(this,"gus.x.file.op.copy");
 	}
 	
 	

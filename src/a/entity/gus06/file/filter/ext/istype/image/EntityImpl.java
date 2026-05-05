@@ -20,13 +20,13 @@ public class EntityImpl implements Entity, F, G, FileFilter {
 
 	public EntityImpl() throws Exception
 	{
-		bmp = Outside.service(this,"gus06.file.filter.ext.istype.image.bmp");
-		gif = Outside.service(this,"gus06.file.filter.ext.istype.image.gif");
-		jpg = Outside.service(this,"gus06.file.filter.ext.istype.image.jpg");
-		png = Outside.service(this,"gus06.file.filter.ext.istype.image.png");
-		tiff = Outside.service(this,"gus06.file.filter.ext.istype.image.tiff");
-		webp = Outside.service(this,"gus06.file.filter.ext.istype.image.webp");
-		ico = Outside.service(this,"gus06.file.filter.ext.istype.image.ico");
+		bmp = Outside.service(this,"gus.x.file.filter.ext.istype.image.bmp");
+		gif = Outside.service(this,"gus.x.file.filter.ext.istype.image.gif");
+		jpg = Outside.service(this,"gus.x.file.filter.ext.istype.image.jpg");
+		png = Outside.service(this,"gus.x.file.filter.ext.istype.image.png");
+		tiff = Outside.service(this,"gus.x.file.filter.ext.istype.image.tiff");
+		webp = Outside.service(this,"gus.x.file.filter.ext.istype.image.webp");
+		ico = Outside.service(this,"gus.x.file.filter.ext.istype.image.ico");
 	}
 
 

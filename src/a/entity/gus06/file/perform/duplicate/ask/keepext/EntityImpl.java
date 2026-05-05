@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, P, F, T {
 	public EntityImpl() throws Exception
 	{
 		input = Outside.service(this,"gus06.input.text.dialog");
-		copy = Outside.service(this,"gus06.file.op.copy");
+		copy = Outside.service(this,"gus.x.file.op.copy");
 		format = Outside.service(this,"gus06.string.transform.format.pathinput1");
 		getExtension = Outside.service(this,"gus06.file.getextension");
 	}

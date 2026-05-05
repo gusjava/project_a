@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, P, F, T {
 		input = Outside.service(this,"gus06.input.text.dialog");
 		format = Outside.service(this,"gus06.string.transform.format.pathinput1");
 		getExtension = Outside.service(this,"gus06.file.getextension");
-		copy = Outside.service(this,"gus06.file.op.copy");
+		copy = Outside.service(this,"gus.x.file.op.copy");
 		refactorJava = Outside.service(this,"gus06.java.srccode.adapttofile.changename");
 	}
 	

@@ -38,7 +38,7 @@ public class EntityImpl extends S1 implements Entity, I, P {
 	public EntityImpl() throws Exception
 	{
 		buildButton = Outside.service(this,"gus06.swing.button.build2.execute");
-		deleteFile = Outside.service(this,"gus06.file.op.delete");
+		deleteFile = Outside.service(this,"gus.x.file.op.delete");
 		screen = Outside.service(this,"*gus06.swing.panel.screen.image.copy");
 		
 		button_resetPreview = build(this::resetPreview,"CLIPBOARD_image_empty#Reset preview");

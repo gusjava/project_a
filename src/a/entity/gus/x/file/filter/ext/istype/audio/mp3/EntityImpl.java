@@ -1,15 +1,14 @@
-package a.entity.gus06.file.filter.ext.istype.pdf;
+package a.entity.gus.x.file.filter.ext.istype.audio.mp3;
 
 import java.io.File;
 import java.io.FileFilter;
 import a.framework.*;
 
 public class EntityImpl implements Entity, F, G, FileFilter {
-
 	public String creationDate() {return "20250913";}
 
-	public static final String EXT = "pdf";
-
+	public static final String EXT = "mp3";
+	
 	public boolean accept(File f)
 	{
 		if(f==null) return false;

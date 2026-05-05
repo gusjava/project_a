@@ -24,7 +24,7 @@ public class EntityImpl extends S1 implements Entity, F, G {
 	public EntityImpl() throws Exception
 	{
 		fileLoader = Outside.service(this,"gus06.crypto.pbe.propfile.loader");
-		fileCopier = Outside.service(this,"gus06.file.op.copy");
+		fileCopier = Outside.service(this,"gus.x.file.op.copy");
 		
 		storeDir = (File) Outside.resource(this,"defaultdir");
 		dataFile = new File(storeDir,STORENAME);

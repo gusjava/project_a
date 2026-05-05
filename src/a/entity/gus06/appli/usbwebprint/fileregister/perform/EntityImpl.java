@@ -34,7 +34,7 @@ public class EntityImpl extends S1 implements Entity, P {
 		getNextDir = Outside.service(this,"gus06.appli.usbwebprint.fileregister.nextsubdir");
 		isLocked = Outside.service(this,"gus.x.file.filter.islocked");
 		fileMove = Outside.service(this,"gus06.file.op.move");
-		fileCopy = Outside.service(this,"gus06.file.op.copy");
+		fileCopy = Outside.service(this,"gus.x.file.op.copy");
 		
 		out = (PrintStream) Outside.resource(this,"sysout");
 	}

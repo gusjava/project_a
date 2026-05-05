@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, P, F, T {
 	public EntityImpl() throws Exception
 	{
 		updateName = Outside.service(this,"gus06.string.transform.timestamp.update.head");
-		copy = Outside.service(this,"gus06.file.op.copy");
+		copy = Outside.service(this,"gus.x.file.op.copy");
 	}
 	
 	

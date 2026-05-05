@@ -33,7 +33,7 @@ public class EntityImpl implements Entity, P {
 	{
 		hasFile = Outside.service(this,"gus06.dir.children.hasfile");
 		readFile = Outside.service(this,"gus06.file.read.string");
-		copyFile = Outside.service(this,"gus06.file.op.copy");
+		copyFile = Outside.service(this,"gus.x.file.op.copy");
 	}
 	
 	

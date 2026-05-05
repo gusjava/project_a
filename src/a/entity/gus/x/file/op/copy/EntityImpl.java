@@ -1,4 +1,4 @@
-package a.entity.gus06.file.op.copy;
+package a.entity.gus.x.file.op.copy;
 
 import java.io.File;
 import java.io.FileInputStream;
