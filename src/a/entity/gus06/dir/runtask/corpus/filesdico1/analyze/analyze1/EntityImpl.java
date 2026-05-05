@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P {
 	{
 		listing = Outside.service(this,"gus06.dir.listing0.files");
 		analyzer = Outside.service(this,"gus06.sys.filesdico1.analyze.filetoprop");
-		getName0 = Outside.service(this,"gus06.file.getname0");
+		getName0 = Outside.service(this,"gus.x.file.getname0");
 		writeProp = Outside.service(this,"gus06.file.write.properties");
 	}
 

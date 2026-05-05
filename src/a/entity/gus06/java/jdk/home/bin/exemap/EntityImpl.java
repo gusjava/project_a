@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, G {
 	{
 		bin = Outside.service(this,"gus06.java.jdk.home.bin");
 		listing = Outside.service(this,"gus06.dir.listing0.ext.exe");
-		getName = Outside.service(this,"gus06.file.getname0");
+		getName = Outside.service(this,"gus.x.file.getname0");
 	}
 	
 	

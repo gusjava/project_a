@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		dirHolder = Outside.service(this,"gus06.appli.gusexplorer.scripts.tools.manager");
-		getName0 = Outside.service(this,"gus06.file.getname0");
+		getName0 = Outside.service(this,"gus.x.file.getname0");
 		inputDialog = Outside.service(this,"gus06.input.text.dialog");
 	}
 

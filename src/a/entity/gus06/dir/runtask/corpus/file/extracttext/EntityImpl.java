@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, P {
 	{
 		listing = Outside.service(this,"gus06.dir.listing.dirtofiles");
 		readText = Outside.service(this,"gus06.file.read.string.generic");
-		getName0 = Outside.service(this,"gus06.file.getname0");
+		getName0 = Outside.service(this,"gus.x.file.getname0");
 		writeText = Outside.service(this,"gus.x.file.string.write");
 	}
 

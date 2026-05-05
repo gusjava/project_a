@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		inferPackage = Outside.service(this,"gus06.java.srccode.inferpackage");
-		getName0 = Outside.service(this,"gus06.file.getname0");
+		getName0 = Outside.service(this,"gus.x.file.getname0");
 	}
 	
 	public Object t(Object obj) throws Exception

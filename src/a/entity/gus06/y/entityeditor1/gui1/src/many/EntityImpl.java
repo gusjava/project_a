@@ -79,7 +79,7 @@ public class EntityImpl implements Entity, P, I, ListSelectionListener, ActionLi
 	{
 		actionBuilder = Outside.service(this, "gus06.y.swing1.action.builder1");
 		toolbarFactory = Outside.service(this, "gus.x.swing.toolbar.factory1");
-		getName0 = Outside.service(this, "gus06.file.getname0");
+		getName0 = Outside.service(this, "gus.x.file.getname0");
 		javaEditor = Outside.service(this, "*gus06.y.entityeditor1.gui1.src.java");
 
 		performAdd = Outside.service(this, "gus06.y.entityeditor1.perform.file.add.ask");

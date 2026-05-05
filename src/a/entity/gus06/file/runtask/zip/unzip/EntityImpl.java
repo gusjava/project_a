@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		runUnzip = Outside.service(this,"gus06.file.zip.run.unzip");
-		getName = Outside.service(this,"gus06.file.getname0");
+		getName = Outside.service(this,"gus.x.file.getname0");
 	}
 
 	

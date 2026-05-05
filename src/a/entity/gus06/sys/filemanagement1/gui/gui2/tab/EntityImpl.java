@@ -49,7 +49,7 @@ public class EntityImpl implements Entity, ActionListener, I, P, V {
 
 	public EntityImpl() throws Exception
 	{
-		getName0 = Outside.service(this,"gus06.file.getname0");
+		getName0 = Outside.service(this,"gus.x.file.getname0");
 		readList = Outside.service(this,"gus06.file.read.string.list.autodetect");
 		listViewer = Outside.service(this,"*gus06.sys.countmap1.gui.maingui");
 		movieViewer = Outside.service(this,"*gus06.sys.filemanagement1.gui.allocine.movielist.viewer");

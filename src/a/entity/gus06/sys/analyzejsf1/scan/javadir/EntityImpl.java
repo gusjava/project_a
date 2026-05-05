@@ -36,7 +36,7 @@ public class EntityImpl implements Entity, P {
 		readFile = Outside.service(this,"gus06.file.read.string");
 		extractAll = Outside.service(this,"gus06.string.extract.extract2.find.s.a");
 		extractOne = Outside.service(this,"gus06.string.extract.extract2.find.s.f");
-		name0 = Outside.service(this,"gus06.file.getname0");
+		name0 = Outside.service(this,"gus.x.file.getname0");
 	}
 	
 	

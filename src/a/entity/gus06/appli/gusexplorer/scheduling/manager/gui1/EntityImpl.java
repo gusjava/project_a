@@ -72,7 +72,7 @@ public class EntityImpl implements Entity, ActionListener, MouseListener, I {
 		duration = Outside.service(this,"gus06.time.duration.tonow.s.fr");
 		tooltip = Outside.service(this,"gus06.swing.table.cust.tooltip2");
 		buildDisplay = Outside.service(this,"gus06.sys.scheduling1.builddisplay");
-		getName0 = Outside.service(this,"gus06.file.getname0");
+		getName0 = Outside.service(this,"gus.x.file.getname0");
 		
 		
 		model = new TableModel0();

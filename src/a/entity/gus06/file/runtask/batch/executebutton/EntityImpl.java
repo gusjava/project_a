@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		fileToButton = Outside.service(this,"gus06.file.string.perform.execute.batch.filetobutton");
-		getName0 = Outside.service(this,"gus06.file.getname0");
+		getName0 = Outside.service(this,"gus.x.file.getname0");
 		inputDialog = Outside.service(this,"gus06.input.text.dialog");
 		renderButton = Outside.service(this,"gus06.swing.button.cust2.display");
 		showOnTop = Outside.service(this,"gus06.swing.dialog.build.dialogontop.tabbed");

@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, T {
 	private Service getName;
 
 	public EntityImpl() throws Exception
-	{getName = Outside.service(this,"gus06.file.getname0");}
+	{getName = Outside.service(this,"gus.x.file.getname0");}
 
 
 	public Object t(Object obj) throws Exception

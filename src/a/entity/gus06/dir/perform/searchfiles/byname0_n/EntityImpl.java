@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		getName0 = Outside.service(this,"gus06.file.getname0");
+		getName0 = Outside.service(this,"gus.x.file.getname0");
 		normalize = Outside.service(this,"gus06.string.transform.normalize.diacritics.lower");
 	}
 	

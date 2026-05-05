@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		performFile = Outside.service(this,"gus06.file.getname0");
+		performFile = Outside.service(this,"gus.x.file.getname0");
 		performURL = Outside.service(this,"gus06.url.getname0");
 	}
 

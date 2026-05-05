@@ -25,7 +25,7 @@ public class EntityImpl implements Entity, G {
 	public EntityImpl() throws Exception
 	{
 		getFiles = Outside.service(this,"gus06.system.env.path.files");
-		getName = Outside.service(this,"gus06.file.getname0");
+		getName = Outside.service(this,"gus.x.file.getname0");
 	}
 	
 	public Object g() throws Exception

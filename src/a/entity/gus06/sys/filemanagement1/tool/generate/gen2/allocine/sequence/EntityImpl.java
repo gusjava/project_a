@@ -26,7 +26,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		emptyDir = Outside.service(this,"gus06.dir.perform.empty.andcreate");
-		getName0 = Outside.service(this,"gus06.file.getname0");
+		getName0 = Outside.service(this,"gus.x.file.getname0");
 		readProp = Outside.service(this,"gus.x.file.prop.read");
 		setToString = Outside.service(this,"gus06.tostring.set");
 		writeText = Outside.service(this,"gus.x.file.string.write");

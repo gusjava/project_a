@@ -39,7 +39,7 @@ public class EntityImpl implements Entity, P {
 		menuBuilder = Outside.service(this,"gus06.swing.popupmenu.builder1");
 		executeOnClick = Outside.service(this,"gus06.swing.label.cust3.ondoubleclick.execute");
 		onRollover = Outside.service(this,"gus06.swing.comp.cust.onrollover.bgwhite");
-		fileName0 = Outside.service(this,"gus06.file.getname0");
+		fileName0 = Outside.service(this,"gus.x.file.getname0");
 	}
 
 
