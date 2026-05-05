@@ -33,10 +33,12 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	public static final String DISPLAY_RENAME = "ELEMENT_entity_rename#Rename entity [F2]";
 	public static final String DISPLAY_DUPLICATE = "ELEMENT_entity_duplicate#Duplicate entity [F3]";
 	public static final String DISPLAY_REPLACE = "ELEMENT_entity_replace#Replace entity [F4]";
+	public static final String DISPLAY_PASTE = "ELEMENT_entity_paste#Paste entity [Ctrl-V]";
+	public static final String DISPLAY_COPY = "ELEMENT_entity_copy#Copy entity [Ctrl-C]";
 
 	public static final Color BG_SELECTED = new Color(244, 244, 244);
 	public static final Color BG_UNSELECTED = Color.WHITE;
-	
+
 	public static final Color FG_VALID = Color.BLACK;
 	public static final Color FG_COMPILE_ERR = Color.RED;
 	public static final Color FG_XYZ_ERR = new Color(204,0,255); //violet
@@ -47,7 +49,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Service engine;
 	private Service buildDataFull;
 	private Service buildDataFiltered;
-	
+
 	// y
 	private Service buildAction;
 	private Service fieldHolder;
@@ -58,7 +60,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Service entityReplace;
 	private Service persistField;
 	private Service persistSet;
-	
+
 	// x
 	private Service tableTooltip;
 	private Service linkerListField;
@@ -67,7 +69,9 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Service buildSelectionSup;
 	private Service clipboard;
 	private Service listToString;
+	private Service listToStringHr;
 	private Service stringToList;
+	private Service performPaste;
 
 	// resources
 	private Icon iconEntity;
@@ -85,7 +89,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private TableModel0 model;
 	private JComponent field;
 	private JToolBar bar;
-	
+
 	private JLabel labelNumber;
 	private JLabel labelNumberLocked;
 	private JLabel labelNumberCompileErr;
@@ -99,6 +103,8 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Action actionRename;
 	private Action actionDuplicate;
 	private Action actionReplace;
+	private Action actionPaste;
+	private Action actionCopy;
 
 	private List dataFull = new ArrayList();
 	private List dataFiltered = new ArrayList();
@@ -120,7 +126,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		entityReplace = Outside.service(this,"gus.y.entitysys1.perform.entity.replace.ask");
 		persistField = Outside.service(this, "gus.y.persist1.swing.textcomp");
 		persistSet = Outside.service(this, "gus.y.persist1.set.string");
-		
+
 		// x
 		tableTooltip = Outside.service(this, "gus.x.swing.table.cust.tooltip1");
 		linkerListField = Outside.service(this, "gus.x.swing.table.textfield.linker");
@@ -129,8 +135,10 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		buildSelectionSup = Outside.service(this, "gus.x.swing.table.selection.buildsupport");
 		clipboard = Outside.service(this,"gus.x.clipboard.string");
 		listToString = Outside.service(this,"gus.x.list.join.n.string");
+		listToStringHr = Outside.service(this,"gus06.x.list.string.join.hr");
 		stringToList = Outside.service(this,"gus.x.string.split.n.list");
-		
+		performPaste = Outside.service(this,"gus.y.entitysys1.perform.paste");
+
 		// resources
 		iconEntity = (Icon) Outside.resource(this, "icon#ELEMENT_entity");
 		iconEntityLock = (Icon) Outside.resource(this, "icon#ELEMENT_entity_lock");
@@ -145,20 +153,22 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		actionRename = (Action) buildAction.t(new Object[] { DISPLAY_RENAME, (E) this::f2_entityRename });
 		actionDuplicate = (Action) buildAction.t(new Object[] { DISPLAY_DUPLICATE, (E) this::f3_entityDuplicate });
 		actionReplace = (Action) buildAction.t(new Object[] { DISPLAY_REPLACE, (E) this::f4_entityReplace });
+		actionPaste = (Action) buildAction.t(new Object[] { DISPLAY_PASTE, (E) this::ctrl_shift_v_pasteSrc });
+		actionCopy = (Action) buildAction.t(new Object[] { DISPLAY_COPY, (E) this::ctrl_shift_c_copySrc });
 
 		labelNumber = new JLabel(" ");
 		labelNumberLocked = new JLabel(" ");
-		
+
 		labelNumberCompileErr = new JLabel(" ");
 		labelNumberXyzErr = new JLabel(" ");
 		labelNumberMissingLink = new JLabel(" ");
 		labelNumberSrcSave = new JLabel(" ");
-		
+
 		labelNumberCompileErr.setForeground(FG_COMPILE_ERR);
 		labelNumberXyzErr.setForeground(FG_XYZ_ERR);
 		labelNumberMissingLink.setForeground(FG_MISSING_LINK);
 		labelNumberSrcSave.setForeground(FG_SRC_SAVE);
-		
+
 		labelNumberCompileErr.setToolTipText("Compile errors");
 		labelNumberXyzErr.setToolTipText("XYZ errors");
 		labelNumberMissingLink.setToolTipText("Missing links");
@@ -166,6 +176,9 @@ public class EntityImpl extends S1 implements Entity, G, I {
 
 		bar = (JToolBar) toolbarFactory.i();
 
+		bar.add(actionPaste);
+		bar.add(actionCopy);
+		bar.addSeparator();
 		bar.add(actionCreate);
 		bar.add(actionDuplicate);
 		bar.add(actionReplace);
@@ -200,13 +213,22 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		table.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				int code = e.getKeyCode();
-				if (e.isControlDown()) {
+				if (e.isControlDown() && e.isShiftDown())
+				{
+					if (code == KeyEvent.VK_C) ctrl_shift_c_copySrc();
+					if (code == KeyEvent.VK_V) ctrl_shift_v_pasteSrc();
+				}
+				else if (e.isControlDown())
+				{
 					if (code == KeyEvent.VK_Q) ctrl_q_lockSelected();
 					else if (code == KeyEvent.VK_W) ctrl_w_unlockSelected();
 					else if (code == KeyEvent.VK_C) ctrl_c_copySelection();
 					else if (code == KeyEvent.VK_V) ctrl_v_pasteSelection();
-				} else {
+				}
+				else
+				{
 					if (code == KeyEvent.VK_DELETE) del_entityDelete();
+					if (code == KeyEvent.VK_ESCAPE) escape_entityClear();
 					else if (code == KeyEvent.VK_F1) f1_entityCreate();
 					else if (code == KeyEvent.VK_F2) f2_entityRename();
 					else if (code == KeyEvent.VK_F3) f3_entityDuplicate();
@@ -248,7 +270,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		persistSet.v(getClass().getName() + "_lockSet", lockSet());
 		rebuild();
 	}
-	
+
 	/*
 	 * FEATURES
 	 */
@@ -310,7 +332,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 			Outside.err(this, "handleInputEdition()", e);
 		}
 	}
-	
+
 	public void handleSelection() {
 		try {
 			refreshActions();
@@ -324,10 +346,10 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		try {
 			if (s.equals("locked()")) refresh();
 			else if (s.equals("unlocked()")) refresh();
-			
+
 			else if (s.equals("srcSaved()")) refresh();
 			else if (s.equals("srcCleared()")) refresh();
-			
+
 			else if (s.equals("selected()")) select();
 
 			else if (s.equals("loaded()")) rebuild();
@@ -343,19 +365,19 @@ public class EntityImpl extends S1 implements Entity, G, I {
 			Outside.err(this, "handleEngineEvent(String)", e);
 		}
 	}
-	
+
 	private void handleEntityAdded() throws Exception {
 		String newName = (String) engine.r("info");
 		rebuild(newName);
 		selectionChanged();
 	}
-	
+
 	private void handleEntityRenamed() throws Exception {
 		String[] infos = (String[]) engine.r("info");
 		rebuild(infos[1]);
 		selectionChanged();
 	}
-	
+
 	private void handleEntityDuplicated() throws Exception {
 		String[] infos = (String[]) engine.r("info");
 		rebuild(infos[1]);
@@ -444,6 +466,28 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		}
 	}
 
+	private void ctrl_shift_c_copySrc()
+	{
+		try
+		{
+			List list = getSelectionSrc();
+			String s = (String) listToStringHr.t(list);
+			clipboard.p(s);
+		}
+		catch (Exception e)
+		{ Outside.err(this, "ctrl_shift_c_copySrc()", e); }
+	}
+
+	private void ctrl_shift_v_pasteSrc()
+	{
+		try
+		{
+			performPaste.p(new Object[] { engine, table });
+		}
+		catch (Exception e)
+		{ Outside.err(this, "ctrl_shift_v_pasteSrc()", e); }
+	}
+
 	private void del_entityDelete() {
 		try {
 			String entityName = getSelection();
@@ -454,10 +498,19 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		}
 	}
 
+	private void escape_entityClear()
+	{
+		try {
+			table.clearSelection();
+		} catch (Exception e) {
+			Outside.err(this, "escape_entityClear()", e);
+		}
+	}
+
 	private void f1_entityCreate() {
 		try {
 			if(canCreateEntity())
-				entityCreate.p(new Object[] { engine, table });
+				entityCreate.p(new Object[] { engine, table, getSearch() });
 		} catch (Exception e) {
 			Outside.err(this, "f1_entityCreate()", e);
 		}
@@ -534,7 +587,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	}
 
 	/*
-	 * TABLE RENDRER
+	 * TABLE RENDERER
 	 */
 
 	private class TableCellRenderer1 extends JLabel implements TableCellRenderer {
@@ -550,35 +603,35 @@ public class EntityImpl extends S1 implements Entity, G, I {
 			setBackground(getEntityBackground(isSelected));
 			setIcon(column == 0 ? getEntityIcon(s) : null);
 			String entityName = (String) table.getValueAt(row, 0);
-			
+
 			List srcSaveList = getSrcSaveList(entityName);
 			if(srcSaveList!=null) {
 				setForeground(FG_SRC_SAVE);
 				setText(column == 0 ? s + " (" + srcSaveList.size() + ")" : " "+s);
 				return this;
 			}
-			
+
 			List compileErrList = getCompileErrList(entityName);
 			if(compileErrList!=null) {
 				setForeground(FG_COMPILE_ERR);
 				setText(column == 0 ? s + " (" + compileErrList.size() + ")" : " "+s);
 				return this;
 			}
-			
+
 			List missingLinkList = getMissingLinkList(entityName);
 			if(missingLinkList!=null) {
 				setForeground(FG_MISSING_LINK);
 				setText(column == 0 ? s + " (" + missingLinkList.size() + ")" : " "+s);
 				return this;
 			}
-			
+
 			List xyzErrList = getXyzErrList(entityName);
 			if(xyzErrList!=null) {
 				setForeground(FG_XYZ_ERR);
 				setText(column == 0 ? s + " (" + xyzErrList.size() + ")" : " "+s);
 				return this;
 			}
-			
+
 			setForeground(FG_VALID);
 			setText(column == 0 ? s : " "+s);
 			return this;
@@ -602,7 +655,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		dataFull = (List) buildDataFull.t(engine);
 		refresh();
 	}
-	
+
 	private void rebuild(String newSelection) throws Exception {
 		dataFull = (List) buildDataFull.t(engine);
 		refresh(newSelection);
@@ -617,11 +670,12 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	}
 
 	private void refresh(String newSelection) throws Exception {
+		String currentSelection = getSelection();
 		dataFiltered = (List) buildDataFiltered.t(new Object[] { engine, dataFull, getSearch() });
 		labelNumber.setText(" " + getFilteredNumber() + "  ");
 
-		boolean selectionChange = !Objects.equals(getSelection(), newSelection);
-		
+		boolean selectionChange = !Objects.equals(currentSelection, newSelection);
+
 		selectionSup.setActivated(false);
 		model.fireTableDataChanged();
 		setSelection(newSelection);
@@ -643,7 +697,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 
 	private void select() throws Exception {
 		String selectedName = (String) engine.r("selectedName");
-		setSelection(selectedName);
+		refresh(selectedName);
 	}
 
 	/*
@@ -660,7 +714,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		}
 		return null;
 	}
-	
+
 	private List getXyzErrList(String entityName) {
 		try {
 			Map m = xyzErrMap();
@@ -671,7 +725,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		}
 		return null;
 	}
-	
+
 	private List getMissingLinkList(String entityName) {
 		try {
 			Map m = missingLinkMap();
@@ -682,7 +736,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		}
 		return null;
 	}
-	
+
 	private List getSrcSaveList(String entityName) {
 		try {
 			Map m = srcSaveMap();
@@ -749,11 +803,28 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		Rectangle rect = table.getCellRect(row, 0, true);
 		table.scrollRectToVisible(rect);
 	}
-	
+
+	/*
+	 * SELECTION SRC
+	 */
+
+	private List getSelectionSrc() throws Exception {
+		int[] rows = table.getSelectedRows();
+		List list = new ArrayList();
+		for (int row : rows) list.add(getSrcAt(row));
+		return list;
+	}
+
+	private String getSrcAt(int row) throws Exception {
+		String name = getNameAt(row);
+		if(name==null) return null;
+		return (String) engine.r("src_"+name);
+	}
+
 	/*
 	 * SELECTION NAMES
 	 */
-	
+
 	private List getSelectionNames() {
 		int[] rows = table.getSelectedRows();
 		List list = new ArrayList();
@@ -761,11 +832,11 @@ public class EntityImpl extends S1 implements Entity, G, I {
 			list.add(getNameAt(row));
 		return list;
 	}
-	
+
 	/*
 	 * FILTERED NAMES
 	 */
-	
+
 	private List getFilteredNames() {
 		List list = new ArrayList();
 		for (int i = 0; i < table.getRowCount(); i++)
@@ -788,7 +859,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	}
 
 	/*
-	 * REFRESH ACTIONS
+	 * REFRESH LABELS
 	 */
 
 	private void refreshLabelNumberLocked() throws Exception {
@@ -848,7 +919,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 
 	private void refreshActions() throws Exception {
 		String entityName = getSelection();
-		
+
 		actionCreate.setEnabled(canCreateEntity());
 		actionDelete.setEnabled(canDeleteEntity(entityName));
 		actionRename.setEnabled(canRenameEntity(entityName));
