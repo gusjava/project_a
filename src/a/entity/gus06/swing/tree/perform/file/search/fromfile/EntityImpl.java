@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		getMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		getMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 		handle = Outside.service(this,"gus06.swing.tree.perform.file.search.handle");
 	}
 	

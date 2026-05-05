@@ -26,7 +26,7 @@ public class EntityImpl implements Entity, T {
 	{
 		sender = Outside.service(this,"gus06.appli.appliaccess.api.sender");
 		downloader = Outside.service(this,"gus06.appli.appliaccess.api.downloader");
-		buildMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		buildMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 		getFile = Outside.service(this,"gus06.sys.option.getfile");
 	}
 	

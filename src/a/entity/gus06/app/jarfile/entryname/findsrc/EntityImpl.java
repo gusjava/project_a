@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		findJar = Outside.service(this,"gus06.app.jarfile");
+		findJar = Outside.service(this,"gus.x.app.location.asjar");
 		isToString = Outside.service(this,"gus06.io.transfer.tostring.autodetect");
 	}
 	

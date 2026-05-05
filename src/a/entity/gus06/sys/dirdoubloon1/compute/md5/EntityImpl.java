@@ -24,7 +24,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		readImage = Outside.service(this,"gus06.file.read.image.preview");
-		buildMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		buildMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 		sortByPath = Outside.service(this,"gus06.sys.dirdoubloon1.tool.files.sort.bypath");
 		findUniqueParent = Outside.service(this,"gus06.sys.dirdoubloon1.tool.files.find.uniqueparent");
 		findUniqueName = Outside.service(this,"gus06.sys.dirdoubloon1.tool.files.find.uniquename");

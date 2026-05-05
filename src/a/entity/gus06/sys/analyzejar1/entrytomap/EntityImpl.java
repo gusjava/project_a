@@ -25,7 +25,7 @@ public class EntityImpl implements Entity, T {
 	{
 		classVersion = Outside.service(this,"gus.x.file.class1.classversion");
 		toClasspath = Outside.service(this,"gus.x.file.jar.entry.toclasspath");
-		buildMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		buildMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 	}
 	
 	

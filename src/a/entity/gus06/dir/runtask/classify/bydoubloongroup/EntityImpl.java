@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		size_files = Outside.service(this,"gus06.dir.listing.dirtomap.size_files");
-		buildMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		buildMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 		moveFile = Outside.service(this,"gus06.file.op.move.autorename");
 	}
 

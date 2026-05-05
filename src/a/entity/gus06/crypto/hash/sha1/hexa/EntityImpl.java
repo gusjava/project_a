@@ -11,7 +11,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		sha1 = Outside.service(this,"gus06.crypto.hash.sha1");
+		sha1 = Outside.service(this,"gus.x.crypto.hash.sha1");
 		hexa = Outside.service(this,"gus.x.bytearraytohexa1");
 	}
 	

@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, F, P {
 	public EntityImpl() throws Exception
 	{
 		remove = Outside.service(this,"gus06.file.lnk.remove.insidedir");
-		findJar = Outside.service(this,"gus06.app.jarfile");
+		findJar = Outside.service(this,"gus.x.app.location.asjar");
 	}
 	
 	

@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, T {
 		anonymizeCalls = Outside.service(this,"gus.y.entityhash1.src.anonymizecalls");
 		buildAst = Outside.service(this,"gus.y.entityhash1.src.buildast");
 		buildJson = Outside.service(this,"gus.x.json.build1");
-		buildMd5 = Outside.service(this,"gus.x.messagedigest.md5");
+		buildMd5 = Outside.service(this,"gus.x.crypto.hash.md5");
 		buildHexa = Outside.service(this,"gus.x.bytearraytohexa1");
 	}
 	

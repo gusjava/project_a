@@ -23,9 +23,9 @@ public class EntityImpl implements Entity, P {
 	
 	public EntityImpl() throws Exception
 	{
-		appJar = Outside.service(this,"gus06.app.jarfile");
+		appJar = Outside.service(this,"gus.x.app.location.asjar");
 		printObject = Outside.service(this,"gus06.print.object");
-		md5Hexa = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		md5Hexa = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 		parseArgs = Outside.service(this,"gus06.command.explore.parseargs");
 		rebuildPath = Outside.service(this,"gus06.file.absolute.rebuild");
 		readFile = Outside.service(this,"gus06.file.read.string");

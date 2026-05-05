@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		md2 = Outside.service(this,"gus06.crypto.hash.md2");
+		md2 = Outside.service(this,"gus.x.crypto.hash.md2");
 	}
 
 	

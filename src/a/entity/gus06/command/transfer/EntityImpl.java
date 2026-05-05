@@ -30,9 +30,9 @@ public class EntityImpl implements Entity, P, E {
 	{
 		buildSocket = Outside.service(this,"gus06.command.transfer.socketbuilder");
 		cmdSocket = Outside.service(this,"gus06.command.socket");
-		fileToMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		fileToMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 		transfer = Outside.service(this,"gus06.io.transfer");
-		appJar = Outside.service(this,"gus06.app.jarfile");
+		appJar = Outside.service(this,"gus.x.app.location.asjar");
 		
 		out = (PrintStream) Outside.resource(this,"sysout");
 	}

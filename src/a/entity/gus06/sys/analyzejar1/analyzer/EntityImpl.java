@@ -25,7 +25,7 @@ public class EntityImpl implements Entity, P {
 	{
 		entryToMap = Outside.service(this,"gus06.sys.analyzejar1.entrytomap");
 		writeToDir = Outside.service(this,"gus06.dir.access.write.properties.randomid");
-		buildMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		buildMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 	}
 	
 	

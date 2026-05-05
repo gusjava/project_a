@@ -1,0 +1,19 @@
+package a.entity.gus.y.crypto1.hash.md5.hexa;
+
+import a.framework.*;
+
+public class EntityImpl implements Entity, T {
+	public String creationDate() {return "20140704";}
+
+	private Service md5;
+	private Service hexa;
+
+	public EntityImpl() throws Exception
+	{
+		md5 = Outside.service(this,"gus.x.crypto.hash.md5");
+		hexa = Outside.service(this,"gus.x.bytearraytohexa1");
+	}
+	
+	public Object t(Object obj) throws Exception
+	{return hexa.t(md5.t(obj));}
+}

@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		clipboard = Outside.service(this,"gus06.clipboard.access.file");
-		toMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		toMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 	}
 
 	

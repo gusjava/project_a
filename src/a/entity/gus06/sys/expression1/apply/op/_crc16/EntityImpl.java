@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 	private Service crc;
 	
 	public EntityImpl() throws Exception
-	{crc = Outside.service(this,"gus06.crypto.checksum.crc16");}
+	{crc = Outside.service(this,"gus.x.crypto.checksum.crc16");}
 
 	
 	

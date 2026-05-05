@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, I {
 	public EntityImpl() throws Exception
 	{
 		viewer = Outside.service(this,"*gus06.file.editor.ext.jar");
-		appJar = Outside.service(this,"gus06.app.jarfile");
+		appJar = Outside.service(this,"gus.x.app.location.asjar");
 		
 		loadJar();
 	}

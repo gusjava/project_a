@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, P {
 
 	public EntityImpl() throws Exception
 	{
-		appJar = Outside.service(this,"gus06.app.jarfile");
+		appJar = Outside.service(this,"gus.x.app.location.asjar");
 		ioTransfer = Outside.service(this,"gus06.io.transfer");
 		emptyDir = Outside.service(this,"gus06.dir.op.empty");
 	}

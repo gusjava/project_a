@@ -42,7 +42,7 @@ public class EntityImpl implements Entity, T {
 	{
 		listing = Outside.service(this,"gus06.dir.listing.dirtofiles.forext.jar");
 		buildSha1 = Outside.service(this,"gus06.crypto.hash.sha1.hexa");
-		buildMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		buildMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 		findAll = Outside.service(this,"gus06.y.entitydb1.jar.findall.asmap");
 		jarListing = Outside.service(this,"gus06.file.jar.findclasspaths");
 		insertJar = Outside.service(this,"gus06.y.entitydb1.jar.insert");

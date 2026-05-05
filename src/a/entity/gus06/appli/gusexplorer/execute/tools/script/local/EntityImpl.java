@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, E {
 
 	public EntityImpl() throws Exception
 	{
-		findJar = Outside.service(this,"gus06.app.jarfile");
+		findJar = Outside.service(this,"gus.x.app.location.asjar");
 		stringFinder = Outside.service(this,"gus06.file.jar.string.finder1");
 		listChooser = Outside.service(this,"*gus06.sys.listchooser1.dialog2");
 		show = Outside.service(this,"gus06.sys.scriptgusview1.mainpanel.show");

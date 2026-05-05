@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		createShortcut = Outside.service(this,"gus06.file.lnk.create.shortcut2");
-		findJar = Outside.service(this,"gus06.app.jarfile");
+		findJar = Outside.service(this,"gus.x.app.location.asjar");
 		findIco = Outside.service(this,"gus06.app.ico");
 		name = (String) Outside.resource(this,"property#app.name");
 	}

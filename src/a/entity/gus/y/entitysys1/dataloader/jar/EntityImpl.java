@@ -45,7 +45,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception {
 		listing = Outside.service(this, "gus06.dir.listing.dirtofiles.forext.jar");
 		buildSha1 = Outside.service(this, "gus06.crypto.hash.sha1.hexa");
-		buildMd5 = Outside.service(this, "gus06.crypto.hash.md5.hexa");
+		buildMd5 = Outside.service(this, "gus.y.crypto1.hash.md5.hexa");
 		findAll = Outside.service(this, "gus.y.entitydb1.jar.findall.asmap");
 		jarEntries = Outside.service(this, "gus.x.file.jar.build.entries");
 		insertJar = Outside.service(this, "gus.y.entitydb1.jar.insert");

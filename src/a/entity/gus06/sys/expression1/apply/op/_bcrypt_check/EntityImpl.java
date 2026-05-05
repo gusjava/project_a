@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		perform = Outside.service(this,"gus06.crypto.hash.bcrypt.check");
+		perform = Outside.service(this,"gus.x.crypto.hash.bcrypt.check");
 	}
 
 	

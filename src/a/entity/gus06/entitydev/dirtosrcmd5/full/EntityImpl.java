@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		dirToSrc = Outside.service(this,"gus06.entitydev.dirtosrc.full");
-		srcToMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		srcToMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 		toClipboard = Outside.service(this,"gus.x.clipboard.string");
 	}
 	

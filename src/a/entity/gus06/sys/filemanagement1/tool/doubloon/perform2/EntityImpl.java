@@ -38,7 +38,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		buildTreeMap = Outside.service(this,"gus06.sys.filemanagement1.explore.build.treemap");
-		buildMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		buildMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 	}
 
 	

@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		findVar = Outside.service(this,"gus06.sys.webserver1.web2.zdyn.e.var.build");
-		buildMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		buildMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 	}
 
 	

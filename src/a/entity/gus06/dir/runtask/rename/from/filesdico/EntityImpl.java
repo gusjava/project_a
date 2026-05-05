@@ -23,7 +23,7 @@ public class EntityImpl implements Entity, P {
 		listing = Outside.service(this,"gus06.dir.listing.dirtofiles");
 		fileChooser = Outside.service(this,"gus06.file.choose.open.file");
 		fileToMap = Outside.service(this,"gus06.file.string.dico.build.rowmap.col0.strict");
-		buildMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		buildMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 		findPath = Outside.service(this,"gus06.dirfile.find.uprootedpath");
 		move = Outside.service(this,"gus06.file.op.move.autorename");
 	}

@@ -35,7 +35,7 @@ public class EntityImpl implements Entity, P, E, Runnable {
 	public EntityImpl() throws Exception
 	{
 		ioTransfer = Outside.service(this,"gus06.io.transfer");
-		fileToMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		fileToMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 		buildThread = Outside.service(this,"gus.x.thread.wrap1");
 		
 		out = (PrintStream) Outside.resource(this,"sysout");

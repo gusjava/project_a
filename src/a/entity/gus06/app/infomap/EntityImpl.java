@@ -47,10 +47,10 @@ public class EntityImpl implements Entity, G {
 	
 	public EntityImpl() throws Exception
 	{
-		getJarFile = Outside.service(this,"gus06.app.jarfile");
+		getJarFile = Outside.service(this,"gus.x.app.location.asjar");
 		getJarMd5 = Outside.service(this,"gus06.app.jarfile.md5");
 		getArgsLine = Outside.service(this,"gus.y.app1.argsline");
-		getStartTime = Outside.service(this,"gus06.app.starttime");
+		getStartTime = Outside.service(this,"gus.y.app1.starttime");
 		getPid = Outside.service(this,"gus06.app.pid");
 		getJarTime = Outside.service(this,"gus06.app.outside.lastmodified.timestamp");
 		

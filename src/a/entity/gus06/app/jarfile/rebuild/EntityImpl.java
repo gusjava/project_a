@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P {
 	{
 		jarBuilder = Outside.service(this,"gus06.file.jar.builder1");
 		findMain = Outside.service(this,"gus06.app.jarfile.mainclass");
-		appJar = Outside.service(this,"gus06.app.jarfile");
+		appJar = Outside.service(this,"gus.x.app.location.asjar");
 	}
 	
 	

@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, T {
 		sender = Outside.service(this,"gus06.appli.entityaccess.api.sender");
 		dirToSrc = Outside.service(this,"gus06.entitydev.dirtosrc.full");
 		rebuildSrc = Outside.service(this,"gus06.appli.entityaccess.engine.download.rebuildsrc");
-		buildMd5 = Outside.service(this,"gus06.crypto.hash.md5.hexa");
+		buildMd5 = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 	}
 	
 	
