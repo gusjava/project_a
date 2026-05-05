@@ -5,14 +5,11 @@ import java.net.*;
 import java.io.*;
 
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20140909";}
-
 
 	private Service tmpFile;
 	private Service transfert;
 	private Service normalizeName;
-
 
 	public EntityImpl() throws Exception
 	{
@@ -20,7 +17,6 @@ public class EntityImpl implements Entity, T {
 		transfert = Outside.service(this,"gus06.io.transfer");
 		normalizeName = Outside.service(this,"gus06.string.transform.normalize.filename");
 	}
-	
 	
 	public Object t(Object obj) throws Exception
 	{

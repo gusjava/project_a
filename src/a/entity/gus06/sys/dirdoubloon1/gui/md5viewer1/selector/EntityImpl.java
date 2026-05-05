@@ -54,7 +54,7 @@ public class EntityImpl extends S1 implements Entity, I, P {
 	public EntityImpl() throws Exception
 	{
 		findIcon = Outside.service(this,"gus06.file.icon.t1");
-		iconsToIcon = Outside.service(this,"gus06.convert.iconstoicon");
+		iconsToIcon = Outside.service(this,"gus.y.convert1.iconstoicon");
 		onKey = Outside.service(this,"gus06.swing.comp.cust3.on.keypressed.with.execute");
 		copy = Outside.service(this,"gus06.clipboard.access.file");
 		open = Outside.service(this,"gus06.awt.desktop.open");

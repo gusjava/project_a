@@ -1,4 +1,4 @@
-package a.entity.gus06.convert.executetoaction2;
+package a.entity.gus.y.convert1.executetoaction.th;
 
 import a.framework.*;
 import javax.swing.Action;
@@ -6,15 +6,11 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20140811";}
 
-	
 	public Object t(Object obj) throws Exception
 	{return new Action1((E) obj);}
-	
 	
 	private class Action1 extends AbstractAction implements Runnable
 	{
@@ -31,7 +27,6 @@ public class EntityImpl implements Entity, T {
 			t.start();
 		}
 	}
-	
 	
 	private void execute(E ex)
 	{

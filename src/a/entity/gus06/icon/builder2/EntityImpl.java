@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, T, R {
 	{
 		iconBuilder = Outside.service(this,"gus06.icon.builder");
 		iconLoader2 = Outside.service(this,"gus06.icon.loader2");
-		iconsToIcon = Outside.service(this,"gus06.convert.iconstoicon");
+		iconsToIcon = Outside.service(this,"gus.y.convert1.iconstoicon");
 		extensionToIcon = Outside.service(this,"gus06.file.ext.icon.os");
 	}
 	

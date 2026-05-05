@@ -44,7 +44,7 @@ public class EntityImpl extends S1 implements Entity, I, P {
 	public EntityImpl() throws Exception
 	{
 		findIcon = Outside.service(this,"gus06.file.path.icon.t1");
-		iconsToIcon = Outside.service(this,"gus06.convert.iconstoicon");
+		iconsToIcon = Outside.service(this,"gus.y.convert1.iconstoicon");
 		
 		iconEmpty = (Icon) Outside.resource(this,"icon#PART_empty");
 		iconSelected = (Icon) Outside.resource(this,"icon#PART_connected");

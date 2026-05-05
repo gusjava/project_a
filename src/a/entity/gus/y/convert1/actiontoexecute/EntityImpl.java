@@ -1,17 +1,13 @@
-package a.entity.gus06.convert.actiontoexecute;
+package a.entity.gus.y.convert1.actiontoexecute;
 
 import a.framework.*;
 import javax.swing.Action;
 
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20180222";}
-	
-	
 	
 	public Object t(Object obj) throws Exception
 	{return new E1((Action) obj);}
-	
 	
 	private class E1 implements E
 	{

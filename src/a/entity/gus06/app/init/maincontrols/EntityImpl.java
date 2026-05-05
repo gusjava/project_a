@@ -25,7 +25,7 @@ public class EntityImpl implements Entity, ActionListener {
 		subMap = Outside.service(this,"gus06.app.prop.submap.control");
 		eventSupport = Outside.service(this,"gus06.awt.keyevent.support");
 		codeToDisplay = Outside.service(this,"gus06.tostring.keycode");
-		executeToRunnable = Outside.service(this,"gus06.convert.executetorunnable");
+		executeToRunnable = Outside.service(this,"gus.y.convert1.executetorunnable");
 		
 		threads = new HashMap();
 		eventSupport.addActionListener(this);

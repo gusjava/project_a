@@ -99,7 +99,7 @@ public class EntityImpl implements Entity, T {
 		sum_p = Outside.service(this,"gus06.feature.op.sum.p");
 		sum_f = Outside.service(this,"gus06.feature.op.filter.and");
 		
-		sum_icon = Outside.service(this,"gus06.convert.iconstoicon");
+		sum_icon = Outside.service(this,"gus.y.convert1.iconstoicon");
 		sum_printstream = Outside.service(this,"gus06.io.printstream.sum");
 		
 		sum_motley = Outside.service(this,"gus06.data.perform.sum.motley");

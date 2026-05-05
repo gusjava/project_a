@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		iconsToIcon = Outside.service(this,"gus06.convert.iconstoicon");
+		iconsToIcon = Outside.service(this,"gus.y.convert1.iconstoicon");
 		extensionToIcon = Outside.service(this,"gus06.file.ext.icon.os");
 	}
 	

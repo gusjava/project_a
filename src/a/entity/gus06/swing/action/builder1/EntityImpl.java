@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		exeToAction = Outside.service(this,"gus06.convert.executetoaction2");
+		exeToAction = Outside.service(this,"gus.y.convert1.executetoaction.th");
 		repaint = Outside.service(this,"gus06.swing.action.cust2.display");
 		localizer = Outside.service(this,"gus06.ling.localize.manager");
 		findKey = Outside.service(this,"gus06.swing.action.builder1.lingkey");

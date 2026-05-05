@@ -22,7 +22,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		exeToAction = Outside.service(this,"gus06.convert.executetoaction2");
+		exeToAction = Outside.service(this,"gus.y.convert1.executetoaction.th");
 		repaint = Outside.service(this,"gus06.swing.action.cust2.display");
 		custEnable = Outside.service(this,"gus06.swing.action.cust.enable");
 		findObj = Outside.service(this,"gus06.sys.store.obj.find");

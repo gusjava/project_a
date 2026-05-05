@@ -145,7 +145,7 @@ public class EntityImpl implements Entity, T {
 		sum_t = Outside.service(this,"gus06.feature.op.sum.t");
 		sum_g = Outside.service(this,"gus06.feature.op.sum.g");
 		
-		sum_icon = Outside.service(this,"gus06.convert.iconstoicon");
+		sum_icon = Outside.service(this,"gus.y.convert1.iconstoicon");
 		sum_jcomponent = Outside.service(this,"gus06.swing.comp.perform.sum");
 		sum_printstream = Outside.service(this,"gus06.io.printstream.sum");
 		sum_action = Outside.service(this,"gus06.swing.action.sum");

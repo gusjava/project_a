@@ -12,7 +12,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		findExecute = Outside.service(this,"gus06.find.execute");
-		executeToRunnable = Outside.service(this,"gus06.convert.executetorunnable");
+		executeToRunnable = Outside.service(this,"gus.y.convert1.executetorunnable");
 	}
 	
 	public Object t(Object obj) throws Exception

@@ -1,17 +1,14 @@
-package a.entity.gus06.convert.datetointarray;
+package a.entity.gus.y.convert1.datetointarray;
 
 import a.framework.*;
 import java.util.Date;
 import java.util.Calendar;
 
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20160615";}
 
-	
 	public Object t(Object obj) throws Exception
 	{return dateToIntArray((Date) obj);}
-	
 	
 	private int[] dateToIntArray(Date date) throws Exception
 	{

@@ -28,7 +28,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		putAction = Outside.service(this,"gus06.swing.textcomp.cust.putaction");
-		buildAction = Outside.service(this,"gus06.convert.executetoaction2");
+		buildAction = Outside.service(this,"gus.y.convert1.executetoaction.th");
 		compileFile = Outside.service(this,"gus06.java.compiler.file");
 	}
 	
