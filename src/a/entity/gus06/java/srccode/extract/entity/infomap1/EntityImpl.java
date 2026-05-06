@@ -34,7 +34,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		toArray = Outside.service(this,"gus06.java.srccode.toarray");
+		toArray = Outside.service(this,"gus.x.java.srccode.toarray");
 		
 		extractName = Outside.service(this,"gus06.java.srccode.extract.entity.name");
 		extractSignature = Outside.service(this,"gus06.java.srccode.extract.entity.signature1");

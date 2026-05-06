@@ -30,7 +30,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		removeComments = Outside.service(this,"gus06.java.srccode.remove.comments");
-		toArray = Outside.service(this,"gus06.java.srccode.toarray");
+		toArray = Outside.service(this,"gus.x.java.srccode.toarray");
 	}
 
 	

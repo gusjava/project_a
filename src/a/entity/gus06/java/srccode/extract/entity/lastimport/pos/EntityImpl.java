@@ -14,7 +14,7 @@ public class EntityImpl implements Entity, T {
 	private Service toArray;
 
 	public EntityImpl() throws Exception
-	{toArray = Outside.service(this,"gus06.java.srccode.toarray");}
+	{toArray = Outside.service(this,"gus.x.java.srccode.toarray");}
 	
 	
 	
