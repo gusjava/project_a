@@ -29,6 +29,7 @@ public class EntityImpl implements Entity, P, I, ListSelectionListener {
 	private Service findSrcLocation;
 	private Service buildJList;
 	private Service entityViewer;
+	private Service autoPosition;
 
 	private JPanel panel;
 	private JList list;
@@ -43,14 +44,18 @@ public class EntityImpl implements Entity, P, I, ListSelectionListener {
 		findSrcLocation = Outside.service(this, "gus.y.appview2.find.srclocation");
 		buildJList = Outside.service(this, "gus.y.swing1.list.build.fromicon");
 		entityViewer = Outside.service(this, "*gus.y.appview2.gui3.entity.detail");
+		autoPosition = Outside.service(this,"gus.x.swing.scroll.autoposition1");
 
 		list = (JList) buildJList.t(ICONID);
 		list.addListSelectionListener(this);
 
 		labelNumber = new JLabel(" ");
+		
+		JScrollPane scroll = new JScrollPane(list);
+		autoPosition.p(scroll);
 
 		JPanel p = new JPanel(new BorderLayout());
-		p.add(new JScrollPane(list), BorderLayout.CENTER);
+		p.add(scroll, BorderLayout.CENTER);
 		p.add(labelNumber, BorderLayout.SOUTH);
 
 		JSplitPane split = new JSplitPane();

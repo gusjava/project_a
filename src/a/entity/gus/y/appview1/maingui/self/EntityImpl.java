@@ -1,11 +1,7 @@
 package a.entity.gus.y.appview1.maingui.self;
 
 import java.io.File;
-
-import a.framework.Entity;
-import a.framework.I;
-import a.framework.Outside;
-import a.framework.Service;
+import a.framework.*;
 
 public class EntityImpl implements Entity, I {
 	public String creationDate() {return "20231128";}
@@ -13,7 +9,8 @@ public class EntityImpl implements Entity, I {
 	private Service mainGui;
 	private Service appLocation;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		mainGui = Outside.service(this, "*gus.y.appview1.maingui");
 		appLocation = Outside.service(this, "gus.x.app.location");
 
@@ -21,7 +18,6 @@ public class EntityImpl implements Entity, I {
 		mainGui.p(location);
 	}
 
-	public Object i() throws Exception {
-		return mainGui.i();
-	}
+	public Object i() throws Exception
+	{return mainGui.i();}
 }

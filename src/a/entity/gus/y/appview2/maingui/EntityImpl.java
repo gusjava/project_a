@@ -13,13 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
-import a.framework.Entity;
-import a.framework.G;
-import a.framework.I;
-import a.framework.Outside;
-import a.framework.P;
-import a.framework.Service;
+import a.framework.*;
 
 public class EntityImpl implements Entity, G, P, I, ListSelectionListener {
 	public String creationDate() {return "20231128";}
@@ -28,6 +22,7 @@ public class EntityImpl implements Entity, G, P, I, ListSelectionListener {
 	private Service listRenderer;
 	private Service getIcon;
 	private Service shift;
+	private Service autoPosition;
 
 	private JPanel panel;
 	private JList list;
@@ -37,11 +32,13 @@ public class EntityImpl implements Entity, G, P, I, ListSelectionListener {
 	private List[] lists;
 	private Service[] guis;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		buildLists = Outside.service(this, "gus.y.appentries1.build.lists");
 		listRenderer = Outside.service(this, "gus.y.swing1.list.cust.renderer.display");
 		getIcon = Outside.service(this, "gus.y.files1.icon");
 		shift = Outside.service(this, "*gus.x.swing.panel.shiftpanel");
+		autoPosition = Outside.service(this,"gus.x.swing.scroll.autoposition1");
 
 		guis = new Service[4];
 		guis[0] = Outside.service(this, "*gus.y.appview2.gui1.framework");
@@ -58,13 +55,16 @@ public class EntityImpl implements Entity, G, P, I, ListSelectionListener {
 		list = new JList();
 		list.addListSelectionListener(this);
 		listRenderer.p(list);
+		
+		JScrollPane scroll = new JScrollPane(list);
+		autoPosition.p(scroll);
 
 		list.setListData(displays);
 
 		labelTitle = new JLabel(" ");
 
 		JPanel p = new JPanel(new BorderLayout());
-		p.add(new JScrollPane(list), BorderLayout.CENTER);
+		p.add(scroll, BorderLayout.CENTER);
 
 		JSplitPane split = new JSplitPane();
 		split.setDividerSize(3);

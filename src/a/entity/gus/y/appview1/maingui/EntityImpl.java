@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.io.File;
 import java.util.List;
 import java.util.Vector;
-
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -14,13 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
-import a.framework.Entity;
-import a.framework.G;
-import a.framework.I;
-import a.framework.Outside;
-import a.framework.P;
-import a.framework.Service;
+import a.framework.*;
 
 public class EntityImpl implements Entity, G, P, I, ListSelectionListener {
 	public String creationDate() {return "20231128";}
@@ -30,6 +23,7 @@ public class EntityImpl implements Entity, G, P, I, ListSelectionListener {
 	private Service listRenderer;
 	private Service viewer;
 	private Service getIcon;
+	private Service autoPosition;
 
 	private JPanel panel;
 	private JList list;
@@ -38,8 +32,10 @@ public class EntityImpl implements Entity, G, P, I, ListSelectionListener {
 
 	private File file;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		buildEntries = Outside.service(this, "gus.y.appentries1.build");
+		autoPosition = Outside.service(this,"gus.x.swing.scroll.autoposition1");
 		splitCust = Outside.service(this, "gus.x.swing.splitpane.cust.cust1");
 		listRenderer = Outside.service(this, "gus.y.swing1.list.cust.renderer.icon.ext");
 		viewer = Outside.service(this, "*gus.y.appview1.entryview");
@@ -48,12 +44,15 @@ public class EntityImpl implements Entity, G, P, I, ListSelectionListener {
 		list = new JList();
 		list.addListSelectionListener(this);
 		listRenderer.p(list);
+		
+		JScrollPane scroll = new JScrollPane(list);
+		autoPosition.p(scroll);
 
 		labelNumber = new JLabel(" ");
 		labelTitle = new JLabel(" ");
 
 		JPanel p = new JPanel(new BorderLayout());
-		p.add(new JScrollPane(list), BorderLayout.CENTER);
+		p.add(scroll, BorderLayout.CENTER);
 		p.add(labelNumber, BorderLayout.SOUTH);
 
 		JSplitPane split = new JSplitPane();
@@ -67,24 +66,21 @@ public class EntityImpl implements Entity, G, P, I, ListSelectionListener {
 		panel.add(split, BorderLayout.CENTER);
 	}
 
-	public Object i() throws Exception {
-		return panel;
-	}
+	public Object i() throws Exception
+	{return panel;}
 
-	public Object g() throws Exception {
-		return file;
-	}
+	public Object g() throws Exception
+	{return file;}
 
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		file = (File) obj;
-
-		if (file == null || !file.exists())
-			resetGui();
-		else
-			updateGui();
+		if (file == null || !file.exists()) resetGui();
+		else updateGui();
 	}
 
-	private void resetGui() throws Exception {
+	private void resetGui() throws Exception
+	{
 		list.setListData(new Vector());
 		labelNumber.setText(" ");
 
@@ -94,7 +90,8 @@ public class EntityImpl implements Entity, G, P, I, ListSelectionListener {
 		viewer.p(null);
 	}
 
-	private void updateGui() throws Exception {
+	private void updateGui() throws Exception
+	{
 		List entries = (List) buildEntries.t(file);
 
 		Vector vec = new Vector(entries);
@@ -107,20 +104,24 @@ public class EntityImpl implements Entity, G, P, I, ListSelectionListener {
 		viewer.p(null);
 	}
 
-	public void valueChanged(ListSelectionEvent e) {
+	public void valueChanged(ListSelectionEvent e)
+	{
 		selectionChanged();
 	}
 
-	private void selectionChanged() {
-		try {
-			if (list.isSelectionEmpty()) {
+	private void selectionChanged()
+	{
+		try
+		{
+			if (list.isSelectionEmpty())
+			{
 				viewer.p(null);
 				return;
 			}
 			String entry = (String) list.getSelectedValue();
 			viewer.p(new Object[] { file, entry });
-		} catch (Exception e) {
-			Outside.err(this, "selectionChanged()", e);
 		}
+		catch (Exception e)
+		{Outside.err(this, "selectionChanged()", e);}
 	}
 }
