@@ -31,14 +31,14 @@ public class EntityImpl implements Entity, I {
 		
 		gui1 = Outside.service(this,"*gus.z.appli1.gui2_3_1.all");
 		gui2 = Outside.service(this,"*gus.z.appli1.gui2_3_2.x");
-//		gui3 = Outside.service(this,"*gus.z.appli1.gui2_3_3.y");
+		gui3 = Outside.service(this,"*gus.z.appli1.gui2_3_3.y");
 //		gui4 = Outside.service(this,"*gus.z.appli1.gui2_3_4.z");
 		gui5 = Outside.service(this,"*gus.z.appli1.gui2_3_5.imports");
 		gui6 = Outside.service(this,"*gus.z.appli1.gui2_3_6.jars");
 		
 		tabHolder.v("all", gui1);
 		tabHolder.v("x", gui2);
-//		tabHolder.v("y", gui3);
+		tabHolder.v("y", gui3);
 //		tabHolder.v("z", gui4);
 		tabHolder.v("Imports",gui5);
 		tabHolder.v("Jars",gui6);

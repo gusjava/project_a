@@ -1,10 +1,9 @@
-package a.entity.gus06.x.list.string.join.hr;
+package a.entity.gus.x.list.string.join.hr;
 
 import a.framework.*;
 import java.util.List;
 
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20251129";}
 
 	public Object t(Object obj) throws Exception

@@ -26,14 +26,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
-
-import a.framework.E;
-import a.framework.Entity;
-import a.framework.G;
-import a.framework.I;
-import a.framework.Outside;
-import a.framework.S1;
-import a.framework.Service;
+import a.framework.*;
 
 public class EntityImpl extends S1 implements Entity, G, I, ListSelectionListener, ActionListener {
 	public String creationDate() {return "20240113";}
@@ -80,7 +73,8 @@ public class EntityImpl extends S1 implements Entity, G, I, ListSelectionListene
 	private List dataFull = new ArrayList();
 	private List dataFiltered = new ArrayList();
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		engine = Outside.service(this, "gus.z.appli1.gui2_3_3.y.engine");
 		filterList = Outside.service(this, "gus.z.appli1.gui2_3_3.y.filter");
 		fieldHolder = Outside.service(this, "*gus.y.swing1.textfield.editor1");

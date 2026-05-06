@@ -73,6 +73,7 @@ public class EntityImpl extends S1 implements Entity, G, I {
 	private Service listToStringHr;
 	private Service stringToList;
 	private Service performPaste;
+	private Service autoPosition;
 	 
 	// resources
 	private Icon iconEntity;
@@ -136,9 +137,10 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		buildSelectionSup = Outside.service(this, "gus.x.swing.table.selection.buildsupport");
 		clipboard = Outside.service(this,"gus.x.clipboard.string"); 
 		listToString = Outside.service(this,"gus.x.list.join.n.string");
-		listToStringHr = Outside.service(this,"gus06.x.list.string.join.hr");
+		listToStringHr = Outside.service(this,"gus.x.list.string.join.hr");
 		stringToList = Outside.service(this,"gus.x.string.split.n.list");
 		performPaste = Outside.service(this,"gus.y.entitysys1.perform.paste");
+		autoPosition = Outside.service(this,"gus.x.swing.scroll.autoposition1");
 		
 		// resources
 		iconEntity = (Icon) Outside.resource(this, "icon#ELEMENT_entity");
@@ -245,6 +247,8 @@ public class EntityImpl extends S1 implements Entity, G, I {
 		scroll = new JScrollPane(table);
 		scroll.getViewport().setBackground(Color.WHITE);
 		scroll.getViewport().setOpaque(true);
+		
+		autoPosition.p(scroll);
 
 		JPanel bottomPanel1 = wc(labelNumberCompileErr, labelNumberXyzErr);
 		JPanel bottomPanel2 = wc(labelNumberMissingLink, bottomPanel1);

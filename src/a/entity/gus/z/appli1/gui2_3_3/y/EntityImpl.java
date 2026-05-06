@@ -19,7 +19,8 @@ public class EntityImpl implements Entity, I, ActionListener {
 
 	private JSplitPane split;
 	
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		guiListing = Outside.service(this,"*gus.z.appli1.gui2_3_3.y.list");
 		guiDetail = Outside.service(this,"*gus.z.appli1.gui2_3_3.y.detail");
 		
@@ -33,11 +34,13 @@ public class EntityImpl implements Entity, I, ActionListener {
 		guiListing.addActionListener(this);
 	}
 	
-	public Object i() throws Exception {
+	public Object i() throws Exception
+	{
 		return split;
 	}
 	
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e)
+	{
 		selectionChanged();
 	}
 	
