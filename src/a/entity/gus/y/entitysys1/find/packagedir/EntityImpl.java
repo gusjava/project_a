@@ -8,14 +8,15 @@ public class EntityImpl implements Entity, T {
 
 	private Service findPackageDir;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		findPackageDir = Outside.service(this, "gus.x.entity.src.find.packagedir");
 	}
 
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
 		Object engine = o[0];
 		String entityName = (String) o[1];

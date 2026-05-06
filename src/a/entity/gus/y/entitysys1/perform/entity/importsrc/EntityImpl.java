@@ -7,21 +7,25 @@ import a.framework.*;
 
 public class EntityImpl implements Entity, F, P {
 
-	public String creationDate() {return "20251125";}
+	public String creationDate() {return "20260505";}
 
+	private Service hasRights;
 	private Service validate;
 	private Service extractName;
 	private Service extractCreationDate;
 	private Service generate;
-	private Service retrieveJavaFile;
+	private Service findEntityFile;
+	private Service updateCreationDate;
 
 	public EntityImpl() throws Exception
 	{
-		validate            = Outside.service(this, "gus.x.entity.name.validate");
-		extractName         = Outside.service(this, "gus06.java.srccode.extract.entity.name");
+		hasRights = Outside.service(this,"gus.x.entity.hasrights");
+		validate = Outside.service(this, "gus.x.entity.name.validate");
+		extractName = Outside.service(this, "gus06.java.srccode.extract.entity.name");
 		extractCreationDate = Outside.service(this, "gus06.java.srcfile.extract.entity.creationdate");
-		generate            = Outside.service(this,"gus06.java.srcdir.generate.fromsrc");
-		retrieveJavaFile    = Outside.service(this, "gus06.java.srcdir.retrieve.javafile");
+		generate = Outside.service(this,"gus06.java.srcdir.generate.fromsrc");
+		findEntityFile = Outside.service(this,"gus.x.entity.src.find.entityfile");
+		updateCreationDate = Outside.service(this,"gus.x.entity.src.creationdate.update");
 	}
 
 	public void p(Object obj) throws Exception
@@ -41,31 +45,26 @@ public class EntityImpl implements Entity, F, P {
 		String devId = (String) ((R) engine).r("devId");
 
 		String name = (String) extractName.t(src);
-		if (!validate.f(name)) return false;
-//		if (devId != null && !name.startsWith(devId + ".")) return false;
+		
+		if(!validate.f(name)) return false;
+		if(!hasRights.f(new Object[]{devId, name})) return false;
 
-		File entityFile = (File) retrieveJavaFile.t(new Object[]{dir, "a.entity." + name + ".EntityImpl"});
+		File entityFile = (File) findEntityFile.t(new Object[]{dir, name});
+		
 		String date = entityFile.exists()
 			? (String) extractCreationDate.t(entityFile)
 			: today();
-		src = setCreationDate(src, date);
 		
+		src = (String) updateCreationDate.t(new Object[]{src, date});
 		generate.p(new Object[]{src, dir});
 		
 		((V) engine).v("entityAdded", name);
 		return true;
 	}
-
-	private String setCreationDate(String src, String date) {
-		int start = src.indexOf("creationDate()");
-		if (start < 0) return src;
-		int startQuote = src.indexOf('"', start);
-		if (startQuote < 0) return src;
-		int endQuote = src.indexOf('"', startQuote + 1);
-		if (endQuote < 0) return src;
-		return src.substring(0, startQuote + 1) + date + src.substring(endQuote);
+	
+	private String today()
+	{
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		return sdf.format(new Date());
 	}
-
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-	private String today() {return sdf.format(new Date());}
 }

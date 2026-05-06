@@ -1,4 +1,4 @@
-package a.entity.gus06.java.srcdir.retrieve.javafile;
+package a.entity.gus.x.java.srcdir.retrieve.javafile;
 
 import java.io.File;
 import a.framework.*;
@@ -8,8 +8,6 @@ public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20160410";}
 	
 	public static final String S = File.separator;
-
-
 	
 	public Object t(Object obj) throws Exception
 	{

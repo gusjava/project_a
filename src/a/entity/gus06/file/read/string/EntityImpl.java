@@ -3,11 +3,9 @@ package a.entity.gus06.file.read.string;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20141215";}
 
 	public Object t(Object obj) throws Exception

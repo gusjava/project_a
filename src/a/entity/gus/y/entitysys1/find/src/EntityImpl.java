@@ -1,27 +1,28 @@
 package a.entity.gus.y.entitysys1.find.src;
 
 import java.io.File;
-import java.nio.file.Files;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
 	public String creationDate() {return "20260412";}
 
 	private Service findMainFile;
+	private Service readFile;
 
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		findMainFile = Outside.service(this, "gus.y.entitysys1.find.mainfile");
+		readFile = Outside.service(this,"gus.x.entity.src.read1");
 	}
 
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
-		if (o.length != 2)
-			throw new Exception("Wrong data number: " + o.length);
+		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
-		File mainFile = (File) findMainFile.t(obj);
-		if (!mainFile.isFile())
-			return null;
+		File file = (File) findMainFile.t(obj);
+		if (!file.isFile()) return null;
 
-		return new String(Files.readAllBytes(mainFile.toPath()), "UTF-8");
+		return readFile.t(file);
 	}
 }

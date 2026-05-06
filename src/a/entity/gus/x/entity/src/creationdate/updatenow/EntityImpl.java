@@ -16,7 +16,10 @@ public class EntityImpl implements Entity, T {
 		String creationDateCurrent = "public String creationDate() {return \"" + today() + "\";}";
 		return src.replaceFirst(creationDateRegex, creationDateCurrent);
 	}
-
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-	private String today() {return sdf.format(new Date());}
+	
+	private String today()
+	{
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		return sdf.format(new Date());
+	}
 }

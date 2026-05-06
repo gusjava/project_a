@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		findClassPath = Outside.service(this,"gus06.java.srccode.extract.classpath");
-		findFile = Outside.service(this,"gus06.java.srcdir.retrieve.javafile");
+		findFile = Outside.service(this,"gus.x.java.srcdir.retrieve.javafile");
 	}
 	
 	

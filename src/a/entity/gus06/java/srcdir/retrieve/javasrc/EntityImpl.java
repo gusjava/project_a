@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		readFile = Outside.service(this,"gus06.file.read.string");
-		findFile = Outside.service(this,"gus06.java.srcdir.retrieve.javafile");
+		findFile = Outside.service(this,"gus.x.java.srcdir.retrieve.javafile");
 	}
 
 	
