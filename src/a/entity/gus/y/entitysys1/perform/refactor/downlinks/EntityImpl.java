@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, P {
 	private Service findDownLinks;
 
 	public EntityImpl() throws Exception {
-		read = Outside.service(this, "gus.x.file.string.read");
+		read = Outside.service(this, "gus.x.file.string.read.v2");
 		extract = Outside.service(this, "gus.x.entity.name.extract");
 		findEntityFile = Outside.service(this, "gus.x.entity.src.find.entityfile");
 		findDownLinks = Outside.service(this, "gus.y.entitydb1.entity_link.find2");

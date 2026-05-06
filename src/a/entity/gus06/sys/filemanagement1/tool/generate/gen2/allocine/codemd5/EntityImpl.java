@@ -23,7 +23,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		emptyDir = Outside.service(this,"gus06.dir.perform.empty.andcreate");
-		readText = Outside.service(this,"gus06.file.read.string");
+		readText = Outside.service(this,"gus.x.file.string.read.v1");
 		getName0 = Outside.service(this,"gus.x.file.getname0");
 		setToString = Outside.service(this,"gus06.tostring.set");
 		writeText = Outside.service(this,"gus.x.file.string.write");

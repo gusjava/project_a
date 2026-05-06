@@ -28,7 +28,7 @@ public class EntityImpl implements Entity, P {
 		md5Hexa = Outside.service(this,"gus.y.crypto1.hash.md5.hexa");
 		parseArgs = Outside.service(this,"gus06.command.explore.parseargs");
 		rebuildPath = Outside.service(this,"gus06.file.absolute.rebuild");
-		readFile = Outside.service(this,"gus06.file.read.string");
+		readFile = Outside.service(this,"gus.x.file.string.read.v1");
 		copyFile = Outside.service(this,"gus.x.file.op.copy");
 		
 		File file = (File) appJar.g();

@@ -25,11 +25,11 @@ public class EntityImpl implements Entity, P, F {
 
 		Object engine = o[0];
 		String entityName = (String) o[1];
-		int[] range = (int[]) o[2];
+		Object localizer = o[2];
 
 		File rootDir = (File) ((R) engine).r("rootDir");
 
-		boolean done = edit.f(new Object[] { rootDir, entityName, range });
+		boolean done = edit.f(new Object[] { rootDir, entityName, localizer });
 		if (!done) throw new Exception("Entity not found: " + entityName);
 
 		((V) engine).v("entityModified", entityName);

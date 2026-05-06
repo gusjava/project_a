@@ -27,7 +27,7 @@ public class EntityImpl implements Entity, ActionListener, I, P, G {
 
 	public EntityImpl() throws Exception
 	{
-		readFile = Outside.service(this,"gus06.file.read.string");
+		readFile = Outside.service(this,"gus.x.file.string.read.v1");
 		writeFile = Outside.service(this,"gus.x.file.string.write");
 		mainEditor = Outside.service(this,"*gus06.file.editor.main");
 		fieldActions = Outside.service(this,"gus06.swing.textfield.cust.actions1");

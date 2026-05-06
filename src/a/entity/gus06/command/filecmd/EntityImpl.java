@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		fp = Outside.service(this,"fileprovider");
-		readFile = Outside.service(this,"gus06.file.read.string");
+		readFile = Outside.service(this,"gus.x.file.string.read.v1");
 		execute = Outside.service(this,"gus06.command.execute");
 
 		out = (PrintStream) Outside.resource(this,"sysout");

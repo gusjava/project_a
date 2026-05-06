@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, T {
 	private Service dirToSet;
 
 	public EntityImpl() throws Exception {
-		readString = Outside.service(this, "gus.x.file.string.read");
+		readString = Outside.service(this, "gus.x.file.string.read.v2");
 		writeString = Outside.service(this, "gus.x.file.string.write");
 
 		readProp = Outside.service(this, "gus.x.file.prop.read");

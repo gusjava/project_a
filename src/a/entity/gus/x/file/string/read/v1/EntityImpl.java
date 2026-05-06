@@ -1,4 +1,4 @@
-package a.entity.gus06.file.read.string;
+package a.entity.gus.x.file.string.read.v1;
 
 import java.io.File;
 import java.io.FileInputStream;

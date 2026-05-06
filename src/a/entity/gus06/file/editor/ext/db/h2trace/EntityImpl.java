@@ -26,7 +26,7 @@ public class EntityImpl implements Entity, I, P {
 	public EntityImpl() throws Exception
 	{
 		viewer = Outside.service(this,"*gus06.data.viewer.string");
-		readFile = Outside.service(this,"gus06.file.read.string");
+		readFile = Outside.service(this,"gus.x.file.string.read.v1");
 				
 		panel = new JPanel(new BorderLayout());
 		panel.add((JComponent) viewer.i() ,BorderLayout.CENTER);

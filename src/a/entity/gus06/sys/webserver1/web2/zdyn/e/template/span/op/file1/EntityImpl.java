@@ -20,7 +20,7 @@ public class EntityImpl implements Entity, P {
 		formatInfo = Outside.service(this,"gus06.sys.webserver1.web2.zdyn.e.template.span.formatinfo2");
 		encodeHtml = Outside.service(this,"gus06.string.transform.format.html.encode");
 		loadTemplate = Outside.service(this,"gus06.sys.webserver1.web2.zdyn.e.template.load");
-		readFile = Outside.service(this,"gus06.file.read.string");
+		readFile = Outside.service(this,"gus.x.file.string.read.v1");
 	}
 	
 	

@@ -11,7 +11,7 @@ public class EntityImpl implements Entity, T {
 	private Service fileToText;
 
 	public EntityImpl() throws Exception
-	{fileToText = Outside.service(this,"gus06.file.read.string");}
+	{fileToText = Outside.service(this,"gus.x.file.string.read.v1");}
 	
 	
 	public Object t(Object obj) throws Exception

@@ -33,7 +33,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		scan = Outside.service(this,"gus06.dir.perform.scanfiles.byext");
-		readFile = Outside.service(this,"gus06.file.read.string");
+		readFile = Outside.service(this,"gus.x.file.string.read.v1");
 		extractAll = Outside.service(this,"gus06.string.extract.extract2.find.s.a");
 		extractOne = Outside.service(this,"gus06.string.extract.extract2.find.s.f");
 		name0 = Outside.service(this,"gus.x.file.getname0");

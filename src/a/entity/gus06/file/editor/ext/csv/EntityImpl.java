@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, I, P, G
 	
 	public EntityImpl() throws Exception
 	{
-		readFile = Outside.service(this,"gus06.file.read.string");
+		readFile = Outside.service(this,"gus.x.file.string.read.v1");
 		csvParser = Outside.service(this,"gus06.file.convert.csv.parser");
 		string2Editor = Outside.service(this,"*gus06.data.editor.string2.editor1");
 		

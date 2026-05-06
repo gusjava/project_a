@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, G {
 	public EntityImpl() throws Exception
 	{
 		randomId = Outside.service(this,"gus06.data.generate.string.random.alphanum8");
-		readFile = Outside.service(this,"gus06.file.read.string");
+		readFile = Outside.service(this,"gus.x.file.string.read.v1");
 		rootDir = (File) Outside.resource(this,"rootdir");
 		
 		if(!rootDir.exists()) rootDir.mkdirs();

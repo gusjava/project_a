@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		compiler = Outside.service(this,"gus06.java.compiler1");
-		readFile = Outside.service(this,"gus06.file.read.string");
+		readFile = Outside.service(this,"gus.x.file.string.read.v1");
 		extractPackage = Outside.service(this,"gus06.java.srccode.extract.package1");
 		removeClass = Outside.service(this,"gus06.entitydev.refactor.bin.remove1");
 		initFramework = Outside.service(this,"gus06.app.jarfile.extract1.framework2");

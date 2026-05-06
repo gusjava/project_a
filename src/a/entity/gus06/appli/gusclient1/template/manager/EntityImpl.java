@@ -22,7 +22,7 @@ public class EntityImpl extends S1 implements Entity, R, V, G {
 
 	public EntityImpl() throws Exception
 	{
-		read = Outside.service(this,"gus06.file.read.string");
+		read = Outside.service(this,"gus.x.file.string.read.v1");
 		dir = (File) Outside.resource(this,"path#path.templatedir");
 		dir.mkdirs();
 	}

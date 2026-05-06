@@ -10,8 +10,10 @@ public class EntityImpl implements Entity, T {
 	
 	public Object t(Object obj) throws Exception
 	{
-		File file = (File) obj;
-		String content = Files.readString(file.toPath(), StandardCharsets.UTF_8);
+		File f = (File) obj;
+		if(f==null || !f.isFile()) return null;
+		
+		String content = Files.readString(f.toPath(), StandardCharsets.UTF_8);
 		return content.replace(System.lineSeparator(), "\n");
 	}
 }

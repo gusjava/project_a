@@ -27,7 +27,7 @@ public class EntityImpl implements Entity, P, F, T {
 		findJavaFiles = Outside.service(this, "gus.x.dir.listing0.files.java");
 		findClassFiles = Outside.service(this, "gus.x.dir.listing0.files.class1");
 		validate = Outside.service(this, "gus.x.entity.name.validate");
-		read = Outside.service(this, "gus.x.file.string.read");
+		read = Outside.service(this, "gus.x.file.string.read.v2");
 		refactorLinks = Outside.service(this, "gus.y.entitysys1.perform.refactor.downlinks");
 		hasRights = Outside.service(this,"gus.x.entity.hasrights");
 	}

@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, P {
 	{
 		listing = Outside.service(this,"gus06.dir.listing0.ext.properties");
 		applyScript = Outside.service(this,"gus06.file.properties.perform.apply.script1");
-		readString = Outside.service(this,"gus06.file.read.string");
+		readString = Outside.service(this,"gus.x.file.string.read.v1");
 	}
 
 	

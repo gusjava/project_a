@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		findVar = Outside.service(this,"gus06.sys.webserver1.web2.zdyn.e.var.build");
-		readString = Outside.service(this,"gus06.file.read.string");
+		readString = Outside.service(this,"gus.x.file.string.read.v1");
 	}
 
 	

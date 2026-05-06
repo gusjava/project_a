@@ -6,8 +6,6 @@ import a.framework.*;
 public class EntityImpl implements Entity, P, F {
 	public String creationDate() {return "20260414";}
 
-	public static final String CLASS_NAME = "EntityImpl";
-
 	private Service read;
 	private Service write;
 	private Service findEntityFile;
@@ -19,11 +17,11 @@ public class EntityImpl implements Entity, P, F {
 		findEntityFile = Outside.service(this,"gus.x.entity.src.find.entityfile");
 	}
 
-	public void p(Object obj) throws Exception {
-		f(obj);
-	}
+	public void p(Object obj) throws Exception
+	{f(obj);}
 
-	public boolean f(Object obj) throws Exception {
+	public boolean f(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
 		if (o.length != 4) throw new Exception("Wrong data number: " + o.length);
 

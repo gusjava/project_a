@@ -1,19 +1,17 @@
 package a.entity.gus.x.file.string.read;
 
 import java.io.File;
-import java.io.FileReader;
+import java.nio.file.Files;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-	public String creationDate() {return "20231128";}
+	public String creationDate() {return "20260506";}
 	
 	public Object t(Object obj) throws Exception
 	{
-		File file = (File) obj;
-		FileReader fr = new FileReader(file);
-		char[] a = new char[(int) file.length()];
-		fr.read(a, 0, (int) file.length());
-		fr.close();
-		return new String(a);
+		File f = (File) obj;
+		if(f==null || !f.isFile()) return null;
+		
+		return Files.readString(f.toPath());
 	}
 }

@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, P {
 	public EntityImpl() throws Exception
 	{
 		listing = Outside.service(this,"gus06.dir.listing0.ext.txt");
-		readFile = Outside.service(this,"gus06.file.read.string");
+		readFile = Outside.service(this,"gus.x.file.string.read.v1");
 	}
 
 	public void p(Object obj) throws Exception

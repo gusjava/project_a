@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, P {
 	private Service readFile;
 
 	public EntityImpl() throws Exception {
-		readFile = Outside.service(this, "gus.x.file.string.read");
+		readFile = Outside.service(this, "gus.x.file.string.read.v2");
 	}
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");

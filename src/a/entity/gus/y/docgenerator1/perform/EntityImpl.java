@@ -29,8 +29,9 @@ public class EntityImpl implements Entity, G {
 	private File entityRoot;
 	private File configRoot;
 
-	public EntityImpl() throws Exception {
-		readFile = Outside.service(this, "gus.x.file.string.read");
+	public EntityImpl() throws Exception
+	{
+		readFile = Outside.service(this, "gus.x.file.string.read.v2");
 		writeFile = Outside.service(this, "gus.x.file.string.write");
 		listingX = Outside.service(this, "gus.x.entity.srcfile.listing.root1.dev.x");
 		listingY = Outside.service(this, "gus.x.entity.srcfile.listing.root1.dev.y");
@@ -41,7 +42,8 @@ public class EntityImpl implements Entity, G {
 		configRoot = (File) Outside.service(this, "gus.y.srcroot1.find.config").g();
 	}
 
-	public Object g() throws Exception {
+	public Object g() throws Exception
+	{
 		String devId = (String) findDev.g();
 		if (devId == null) return null;
 		
@@ -123,7 +125,8 @@ public class EntityImpl implements Entity, G {
 		return b.toString();
 	}
 	
-	private String buildXDocInit(String xName, String entityX) throws Exception {
+	private String buildXDocInit(String xName, String entityX) throws Exception
+	{
 		StringBuffer b = new StringBuffer();
 		b.append("@description\n");
 		b.append("Description de l'entité "+entityX+"\n\n");
@@ -134,7 +137,8 @@ public class EntityImpl implements Entity, G {
 		return b.toString();
 	}
 	
-	private String buildYDocInit(String devId, String yName, List entities) throws Exception {
+	private String buildYDocInit(String devId, String yName, List entities) throws Exception
+	{
 		StringBuffer b = new StringBuffer();
 		b.append("@description\n");
 		b.append("Description du système "+devId+".y."+yName+"\n\n");
@@ -149,7 +153,8 @@ public class EntityImpl implements Entity, G {
 		return b.toString();
 	}
 	
-	private String buildZDocInit(String devId, String zName, List entities) throws Exception {
+	private String buildZDocInit(String devId, String zName, List entities) throws Exception
+	{
 		StringBuffer b = new StringBuffer();
 		b.append("@description\n");
 		b.append("Description de l'application "+devId+"."+zName+"\n\n");
@@ -164,7 +169,8 @@ public class EntityImpl implements Entity, G {
 		return b.toString();
 	}
 	
-	private Map buildYMap(String devId, List entities) throws Exception {
+	private Map buildYMap(String devId, List entities) throws Exception
+	{
 		Map map = new HashMap();
 		for(int i=0;i<entities.size();i++) {
 			String entity = (String) entities.get(i);
@@ -178,7 +184,8 @@ public class EntityImpl implements Entity, G {
 		return map;
 	}
 	
-	private Map buildZMap(String devId, List entities) throws Exception {
+	private Map buildZMap(String devId, List entities) throws Exception
+	{
 		Map map = new HashMap();
 		for(int i=0;i<entities.size();i++) {
 			String entity = (String) entities.get(i);

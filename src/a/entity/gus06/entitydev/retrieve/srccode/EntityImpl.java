@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		retrieveFile = Outside.service(this,"gus06.entitydev.retrieve.javafile");
-		readFile = Outside.service(this,"gus06.file.read.string");
+		readFile = Outside.service(this,"gus.x.file.string.read.v1");
 	}
 	
 	
