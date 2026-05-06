@@ -19,11 +19,13 @@ public class EntityImpl implements Entity, P {
 
 	private Service logger;
 	
-	public EntityImpl() throws Exception {
+	public EntityImpl() throws Exception
+	{
 		logger = Outside.service(this, "logger");
 	}
 
-	public void p(Object obj) throws Exception {
+	public void p(Object obj) throws Exception
+	{
 		Object[] o = (Object[]) obj;
 		if (o.length != 2) throw new Exception("Wrong data number: " + o.length);
 
@@ -32,9 +34,11 @@ public class EntityImpl implements Entity, P {
 		check(cx, init);
 	}
 
-	private void check(Connection cx, Object init) throws Exception {
+	private void check(Connection cx, Object init) throws Exception
+	{
 		boolean hasTable = queryOne(cx, "SHOW TABLES")!=null;
-		if(!hasTable) {
+		if(!hasTable)
+		{
 			log("Database'structure not found");
 			log("Initializing structure...");
 			createAll(cx,init);
@@ -43,7 +47,8 @@ public class EntityImpl implements Entity, P {
 		Date dateInitialized = retrieveInitializedDate(cx);
 		Date dateLatestChange = parseDate((String) ((G) init).g());
 		
-		if (dateInitialized == null || dateLatestChange == null || dateLatestChange.after(dateInitialized)) {
+		if (dateInitialized == null || dateLatestChange == null || dateLatestChange.after(dateInitialized))
+		{
 			log("Database'structure is out dated");
 			log("Resetting structure...");
 			dropAll(cx);
@@ -57,12 +62,14 @@ public class EntityImpl implements Entity, P {
 	 * SQL QUERIES
 	 */
 	
-	private void dropAll(Connection cx) throws Exception {
+	private void dropAll(Connection cx) throws Exception
+	{
 		String sql = "DROP ALL OBJECTS";
 		execute(cx, sql);
 	}
 	
-	private void createAll(Connection cx, Object init) throws Exception {
+	private void createAll(Connection cx, Object init) throws Exception
+	{
 		((P) init).p(cx);
 		String sql1 = "CREATE TABLE " + TABLENAME_INITIALIZED + " (date DATETIME)";
 		execute(cx, sql1);
@@ -70,20 +77,23 @@ public class EntityImpl implements Entity, P {
 		execute(cx, sql2);
 	}
 	
-	private Date retrieveInitializedDate(Connection cx) throws Exception {
+	private Date retrieveInitializedDate(Connection cx) throws Exception
+	{
 		String sql1 = "CREATE TABLE IF NOT EXISTS " + TABLENAME_INITIALIZED + " (date DATETIME)";
 		execute(cx, sql1);
 		String sql2 = "SELECT date FROM " + TABLENAME_INITIALIZED;
 		return (Date) queryOne(cx, sql2);
 	}
 
-	private void execute(Connection cx, String sql) throws SQLException {
+	private void execute(Connection cx, String sql) throws SQLException
+	{
 		Statement st = cx.createStatement();
 		st.execute(sql);
 		st.close();
 	}
 
-	private Object queryOne(Connection cx, String sql) throws SQLException {
+	private Object queryOne(Connection cx, String sql) throws SQLException
+	{
 		Statement st = cx.createStatement();
 		ResultSet rs = st.executeQuery(sql);
 		Object result = rs.next() ? rs.getObject(1) : null;

@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, T {
 	public EntityImpl() throws Exception
 	{
 		buildCx = Outside.service(this,"gus06.y.api2.sqlite.cx.build");
-		checkDb = Outside.service(this,"gus06.y.sqlitecache1.check");
+		checkDb = Outside.service(this,"gus.y.sqlitecache1.check");
 		initDb = Outside.service(this,"gus06.sys.jwpce1.engine.cx.initdb");
 	}
 	

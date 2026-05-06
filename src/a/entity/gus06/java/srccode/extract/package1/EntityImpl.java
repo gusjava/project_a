@@ -5,17 +5,14 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20140725";}
 
 	private Pattern p = Pattern.compile("package +([^;]+);");
-	
 	
 	private Service toArray;
 
 	public EntityImpl() throws Exception
 	{toArray = Outside.service(this,"gus.x.java.srccode.toarray");}
-	
 	
 	public Object t(Object obj) throws Exception
 	{
@@ -28,8 +25,6 @@ public class EntityImpl implements Entity, T {
 		}
 		return null;
 	}
-	
-	
 	
 	private String extract(String line) throws Exception
 	{

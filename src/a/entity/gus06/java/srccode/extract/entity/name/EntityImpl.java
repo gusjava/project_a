@@ -3,7 +3,6 @@ package a.entity.gus06.java.srccode.extract.entity.name;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20140827";}
 
 	private Service srcToPackage;

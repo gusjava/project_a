@@ -1,4 +1,4 @@
-package a.entity.gus06.y.sqlitecache1.check;
+package a.entity.gus.y.sqlitecache1.check;
 
 import a.framework.*;
 import java.sql.Connection;

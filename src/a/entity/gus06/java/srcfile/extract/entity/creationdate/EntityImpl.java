@@ -3,7 +3,6 @@ package a.entity.gus06.java.srcfile.extract.entity.creationdate;
 import a.framework.*;
 
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20150430";}
 
 	private Service readFile;
@@ -14,7 +13,6 @@ public class EntityImpl implements Entity, T {
 		readFile = Outside.service(this,"gus.x.file.string.read.v1");
 		srcToDate = Outside.service(this,"gus06.java.srccode.extract.entity.creationdate");
 	}
-	
 	
 	public Object t(Object obj) throws Exception
 	{
