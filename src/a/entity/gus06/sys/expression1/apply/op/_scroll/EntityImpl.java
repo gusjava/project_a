@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, T {
 	
 	public EntityImpl() throws Exception
 	{
-		performBar = Outside.service(this,"gus06.swing.scrollbar.scroll");
+		performBar = Outside.service(this,"gus.x.swing.scrollbar.scroll");
 		performPane = Outside.service(this,"gus06.swing.scrollpane.scroll");
 		toIntArray = Outside.service(this,"gus06.find.intarray.len2");
 	}

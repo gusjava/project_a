@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, V, P {
 	
 	public EntityImpl() throws Exception
 	{
-		synchBars = Outside.service(this,"gus06.swing.scrollbar.scrollsynchronizer");
+		synchBars = Outside.service(this,"gus.x.swing.scrollbar.scrollsynchronizer");
 	}
 
 	

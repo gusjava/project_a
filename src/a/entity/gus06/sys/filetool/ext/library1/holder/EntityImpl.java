@@ -95,7 +95,7 @@ public class EntityImpl implements Entity, I, P {
 		displayInfos2 = Outside.service(this,"gus06.dirfile.perform.display.infos2");
 		pending = Outside.service(this,"gus06.app.execute.dev.pending.en");
 		listToString = Outside.service(this,"gus06.tostring.list.join.n");
-		autoScroll = Outside.service(this,"gus06.swing.scroll.autoposition1");
+		autoScroll = Outside.service(this,"gus.x.swing.scroll.autoposition1");
 		
 		JComponent list = (JComponent) listHolder.i();
 		JComponent editorComp = (JComponent) detailsHolder.i();

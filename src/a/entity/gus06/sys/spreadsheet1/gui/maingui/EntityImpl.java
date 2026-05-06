@@ -79,7 +79,7 @@ public class EntityImpl implements Entity, P, I {
 		clearCopyPasteCut = Outside.service(this, "gus.x.swing.comp.action.clear.copypastecut");
 		tableTooltip = Outside.service(this, "gus.x.swing.table.cust.tooltip1");
 		clipboard = Outside.service(this,"gus.x.clipboard.string");
-		autoScroll = Outside.service(this,"gus06.swing.scroll.autoposition1");
+		autoScroll = Outside.service(this,"gus.x.swing.scroll.autoposition1");
 		
 		model = new TableModel0();
 		table = new JTable(model);

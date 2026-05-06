@@ -46,7 +46,7 @@ public class EntityImpl implements Entity, I, P, ActionListener, ListSelectionLi
 		splitCust = Outside.service(this,"gus06.swing.splitpane.cust.cust1");
 		copyAll = Outside.service(this,"gus06.swing.textcomp.build.action.copyall");
 		buildBar = Outside.service(this,"gus06.swing.toolbar.toolbar1");
-		autoScroll = Outside.service(this,"gus06.swing.scroll.autoposition1");
+		autoScroll = Outside.service(this,"gus.x.swing.scroll.autoposition1");
 		
 		errors = (List) Outside.resource(this,"errlist");
         

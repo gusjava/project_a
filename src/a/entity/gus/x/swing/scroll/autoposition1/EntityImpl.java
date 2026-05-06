@@ -1,4 +1,4 @@
-package a.entity.gus06.swing.scroll.autoposition1;
+package a.entity.gus.x.swing.scroll.autoposition1;
 
 import a.framework.*;
 import java.awt.event.MouseListener;
@@ -10,9 +10,7 @@ import javax.swing.BoundedRangeModel;
 import javax.swing.plaf.metal.MetalScrollBarUI;
 import javax.swing.JButton;
 
-
 public class EntityImpl implements Entity, P, MouseListener, MouseMotionListener {
-
 	public String creationDate() {return "20251201";}
 
 	public void p(Object obj) throws Exception

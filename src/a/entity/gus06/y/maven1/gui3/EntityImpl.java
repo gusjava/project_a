@@ -36,7 +36,7 @@ public class EntityImpl implements Entity, I, V, R, G, ActionListener {
 		tableTooltip = Outside.service(this, "gus.x.swing.table.cust.tooltip1");
 		clearCopyPasteCut = Outside.service(this, "gus.x.swing.comp.action.clear.copypastecut");
 		sortTable = Outside.service(this,"gus06.swing.table.cust.sort2");
-		autoScroll = Outside.service(this,"gus06.swing.scroll.autoposition1");
+		autoScroll = Outside.service(this,"gus.x.swing.scroll.autoposition1");
 		
 		tableModel = new TableModel0();
 		

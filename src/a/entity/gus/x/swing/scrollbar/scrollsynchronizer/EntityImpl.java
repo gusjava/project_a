@@ -1,18 +1,13 @@
-package a.entity.gus06.swing.scrollbar.scrollsynchronizer;
+package a.entity.gus.x.swing.scrollbar.scrollsynchronizer;
 
 import a.framework.*;
-
 import javax.swing.BoundedRangeModel;
 import javax.swing.JScrollBar;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class EntityImpl implements Entity, P {
-
 	public String creationDate() {return "20161116";}
-
-
-	
 	
 	public void p(Object obj) throws Exception
 	{
@@ -20,8 +15,6 @@ public class EntityImpl implements Entity, P {
 		if(bars.length<2) throw new Exception("not enough scrollbars for synchronizing: "+bars.length);		
 		new SynchScroll(bars);
 	}
-	
-	
 	
 	private class SynchScroll implements ChangeListener
 	{

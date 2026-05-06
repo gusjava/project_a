@@ -41,7 +41,7 @@ public class EntityImpl implements Entity, I, P, V {
 		compHolder = Outside.service(this,"*gus06.swing.textpane.holder.printstreamcomp");
 		engine = Outside.service(this,"gus06.sys.script1.main.main1");
 		printDelayed = Outside.service(this,"gus06.io.printstream.delayed1");
-		autoScroll = Outside.service(this,"gus06.swing.scroll.autoposition1");
+		autoScroll = Outside.service(this,"gus.x.swing.scroll.autoposition1");
 		
 		console = (JTextComponent) compHolder.i();
 		

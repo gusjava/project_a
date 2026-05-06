@@ -11,14 +11,11 @@ import java.awt.Point;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 
-
 public class EntityImpl implements Entity, T {
-
 	public String creationDate() {return "20201130";}
 
 	public static final Color COLOR_BACKGROUND = new Color(240,240,240);
 	public static final Color COLOR_FOREGROUND = new Color(153,153,153);
-
 
 	private Service clipboard;
 
@@ -27,12 +24,8 @@ public class EntityImpl implements Entity, T {
 		clipboard = Outside.service(this,"gus.x.clipboard.string");
 	}
 
-	
-
 	public Object t(Object obj) throws Exception
 	{return new JScrollPane1((JTextComponent) obj);}
-
-
 
 	private class JScrollPane1 extends JScrollPane implements DocumentListener, CaretListener, PropertyChangeListener, MouseListener
 	{

@@ -1,20 +1,31 @@
 package a.entity.gus.y.swinghigh1.scrollpaint;
 
 import a.framework.*;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.text.*;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import javax.swing.JScrollPane;
+import javax.swing.text.JTextComponent;
+import javax.swing.JScrollBar;
+import javax.swing.BoundedRangeModel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import javax.swing.JComponent;
+import javax.swing.text.Highlighter;
+import javax.swing.text.Element;
+import javax.swing.text.DefaultHighlighter;
 import javax.swing.plaf.metal.MetalScrollBarUI;
 
 public class EntityImpl implements Entity, T, MouseListener, MouseMotionListener {
 	public String creationDate() {return "20240113";}
 	
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		JScrollPane scroll = (JScrollPane) obj;
 		JTextComponent view = (JTextComponent) scroll.getViewport().getView();
 		JScrollBar bar = scroll.getVerticalScrollBar();
@@ -27,42 +38,34 @@ public class EntityImpl implements Entity, T, MouseListener, MouseMotionListener
 		return new BarRepainter(bar);
 	}
 
-	private class BarRepainter implements ActionListener {
+	private class BarRepainter implements ActionListener
+	{
 		private JScrollBar bar;
 
-		public BarRepainter(JScrollBar bar) {
-			this.bar = bar;
-		}
+		public BarRepainter(JScrollBar bar)
+		{this.bar = bar;}
 
-		public void actionPerformed(ActionEvent e) {
-			bar.repaint();
-		}
+		public void actionPerformed(ActionEvent e)
+		{bar.repaint();}
 	}
 
-	public void mouseClicked(MouseEvent e) {
-	}
+	public void mouseClicked(MouseEvent e) {}
 
-	public void mouseEntered(MouseEvent e) {
-	}
+	public void mouseEntered(MouseEvent e) {}
 
-	public void mouseExited(MouseEvent e) {
-	}
+	public void mouseExited(MouseEvent e) {}
 
 	public void mouseReleased(MouseEvent e) {
 	}
 
-	public void mousePressed(MouseEvent e) {
-		move(e);
-	}
+	public void mousePressed(MouseEvent e) {move(e);}
 
-	public void mouseDragged(MouseEvent e) {
-		move(e);
-	}
+	public void mouseDragged(MouseEvent e) {move(e);}
 
-	public void mouseMoved(MouseEvent e) {
-	}
+	public void mouseMoved(MouseEvent e) {}
 
-	private void move(MouseEvent e) {
+	private void move(MouseEvent e)
+	{
 		JScrollBar bar = (JScrollBar) e.getSource();
 		BoundedRangeModel model = bar.getModel();
 		HighScrollBarUI2 ui = (HighScrollBarUI2) bar.getUI();
@@ -80,23 +83,27 @@ public class EntityImpl implements Entity, T, MouseListener, MouseMotionListener
 		bar.getModel().setValue(newValue);
 	}
 
-	public class HighScrollBarUI2 extends MetalScrollBarUI {
+	public class HighScrollBarUI2 extends MetalScrollBarUI
+	{
 		private JTextComponent view;
 		private Highlighter high;
 		private Element root;
 
-		public HighScrollBarUI2(JTextComponent view) throws Exception {
+		public HighScrollBarUI2(JTextComponent view) throws Exception
+		{
 			this.view = view;
 			high = view.getHighlighter();
 			root = view.getDocument().getDefaultRootElement();
 		}
 
-		protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
+		protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds)
+		{
 			super.paintTrack(g, c, trackBounds);
 			paintHighlight(g, trackBounds);
 		}
 
-		protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
+		protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds)
+		{
 			super.paintThumb(g, c, thumbBounds);
 			paintHighlight(g, getTrackBounds());
 
@@ -104,7 +111,8 @@ public class EntityImpl implements Entity, T, MouseListener, MouseMotionListener
 			g.drawRect(thumbBounds.x, thumbBounds.y, thumbBounds.width, thumbBounds.height);
 		}
 
-		protected void paintHighlight(Graphics g, Rectangle trackBounds) {
+		protected void paintHighlight(Graphics g, Rectangle trackBounds)
+		{
 			int w = trackBounds.width;
 			int h = trackBounds.height;
 
@@ -112,9 +120,9 @@ public class EntityImpl implements Entity, T, MouseListener, MouseMotionListener
 			int y0 = trackBounds.y;
 
 			Highlighter.Highlight[] ht = high.getHighlights();
-			for (int i = ht.length - 1; i >= 0; i--) {
-				DefaultHighlighter.DefaultHighlightPainter painter = (DefaultHighlighter.DefaultHighlightPainter) ht[i]
-						.getPainter();
+			for (int i = ht.length - 1; i >= 0; i--)
+			{
+				DefaultHighlighter.DefaultHighlightPainter painter = (DefaultHighlighter.DefaultHighlightPainter) ht[i].getPainter();
 
 				int start = ht[i].getStartOffset();
 				int end = ht[i].getEndOffset();
@@ -125,28 +133,23 @@ public class EntityImpl implements Entity, T, MouseListener, MouseMotionListener
 
 				int y = (int) (y0 + h * startLine / lineNumber);
 				int dy = (int) (h * (endLine - startLine + 1) / lineNumber);
-				if (dy == 0)
-					dy = 1;
+				if (dy == 0) dy = 1;
 
 				Color color = painter.getColor();
-				if (color == null)
-					color = view.getSelectionColor();
+				if (color == null) color = view.getSelectionColor();
 
 				g.setColor(color);
 				g.fillRect(x0, y, w, dy);
 			}
 		}
 
-		protected Dimension getMinimumThumbSize() {
-			return new Dimension(3, 3);
-		}
+		protected Dimension getMinimumThumbSize()
+		{return new Dimension(3, 3);}
 
-		public JButton getDecrButton() {
-			return decrButton;
-		}
+		public JButton getDecrButton()
+		{return decrButton;}
 
-		public JButton getIncrButton() {
-			return incrButton;
-		}
+		public JButton getIncrButton()
+		{return incrButton;}
 	}
 }

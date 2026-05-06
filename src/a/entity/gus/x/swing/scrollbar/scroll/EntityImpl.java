@@ -1,14 +1,11 @@
-package a.entity.gus06.swing.scrollbar.scroll;
+package a.entity.gus.x.swing.scrollbar.scroll;
 
 import a.framework.*;
 import javax.swing.JScrollBar;
 
 public class EntityImpl implements Entity, P {
-
 	public String creationDate() {return "20191116";}
 
-	
-	
 	public void p(Object obj) throws Exception
 	{
 		Object[] o = (Object[]) obj;

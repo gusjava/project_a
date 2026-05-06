@@ -92,7 +92,7 @@ public class EntityImpl implements Entity, I, V, R, G, ActionListener {
 		filterList = Outside.service(this,"gus06.y.openrouter.gui3models.filterlist");
 		clipboard = Outside.service(this,"gus.x.clipboard.string");
 		listToString = Outside.service(this,"gus06.tostring.list.join.n");
-		autoScroll = Outside.service(this,"gus06.swing.scroll.autoposition1");
+		autoScroll = Outside.service(this,"gus.x.swing.scroll.autoposition1");
 		iconLLM = (Icon) Outside.resource(this,"icon#AI_llm");
 
 		field = (JComponent) fieldHolder.i();

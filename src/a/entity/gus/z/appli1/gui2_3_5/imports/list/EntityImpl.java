@@ -68,7 +68,7 @@ public class EntityImpl extends S1 implements Entity, I, G {
 		linkerListField = Outside.service(this,"gus.x.swing.table.textfield.linker");
 		clearCopyPasteCut = Outside.service(this,"gus.x.swing.comp.action.clear.copypastecut");
 		buildSelectionSup = Outside.service(this,"gus06.x.swing.table.selection.buildsupport.multi");
-		autoScroll = Outside.service(this,"gus06.swing.scroll.autoposition1");
+		autoScroll = Outside.service(this,"gus.x.swing.scroll.autoposition1");
 		
 		icon = (Icon) Outside.resource(this,"icon#JAVA_import");
 		
