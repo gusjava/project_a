@@ -13,6 +13,7 @@ public class EntityImpl implements Entity, F {
 		String devId = (String) o[0];
 		String entityName = (String) o[1];
 		
+		if(devId==null) return false;
 		if(devId.equals("gus")) return true;
 		if(entityName.startsWith(devId+".")) return true;
 		
