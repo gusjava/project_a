@@ -13,10 +13,12 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception {}
 
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		Connection cx = (Connection) obj;
 		Set tags = new TreeSet();
-		for(int i = 0; i < TAG_TABLES.length; i++) {
+		for(int i = 0; i < TAG_TABLES.length; i++)
+		{
 			Statement st = cx.createStatement();
 			ResultSet rs = st.executeQuery("SELECT DISTINCT TAG FROM " + TAG_TABLES[i]);
 			while(rs.next()) tags.add(rs.getString(1));

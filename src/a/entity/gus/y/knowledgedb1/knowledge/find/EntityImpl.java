@@ -15,7 +15,7 @@ public class EntityImpl implements Entity, T {
 
 	public EntityImpl() throws Exception
 	{
-		rsToMap = Outside.service(this,"gus.y.knowledgedb1.util.knowledge.rstomap");
+		rsToMap = Outside.service(this,"gus.y.knowledgedb1.util.knowledge.rstomap1");
 	}
 
 	public Object t(Object obj) throws Exception

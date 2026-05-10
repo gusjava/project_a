@@ -1,4 +1,4 @@
-package a.entity.gus.y.knowledgedb1.util.knowledge.rstomap;
+package a.entity.gus.y.knowledgedb1.util.knowledge.rstomap1;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +19,8 @@ public class EntityImpl implements Entity, T {
 	public static final String COL_STATE = "state";
 	public static final String COL_PREPROCESSOR = "preprocessor";
 
-	public Object t(Object obj) throws Exception {
+	public Object t(Object obj) throws Exception
+	{
 		ResultSet rs = (ResultSet) obj;
 
 		Map data = new HashMap();

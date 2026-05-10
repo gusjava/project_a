@@ -1,4 +1,4 @@
-package a.entity.gus.y.server1.engine.cmd.k.search;
+package a.entity.gus.y.server1.engine.cmd.k.n3.search;
 
 import java.sql.Connection;
 import java.util.List;
@@ -19,7 +19,7 @@ public class EntityImpl implements Entity, T {
 	public Object t(Object obj) throws Exception
 	{
 		List list = (List) obj;
-		if(list == null || list.size() < 3) throw new Exception("k-search: usage: k-search <table> <field> <value>");
+		if(list.size() != 3) throw new Exception("Wrong data number: "+list.size());
 		
 		String table = (String) list.get(0);
 		String field = (String) list.get(1);

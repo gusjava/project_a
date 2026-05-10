@@ -11,6 +11,8 @@ public class EntityImpl implements Entity, T {
 	private Service count;
 	private Service tables;
 	private Service tags;
+	private Service codes;
+	private Service actions;
 	private Service sql;
 	private Service search;
 	
@@ -25,7 +27,6 @@ public class EntityImpl implements Entity, T {
 	
 	private Service find_k;
 	private Service find_t;
-	
 	private Service find2_k;
 	
 	private Service add_kk;
@@ -50,6 +51,9 @@ public class EntityImpl implements Entity, T {
 	private Service delete_k;
 	private Service delete_t;
 	
+	private Service descriptions_bytags;
+	private Service info_bycode;
+	
 	private Service prompt;
 
 	public EntityImpl() throws Exception
@@ -59,12 +63,13 @@ public class EntityImpl implements Entity, T {
 		count  = Outside.service(this, "gus.y.server1.engine.cmd.k.n0.count");
 		tables = Outside.service(this, "gus.y.server1.engine.cmd.k.n0.sql_tables");
 		tags   = Outside.service(this, "gus.y.server1.engine.cmd.k.n0.tags");
+		codes   = Outside.service(this, "gus.y.server1.engine.cmd.k.n0.codes");
+		actions   = Outside.service(this, "gus.y.server1.engine.cmd.k.n0.actions");
 		sql    = Outside.service(this, "gus.y.server1.engine.cmd.k.nj.sql");
-		search = Outside.service(this, "gus.y.server1.engine.cmd.k.search");
+		search = Outside.service(this, "gus.y.server1.engine.cmd.k.n3.search");
 		
 		find_k = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.find_k");
 		find_t = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.find_t");
-		
 		find2_k = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.find2_k");
 		
 		tags_k = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.tags_k");
@@ -98,6 +103,9 @@ public class EntityImpl implements Entity, T {
 		delete_k = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.delete_k");
 		delete_t = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.delete_t");
 		
+		descriptions_bytags = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.displays_w_tags");
+		info_bycode         = Outside.service(this, "gus.y.server1.engine.cmd.k.n1.info_w_code");
+		
 		prompt = Outside.service(this, "gus.y.server1.engine.cmd.k.nj.prompt");
 	}
 
@@ -108,12 +116,13 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("count"))   return count;
 		if(cmd.equals("tables"))  return tables;
 		if(cmd.equals("tags"))    return tags;
+		if(cmd.equals("codes"))    return codes;
+		if(cmd.equals("actions"))    return actions;
 		if(cmd.equals("sql"))     return sql;
 		if(cmd.equals("search"))  return search;
 		
 		if(cmd.equals("find_k")) return find_k;
 		if(cmd.equals("find_t")) return find_t;
-		
 		if(cmd.equals("find2_k")) return find2_k;
 		
 		if(cmd.equals("tags_k")) return tags_k;
@@ -146,6 +155,9 @@ public class EntityImpl implements Entity, T {
 		
 		if(cmd.equals("delete_k"))   return delete_k;
 		if(cmd.equals("delete_t"))   return delete_t;
+		
+		if(cmd.equals("descriptions_bytags"))   return descriptions_bytags;
+		if(cmd.equals("info_bycode"))            return info_bycode;
 		
 		if(cmd.equals("prompt"))   return prompt;
 
