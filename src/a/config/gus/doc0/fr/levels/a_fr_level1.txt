@@ -8,9 +8,11 @@ Le code source CORE du développeur <pseudo> se répartit en un ou plusieurs com
 
 Le code source de ce noyau est alors regroupé dans le package racine a.core.<pseudo>.<core-part>
 
-En tant que développeur gus, j'ai pour l'instant développé un unique composant noyau nommé "gus.gyem", dont le code source est situé au sein du package racine a.core.gus.gyem
+En tant que développeur gus, j'ai pour l'instant développé un unique composant noyau nommé "gus.gyem", 
+dont le code source est situé au sein du package racine a.core.gus.gyem
 
-En tant que développeur tav, j'ai développé un autre composant noyau nommé "tav.mini1", dont le code source est situé au sein du package racine a.core.tav.mini1
+En tant que développeur tav, j'ai développé un autre composant noyau nommé "tav.mini1", 
+dont le code source est situé au sein du package racine a.core.tav.mini1
 
 Un noyau <core-name> :
 - peut contenir plusieurs packages java (qui commencent tous par a.core.<pseudo>.<core-part>)

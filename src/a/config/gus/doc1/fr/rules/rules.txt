@@ -6,33 +6,36 @@ Elles ne constituent pas des règles strictes mais plutôt des préconisations q
 Chaque règle énoncée est identifiée par un numéro qui pourra être utilisé comme référence dans les autres documentations de la manière suivante : gus#1
 
 @2 - Classification xyz des entités
-Mes entités gus (à l'exception notable de ma première entité : gus.first) sont toutes classées en 3 catégories, x, y et z, détaillées respectivement par les règles gus#3, gus#4 et gus#5. Ces règles (et les suivantes) sont énoncées dans le cas général d'un développeur <pseudo>.
+Mes entités gus (à l'exception notable de ma première entité : gus.first) sont toutes classées en 3 catégories, x, y et z.
 
-@3 - Les entités x
-Les entités x du développeur <pseudo> :
+De manière générale, pour un développeur <pseudo> :
+- Les entités x sont toutes les entités dont le nom commence par <pseudo>.x.<...>
+- Les entités y sont toutes les entités dont le nom commence par <pseudo>.y.<...>
+- Les entités z sont toutes les entités dont le nom commence par <pseudo>.z.<...>
 
-Il s'agit de toutes les entités dont le nom commence par <pseudo>.x.<...>
-Ces entités sont considérées comme autonomes, ce qui signifie qu'elles ne doivent pas faire appel à des services ou des ressources au moyen de la classe Outside. Elles peuvent en revanche faire appel à la méthode err de Outside.
+Les entités x, y et z forment des regroupements nommés unités x, y et z, détaillées respectivement par les règles gus#3, gus#4 et gus#5.
 
-@4 - Les entités y
-Les entités y du développeur <pseudo> :
+@3 - Les unités x
+Les unités x sont des "regroupements" composés chacun d'une entité unique et nommés ainsi :  <pseudo>.<...> (nom de l'entité sans la partie x)
+Ces entités ne doivent pas faire appel à des services ou des ressources au moyen de la classe Outside. Elles peuvent en revanche faire appel à la méthode err de Outside.
+Elles sont donc considérées comme autonomes
 
-Il s'agit de toutes les entités dont le nom commence par <pseudo>.y.<...>
-Ces entités sont regroupées en systèmes réutilisables, chacun identifié par un nom unique : <pseudo>.<sys-part> où <sys-part> correspond à la partie juste après y.
+@4 - Les unités y
+Les unités y sont des regroupements d'entités y dont le nom commence par <pseudo>.y.<y-part>.<...>, et nommés ainsi : <pseudo>.<y-part>
+Les entités qui composent une unité y forment un ensemble cohérent et réutilisable. Elles peuvent faire appel à des services ou des ressources et ainsi créer des relations de dépendance avec d'autres entités d'unités x ou y quelconques. 
+En revanche, elles ne doivent pas créer de dépendances avec des entités d'unités z.
 
-Les entités d'un système <pseudo>.<sys-part> ont donc un nom qui commence par <pseudo>.y.<sys-part>. Celles-ci peuvent faire appel à des services ou des ressources et ainsi créer des relations de dépendance avec d'autres entités notamment des entités autonomes (x) ou des entités de systèmes (y) de n'importe quel système. En revanche, elles ne doivent pas créer de dépendances avec des entités (z).
+Les unités y se divisent en :
+- systèmes fonctionnels (cf gus#12)
+- bibliothèques d'entités (cf gus#13)
 
-@5 - Les entités z
-Les entités z du développeur <pseudo> :
+@5 - Les unités z
+Les unités z sont des regroupements d'entités z dont le nom commence par <pseudo>.z.<z-part>.<...>, et nommés ainsi : <pseudo>.<z-part>
+Les entités qui composent une unité z sont dédiées à une application particulière identifiée par une config applicative <config-id> = <pseudo>.<z-part>. Elles peuvent faire appel à des services ou des ressources et ainsi créer des relations de dépendance avec d'autres entités notamment des entités d'unités x ou y quelconques. En revanche, elles ne doivent pas créer de dépendances avec des entités d'autres unités z.
+Par exemple, l'unité z gus.appli1 est liée à l'application et la config applicative du même nom, et regroupe les entités dont le nom commence par gus.z.appli1.
 
-Il s'agit de toutes les entités dont le nom commence par <pseudo>.z.<...>
-Ces entités sont regroupées en applications correspondants chacune à une config applicative distincte.
-
-Pour une config applicative donnée, identifiée par <config-id> = <pseudo>.<config-part> (dont le code source est alors regroupé dans le package racine a.config.<pseudo>.<config-part>), les entités z dédiées devront avoir un nom qui commence par <pseudo>.z.<config-part>
-
-Par exemple, l'application gus.appli1 est liée à la config du même nom gus.appli1 et aux entités applicatives dont le nom commence par gus.z.appli1.
-
-Ces entités peuvent faire appel à des services ou des ressources et ainsi créer des relations de dépendance avec d'autres entités, notamment des entités autonomes (x) ou des entités de systèmes (y). En revanche, elles ne peuvent créer des dépendances qu'avec les entités (z) de la même application.
+On notera que les entités d'une unité z sont spécifiques à une application et qu'il faut essayer de limiter leur importance au strict minimum.
+Si la première phase de développement applicatif en mode "quick and dirty" conduit à une unité z conséquente, il faudra essayer de refactorer son code a posteriori pour tenter d'en convertir certaines parties en unités y réutilisables. 
 
 @6 - doc1
 La documentation du développeur <pseudo> :
@@ -49,6 +52,10 @@ Pour une langue donnée, identifiée par une locale <loc> (fr pour le français)
 Les fichiers de documentation situés dans ces packages sont des fichiers texte respectant le format suivant :
 - Une succession de sections délimitées par des lignes de titre qui commencent toutes par un unique arobas
 - Des blocs de texte multilignes entre les titres qui correspondent au corps des sections
+
+Le titre d'une section prend une forme différente selon la catégorie de documentation :
+- Pour le fichier rules.txt, le titre est de la forme <rule-num> - <rule-title> (cf gus#14)
+- Pour les fichiers de documentation d'une unité x, y ou z (cf gus#11), le titre est simplement le nom d'un champ décrivant l'unité, et le corps de la section est la valeur de ce champ (cf gus#29 pour la liste des champs)
 
 @7 - doc1/app
 Documentation des applications du développeur <pseudo> :
@@ -82,32 +89,39 @@ Par exemple, la documentation française de mon noyau gus.gyem est contenue dans
 @11 - doc1/entity
 Documentation des entités du développeur <pseudo> :
 
-Les entités x sont documentées dans des fichiers dédiés à chaque entité, situés dans le package a.config.<pseudo>.doc1.<loc>.src.entity.x, et nommés <entity-parts>.txt (ou <entity-parts> correspond ici aux parties du nommage de l'entité après <pseudo>.x)
-Par exemple, la documentation française de mon entité gus.x.app.location est contenue dans le fichier app.location.txt du package a.config.gus.doc1.fr.src.entity.x
+Les unités x sont documentées dans des fichiers dédiés, situés dans le package a.config.<pseudo>.doc1.<loc>.src.entity.x, et nommés <entity-parts>.txt (ou <entity-parts> correspond ici aux parties du nommage de l'entité après <pseudo>.x)
+Par exemple, la documentation française de l'unité x gus.app.location est contenue dans le fichier app.location.txt du package a.config.gus.doc1.fr.src.entity.x
 
-Les entités y sont documentées dans des fichiers dédiés à chaque système, situés dans le package a.config.<pseudo>.doc1.<loc>.src.entity.y, et nommés <system-part>.txt (ou <system-part> correspond ici à la partie des nommages d'entités juste après <pseudo>.y)
-Par exemple, la documentation française de mon système gus.swing1 est contenue dans le fichier swing1.txt du package a.config.gus.doc1.fr.src.entity.y
+Les unités y sont documentées dans des fichiers dédiés, situés dans le package a.config.<pseudo>.doc1.<loc>.src.entity.y, et nommés <system-part>.txt (ou <system-part> correspond ici à la partie des nommages d'entités juste après <pseudo>.y)
+Par exemple, la documentation française de l'unité y gus.swing1 est contenue dans le fichier swing1.txt du package a.config.gus.doc1.fr.src.entity.y
 
-Les entités z sont documentées dans des fichiers dédiés à chaque application, situés dans le package a.config.<pseudo>.doc1.<loc>.src.entity.z, et nommés <app-part>.txt (ou <app-part> correspond ici à la partie des nommages d'entités juste après <pseudo>.z)
-Par exemple, la documentation française des entités de mon application gus.appli1 est contenue dans le fichier appli1.txt du package a.config.gus.doc1.fr.src.entity.z
+Les unités z sont documentées dans des fichiers dédiés, situés dans le package a.config.<pseudo>.doc1.<loc>.src.entity.z, et nommés <app-part>.txt (ou <app-part> correspond ici à la partie des nommages d'entités juste après <pseudo>.z)
+Par exemple, la documentation française de l'unité z gus.appli1 est contenue dans le fichier appli1.txt du package a.config.gus.doc1.fr.src.entity.z
 
-@12 - librairies d'entités
-Une librairie d'entités est un type particulier de système y pour lequel les entités ne s'articulent pas autour d'une au plusieurs fonctionnalités mais partagent une même thématique tout en restant largement indépendantes les unes des autres.
+@12 - systèmes fonctionnels
+Un système fonctionnel est un type particulier d'unité y pour lequel les entités s'articulent autour d'une au plusieurs fonctionnalités formant un tout cohérent.
+Les unités y s'appellent les unes les autres, vérifient un ensemble de spécifications formalisées par des règles numérotés, et proposent des mécanismes réutilisables et extensibles dont l'étude fera l'objet de prochaines sections.
 
-Un exemple de librairie est le système gus.convert1 qui regroupe des entités T permettant de convertir des objets java.
+@13 - bibliothèques d'entités
+Une bibliothèque d'entités est un type particulier d'unité y pour lequel les entités ne s'articulent pas autour de fonctionnalités mais partagent une même thématique tout en restant largement indépendantes les unes des autres.
+Tout comme les systèmes fonctionnels, ces unités vérifient un ensemble de spécifications dans le but de les rendre le plus générique possible, et donc réutilisables.
+Un exemple de bibliothèque est l'unité y gus.convert1 qui regroupe des entités T permettant de convertir des objets java.
 
-@13 - Identification des règles
+@14 - Identification des règles
 Les règles édictées par chaque développeur sont identifiées par un identifiant unique composé comme suit :
 <rule-id> = <pseudo>#<rule-num> ou <rule-num> est le numéro de la règle dans la numérotation interne au développeur.
 
-Comme indiqué en règle gus#8, Les énoncés des règles sont regroupés dans le fichier rules.txt du package a.config.<pseudo>.doc1.<loc>.rules, qui est structuré en sections avec des lignes de titre débutant par un arobas. Ces sections sont rangées dans l'ordre des numéros avec des titres comme suit :
+Les règles expliquent des mécanismes généraux partagés par un grand nombre de composants (entités, noyaux, configs), du développeur lui-même ou d'autres développeurs.
+Elles peuvent notamment être référencés par d'autres règles et apparaître dans les spécifications liées à des unités x, y ou z.
+
+Comme indiqué en règle gus#8, les énoncés des règles sont regroupés dans le fichier rules.txt du package a.config.<pseudo>.doc1.<loc>.rules, qui est structuré en sections avec des lignes de titre débutant par un arobas. Ces sections sont rangées dans l'ordre des numéros avec des titres comme suit :
 <section-title> = <rule-num> - <rule-title>
 ou <rule-title> est le titre de la règle.
 
-@14 - keys dans la feature v
-Lorsqu'on a une implémentation de V qui accepte des clés spécifiques, il faut éviter d'utiliser la clé "keys" qui est une clé technique qui doit, elle, renvoyer le tableau String[] des autres clés acceptées.
+@15 - keys dans la feature R
+Lorsqu'on a une implémentation de R qui accepte des clés spécifiques, il faut éviter d'utiliser la clé "keys" qui est une clé technique qui doit, elle, renvoyer le tableau String[] des autres clés acceptées.
 
-@15 - Outside.err
+@16 - Outside.err
 Lorsque le code d'une méthode private doit gérer des exceptions au moyen d'un unique bloc try-catch, le catch doit renvoyer l'exception vers le noyau en appelant la méthode statique Outside.err. L'id passé en paramètre doit alors être le nom de la méthode private (avec ses types de paramètre éventuels).
 
 Voici un exemple :
@@ -117,7 +131,7 @@ private void perform(String data) {
 	catch(Exception e) {Outside.err(this,"perform(String)", e);}
 }
 
-@16 - S1 send event
+@17 - S1 send event
 Lorsqu'une entité qui hérite de S1 doit envoyer un évènement, il faut écrire une méthode private sans paramètre, dédiée à l'envoi de cet évènement, ou l'id passé dans send correspond au nom de la méthode.
 
 Voici quelques exemples :
@@ -132,7 +146,7 @@ private void removed() {
 	send(this,"removed()");
 }
 
-@17 - règle d'icône
+@18 - règle d'icône
 Une règle d'icône permet de générer une icône 16x16 (classe Icon)
 
 Le mécanisme qui génère une icône à partir d'une règle doit disposer d'un ensemble d'icônes identifiées par des IDs. Il doit aussi être capable de retrouver l'icône associée par l'OS à une extension de fichier.
@@ -146,18 +160,18 @@ où <suffix-part> est une String sans underscore tel que PART_<suffix-part> corr
 Si la dernière partie de la règle est un suffixe <suffix-part>, alors l'icone renvoyée est la superposition de l'icône principale (règle <icon-rule1>) et de l'icône du suffixe.
 
 Voici un exemple :
-Si BASE et PART_add sont des ID d'icones, alors la règles BASE_add renverra comme icône la superposition des icônes de BASE et PART_add.
+Si BASE et PART_add sont des ID d'icônes, alors la règle BASE_add renverra comme icône la superposition des icônes de BASE et PART_add.
 
-@18 - règle de display graphique
+@19 - règle de display graphique
 Une règle de display graphique permet d'associer une icône et un libellé comme ceci :
 <display-rule> = <icon-rule>#<label>
 
-@19 - Les icônes d'une config
+@20 - Les icônes d'une config
 Une config <config-id> peut proposer des icônes, stockées au format GIF à la racine de son sous-répertoire icon (correspondant au package a.config.<config-id>.icon). 
 Chaque fichier GIF ainsi chargé par le noyau correspondra à un ID unique <icon-id> égal au nom du fichier sans l'extension, et correspondra donc au chemin local suivant :
 /a/config/<pseudo>/<config-part>/icon/<icon-id>.gif
 
-@20 - Les appels de ressource
+@21 - Les appels de ressource
 Toute entité peut potentiellement appeler une ou plusieurs ressources depuis sa classe principale de la manière suivante :
 Object r = Outside.resource(this, "<call>");
 ou <call> est une String plus ou moins complexe pouvant correspondre à un ID ou une règle, et sensé décrire la ressource dont l'entité a besoin.
@@ -170,7 +184,7 @@ Si une telle règle est partagée par une entité et un noyau (cf. documentation
 
 Pour une application donnée, la config applicative associée aura la responsabilité de fournir ce mapping, afin d'assurer à toutes les entités utilisées que leurs appels seront correctement gérés par le noyau.
 
-@21 - Les appels de service
+@22 - Les appels de service
 Toute entité peut potentiellement appeler un ou plusieurs services depuis sa classe principale de la manière suivante :
 Service s = Outside.service(this, "<call>");
 ou <call> est une String plus ou moins complexe pouvant correspondre à un ID ou une règle, et sensé décrire le service dont l'entité a besoin.
@@ -193,7 +207,7 @@ En pratique :
 - les appels de service correspondront à des règles qui renvoient des instances d'entités ou d'objets propres au noyau. 
 - les appels de ressource correspondront à des règles renvoyant tous les autres types d'objet Java (List, Map, Icon, String, File...)
 
-@22 - call : mécanisme général
+@23 - call : mécanisme général
 Le mécanisme de gestion des appels de resources (et de services) peut rencontrer 3 cas de figure :
 
 1: la règle correspond à l'ID d'un objet déjà existant, connu du noyau. Dans ce cas, cet objet est renvoyé à l'entité.
@@ -206,5 +220,89 @@ Exemple : Service s = Outside.service(this, "*gus.x.swing.panel.bg.blue");
 Exemple : Icon icon = (Icon) Outside.resource(this, "icon#monIconId");
 
 Ces explications donnent un cadre général à la manière dont le noyau doit gérer les appels (qui sera précisé par la suite). Ce cadre pourra bien-sûr varier d'un noyau à l'autre (cf. documentations de chaque noyau).
+
+@24 - Mécanismes d'extension d'un système fonctionnel
+
+Un système fonctionnel peut prévoir un ou plusieurs mécanismes d'extension, permettant d'ajouter de nouveaux comportements sans toucher au cœur du système. Une extension est toujours une unité x ou y, jamais z : elle doit
+rester réutilisable indépendamment de toute application particulière.
+
+On distingue deux types de mécanismes :
+
+- Extension interne : l'unité d'extension est une dépendance directe et codée en dur du système. Ajouter un cas nécessite de modifier le code du système pour y référencer la nouvelle unité. Le système est donc extensible au
+codage (maintenabilité), mais pas au runtime.
+
+- Extension externe : l'unité d'extension n'est pas liée en dur au système mais injectée dans celui-ci. On l'appelle alors un plugin. 
+Cette injection peut se faire de deux manières :
+- par un appel externe à une caractéristique du système (généralement P ou V) afin de lui communiquer l'objet plugin (cas le plus courant)
+- par un appel interne à un service du système, qui va communiquer l'ensemble des objets plugin disponibles (cas plus rare)
+
+Contrairement à l'extension interne, un mécanisme de plugin est extensible au runtime : on peut lui injecter de nouveaux plugins sans modifier ni recompiler son code.
+
+@25 - Unité wrapper pour injecter des plugins
+
+Une unité wrapper (y ou z) peut être mise en place pour injecter des plugins dans un système fonctionnel qui propose un mécanisme de plugin.
+
+Ce schéma permet de découpler deux niveaux d'appel :
+- le système fonctionnel initial reste appelable indépendamment, avec injection dynamique de n'importe quel plugin
+- l'unité wrapper est appelée quand on veut une fonctionnalité "out of the box", déjà préconfigurée.
+
+@26 - Multiplicité d'une entité
+
+La multiplicité caractérise une entité de façon non contraignante, pour indiquer au noyau comment il peut la gérer. Deux valeurs sont possibles :
+- unique (+) : l'entité est stateless, elle ne déclare aucune variable de niveau classe (hors static final). Typiquement une entité à feature unique (T, G, P, F, B, H...) gérée en singleton par le noyau.
+- multiple (*) : l'entité est stateful, elle conserve un état dans au moins une variable de niveau classe.
+
+@27 - Signature simple d'une entité
+
+La signature simple d'une entité est une notation compacte formée de sa multiplicité (cf gus#26) suivie des lettres des features qu'elle implémente, parmi les 11 interfaces standardisées du framework (cf a_fr_framework#002). Les lettres sont toujours en majuscules et triées par ordre alphabétique, afin de normaliser la signature (une même entité ne peut avoir qu'une seule signature simple possible).
+
+Format : <multiplicité><features>
+
+Voici un exemple : une entité de multiplicité unique implémentant E, T et V aura pour signature simple : +ETV
+
+@28 - Signature complète d'une entité
+
+La signature complète d'une entité reprend la signature simple (cf gus#27) en ajoutant, pour certaines features, une annotation de type entre chevrons accolée directement à leur lettre :
+- E, B, H, S : jamais de type
+- G, I : <type-retour>
+- P, F : <type-entrée>
+- R : <type-retour> (la clé est toujours une String, elle n'est pas indiquée)
+- V : <type-valeur> (la clé est toujours une String, elle n'est pas indiquée)
+- T : <type-entrée,type-sortie>, ou juste <type> si l'entrée et la sortie sont de même type
+
+Règles d'annotation :
+- utiliser le nom simple du type java le plus précis possible (String, File, List, Icon...)
+- si le type ne peut pas être déterminé avec certitude, ne pas l'annoter et laisser la lettre seule (comme en signature simple)
+- si plusieurs types sont possibles pour une même entrée/sortie, les séparer par un | et les trier par ordre alphabétique
+- ne jamais indiquer null comme type possible
+
+Voici un exemple : une entité de multiplicité multiple implémentant E (jamais typée), V (acceptant une valeur de type String ou File) et T (prenant une String et retournant soit une String soit un Double) aura pour signature complète : *EV<String|File>T<String,String|Double>
+
+@29 - Champs de documentation d'une unité
+
+Une unité x, y ou z est décrite par un ensemble de champs, stockés selon le format défini en gus#6. Voici la liste des champs actuellement définis :
+
+Champs communs à toute unité (x, y ou z) :
+- description : présentation de l'unité
+- state : GENERATED ou COMPLETE
+- tags : mots-clés ASCII majuscules, séparés par une virgule
+- difficulty : niveau de 0 à 3
+- generator, generated_time : présents uniquement si state=GENERATED
+- comment : notes libres, optionnel
+
+Champs spécifiques à une unité x :
+- sign : signature complète de l'entité (cf gus#28)
+- creation_date : date de création de l'entité
+
+Champs spécifiques à une unité y :
+- type : LIBRARY ou FUNCTIONAL (cf gus#12/#13)
+- sign : uniquement si type=LIBRARY, signature générique partagée par tous les membres
+- index : uniquement si type=LIBRARY, une ligne <partie-variable-du-nom>=<description brève> par entité membre
+- members : uniquement si type=FUNCTIONAL, liste des entités membres du système, une par ligne
+- entry : uniquement si type=FUNCTIONAL, la ou les entités point(s) d'entrée
+- extension : uniquement si type=FUNCTIONAL et le système propose un ou plusieurs mécanismes d'extension (cf gus#24) — le champ est répété une fois par mécanisme, chaque occurrence précisant en texte libre : mechanism (nom court, si plusieurs mécanismes), kind (EXTENSION pour une extension interne, ou PLUGIN pour une extension externe — cf gus#24 pour la distinction), direction (INTERNAL ou EXTERNAL, uniquement si kind=PLUGIN), une description du mécanisme, et spec (codes de règles concernées, séparés par ;)
+- registry_queryable : uniquement si type=FUNCTIONAL avec un mécanisme kind=PLUGIN, indique si la liste des plugins enregistrés est interrogeable (YES ou NO)
+
+Une unité z ne comporte aucun champ spécifique : n'étant pas destinée à être réutilisée (cf gus#5), les champs qui documentent la manière d'utiliser une unité (type, sign, index, members, entry, extension, registry_queryable) n'ont pas de sens pour elle. Seuls les champs communs s'appliquent.
 
 
