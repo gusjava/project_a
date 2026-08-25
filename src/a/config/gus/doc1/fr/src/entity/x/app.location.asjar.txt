@@ -1,0 +1,23 @@
+@description
+Renvoie le fichier JAR de l'application courante, ou null si le code s'exécute depuis des classes non empaquetées (répertoire plutôt que JAR). Le résultat est mis en cache après le premier appel.
+
+@state
+GENERATED
+
+@sign
++G<File>
+
+@tags
+APP
+
+@difficulty
+1
+
+@creation_date
+20140703
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_195437

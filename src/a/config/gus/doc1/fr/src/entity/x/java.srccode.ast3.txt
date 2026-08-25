@@ -1,0 +1,23 @@
+@description
+Analyse un code source Java (via JavaParser) et en extrait une structure complète incluant la signature normalisée, le corps détaillé (instructions) des constructeurs/méthodes et l'arbre des expressions, sous forme de Map.
+
+@state
+GENERATED
+
+@sign
++T<String,Map>
+
+@tags
+AST
+
+@difficulty
+3
+
+@creation_date
+20260419
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

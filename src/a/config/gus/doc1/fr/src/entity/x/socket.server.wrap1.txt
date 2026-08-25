@@ -1,0 +1,23 @@
+@description
+Encapsule un ServerSocket dans un objet actif (Runnable) qui accepte en boucle les connexions entrantes, expose le dernier socket accepté et le nombre de connexions acceptées, et notifie ses écouteurs par événements.
+
+@state
+GENERATED
+
+@sign
++T<ServerSocket,Holder>
+
+@tags
+SOCKET
+
+@difficulty
+2
+
+@creation_date
+20221110
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

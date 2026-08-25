@@ -1,0 +1,23 @@
+@description
+Encapsule un Socket dans un objet actif (Runnable) qui lit les lignes entrantes, envoie des messages en sortie, gère une commande de sortie ("exit") et notifie ses événements de connexion et de message.
+
+@state
+GENERATED
+
+@sign
++T<Socket,Holder>
+
+@tags
+SOCKET
+
+@difficulty
+2
+
+@creation_date
+20221119
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

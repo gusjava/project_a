@@ -1,0 +1,23 @@
+@description
+Fournit un JPanel dont le dessin (paintComponent) est délégué à un objet P injecté, en désactivant les tentatives de dessin ultérieures si une erreur survient pendant le tracé.
+
+@state
+GENERATED
+
+@sign
+*I<JPanel0>P<P>
+
+@tags
+SWING,SCREEN
+
+@difficulty
+1
+
+@creation_date
+20161203
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

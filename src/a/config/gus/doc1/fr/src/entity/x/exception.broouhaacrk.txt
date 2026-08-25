@@ -1,7 +1,23 @@
 @description
-Description de l'entit� gus.x.exception.broouhaacrk
+Entité de test qui lève systématiquement une exception, utilisée pour valider la gestion des erreurs.
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
++E
+
+@tags
+DEBUG
+
+@difficulty
+0
+
+@creation_date
+20231111
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

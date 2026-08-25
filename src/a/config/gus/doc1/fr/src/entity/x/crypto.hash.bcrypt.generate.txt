@@ -1,0 +1,23 @@
+@description
+Génère le hash bcrypt (avec sel aléatoire) d'un mot de passe en clair.
+
+@state
+GENERATED
+
+@sign
++T<String>
+
+@tags
+CRYPTO
+
+@difficulty
+2
+
+@creation_date
+20180308
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

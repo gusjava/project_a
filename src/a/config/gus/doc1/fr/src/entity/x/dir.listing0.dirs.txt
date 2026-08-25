@@ -1,7 +1,23 @@
 @description
-Description de l'entit� gus.x.dir.listing0.dirs
+Liste les sous-répertoires directs d'un répertoire donné.
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
++T<File,File[]>
+
+@tags
+DIRLISTING
+
+@difficulty
+0
+
+@creation_date
+20240120
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

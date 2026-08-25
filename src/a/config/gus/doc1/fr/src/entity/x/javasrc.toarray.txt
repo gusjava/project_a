@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.javasrc.toarray
+Convertit un code source (chaîne ou tableau de lignes) en tableau de lignes nettoyées (tabulations supprimées, espaces multiples réduits, bords retirés).
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.javasrc.toarray
+@state
+GENERATED
 
+@sign
++T<String|String[],String[]>
+
+@tags
+SRC
+
+@difficulty
+1
+
+@creation_date
+20240111
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

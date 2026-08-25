@@ -1,7 +1,23 @@
 @description
-Description de l'entité gus.x.find.size
+Calcule la taille ou la longueur d'un objet quel que soit son type (collection, chaÃ®ne, tableau primitif ou d'objets).
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
++T<boolean[]|byte[]|char[]|double[]|float[]|int[]|Integer|List|long[]|Object[]|short[]|String|StringBuffer|StringBuilder,Integer>
+
+@tags
+SIZE
+
+@difficulty
+1
+
+@creation_date
+20240121
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

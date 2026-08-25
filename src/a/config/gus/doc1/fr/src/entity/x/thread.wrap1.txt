@@ -1,0 +1,23 @@
+@description
+Enveloppe un Runnable dans un Thread instrumenté (état, horodatages, exception non interceptée, contexte du thread parent), consultable via des clés R, et optionnellement le démarre directement.
+
+@state
+GENERATED
+
+@sign
++P<Runnable>T<Runnable,Thread1>
+
+@tags
+THREAD
+
+@difficulty
+3
+
+@creation_date
+20191220
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

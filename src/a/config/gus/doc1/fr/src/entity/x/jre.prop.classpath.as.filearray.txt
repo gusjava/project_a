@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.jre.prop.classpath.as.filearray
+Renvoie le classpath Java courant sous forme de tableau de fichiers, en découpant la propriété système java.class.path.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.jre.prop.classpath.as.filearray
+@state
+GENERATED
 
+@sign
++G<File[]>
+
+@tags
+FILE
+
+@difficulty
+1
+
+@creation_date
+20231129
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

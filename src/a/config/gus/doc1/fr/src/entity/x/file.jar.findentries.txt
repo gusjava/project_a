@@ -1,0 +1,23 @@
+@description
+Liste triée des noms des entrées contenues dans un fichier JAR.
+
+@state
+GENERATED
+
+@sign
++T<File,List>
+
+@tags
+JAR
+
+@difficulty
+1
+
+@creation_date
+20140807
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

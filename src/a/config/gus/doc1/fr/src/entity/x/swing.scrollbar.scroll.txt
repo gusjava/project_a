@@ -1,0 +1,23 @@
+@description
+Positionne une JScrollBar à une valeur entière donnée.
+
+@state
+GENERATED
+
+@sign
++P<Object[]>
+
+@tags
+SWING
+
+@difficulty
+0
+
+@creation_date
+20191116
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

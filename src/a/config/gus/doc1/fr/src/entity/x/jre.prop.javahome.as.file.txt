@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.jre.prop.javahome.as.file
+Renvoie le répertoire d'installation du JRE/JDK courant sous forme de File, via la propriété système java.home.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.jre.prop.javahome.as.file
+@state
+GENERATED
 
+@sign
++G<File>
+
+@tags
+FILE
+
+@difficulty
+1
+
+@creation_date
+20231129
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

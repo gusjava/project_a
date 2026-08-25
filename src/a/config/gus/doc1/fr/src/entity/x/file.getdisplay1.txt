@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.file.getdisplay1
+Construit une reprÃ©sentation textuelle lisible d'un fichier ou d'un chemin, en indiquant s'il s'agit d'un rÃ©pertoire, d'un fichier existant, ou d'un chemin introuvable.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.file.getdisplay1
+@state
+GENERATED
 
+@sign
++T<File|String,String>
+
+@tags
+FILE
+
+@difficulty
+1
+
+@creation_date
+20240111
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

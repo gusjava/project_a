@@ -1,0 +1,23 @@
+@description
+Construit une carte d'informations (nom, état, priorité, daemon, id, stack trace) sur le thread AWT-EventQueue courant, ou sur un thread désigné par son id.
+
+@state
+GENERATED
+
+@sign
++G<Map>T<Object,Map>
+
+@tags
+THREAD
+
+@difficulty
+1
+
+@creation_date
+20260419
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

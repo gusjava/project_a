@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.file.icon.read.imageio
+Lit une image depuis un fichier via ImageIO et la retourne sous forme d'ImageIcon.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.file.icon.read.imageio
+@state
+GENERATED
 
+@sign
++T<File,ImageIcon>
+
+@tags
+ICON
+
+@difficulty
+1
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

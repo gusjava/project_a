@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.swing.panel.imagepanel.fit
+Fournit un JPanel qui affiche une image (RenderedImage, Image, ImageIcon, ou source G fournissant l'une de ces images) redimensionnÃ©e pour occuper au mieux la surface disponible tout en conservant son ratio d'aspect.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.swing.panel.imagepanel.fit
+@state
+GENERATED
 
+@sign
+*G<G|Image|ImageIcon|RenderedImage>I<ScreenJPanel>P<G|Image|ImageIcon|RenderedImage>
+
+@tags
+SWING,IMAGE
+
+@difficulty
+2
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

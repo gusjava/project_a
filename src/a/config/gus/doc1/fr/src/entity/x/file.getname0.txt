@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.file.getname0
+Extrait le nom d'un fichier sans son extension, Ã  partir d'un objet File ou d'un chemin String.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.file.getname0
+@state
+GENERATED
 
+@sign
++T<File|String,String>
+
+@tags
+FILE
+
+@difficulty
+1
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

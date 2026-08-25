@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.entity.name.toy
+Convertit un nom d'entitÃ© y en son nom court (dev.nom), ou renvoie null si le nom n'est pas de type y.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.entity.name.toy
+@state
+GENERATED
 
+@sign
++T<String>
+
+@tags
+ENTITY
+
+@difficulty
+0
+
+@creation_date
+20240113
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

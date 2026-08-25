@@ -1,0 +1,23 @@
+@description
+Transforme récursivement une structure de données (liste, map, tableau, entité) en une structure équivalente sérialisable, en remplaçant chaque entité par son nom qualifié.
+
+@state
+GENERATED
+
+@sign
++T<Object>
+
+@tags
+JSON,ENTITY
+
+@difficulty
+1
+
+@creation_date
+20260420
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,0 +1,23 @@
+@description
+Lit le contenu texte d'un fichier source et normalise ses fins de ligne au format \n.
+
+@state
+GENERATED
+
+@sign
++T<File,String>
+
+@tags
+ENTITY,SRC
+
+@difficulty
+0
+
+@creation_date
+20260414
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

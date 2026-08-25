@@ -1,0 +1,23 @@
+@description
+Lit l'en-tête d'un fichier .class Java et retourne ses numéros de version majeure et mineure de bytecode.
+
+@state
+GENERATED
+
+@sign
++T<File|InputStream,int[]>
+
+@tags
+BYTECODE
+
+@difficulty
+1
+
+@creation_date
+20140807
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

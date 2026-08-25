@@ -1,0 +1,26 @@
+@description
+Dessine une flèche entre deux points 2D sur un contexte graphique Graphics2D, avec un coefficient de taille de pointe paramétrable.
+
+@state
+GENERATED
+
+@sign
+*P<Point2D[]>V<Graphics2D|String>
+
+@tags
+GRAPHICS
+
+@difficulty
+2
+
+@creation_date
+20161202
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658
+
+@vkeys
+graphics2D,arrowCoef

@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.string.random.alphanum.lower
+Génère une chaîne aléatoire alphanumérique en minuscules (lettres minuscules et chiffres) de la longueur demandée.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.string.random.alphanum.lower
+@state
+GENERATED
 
+@sign
++T<Object,String>
+
+@tags
+STRING,GENERATION
+
+@difficulty
+0
+
+@creation_date
+20240113
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

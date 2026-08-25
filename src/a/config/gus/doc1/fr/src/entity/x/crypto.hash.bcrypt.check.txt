@@ -1,0 +1,23 @@
+@description
+Vérifie qu'un mot de passe en clair correspond à un hash bcrypt donné.
+
+@state
+GENERATED
+
+@sign
++F<String[]>
+
+@tags
+CRYPTO
+
+@difficulty
+2
+
+@creation_date
+20180308
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

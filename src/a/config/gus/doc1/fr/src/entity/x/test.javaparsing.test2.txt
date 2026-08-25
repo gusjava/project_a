@@ -1,0 +1,23 @@
+@description
+Entité de test exhaustive utilisée pour valider le parsing Java : couvre un large éventail de constructions du langage (génériques, lambdas, streams, varargs, synchronized, opérateurs bit à bit, blocs d'initialisation statique/d'instance, classes internes et anonymes), sans logique métier réelle.
+
+@state
+GENERATED
+
+@sign
+*
+
+@tags
+TEST,JAVAPARSING
+
+@difficulty
+3
+
+@creation_date
+20260419
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

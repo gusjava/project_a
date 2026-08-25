@@ -1,0 +1,23 @@
+@description
+Applique un chiffrement de César de type ROT13 à une chaîne : chaque lettre est décalée de 13 positions dans l'alphabet, les autres caractères restant inchangés.
+
+@state
+GENERATED
+
+@sign
++T<String>
+
+@tags
+STRING
+
+@difficulty
+1
+
+@creation_date
+20260412
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

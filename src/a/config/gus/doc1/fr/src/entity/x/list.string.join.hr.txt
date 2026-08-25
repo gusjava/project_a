@@ -1,0 +1,23 @@
+@description
+Concatène les éléments d'une liste de chaînes en une seule chaîne, en insérant une ligne de séparation horizontale entre chaque élément.
+
+@state
+GENERATED
+
+@sign
++T<List,String>
+
+@tags
+LIST
+
+@difficulty
+0
+
+@creation_date
+20251129
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

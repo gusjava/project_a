@@ -1,0 +1,23 @@
+@description
+Fabrique un FileFilter Java acceptant les fichiers dont le nom se termine par une extension donnée, insensible à la casse.
+
+@state
+GENERATED
+
+@sign
++T<String,FileFilter>
+
+@tags
+FILEFILTER
+
+@difficulty
+1
+
+@creation_date
+20220410
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,0 +1,23 @@
+@description
+Lit un fichier .ico et retourne la liste des images qu'il contient, décodées via la bibliothèque image4j.
+
+@state
+GENERATED
+
+@sign
++T<File,List>
+
+@tags
+ICON
+
+@difficulty
+1
+
+@creation_date
+20191217
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

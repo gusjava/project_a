@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.io.build.string
+Lit intégralement un flux d'entrée et retourne son contenu texte sous forme de chaîne de caractères.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.io.build.string
+@state
+GENERATED
 
+@sign
++T<InputStream,String>
+
+@tags
+IO
+
+@difficulty
+1
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.entity.objtofeatures
+Détermine les lettres des features du framework A (E,G,P,T,B,F,R,V,H,I,S) implémentées par un objet donné.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.entity.objtofeatures
+@state
+GENERATED
 
+@sign
++T<Object,String>
+
+@tags
+ENTITY
+
+@difficulty
+1
+
+@creation_date
+20231129
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

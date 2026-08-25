@@ -1,0 +1,23 @@
+@description
+Crée et met en cache un ServerSocket lié à un port donné, avec plusieurs tentatives de bind en cas d'échec, en fermant l'éventuel ancien socket associé au même port.
+
+@state
+GENERATED
+
+@sign
+*G<Map>ST<Object,ServerSocket>
+
+@tags
+SOCKET
+
+@difficulty
+2
+
+@creation_date
+20180312
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

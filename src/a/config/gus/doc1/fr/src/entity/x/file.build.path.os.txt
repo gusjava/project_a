@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.file.build.path.os
+Construit un chemin de fichier absolu indÃ©pendant de l'OS, avec substitution des variables <user.home>/<java.home> et normalisation des sÃ©parateurs de chemin.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.file.build.path.os
+@state
+GENERATED
 
+@sign
++T<Object[]|String,File>
+
+@tags
+FILEPATH
+
+@difficulty
+1
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

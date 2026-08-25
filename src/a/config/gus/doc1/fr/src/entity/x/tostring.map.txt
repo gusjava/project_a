@@ -1,7 +1,23 @@
 @description
-Description de l'entit� gus.x.tostring.map
+Convertit une Map de chaînes de caractères en une chaîne au format clé=valeur (une entrée par ligne), triée par clé.
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
++T<Map,String>
+
+@tags
+TOSTRING
+
+@difficulty
+0
+
+@creation_date
+20240709
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

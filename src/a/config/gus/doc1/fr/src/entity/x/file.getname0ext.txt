@@ -1,0 +1,23 @@
+@description
+Sépare le nom d'un fichier (ou chemin) de son extension et retourne les deux parties sous forme de tableau de chaînes.
+
+@state
+GENERATED
+
+@sign
++T<File|String,String[]>
+
+@tags
+FILE
+
+@difficulty
+1
+
+@creation_date
+20160602
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

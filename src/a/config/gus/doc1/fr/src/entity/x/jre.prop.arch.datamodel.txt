@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.jre.prop.arch.datamodel
+Renvoie le modèle de données d'architecture de la JVM courante (ex. "32" ou "64"), via la propriété système sun.arch.data.model.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.jre.prop.arch.datamodel
+@state
+GENERATED
 
+@sign
++G<String>
+
+@tags
+JRE
+
+@difficulty
+1
+
+@creation_date
+20231129
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

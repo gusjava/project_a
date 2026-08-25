@@ -1,6 +1,17 @@
 @description
 Renvoie le PID (Process IDentifier) de l'application courante.
-@infos
-state=COMPLETE
-sign=+G<String>
-tags=APP
+
+@state
+COMPLETE
+
+@sign
++G<String>
+
+@tags
+APP
+
+@difficulty
+0
+
+@creation_date
+20240111

@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.io.build.bytearray
+Lit intÃ©gralement un flux d'entrÃ©e et retourne son contenu sous forme de tableau d'octets.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.io.build.bytearray
+@state
+GENERATED
 
+@sign
++T<InputStream,byte[]>
+
+@tags
+BYTE
+
+@difficulty
+1
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

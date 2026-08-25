@@ -1,0 +1,23 @@
+@description
+Rend la fenêtre racine d'un composant déplaçable à la souris en cliquant-glissant sur ce composant.
+
+@state
+GENERATED
+
+@sign
++P<Component>
+
+@tags
+SWING
+
+@difficulty
+1
+
+@creation_date
+20140913
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,0 +1,23 @@
+@description
+Convertit une Map (valeurs de type String, Number ou Boolean) en une chaîne au format de requête URL encodée en UTF-8 (clé1=valeur1&clé2=valeur2...).
+
+@state
+GENERATED
+
+@sign
++T<Map,String>
+
+@tags
+TOSTRING,URL
+
+@difficulty
+1
+
+@creation_date
+20170130
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.swing.textcomp.build.textappender1.last
+Construit un accesseur permettant d'ajouter un texte Ã  la fin du contenu d'un composant texte Swing, en repositionnant le curseur Ã  la fin.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.swing.textcomp.build.textappender1.last
+@state
+GENERATED
 
+@sign
++T<JTextComponent,TextAppender>
+
+@tags
+SWING,TEXTCOMP
+
+@difficulty
+1
+
+@creation_date
+20240111
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

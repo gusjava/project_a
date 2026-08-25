@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.file.prop.write
+Écrit un objet Properties dans un fichier, en créant les répertoires parents si nécessaire.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.file.prop.write
+@state
+GENERATED
 
+@sign
++P<Object[]>
+
+@tags
+PROP
+
+@difficulty
+1
+
+@creation_date
+20231202
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.entity.src.find.entityfile
+Détermine le fichier EntityImpl.java correspondant à un répertoire d'entité, ou à un couple (répertoire racine, nom d'entité).
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.entity.src.find.entityfile
+@state
+GENERATED
 
+@sign
++T<File|Object[],File>
+
+@tags
+SRC
+
+@difficulty
+1
+
+@creation_date
+20240111
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

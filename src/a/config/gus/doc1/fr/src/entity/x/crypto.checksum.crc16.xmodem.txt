@@ -1,0 +1,23 @@
+@description
+Calcule le checksum CRC16 selon la variante XMODEM (polynôme 0x1021, calcul bit à bit) d'une source de données — byte[], String, InputStream, File ou URL — et retourne le résultat sous forme de chaîne de caractères.
+
+@state
+GENERATED
+
+@sign
++T<File|InputStream|String|URL|byte[],String>
+
+@tags
+CRYPTO,CHECKSUM
+
+@difficulty
+1
+
+@creation_date
+20160307
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_195437

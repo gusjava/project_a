@@ -1,0 +1,23 @@
+@description
+Encapsule un composant Swing quelconque dans un JScrollPane pour le rendre défilable.
+
+@state
+GENERATED
+
+@sign
++T<JComponent,JScrollPane>
+
+@tags
+SWING,SCROLLPANE
+
+@difficulty
+0
+
+@creation_date
+20140908
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

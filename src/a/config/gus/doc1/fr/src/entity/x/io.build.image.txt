@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.io.build.image
+Construit une image (BufferedImage) Ã  partir d'un flux d'entrÃ©e binaire, via ImageIO.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.io.build.image
+@state
+GENERATED
 
+@sign
++T<InputStream,BufferedImage>
+
+@tags
+IMAGE
+
+@difficulty
+0
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

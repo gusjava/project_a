@@ -1,6 +1,17 @@
 @description
-Renvoie les fichiers JAR (File[]) contenus dans un répertoire (File).
-@infos
-state=COMPLETE
-sign=+T<File,File[]>
-tags=JAR,DIRLISTING
+Renvoie les fichiers JAR (File[]) contenus dans un rÃ©pertoire (File).
+
+@state
+COMPLETE
+
+@sign
++T<File,File[]>
+
+@tags
+JAR,DIRLISTING
+
+@difficulty
+0
+
+@creation_date
+20231129

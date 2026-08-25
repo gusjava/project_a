@@ -1,6 +1,17 @@
 @description
-Renvoie le Rectangle correspondant à l'écran actif.
-@infos
-state=COMPLETE
-sign=+G<Rectangle>
-tags=SCREEN
+Renvoie le Rectangle correspondant Ã  l'Ã©cran actif.
+
+@state
+COMPLETE
+
+@sign
++G<Rectangle>
+
+@tags
+SCREEN
+
+@difficulty
+0
+
+@creation_date
+20240104

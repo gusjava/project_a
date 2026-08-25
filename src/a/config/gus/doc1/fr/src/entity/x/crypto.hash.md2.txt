@@ -1,0 +1,26 @@
+@description
+Calcule l'empreinte MD2 d'un tableau d'octets, d'une chaîne, d'un flux, d'un fichier ou d'une URL.
+
+@comment
+Champ `MessageDigest md` partagé et remué à chaque appel (`reset()/update()/digest()`) — d'où le `*`. Refactor possible : instancier `MessageDigest` en variable locale dans chaque méthode `digest()`, comme le font déjà `crypto.hash.md5`/`crypto.hash.sha1`, pour supprimer l'état partagé et redevenir une entité réellement `+`.
+
+@state
+GENERATED
+
+@sign
+*T<byte[]|File|InputStream|String|URL,byte[]>
+
+@tags
+CRYPTO
+
+@difficulty
+1
+
+@creation_date
+20151014
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

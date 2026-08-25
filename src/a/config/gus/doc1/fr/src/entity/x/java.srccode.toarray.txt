@@ -1,0 +1,23 @@
+@description
+Convertit un code source (chaîne ou tableau de lignes) en tableau de lignes nettoyées (tabulations supprimées, espaces de bord retirés).
+
+@state
+GENERATED
+
+@sign
++T<String|String[],String[]>
+
+@tags
+SRC
+
+@difficulty
+1
+
+@creation_date
+20150527
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

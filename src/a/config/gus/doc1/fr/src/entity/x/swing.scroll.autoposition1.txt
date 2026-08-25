@@ -1,0 +1,23 @@
+@description
+Positionne directement le curseur d'une JScrollBar (ou de la barre verticale d'une JScrollPane) à l'endroit cliqué ou glissé avec la souris, en calculant la valeur proportionnelle à la position verticale du clic.
+
+@state
+GENERATED
+
+@sign
++P<JScrollBar|JScrollPane>
+
+@tags
+SWING
+
+@difficulty
+2
+
+@creation_date
+20251201
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

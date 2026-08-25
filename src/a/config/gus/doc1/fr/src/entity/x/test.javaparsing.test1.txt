@@ -1,0 +1,23 @@
+@description
+Entité de test minimale utilisée pour valider le parsing Java : contient un enum, une interface générique avec méthode default, une classe statique et une classe interne, sans logique métier.
+
+@state
+GENERATED
+
+@sign
++
+
+@tags
+TEST,JAVAPARSING
+
+@difficulty
+0
+
+@creation_date
+20260419
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.framework.src.find.packagedir
+Retourne le rÃ©pertoire du framework A (`a/framework`) Ã  partir du rÃ©pertoire racine des sources fourni.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.framework.src.find.packagedir
+@state
+GENERATED
 
+@sign
++T<File>
+
+@tags
+SRC
+
+@difficulty
+0
+
+@creation_date
+20240112
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

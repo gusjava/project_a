@@ -1,0 +1,23 @@
+@description
+Exécute une action (feature E) après un délai d'une seconde, dans un thread séparé.
+
+@state
+GENERATED
+
+@sign
++P<E>
+
+@tags
+THREAD
+
+@difficulty
+1
+
+@creation_date
+20260409
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

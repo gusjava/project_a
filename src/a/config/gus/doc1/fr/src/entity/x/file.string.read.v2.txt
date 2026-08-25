@@ -1,0 +1,23 @@
+@description
+Lit l'intégralité du contenu d'un fichier texte en chaîne de caractères via FileReader (implémentation alternative).
+
+@state
+GENERATED
+
+@sign
++T<File,String>
+
+@tags
+FILE
+
+@difficulty
+0
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

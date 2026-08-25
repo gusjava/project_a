@@ -1,0 +1,23 @@
+@description
+Construit le nom complet d'une entité en le préfixant avec l'identifiant du développeur si nécessaire.
+
+@state
+GENERATED
+
+@sign
++T<Object[],String>
+
+@tags
+ENTITY
+
+@difficulty
+0
+
+@creation_date
+20260426
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

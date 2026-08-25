@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.io.transfer
+Transfère l'intégralité du contenu d'un flux d'entrée vers un flux de sortie, par blocs, via des canaux NIO.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.io.transfer
+@state
+GENERATED
 
+@sign
++P<Object[]>
+
+@tags
+IO
+
+@difficulty
+1
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

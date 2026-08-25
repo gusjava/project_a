@@ -1,0 +1,23 @@
+@description
+Synchronise la valeur de plusieurs JScrollBar entre elles : le déplacement de l'une propage instantanément sa valeur à toutes les autres.
+
+@state
+GENERATED
+
+@sign
++P<JScrollBar[]>
+
+@tags
+SWING
+
+@difficulty
+1
+
+@creation_date
+20161116
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

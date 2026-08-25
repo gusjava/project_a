@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.file.get.os.javahome
+Renvoie le répertoire d'installation du JRE/JDK courant (propriété système java.home).
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.file.get.os.javahome
+@state
+GENERATED
 
+@sign
++G<File>
+
+@tags
+FILE
+
+@difficulty
+0
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

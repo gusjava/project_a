@@ -1,7 +1,23 @@
 @description
-Description de l'entit� gus.x.font.availablefontnames.list
+Récupère la liste des noms de familles de polices disponibles sur le système, via l'environnement graphique Java (GraphicsEnvironment).
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
++G<List>
+
+@tags
+FONT
+
+@difficulty
+1
+
+@creation_date
+20231117
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

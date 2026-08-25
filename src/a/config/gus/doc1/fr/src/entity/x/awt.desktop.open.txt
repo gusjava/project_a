@@ -1,7 +1,23 @@
 @description
-Description de l'entit� gus.x.awt.desktop.open
+Ouvre un fichier avec l'application par défaut du système d'exploitation, via le bureau AWT (Desktop).
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
++P<File>
+
+@tags
+DESKTOP
+
+@difficulty
+0
+
+@creation_date
+20240128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

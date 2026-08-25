@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.swing.panel.formpanel
+Fournit un panneau de formulaire Ã  deux colonnes (Ã©tiquette + composant), avec ajout dynamique de lignes et une mise en page personnalisÃ©e alignant automatiquement la colonne des composants.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.swing.panel.formpanel
+@state
+GENERATED
 
+@sign
+*EI<FormJPanel>V<JComponent>
+
+@tags
+SWING,FORM
+
+@difficulty
+2
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

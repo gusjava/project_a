@@ -1,0 +1,23 @@
+@description
+Construit une carte de tous les threads actifs de la JVM (indexés par id), chacun décrit par son nom, son état, sa priorité et son statut daemon.
+
+@state
+GENERATED
+
+@sign
++G<Map>
+
+@tags
+THREAD
+
+@difficulty
+1
+
+@creation_date
+20260410
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

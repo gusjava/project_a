@@ -1,7 +1,26 @@
 @description
-Description de l'entit� gus.x.time.now.yyyymmdd_hhmmss_sss
+Retourne la date et l'heure courantes du système, formatées selon le motif yyyyMMdd_HHmmss_SSS.
 
-@infos
-state=GENERATED
-sign=
-tags=
+@comment
+Champ `SimpleDateFormat sdf` partagé, muté en interne à chaque appel à `format()` (non thread-safe) — d'où le `*`. Refactor possible : instancier `SimpleDateFormat` en variable locale dans `g()`, pour supprimer l'état partagé et redevenir une entité réellement `+`.
+
+@state
+GENERATED
+
+@sign
+*G<String>
+
+@tags
+TIME
+
+@difficulty
+0
+
+@creation_date
+20240618
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

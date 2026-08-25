@@ -1,7 +1,26 @@
 @description
-Description de l'entit� gus.x.java.classpaths1
+Indexe un ensemble prédéfini de classes du JDK/AWT par nom simple (en minuscules), et expose à la fois la liste complète des noms qualifiés et la table d'index.
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
++G<Map>R<List|Map|String[]>
+
+@tags
+CLASSLOADER
+
+@difficulty
+1
+
+@creation_date
+20240121
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658
+
+@rkeys
+list,map

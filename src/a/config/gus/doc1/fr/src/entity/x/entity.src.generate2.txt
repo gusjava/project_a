@@ -1,0 +1,26 @@
+@description
+Génère le squelette de code source Java (EntityImpl.java) d'une nouvelle entité à partir de son nom, des features demandées et de ses dépendances.
+
+@comment
+Champ `SimpleDateFormat sdf` partagé, muté en interne à chaque appel à `format()` (non thread-safe) — d'où le `*`. Refactor possible : instancier `SimpleDateFormat` en variable locale dans la méthode `today()`, pour supprimer l'état partagé et redevenir une entité réellement `+`.
+
+@state
+GENERATED
+
+@sign
+*F<Object[]>P<Object[]>
+
+@tags
+GENERATION
+
+@difficulty
+2
+
+@creation_date
+20260413
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

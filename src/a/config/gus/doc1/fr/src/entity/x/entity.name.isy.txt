@@ -1,11 +1,23 @@
 @description
 Détermine si un nom d'entité appartient à la catégorie y (vérifie que le second segment du nom est "y").
 
-@infos
-state=GENERATED
-sign=+F<String>
-tags=ENTITY
-difficulty=0
-creation_date=20240113
-generator=claude-sonnet-4-6
-generated_time=20260404_195845
+@state
+GENERATED
+
+@sign
++F<String>
+
+@tags
+ENTITY
+
+@difficulty
+0
+
+@creation_date
+20240113
+
+@generator
+claude-sonnet-4-6
+
+@generated_time
+20260404_195845

@@ -1,0 +1,26 @@
+@description
+Encapsule un Socket dans un objet actif (Runnable) gérant la communication ligne par ligne avec charset configurable, le suivi de son état de connexion et la notification de ses événements (connexion, déconnexion, réception, envoi).
+
+@state
+GENERATED
+
+@sign
+*T<Socket,Holder>V<Charset>
+
+@tags
+SOCKET
+
+@difficulty
+3
+
+@creation_date
+20180312
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658
+
+@vkeys
+charset

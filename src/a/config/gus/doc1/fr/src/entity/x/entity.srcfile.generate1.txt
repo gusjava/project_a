@@ -1,9 +1,26 @@
 @description
-Description de l'entit� gus.x.entity.srcfile.generate1
+Génère le squelette source Java (EntityImpl.java) d'une nouvelle entité selon la liste de features demandée, sans écraser un fichier existant.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.entity.srcfile.generate1
+@comment
+Champ `SimpleDateFormat sdf` partagé, muté en interne à chaque appel à `format()` (non thread-safe) — d'où le `*`. Refactor possible : instancier `SimpleDateFormat` en variable locale dans la méthode `today()`, pour supprimer l'état partagé et redevenir une entité réellement `+`.
 
+@state
+GENERATED
+
+@sign
+*F<Object[]>P<Object[]>
+
+@tags
+ENTITY,GENERATION
+
+@difficulty
+2
+
+@creation_date
+20231202
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

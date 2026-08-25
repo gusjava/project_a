@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.swing.table.selection.buildsupport
+Construit un support d'écoute de la sélection d'une JTable qui notifie ses listeners lorsque la ligne sélectionnée change réellement.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.swing.table.selection.buildsupport
+@state
+GENERATED
 
+@sign
++T<JTable,Support>
+
+@tags
+SWING,TABLE
+
+@difficulty
+2
+
+@creation_date
+20240114
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

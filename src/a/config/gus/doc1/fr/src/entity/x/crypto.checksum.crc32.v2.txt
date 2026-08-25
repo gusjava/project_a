@@ -1,0 +1,23 @@
+@description
+Calcule un checksum CRC32 (via java.util.zip.CRC32) à partir d'un tableau d'octets, d'une chaîne, d'un flux, d'un fichier ou d'une URL.
+
+@state
+GENERATED
+
+@sign
++T<byte[]|File|InputStream|String|URL,String>
+
+@tags
+CHECKSUM
+
+@difficulty
+1
+
+@creation_date
+20160307
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

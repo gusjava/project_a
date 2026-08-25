@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.swing.panel.shiftpanel
+Fournit un JPanel qui affiche dynamiquement un composant courant (JComponent direct, ou obtenu via une source I), en l'enveloppant dans une JScrollPane s'il est Scrollable, et se met Ã  jour de faÃ§on asynchrone sur l'EDT Ã  chaque changement de contenu.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.swing.panel.shiftpanel
+@state
+GENERATED
 
+@sign
+*I<JPanel1>P<I|JComponent>
+
+@tags
+SWING
+
+@difficulty
+2
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

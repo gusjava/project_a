@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.throwable.build.description
+Construit une description textuelle structurée d'une exception (message, localisation, premier point d'entrée dans le code entité, stack trace complète).
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.throwable.build.description
+@state
+GENERATED
 
+@sign
++T<Throwable,String>
+
+@tags
+DEBUG
+
+@difficulty
+2
+
+@creation_date
+20231129
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.tostring.list
+Convertit une liste de chaînes de caractères en une chaîne unique, un élément par ligne, en rejetant tout élément contenant un retour à la ligne.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.tostring.list
+@state
+GENERATED
 
+@sign
++T<List,String>
+
+@tags
+TOSTRING
+
+@difficulty
+0
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

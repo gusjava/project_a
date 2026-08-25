@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.swing.textcomp.cust.action.escap.clear
+Ajoute à un composant texte Swing une action déclenchée par la touche Échap qui vide entièrement son contenu.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.swing.textcomp.cust.action.escap.clear
+@state
+GENERATED
 
+@sign
++P<JTextComponent>
+
+@tags
+SWING,TEXTCOMP
+
+@difficulty
+1
+
+@creation_date
+20231129
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

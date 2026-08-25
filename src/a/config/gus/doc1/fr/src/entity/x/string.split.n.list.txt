@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.string.split.n.list
+Découpe une chaîne de caractères en une liste de lignes, en séparant sur les retours à la ligne.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.string.split.n.list
+@state
+GENERATED
 
+@sign
++T<String,List>
+
+@tags
+STRING
+
+@difficulty
+0
+
+@creation_date
+20240116
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

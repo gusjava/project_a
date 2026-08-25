@@ -1,9 +1,23 @@
 @description
-Description de l'entitÈ gus.x.swing.toolbar.factory1
+Fabrique une barre d'outils Swing personnalis√©e (non flottante, boutons compacts et sans bordure), vide ou pr√©-remplie avec une action donn√©e.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entitÈ gus.x.swing.toolbar.factory1
+@state
+GENERATED
 
+@sign
++I<JToolBar1>T<Action,JToolBar1>
+
+@tags
+SWING,TOOLBAR
+
+@difficulty
+2
+
+@creation_date
+20240112
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

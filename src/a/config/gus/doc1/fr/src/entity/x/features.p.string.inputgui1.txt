@@ -1,9 +1,26 @@
 @description
-Description de l'entité gus.x.features.p.string.inputgui1
+Fournit un panneau de saisie de texte multi-lignes avec un bouton "Perform" transmettant le contenu saisi Ã  un gestionnaire P, et un bouton "Clear" vidant la zone de texte.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.features.p.string.inputgui1
+@state
+GENERATED
 
+@sign
+*I<JPanel>P<P>R<JButton|JTextArea>
+
+@tags
+GUI
+
+@difficulty
+2
+
+@creation_date
+20231202
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658
+
+@rkeys
+buttonPerform,buttonClear,area

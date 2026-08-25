@@ -1,7 +1,23 @@
 @description
-Description de l'entit� gus.x.transform.string.regexp.quote
+Échappe dans une chaîne de caractères tous les caractères spéciaux d'expression régulière, afin de pouvoir l'utiliser telle quelle comme motif littéral.
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
++T<String>
+
+@tags
+STRING
+
+@difficulty
+0
+
+@creation_date
+20240714
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

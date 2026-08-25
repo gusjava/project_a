@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.swing.list.cust.renderer.obj
+Installe sur une JList un rendu personnalisé de ses éléments : texte de la valeur (ou « null »), police en italique si la valeur est nulle, et fond de couleur différent selon l'état de sélection.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.swing.list.cust.renderer.obj
+@state
+GENERATED
 
+@sign
++P<JList>
+
+@tags
+SWING
+
+@difficulty
+1
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,0 +1,23 @@
+@description
+Vérifie si un développeur a les droits d'accès sur une entité donnée (accès total pour "gus", sinon nom préfixé par son identifiant).
+
+@state
+GENERATED
+
+@sign
++F<Object[]>
+
+@tags
+ENTITY
+
+@difficulty
+0
+
+@creation_date
+20260426
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

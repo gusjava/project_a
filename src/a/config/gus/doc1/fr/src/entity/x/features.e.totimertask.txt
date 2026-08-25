@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.features.e.totimertask
+Convertit une feature E en TimerTask Java, exÃ©cutable par un java.util.Timer.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.features.e.totimertask
+@state
+GENERATED
 
+@sign
++T<E,TimerTask>
+
+@tags
+TIMER
+
+@difficulty
+1
+
+@creation_date
+20231129
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

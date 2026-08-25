@@ -1,0 +1,23 @@
+@description
+Construit le chemin du fichier .java correspondant à un nom de classe pointé, à partir d'un répertoire racine de sources.
+
+@state
+GENERATED
+
+@sign
++T<Object[],File>
+
+@tags
+SRC
+
+@difficulty
+1
+
+@creation_date
+20160410
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.string.filter.build.oneofthem.eq
+Construit un filtre F qui accepte une chaîne si elle est strictement égale à l'un des mots-clés (séparés par des espaces) fournis en paramètre, avec sensibilité à la casse.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.string.filter.build.oneofthem.eq
+@state
+GENERATED
 
+@sign
++T<String,Filter>
+
+@tags
+STRING,FILTER
+
+@difficulty
+1
+
+@creation_date
+20240113
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

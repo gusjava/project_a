@@ -1,0 +1,23 @@
+@description
+Écrit une chaîne de caractères dans un fichier en UTF-8, en créant les répertoires parents si nécessaire.
+
+@state
+GENERATED
+
+@sign
++P<Object[]>
+
+@tags
+FILE
+
+@difficulty
+1
+
+@creation_date
+20260412
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

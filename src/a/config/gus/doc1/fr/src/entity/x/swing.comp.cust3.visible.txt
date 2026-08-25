@@ -1,0 +1,23 @@
+@description
+Synchronise la visibilité d'un composant Swing avec le résultat (non-null) d'une source G, en se ré-évaluant à chaque événement émis par cette source.
+
+@state
+GENERATED
+
+@sign
++P<Object[]>
+
+@tags
+SWING
+
+@difficulty
+2
+
+@creation_date
+20140801
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,0 +1,23 @@
+@description
+Retourne un instantané de l'état de la mémoire de la JVM (heap et non-heap : utilisée, totale, maximale, libre) sous forme de map clé/valeur.
+
+@state
+GENERATED
+
+@sign
++G<Map>
+
+@tags
+JVM
+
+@difficulty
+1
+
+@creation_date
+20260410
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

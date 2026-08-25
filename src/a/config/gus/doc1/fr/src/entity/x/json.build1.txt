@@ -1,0 +1,23 @@
+@description
+Sérialise une structure de données Java (Map, List, Set, tableau, chaîne, booléen, nombre, date) au format texte JSON, avec échappement des caractères spéciaux et des séquences unicode.
+
+@state
+GENERATED
+
+@sign
++T<Object,String>
+
+@tags
+JSON
+
+@difficulty
+2
+
+@creation_date
+20170923
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

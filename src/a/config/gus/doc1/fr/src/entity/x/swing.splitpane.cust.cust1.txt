@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.swing.splitpane.cust.cust1
+Personnalise l'apparence d'un JSplitPane en fixant la taille du sÃ©parateur et la position initiale du divider.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.swing.splitpane.cust.cust1
+@state
+GENERATED
 
+@sign
++P<JSplitPane>
+
+@tags
+SWING,SPLITPANE
+
+@difficulty
+0
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

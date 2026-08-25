@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.entity.src.find.packagedir
+Détermine le répertoire de package correspondant à une entité, à partir du répertoire racine des sources.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.entity.src.find.packagedir
+@state
+GENERATED
 
+@sign
++T<Object[],File>
+
+@tags
+SRC
+
+@difficulty
+0
+
+@creation_date
+20240112
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

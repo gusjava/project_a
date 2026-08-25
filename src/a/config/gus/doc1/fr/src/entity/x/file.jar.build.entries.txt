@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.file.jar.build.entries
+Liste triÃ©e des noms des entrÃ©es contenues dans un fichier JAR.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.file.jar.build.entries
+@state
+GENERATED
 
+@sign
++T<File,List>
+
+@tags
+JAR
+
+@difficulty
+1
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.swing.comp.action.clear.copypastecut
+DÃ©sactive les actions copier, couper et coller d'un composant Swing en remplaÃ§ant leurs actions par une action vide.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.swing.comp.action.clear.copypastecut
+@state
+GENERATED
 
+@sign
++P<JComponent>
+
+@tags
+SWING
+
+@difficulty
+0
+
+@creation_date
+20240112
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,0 +1,23 @@
+@description
+Copie un fichier vers une destination donnée, en créant les répertoires parents si nécessaire.
+
+@state
+GENERATED
+
+@sign
++P<File[]>
+
+@tags
+FILE
+
+@difficulty
+1
+
+@creation_date
+20140706
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,0 +1,23 @@
+@description
+Filtre de fichiers vérifiant l'existence exacte (avec la casse) d'un fichier, en comparant son nom à la liste réelle des fichiers du répertoire parent, pour contourner les systèmes de fichiers insensibles à la casse.
+
+@state
+GENERATED
+
+@sign
++F<File>G<FileFilter>
+
+@tags
+FILEFILTER
+
+@difficulty
+1
+
+@creation_date
+20250210
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

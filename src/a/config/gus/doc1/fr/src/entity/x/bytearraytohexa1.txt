@@ -1,0 +1,23 @@
+@description
+Convertit un tableau d'octets (byte[]) en sa représentation hexadécimale sous forme de chaîne de caractères.
+
+@state
+GENERATED
+
+@sign
++T<byte[],String>
+
+@tags
+BYTE
+
+@difficulty
+1
+
+@creation_date
+20140704
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_195437

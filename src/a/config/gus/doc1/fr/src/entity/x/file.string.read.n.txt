@@ -1,7 +1,23 @@
 @description
-Description de l'entité gus.x.file.string.read.n
+Lit le contenu texte d'un fichier et normalise les fins de ligne au format \n.
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
++T<File,String>
+
+@tags
+FILE
+
+@difficulty
+0
+
+@creation_date
+20240712
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

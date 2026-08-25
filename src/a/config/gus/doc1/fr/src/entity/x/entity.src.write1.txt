@@ -1,0 +1,23 @@
+@description
+Écrit un contenu texte dans un fichier source, en créant les répertoires parents si nécessaire.
+
+@state
+GENERATED
+
+@sign
++P<Object[]>
+
+@tags
+ENTITY,SRC
+
+@difficulty
+1
+
+@creation_date
+20260415
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

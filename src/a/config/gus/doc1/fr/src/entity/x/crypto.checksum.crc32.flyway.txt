@@ -1,0 +1,23 @@
+@description
+Calcule un checksum CRC32 d'une chaîne de caractères, ligne par ligne en UTF-8, compatible avec le format utilisé par l'outil de migration Flyway.
+
+@state
+GENERATED
+
+@sign
++T<String>
+
+@tags
+CHECKSUM
+
+@difficulty
+0
+
+@creation_date
+20190328
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

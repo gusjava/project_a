@@ -1,7 +1,23 @@
 @description
-Description de l'entité gus.x.swing.textcomp.build.caretpositionlabel
+Construit un JLabel affichant en continu la position du curseur (et la longueur de la sÃ©lection) dans un composant texte Swing.
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
++T<JTextComponent,JLabel1>
+
+@tags
+SWING,TEXTCOMP
+
+@difficulty
+2
+
+@creation_date
+20240710
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

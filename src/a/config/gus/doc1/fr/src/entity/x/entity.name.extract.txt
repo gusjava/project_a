@@ -1,7 +1,23 @@
 @description
-Description de l'entit� gus.x.entity.name.extract
+Extrait la liste des noms d'entités valides présents dans un texte source, via une expression régulière.
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
++F<String>G<String>T<String,List>
+
+@tags
+ENTITY
+
+@difficulty
+1
+
+@creation_date
+20240111
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

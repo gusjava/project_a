@@ -1,0 +1,23 @@
+@description
+Analyse un code source Java (via JavaParser) et en extrait une structure détaillée (types, champs, constructeurs, méthodes, annotations, types imbriqués) sous forme de Map.
+
+@state
+GENERATED
+
+@sign
++T<String,Map>
+
+@tags
+AST
+
+@difficulty
+2
+
+@creation_date
+20260418
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

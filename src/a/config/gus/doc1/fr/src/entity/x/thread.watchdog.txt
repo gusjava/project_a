@@ -1,0 +1,23 @@
+@description
+Enveloppe un traitement T pour l'exécuter dans un thread séparé avec un délai maximal : au-delà du timeout, retourne un message décrivant où le thread est bloqué ; en cas d'erreur, retourne la description de l'exception.
+
+@state
+GENERATED
+
+@sign
++T<Object[],WatchdogT>
+
+@tags
+THREAD
+
+@difficulty
+3
+
+@creation_date
+20260410
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

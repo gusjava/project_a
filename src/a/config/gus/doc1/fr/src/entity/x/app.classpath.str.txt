@@ -1,0 +1,23 @@
+@description
+Convertit un tableau de fichiers (File[]) en chaîne de classpath, en joignant les chemins absolus de chaque fichier avec le séparateur de classpath du système.
+
+@state
+GENERATED
+
+@sign
++T<File[],String>
+
+@tags
+APP
+
+@difficulty
+0
+
+@creation_date
+20260409
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_195437

@@ -1,0 +1,23 @@
+@description
+Construit un bouton Swing affichant une couleur, qui ouvre un sélecteur de couleur (JColorChooser) au clic et permet de lire ou modifier la couleur choisie.
+
+@state
+GENERATED
+
+@sign
++I<JButtonColorChooser>T<Color,JButtonColorChooser>
+
+@tags
+SWING
+
+@difficulty
+2
+
+@creation_date
+20170306
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

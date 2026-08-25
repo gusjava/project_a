@@ -1,0 +1,23 @@
+@description
+Relie une JList et un JTextField pour la navigation clavier : les flèches Haut/Bas dans le champ de texte déplacent le focus vers le début ou la fin de la liste, tandis que les mêmes flèches en limite de liste (ou la touche Echap) ramènent le focus vers le champ de texte.
+
+@state
+GENERATED
+
+@sign
++P<Object[]>
+
+@tags
+SWING
+
+@difficulty
+2
+
+@creation_date
+20140819
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

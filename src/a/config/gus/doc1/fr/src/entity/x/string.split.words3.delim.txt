@@ -1,7 +1,23 @@
 @description
-Description de l'entit� gus.x.string.split.words3.delim
+Fournit la liste de caractères délimiteurs (ponctuation, espaces, symboles) utilisée pour découper une chaîne en mots, variante 3 (sans le point).
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
++G<String>
+
+@tags
+STRING
+
+@difficulty
+0
+
+@creation_date
+20240120
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

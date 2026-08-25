@@ -1,0 +1,23 @@
+@description
+Installe sur un composant un écouteur clavier qui exécute une action E à chaque pression de touche (keyPressed).
+
+@state
+GENERATED
+
+@sign
++P<Object[]>
+
+@tags
+SWING
+
+@difficulty
+1
+
+@creation_date
+20170819
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

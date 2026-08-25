@@ -1,0 +1,23 @@
+@description
+Lit le contenu texte d'un fichier en UTF-8 et normalise les fins de ligne au format \n.
+
+@state
+GENERATED
+
+@sign
++T<File,String>
+
+@tags
+FILE
+
+@difficulty
+0
+
+@creation_date
+20251116
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

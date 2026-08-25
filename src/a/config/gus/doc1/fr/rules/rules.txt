@@ -248,9 +248,17 @@ Ce schéma permet de découpler deux niveaux d'appel :
 
 @26 - Multiplicité d'une entité
 
-La multiplicité caractérise une entité de façon non contraignante, pour indiquer au noyau comment il peut la gérer. Deux valeurs sont possibles :
-- unique (+) : l'entité est stateless, elle ne déclare aucune variable de niveau classe (hors static final). Typiquement une entité à feature unique (T, G, P, F, B, H...) gérée en singleton par le noyau.
-- multiple (*) : l'entité est stateful, elle conserve un état dans au moins une variable de niveau classe.
+La multiplicité n'a de sens que dans le contexte d'utilisation d'une entité par le noyau : elle indique si le noyau renvoie la même instance de l'entité à chaque appel, ou une instance distincte à chaque appel. Deux valeurs sont possibles :
+- unique (+) : le noyau renvoie la même instance de l'entité à chaque appel.
+- multiple (*) : le noyau renvoie une instance distincte de l'entité à chaque appel.
+
+Il s'agit donc d'une règle de paramétrage du noyau concernant l'usage d'une entité, et non d'une propriété intrinsèque de celle-ci.
+
+En pratique, la multiplicité effective est portée par l'entité appelante, via le préfixe de la string d'appel utilisée pour Outside.service()/Outside.resource() : l'absence de préfixe vaut unique (règle par défaut), le préfixe `*` vaut multiple. Cette règle par défaut peut être surchargée dans la configuration du noyau.
+
+La multiplicité indiquée dans le sign (documentation) de l'entité appelée n'est donc qu'une indication non contraignante de son usage de prédilection — elle ne pilote pas directement le comportement du noyau.
+
+Le caractère stateless d'une entité (aucune variable de niveau classe, hors static final) induit une multiplicité unique de prédilection. La réciproque est fausse : une entité stateful peut elle aussi avoir une multiplicité unique de prédilection, lorsque son état de classe peut être considéré comme un singleton partagé sans risque par toute l'application (ex. cache lazy d'une valeur idempotente).
 
 @27 - Signature simple d'une entité
 

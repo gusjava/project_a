@@ -1,0 +1,23 @@
+@description
+Convertit le nom d'une entrée JAR (ou chemin) en notation de classpath Java, en remplaçant les séparateurs par des points.
+
+@state
+GENERATED
+
+@sign
++T<JarEntry|String,String>
+
+@tags
+JAR
+
+@difficulty
+1
+
+@creation_date
+20150703
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.entity.name.isx
+Détermine si un nom d'entité appartient à la catégorie x (vérifie que le second segment du nom est "x").
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.entity.name.isx
+@state
+GENERATED
 
+@sign
++F<String>
+
+@tags
+ENTITY
+
+@difficulty
+0
+
+@creation_date
+20240113
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,0 +1,23 @@
+@description
+Supprime un fichier s'il existe et retourne vrai si la suppression a réussi, faux s'il n'existait pas.
+
+@state
+GENERATED
+
+@sign
++F<File>P<File>
+
+@tags
+FILE
+
+@difficulty
+1
+
+@creation_date
+20150606
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

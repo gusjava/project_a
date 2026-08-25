@@ -1,7 +1,23 @@
 @description
-Description de l'entit� gus.x.clipboard.image
+Lit l'image présente dans le presse-papier système, ou y dépose une image.
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
++G<Image>P<Image>
+
+@tags
+CLIPBOARD
+
+@difficulty
+1
+
+@creation_date
+20240121
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

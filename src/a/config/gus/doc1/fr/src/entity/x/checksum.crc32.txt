@@ -1,7 +1,17 @@
 @description
-Produit le CRC32 (String) à partir d'un byte[] (ou équivalent).
-byte[], String, InputStream, File, URL
-@infos
-state=COMPLETE
-sign=+T<byte[],String>
-tags=BYTE
+Produit le CRC32 (String) Ã  partir d'une source de donnÃ©es â€” byte[], String, InputStream, File ou URL.
+
+@state
+COMPLETE
+
+@sign
++T<File|InputStream|String|URL|byte[],String>
+
+@tags
+BYTE
+
+@difficulty
+1
+
+@creation_date
+20231202

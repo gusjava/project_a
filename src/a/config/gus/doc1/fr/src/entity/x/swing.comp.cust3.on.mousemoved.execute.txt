@@ -1,0 +1,23 @@
+@description
+Installe sur un composant Swing un écouteur de mouvement de souris qui déclenche une action E à chaque déplacement de la souris au-dessus du composant (événement mouseMoved).
+
+@state
+GENERATED
+
+@sign
++P<Object[]>
+
+@tags
+SWING
+
+@difficulty
+1
+
+@creation_date
+20170820
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

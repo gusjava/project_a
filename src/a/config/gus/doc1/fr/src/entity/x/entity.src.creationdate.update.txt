@@ -1,0 +1,23 @@
+@description
+Remplace la date de création (creationDate()) dans le code source d'une entité par une date fournie, sous forme de chaîne ou de Date.
+
+@state
+GENERATED
+
+@sign
++T<Object[],String>
+
+@tags
+SRC
+
+@difficulty
+1
+
+@creation_date
+20260505
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

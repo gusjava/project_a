@@ -1,7 +1,23 @@
 @description
-Description de l'entité gus.x.swing.panel.bg.red
+Fournit un JPanel Ã  fond de couleur rouge.
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
+*I<JPanel>
+
+@tags
+SWING
+
+@difficulty
+0
+
+@creation_date
+20231114
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

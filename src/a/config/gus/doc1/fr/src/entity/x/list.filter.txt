@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.list.filter
+Filtre une liste selon un critère F, en conservant uniquement les éléments qui le satisfont ; peut retourner une nouvelle liste filtrée (T) ou modifier la liste fournie en place (F/P).
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.list.filter
+@state
+GENERATED
 
+@sign
++F<Object[]>P<Object[]>T<Object[],List>
+
+@tags
+LIST,FILTER
+
+@difficulty
+1
+
+@creation_date
+20240113
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

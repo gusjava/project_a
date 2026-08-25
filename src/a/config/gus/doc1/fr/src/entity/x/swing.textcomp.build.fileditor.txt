@@ -1,7 +1,23 @@
 @description
-Description de l'entit� gus.x.swing.textcomp.build.fileditor
+Construit un lien entre un composant texte Swing et un fichier disque : chargement du contenu à l'affectation du fichier, sauvegarde automatique à chaque modification du texte.
 
-@infos
-state=GENERATED
-sign=
-tags=
+@state
+GENERATED
+
+@sign
++T<JTextComponent,Holder>
+
+@tags
+SWING,TEXTCOMP
+
+@difficulty
+2
+
+@creation_date
+20240118
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

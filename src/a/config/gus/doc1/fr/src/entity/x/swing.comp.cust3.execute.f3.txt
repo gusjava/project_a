@@ -1,0 +1,23 @@
+@description
+Installe sur un composant (et ses sous-composants) une écoute clavier/souris qui exécute une action E lorsque la touche F3 est pressée.
+
+@state
+GENERATED
+
+@sign
++P<Object[]>
+
+@tags
+SWING
+
+@difficulty
+2
+
+@creation_date
+20201113
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

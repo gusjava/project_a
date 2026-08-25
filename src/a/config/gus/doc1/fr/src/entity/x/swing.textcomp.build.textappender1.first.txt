@@ -1,9 +1,23 @@
 @description
-Description de l'entitÈ gus.x.swing.textcomp.build.textappender1.first
+Construit un accesseur permettant d'ins√©rer un texte au tout d√©but du contenu d'un composant texte Swing, en repositionnant le curseur au d√©but.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entitÈ gus.x.swing.textcomp.build.textappender1.first
+@state
+GENERATED
 
+@sign
++T<JTextComponent,TextAppender>
+
+@tags
+SWING,TEXTCOMP
+
+@difficulty
+1
+
+@creation_date
+20240111
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

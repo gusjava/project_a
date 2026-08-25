@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.transform.string.case1.lowercase
+Convertit une chaÃ®ne de caractÃ¨res en minuscules.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.transform.string.case1.lowercase
+@state
+GENERATED
 
+@sign
++T<String>
+
+@tags
+STRING
+
+@difficulty
+0
+
+@creation_date
+20240113
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

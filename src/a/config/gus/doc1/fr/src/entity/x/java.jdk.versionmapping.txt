@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.java.jdk.versionmapping
+Convertit un numÃ©ro de version majeure de bytecode Java (class file major version) en son nom commercial de JDK/J2SE correspondant.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.java.jdk.versionmapping
+@state
+GENERATED
 
+@sign
++T<Integer|String,String>
+
+@tags
+JDK
+
+@difficulty
+1
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

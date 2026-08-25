@@ -1,0 +1,23 @@
+@description
+Filtre de fichiers (FileFilter) qui accepte uniquement les répertoires.
+
+@state
+GENERATED
+
+@sign
++F<File>G<FileFilter>
+
+@tags
+FILEFILTER
+
+@difficulty
+0
+
+@creation_date
+20141021
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.entity.srcfile.listing.root1.dev.z
+Liste récursivement les noms des entités Java de catégorie z (applicatives) d'un développeur donné, à partir d'un répertoire d'entités racine.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.entity.srcfile.listing.root1.dev.z
+@state
+GENERATED
 
+@sign
++T<Object[],List>
+
+@tags
+ENTITY,DIRLISTING
+
+@difficulty
+1
+
+@creation_date
+20231203
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

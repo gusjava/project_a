@@ -1,9 +1,23 @@
 @description
-Description de l'entité gus.x.io.transfer.toprintstream
+TransfÃ¨re ligne par ligne le contenu d'un flux d'entrÃ©e vers un flux d'impression (PrintStream).
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entité gus.x.io.transfer.toprintstream
+@state
+GENERATED
 
+@sign
++P<Object[]>
+
+@tags
+IO
+
+@difficulty
+1
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

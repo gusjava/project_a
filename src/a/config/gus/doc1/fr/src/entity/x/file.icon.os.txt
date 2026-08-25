@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.file.icon.os
+Retourne l'icône système associée à un fichier, telle que fournie par l'explorateur de fichiers du système d'exploitation.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.file.icon.os
+@state
+GENERATED
 
+@sign
++T<File,Icon>
+
+@tags
+ICON
+
+@difficulty
+1
+
+@creation_date
+20231128
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658

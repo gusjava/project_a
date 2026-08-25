@@ -1,9 +1,23 @@
 @description
-Description de l'entit� gus.x.swing.table.cust.renderer.mapstring1
+Installe sur une JTable un renderer de cellules pour les valeurs String qui met en évidence les caractères de contrôle (\r, \t, \n) en HTML et applique une couleur de fond alternée selon la sélection.
 
-@infos
-state=GENERATED
-sign=
-tags=
-Documentation pour l'entit� gus.x.swing.table.cust.renderer.mapstring1
+@state
+GENERATED
 
+@sign
++P<JTable>
+
+@tags
+SWING,TABLE
+
+@difficulty
+2
+
+@creation_date
+20231129
+
+@generator
+claude-sonnet-5
+
+@generated_time
+20260824_203658
