@@ -1,0 +1,240 @@
+@001 - Le serveur socket
+gus.appli1 embarque un serveur socket (composant gus.y.server1) qui permet de piloter l'application depuis l'extérieur, sans passer par l'IHM.
+
+Ce serveur donne accès à trois grandes familles de fonctionnalités :
+- consultation de l'état de l'application (informations JVM, mémoire, threads, erreurs accumulées)
+- manipulation complète des entités du projet (création, édition, renommage, inspection du code source, navigation dans les dépendances)
+- accès aux bases de données knowledge et roadmap (lecture, création, mise à jour, suppression, SQL brut)
+
+C'est ce serveur qui est utilisé par l'intégration MCP "call", qui permet notamment à un assistant IA de piloter le projet a en conditions réelles (recherche, documentation, création et correction d'entités...).
+
+@002 - Protocole de communication
+>Format d'entrée
+Une commande est une simple ligne de texte :
+
+<cmd> [args]
+
+- <cmd> est le premier mot de la ligne (jusqu'au premier espace)
+- [args] est tout ce qui suit, optionnel
+
+Le mot <cmd> est lui-même découpé sur le caractère "-" pour former une liste de sous-commandes. Ce découpage permet d'exprimer une hiérarchie de commandes en une seule fois :
+
+- hello -> ["hello"] (commande simple)
+- e-src -> ["e", "src"] (commande "src" de la famille "e")
+- k-find_k -> ["k", "find_k"] (commande "find_k" de la famille "k")
+
+Une commande de famille (e, k, r) exige donc toujours un tiret suivi du nom de la sous-commande ; "e help" (avec un espace) ne fonctionne pas, il faut écrire "e-help".
+
+>Format des arguments
+Les arguments (partie après le premier espace) peuvent prendre deux formes :
+
+- une liste de mots séparés par des espaces, avec support des guillemets simples ou doubles pour les valeurs contenant des espaces, et l'antislash comme caractère d'échappement (\", \', \\, \n, \t, \r)
+  exemple : e-rename ancien.nom nouveau.nom
+- un objet JSON, si les arguments commencent par le caractère ":" (le JSON est alors parsé tel quel : Map, List, String...)
+  exemple : e-sql :{"sql":"SELECT * FROM entity"}
+
+Le choix entre les deux formes dépend de la commande ciblée : certaines commandes attendent une simple liste de mots, d'autres exigent un objet JSON (notamment toutes celles qui manipulent du code source ou des enregistrements structurés).
+
+>Format de sortie
+La réponse est toujours un objet JSON, quel que soit le type de donnée retourné par la commande (chaîne, nombre, liste, map...).
+
+>Commandes spéciales
+Deux préfixes permettent de sortir du système de commandes prédéfinies :
+
+- @entityName [args] : invoque directement une entité du projet qui implémente l'interface T (méthode t()). Si un seul argument est fourni, il est passé tel quel ; sinon, la liste complète des arguments est passée. La forme @entityName :<json> permet de passer un objet structuré (Map, List, String) directement à l'entité, en utilisant le même mécanisme que les arguments JSON décrits ci-dessus.
+- #scriptName [args] : prévu pour invoquer un script nommé, non implémenté à ce jour (retourne toujours un objet vide).
+
+@003 - Commandes générales
+Ces commandes n'ont pas de préfixe de famille : elles s'invoquent directement par leur nom.
+
+>Information
+- hello : message de bienvenue du serveur
+- help : liste toutes les commandes disponibles avec leur description
+- infos : informations JVM et serveur
+- config : identifiant de la configuration courante
+- coreId : identifiant du noyau (core) courant
+- main : description complète de la map "main" (informations de lancement de l'application)
+- main <clé> : description de la valeur associée à <clé> dans la map "main"
+- prop : map complète des propriétés de l'application
+- prop <clé> : valeur d'une propriété précise
+
+>Diagnostic
+- threads : instantané de tous les threads JVM (id -> informations)
+- thread <id> : trace de pile complète d'un thread donné par son id
+- thread EDT : trace de pile de l'Event Dispatch Thread (thread graphique Swing)
+- memory : utilisation mémoire de la JVM (heap et non-heap)
+- errors : liste des erreurs accumulées par l'application
+- error <n> : détail de l'erreur à l'index <n> (index positif ou négatif, en partant de la fin)
+- errorstacktrace <n> : trace de pile complète de l'erreur à l'index <n>
+- errornumber : nombre total d'erreurs accumulées
+
+>Ressources
+- resource <règle> : appelle Outside.resource(this, "<règle>") ; les arguments éventuels sont concaténés avec un espace et transmis à la règle (voir @004 pour le détail des "resource builders" disponibles)
+
+>Cycle de vie du serveur
+- restart : redémarre le serveur (retourne "Restarting...", le serveur redevient disponible après environ 10 secondes)
+- exit : arrête le serveur (retourne "Bye.")
+
+Règle importante : après toute modification du code source d'une entité, une recompilation (e-reload) ne suffit pas à charger les nouvelles classes en mémoire — un restart est nécessaire pour que les changements prennent effet à l'exécution.
+
+@004 - Resource builders
+La commande "resource" accepte deux formats : "resource <règle>" pour une règle de mapping simple, ou "resource <rb>#<info>" pour invoquer un "resource builder" (rb) précis avec un paramètre.
+
+- resource props : map complète des propriétés de l'application
+- resource g#<clé> : appelle la méthode g() sur le module ou l'entité désigné par <clé>
+- resource prop#<clé> : valeur de la propriété <clé> dans la map des propriétés
+- resource param#<clé> : valeur du paramètre <clé> dans la map des paramètres de lancement
+- resource path#<clé> : chemin résolu via le système de gestion des chemins de l'application
+- resource pool# : répertoire "pool" de l'entité appelante
+- resource icon#<id> : icône chargée depuis le système d'icônes de l'application
+- resource class1#<fqcn> : classe Java chargée par réflexion (Class.forName)
+- resource new1#<fqcn> : nouvelle instance créée par réflexion à partir d'un nom de classe Java complet
+- resource factory#<entité> : fabrique (G) qui crée de nouvelles instances de l'entité désignée
+- resource string#<valeur> : retourne <valeur> telle quelle
+- resource sys#<clé> : ressource système (par exemple la sortie standard)
+
+Certaines règles de mapping simples (sans "#") sont aussi disponibles directement, par exemple "resource rootdir" qui redirige en interne vers "path#path.rootdir".
+
+@005 - Commandes dynamiques
+En complément des commandes prédéfinies, deux préfixes permettent d'invoquer directement du code du projet sans passer par une commande dédiée (détail du format en @002) :
+
+- @entityName [args] ou @entityName :<json> : invoque n'importe quelle entité du projet qui implémente l'interface T, en lui passant les arguments fournis. C'est le mécanisme le plus général du serveur : il permet de tester ou d'utiliser directement une entité, y compris une entité qui n'est reliée à aucune commande officielle.
+- #scriptName [args] : réservé à l'invocation de scripts nommés. Non implémenté actuellement (retourne systématiquement un objet vide).
+
+@006 - Commandes entity (e)
+La famille "e" regroupe toutes les commandes de manipulation et d'inspection des entités du projet a (elles s'appuient sur la base de registre entitydb1). Toutes les sous-commandes s'invoquent sous la forme "e-<sous-commande>".
+
+>Commandes générales
+- e-help : aide
+- e-reload : recompile les sources Java modifiés (ne recharge pas les classes en mémoire, voir @003)
+- e-errors [entité] : erreurs de compilation, toutes ou filtrées par entité
+- e-sql :{"sql":"<SQL>"} : exécute une requête SQL brute sur la base entitydb1 (SELECT, SHOW, INSERT, UPDATE, DELETE) ; le format JSON avec ":" est obligatoire
+
+>Manipulation d'entités (toutes asynchrones, prévoir 1 à 2 secondes avant vérification)
+- e-create <entité> [features] : crée le code source d'une nouvelle entité (features : lettres parmi BEFGHIPRSTV)
+- e-createtree :<json> : crée un arbre complet d'entités depuis une structure JSON imbriquée
+- e-importsrc :{"src":"<source>"} : crée ou remplace intégralement le code source d'une entité
+- e-rename <ancien> <nouveau> : renomme une entité et refactore tous les liens qui la référencent
+- e-duplicate <source> <copie> : duplique une entité existante
+- e-delete <entité> : supprime une entité
+- e-editinsert :{name,pos,src} : insère du texte à une position donnée (offset de caractères) dans le source
+- e-editremove :{name,...} : supprime une section du source, par offsets (start/end) ou par recherche de motif (search, avec mode first/all/last)
+- e-editreplace :{name,...,replacement} : remplace une section du source, par offsets ou par recherche de motif
+- e-editmulti :{name,...} : applique plusieurs modifications en une seule fois
+
+>Inspection d'une entité
+- e-src <entité> : code source complet (EntityImpl.java)
+- e-srcpart <entité> <start> <end> : extrait du source entre deux offsets de caractères
+- e-path <entité> : chemin absolu du fichier EntityImpl.java
+- e-features <entité> : lettres des interfaces framework implémentées (ex : GT)
+- e-creationdate <entité> : date de création déclarée dans le code
+- e-hash <entité> : hash sémantique du code (insensible au package, aux imports et à la mise en forme)
+- e-ast1 <entité> : arbre syntaxique simplifié (package, imports, classe sans modificateurs, méthodes sans corps ni "throws")
+- e-ast2 <entité> : comme ast1, avec en plus les modificateurs de la classe et les clauses "throws" des méthodes
+- e-ast3 <entité> : comme ast2, avec en plus le corps complet des méthodes
+- e-computehash <entité> : calcule le hash sémantique à la volée
+
+>Navigation dans les dépendances
+- e-downlinks <entité> : entités qui dépendent directement de <entité>
+- e-uplinks <entité> : dépendances directes de <entité>
+- e-downlinkstree <entité> <profondeur> : arbre récursif des downlinks
+- e-uplinkstree <entité> <profondeur> : arbre récursif des uplinks
+- e-downlinkstree2 <entité> <profondeur> : arbre récursif des downlinks, avec description (nom-features) de chaque entité
+- e-uplinkstree2 <entité> <profondeur> : arbre récursif des uplinks, avec description de chaque entité
+- e-imports <entité> : imports Java déclarés par l'entité
+
+>Comptage et listage
+- e-count : nombre total d'entités
+- e-count_st / e-count_en / e-count_co <fragment> : nombre d'entités dont le nom commence par / se termine par / contient <fragment>
+- e-count_import <import> / e-count_import_co <fragment> : nombre d'entités qui déclarent cet import (exact ou par fragment)
+- e-names : liste de tous les noms d'entités
+- e-names_st / e-names_en / e-names_co <fragment> : noms d'entités filtrés par préfixe / suffixe / fragment
+- e-names_import <import> / e-names_import_co <fragment> : noms d'entités qui déclarent cet import (exact ou par fragment)
+
+>Recherche en masse (retournent une Map ou une liste pour toutes les entités concernées)
+- e-featuresbyname [_st/_en/_co <fragment>] : features de toutes les entités, éventuellement filtrées par nom
+- e-creationdatebyname [_st/_en/_co <fragment>] : dates de création de toutes les entités, éventuellement filtrées par nom
+- e-descs [_st/_en/_co <fragment>] : entités sous forme "nom-features", éventuellement filtrées par nom
+- e-infosbyname_st / _en / _co <fragment> : informations complètes des entités filtrées par nom (commande volumineuse, à utiliser avec un filtre)
+- e-countbyhash_multi : regroupement des entités par hash sémantique (détection de doublons/quasi-doublons)
+
+>Statistiques de groupement (retournent des agrégats sur un groupe d'entités filtré par nom)
+- e-featuresfreq_st / _en / _co <fragment> : fréquence des "features" pour le groupe de nom filtré (Map "features"->count)
+- e-filenbfreq_st / _en / _co <fragment> : fréquence de "file_nb" pour le groupe de nom filtré (Map "file_nb"->count)
+- e-lengthstats_st / _en / _co <fragment> : count/min/max/avg/stddev sur "length" pour le groupe de nom filtré
+- e-fanoutstats_st / _en / _co <fragment> : count/min/max/avg/stddev + fréquence sur "call_nb" (fan-out) pour le groupe de nom filtré
+- e-faninternalstats_st / _en / _co <fragment> : count/min/max/avg/stddev + fréquence + top sur le fan-in interne au groupe (appelants dont le nom matche aussi le pattern)
+- e-fanexternalstats_st / _en / _co <fragment> : count/min/max/avg/stddev + fréquence + top sur le fan-in externe au groupe (appelants dont le nom ne matche pas le pattern)
+- e-creationdatestats_st / _en / _co <fragment> : count/min/max/spreadDays sur "creation_date" pour le groupe de nom filtré
+
+@007 - Commandes knowledge (k)
+La famille "k" donne accès à la base knowledgedb1, qui stocke les connaissances capitalisées sur le projet (table knowledge) et les todos (table todo), avec leurs tags et leurs liens. Toutes les sous-commandes s'invoquent sous la forme "k-<sous-commande>", avec des underscores (jamais de camelCase) dans le nom des sous-commandes.
+
+Suffixes de nomenclature : _k pour knowledge, _t pour todo, _a pour tag, _kk pour un lien knowledge vers knowledge, _tt pour un lien todo vers todo, _tk pour un lien todo vers knowledge.
+
+>Utilitaires
+- k-help : aide
+- k-show <table> : colonnes d'une table
+- k-count <table> : nombre de lignes d'une table
+- k-tables : liste des tables
+- k-tags : tous les tags distincts existants
+- k-search <table> <champ> <valeur> : recherche par correspondance partielle (LIKE) sur un champ
+- k-sql :{"sql":"<SQL>"} : SQL brut sur knowledgedb1 (SELECT, SHOW, INSERT, UPDATE, DELETE, ALTER, CREATE, DROP)
+
+>Lecture
+- k-find_k <id> / k-find_t <id> : recherche un knowledge ou un todo par id
+- k-find2_k <id> : détail complet d'un knowledge (informations, tags, liens montants et descendants)
+- k-tags_k <id> / k-tags_t <id> : tags d'un knowledge ou d'un todo
+- k-up_k <id> / k-up_t <id> : liens montants (éléments qui pointent vers celui-ci)
+- k-down_k <id> / k-down_t <id> : liens descendants (éléments vers lesquels celui-ci pointe)
+
+>Création, mise à jour, suppression
+- k-create_k :<json> / k-create_t :<json> : crée un knowledge ou un todo
+- k-update_k :<json> / k-update_t :<json> : met à jour un knowledge ou un todo (id requis dans le json)
+- k-delete_k <id> / k-delete_t <id> : supprime un knowledge ou un todo
+
+Format pour k-create_k : {"code":"K042","action":"LEARN","object":"...","state":"DRAFT","ctxfilename":"042-mon-ctx.md"}. Le champ "code" suit le format KNNN (NNN = numéro de ctx associé). Le champ "action" prend l'une des valeurs LEARN, CREATE, UPDATE, DELETE, VERIFY, ANALYZE, REFACTOR, CONFIGURE, SPECIFIC. Le champ "ctxfilename" (optionnel) permet de faire lire au serveur le fichier ctx correspondant et de remplir automatiquement la description. Le champ "state" prend l'une des valeurs DRAFT, STABLE, DEPRECATED.
+
+>Tags
+- k-add_ka <id> <tag> / k-add_ta <id> <tag> : ajoute un tag à un knowledge ou un todo
+- k-remove_ka <id> <tag> / k-remove_ta <id> <tag> : retire un tag
+
+>Liens
+- k-add_kk <id1> <id2> <type> : lien knowledge vers knowledge
+- k-add_tt <id1> <id2> <type> : lien todo vers todo
+- k-add_tk <id_todo> <id_knowledge> <type> : lien todo vers knowledge
+- k-remove_kk <id1> <id2> / k-remove_tt <id1> <id2> / k-remove_tk <id_todo> <id_knowledge> : suppression des liens correspondants
+
+Types de lien disponibles : REQUIRED, OPTIONAL, EXTENDS, CONTRADICTS, REPLACES.
+
+@008 - Commandes roadmap (r)
+La famille "r" donne accès à la base roadmapdb1, qui stocke le suivi de l'avancement du projet : objectifs (objective), tâches (task), notes (note), sprints (sprint) et entrées de sprint (sprint_entry). Toutes les sous-commandes s'invoquent sous la forme "r-<sous-commande>".
+
+>Utilitaires
+- r-help : aide
+- r-show <table> : colonnes d'une table
+- r-count <table> : nombre de lignes d'une table
+- r-tables : liste des tables
+- r-tags : tous les tags distincts existants (toutes tables confondues)
+- r-search <table> <champ> <valeur> : recherche par correspondance partielle (LIKE) sur un champ
+- r-sql <SQL> ou r-sql :{"sql":"<SQL>"} : SQL brut sur roadmapdb1 (SELECT, SHOW, INSERT, UPDATE, DELETE)
+
+>Lecture
+- r-get <table> <id> : un enregistrement par id
+- r-list <table> [limite] : derniers enregistrements de la table (20 par défaut)
+- r-detailofobjective <id> / r-detailoftask <id> / r-detailofnote <id> : détail complet (données + tags)
+- r-detailofsprint <id> / r-detailofsprintentry <id> : détail complet (données)
+- r-tagsof <table> <id> : tags d'un enregistrement
+
+>Création et mise à jour (arguments passés en JSON après ":")
+- r-createobjective :<json> / r-createtask :<json> / r-createnote :<json> / r-createsprint :<json> / r-createsprintentry :<json> : crée un enregistrement dans la table correspondante
+- r-updateobjective :<json> / r-updatetask :<json> / r-updatenote :<json> / r-updatesprint :<json> / r-updatesprintentry :<json> : met à jour un enregistrement (id requis dans le json)
+
+Exemples : r-createobjective :{"title":"...","state":"DRAFT"} — r-updatetask :{"id":1,"state":"DONE"}
+
+>Suppression
+- r-deleteobjective <id> / r-deletetask <id> / r-deletenote <id> / r-deletesprint <id> / r-deletesprintentry <id> : supprime un enregistrement
+
+>Tags
+- r-addtag <table> <id> <tag> : ajoute un tag à un enregistrement
+- r-removetag <table> <id> <tag> : retire un tag d'un enregistrement

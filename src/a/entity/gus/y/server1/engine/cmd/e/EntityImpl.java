@@ -85,6 +85,33 @@ public class EntityImpl implements Entity, T {
 	private Service featuresbyname_en;
 	private Service featuresbyname_co;
 	
+	// statistiques de groupement (frequences)
+	
+	private Service featuresfreq_st;
+	private Service featuresfreq_en;
+	private Service featuresfreq_co;
+	private Service filenbfreq_st;
+	private Service filenbfreq_en;
+	private Service filenbfreq_co;
+	
+	// statistiques de groupement (stats numeriques)
+	
+	private Service lengthstats_st;
+	private Service lengthstats_en;
+	private Service lengthstats_co;
+	private Service fanoutstats_st;
+	private Service fanoutstats_en;
+	private Service fanoutstats_co;
+	private Service faninternalstats_st;
+	private Service faninternalstats_en;
+	private Service faninternalstats_co;
+	private Service fanexternalstats_st;
+	private Service fanexternalstats_en;
+	private Service fanexternalstats_co;
+	private Service creationdatestats_st;
+	private Service creationdatestats_en;
+	private Service creationdatestats_co;
+	
 	// recherche des dates de creation
 	
 	private Service creationdatebyname;
@@ -183,6 +210,29 @@ public class EntityImpl implements Entity, T {
 		featuresbyname_st     = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.featuresbyname_w_st");
 		featuresbyname_en     = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.featuresbyname_w_en");
 		featuresbyname_co     = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.featuresbyname_w_co");
+		
+		featuresfreq_st  = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.featuresfreq_w_st");
+		featuresfreq_en  = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.featuresfreq_w_en");
+		featuresfreq_co  = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.featuresfreq_w_co");
+		filenbfreq_st    = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.filenbfreq_w_st");
+		filenbfreq_en    = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.filenbfreq_w_en");
+		filenbfreq_co    = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.filenbfreq_w_co");
+		
+		lengthstats_st   = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.lengthstats_w_st");
+		lengthstats_en   = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.lengthstats_w_en");
+		lengthstats_co   = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.lengthstats_w_co");
+		fanoutstats_st   = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.fanoutstats_w_st");
+		fanoutstats_en   = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.fanoutstats_w_en");
+		fanoutstats_co   = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.fanoutstats_w_co");
+		faninternalstats_st = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.faninternalstats_w_st");
+		faninternalstats_en = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.faninternalstats_w_en");
+		faninternalstats_co = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.faninternalstats_w_co");
+		fanexternalstats_st = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.fanexternalstats_w_st");
+		fanexternalstats_en = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.fanexternalstats_w_en");
+		fanexternalstats_co = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.fanexternalstats_w_co");
+		creationdatestats_st = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.creationdatestats_w_st");
+		creationdatestats_en = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.creationdatestats_w_en");
+		creationdatestats_co = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.creationdatestats_w_co");
 		
 		creationdatebyname    = Outside.service(this, "gus.y.server1.engine.cmd.e.n0.creationdatebyname");
 		creationdatebyname_st = Outside.service(this, "gus.y.server1.engine.cmd.e.n1.creationdatebyname_w_st");
@@ -292,6 +342,29 @@ public class EntityImpl implements Entity, T {
 		if(cmd.equals("featuresbyname_st"))     return featuresbyname_st;
 		if(cmd.equals("featuresbyname_en"))     return featuresbyname_en;
 		if(cmd.equals("featuresbyname_co"))     return featuresbyname_co;
+
+		if(cmd.equals("featuresfreq_st"))  return featuresfreq_st;
+		if(cmd.equals("featuresfreq_en"))  return featuresfreq_en;
+		if(cmd.equals("featuresfreq_co"))  return featuresfreq_co;
+		if(cmd.equals("filenbfreq_st"))    return filenbfreq_st;
+		if(cmd.equals("filenbfreq_en"))    return filenbfreq_en;
+		if(cmd.equals("filenbfreq_co"))    return filenbfreq_co;
+
+		if(cmd.equals("lengthstats_st"))  return lengthstats_st;
+		if(cmd.equals("lengthstats_en"))  return lengthstats_en;
+		if(cmd.equals("lengthstats_co"))  return lengthstats_co;
+		if(cmd.equals("fanoutstats_st"))  return fanoutstats_st;
+		if(cmd.equals("fanoutstats_en"))  return fanoutstats_en;
+		if(cmd.equals("fanoutstats_co"))  return fanoutstats_co;
+		if(cmd.equals("faninternalstats_st"))  return faninternalstats_st;
+		if(cmd.equals("faninternalstats_en"))  return faninternalstats_en;
+		if(cmd.equals("faninternalstats_co"))  return faninternalstats_co;
+		if(cmd.equals("fanexternalstats_st"))  return fanexternalstats_st;
+		if(cmd.equals("fanexternalstats_en"))  return fanexternalstats_en;
+		if(cmd.equals("fanexternalstats_co"))  return fanexternalstats_co;
+		if(cmd.equals("creationdatestats_st"))  return creationdatestats_st;
+		if(cmd.equals("creationdatestats_en"))  return creationdatestats_en;
+		if(cmd.equals("creationdatestats_co"))  return creationdatestats_co;
 
 		// recherche des dates de creation
 
