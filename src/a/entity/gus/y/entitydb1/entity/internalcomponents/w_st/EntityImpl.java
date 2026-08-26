@@ -68,7 +68,7 @@ public class EntityImpl implements Entity, T {
 			int v = ((Integer) sit.next()).intValue();
 			int idx = 0;
 			while (idx < sizeList.size() && ((Integer) sizeList.get(idx)).intValue() >= v) idx++;
-			sizeList.add(idx, new Integer(v));
+			sizeList.add(idx, Integer.valueOf(v));
 		}
 
 		List top = new ArrayList();
