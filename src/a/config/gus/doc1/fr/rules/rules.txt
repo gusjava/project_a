@@ -313,4 +313,42 @@ Champs spécifiques à une unité y :
 
 Une unité z ne comporte aucun champ spécifique : n'étant pas destinée à être réutilisée (cf gus#5), les champs qui documentent la manière d'utiliser une unité (type, sign, index, members, entry, extension, registry_queryable) n'ont pas de sens pour elle. Seuls les champs communs s'appliquent.
 
+@30 - Objet de traitement
+
+Un objet de traitement est tout objet Java qui implémente au moins une des 11 interfaces standardisées du framework a. Ces interfaces normalisent le contrat d'interaction entre objets : n'importe quel appelant peut invoquer leurs méthodes sans connaître l'implémentation réelle qui se cache derrière, du moment qu'elle respecte la signature attendue.
+
+Une entité (cf gus#2) est un cas particulier d'objet de traitement : celui qui implémente en plus l'interface Entity, ce qui lui donne une identité stable (creationDate()) et une existence propre au sein d'une unité x, y ou z.
+
+Le noyau est la racine de toute génération d'objets de traitement au sein d'une application (cf gus#31). Une fois obtenu, n'importe quel objet de traitement peut à son tour en générer d'autres en interne, sans repasser par le noyau : cette génération est récursive et sans limite de profondeur imposée par le framework.
+
+@31 - Les objets de traitement manipulés par un noyau
+
+Un noyau peut manipuler des objets de traitement de deux origines distinctes :
+
+- Origine native : des objets de traitement propres au mécanisme de base du noyau, gérés en interne selon des modalités qui lui sont propres (cf gus#10 pour leur documentation).
+- Origine externe : des entités (cf gus#2), implémentations fournies par un ou plusieurs développeurs et mises à la disposition du noyau pour l'enrichir au-delà de son mécanisme natif.
+
+Du point de vue d'une entité appelante, ces deux origines sont indifférenciées : elle ne sait jamais si l'objet de traitement qu'elle récupère via Outside.service() (cf gus#22) provient du mécanisme natif du noyau ou d'une autre entité — seul le noyau connaît la véritable origine.
+
+@32 - Rôle de l'interface Service
+
+L'interface Service (cf gus#22) est elle-même un objet de traitement, mais qui joue un rôle particulier : celui de façade. Le noyau l'utilise pour envelopper l'objet de traitement qu'il restitue à une entité appelante suite à un appel de service, quelle que soit l'origine réelle de cet objet (native ou externe, cf gus#31).
+
+Cette façade permet à une entité de récupérer, de manière uniforme, n'importe quel objet de traitement géré par le noyau — y compris une instance d'une autre entité — sans avoir à connaître ni son type Java réel, ni son origine. L'entité appelante n'interagit qu'au travers des features exposées par le Service, jamais directement avec l'objet enveloppé.
+
+@33 - Liens ascendants et descendants entre entités
+
+Lorsqu'une entité A appelle un service ou une ressource d'une entité B (cf gus#22/#23), cela crée un lien orienté de A vers B. Ce lien se lit selon deux points de vue symétriques, chacun associé à un vocabulaire anglais et français normalisé :
+
+- vu depuis A : B est un lien ascendant (uplink) de A — un uplink est une entité que l'on appelle, une dépendance.
+- vu depuis B : A est un lien descendant (downlink) de B — un downlink est une entité qui vous appelle, un dépendant.
+
+Ascendant/uplink = vers l'amont (ce que l'entité appelle). Descendant/downlink = vers l'aval (ce qui appelle l'entité).
+
+Par extension, pour une entité donnée :
+- fan-out : nombre de ses liens ascendants (uplinks) — combien d'entités distinctes elle appelle.
+- fan-in : nombre de ses liens descendants (downlinks) — combien d'entités distinctes l'appellent.
+
+Ce vocabulaire sert notamment à l'analyse des systèmes fonctionnels (cf gus#12) et des bibliothèques (cf gus#13) : le ou les points d'entrée d'un système fonctionnel sont typiquement repérés par un fan-in élevé, et le système correspond à leur fermeture ascendante (l'arbre récursif de leurs liens ascendants, ce qu'ils appellent) — pas à leur fermeture descendante (l'arbre de leurs appelants, qui n'appartiennent pas au système).
+
 
