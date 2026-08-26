@@ -21,8 +21,10 @@ public class EntityImpl implements Entity, T {
 		String[] n = entityName.split("\\.");
 		if (n.length < 3)
 			return null;
+		
+		String pseudo = n[0];
 
-		File docDir = new File(rootDir, "a/config/gus/doc1/fr/src/entity");
+		File docDir = new File(rootDir, "a/config/"+pseudo+"/doc1/fr/src/entity");
 
 		String type = n[1];
 		if (type.equals("x"))

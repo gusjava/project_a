@@ -1,4 +1,4 @@
-package a.entity.gus.y.entityeditor1.maingui;
+package a.entity.gus.y.entityeditor1.maingui.y;
 
 import java.util.List;
 import java.awt.BorderLayout;
@@ -14,12 +14,11 @@ import javax.swing.JTabbedPane;
 import a.framework.*;
 
 public class EntityImpl implements Entity, P, I, ActionListener {
-	public String creationDate() {return "20240113";}
+	public String creationDate() {return "20260826";}
 	
 	private Service buildData;
 	private Service tabHolder;
 	private Service gui1;
-	private Service gui2;
 	private Service gui3;
 	private Service gui4;
 	private Service gui5;
@@ -38,7 +37,6 @@ public class EntityImpl implements Entity, P, I, ActionListener {
 		buildData = Outside.service(this, "gus.y.entityeditor1.builddata");
 		tabHolder = Outside.service(this, "*gus.y.swing1.tabbedpane.holder1");
 		gui1 = Outside.service(this, "*gus.y.entityeditor1.gui1.src");
-		gui2 = Outside.service(this, "*gus.y.entityeditor1.gui2.doc");
 		gui3 = Outside.service(this, "*gus.y.entityeditor1.gui3.infos");
 		gui4 = Outside.service(this, "*gus.y.entityeditor1.gui4.err");
 		gui5 = Outside.service(this, "*gus.y.entityeditor1.gui5.db");
@@ -49,7 +47,6 @@ public class EntityImpl implements Entity, P, I, ActionListener {
 		labelTitle.setBorder(BorderFactory.createRaisedBevelBorder());
 
 		tabHolder.v("FILE_java#Sources", gui1);
-		tabHolder.v("UTIL_doc#Doc", gui2);
 		tabHolder.v("UTIL_infos#Infos", gui3);
 		tabHolder.v("UTIL_error#Errors", gui4);
 		tabHolder.v("UTIL_debug#Debug", gui5);
@@ -122,7 +119,6 @@ public class EntityImpl implements Entity, P, I, ActionListener {
 	private void refreshGui() throws Exception
 	{
 		gui1.p(data);
-		gui2.p(data);
 		gui3.p(data);
 		gui4.p(data);
 		gui5.p(data);

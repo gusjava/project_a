@@ -1,4 +1,4 @@
-Documentation pour le système gus.y.paths1
+Documentation pour le systÃ¨me gus.y.paths1
 
 gus.y.paths1.dir.icondir
 gus.y.paths1.dir.pooldir

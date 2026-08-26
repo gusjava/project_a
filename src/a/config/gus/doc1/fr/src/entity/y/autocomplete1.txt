@@ -1,5 +1,5 @@
 @description
-Description du système gus.y.autocomplete1
+Description du systÃ¨me gus.y.autocomplete1
 
 gus.y.autocomplete1.action.f1
 gus.y.autocomplete1.caret.word.replace

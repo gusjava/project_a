@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, P, I {
 	public EntityImpl() throws Exception
 	{
 		engine = Outside.service(this, "gus.z.appli1.gui2_3_3.y.detail.entities.engine");
-		editor = Outside.service(this, "*gus.y.entityeditor1.maingui");
+		editor = Outside.service(this, "*gus.y.entityeditor1.maingui.y");
 	}
 
 	public Object i() throws Exception
