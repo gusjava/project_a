@@ -9,7 +9,7 @@ import a.framework.Service;
 public class EntityImpl implements Entity, P, G {
 	public String creationDate() {return "20260410";}
 
-	public static final String FIXED_DATE = "2026-04-10 00:00:00";
+	public static final String FIXED_DATE = "2026-08-31 00:00:01";
 
 	private Service initKnowledge;
 	private Service initKnowledgeLink;
@@ -25,6 +25,15 @@ public class EntityImpl implements Entity, P, G {
 	private Service initDocXTag;
 	private Service initDocYTag;
 	private Service initDocZTag;
+	private Service initRule;
+	private Service initSpec;
+	private Service initSpecRule;
+	private Service initDocXSpec;
+	private Service initDocYSpec;
+	private Service initDocYIndex;
+	private Service initDocYMember;
+	private Service initDocYEntry;
+	private Service initDocYExtension;
 	private Service initFK;
 
 	public EntityImpl() throws Exception
@@ -43,6 +52,15 @@ public class EntityImpl implements Entity, P, G {
 		initDocXTag = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_x_tag");
 		initDocYTag = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_y_tag");
 		initDocZTag = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_z_tag");
+		initRule = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.rule");
+		initSpec = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.spec");
+		initSpecRule = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.spec_rule");
+		initDocXSpec = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_x_spec");
+		initDocYSpec = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_y_spec");
+		initDocYIndex = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_y_index");
+		initDocYMember = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_y_member");
+		initDocYEntry = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_y_entry");
+		initDocYExtension = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.doc_y_extension");
 		initFK = Outside.service(this, "gus.y.knowledgedb1.cx.initdb.fk");
 	}
 
@@ -67,6 +85,15 @@ public class EntityImpl implements Entity, P, G {
 		initDocXTag.p(obj);
 		initDocYTag.p(obj);
 		initDocZTag.p(obj);
+		initRule.p(obj);
+		initSpec.p(obj);
+		initSpecRule.p(obj);
+		initDocXSpec.p(obj);
+		initDocYSpec.p(obj);
+		initDocYIndex.p(obj);
+		initDocYMember.p(obj);
+		initDocYEntry.p(obj);
+		initDocYExtension.p(obj);
 		initFK.p(obj);
 	}
 }
