@@ -9,7 +9,7 @@ import a.framework.Service;
 public class EntityImpl implements Entity, P, G {
 	public String creationDate() {return "20260410";}
 
-	public static final String FIXED_DATE = "2026-08-31 00:00:01";
+	public static final String FIXED_DATE = "2026-09-01 00:00:01";
 
 	private Service initKnowledge;
 	private Service initKnowledgeLink;

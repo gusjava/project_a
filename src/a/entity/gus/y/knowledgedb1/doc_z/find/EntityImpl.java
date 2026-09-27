@@ -16,12 +16,13 @@ public class EntityImpl implements Entity, T {
 	public static final String COL_DATE_CREATED = "date_created";
 	public static final String COL_DATE_UPDATED = "date_updated";
 	public static final String COL_NAME = "name";
-	public static final String COL_SIGN = "sign";
 	public static final String COL_DESCRIPTION = "description";
 	public static final String COL_STATE = "state";
 	public static final String COL_DIFFICULTY_LEVEL = "difficulty_level";
 	public static final String COL_ISSUE_LEVEL = "issue_level";
 	public static final String COL_COMMENT = "comment";
+	public static final String COL_GENERATOR = "generator";
+	public static final String COL_GENERATED_TIME = "generated_time";
 
 	public Object t(Object obj) throws Exception {
 		Object[] o = (Object[]) obj;
@@ -43,12 +44,13 @@ public class EntityImpl implements Entity, T {
 			transfer(data, rs, COL_DATE_CREATED);
 			transfer(data, rs, COL_DATE_UPDATED);
 			transfer(data, rs, COL_NAME);
-			transfer(data, rs, COL_SIGN);
 			transfer(data, rs, COL_DESCRIPTION);
 			transfer(data, rs, COL_STATE);
 			transfer(data, rs, COL_DIFFICULTY_LEVEL);
 			transfer(data, rs, COL_ISSUE_LEVEL);
 			transfer(data, rs, COL_COMMENT);
+			transfer(data, rs, COL_GENERATOR);
+			transfer(data, rs, COL_GENERATED_TIME);
 		}
 		st.close();
 		return data;

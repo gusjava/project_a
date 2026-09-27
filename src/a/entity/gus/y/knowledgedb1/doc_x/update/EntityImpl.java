@@ -20,6 +20,9 @@ public class EntityImpl implements Entity, P {
 	public static final String COL_DIFFICULTY_LEVEL = "difficulty_level";
 	public static final String COL_ISSUE_LEVEL = "issue_level";
 	public static final String COL_COMMENT = "comment";
+	public static final String COL_CREATION_DATE = "creation_date";
+	public static final String COL_GENERATOR = "generator";
+	public static final String COL_GENERATED_TIME = "generated_time";
 
 	public void p(Object obj) throws Exception {
 		Object[] o = (Object[]) obj;
@@ -32,14 +35,16 @@ public class EntityImpl implements Entity, P {
 		String sql = "UPDATE " + TABLE_NAME + " SET "
 				+ COL_DATE_UPDATED + "=?, " + COL_NAME + "=?, " + COL_SIGN + "=?, "
 				+ COL_DESCRIPTION + "=?, " + COL_STATE + "=?, "
-				+ COL_DIFFICULTY_LEVEL + "=?, " + COL_ISSUE_LEVEL + "=?, " + COL_COMMENT + "=? "
+				+ COL_DIFFICULTY_LEVEL + "=?, " + COL_ISSUE_LEVEL + "=?, " + COL_COMMENT + "=?, "
+				+ COL_CREATION_DATE + "=?, " + COL_GENERATOR + "=?, " + COL_GENERATED_TIME + "=? "
 				+ "WHERE " + COL_ID + "=?";
 
 		executeUpdate(cx, sql,
 				new Date(), data.get(COL_NAME), data.get(COL_SIGN),
 				data.get(COL_DESCRIPTION), data.get(COL_STATE),
 				data.get(COL_DIFFICULTY_LEVEL), data.get(COL_ISSUE_LEVEL),
-				data.get(COL_COMMENT), data.get(COL_ID));
+				data.get(COL_COMMENT), data.get(COL_CREATION_DATE),
+				data.get(COL_GENERATOR), data.get(COL_GENERATED_TIME), data.get(COL_ID));
 	}
 
 	private void executeUpdate(Connection cx, String sql, Object... params) throws SQLException {

@@ -24,6 +24,9 @@ public class EntityImpl implements Entity, T {
 	public static final String COL_DIFFICULTY_LEVEL = "difficulty_level";
 	public static final String COL_ISSUE_LEVEL = "issue_level";
 	public static final String COL_COMMENT = "comment";
+	public static final String COL_CREATION_DATE = "creation_date";
+	public static final String COL_GENERATOR = "generator";
+	public static final String COL_GENERATED_TIME = "generated_time";
 
 	public Object t(Object obj) throws Exception {
 		Connection cx = (Connection) obj;
@@ -45,6 +48,9 @@ public class EntityImpl implements Entity, T {
 			transfer(m, rs, COL_DIFFICULTY_LEVEL);
 			transfer(m, rs, COL_ISSUE_LEVEL);
 			transfer(m, rs, COL_COMMENT);
+			transfer(m, rs, COL_CREATION_DATE);
+			transfer(m, rs, COL_GENERATOR);
+			transfer(m, rs, COL_GENERATED_TIME);
 			data.add(m);
 		}
 		st.close();

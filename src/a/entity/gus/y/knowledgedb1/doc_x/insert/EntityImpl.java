@@ -21,6 +21,9 @@ public class EntityImpl implements Entity, T {
 	public static final String COL_DIFFICULTY_LEVEL = "difficulty_level";
 	public static final String COL_ISSUE_LEVEL = "issue_level";
 	public static final String COL_COMMENT = "comment";
+	public static final String COL_CREATION_DATE = "creation_date";
+	public static final String COL_GENERATOR = "generator";
+	public static final String COL_GENERATED_TIME = "generated_time";
 
 	public Object t(Object obj) throws Exception {
 		Object[] o = (Object[]) obj;
@@ -33,8 +36,9 @@ public class EntityImpl implements Entity, T {
 		String sql = "INSERT INTO " + TABLE_NAME + " ("
 				+ COL_DATE_CREATED + ", " + COL_DATE_UPDATED + ", " + COL_NAME + ", "
 				+ COL_SIGN + ", " + COL_DESCRIPTION + ", " + COL_STATE + ", "
-				+ COL_DIFFICULTY_LEVEL + ", " + COL_ISSUE_LEVEL + ", " + COL_COMMENT
-				+ ") VALUES (?,?,?,?,?,?,?,?,?)";
+				+ COL_DIFFICULTY_LEVEL + ", " + COL_ISSUE_LEVEL + ", " + COL_COMMENT + ", "
+				+ COL_CREATION_DATE + ", " + COL_GENERATOR + ", " + COL_GENERATED_TIME
+				+ ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		PreparedStatement st = cx.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 		st.setObject(1, new Date());
@@ -46,6 +50,9 @@ public class EntityImpl implements Entity, T {
 		st.setObject(7, data.get(COL_DIFFICULTY_LEVEL));
 		st.setObject(8, data.get(COL_ISSUE_LEVEL));
 		st.setObject(9, data.get(COL_COMMENT));
+		st.setObject(10, data.get(COL_CREATION_DATE));
+		st.setObject(11, data.get(COL_GENERATOR));
+		st.setObject(12, data.get(COL_GENERATED_TIME));
 		st.executeUpdate();
 
 		ResultSet rs = st.getGeneratedKeys();

@@ -15,12 +15,13 @@ public class EntityImpl implements Entity, T {
 	public static final String COL_DATE_CREATED = "date_created";
 	public static final String COL_DATE_UPDATED = "date_updated";
 	public static final String COL_NAME = "name";
-	public static final String COL_SIGN = "sign";
 	public static final String COL_DESCRIPTION = "description";
 	public static final String COL_STATE = "state";
 	public static final String COL_DIFFICULTY_LEVEL = "difficulty_level";
 	public static final String COL_ISSUE_LEVEL = "issue_level";
 	public static final String COL_COMMENT = "comment";
+	public static final String COL_GENERATOR = "generator";
+	public static final String COL_GENERATED_TIME = "generated_time";
 
 	public Object t(Object obj) throws Exception {
 		Object[] o = (Object[]) obj;
@@ -32,20 +33,22 @@ public class EntityImpl implements Entity, T {
 
 		String sql = "INSERT INTO " + TABLE_NAME + " ("
 				+ COL_DATE_CREATED + ", " + COL_DATE_UPDATED + ", " + COL_NAME + ", "
-				+ COL_SIGN + ", " + COL_DESCRIPTION + ", " + COL_STATE + ", "
-				+ COL_DIFFICULTY_LEVEL + ", " + COL_ISSUE_LEVEL + ", " + COL_COMMENT
-				+ ") VALUES (?,?,?,?,?,?,?,?,?)";
+				+ COL_DESCRIPTION + ", " + COL_STATE + ", "
+				+ COL_DIFFICULTY_LEVEL + ", " + COL_ISSUE_LEVEL + ", " + COL_COMMENT + ", "
+				+ COL_GENERATOR + ", " + COL_GENERATED_TIME
+				+ ") VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 		PreparedStatement st = cx.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 		st.setObject(1, new Date());
 		st.setObject(2, null);
 		st.setObject(3, data.get(COL_NAME));
-		st.setObject(4, data.get(COL_SIGN));
-		st.setObject(5, data.get(COL_DESCRIPTION));
-		st.setObject(6, data.get(COL_STATE));
-		st.setObject(7, data.get(COL_DIFFICULTY_LEVEL));
-		st.setObject(8, data.get(COL_ISSUE_LEVEL));
-		st.setObject(9, data.get(COL_COMMENT));
+		st.setObject(4, data.get(COL_DESCRIPTION));
+		st.setObject(5, data.get(COL_STATE));
+		st.setObject(6, data.get(COL_DIFFICULTY_LEVEL));
+		st.setObject(7, data.get(COL_ISSUE_LEVEL));
+		st.setObject(8, data.get(COL_COMMENT));
+		st.setObject(9, data.get(COL_GENERATOR));
+		st.setObject(10, data.get(COL_GENERATED_TIME));
 		st.executeUpdate();
 
 		ResultSet rs = st.getGeneratedKeys();

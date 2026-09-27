@@ -19,6 +19,9 @@ public class EntityImpl implements Entity, P {
 	public static final String COL_DIFFICULTY_LEVEL = "difficulty_level";
 	public static final String COL_ISSUE_LEVEL = "issue_level";
 	public static final String COL_COMMENT = "comment";
+	public static final String COL_CREATION_DATE = "creation_date";
+	public static final String COL_GENERATOR = "generator";
+	public static final String COL_GENERATED_TIME = "generated_time";
 
 	public static final String DEF_ID = "BIGINT AUTO_INCREMENT PRIMARY KEY NOT NULL";
 	public static final String DEF_DATE_CREATED = "DATETIME NOT NULL";
@@ -30,6 +33,9 @@ public class EntityImpl implements Entity, P {
 	public static final String DEF_DIFFICULTY_LEVEL = "INT NOT NULL DEFAULT 0";
 	public static final String DEF_ISSUE_LEVEL = "INT NOT NULL DEFAULT 0";
 	public static final String DEF_COMMENT = "TEXT";
+	public static final String DEF_CREATION_DATE = "VARCHAR(8)";
+	public static final String DEF_GENERATOR = "VARCHAR(100)";
+	public static final String DEF_GENERATED_TIME = "VARCHAR(15)";
 
 	public void p(Object obj) throws Exception {
 		Connection cx = (Connection) obj;
@@ -43,7 +49,10 @@ public class EntityImpl implements Entity, P {
 				+ COL_STATE + " " + DEF_STATE + ", "
 				+ COL_DIFFICULTY_LEVEL + " " + DEF_DIFFICULTY_LEVEL + ", "
 				+ COL_ISSUE_LEVEL + " " + DEF_ISSUE_LEVEL + ", "
-				+ COL_COMMENT + " " + DEF_COMMENT + ")";
+				+ COL_COMMENT + " " + DEF_COMMENT + ", "
+				+ COL_CREATION_DATE + " " + DEF_CREATION_DATE + ", "
+				+ COL_GENERATOR + " " + DEF_GENERATOR + ", "
+				+ COL_GENERATED_TIME + " " + DEF_GENERATED_TIME + ")";
 		execute(cx, sql);
 	}
 
