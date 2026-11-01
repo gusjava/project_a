@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, T {
 
 		File file = (File) o[0];
 		String user = (String) o[1];
-		String pwd = (String) o[1];
+		String pwd = (String) o[2];
 
 		String url = "jdbc:h2:file:" + file + ";MODE=MySQL;AUTO_SERVER=TRUE;";
 		file.getParentFile().mkdirs();
