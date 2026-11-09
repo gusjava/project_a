@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, G {
 	
 	// regex 2
 	
-	public static final String REGEX_MONTH_L = "(janvier|janv\\.?|jan\\.?|f�vrier|f�vr\\.?|f�v\\.?|mars|avril|avr\\.?|mai|juin|juillet|juil\\.?|ao�t|septembre|sept\\.?|octobre|oct\\.?|novembre|nov\\.?|d�cembre|d�c\\.?)";
+	public static final String REGEX_MONTH_L = "(janvier|janv\\.?|jan\\.?|février|févr\\.?|fév\\.?|mars|avril|avr\\.?|mai|juin|juillet|juil\\.?|août|septembre|sept\\.?|octobre|oct\\.?|novembre|nov\\.?|décembre|déc\\.?)";
 	
 	public static final String REGEX2 = REGEX_DAY+" "+REGEX_MONTH_L+" "+REGEX_YEAR2; //jj mm aaaa
 	

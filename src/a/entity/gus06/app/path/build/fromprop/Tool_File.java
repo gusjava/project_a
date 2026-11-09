@@ -17,7 +17,7 @@ public class Tool_File {
 	
 	
 	/*
-     * formattage du file path pour correspondre � l'OS
+     * formattage du file path pour correspondre à l'OS
      */
     public static String pathOS(String path)
     {

@@ -29,7 +29,7 @@ public class EntityImpl implements Entity, P {
         
 
 
-	// m�thode 1
+	// méthode 1
 	
 	public static int BUFFER = 2048;
 	
@@ -52,7 +52,7 @@ public class EntityImpl implements Entity, P {
 	
 	
 	
-	// m�thode 2
+	// méthode 2
 	
 	private void transfer2(InputStream is, OutputStream os) throws Exception
 	{

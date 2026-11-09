@@ -44,7 +44,7 @@ public class EntityImpl implements Entity, ActionListener, I, P {
 	private Map map;
 	private File root;
 	private File mappingFile;
-	private String scriptName;  //correspond � "script.gus"
+	private String scriptName;  //correspond à "script.gus"
 	
 	private Map filesMap;
 	private List keys;

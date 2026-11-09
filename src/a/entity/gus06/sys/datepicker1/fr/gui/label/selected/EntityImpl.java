@@ -57,6 +57,6 @@ public class EntityImpl extends S1 implements Entity, ActionListener, I, G, P {
 	private void updateGui() throws Exception
 	{
 		String display = (String) buildDisplay.t(data);
-		label.setText("S�lectionn�: "+display);
+		label.setText("Sélectionné: "+display);
 	}
 }

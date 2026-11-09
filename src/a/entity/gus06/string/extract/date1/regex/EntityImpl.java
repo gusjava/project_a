@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, G {
 	
 	public static final String REGEX_DAY = "((0?[1-9])|(1[0-9])|(2[0-9])|(30)|(31))";
 	public static final String REGEX_MONTH = "((0?[1-9])|(10)|(11)|(12))";
-	public static final String REGEX_MONTH_L = "(janvier|janv\\.?|jan\\.?|f�vrier|f�vr\\.?|f�v\\.?|mars|avril|avr\\.?|mai|juin|juillet|juil\\.?|ao�t|septembre|sept\\.?|octobre|oct\\.?|novembre|nov\\.?|d�cembre|d�c\\.?)";
+	public static final String REGEX_MONTH_L = "(janvier|janv\\.?|jan\\.?|février|févr\\.?|fév\\.?|mars|avril|avr\\.?|mai|juin|juillet|juil\\.?|août|septembre|sept\\.?|octobre|oct\\.?|novembre|nov\\.?|décembre|déc\\.?)";
 	
 	public static final String REGEX1 = REGEX_DAY+"/"+REGEX_MONTH+"/"+REGEX_YEAR2; //jj/mm/aaaa
 	public static final String REGEX2 = REGEX_YEAR2+"-"+REGEX_MONTH+"-"+REGEX_DAY; //aaaa-mm-jj

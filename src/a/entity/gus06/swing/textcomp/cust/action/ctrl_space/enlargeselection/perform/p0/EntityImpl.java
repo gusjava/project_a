@@ -68,8 +68,8 @@ public class EntityImpl implements Entity, P {
 		else if(c_before=='>')
 		{
 			// A FAIRE
-			// ici il faut d�tecter si le caret est juste apr�s un tag xml ouvrant <name> ou <name ...>
-			// et s�lection jusqu'au caract�re avant le tag xml fermant correspondant </name>
+			// ici il faut détecter si le caret est juste après un tag xml ouvrant <name> ou <name ...>
+			// et sélection jusqu'au caractère avant le tag xml fermant correspondant </name>
 		}
 		
 		

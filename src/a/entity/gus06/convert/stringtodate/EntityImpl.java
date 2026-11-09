@@ -38,9 +38,9 @@ public class EntityImpl implements Entity, T {
 		 .replaceAll("janv\\.?","01")
 		 .replaceAll("jan\\.?","01")
 		
-		 .replace("f�vrier","02")
-		 .replaceAll("f�vr\\.?","02")
-		 .replaceAll("f�v\\.?","02")
+		 .replace("février","02")
+		 .replaceAll("févr\\.?","02")
+		 .replaceAll("fév\\.?","02")
 		
 		 .replace("mars","03")
 		
@@ -54,7 +54,7 @@ public class EntityImpl implements Entity, T {
 		 .replace("juillet","07")
 		 .replaceAll("juil\\.?","07")
 		
-		 .replace("ao�t","08")
+		 .replace("août","08")
 		
 		 .replace("septembre","09")
 		 .replaceAll("sept\\.?","09")
@@ -65,8 +65,8 @@ public class EntityImpl implements Entity, T {
 		 .replace("novembre","11")
 		 .replaceAll("nov\\.?","11")
 		
-		 .replace("d�cembre","12")
-		 .replaceAll("d�c\\.?","12");
+		 .replace("décembre","12")
+		 .replaceAll("déc\\.?","12");
 		
 		s = s.replaceAll("[_ \t]+"," ");
 		return s;

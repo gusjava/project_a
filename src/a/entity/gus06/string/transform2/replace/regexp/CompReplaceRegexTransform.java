@@ -47,7 +47,7 @@ public class CompReplaceRegexTransform implements T {
 	
 	
 	/*
-	 * J'ai d�couvert que la classe Match permet de faire cette op�ration...
+	 * J'ai découvert que la classe Match permet de faire cette opération...
 	 * utiliser :
 	 */
 	private String replaceBackRef(String in)

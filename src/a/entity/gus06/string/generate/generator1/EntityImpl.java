@@ -30,7 +30,7 @@ public class EntityImpl implements Entity, T {
 	
 	private String generateFromString(String data, String options, String rule)
 	{
-		// il faut am�liorer tout �a !!
+		// il faut améliorer tout ça !!
 		
 		return rule.replace("*",data);
 	}

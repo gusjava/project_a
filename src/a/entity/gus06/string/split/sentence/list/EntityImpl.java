@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, T {
 
 	public String creationDate() {return "20250507";}
 	
-	private Pattern pattern = Pattern.compile(".*?[.!?](?=\\s+[A-Z������])", Pattern.DOTALL);
+	private Pattern pattern = Pattern.compile(".*?[.!?](?=\\s+[A-ZÉÈÊÀÇÎ])", Pattern.DOTALL);
 	
 	public Object t(Object obj) throws Exception
 	{

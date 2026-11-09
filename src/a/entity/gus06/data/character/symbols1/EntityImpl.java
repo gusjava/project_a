@@ -6,7 +6,7 @@ public class EntityImpl implements Entity, G {
 
 	public String creationDate() {return "20160817";}
 
-	public static String DELIM = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~�������";
+	public static String DELIM = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~£¤§¨°µ€";
 	
 	public Object g() throws Exception
 	{return DELIM;}

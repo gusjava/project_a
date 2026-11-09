@@ -91,7 +91,7 @@ public class EntityImpl implements Entity, G {
 			"Polka",
 			"Retro",
 			"Musical",
-			"Rock �n� Roll",
+			"Rock ’n’ Roll",
 			"Hard Rock",
 			
 			//Extension by Winamp

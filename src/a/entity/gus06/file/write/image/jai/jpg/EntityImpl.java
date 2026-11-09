@@ -39,7 +39,7 @@ public class EntityImpl implements Entity, P {
 		
 		stream.close();
 		/*
-		 * Le fichier file reste v�rouill� par l'application Java ......
+		 * Le fichier file reste vérouillé par l'application Java ......
 		 */
 	}
 }

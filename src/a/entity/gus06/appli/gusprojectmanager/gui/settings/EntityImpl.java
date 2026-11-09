@@ -29,10 +29,10 @@ public class EntityImpl implements Entity, I {
 		form = Outside.service(this,"*gus06.swing.panel.formpanel");
 		option = Outside.service(this,"gus06.sys.option.comp.register");
 		
-		addField(KEY_PROJECTDIR,	"R�pertoire des projets");
-		addField(KEY_ICONDIR,		"R�pertoire des icones");
-		addField(KEY_JARDIR,		"R�pertoire des jars");
-		addField(KEY_DLLDIR,		"R�pertoire des dll");
+		addField(KEY_PROJECTDIR,	"Répertoire des projets");
+		addField(KEY_ICONDIR,		"Répertoire des icones");
+		addField(KEY_JARDIR,		"Répertoire des jars");
+		addField(KEY_DLLDIR,		"Répertoire des dll");
 		
 		panel = new JPanel(new BorderLayout());
 		panel.add((JComponent) form.i(),BorderLayout.CENTER);

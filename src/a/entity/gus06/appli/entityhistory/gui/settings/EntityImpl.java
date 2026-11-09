@@ -25,7 +25,7 @@ public class EntityImpl implements Entity, I {
 		option = Outside.service(this,"gus06.sys.option.comp.register");
 		
 		
-		addField(KEY_ENTITYDIR,		"R�pertoire des sources");
+		addField(KEY_ENTITYDIR,		"Répertoire des sources");
 		
 		panel = new JPanel(new BorderLayout());
 		panel.add((JComponent) form.i(),BorderLayout.CENTER);

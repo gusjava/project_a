@@ -130,22 +130,22 @@ public class EntityImpl implements Entity, T {
 		if(s.equals("closing_brace"))			return f('}');//125
 		if(s.equals("tilde"))				return f('~');//126
 
-		if(s.equals("pound"))				return f('�');//163
-		if(s.equals("currency"))			return f('�');//164
-		if(s.equals("yen"))				return f('�');//165
-		if(s.equals("broken_vertical_bar"))		return f('�');//166
-		if(s.equals("section"))				return f('�');//167
-		if(s.equals("umlaut"))				return f('�');//168
-		if(s.equals("copyright"))			return f('�');//169
+		if(s.equals("pound"))				return f('£');//163
+		if(s.equals("currency"))			return f('¤');//164
+		if(s.equals("yen"))				return f('¥');//165
+		if(s.equals("broken_vertical_bar"))		return f('¦');//166
+		if(s.equals("section"))				return f('§');//167
+		if(s.equals("umlaut"))				return f('¨');//168
+		if(s.equals("copyright"))			return f('©');//169
 
-		if(s.equals("left_double_angle_quotes"))	return f('�');//171
-		if(s.equals("not"))				return f('�');//172
-		if(s.equals("registered_trade_mark"))		return f('�');//174
-		if(s.equals("dregree"))				return f('�');//176
-		if(s.equals("right_double_angle_quotes"))	return f('�');//187
-		if(s.equals("inverted_question_mark"))		return f('�');//191
-		if(s.equals("division"))			return f('�');//247
-		if(s.equals("euro"))				return f('�');//8364
+		if(s.equals("left_double_angle_quotes"))	return f('«');//171
+		if(s.equals("not"))				return f('¬');//172
+		if(s.equals("registered_trade_mark"))		return f('®');//174
+		if(s.equals("dregree"))				return f('°');//176
+		if(s.equals("right_double_angle_quotes"))	return f('»');//187
+		if(s.equals("inverted_question_mark"))		return f('¿');//191
+		if(s.equals("division"))			return f('÷');//247
+		if(s.equals("euro"))				return f('€');//8364
 
 		
 		if(s.toLowerCase().equals("tab"))		return f('\t');

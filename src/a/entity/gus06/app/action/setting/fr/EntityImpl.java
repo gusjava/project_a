@@ -7,7 +7,7 @@ public class EntityImpl implements Entity, E, G {
 
 	public String creationDate() {return "20170512";}
 
-	public static final String DISPLAY = "ACTION_setting#Param�trage";
+	public static final String DISPLAY = "ACTION_setting#Paramétrage";
 
 
 

@@ -23,7 +23,7 @@ public class EntityImpl implements Entity, T {
 		
 		if(value.startsWith("$")) return "s "+value.substring(1);	//regional
 		if(value.startsWith("&")) return "s0 "+value.substring(1);	//global
-		if(value.startsWith("�")) return "s1 "+value.substring(1);	//local
+		if(value.startsWith("£")) return "s1 "+value.substring(1);	//local
 		
 		return value;
 	}

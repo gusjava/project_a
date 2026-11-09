@@ -324,7 +324,7 @@ public class BmpBuilder_2 {
 		
 		if(nsizeimage==0)
 		{
-		 // v�rifier ??
+		 // vérifier ??
 			nsizeimage = ((((nwidth*nbitcount)+31) & ~31 ) >> 3);
 			nsizeimage *= nheight;
 		}
@@ -366,7 +366,7 @@ public class BmpBuilder_2 {
 		
 		if(nsizeimage==0)
 		{
-		 // v�rifier ??
+		 // vérifier ??
 			nsizeimage = ((((nwidth*nbitcount)+31) & ~31 ) >> 3);
 			nsizeimage *= nheight;
 		}

@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, I, P {
 		KEY_LOCAL_PORT, 
 		KEY_LOCAL_FILE_PORT};
 	
-	public static final String DISPLAY_ROOT = "R�pertoire de stockage";
+	public static final String DISPLAY_ROOT = "Répertoire de stockage";
 	public static final String DISPLAY_LOCAL_PORT = "Port du serveur";
 	public static final String DISPLAY_LOCAL_FILE_PORT = "Port pour l'envoi de fichiers";
 

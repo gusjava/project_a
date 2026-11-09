@@ -43,11 +43,11 @@ public class EntityImpl implements Entity, G {
 		add("Alphonse");
 		add("Alvin");
 		add("Ambroise");
-		add("Am�d�e");
+		add("Amédée");
 		add("Anatole");
 		add("Ancelot");
 		add("Andreas");
-		add("Andr�");
+		add("André");
 		add("Andy");
 		add("Angel");
 		add("Angus");
@@ -59,24 +59,24 @@ public class EntityImpl implements Entity, G {
 		add("Armel");
 		add("Arnaud");
 		add("Arnauld");
-		add("Ars�ne");
+		add("Arsène");
 		add("Arthur");
 		add("Auguste");
 		add("Augustin");
-		add("Aur�le");
-		add("Aur�lian");
+		add("Aurèle");
+		add("Aurélian");
 		add("Aymeric");
 		add("Azzedine");
 
 		add("Balthazar");
 		add("Baptiste");
-		add("Barnab�");
-		add("Bartholom�");
-		add("Barth�l�my");
+		add("Barnabé");
+		add("Bartholomé");
+		add("Barthélémy");
 		add("Basile");
 		add("Bastian");
 		add("Benjamin");
-		add("Beno�t");
+		add("Benoît");
 		add("Bernardo");
 		add("Bertrand");
 		add("Bill");
@@ -104,12 +104,12 @@ public class EntityImpl implements Entity, G {
 		add("Christian");
 		add("Christobal");
 		add("Christophe");
-		add("Cic�ron");
+		add("Cicéron");
 		add("Claude");
 		add("Claudius");
 		add("Clotaire");
 		add("Clovis");
-		add("Cl�menceau");
+		add("Clémenceau");
 		add("Colbert");
 		add("Colin");
 		add("Connor");
@@ -121,9 +121,9 @@ public class EntityImpl implements Entity, G {
 		add("Cyprien");
 		add("Cyrano");
 		add("Cyril");
-		add("C�dric");
-		add("C�lestin");
-		add("C�sar");
+		add("Cédric");
+		add("Célestin");
+		add("César");
 
 		add("Damien");
 		add("Dan");
@@ -137,19 +137,19 @@ public class EntityImpl implements Entity, G {
 		add("Didier");
 		add("Dilan");
 		add("Dimitri");
-		add("Diog�ne");
+		add("Diogène");
 		add("Dominique");
 		add("Donald");
 		add("Donovan");
 		add("Dorian");
 		add("Duncan");
 		add("Dylan");
-		add("D�sir�");
+		add("Désiré");
 
 		add("Edgard");
 		add("Edmond");
 		add("Edouard");
-		add("Edm�");
+		add("Edmé");
 		add("Edy");
 		add("Eliad");
 		add("Eliot");
@@ -163,10 +163,10 @@ public class EntityImpl implements Entity, G {
 		add("Esteban");
 		add("Ethan");
 		add("Eude");
-		add("Eug�ne");
+		add("Eugène");
 		add("Eustache");
 		add("Evan");
-		add("Ez�chiel");
+		add("Ezéchiel");
 
 		add("Fabien");
 		add("Fabrice");
@@ -182,7 +182,7 @@ public class EntityImpl implements Entity, G {
 		add("Filibert");
 		add("Filipe");
 		add("Filippo");
-		add("Filom�ne");
+		add("Filomène");
 		add("Flavian");
 		add("Florent");
 		add("Florentin");
@@ -192,8 +192,8 @@ public class EntityImpl implements Entity, G {
 		add("Fredy");
 		add("Friedrich");
 		add("Fritz");
-		add("Fr�d�ric");
-		add("F�lix");
+		add("Frédéric");
+		add("Félix");
 
 		add("Gabin");
 		add("Gabriel");
@@ -202,8 +202,8 @@ public class EntityImpl implements Entity, G {
 		add("Gaston");
 		add("Gaultier");
 		add("Gavin");
-		add("Ga�tan");
-		add("Ga�l");
+		add("Gaétan");
+		add("Gaël");
 		add("Geoffrey");
 		add("Geoffroy");
 		add("Georges");
@@ -221,12 +221,12 @@ public class EntityImpl implements Entity, G {
 		add("Godefroy");
 		add("Goliath");
 		add("Gontier");
-		add("Gonzal�s");
+		add("Gonzalès");
 		add("Gordon");
 		add("Graig");
 		add("Greg");
-		add("Gr�goire");
-		add("Gr�gory");
+		add("Grégoire");
+		add("Grégory");
 		add("Guerard");
 		add("Guibert");
 		add("Guilem");
@@ -237,11 +237,11 @@ public class EntityImpl implements Entity, G {
 		add("Gustave");
 		add("Gustin");
 		add("Guy");
-		add("Gu�ric");
-		add("G�d�on");
-		add("G�rald");
-		add("G�rard");
-		add("G�rardin");
+		add("Guéric");
+		add("Gédéon");
+		add("Gérald");
+		add("Gérard");
+		add("Gérardin");
 
 		add("Hadrien");
 		add("Hal");
@@ -257,8 +257,8 @@ public class EntityImpl implements Entity, G {
 		add("Henri-Pierre");
 		add("Herbert");
 		add("Hercule");
-		add("Herm�s");
-		add("Herv�");
+		add("Hermès");
+		add("Hervé");
 		add("Hichem");
 		add("Hilaire");
 		add("Hippolyte");
@@ -268,8 +268,8 @@ public class EntityImpl implements Entity, G {
 		add("Hugues");
 		add("Humberto");
 		add("Humphrey");
-		add("H�bert");
-		add("H�lias");
+		add("Hébert");
+		add("Hélias");
 
 		add("Ian");
 		add("Ibrahim");
@@ -283,7 +283,7 @@ public class EntityImpl implements Entity, G {
 		add("Isaac");
 		add("Isidore");
 		add("Ivan");
-		add("Ivanho�");
+		add("Ivanhoé");
 
 		add("Jack");
 		add("Jackelin");
@@ -337,8 +337,8 @@ public class EntityImpl implements Entity, G {
 		add("Josua");
 		add("Jourdain");
 		add("Joyce");
-		add("Jo�vin");
-		add("Jo�l");
+		add("Joévin");
+		add("Joël");
 		add("Juan");
 		add("Juanito");
 		add("Jules");
@@ -347,9 +347,9 @@ public class EntityImpl implements Entity, G {
 		add("Junes");
 		add("Juste");
 		add("Justin");
-		add("J�r�mi");
-		add("J�r�me");
-		add("J�sus");
+		add("Jérémi");
+		add("Jérôme");
+		add("Jésus");
 
 		add("Karim");
 		add("Keanu");
@@ -382,8 +382,8 @@ public class EntityImpl implements Entity, G {
 		add("Louis");
 		add("Louis-Marie");
 		add("Louis-Victor");
-		add("Loun�s");
-		add("Lo�c");
+		add("Lounès");
+		add("Loïc");
 		add("Luc");
 		add("Luca");
 		add("Lucas");
@@ -395,12 +395,12 @@ public class EntityImpl implements Entity, G {
 		add("Luziano");
 		add("Lyonel");
 		add("Lysander");
-		add("L�o");
-		add("L�o-Paul");
-		add("L�on");
-		add("L�onard");
-		add("L�onardo");
-		add("L�opold");
+		add("Léo");
+		add("Léo-Paul");
+		add("Léon");
+		add("Léonard");
+		add("Léonardo");
+		add("Léopold");
 
 		add("Maddox");
 		add("Maden");
@@ -436,7 +436,7 @@ public class EntityImpl implements Entity, G {
 		add("Mathis");
 		add("Mathurin");
 		add("Mathys");
-		add("Math�o");
+		add("Mathéo");
 		add("Matias");
 		add("Matisse");
 		add("Mattew");
@@ -451,7 +451,7 @@ public class EntityImpl implements Entity, G {
 		add("Maximilien");
 		add("Mayeul");
 		add("Mazarin");
-		add("Ma�lan");
+		add("Maëlan");
 		add("Medhi");
 		add("Mehmet");
 		add("Melchior");
@@ -461,7 +461,7 @@ public class EntityImpl implements Entity, G {
 		add("Mendy");
 		add("Merlin");
 		add("Micha");
-		add("Micha�l");
+		add("Michaël");
 		add("Michel");
 		add("Michelangelo");
 		add("Mickey");
@@ -476,20 +476,20 @@ public class EntityImpl implements Entity, G {
 		add("Morris");
 		add("Mortimer");
 		add("Morvan");
-		add("Mo�se");
+		add("Moïse");
 		add("Mylan");
-		add("M�r�dith");
+		add("Mérédith");
 
 		add("Nabile");
 		add("Nacer");
 		add("Nadal");
 		add("Nagui");
-		add("Napol�on");
+		add("Napoléon");
 		add("Nathalien");
 		add("Nathan");
 		add("Nathanae");
-		add("Nathana�l");
-		add("Natha�l");
+		add("Nathanaël");
+		add("Nathaël");
 		add("Nazaire");
 		add("Neil");
 		add("Nello");
@@ -507,14 +507,14 @@ public class EntityImpl implements Entity, G {
 		add("Nordine");
 		add("Noredine");
 		add("Norman");
-		add("N�o");
+		add("Néo");
 
 		add("Obispo");
 		add("Octave");
-		add("Oc�an");
+		add("Océan");
 		add("Odin");
 		add("Odran");
-		add("Odyss�e");
+		add("Odyssée");
 		add("Olaf");
 		add("Oleg");
 		add("Oliver");
@@ -523,7 +523,7 @@ public class EntityImpl implements Entity, G {
 		add("Oran");
 		add("Oreste");
 		add("Orlando");
-		add("Orph�e");
+		add("Orphée");
 		add("Orson");
 		add("Orval");
 		add("Orville");
@@ -536,7 +536,7 @@ public class EntityImpl implements Entity, G {
 
 		add("Pablo");
 		add("Paco");
-		add("Pac�me");
+		add("Pacôme");
 		add("Pamphile");
 		add("Pancrace");
 		add("Paolo");
@@ -552,8 +552,8 @@ public class EntityImpl implements Entity, G {
 		add("Peter");
 		add("Philibert");
 		add("Philipe");
-		add("Philom�ne");
-		add("Phil�as");
+		add("Philomène");
+		add("Philéas");
 		add("Pierce");
 		add("Pierick");
 		add("Pierre");
@@ -570,23 +570,23 @@ public class EntityImpl implements Entity, G {
 		add("Prince");
 		add("Priscillien");
 		add("Prosper");
-		add("P�pito");
+		add("Pépito");
 
 		add("Quentin");
 		add("Quincy");
 
 		add("Rachid");
-		add("Rafa�l");
+		add("Rafaël");
 		add("Raimond");
 		add("Rainier");
 		add("Ralph");
 		add("Rami");
 		add("Ramon");
-		add("Rams�s");
+		add("Ramsès");
 		add("Ramzy");
 		add("Randy");
 		add("Raoul");
-		add("Rapha�l");
+		add("Raphaël");
 		add("Ray");
 		add("Rayane");
 		add("Raymond");
@@ -594,7 +594,7 @@ public class EntityImpl implements Entity, G {
 		add("Renaldo");
 		add("Renaud");
 		add("Renzo");
-		add("Ren�");
+		add("René");
 		add("Rodolphe");
 		add("Rodrigue");
 		add("Rodriguez");
@@ -609,9 +609,9 @@ public class EntityImpl implements Entity, G {
 		add("Rupert");
 		add("Russel");
 		add("Ryan");
-		add("R�da");
-		add("R�gis");
-		add("R�mi");
+		add("Réda");
+		add("Régis");
+		add("Rémi");
 
 		add("Salbatore");
 		add("Salomon");
@@ -640,14 +640,14 @@ public class EntityImpl implements Entity, G {
 		add("Steve");
 		add("Steven");
 		add("Stevenson");
-		add("St�phane");
+		add("Stéphane");
 		add("Sylvain");
 		add("Sylvestre");
-		add("S�bastien");
-		add("S�rafin");
+		add("Sébastien");
+		add("Sérafin");
 
 		add("Tadeo");
-		add("Tancr�de");
+		add("Tancrède");
 		add("Tanguy");
 		add("Taylor");
 		add("Teddy");
@@ -662,14 +662,14 @@ public class EntityImpl implements Entity, G {
 		add("Thierry");
 		add("Thomas");
 		add("Thor");
-		add("Th�o");
-		add("Th�odore");
-		add("Timoth�e");
+		add("Théo");
+		add("Théodore");
+		add("Timothée");
 		add("Titus");
 		add("Tommy");
 		add("Travis");
 		add("Tristan");
-		add("T�l�maque");
+		add("Télémaque");
 
 		add("Ugolin");
 		add("Uriel");
@@ -677,7 +677,7 @@ public class EntityImpl implements Entity, G {
 		add("Valentin");
 		add("Valerien");
 		add("Valmond");
-		add("Val�rian");
+		add("Valérian");
 		add("Veli");
 		add("Venceslas");
 		add("Vianney");
@@ -711,17 +711,17 @@ public class EntityImpl implements Entity, G {
 		add("Zack");
 		add("Zidane");
 
-		add("�douard");
-		add("�meric");
-		add("�mile");
-		add("�milien");
-		add("�milio");
-		add("�n�e");
-		add("�ric");
-		add("�tan");
-		add("�tienne");
-		add("�variste");
-		add("�vence");
+		add("Édouard");
+		add("Émeric");
+		add("Émile");
+		add("Émilien");
+		add("Émilio");
+		add("Énée");
+		add("Éric");
+		add("Étan");
+		add("Étienne");
+		add("Évariste");
+		add("Évence");
 	}
 	
 	

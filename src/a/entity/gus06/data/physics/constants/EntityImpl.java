@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, G, R {
 
 	public static final double GRAVITY_CONST = 6.67430*Math.pow(10,-11);
 	public static final long LIGHTSPEED_CONST = 299792458;
-	public static final String AVOGADRO_CONST = "602200000000000000000000"; //� revoir...
+	public static final String AVOGADRO_CONST = "602200000000000000000000"; //à revoir...
 
 	private Map map;
 

@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, H {
 	/*
 	 * Trouver sur internet ...
 	 * http://java.developpez.com/sources/?page=nombresDatesString#LoiExponentielle
-	 * A v�rifier !
+	 * A vérifier !
 	 */
 	public double h(double value) throws Exception
 	{

@@ -55,7 +55,7 @@ public class EntityImpl implements Entity, T {
 			it.next();
 		}
 
-		// Construction du sous-chemin jusqu'� la bonne longueur
+		// Construction du sous-chemin jusqu'à la bonne longueur
 		float targetLength = progress * totalLength;
 		float accumulated = 0f;
 		Path2D.Float partial = new Path2D.Float();

@@ -32,7 +32,7 @@ public class EntityImpl implements Entity, T {
 		detector.reset();
 		if(name==null) return Charset.defaultCharset();
 		
-		// BUG de d�tection quand on a un fichier texte windows-1252 avec des ��
+		// BUG de détection quand on a un fichier texte windows-1252 avec des éé
 		if(name.equals("WINDOWS-1255")) name = "WINDOWS-1252";
 		
 		try{return Charset.forName(name);}

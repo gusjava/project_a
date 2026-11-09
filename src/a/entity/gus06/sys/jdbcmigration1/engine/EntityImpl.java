@@ -116,7 +116,7 @@ public class EntityImpl implements Entity, T {
 		{
 			if(cx1==cx2 && db1.equals(db2)) return;
 			
-			//il faut cr�er db2 s'il n'existe pas encore
+			//il faut créer db2 s'il n'existe pas encore
 			//il faut dupliquer la structure de db1 vers db2 pour chaque table de db1
 		}
 		

@@ -58,7 +58,7 @@ public class EntityImpl implements Entity, T {
 		put("415","Unsupported Media Type");
 		put("416","Requested range unsatisfiable");
 		put("417","Expectation failed");
-		put("418","I�m a teapot");
+		put("418","I’m a teapot");
 		put("421","Bad mapping / Misdirected Request");
 		put("422","Unprocessable entity");
 		put("423","Locked");

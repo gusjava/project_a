@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, T {
 		
 		String path = (String) o[0];
 		String cName = (String) o[1];
-		String column = (String) o[2]; //TODO g�n�raliser � n colonnes
+		String column = (String) o[2]; //TODO généraliser à n colonnes
 		
 		return "ALTER TABLE "+format(path)+" ADD CONSTRAINT "+cName+" UNIQUE ("+format(column)+")";
 	}

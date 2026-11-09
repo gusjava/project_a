@@ -14,16 +14,16 @@ public class EntityImpl implements Entity, T {
 
     public EntityImpl() throws Exception { }
 
-    // Nombre d'�chantillons utilis�s pour approximer la longueur d'une courbe
+    // Nombre d'échantillons utilisés pour approximer la longueur d'une courbe
     private static final int SAMPLES_PER_SEGMENT = 50;
 
-    // Repr�sentation interne d'un segment de chemin (moveto non stock� comme segment)
+    // Représentation interne d'un segment de chemin (moveto non stocké comme segment)
     private static class Seg {
         enum Type { LINE, QUAD, CUBIC, CLOSE }
         Type type;
-        // points : p0 = start (toujours pr�sent), ensuite ctrl(s), puis end
+        // points : p0 = start (toujours présent), ensuite ctrl(s), puis end
         Point2D.Float p0, c1, c2, p1;
-        // longueur approximative et table des longueurs cumul�es pour inversion param<->longueur
+        // longueur approximative et table des longueurs cumulées pour inversion param<->longueur
         float length;
         float[] cum; // taille SAMPLES_PER_SEGMENT+1, cum[0]=0, cum[last]=length
 
@@ -58,7 +58,7 @@ public class EntityImpl implements Entity, T {
             this.cum[1] = this.length;
         }
 
-        // �chantillonnage d'une quad B�zier
+        // échantillonnage d'une quad Bézier
         private void buildLengthTableBezierQuadratic() {
             int n = SAMPLES_PER_SEGMENT;
             cum = new float[n + 1];
@@ -77,7 +77,7 @@ public class EntityImpl implements Entity, T {
             this.length = acc;
         }
 
-        // �chantillonnage d'une cubic B�zier
+        // échantillonnage d'une cubic Bézier
         private void buildLengthTableBezierCubic() {
             int n = SAMPLES_PER_SEGMENT;
             cum = new float[n + 1];
@@ -96,7 +96,7 @@ public class EntityImpl implements Entity, T {
             this.length = acc;
         }
 
-        // retourne t (approx) correspondant � la longueur l (0..length) sur ce segment
+        // retourne t (approx) correspondant à la longueur l (0..length) sur ce segment
         // renvoie 0..1
         float findTForLength(float l) {
             if (l <= 0f) return 0f;
@@ -104,7 +104,7 @@ public class EntityImpl implements Entity, T {
             if (type == Type.LINE) {
                 return l / length;
             }
-            // recherche lin�aire/interpol�e dans cum
+            // recherche linéaire/interpolée dans cum
             int n = cum.length - 1;
             // bsearch
             int lo = 0, hi = n;
@@ -121,7 +121,7 @@ public class EntityImpl implements Entity, T {
             return tLeft + (tRight - tLeft) * frac;
         }
 
-        // utilitaires statiques pour points sur B�zier
+        // utilitaires statiques pour points sur Bézier
         static Point2D.Float pointOnQuad(Point2D.Float a, Point2D.Float b, Point2D.Float c, float t) {
             float mt = 1 - t;
             float x = mt*mt*a.x + 2*mt*t*b.x + t*t*c.x;
@@ -205,7 +205,7 @@ public class EntityImpl implements Entity, T {
     }
 
     // ---------------------------------------------------
-    // M�thode principale : construit le Path2D.Float partiel en respectant les courbes
+    // Méthode principale : construit le Path2D.Float partiel en respectant les courbes
     // ---------------------------------------------------
     public Object t(Object obj) throws Exception {
         Object[] o = (Object[]) obj;
@@ -216,7 +216,7 @@ public class EntityImpl implements Entity, T {
         if (progress < 0f) progress = 0f;
         if (progress > 1f) progress = 1f;
 
-        // IMPORTANT : on r�cup�re les segments sans aplatissement
+        // IMPORTANT : on récupère les segments sans aplatissement
         PathIterator it = stroke.getPathIterator(null);
 
         List<Seg> segs = new ArrayList<>();
@@ -280,7 +280,7 @@ public class EntityImpl implements Entity, T {
             if (acc + segLen <= target + 1e-6f) {
                 // ajouter le segment entier
                 if (!started) {
-                    // moveTo au d�but du segment
+                    // moveTo au début du segment
                     partial.moveTo(s.p0.x, s.p0.y);
                     started = true;
                 }
@@ -291,7 +291,7 @@ public class EntityImpl implements Entity, T {
                 float remain = target - acc; // >0 && < segLen
                 float tEnd = s.findTForLength(remain); // 0..1
                 if (!started) {
-                    // si on commence � l'int�rieur d'un segment (rare), on doit moveTo au point � t=0
+                    // si on commence à l'intérieur d'un segment (rare), on doit moveTo au point à t=0
                     partial.moveTo(s.p0.x, s.p0.y);
                     started = true;
                 }
@@ -338,7 +338,7 @@ public class EntityImpl implements Entity, T {
                 // subdiviser la quad entre t0 et t1 pour obtenir un quad exacte
                 Point2D.Float[] sub = Seg.subdivideQuad(s.p0, s.c1, s.p1, t0, t1);
                 // sub = [newP0, newCtrl, newP1]
-                // si on est d�j� au newP0 dans le path, on doit quadTo(newCtrl, newP1)
+                // si on est déjà au newP0 dans le path, on doit quadTo(newCtrl, newP1)
                 p.quadTo(sub[1].x, sub[1].y, sub[2].x, sub[2].y);
                 break;
             }

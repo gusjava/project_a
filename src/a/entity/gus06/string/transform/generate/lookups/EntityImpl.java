@@ -500,13 +500,13 @@ public class EntityImpl implements Entity, T, R
 	private String help() throws Exception
 	{
 		StringBuffer b = new StringBuffer("Aide pour GENERATE LOOKUP\n\n");
-		b.append("Pour chaque ligne contenant une expression entre crochets, si la premi�re occurrence correspond � un motif de r�gles suivant\n");
-		b.append("La ligne est remplac�e par un ensemble de lignes d�riv�es de la ligne initiale dans laquelle le motif a �t� remplac�\n\n");
+		b.append("Pour chaque ligne contenant une expression entre crochets, si la première occurrence correspond à un motif de régles suivant\n");
+		b.append("La ligne est remplacée par un ensemble de lignes dérivées de la ligne initiale dans laquelle le motif a été remplacé\n\n");
 		b.append("Motif 1: [Beb|Dod|Gus]\titerator sur les valeurs de la liste\n");
-		b.append("Motif 2: [2-8]\titerator sur un entier de 2 � 8 avec un pas de 1\n");
-		b.append("Motif 3: [2-8:3]\titerator sur un entier de 2 � 8 avec un pas de 3\n");
-		b.append("Motif 4: [a-g]\titerator sur un entier de a � g avec un pas de 1\n");
-		b.append("Motif 5: [a-g:3]\titerator sur un entier de a � g avec un pas de 3\n");
+		b.append("Motif 2: [2-8]\titerator sur un entier de 2 à 8 avec un pas de 1\n");
+		b.append("Motif 3: [2-8:3]\titerator sur un entier de 2 à 8 avec un pas de 3\n");
+		b.append("Motif 4: [a-g]\titerator sur un entier de a à g avec un pas de 1\n");
+		b.append("Motif 5: [a-g:3]\titerator sur un entier de a à g avec un pas de 3\n");
 		b.append("Motif 6: date...\n");
 		b.append("Motif 7: date...\n");
 		return b.toString();

@@ -26,7 +26,7 @@ public class EntityImpl implements Entity, T {
 		map.put("*","execute");
 		map.put("$","affectation (regional)");
 		map.put("&","affectation (global)");
-		map.put("�","affectation (local)");
+		map.put("£","affectation (local)");
 	}
 
 	

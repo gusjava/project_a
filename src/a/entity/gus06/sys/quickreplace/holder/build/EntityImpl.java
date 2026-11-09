@@ -71,7 +71,7 @@ public class EntityImpl implements Entity, T {
 			updateLabel();
 		}
 		
-		// Ancienne m�thode insert qui banissait le \n (raison ?)
+		// Ancienne méthode insert qui banissait le \n (raison ?)
 		
 //		protected void insert(String text)
 //		{

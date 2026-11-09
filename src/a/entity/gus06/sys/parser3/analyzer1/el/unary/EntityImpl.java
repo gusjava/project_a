@@ -43,9 +43,9 @@ public class EntityImpl implements Entity, T {
 			if(symbol.equals("!")) return result("!",t.t(tag));
 			if(symbol.equals("-")) return result("-",t.t(tag));
 			if(symbol.equals("&")) return result("&",t.t(tag));
-			if(symbol.equals("�")) return result("�",t.t(tag));
+			if(symbol.equals("£")) return result("£",t.t(tag));
 			if(symbol.equals("@")) return result("@",t.t(tag));
-			if(symbol.equals("�")) return result("�",t.t(tag));
+			if(symbol.equals("§")) return result("§",t.t(tag));
 		
 			throw new Exception("Invalid symbol for unary operation: "+symbol);
 		}

@@ -8,17 +8,17 @@ public class EntityImpl implements Entity, G {
 
 	public static final String[] DATA = new String[]{
 		"Janvier",
-		"F�vrier",
+		"Février",
 		"Mars",
 		"Avril",
 		"Mai",
 		"Juin",
 		"Juillet",
-		"Ao�t",
+		"Août",
 		"Septembre",
 		"Octobre",
 		"Novembre",
-		"D�cembre"
+		"Décembre"
 	};
 	
 	public Object g() throws Exception

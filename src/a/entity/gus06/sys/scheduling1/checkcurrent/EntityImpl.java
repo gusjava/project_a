@@ -75,7 +75,7 @@ public class EntityImpl implements Entity, F {
 		
 		Date lastDate = toDate(get(map,KEY_LAST_DATE));
 		
-		//v�rification de date_start : si date_start>d : stop
+		//vérification de date_start : si date_start>d : stop
 		
 		if(has(map,KEY_DATE_START))
 		{
@@ -83,7 +83,7 @@ public class EntityImpl implements Entity, F {
 			if(dateStart.after(d)) return false;
 		}
 		
-		//v�rification de date_end : si date_end<d : stop
+		//vérification de date_end : si date_end<d : stop
 		
 		if(has(map,KEY_DATE_END))
 		{
@@ -91,7 +91,7 @@ public class EntityImpl implements Entity, F {
 			if(dateEnd.before(d)) return false;
 		}
 		
-		//v�rification duration_max : si d-last_date>duration_max : go
+		//vérification duration_max : si d-last_date>duration_max : go
 		
 		
 		if(has(map,KEY_DURATION_MAX))
@@ -100,7 +100,7 @@ public class EntityImpl implements Entity, F {
 			if(lastDate==null || d.getTime()-lastDate.getTime() > durationMax) return true;
 		}
 		
-		//v�rification duration_min : si d-last_date<duration_min : stop
+		//vérification duration_min : si d-last_date<duration_min : stop
 		
 		if(has(map,KEY_DURATION_MIN))
 		{

@@ -27,8 +27,8 @@ public class EntityImpl implements Entity, I {
 		option = Outside.service(this,"gus06.sys.option.comp.register");
 		
 		
-		addField(KEY_DIRGUS05,		"R�pertoire gus05");
-		addField(KEY_DIRGUS06,		"R�pertoire gus06");
+		addField(KEY_DIRGUS05,		"Répertoire gus05");
+		addField(KEY_DIRGUS06,		"Répertoire gus06");
 		
 		panel = new JPanel(new BorderLayout());
 		panel.add((JComponent) form.i(),BorderLayout.CENTER);

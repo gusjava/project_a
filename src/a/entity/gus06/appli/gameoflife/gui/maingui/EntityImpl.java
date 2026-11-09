@@ -46,7 +46,7 @@ public class EntityImpl implements Entity, ActionListener, I, V, R, P {
 		
 		timer = new Timer("TIMER_"+getClass().getName());
 
-		button = new JButton("D�marrer");
+		button = new JButton("Démarrer");
 		button.setFont(button.getFont().deriveFont((float) 15));
 		button.addActionListener(this);
 		

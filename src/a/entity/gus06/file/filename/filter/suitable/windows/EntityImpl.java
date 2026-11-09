@@ -9,7 +9,7 @@ public class EntityImpl implements Entity, F {
 
 
 	/*
-	 * caract�res interdits dans les noms de fichier sous Windows :
+	 * caractères interdits dans les noms de fichier sous Windows :
 	 *  \ / : * ? " < > | \n \t \r
 	 */
 	

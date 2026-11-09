@@ -7,7 +7,7 @@ public class EntityImpl implements Entity, G, E {
 
 	public String creationDate() {return "20151015";}
 
-	public static final String DISPLAY = "ACTION_fullScreen#Plein �cran";
+	public static final String DISPLAY = "ACTION_fullScreen#Plein écran";
 	
 	
 	

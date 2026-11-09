@@ -17,7 +17,7 @@ public class EntityImpl implements Entity, P {
 		JTextComponent comp = (JTextComponent) o[0];;
 		String rule = ""+o[1];
 		
-		//TODO : prendre en compte les mots cl�s : 
+		//TODO : prendre en compte les mots clés : 
 		
 		//word, 
 		//line, 

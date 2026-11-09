@@ -21,7 +21,7 @@ public class EntityImpl implements Entity, P {
 		String text = comp.getSelectedText();
 		
 		//A FAIRE ...
-		// d�tecter des formats de date FR / EN
+		// détecter des formats de date FR / EN
 		
 	}
 }

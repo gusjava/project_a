@@ -34,7 +34,7 @@ public class EntityImpl implements Entity, T {
 		{
 			String mime = (String) getMime.t(file);
 			
-			// pour l'instant rien ne marche... il faudra trouver un remplacement � dsj
+			// pour l'instant rien ne marche... il faudra trouver un remplacement à dsj
 			return new HashMap();
 		}
 		catch(Exception e)

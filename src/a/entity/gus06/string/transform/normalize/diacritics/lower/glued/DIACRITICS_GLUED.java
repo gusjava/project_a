@@ -87,60 +87,60 @@ public class DIACRITICS_GLUED {
 		
 		// lowercase diacritics
 		
-		case '\u00e0':b.append('a');break;//� accent grave
-		case '\u00e1':b.append('a');break;//� accent aigu
-		case '\u00e2':b.append('a');break;//� accent circonflexe
-		case '\u00e3':b.append('a');break;//� tilde
-		case '\u00e4':b.append('a');break;//� tr�ma
-		case '\u00e5':b.append('a');break;//� rond en chef
+		case '\u00e0':b.append('a');break;//à accent grave
+		case '\u00e1':b.append('a');break;//á accent aigu
+		case '\u00e2':b.append('a');break;//â accent circonflexe
+		case '\u00e3':b.append('a');break;//ã tilde
+		case '\u00e4':b.append('a');break;//ä tréma
+		case '\u00e5':b.append('a');break;//å rond en chef
 		case '\u0101':b.append('a');break;//a macron (accent plat)
-		case '\u0103':b.append('a');break;//a br�ve (accent goutte)
+		case '\u0103':b.append('a');break;//a brève (accent goutte)
 		case '\u0105':b.append('a');break;//a ogonek (petite queue)
 		case '\u1ea1':b.append('a');break;//a point souscrit
 		case '\u01ce':b.append('a');break;//a hatchek (accent hirondelle)
 		case '\u0227':b.append('a');break;//a point suscrit
 		
-		case '\u00e6':b.append("ae");break;//�
-		case '\u01fd':b.append("ae");break;//� accent aigu
-		case '\u01e3':b.append("ae");break;//� macron
+		case '\u00e6':b.append("ae");break;//æ
+		case '\u01fd':b.append("ae");break;//æ accent aigu
+		case '\u01e3':b.append("ae");break;//æ macron
 		
 		case '\u1e03':b.append('b');break;//b point suscrit
 		case '\u1e05':b.append('b');break;//b point souscrit
 		case '\u0253':b.append('b');break;//b crochet
 		
-		case '\u00e7':b.append('c');break;//� c�dille
+		case '\u00e7':b.append('c');break;//ç cédille
 		case '\u0107':b.append('c');break;//c accent aigu
 		case '\u0109':b.append('c');break;//c accent circonflexe
 		case '\u010b':b.append('c');break;//c point suscrit
 		case '\u010d':b.append('c');break;//c hatchek
 		case '\u0188':b.append('c');break;//c crochet
-		case '\u00f0':b.append('c');break;//� barre
+		case '\u00f0':b.append('c');break;//ð barre
 		
 		case '\u010f':b.append('d');break;//d hatchek
 		case '\u0257':b.append('d');break;//d crochet
 		case '\u1e0b':b.append('d');break;//d point suscrit
 		case '\u1e0d':b.append('d');break;//d point souscrit
-		case '\u1e11':b.append('d');break;//d c�dille
+		case '\u1e11':b.append('d');break;//d cédille
 		
-		case '\u00e8':b.append('e');break;//� accent grave
-		case '\u00e9':b.append('e');break;//� accent aigu
-		case '\u00ea':b.append('e');break;//� accent circonflexe
-		case '\u00eb':b.append('e');break;//� tr�ma
+		case '\u00e8':b.append('e');break;//è accent grave
+		case '\u00e9':b.append('e');break;//é accent aigu
+		case '\u00ea':b.append('e');break;//ê accent circonflexe
+		case '\u00eb':b.append('e');break;//ë tréma
 		case '\u0113':b.append('e');break;//e macron
-		case '\u0115':b.append('e');break;//e br�ve
+		case '\u0115':b.append('e');break;//e brève
 		case '\u0117':b.append('e');break;//e point suscrit
 		case '\u0119':b.append('e');break;//e ogonek
 		case '\u011b':b.append('e');break;//e hatchek
-		case '\u0229':b.append('e');break;//e c�dille
+		case '\u0229':b.append('e');break;//e cédille
 		case '\u1eb9':b.append('e');break;//e point souscrit
 		case '\u1ebd':b.append('e');break;//e tilde
 		
 		case '\u1e1f':b.append('f');break;//f point suscrit
 		
 		case '\u011d':b.append('g');break;//g accent circonflexe
-		case '\u011f':b.append('g');break;//g br�ve
+		case '\u011f':b.append('g');break;//g brève
 		case '\u0121':b.append('g');break;//g point suscrit
-		case '\u0123':b.append('g');break;//g c�dille
+		case '\u0123':b.append('g');break;//g cédille
 		case '\u01e5':b.append('g');break;//g barre
 		case '\u01e7':b.append('g');break;//g hatchek
 		case '\u0260':b.append('g');break;//g crochet
@@ -151,18 +151,18 @@ public class DIACRITICS_GLUED {
 		case '\u0127':b.append('h');break;//h barre
 		case '\u1e23':b.append('h');break;//h point suscrit
 		case '\u1e25':b.append('h');break;//h point souscrit
-		case '\u1e27':b.append('h');break;//h tr�ma
-		case '\u1e29':b.append('h');break;//h c�dille
+		case '\u1e27':b.append('h');break;//h tréma
+		case '\u1e29':b.append('h');break;//h cédille
 		case '\u021f':b.append('h');break;//h hatchek
 		
-		case '\u00ec':b.append('i');break;//� accent grave
-		case '\u00ed':b.append('i');break;//� accent aigu
-		case '\u00ee':b.append('i');break;//� accent circonflexe
-		case '\u00ef':b.append('i');break;//� tr�ma
+		case '\u00ec':b.append('i');break;//ì accent grave
+		case '\u00ed':b.append('i');break;//í accent aigu
+		case '\u00ee':b.append('i');break;//î accent circonflexe
+		case '\u00ef':b.append('i');break;//ï tréma
 		case '\u01d0':b.append('i');break;//i hatchek
 		case '\u0129':b.append('i');break;//i tilde
 		case '\u012b':b.append('i');break;//i macron
-		case '\u012d':b.append('i');break;//i br�ve
+		case '\u012d':b.append('i');break;//i brève
 		case '\u012f':b.append('i');break;//i ogonek
 		case '\u1ecb':b.append('i');break;//i point souscrit
 		
@@ -171,13 +171,13 @@ public class DIACRITICS_GLUED {
 		
 		case '\u1e31':b.append('k');break;//k accent aigu
 		case '\u1e33':b.append('k');break;//k point souscrit
-		case '\u0137':b.append('k');break;//k c�dille
+		case '\u0137':b.append('k');break;//k cédille
 		case '\u0199':b.append('k');break;//k crochet
 		case '\u01e9':b.append('k');break;//k hatchek
 		
 		case '\u1e37':b.append('l');break;//l point souscrit
 		case '\u013a':b.append('l');break;//l accent aigu
-		case '\u013c':b.append('l');break;//l c�dille
+		case '\u013c':b.append('l');break;//l cédille
 		case '\u013e':b.append('l');break;//l hatchek
 		case '\u0142':b.append('l');break;//l barre
 		
@@ -188,19 +188,19 @@ public class DIACRITICS_GLUED {
 		case '\u1e45':b.append('n');break;//n point suscrit
 		case '\u1e47':b.append('n');break;//n point souscrit
 		case '\u01f9':b.append('n');break;//n accent grave
-		case '\u00f1':b.append('n');break;//� tilde
+		case '\u00f1':b.append('n');break;//ñ tilde
 		case '\u0144':b.append('n');break;//n accent aigu
-		case '\u0146':b.append('n');break;//n c�dille
+		case '\u0146':b.append('n');break;//n cédille
 		case '\u0148':b.append('n');break;//n hatchek
 		
-		case '\u00f2':b.append('o');break;//� accent grave
-		case '\u00f3':b.append('o');break;//� accent aigu
-		case '\u00f4':b.append('o');break;//� accent circonflexe
-		case '\u00f5':b.append('o');break;//� tilde
-		case '\u00f6':b.append('o');break;//� tr�ma
-		case '\u00f8':b.append('o');break;//� barre
+		case '\u00f2':b.append('o');break;//ò accent grave
+		case '\u00f3':b.append('o');break;//ó accent aigu
+		case '\u00f4':b.append('o');break;//ô accent circonflexe
+		case '\u00f5':b.append('o');break;//õ tilde
+		case '\u00f6':b.append('o');break;//ö tréma
+		case '\u00f8':b.append('o');break;//ø barre
 		case '\u014d':b.append('o');break;//o macron
-		case '\u014f':b.append('o');break;//o br�ve
+		case '\u014f':b.append('o');break;//o brève
 		case '\u0151':b.append('o');break;//o double accent aigu
 		case '\u01a1':b.append('o');break;//o corne
 		case '\u01d2':b.append('o');break;//o hatchek
@@ -208,7 +208,7 @@ public class DIACRITICS_GLUED {
 		case '\u022f':b.append('o');break;//o point suscrit
 		case '\u1ecd':b.append('o');break;//o point souscrit
 		
-		case '\u0153':b.append("oe");break;//�
+		case '\u0153':b.append("oe");break;//œ
 
 		case '\u1e55':b.append('p');break;//p accent aigu
 		case '\u1e57':b.append('p');break;//p point suscrit
@@ -217,34 +217,34 @@ public class DIACRITICS_GLUED {
 		case '\u1e59':b.append('r');break;//r point suscrit
 		case '\u1e5b':b.append('r');break;//r point souscrit
 		case '\u0155':b.append('r');break;//r accent aigu
-		case '\u0157':b.append('r');break;//r c�dille
+		case '\u0157':b.append('r');break;//r cédille
 		case '\u0159':b.append('r');break;//r hatchek
 		
 		case '\u1e61':b.append('s');break;//s point suscrit
 		case '\u1e63':b.append('s');break;//s point souscrit
 		case '\u015b':b.append('s');break;//s accent aigu
 		case '\u015d':b.append('s');break;//s accent circonflexe
-		case '\u015f':b.append('s');break;//s c�dille
-		case '\u0161':b.append('s');break;//� hatchek
+		case '\u015f':b.append('s');break;//s cédille
+		case '\u0161':b.append('s');break;//š hatchek
 		case '\u0219':b.append('s');break;//s virgule
 		
 		case '\u1e6b':b.append('t');break;//t point suscrit
 		case '\u1e6d':b.append('t');break;//t point souscrit
-		case '\u0163':b.append('t');break;//t c�dille
+		case '\u0163':b.append('t');break;//t cédille
 		case '\u0165':b.append('t');break;//t hatchek
 		case '\u0167':b.append('t');break;//t barre
 		case '\u01ad':b.append('t');break;//t crochet
 		case '\u021b':b.append('t');break;//t virgule
-		case '\u1e97':b.append('t');break;//t tr�ma
+		case '\u1e97':b.append('t');break;//t tréma
 		
 		case '\u1ee5':b.append('u');break;//u point souscrit
-		case '\u00f9':b.append('u');break;//� accent grave
-		case '\u00fa':b.append('u');break;//� accent aigu
-		case '\u00fb':b.append('u');break;//� accent circonflexe
-		case '\u00fc':b.append('u');break;//� tr�ma
+		case '\u00f9':b.append('u');break;//ù accent grave
+		case '\u00fa':b.append('u');break;//ú accent aigu
+		case '\u00fb':b.append('u');break;//û accent circonflexe
+		case '\u00fc':b.append('u');break;//ü tréma
 		case '\u0169':b.append('u');break;//u tilde
 		case '\u016b':b.append('u');break;//u macron
-		case '\u016d':b.append('u');break;//u br�ve
+		case '\u016d':b.append('u');break;//u brève
 		case '\u016f':b.append('u');break;//u rond en chef
 		case '\u0171':b.append('u');break;//u double accent aigu
 		case '\u0173':b.append('u');break;//u ogonek
@@ -257,17 +257,17 @@ public class DIACRITICS_GLUED {
 		case '\u0175':b.append('w');break;//w accent circonflexe
 		case '\u1e81':b.append('w');break;//w accent grave
 		case '\u1e83':b.append('w');break;//w accent aigu
-		case '\u1e85':b.append('w');break;//w tr�ma
+		case '\u1e85':b.append('w');break;//w tréma
 		case '\u1e87':b.append('w');break;//w point suscrit
 		case '\u1e89':b.append('w');break;//w point souscrit
 		case '\u1e98':b.append('w');break;//w rond en chef
 		
 		case '\u1e8b':b.append('x');break;//x point suscrit
-		case '\u1e8d':b.append('x');break;//x tr�ma
+		case '\u1e8d':b.append('x');break;//x tréma
 		
 		case '\u0177':b.append('y');break;//y accent circonflexe
-		case '\u00ff':b.append('y');break;//� tr�ma
-		case '\u00fd':b.append('y');break;//� accent aigu
+		case '\u00ff':b.append('y');break;//ÿ tréma
+		case '\u00fd':b.append('y');break;//ý accent aigu
 		case '\u1e8f':b.append('y');break;//y point suscrit
 		case '\u01b4':b.append('y');break;//y crochet
 		case '\u0233':b.append('y');break;//y macron
@@ -278,36 +278,36 @@ public class DIACRITICS_GLUED {
 		
 		case '\u017a':b.append('z');break;//z accent aigu
 		case '\u017c':b.append('z');break;//z point suscrit
-		case '\u017e':b.append('z');break;//� hatchek
+		case '\u017e':b.append('z');break;//ž hatchek
 		case '\u01b6':b.append('z');break;//z barre
 		case '\u1e91':b.append('z');break;//z accent circonflexe
 		case '\u1e93':b.append('z');break;//z point souscrit
 		
 		// uppercase diacritics
 		
-		case '\u00c0':b.append('a');break;//� accent grave
-		case '\u00c1':b.append('a');break;//� accent aigu
-		case '\u00c2':b.append('a');break;//� accent circonflexe
-		case '\u00c3':b.append('a');break;//� tilde
-		case '\u00c4':b.append('a');break;//� tr�ma
-		case '\u00c5':b.append('a');break;//� rond en chef
+		case '\u00c0':b.append('a');break;//À accent grave
+		case '\u00c1':b.append('a');break;//Á accent aigu
+		case '\u00c2':b.append('a');break;//Â accent circonflexe
+		case '\u00c3':b.append('a');break;//Ã tilde
+		case '\u00c4':b.append('a');break;//Ä tréma
+		case '\u00c5':b.append('a');break;//Å rond en chef
 		case '\u0100':b.append('a');break;//A macron
-		case '\u0102':b.append('a');break;//A br�ve
+		case '\u0102':b.append('a');break;//A brève
 		case '\u0104':b.append('a');break;//A ogonek
 		case '\u1ea0':b.append('a');break;//A point souscrit
 		case '\u01cd':b.append('a');break;//A hatchek
 		case '\u0226':b.append('a');break;//A point suscrit
 		
-		case '\u00c6':b.append("ae");break;//�
-		case '\u01fc':b.append("ae");break;//� accent aigu
-		case '\u01e2':b.append("ae");break;//� macron
+		case '\u00c6':b.append("ae");break;//Æ
+		case '\u01fc':b.append("ae");break;//Æ accent aigu
+		case '\u01e2':b.append("ae");break;//Æ macron
 		
 		case '\u0243':b.append('b');break;//B barre
 		case '\u1e02':b.append('b');break;//B point suscrit
 		case '\u1e04':b.append('b');break;//B point souscrit
 		case '\u0181':b.append('b');break;//B crochet
 		
-		case '\u00c7':b.append('c');break;//� c�dille
+		case '\u00c7':b.append('c');break;//Ç cédille
 		case '\u0106':b.append('c');break;//C accent aigu
 		case '\u0108':b.append('c');break;//C accent circonflexe
 		case '\u010a':b.append('c');break;//C point suscrit
@@ -319,27 +319,27 @@ public class DIACRITICS_GLUED {
 		case '\u018a':b.append('d');break;//D crochet
 		case '\u1e0a':b.append('d');break;//D point suscrit
 		case '\u1e0c':b.append('d');break;//D point souscrit
-		case '\u1e10':b.append('d');break;//D c�dille
+		case '\u1e10':b.append('d');break;//D cédille
 		
-		case '\u00c8':b.append('e');break;//� accent grave
-		case '\u00c9':b.append('e');break;//� accent aigu
-		case '\u00ca':b.append('e');break;//� accent circonflexe
-		case '\u00cb':b.append('e');break;//� tr�ma
+		case '\u00c8':b.append('e');break;//È accent grave
+		case '\u00c9':b.append('e');break;//É accent aigu
+		case '\u00ca':b.append('e');break;//Ê accent circonflexe
+		case '\u00cb':b.append('e');break;//Ë tréma
 		case '\u0112':b.append('e');break;//E macron
-		case '\u0114':b.append('e');break;//E br�ve
+		case '\u0114':b.append('e');break;//E brève
 		case '\u0116':b.append('e');break;//E point suscrit
 		case '\u0118':b.append('e');break;//E ogonek
 		case '\u011a':b.append('e');break;//E hatchek
-		case '\u0228':b.append('e');break;//E c�dille
+		case '\u0228':b.append('e');break;//E cédille
 		case '\u1eb8':b.append('e');break;//E point souscrit
 		case '\u1ebc':b.append('e');break;//E tilde
 		
 		case '\u1e1e':b.append('f');break;//F point suscrit
 		
 		case '\u011c':b.append('g');break;//G accent circonflexe
-		case '\u011e':b.append('g');break;//G br�ve
+		case '\u011e':b.append('g');break;//G brève
 		case '\u0120':b.append('g');break;//G point suscrit
-		case '\u0122':b.append('g');break;//G c�dille
+		case '\u0122':b.append('g');break;//G cédille
 		case '\u01e4':b.append('g');break;//G barre
 		case '\u01e6':b.append('g');break;//G hatchek
 		case '\u0193':b.append('g');break;//G crochet
@@ -350,18 +350,18 @@ public class DIACRITICS_GLUED {
 		case '\u0126':b.append('h');break;//H barre
 		case '\u1e22':b.append('h');break;//H point suscrit
 		case '\u1e24':b.append('h');break;//H point souscrit
-		case '\u1e26':b.append('h');break;//H tr�ma
-		case '\u1e28':b.append('h');break;//H c�dille
+		case '\u1e26':b.append('h');break;//H tréma
+		case '\u1e28':b.append('h');break;//H cédille
 		case '\u021e':b.append('h');break;//H hatchek
 		
-		case '\u00cc':b.append('i');break;//� accent grave
-		case '\u00cd':b.append('i');break;//� accent aigu
-		case '\u00ce':b.append('i');break;//� accent circonflexe
-		case '\u00cf':b.append('i');break;//� tr�ma
+		case '\u00cc':b.append('i');break;//Ì accent grave
+		case '\u00cd':b.append('i');break;//Í accent aigu
+		case '\u00ce':b.append('i');break;//Î accent circonflexe
+		case '\u00cf':b.append('i');break;//Ï tréma
 		case '\u01cf':b.append('i');break;//I hatchek
 		case '\u0128':b.append('i');break;//I tilde
 		case '\u012a':b.append('i');break;//I macron
-		case '\u012c':b.append('i');break;//I br�ve
+		case '\u012c':b.append('i');break;//I brève
 		case '\u012e':b.append('i');break;//I ogonek
 		case '\u0130':b.append('i');break;//I point suscrit
 		case '\u1eca':b.append('i');break;//I point souscrit
@@ -370,13 +370,13 @@ public class DIACRITICS_GLUED {
 		
 		case '\u1e30':b.append('k');break;//K accent aigu
 		case '\u1e32':b.append('k');break;//K point souscrit
-		case '\u0136':b.append('k');break;//K c�dille
+		case '\u0136':b.append('k');break;//K cédille
 		case '\u0198':b.append('k');break;//K crochet
 		case '\u01e8':b.append('k');break;//K hatchek
 		
 		case '\u1e36':b.append('l');break;//L point souscrit
 		case '\u0139':b.append('l');break;//L accent aigu
-		case '\u013b':b.append('l');break;//L c�dille
+		case '\u013b':b.append('l');break;//L cédille
 		case '\u013d':b.append('l');break;//L hatchek
 		case '\u0141':b.append('l');break;//L barre
 		
@@ -389,17 +389,17 @@ public class DIACRITICS_GLUED {
 		case '\u01f8':b.append('n');break;//N accent grave
 		case '\u00d1':b.append('n');break;//N tilde
 		case '\u0143':b.append('n');break;//N accent aigu
-		case '\u0145':b.append('n');break;//N c�dille
+		case '\u0145':b.append('n');break;//N cédille
 		case '\u0147':b.append('n');break;//N hatchek
 		
-		case '\u00d2':b.append('o');break;//� accent grave
-		case '\u00d3':b.append('o');break;//� accent aigu
-		case '\u00d4':b.append('o');break;//� accent circonflexe
-		case '\u00d5':b.append('o');break;//� tilde
-		case '\u00d6':b.append('o');break;//� tr�ma
-		case '\u00d8':b.append('o');break;//� barre
+		case '\u00d2':b.append('o');break;//Ò accent grave
+		case '\u00d3':b.append('o');break;//Ó accent aigu
+		case '\u00d4':b.append('o');break;//Ô accent circonflexe
+		case '\u00d5':b.append('o');break;//Õ tilde
+		case '\u00d6':b.append('o');break;//Ö tréma
+		case '\u00d8':b.append('o');break;//Ø barre
 		case '\u014c':b.append('o');break;//O macron
-		case '\u014e':b.append('o');break;//O br�ve
+		case '\u014e':b.append('o');break;//O brève
 		case '\u0150':b.append('o');break;//O double accent aigu
 		case '\u01a0':b.append('o');break;//O corne
 		case '\u01d1':b.append('o');break;//O hatchek
@@ -407,7 +407,7 @@ public class DIACRITICS_GLUED {
 		case '\u022e':b.append('o');break;//O point suscrit
 		case '\u1ecc':b.append('o');break;//O point souscrit
 		
-		case '\u0152':b.append("oe");break;//�
+		case '\u0152':b.append("oe");break;//Œ
 		
 		case '\u1e54':b.append('p');break;//P accent aigu
 		case '\u1e56':b.append('p');break;//P point suscrit
@@ -416,33 +416,33 @@ public class DIACRITICS_GLUED {
 		case '\u1e58':b.append('r');break;//R point suscrit
 		case '\u1e5a':b.append('r');break;//R point souscrit
 		case '\u0154':b.append('r');break;//R accent aigu
-		case '\u0156':b.append('r');break;//R c�dille
+		case '\u0156':b.append('r');break;//R cédille
 		case '\u0158':b.append('r');break;//R hatchek
 		
 		case '\u1e60':b.append('s');break;//S point suscrit
 		case '\u1e62':b.append('s');break;//S point souscrit
 		case '\u015a':b.append('s');break;//S accent aigu
 		case '\u015c':b.append('s');break;//S accent circonflexe
-		case '\u015e':b.append('s');break;//S c�dille
+		case '\u015e':b.append('s');break;//S cédille
 		case '\u0160':b.append('s');break;//S hatchek
 		case '\u0218':b.append('s');break;//S virgule
 		
 		case '\u1e6a':b.append('t');break;//T point suscrit
 		case '\u1e6c':b.append('t');break;//T point souscrit
-		case '\u0162':b.append('t');break;//T c�dille
+		case '\u0162':b.append('t');break;//T cédille
 		case '\u0164':b.append('t');break;//T hatchek
 		case '\u0166':b.append('t');break;//T barre
 		case '\u01ac':b.append('t');break;//T crochet
 		case '\u021a':b.append('t');break;//T virgule
 		
 		case '\u1ee4':b.append('u');break;//U point souscrit
-		case '\u00d9':b.append('u');break;//� accent grave
-		case '\u00da':b.append('u');break;//� accent aigu
-		case '\u00db':b.append('u');break;//� accent circonflexe
-		case '\u00dc':b.append('u');break;//� tr�ma
+		case '\u00d9':b.append('u');break;//Ù accent grave
+		case '\u00da':b.append('u');break;//Ú accent aigu
+		case '\u00db':b.append('u');break;//Û accent circonflexe
+		case '\u00dc':b.append('u');break;//Ü tréma
 		case '\u0168':b.append('u');break;//U tilde
 		case '\u016a':b.append('u');break;//U macron
-		case '\u016c':b.append('u');break;//U br�ve
+		case '\u016c':b.append('u');break;//U brève
 		case '\u016e':b.append('u');break;//U rond en chef
 		case '\u0170':b.append('u');break;//U double accent aigu
 		case '\u0172':b.append('u');break;//U ogonek
@@ -455,16 +455,16 @@ public class DIACRITICS_GLUED {
 		case '\u0174':b.append('w');break;//W accent circonflexe
 		case '\u1e80':b.append('w');break;//W accent grave
 		case '\u1e82':b.append('w');break;//W accent aigu
-		case '\u1e84':b.append('w');break;//W tr�ma
+		case '\u1e84':b.append('w');break;//W tréma
 		case '\u1e86':b.append('w');break;//W point suscrit
 		case '\u1e88':b.append('w');break;//W point souscrit
 		
 		case '\u1e8a':b.append('x');break;//X point suscrit
-		case '\u1e8c':b.append('x');break;//X tr�ma
+		case '\u1e8c':b.append('x');break;//X tréma
 		
 		case '\u0176':b.append('y');break;//Y accent circonflexe
-		case '\u0178':b.append('y');break;//� tr�ma
-		case '\u00dd':b.append('y');break;//� accent aigu
+		case '\u0178':b.append('y');break;//Ÿ tréma
+		case '\u00dd':b.append('y');break;//Ý accent aigu
 		case '\u1e8e':b.append('y');break;//Y point suscrit
 		case '\u01b3':b.append('y');break;//Y crochet
 		case '\u0232':b.append('y');break;//Y macron

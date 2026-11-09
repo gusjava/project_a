@@ -30,9 +30,9 @@ public class EntityImpl implements Entity, I {
 		option = Outside.service(this,"gus06.sys.option.comp.register");
 		
 		
-		addField(KEY_STOREDIR,		"R�pertoire de stockage");
-		addField(KEY_WEBAPI_URL,	"Url d'acc�s distant");
-		//addField(KEY_WEBAPI_USER,	"Pseudo d�veloppeur");
+		addField(KEY_STOREDIR,		"Répertoire de stockage");
+		addField(KEY_WEBAPI_URL,	"Url d'accés distant");
+		//addField(KEY_WEBAPI_USER,	"Pseudo développeur");
 		//addPwd(KEY_WEBAPI_PWD,		"Mot de passe");
 		
 		panel = new JPanel(new BorderLayout());

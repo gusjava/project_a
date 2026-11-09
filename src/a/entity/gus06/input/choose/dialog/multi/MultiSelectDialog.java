@@ -29,7 +29,7 @@ public class MultiSelectDialog {
             checkBoxPanel.add(cb);
         }
 
-        JCheckBox selectAll = new BoldCheckBox("Cocher/D�cocher tout");
+        JCheckBox selectAll = new BoldCheckBox("Cocher/Décocher tout");
         selectAll.addActionListener(e -> {
             boolean state = selectAll.isSelected();
             for (JCheckBox cb : checkBoxes) {

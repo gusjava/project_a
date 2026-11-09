@@ -16,7 +16,7 @@ public class EntityImpl implements Entity, T {
 		
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
-//		c.roll(Calendar.YEAR,-1); roll fait la m�me chose pour YEAR ?
+//		c.roll(Calendar.YEAR,-1); roll fait la même chose pour YEAR ?
 		c.add(Calendar.YEAR,-1);
 		return c.getTime();
 	}

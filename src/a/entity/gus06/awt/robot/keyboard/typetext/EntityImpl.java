@@ -112,7 +112,7 @@ public class EntityImpl implements Entity, P {
 		
 		else if(c=='&') type(KeyEvent.VK_1);
 		
-		else if(c=='�') type(KeyEvent.VK_2);
+		else if(c=='é') type(KeyEvent.VK_2);
 		else if(c=='~') typeAltGr(KeyEvent.VK_2);
 		
 		else if(c=='"') type(KeyEvent.VK_3);
@@ -127,33 +127,33 @@ public class EntityImpl implements Entity, P {
 		else if(c=='-') type(KeyEvent.VK_6);
 		else if(c=='|') typeAltGr(KeyEvent.VK_6);
 		
-		else if(c=='�') type(KeyEvent.VK_7);
+		else if(c=='è') type(KeyEvent.VK_7);
 		else if(c=='`') typeAltGr(KeyEvent.VK_7);
 		
 		else if(c=='_') type(KeyEvent.VK_8);
 		else if(c=='\\') typeAltGr(KeyEvent.VK_8);
 		
-		else if(c=='�') type(KeyEvent.VK_9);
+		else if(c=='ç') type(KeyEvent.VK_9);
 		else if(c=='^') typeAltGr(KeyEvent.VK_9);
 		
-		else if(c=='�') type(KeyEvent.VK_0);
+		else if(c=='à') type(KeyEvent.VK_0);
 		else if(c=='@') typeAltGr(KeyEvent.VK_0);
 		
-		// � la place de VK_MINUS ???
+		// à la place de VK_MINUS ???
 //		else if(c==')') type(KeyEvent.VK_MINUS);
 //		else if(c==']') typeAltGr(KeyEvent.VK_MINUS);
-//		else if(c=='�') typeShift(KeyEvent.VK_MINUS);
+//		else if(c=='°') typeShift(KeyEvent.VK_MINUS);
 
 		else if(c=='=') type(KeyEvent.VK_EQUALS);
 		else if(c=='}') typeAltGr(KeyEvent.VK_EQUALS);
 		else if(c=='+') typeShift(KeyEvent.VK_EQUALS);
 		
-		else if(c=='�') typeAltGr(KeyEvent.VK_E);
+		else if(c=='€') typeAltGr(KeyEvent.VK_E);
 		
 		else if(c=='<') usePaste("<");
 		else if(c=='>') usePaste(">");
 		
-		else if(c=='�') usePaste("�");
+		else if(c=='ê') usePaste("ê");
 		
 		else usePaste(""+c);
 //		else throw new Exception("Unsupported character: "+c);

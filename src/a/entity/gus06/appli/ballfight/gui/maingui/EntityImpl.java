@@ -38,7 +38,7 @@ public class EntityImpl implements Entity, I, ActionListener {
 		
 		screen = new ScreenJPanel();
 		
-		button = new JButton("D�marrer"); 
+		button = new JButton("Démarrer"); 
 		button.addActionListener(this);
 		
 		field_number = new JTextField(6);

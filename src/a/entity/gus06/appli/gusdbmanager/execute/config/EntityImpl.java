@@ -27,8 +27,8 @@ public class EntityImpl implements Entity, E {
 		boolean loaded = dataHolder.f(f);
 		if(loaded) return;
 
-		JOptionPane.showMessageDialog(null,"Le chargement du fichier a �chou�:\n"+f,
-				"Configuration des serveurs en �chec",
+		JOptionPane.showMessageDialog(null,"Le chargement du fichier a échoué:\n"+f,
+				"Configuration des serveurs en échec",
 				JOptionPane.WARNING_MESSAGE);
 	}
 }

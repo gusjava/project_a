@@ -26,7 +26,7 @@ public class EntityImpl implements Entity, I {
 		form = Outside.service(this,"*gus06.swing.panel.formpanel");
 		option = Outside.service(this,"gus06.sys.option.comp.register");
 		
-		addField(KEY_STOREDIR,	"R�pertoire de stockage");
+		addField(KEY_STOREDIR,	"Répertoire de stockage");
 		addField(KEY_URL,	"Url");
 		
 		panel = new JPanel(new BorderLayout());

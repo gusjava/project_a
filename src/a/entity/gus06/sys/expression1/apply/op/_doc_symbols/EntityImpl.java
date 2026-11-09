@@ -22,9 +22,9 @@ public class EntityImpl implements Entity, T {
 		map.put("!","negation");
 		map.put("-","opposition/soustraction");
 		map.put("&","interpretation");
-		map.put("�","interpreter");
+		map.put("£","interpreter");
 		map.put("@","unique instantiation");
-		map.put("�","multiple instantiation");
+		map.put("§","multiple instantiation");
 
 		// OPERATEURS BINAIRES
 		

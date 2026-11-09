@@ -311,7 +311,7 @@ public class EntityImpl extends S1 implements Entity, ActionListener, KeyListene
 		T builderNames = (T) filterList.t(filter3);
 		namesFiltered = (List) builderNames.t(names);
 		
-		// On retire les entr�es vides
+		// On retire les entrées vides
 		
 		namesFiltered.removeIf(name -> {
 			List pathsForName = (List) pathsByName.get(name);

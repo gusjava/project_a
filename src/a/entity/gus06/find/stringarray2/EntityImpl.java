@@ -49,7 +49,7 @@ public class EntityImpl implements Entity, T {
 		throw new Exception("Invalid data type: "+obj.getClass().getName());
 	}
 	
-	//TODO faire une entit� convert
+	//TODO faire une entité convert
 	//TODO prendre en compte aussi pour Object[][]
 	
 	private String[][] fromTableModel(TableModel model)

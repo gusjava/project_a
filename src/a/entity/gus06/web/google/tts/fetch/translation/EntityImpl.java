@@ -49,7 +49,7 @@ public class EntityImpl implements Entity, T {
 			sb.append(line);
 			String resp = sb.toString();
 
-			// r�ponse du type [[["texte traduit",...]]]
+			// réponse du type [[["texte traduit",...]]]
 			int start = resp.indexOf('"');
 			if (start < 0) return "";
 			start++;

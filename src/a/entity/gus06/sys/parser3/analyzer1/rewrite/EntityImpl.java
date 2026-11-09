@@ -68,9 +68,9 @@ public class EntityImpl implements Entity, T {
 			if(op.equals("!")) {add(b,"!",content);return;}
 			if(op.equals("-")) {add(b,"-",content);return;}
 			if(op.equals("&")) {add(b,"&",content);return;}
-			if(op.equals("�")) {add(b,"�",content);return;}
+			if(op.equals("£")) {add(b,"£",content);return;}
 			if(op.equals("@")) {add(b,"@",content);return;}
-			if(op.equals("�")) {add(b,"�",content);return;}
+			if(op.equals("§")) {add(b,"§",content);return;}
 			
 			if(op.equals("null"))		{handle(b,"null");return;}
 			if(op.equals("boolean"))	{handle(b,content);return;}

@@ -83,6 +83,6 @@ public class EntityImpl implements Entity, P {
 	
 	private boolean isH2Table(String tableName)
 	{
-		return tableName.startsWith("h2_");//TODO � ajuster
+		return tableName.startsWith("h2_");//TODO à ajuster
 	}
 }

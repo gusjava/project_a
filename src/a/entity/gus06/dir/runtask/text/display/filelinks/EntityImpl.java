@@ -79,7 +79,7 @@ public class EntityImpl implements Entity, P {
 			
 			//cette condition n'est pas suffisante
 			//il faut prendre en compte les chemins relatifs par rapport
-			//au r�pertoire du fichier f
+			//au répertoire du fichier f
 			
 			if(text.contains("\""+k1+"\"") 
 			|| text.contains("\""+k2+"\"") 

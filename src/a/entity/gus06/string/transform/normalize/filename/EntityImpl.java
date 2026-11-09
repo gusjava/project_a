@@ -10,7 +10,7 @@ public class EntityImpl implements Entity, T {
 	public static final char C = '_';
 
 	/*
-	 * caract�res interdits dans les noms de fichier sous Windows :
+	 * caractères interdits dans les noms de fichier sous Windows :
 	 * \ / : * ? " < > |
 	 */
 	public Object t(Object obj) throws Exception

@@ -69,7 +69,7 @@ public class EntityImpl implements Entity, P {
 	
 	private F buildFilter(String exp, List roots) throws Exception
 	{
-		if(exp.startsWith("�"))
+		if(exp.startsWith("§"))
 		{
 			return (F) buildFileFilterGlobal.t(new Object[]{exp.substring(1), roots});
 		}

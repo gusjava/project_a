@@ -18,7 +18,7 @@ public class EntityImpl implements Entity, F {
 	
 	private boolean isValidChar(char c1, char c2)
 	{
-		if(c1=='x') return true; 			//n'importe quel caract�re
+		if(c1=='x') return true; 			//n'importe quel caractère
 		
 		if(c1=='d') return isDigit((int) c2); 		//digit
 		if(c1=='D') return !isDigit((int) c2); 		//non digit
