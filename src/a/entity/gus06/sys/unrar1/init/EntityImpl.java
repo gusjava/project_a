@@ -13,7 +13,7 @@ public class EntityImpl implements Entity, P {
 
 	public String creationDate() {return "20251108";}
 
-	public static final String START = "gus06/resource/gus/gyem/unrar";
+	public static final String START = "a/config/gus/common1/exe/unrar";
 
 
 	private Service appJar;
