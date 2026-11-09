@@ -89,7 +89,7 @@ public class EntityImpl implements Entity, P {
 		runPreviousTask =	Outside.service(this,"gus06.swing.tree.cust.file.action.alt_f7.runtask.previous");
 		open =			Outside.service(this,"gus06.swing.tree.cust.file.action.space.open");
 		
-		clearCPC = Outside.service(this,"gus06.swing.comp.action.clearcopypastecut");
+		clearCPC = Outside.service(this,"gus.x.swing.comp.action.clear.copypastecut");
 	}
 	
 	
