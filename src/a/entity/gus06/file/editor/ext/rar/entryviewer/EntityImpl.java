@@ -37,7 +37,7 @@ public class EntityImpl implements Entity, P, I, G, ActionListener {
 		entryLabel = Outside.service(this,"*gus06.file.editor.ext.zip.entryviewer.label");
 		entryPanel = Outside.service(this,"*gus06.file.editor.ext.zip.entryviewer.panel");
 		writeToFile = Outside.service(this,"gus06.io.transfer.writetofile.choosedir");
-		buildInputStream = Outside.service(this,"gus06.zzz.file.rar.innosystec.getentry.inputstream");
+		buildInputStream = Outside.service(this,"gus06.sys.unrar1.getentry");
 		
 		button = new JButton("Extract");
 		button.setEnabled(false);
