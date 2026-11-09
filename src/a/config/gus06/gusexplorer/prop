@@ -3,7 +3,15 @@ app.title=Gus Explorer
 app.icon=app
 app.name=gusexplorer
 app.size=500 300
+app.author.name=Augustin Delale
+app.author.email=adelale@hotmail.com
+app.website=http\://www.gus06.com
+app.firstbuild=20141213
+app.dynamiccall=false
 
+language.list=fr
+sysprop.sun.java2d.noddraw=true
+system.librarypath=path.dlldir
 
 cust0.rb.prop=gus.y.cust1.rb.prop
 cust0.rb.inside=gus.y.cust1.rb.inside
@@ -13,13 +21,15 @@ cust0.rb.new1=gus.y.cust1.rb.new1
 cust0.rb.path=gus.y.cust1.rb.path
 cust0.rb.pool=gus.y.cust1.rb.pool
 cust0.rb.factory=gus.y.cust1.rb.factory
+cust0.rb.ref=gus06.maincust.ref
 
 cust0.inside=gus.y.inside1
 cust0.rb.property=gus.y.cust1.rb.prop
 
 cust1.m034.t.config.icon=gus.y.cust1.load.icon
-cust1.m018.t.entity.loadclass=gus.y.entityclass1.loader
+cust1.m019.t.entity.loadclass=gus.y.entityclass1.loader
 cust1.m023.e.mainframe.exit=gus.y.cust1.rb.guiexit
+cust1.m024.p.mainframe.handle=gus06.maincust.customizeframe
 
 cust2.rb.icon=gus.y.cust1.rb.icon
 
@@ -28,9 +38,7 @@ path.icondir=<path.rootdir>/icons
 path.jardir=<path.rootdir>/jars
 
 path.dlldir=<path.rootdir>\\dll
-path.gyem.apidir=<path.rootdir>\\api
 path.gyem.pooldir=<path.rootdir>\\pool
-path.jardir=<path.rootdir>\\api
 path.logdir=<path.rootdir>\\log
 path.tesseract1.rootdir=<path.rootdir>\\tesseract1
 path.unrar1.rootdir=<path.rootdir>\\unrar1
@@ -56,3 +64,38 @@ before.16=gus06.appli.gusexplorer.init.menubar
 before.17=gus06.appli.gusexplorer.init.rootchanger
 before.18=gus06.app.init.startupdir.putlnk
 before.19=gus06.sys.gusappmonitor.client.init
+
+after.0=gus06.app.init.mainframe.persister
+
+autocomplete.high=gus06.sys.autocomplete1.highlighter1
+autocomplete.eval=gus06.sys.autocomplete1.eval
+autocomplete.rm1=gus06.sys.autocomplete1.rm.line
+autocomplete.now=gus06.sys.autocomplete1.time.now
+autocomplete.rep1=gus06.sys.autocomplete1.rep.line
+autocomplete.vurl=gus06.swing.textcomp.autocomplete.script.addurlvar
+autocomplete.pos=gus06.sys.autocomplete1.nav.move.caret
+autocomplete.ri=gus06.sys.autocomplete1.replacer1.input
+autocomplete.rh=gus06.sys.autocomplete1.replacer1.infos
+autocomplete.date=gus06.sys.autocomplete1.editor1.date
+autocomplete.vfile=gus06.swing.textcomp.autocomplete.script.addfilevar
+autocomplete.vstring=gus06.swing.textcomp.autocomplete.script.addstringvar
+autocomplete.shiftcolor=gus06.swing.textcomp.cust.color.shift.background.foreground
+autocomplete.repeatline=gus06.sys.autocomplete1.repeatline
+autocomplete.vinclude=gus06.swing.textcomp.autocomplete.script.addincludevar
+autocomplete.save=gus06.sys.autocomplete1.persist1.save
+autocomplete.color=gus06.sys.autocomplete1.editor1.color
+autocomplete.all=gus06.sys.autocomplete1.all
+autocomplete.load=gus06.sys.autocomplete1.persist1.load
+autocomplete.rep=gus06.sys.autocomplete1.rep.all
+autocomplete.tag=gus06.sys.autocomplete1.xmltag.wrap
+autocomplete.icon=gus06.sys.autocomplete1.editor1.icon
+autocomplete.line=gus06.sys.autocomplete1.nav.move.line
+autocomplete.templatizer1=gus06.sys.autocomplete1.templatizer1
+autocomplete.open=gus06.sys.autocomplete1.open
+autocomplete.rm=gus06.sys.autocomplete1.rm.all
+autocomplete.ro=gus06.sys.autocomplete1.replacer1.output
+autocomplete.today=gus06.sys.autocomplete1.time.today
+autocomplete.rp=gus06.sys.autocomplete1.replacer1.perform
+autocomplete.sysout=gus06.swing.textcomp.autocomplete.entity.addsysout
+autocomplete.help=gus06.sys.autocomplete1.help
+autocomplete.entity=gus06.sys.autocomplete1.editor1.entity
