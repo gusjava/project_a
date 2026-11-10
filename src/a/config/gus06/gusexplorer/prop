@@ -13,6 +13,8 @@ language.list=fr
 sysprop.sun.java2d.noddraw=true
 system.librarypath=path.dlldir
 
+configid.common=gus.common1
+
 cust0.rb.prop=gus.y.cust1.rb.prop
 cust0.rb.inside=gus.y.cust1.rb.inside
 cust0.rb.param=gus.y.cust1.rb.param
